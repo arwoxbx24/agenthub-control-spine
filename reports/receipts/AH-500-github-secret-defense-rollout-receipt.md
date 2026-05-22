@@ -53,7 +53,7 @@ status: partial-with-blockers
 | Ruleset readback | PARTIAL | Private repo ruleset API returned upgrade/availability blocker |
 | Control-spine prevention artifacts | PASS | Policy, runbook, workflow templates, hook templates, schema, prompt, summary, and receipt added |
 | Secret disclosure scan of changed artifacts | PASS | `gitleaks protect --staged --redact=100` returned zero findings |
-| GitHub PR/readback | pending | Must pass before closure |
+| GitHub PR/readback | PASS | PR #3 merged to `main`; merge commit `1993589` read back from canonical repository |
 
 ## Redacted Findings Summary
 
