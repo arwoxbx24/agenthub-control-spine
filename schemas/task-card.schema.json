@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Task Card",
+  "type": "object",
+  "required": ["task_id", "run_id", "type", "priority", "stage", "duplicate_signature", "done_gate"],
+  "properties": {
+    "task_id": { "type": "string" },
+    "run_id": { "type": "string" },
+    "type": { "enum": ["Incident", "Bug", "Task", "Research"] },
+    "priority": { "enum": ["Show-stopper", "Critical", "Major", "Normal"] },
+    "stage": { "enum": ["Backlog", "Develop", "Review", "Test", "Done", "Idea"] },
+    "labels": { "type": "array", "items": { "type": "string" } },
+    "duplicate_signature": { "type": "string" },
+    "done_gate": { "type": "string" }
+  }
+}
+
