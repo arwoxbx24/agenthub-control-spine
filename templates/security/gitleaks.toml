@@ -1,0 +1,24 @@
+title = "AgentHub baseline gitleaks config"
+
+[extend]
+useDefault = true
+
+[[rules]]
+id = "agenthub-internal-token-placeholder"
+description = "AgentHub internal token-like assignment"
+regex = '''(?i)(agenthub|teamlead|codex)[_-]?(token|secret|key)\s*[:=]\s*['"]?[A-Za-z0-9_./+=-]{20,}'''
+secretGroup = 3
+keywords = ["agenthub", "teamlead", "codex", "token", "secret", "key"]
+
+[allowlist]
+description = "Approved false positives only. Keep entries narrow and reviewed."
+paths = [
+  '''(^|/)\.env\.example$''',
+  '''(^|/)README\.md$''',
+  '''(^|/)docs/.*\.md$'''
+]
+regexes = [
+  '''REDACTED''',
+  '''example(_|-)?secret''',
+  '''placeholder(_|-)?token'''
+]
