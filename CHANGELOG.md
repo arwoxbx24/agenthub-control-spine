@@ -14,4 +14,4 @@ status: draft
 
 - Created initial AgentHub Control Spine repository scaffold.
 - Added governance docs, schemas, runbooks, and artifact index.
-
+- Added current ChatGPT Project handoff report and index entry.

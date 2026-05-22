@@ -24,6 +24,7 @@ status: draft
 | `runbooks/chatgpt-github-connect.md` | runbook | AH-494 | draft |
 | `reports/receipts/AH-494-github-repo-setup-receipt.md` | setup receipt | AH-494 | draft |
 | `reports/receipts/AH-495-org-control-spine-migration-receipt.md` | migration receipt | AH-495 | active |
+| `reports/handoffs/2026-05-22-current-chat-handoff.md` | chat handoff report | Current ChatGPT Project dialogue | active |
 | `schemas/prompt-artifact.schema.json` | schema | AH-494 | draft |
 | `schemas/report-receipt.schema.json` | schema | AH-494 | draft |
 | `schemas/task-card.schema.json` | schema | AH-494 | draft |
