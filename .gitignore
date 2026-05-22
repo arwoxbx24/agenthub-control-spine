@@ -1,0 +1,9 @@
+secret-scan.yml
+secret-protection-policy.md
+teamlead-t0-github-secret-defense-rollout.txt
+AH-500-github-secret-defense-rollout-receipt.md
+secret-leak-response.md
+secret-scan-receipt.schema.json
+pre-commit-secret-scan.sh
+pre-push-secret-scan.sh
+secret-scan-workflow.yml
