@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Prompt Artifact",
+  "type": "object",
+  "required": ["artifact_id", "artifact_type", "owner_role", "source_task", "status", "mission", "validation", "acceptance_gates"],
+  "properties": {
+    "artifact_id": { "type": "string" },
+    "artifact_type": { "type": "string" },
+    "owner_role": { "type": "string" },
+    "source_task": { "type": "string" },
+    "created_at": { "type": "string" },
+    "supersedes": { "type": "string" },
+    "status": { "type": "string" },
+    "mission": { "type": "string" },
+    "validation": { "type": "string" },
+    "acceptance_gates": { "type": "array", "items": { "type": "string" } }
+  }
+}
+

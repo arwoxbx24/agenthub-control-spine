@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Report Receipt",
+  "type": "object",
+  "required": ["run_id", "task_id", "evidence", "validation", "residuals", "final_decision", "verifier_status"],
+  "properties": {
+    "run_id": { "type": "string" },
+    "task_id": { "type": "string" },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "validation": { "type": "object" },
+    "residuals": { "type": "array", "items": { "type": "string" } },
+    "final_decision": { "type": "string" },
+    "verifier_status": { "type": "string" }
+  }
+}
+

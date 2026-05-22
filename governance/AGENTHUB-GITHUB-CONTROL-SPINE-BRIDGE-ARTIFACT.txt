@@ -1,0 +1,31 @@
+# AGENTHUB GITHUB CONTROL SPINE BRIDGE ARTIFACT
+
+Purpose: define how AgentHub, Codex CLI, and ChatGPT use the corporate GitHub control-spine repository.
+
+Canonical repository: arwoxbx24/agenthub-control-spine.
+Forbidden default owner: arwoxb24.
+
+This repository is a versioned artifact spine for prompts, reports, receipts, governance notes, schemas, runbooks, and skill drafts.
+It is not production infrastructure, not AgentHub runtime, not YouTrack, not a deployment surface, and not secrets storage.
+
+Source relationship:
+1. OpenAI/system/developer instructions remain highest priority.
+2. ChatGPT Project Instructions remain active.
+3. AGENTHUB-PROJECT-MASTER-ARTIFACT.txt remains the stable project source of truth.
+4. AGENTHUB-ARCHITECT-BRAIN-ADAPTED-SOURCE-ARTIFACT.txt remains methodology only.
+5. This bridge artifact explains GitHub control-spine usage only.
+6. GitHub repo files provide versioned operational artifacts when available.
+7. YouTrack remains the task and Done-state system.
+8. AgentHub/Codex CLI/Linux remain the execution and validation environment.
+
+Usage rules:
+- If the corporate repo is available, agents may read canonical prompts/reports/governance artifacts from it.
+- If the repo is unavailable, agents must continue from local Project Sources and task-service evidence; GitHub outage is not a global blocker.
+- All new AgentHub governance prompts/reports/receipts must target arwoxbx24/agenthub-control-spine unless the user explicitly authorizes another repo.
+- Personal GitHub owner arwoxb24 is prohibited for AgentHub control-spine work by default.
+- Do not store secrets, env dumps, private keys, raw transcripts, or internal history links in the repo.
+- Do not use GitHub Issues as the primary task tracker; YouTrack remains central.
+- Do not claim implementation Done from GitHub commit alone; Done still requires task evidence, validation evidence, receipt, and blocker status.
+
+Minimal Project Instructions pointer, if the user chooses to apply it:
+"Use AGENTHUB-GITHUB-CONTROL-SPINE-BRIDGE-ARTIFACT.txt as the GitHub repository bridge. Canonical repo: arwoxbx24/agenthub-control-spine. Personal owner arwoxb24 is forbidden for AgentHub control-spine work unless explicitly authorized by the user."
