@@ -33,7 +33,9 @@ status: draft
 | `reports/receipts/AH-494-github-repo-setup-receipt.md` | setup receipt | AH-494 | draft |
 | `reports/receipts/AH-495-org-control-spine-migration-receipt.md` | migration receipt | AH-495 | active |
 | `reports/receipts/AH-500-github-secret-defense-rollout-receipt.md` | security rollout receipt | AH-500 | partial-with-blockers |
+| `reports/receipts/AH-501-secret-exclusion-finish-receipt.md` | security hygiene receipt | AH-501 | partial |
 | `reports/security/AH-500-redacted-org-scan-summary.md` | redacted security scan summary | AH-500 | active |
+| `reports/security/AH-501-secret-exclusion-current-content-summary.md` | redacted repo hygiene summary | AH-501 | partial |
 | `reports/handoffs/2026-05-22-current-chat-handoff.md` | chat handoff report | Current ChatGPT Project dialogue | active |
 | `schemas/prompt-artifact.schema.json` | schema | AH-494 | draft |
 | `schemas/report-receipt.schema.json` | schema | AH-494 | draft |
