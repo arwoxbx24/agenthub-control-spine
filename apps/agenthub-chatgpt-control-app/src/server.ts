@@ -1,5 +1,6 @@
 import express from "express";
 import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
+import { SSEServerTransport } from "@modelcontextprotocol/sdk/server/sse.js";
 import { StreamableHTTPServerTransport } from "@modelcontextprotocol/sdk/server/streamableHttp.js";
 import { z } from "zod";
 import { audit } from "./audit.js";
@@ -22,11 +23,6 @@ import {
 } from "./github.js";
 import { createOrUpdateYouTrackTask } from "./youtrack.js";
 
-const server = new McpServer({
-  name: "AgentHub Control App",
-  version: APP_VERSION
-});
-
 function result(data: Record<string, unknown>) {
   return {
     structuredContent: data,
@@ -39,6 +35,12 @@ function errorResult(error: unknown) {
   const message = error instanceof Error ? error.message : "Unknown error";
   return result({ status: "BLOCKED", code, message });
 }
+
+function createMcpServer() {
+const server = new McpServer({
+  name: "AgentHub Control App",
+  version: APP_VERSION
+});
 
 server.registerTool(
   "health_check",
@@ -240,10 +242,10 @@ server.registerTool(
 );
 
 server.registerTool(
-  "create_or_update_y outrack_task",
+  "create_or_update_y_outrack_task",
   {
     title: "Create or update YouTrack task legacy alias",
-    description: "Compatibility alias for the misspelled MVP tool name; use create_or_update_youtrack_task in new calls.",
+    description: "Compatibility alias for the misspelled MVP tool name normalized to MCP-safe characters; use create_or_update_youtrack_task in new calls.",
     annotations: { readOnlyHint: false, destructiveHint: false, openWorldHint: false },
     inputSchema: {
       task_id: z.string().optional(),
@@ -253,7 +255,7 @@ server.registerTool(
   },
   async (input) => {
     const task = await createOrUpdateYouTrackTask(input);
-    await audit("create_or_update_y outrack_task", { task_id: task.task_id, status: task.status });
+    await audit("create_or_update_y_outrack_task", { task_id: task.task_id, status: task.status });
     return result(task);
   }
 );
@@ -286,23 +288,53 @@ server.registerTool(
   }
 );
 
+return server;
+}
+
 const app = express();
 app.use(express.json({ limit: "1mb" }));
+const sseTransports: Record<string, SSEServerTransport> = {};
 
 app.get("/healthz", (_req, res) => {
   res.json({ status: "ok", version: APP_VERSION, run_id: RUN_ID });
 });
 
 app.post("/mcp", async (req, res) => {
+  const mcpServer = createMcpServer();
   const transport = new StreamableHTTPServerTransport({
     sessionIdGenerator: undefined
   });
   res.on("close", () => {
     transport.close().catch(() => undefined);
-    server.close().catch(() => undefined);
+    mcpServer.close().catch(() => undefined);
   });
-  await server.connect(transport);
+  await mcpServer.connect(transport);
   await transport.handleRequest(req, res, req.body);
+});
+
+app.get("/sse", async (_req, res) => {
+  const mcpServer = createMcpServer();
+  const transport = new SSEServerTransport("/messages", res);
+  sseTransports[transport.sessionId] = transport;
+  res.on("close", () => {
+    delete sseTransports[transport.sessionId];
+    mcpServer.close().catch(() => undefined);
+  });
+  await mcpServer.connect(transport);
+});
+
+app.post("/messages", async (req, res) => {
+  const sessionId = String(req.query.sessionId ?? "");
+  const transport = sseTransports[sessionId];
+  if (!transport) {
+    res.status(400).json({
+      jsonrpc: "2.0",
+      error: { code: -32000, message: "No SSE transport found for sessionId" },
+      id: null
+    });
+    return;
+  }
+  await transport.handlePostMessage(req, res, req.body);
 });
 
 const port = Number(process.env.PORT ?? 8787);
@@ -313,4 +345,4 @@ if (process.env.NODE_ENV !== "test") {
   });
 }
 
-export { app, server };
+export { app, createMcpServer };

@@ -56,8 +56,12 @@ Status: PARTIAL
 - `npm test`: PASS, TypeScript build plus 5 policy tests.
 - `npm run test:static`: PASS, executable source scan found no repository
   deletion API surface and no committed token pattern.
+- Local `npm start`: PASS after correcting the start path.
+- Local `GET /healthz`: PASS.
+- Local `GET /sse`: PASS, returned an SSE `/messages?sessionId=...` endpoint.
+- Local `POST /mcp`: PASS with required Accept header, returned MCP initialize result.
 - `gitleaks detect --redact`: PASS, findings `0`.
-- Redacted report: `@artifacts/AH-CHATGPT-APP-BOOTSTRAP-20260523/gitleaks-redacted-final.json`.
+- Redacted report: `@artifacts/AH-CHATGPT-APP-BOOTSTRAP-20260523/gitleaks-redacted-sse.json`.
 
 ## Blockers
 
