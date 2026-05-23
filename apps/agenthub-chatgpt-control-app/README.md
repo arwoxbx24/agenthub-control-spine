@@ -4,7 +4,7 @@ Status: prototype skeleton for AH-507.
 
 This directory contains a tools-only Apps SDK / MCP connector for the AgentHub
 control spine. It is designed for ChatGPT Developer Mode testing through a
-public HTTPS `/mcp` endpoint, but it does not include production hosting or
+public HTTPS `/sse` or `/mcp` endpoint, but it does not include production hosting or
 secrets.
 
 ## Safety Model
@@ -41,6 +41,6 @@ npm test
 npm run test:static
 ```
 
-Full PASS requires ChatGPT Developer Mode connection to a public HTTPS `/mcp`
+Full PASS requires ChatGPT Developer Mode connection to a public HTTPS `/sse`
 endpoint and a safe write proof performed through this app's own
 `github_write_proof` tool.

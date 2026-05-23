@@ -17,7 +17,7 @@ Required PASS gates:
 5. Static policy test confirms no repository deletion surface and no committed
    tokens.
 6. Secret scanner returns no findings for added files.
-7. Public HTTPS `/mcp` endpoint exists.
+7. Public HTTPS `/sse` or `/mcp` endpoint exists.
 8. ChatGPT Developer Mode connector is created.
 9. ChatGPT tool list shows the MVP tools.
 10. `health_check` succeeds from ChatGPT.
