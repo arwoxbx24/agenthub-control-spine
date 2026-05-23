@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agenthub-run-preflight.schema.json",
+  "title": "AgentHub Run Preflight",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "objective_signature",
+    "selected_run_id",
+    "duplicate_check",
+    "locked_run_gate",
+    "forbidden_zone_gate",
+    "evidence_before_done"
+  ],
+  "properties": {
+    "task_id": { "type": "string", "minLength": 1 },
+    "objective_signature": { "type": "string", "minLength": 1 },
+    "selected_run_id": { "type": "string", "minLength": 1 },
+    "superseded_run_id": { "type": "string" },
+    "duplicate_check": { "const": "PASS" },
+    "locked_run_gate": { "enum": ["PASS", "SUPERSEDED"] },
+    "forbidden_zone_gate": { "const": "PASS" },
+    "single_worker_gate": { "enum": ["PASS", "not_applicable"] },
+    "manual_t0_implementation_gate": { "const": "PASS" },
+    "evidence_before_done": { "const": "PASS" },
+    "final_state": {
+      "enum": [
+        "RECOVERED_CONTROL_LOOP",
+        "BLOCKED_AGENTHUB_CANNOT_CREATE_RECOVERY_RUN",
+        "BLOCKED_REPOSITORY_WRITE_UNAVAILABLE_IN_EXECUTOR",
+        "BLOCKED_PUBLIC_MCP_URL_REQUIRES_APPROVED_HOSTING",
+        "BLOCKED_SINGLE_INGRESS_CONTROL_NOT_INSTALLED"
+      ]
+    }
+  }
+}

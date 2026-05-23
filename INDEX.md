@@ -22,8 +22,10 @@ status: draft
 | `governance/stale-prompt-quarantine.md` | governance policy | AH-494 | draft |
 | `governance/AGENTHUB-GITHUB-CONTROL-SPINE-BRIDGE-ARTIFACT.txt` | bridge artifact | AH-495 | active |
 | `governance/secret-protection-policy.md` | governance policy | AH-500 | active |
+| `governance/agenthub-single-ingress-control.md` | governance control | AH-507 | active |
 | `runbooks/chatgpt-github-connect.md` | runbook | AH-494 | draft |
 | `runbooks/secret-leak-response.md` | runbook | AH-500 | active |
+| `runbooks/agenthub-locked-run-recovery.md` | runbook | AH-507 | active |
 | `templates/github/secret-scan-workflow.yml` | GitHub Actions template | AH-500 | active |
 | `.github/workflows/secret-scan.yml` | control-spine workflow | AH-500 | active |
 | `templates/security/gitleaks.toml` | scanner config template | AH-500 | active |
@@ -41,6 +43,7 @@ status: draft
 | `reports/receipts/AH-501-secret-exclusion-finish-receipt.md` | security hygiene receipt | AH-501 | pass |
 | `reports/receipts/AH-507-chatgpt-control-app-bootstrap-receipt.md` | app bootstrap receipt | AH-507 | partial |
 | `reports/receipts/AH-507-chatgpt-control-app-closed-loop-receipt.md` | corrective incident receipt | AH-507 | blocked |
+| `reports/receipts/AH-507-control-loop-recovery-receipt.md` | recovery receipt | AH-507 | recovered-control-loop |
 | `reports/write-proof/AH-507-chatgpt-control-app-write-proof.md` | write-proof status | AH-507 | blocked |
 | `reports/security/AH-500-redacted-org-scan-summary.md` | redacted security scan summary | AH-500 | active |
 | `reports/security/AH-501-secret-exclusion-current-content-summary.md` | redacted repo hygiene summary | AH-501 | pass |
@@ -49,3 +52,4 @@ status: draft
 | `schemas/report-receipt.schema.json` | schema | AH-494 | draft |
 | `schemas/task-card.schema.json` | schema | AH-494 | draft |
 | `schemas/secret-scan-receipt.schema.json` | schema | AH-500 | active |
+| `schemas/agenthub-run-preflight.schema.json` | schema | AH-507 | active |
