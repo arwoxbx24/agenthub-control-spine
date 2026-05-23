@@ -23,6 +23,11 @@
     "forbidden_zone_gate": { "const": "PASS" },
     "single_worker_gate": { "enum": ["PASS", "not_applicable"] },
     "manual_t0_implementation_gate": { "const": "PASS" },
+    "t0_emergency_stop_gate": { "enum": ["PASS", "ACTIVE", "not_applicable"] },
+    "t0_raw_shell_gate": { "enum": ["PASS", "BLOCKED_DIRECT_SHELL_BY_T0"] },
+    "t0_live_infra_gate": { "enum": ["PASS", "BLOCKED_DIRECT_INFRA_BY_T0"] },
+    "worker_receipt_gate": { "enum": ["PASS", "WORKER_ROUTE_UNAVAILABLE", "not_required"] },
+    "user_output_gate": { "enum": ["PASS", "FINAL_ONLY", "BLOCKED_INTERMEDIATE_CHATTER"] },
     "evidence_before_done": { "const": "PASS" },
     "final_state": {
       "enum": [
@@ -30,7 +35,11 @@
         "BLOCKED_AGENTHUB_CANNOT_CREATE_RECOVERY_RUN",
         "BLOCKED_REPOSITORY_WRITE_UNAVAILABLE_IN_EXECUTOR",
         "BLOCKED_PUBLIC_MCP_URL_REQUIRES_APPROVED_HOSTING",
-        "BLOCKED_SINGLE_INGRESS_CONTROL_NOT_INSTALLED"
+        "BLOCKED_SINGLE_INGRESS_CONTROL_NOT_INSTALLED",
+        "ROUTED",
+        "BLOCKED",
+        "CONTROL_REPAIR_RECORDED",
+        "DONE"
       ]
     }
   }
