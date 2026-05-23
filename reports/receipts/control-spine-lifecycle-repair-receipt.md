@@ -13,7 +13,7 @@ safe_to_replay: false
 supersedes: none
 superseded_by: none
 canonical_decision_ref: governance/artifact-lifecycle-policy.md
-status: validation-pass-pr-pending
+status: pass
 ---
 
 # Control-Spine Lifecycle Repair Receipt
@@ -22,6 +22,8 @@ status: validation-pass-pr-pending
 
 - Canonical repository: `arwoxbx24/agenthub-control-spine`.
 - Work branch: `agenthub/control-spine-lifecycle-20260523`.
+- Implementation commit: `0994445` (`Add control spine artifact lifecycle system`).
+- Pull request: `#17`.
 - AgentHub run: `RUN-agenthub-control-spine-lifecycle-20260523`.
 - AgentHub create receipt: `9e8889870aacc47325f29be37211210d8748462807572c130fd06316581c6d5a`.
 - Worker dispatch receipt: `5fd2b81873c7d3329e9a5dfd32a98871938f8636feb9d5b889b01ca7c26d70ea`.
@@ -56,7 +58,7 @@ status: validation-pass-pr-pending
 | Gitleaks redacted changed-file scan | PASS: no leaks found |
 | Unsafe marker scan over changed files | PASS |
 | Runtime/client surface diff check | PASS |
-| GitHub PR readback | pending |
+| GitHub PR readback | PASS: PR `#17` opened from `agenthub/control-spine-lifecycle-20260523` to `main` |
 
 ## Boundaries
 
@@ -79,10 +81,10 @@ status: validation-pass-pr-pending
 | INDEX_OR_REGISTER_UPDATED | PASS |
 | NO_SECRET_OR_RAW_TRANSCRIPT | PASS |
 | VALIDATION_RECEIPT | PASS |
-| PR_CREATED | pending |
+| PR_CREATED | PASS |
 
 ## Final State
 
-Current state: `VALIDATION_PASS_PR_PENDING`.
+Current state: `PASS`.
 
-Primary blocker: none at authoring time.
+Primary blocker: none.

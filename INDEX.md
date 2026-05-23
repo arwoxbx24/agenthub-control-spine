@@ -57,7 +57,7 @@ defined by `context-packs/default-agenthub-control-spine.md`.
 | `reports/receipts/AH-507-control-loop-recovery-receipt.md` | recovery receipt | AH-507 | recovered-control-loop |
 | `reports/receipts/AH-507-public-chatgpt-mcp-final-receipt.md` | final receipt | AH-507 | pass |
 | `reports/receipts/AH-510-t0-emergency-stop-control-receipt.md` | control repair receipt | AH-510 | control-repair-recorded |
-| `reports/receipts/control-spine-lifecycle-repair-receipt.md` | control repair receipt | AH-CONTROL-SPINE-LIFECYCLE-20260523 | validation-pending |
+| `reports/receipts/control-spine-lifecycle-repair-receipt.md` | control repair receipt | AH-CONTROL-SPINE-LIFECYCLE-20260523 | pass |
 | `reports/write-proof/AH-507-chatgpt-control-app-write-proof.md` | write-proof status | AH-507 | pass |
 | `reports/security/AH-500-redacted-org-scan-summary.md` | redacted security scan summary | AH-500 | active |
 | `reports/security/AH-501-secret-exclusion-current-content-summary.md` | redacted repo hygiene summary | AH-501 | pass |
