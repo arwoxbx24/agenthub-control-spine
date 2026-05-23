@@ -12,6 +12,9 @@ status: draft
 
 ## 2026-05-23
 
+- Added TeamLead AH-513/AH-518 control-plane report and receipt recording worker
+  scope drift to Telegram MTProxy/AH-468 instead of Proxy Manager / Docker
+  partner addressing.
 - Added MTProxy domain route worker report and operational receipt for the accepted TimeWeb direct TCP endpoint.
 - Added AH-511 agent-cycle self-critique postmortem.
 - Added draft skills for T0 non-authoring, DevOps incident diagnostics, and AgentHub evidence loop closure.
