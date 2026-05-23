@@ -154,7 +154,31 @@ last validated timestamp, and proof source.
 
 This control does not authorize current live infrastructure changes.
 
-## J. Final Answer Guard
+## J. Context Selection and Artifact Lifecycle Gate
+
+Before loading historical evidence, prompts, or reports, agents must read
+`context/agenthub-current-context-pack.md`.
+
+This gate requires:
+
+- current context pack read before historical reports;
+- no implemented report treated as an active instruction;
+- no consumed prompt replayed without a current conflict check and explicit
+  task-specific need;
+- every promoted report finding represented in governance, runbook, schema,
+  skill, or the current context pack;
+- promoted reports marked `implemented_audit_only` or equivalent with
+  `read_by_default=false`;
+- receipts marked as evidence only.
+
+Fail classes:
+
+- `STALE_REPORT_OR_PROMPT_CONTEXT_RISK`;
+- `CONSUMED_PROMPT_REPLAY_BLOCKED`;
+- `CURRENT_CONTEXT_PACK_MISSING`;
+- `LIFECYCLE_METADATA_MISSING`.
+
+## K. Final Answer Guard
 
 User-facing output must be compact Russian unless explicitly requested otherwise.
 

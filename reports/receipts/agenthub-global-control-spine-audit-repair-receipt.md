@@ -5,7 +5,7 @@ owner_role: T0 Control Plane
 source_task: AH-GLOBAL-CONTROL-SPINE-AUDIT-20260523
 run_id: RUN-agenthub-global-control-spine-audit-20260523
 created_at: 2026-05-23
-status: blocked-worker-route-closure
+status: PR_READY_NOT_AGENTHUB_DONE
 ---
 
 # AgentHub Global Control Spine Audit Repair Receipt
@@ -17,7 +17,7 @@ status: blocked-worker-route-closure
 - Work branch: `agenthub/RUN-agenthub-global-control-spine-audit-20260523`.
 - Implementation commit: `fcfe673` (`Add AgentHub global control spine repair`).
 - Pull request: `#16`.
-- PR head after receipt readback: `da963245c9b8483d69be2cbeb5d3082e60d2fb22`.
+- PR head after lifecycle correction: pending.
 - AgentHub create receipt: `db515ab512d6bdbc747ac9e1bafe87921c4d42a6989dce221e658e4f5ddbefee`.
 - AgentHub dispatch receipt: `775d78a293519e818ab7919795b4485f3d3f3c93157a9e5df9bf0be7ac5181e0`.
 - Task-service anchor: contract `NOOP`, `task_id=null`, duplicate signature `agenthub-global-control-spine-audit-repair-20260523`.
@@ -53,6 +53,8 @@ Mandatory source blob SHAs matched the supplied observed SHAs:
 - `schemas/task-service-payload-builder-contract.schema.json`.
 - `schemas/service-dependency-graph.schema.json`.
 - `prompts/architecture/agenthub-global-control-spine-audit-and-repair.txt`.
+- `governance/artifact-lifecycle-and-retention-policy.md`.
+- `context/agenthub-current-context-pack.md`.
 - `reports/receipts/agenthub-global-control-spine-audit-repair-receipt.md`.
 - `INDEX.md`.
 - `CHANGELOG.md`.
@@ -69,9 +71,12 @@ Mandatory source blob SHAs matched the supplied observed SHAs:
 | CHANGELOG coverage check | PASS |
 | Forbidden runtime/client surface diff check | PASS |
 | GitHub Issues substitution check | PASS: no GitHub Issues used |
+| Lifecycle/context repair | PASS: reports, receipts, and consumed prompts are not default active instructions |
+| Current context pack indexed | PASS |
+| Consumed prompt replay guard | PASS: executed repair prompt is `safe_to_replay=false` |
 
-PR readback completed after publication. The receipt-update commit is the PR head
-commit following `fcfe673`.
+PR readback is updated after the lifecycle correction commit because the commit
+cannot contain its own final hash.
 
 ## Boundaries
 
@@ -101,14 +106,16 @@ commit following `fcfe673`.
 | Index gate | PASS |
 | Changelog gate | PASS |
 | Runtime safety gate | PASS |
-| Final receipt gate | BLOCKED: AgentHub merge did not accept sandbox-only evidence, and command-worker dispatch is blocked by contract-only runtime policy. |
+| Final receipt gate | PR_READY_NOT_AGENTHUB_DONE: repository artifact package is review-ready; AgentHub runtime worker-route closure remains separate. |
 
 ## Final State
 
-Current state: `BLOCKED`.
+Current state: `PR_READY_NOT_AGENTHUB_DONE`.
 
-Primary blocker: `WORKER_ROUTE_UNAVAILABLE`.
+Primary blocker: `WORKER_ROUTE_UNAVAILABLE_NOT_BLOCKING_REPO_ARTIFACT_REVIEW`.
 
-The repository repair itself is implemented and validated in PR `#16`. Final
-AgentHub Done is not claimed because worker-route closure evidence could not be
+The repository repair itself is implemented and validated in PR `#16`, including
+artifact lifecycle and current context controls. PR `#16` can be reviewed as a
+governance artifact package if repository checks pass. Final AgentHub runtime
+Done is not claimed because worker-route closure evidence could not be
 materialized through the available MCP adapters.

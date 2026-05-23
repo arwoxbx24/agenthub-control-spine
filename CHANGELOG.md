@@ -12,6 +12,9 @@ status: draft
 
 ## 2026-05-23
 
+- Amended PR #16 with artifact lifecycle and current-context controls so
+  implemented reports, receipts, and consumed prompts are not default active
+  instructions.
 - Added the AgentHub global control-spine audit and repair package.
 - Added integrated global role and closure governance for T0 boundaries, worker ownership, blocker alternatives, evidence closure, Done taxonomy, hot-lane routing, no-repeat gate, task-service payloads, DevOps service graph, and final answer discipline.
 - Added the global control-loop closure runbook, unified receipt schema, task-service payload-builder contract schema, service dependency graph schema, reusable architecture repair prompt, and repair receipt.
