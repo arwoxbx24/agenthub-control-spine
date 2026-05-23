@@ -17,3 +17,4 @@ status: draft
 - Added current ChatGPT Project handoff report and index entry.
 - Added GitHub secret-defense policy, response runbook, scanner templates, hooks, workflow, schema, redacted org scan summary, and rollout receipt.
 - Added AH-501 current-content secret exclusion summary and receipt.
+- Marked AH-501 secret exclusion complete after `browser-logger-extension` PR #1 merge and clean redacted rescan.
