@@ -58,7 +58,7 @@ status: draft
 | `reports/architecture/agenthub-global-control-spine-audit.md` | architecture audit | AH-GLOBAL-CONTROL-SPINE-AUDIT-20260523 | active |
 | `reports/handoffs/2026-05-22-current-chat-handoff.md` | chat handoff report | Current ChatGPT Project dialogue | active |
 | `reports/incidents/AH-511-agent-cycle-self-critique.md` | incident postmortem | AH-511 | active |
-| `reports/receipts/agenthub-global-control-spine-audit-repair-receipt.md` | control repair receipt | AH-GLOBAL-CONTROL-SPINE-AUDIT-20260523 | control-repair-recorded |
+| `reports/receipts/agenthub-global-control-spine-audit-repair-receipt.md` | control repair receipt | AH-GLOBAL-CONTROL-SPINE-AUDIT-20260523 | blocked-worker-route-closure |
 | `skills-drafts/t0-non-authoring-gate/SKILL.md` | draft skill | AH-511 | draft |
 | `skills-drafts/devops-incident-diagnostics/SKILL.md` | draft skill | AH-511 | draft |
 | `skills-drafts/agenthub-evidence-loop-closure/SKILL.md` | draft skill | AH-511 | draft |

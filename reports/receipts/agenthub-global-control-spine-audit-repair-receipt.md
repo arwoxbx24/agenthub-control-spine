@@ -5,7 +5,7 @@ owner_role: T0 Control Plane
 source_task: AH-GLOBAL-CONTROL-SPINE-AUDIT-20260523
 run_id: RUN-agenthub-global-control-spine-audit-20260523
 created_at: 2026-05-23
-status: control-repair-recorded
+status: blocked-worker-route-closure
 ---
 
 # AgentHub Global Control Spine Audit Repair Receipt
@@ -17,9 +17,15 @@ status: control-repair-recorded
 - Work branch: `agenthub/RUN-agenthub-global-control-spine-audit-20260523`.
 - Implementation commit: `fcfe673` (`Add AgentHub global control spine repair`).
 - Pull request: `#16`.
+- PR head after receipt readback: `da963245c9b8483d69be2cbeb5d3082e60d2fb22`.
 - AgentHub create receipt: `db515ab512d6bdbc747ac9e1bafe87921c4d42a6989dce221e658e4f5ddbefee`.
 - AgentHub dispatch receipt: `775d78a293519e818ab7919795b4485f3d3f3c93157a9e5df9bf0be7ac5181e0`.
 - Task-service anchor: contract `NOOP`, `task_id=null`, duplicate signature `agenthub-global-control-spine-audit-repair-20260523`.
+- Closure route repair receipts:
+  - stale original merge blocker: `c776d5b9cbf41ad4390048c55881243fca584b611d70c02d72c64de4728200c8`;
+  - closure sandbox execute receipt: `7e412277c4449c89cacda79443c604e5e9f9c5934505944300a2377893ca8246`;
+  - closure merge blocker: `53e01f7208fd6fd083dce23ad978e13e03fd64bbfa3405d332e7058bd3e8aea8`;
+  - command-worker dispatch blocker: `a76c85b4a390f50eace10ec09924da96779ec2aa24d2d06c3fc07179983f645e`.
 
 ## Source Read Evidence
 
@@ -95,10 +101,14 @@ commit following `fcfe673`.
 | Index gate | PASS |
 | Changelog gate | PASS |
 | Runtime safety gate | PASS |
-| Final receipt gate | PASS |
+| Final receipt gate | BLOCKED: AgentHub merge did not accept sandbox-only evidence, and command-worker dispatch is blocked by contract-only runtime policy. |
 
 ## Final State
 
-Current state: `CONTROL_REPAIR_RECORDED`.
+Current state: `BLOCKED`.
 
-Primary blocker: none at authoring time.
+Primary blocker: `WORKER_ROUTE_UNAVAILABLE`.
+
+The repository repair itself is implemented and validated in PR `#16`. Final
+AgentHub Done is not claimed because worker-route closure evidence could not be
+materialized through the available MCP adapters.
