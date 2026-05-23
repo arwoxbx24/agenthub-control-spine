@@ -48,6 +48,10 @@ status: draft
 | `reports/security/AH-500-redacted-org-scan-summary.md` | redacted security scan summary | AH-500 | active |
 | `reports/security/AH-501-secret-exclusion-current-content-summary.md` | redacted repo hygiene summary | AH-501 | pass |
 | `reports/handoffs/2026-05-22-current-chat-handoff.md` | chat handoff report | Current ChatGPT Project dialogue | active |
+| `reports/incidents/AH-511-agent-cycle-self-critique.md` | incident postmortem | AH-511 | active |
+| `skills-drafts/t0-non-authoring-gate/SKILL.md` | draft skill | AH-511 | draft |
+| `skills-drafts/devops-incident-diagnostics/SKILL.md` | draft skill | AH-511 | draft |
+| `skills-drafts/agenthub-evidence-loop-closure/SKILL.md` | draft skill | AH-511 | draft |
 | `schemas/prompt-artifact.schema.json` | schema | AH-494 | draft |
 | `schemas/report-receipt.schema.json` | schema | AH-494 | draft |
 | `schemas/task-card.schema.json` | schema | AH-494 | draft |
