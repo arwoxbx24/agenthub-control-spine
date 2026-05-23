@@ -12,6 +12,7 @@ status: draft
 
 ## 2026-05-23
 
+- Added MTProxy domain route worker report and operational receipt for the accepted TimeWeb direct TCP endpoint.
 - Added AH-511 agent-cycle self-critique postmortem.
 - Added draft skills for T0 non-authoring, DevOps incident diagnostics, and AgentHub evidence loop closure.
 - Strengthened the T0/T1/Worker role matrix with a hard invalidation rule for direct T0 mutation.
