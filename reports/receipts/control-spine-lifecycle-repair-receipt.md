@@ -27,6 +27,8 @@ status: pass
 - AgentHub run: `RUN-agenthub-control-spine-lifecycle-20260523`.
 - AgentHub create receipt: `9e8889870aacc47325f29be37211210d8748462807572c130fd06316581c6d5a`.
 - Worker dispatch receipt: `5fd2b81873c7d3329e9a5dfd32a98871938f8636feb9d5b889b01ca7c26d70ea`.
+- Worker execute receipt: `0b57f77d9c7b657f9d2f0988fb463070a7a7caca6f58e9174cb750ec334d7ea5`.
+- AgentHub merge receipt: `3e34d50a707ed5db7ecc56945b16a31fd3bc467a899b6c664b961b90b4016a7b`, status `SUCCESS`, `done_allowed=true`.
 - Revision guard receipt: `bdc33e5d049967c28d583c2f4feae5d5d38cecedd3dc3188adc3fe811ffe6125`.
 - Task-service anchor: contract `NOOP`, `task_id=null`, duplicate signature `agenthub-control-spine-lifecycle-retention-context-hygiene-20260523`.
 
