@@ -15,6 +15,8 @@ status: control-repair-recorded
 - Canonical repository: `arwoxbx24/agenthub-control-spine`.
 - Default branch readback: `main`.
 - Work branch: `agenthub/RUN-agenthub-global-control-spine-audit-20260523`.
+- Implementation commit: `fcfe673` (`Add AgentHub global control spine repair`).
+- Pull request: `#16`.
 - AgentHub create receipt: `db515ab512d6bdbc747ac9e1bafe87921c4d42a6989dce221e658e4f5ddbefee`.
 - AgentHub dispatch receipt: `775d78a293519e818ab7919795b4485f3d3f3c93157a9e5df9bf0be7ac5181e0`.
 - Task-service anchor: contract `NOOP`, `task_id=null`, duplicate signature `agenthub-global-control-spine-audit-repair-20260523`.
@@ -62,8 +64,8 @@ Mandatory source blob SHAs matched the supplied observed SHAs:
 | Forbidden runtime/client surface diff check | PASS |
 | GitHub Issues substitution check | PASS: no GitHub Issues used |
 
-Commit and PR readback are added after GitHub publication because a commit cannot
-contain its own final hash.
+PR readback completed after publication. The receipt-update commit is the PR head
+commit following `fcfe673`.
 
 ## Boundaries
 
