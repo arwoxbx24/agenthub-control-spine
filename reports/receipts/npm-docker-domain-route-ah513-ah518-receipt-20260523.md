@@ -5,7 +5,7 @@ owner_role: Scoped Implementation Worker
 source_task: AH-513/AH-518
 run_id: RUN-npm-docker-ah513-ah518-domain-route-20260523
 created_at: 2026-05-23
-status: partial-with-blocker
+status: complete
 lifecycle: operational_receipt
 default_load: false
 safe_to_replay: false
@@ -49,18 +49,25 @@ project_scope: proxy-manager/docker-addressing
 - Saved row JSON and compose backups exist in the run artifact directory.
 - Rollback command class: restore compose backups, recreate Proxy Manager, and PUT saved proxy-host JSON via NPM API.
 
-## Blocker
+## Follow-up Closure
 
-Primary blocker: `DOCKER_ROUTE_SCOPE_UNCLEAR`.
+Follow-up RUN_ID: `FIX-20260523-NPM-RAW-IP-TAIL-CLOSURE`.
 
-Remaining rows:
+The previous primary blocker `DOCKER_ROUTE_SCOPE_UNCLEAR` was resolved for enabled traffic routes:
 
-- `kpd.b244.ru` -> `172.17.0.1:3847`
-- `yubikey-v1.b244.ru` -> `172.17.0.1:4000`
-- disabled/offline `claw.b244.ru`, `n8.b244.ru`, `openclaw.b244.ru`
+- `kpd.b244.ru` changed from `172.17.0.1:3847` to `kpd-proxy-upstream:80`.
+- `yubikey-v1.b244.ru` changed from `172.17.0.1:4000` to `yubikey-v1-upstream:80`.
+- `kpd-proxy` PM2 service was restored without deleting PM2 entries.
+- Canonical `yubikey-v1` PM2 service was started.
+- Active raw-IP NPM readback returned an empty list.
 
-These rows need service owner proof or explicit exclusion before `AH-513`/`AH-518` can be closed.
+Validation:
+
+- `https://kpd.b244.ru/api/kpd/health` returned `200`.
+- `https://yubikey-v1.b244.ru/` returned `200`.
+- NPM container resolved `kpd-proxy-upstream` and `yubikey-v1-upstream`.
+- No VPN, Telegram, database dump/query/migration, broad firewall, or unrelated route change was performed.
 
 ## Final Status
 
-Not Done. Partial implementation completed; blocker recorded.
+Done for enabled Proxy Manager raw-IP upstream cleanup. Disabled/offline archival rows remain raw by deliberate exclusion, not active-route blocker.
