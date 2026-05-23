@@ -71,9 +71,7 @@ export async function createBranchCommitPr(params: {
     head: `${DEFAULT_OWNER}:${branch}`,
     state: "open"
   });
-  if (existingPulls.data[0]) {
-    return { branch, pr_url: existingPulls.data[0].html_url, pr_number: existingPulls.data[0].number };
-  }
+  const existingPull = existingPulls.data[0];
 
   const { data: baseRef } = await client.git.getRef({ owner: DEFAULT_OWNER, repo: CONTROL_REPO, ref: `heads/${base}` });
   try {
@@ -91,14 +89,36 @@ export async function createBranchCommitPr(params: {
 
   for (const file of params.files) {
     const safePath = normalizeArtifactPath(file.path);
+    let sha: string | undefined;
+    try {
+      const existing = await client.repos.getContent({
+        owner: DEFAULT_OWNER,
+        repo: CONTROL_REPO,
+        branch,
+        path: safePath,
+        ref: branch
+      });
+      if (!Array.isArray(existing.data) && existing.data.type === "file") {
+        sha = existing.data.sha;
+      }
+    } catch (error: unknown) {
+      if (!String(error).includes("Not Found")) {
+        throw error;
+      }
+    }
     await client.repos.createOrUpdateFileContents({
       owner: DEFAULT_OWNER,
       repo: CONTROL_REPO,
       branch,
       path: safePath,
       message: `AH-507: update ${safePath}`,
-      content: Buffer.from(file.content, "utf8").toString("base64")
+      content: Buffer.from(file.content, "utf8").toString("base64"),
+      sha
     });
+  }
+
+  if (existingPull) {
+    return { branch, pr_url: existingPull.html_url, pr_number: existingPull.number };
   }
 
   const { data: pr } = await client.pulls.create({
