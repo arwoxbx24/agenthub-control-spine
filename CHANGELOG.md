@@ -12,6 +12,7 @@ status: draft
 
 ## 2026-05-23
 
+- Added AH-513/AH-518 NPM Docker addressing worker report and receipt with partial implementation evidence and remaining blocker.
 - Added MTProxy domain route worker report and operational receipt for the accepted TimeWeb direct TCP endpoint.
 - Added AH-511 agent-cycle self-critique postmortem.
 - Added draft skills for T0 non-authoring, DevOps incident diagnostics, and AgentHub evidence loop closure.

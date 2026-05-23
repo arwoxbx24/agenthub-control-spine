@@ -56,6 +56,8 @@ status: draft
 | `reports/incidents/AH-511-agent-cycle-self-critique.md` | incident postmortem | AH-511 | active |
 | `reports/devops/mtproxy-domain-route-worker-20260523.md` | devops worker report | AH-468 | pass |
 | `reports/receipts/mtproxy-domain-route-worker-receipt-20260523.md` | operational receipt | AH-468 | pass |
+| `reports/devops/npm-docker-domain-route-ah513-ah518-20260523.md` | devops worker report | AH-513/AH-518 | partial-with-blocker |
+| `reports/receipts/npm-docker-domain-route-ah513-ah518-receipt-20260523.md` | operational receipt | AH-513/AH-518 | partial-with-blocker |
 | `skills-drafts/t0-non-authoring-gate/SKILL.md` | draft skill | AH-511 | draft |
 | `skills-drafts/devops-incident-diagnostics/SKILL.md` | draft skill | AH-511 | draft |
 | `skills-drafts/agenthub-evidence-loop-closure/SKILL.md` | draft skill | AH-511 | draft |
