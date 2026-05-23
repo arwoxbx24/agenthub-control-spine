@@ -10,6 +10,9 @@ status: draft
 
 # Artifact Index
 
+Lifecycle metadata is stored in `ARTIFACT_REGISTER.md`. Default context is
+defined by `context-packs/default-agenthub-control-spine.md`.
+
 | Artifact | Type | Source task | Status |
 |---|---|---|---|
 | `README.md` | repository overview | AH-494 | draft |
@@ -17,9 +20,13 @@ status: draft
 | `GOVERNANCE.md` | governance overview | AH-494 | draft |
 | `SECURITY.md` | security policy | AH-494 | draft |
 | `CHANGELOG.md` | changelog | AH-494 | draft |
+| `ARTIFACT_REGISTER.md` | artifact register | AH-CONTROL-SPINE-LIFECYCLE-20260523 | active |
+| `context-packs/default-agenthub-control-spine.md` | context pack | AH-CONTROL-SPINE-LIFECYCLE-20260523 | active |
 | `governance/task-first-policy.md` | governance policy | AH-494 | draft |
 | `governance/done-gate-policy.md` | governance policy | AH-494 | draft |
-| `governance/stale-prompt-quarantine.md` | governance policy | AH-494 | draft |
+| `governance/stale-prompt-quarantine.md` | governance policy | AH-494 | superseded |
+| `governance/artifact-lifecycle-policy.md` | governance policy | AH-CONTROL-SPINE-LIFECYCLE-20260523 | active |
+| `governance/control-spine-current-baseline.md` | current baseline | AH-CONTROL-SPINE-LIFECYCLE-20260523 | active |
 | `governance/AGENTHUB-GITHUB-CONTROL-SPINE-BRIDGE-ARTIFACT.txt` | bridge artifact | AH-495 | active |
 | `governance/secret-protection-policy.md` | governance policy | AH-500 | active |
 | `governance/agenthub-single-ingress-control.md` | governance control | AH-507 | active |
@@ -28,6 +35,7 @@ status: draft
 | `runbooks/secret-leak-response.md` | runbook | AH-500 | active |
 | `runbooks/agenthub-locked-run-recovery.md` | runbook | AH-507 | active |
 | `runbooks/teamlead-t0-role-drift-emergency-stop.md` | runbook | AH-510 | active |
+| `runbooks/control-spine-inventory-and-quarantine.md` | runbook | AH-CONTROL-SPINE-LIFECYCLE-20260523 | active |
 | `templates/github/secret-scan-workflow.yml` | GitHub Actions template | AH-500 | active |
 | `.github/workflows/secret-scan.yml` | control-spine workflow | AH-500 | active |
 | `templates/security/gitleaks.toml` | scanner config template | AH-500 | active |
@@ -49,6 +57,7 @@ status: draft
 | `reports/receipts/AH-507-control-loop-recovery-receipt.md` | recovery receipt | AH-507 | recovered-control-loop |
 | `reports/receipts/AH-507-public-chatgpt-mcp-final-receipt.md` | final receipt | AH-507 | pass |
 | `reports/receipts/AH-510-t0-emergency-stop-control-receipt.md` | control repair receipt | AH-510 | control-repair-recorded |
+| `reports/receipts/control-spine-lifecycle-repair-receipt.md` | control repair receipt | AH-CONTROL-SPINE-LIFECYCLE-20260523 | validation-pending |
 | `reports/write-proof/AH-507-chatgpt-control-app-write-proof.md` | write-proof status | AH-507 | pass |
 | `reports/security/AH-500-redacted-org-scan-summary.md` | redacted security scan summary | AH-500 | active |
 | `reports/security/AH-501-secret-exclusion-current-content-summary.md` | redacted repo hygiene summary | AH-501 | pass |
@@ -63,3 +72,4 @@ status: draft
 | `schemas/secret-scan-receipt.schema.json` | schema | AH-500 | active |
 | `schemas/agenthub-run-preflight.schema.json` | schema | AH-507/AH-510 | active |
 | `schemas/t0-emergency-stop-receipt.schema.json` | schema | AH-510 | active |
+| `schemas/artifact-lifecycle.schema.json` | schema | AH-CONTROL-SPINE-LIFECYCLE-20260523 | active |

@@ -12,6 +12,9 @@ status: draft
 
 ## 2026-05-23
 
+- Added artifact lifecycle, retention, and context hygiene controls.
+- Added `ARTIFACT_REGISTER.md`, current baseline, default context pack, lifecycle policy, inventory/quarantine runbook, lifecycle schema, and repair receipt.
+- Superseded the old stale prompt quarantine note with the repository-wide artifact lifecycle policy.
 - Added AH-511 agent-cycle self-critique postmortem.
 - Added draft skills for T0 non-authoring, DevOps incident diagnostics, and AgentHub evidence loop closure.
 - Strengthened the T0/T1/Worker role matrix with a hard invalidation rule for direct T0 mutation.

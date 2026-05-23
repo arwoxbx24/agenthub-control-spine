@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "artifact-lifecycle.schema.json",
+  "title": "Control-Spine Artifact Lifecycle Metadata",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact",
+    "artifact_id",
+    "artifact_type",
+    "lifecycle_status",
+    "execution_status",
+    "load_policy",
+    "safe_to_replay",
+    "supersedes",
+    "superseded_by",
+    "canonical_decision_ref",
+    "source_task",
+    "last_reviewed_at",
+    "owner_role"
+  ],
+  "properties": {
+    "artifact": { "type": "string", "minLength": 1 },
+    "artifact_id": { "type": "string", "minLength": 1 },
+    "artifact_type": { "type": "string", "minLength": 1 },
+    "lifecycle_status": {
+      "enum": [
+        "candidate",
+        "active",
+        "implemented",
+        "superseded",
+        "archived",
+        "quarantined",
+        "deleted-redacted"
+      ]
+    },
+    "execution_status": {
+      "enum": [
+        "not_applicable",
+        "draft",
+        "partial",
+        "blocked",
+        "pass",
+        "failed"
+      ]
+    },
+    "load_policy": {
+      "enum": ["default", "task_specific", "audit_only", "never_load"]
+    },
+    "safe_to_replay": { "type": "boolean" },
+    "supersedes": { "type": "string", "minLength": 1 },
+    "superseded_by": { "type": "string", "minLength": 1 },
+    "canonical_decision_ref": { "type": "string", "minLength": 1 },
+    "source_task": { "type": "string", "minLength": 1 },
+    "last_reviewed_at": { "type": "string", "format": "date" },
+    "owner_role": {
+      "enum": [
+        "T0 Control Plane",
+        "T1 Architecture Broker",
+        "Worker",
+        "Verifier"
+      ]
+    }
+  }
+}
