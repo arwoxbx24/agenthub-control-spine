@@ -27,6 +27,11 @@ status: PR_READY_NOT_AGENTHUB_DONE
   - closure sandbox execute receipt: `7e412277c4449c89cacda79443c604e5e9f9c5934505944300a2377893ca8246`;
   - closure merge blocker: `53e01f7208fd6fd083dce23ad978e13e03fd64bbfa3405d332e7058bd3e8aea8`;
   - command-worker dispatch blocker: `a76c85b4a390f50eace10ec09924da96779ec2aa24d2d06c3fc07179983f645e`.
+- Lifecycle correction route receipts:
+  - AgentHub run create: `8e7204b4c270c2ae3de74b6f0128d05bb57837193043f58ed80c4ab9b782ec55`;
+  - worker dispatch: `f60ccbc11d601618addd6c2107bec97b083f35f77ac75e2ac5738ca6d2414337`;
+  - worker execute: `eafee7d966f60cc65202a1ce0cfb6dba5bbfae7be5c60c4c3586f268b062e110`;
+  - AgentHub merge: `78276d851a6b28f85243d1985f4607fbd84310943cea0dd3c227292eb1ec9ccd`, status `SUCCESS`, `done_allowed=true`.
 
 ## Source Read Evidence
 
@@ -107,16 +112,16 @@ cannot contain its own final hash.
 | Index gate | PASS |
 | Changelog gate | PASS |
 | Runtime safety gate | PASS |
-| Final receipt gate | PR_READY_NOT_AGENTHUB_DONE: repository artifact package is review-ready; AgentHub runtime worker-route closure remains separate. |
+| Final receipt gate | GOVERNANCE_ARTIFACT_READY_WITH_RUNTIME_ROUTE_BLOCKER: repository artifact package and lifecycle correction are review-ready; original worker-route closure blocker remains separate. |
 
 ## Final State
 
-Current state: `PR_READY_NOT_AGENTHUB_DONE`.
+Current state: `GOVERNANCE_ARTIFACT_READY_WITH_RUNTIME_ROUTE_BLOCKER`.
 
 Primary blocker: `WORKER_ROUTE_UNAVAILABLE_NOT_BLOCKING_REPO_ARTIFACT_REVIEW`.
 
 The repository repair itself is implemented and validated in PR `#16`, including
-artifact lifecycle and current context controls. PR `#16` can be reviewed as a
-governance artifact package if repository checks pass. Final AgentHub runtime
-Done is not claimed because worker-route closure evidence could not be
-materialized through the available MCP adapters.
+artifact lifecycle and current context controls. Lifecycle correction has
+AgentHub merge `SUCCESS`. PR `#16` can be reviewed as a governance artifact
+package if repository checks pass. The original AgentHub runtime worker-route
+blocker remains recorded separately and is not used to fake a broader Done claim.
