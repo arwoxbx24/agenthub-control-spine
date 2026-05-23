@@ -54,6 +54,8 @@ status: draft
 | `reports/security/AH-501-secret-exclusion-current-content-summary.md` | redacted repo hygiene summary | AH-501 | pass |
 | `reports/handoffs/2026-05-22-current-chat-handoff.md` | chat handoff report | Current ChatGPT Project dialogue | active |
 | `reports/incidents/AH-511-agent-cycle-self-critique.md` | incident postmortem | AH-511 | active |
+| `reports/devops/mtproxy-domain-route-worker-20260523.md` | devops worker report | AH-468 | pass |
+| `reports/receipts/mtproxy-domain-route-worker-receipt-20260523.md` | operational receipt | AH-468 | pass |
 | `skills-drafts/t0-non-authoring-gate/SKILL.md` | draft skill | AH-511 | draft |
 | `skills-drafts/devops-incident-diagnostics/SKILL.md` | draft skill | AH-511 | draft |
 | `skills-drafts/agenthub-evidence-loop-closure/SKILL.md` | draft skill | AH-511 | draft |
