@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "t0-emergency-stop-receipt.schema.json",
+  "title": "TeamLead T0 Emergency Stop Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "run_id",
+    "incident_classes",
+    "duplicate_check",
+    "t0_role_gate",
+    "worker_route_gate",
+    "evidence_gate",
+    "final_state"
+  ],
+  "properties": {
+    "task_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "worker_id": { "type": "string" },
+    "incident_classes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "enum": [
+          "ROLE_DRIFT_T0_IMPLEMENTATION_ATTEMPT",
+          "UNSAFE_T0_RUNTIME_MODE_YOLO",
+          "DIRECT_SHELL_BY_T0",
+          "DIRECT_OBJECT_STORAGE_BY_T0",
+          "DIRECT_INFRA_DISCOVERY_BY_T0",
+          "FAKE_DONE_RISK",
+          "DONE_EVIDENCE_MISSING",
+          "PHYSICAL_TASK_WRITE_MISSING",
+          "CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED"
+        ]
+      }
+    },
+    "duplicate_check": { "const": "PASS" },
+    "t0_role_gate": { "enum": ["PASS", "BLOCKED"] },
+    "worker_route_gate": { "enum": ["PASS", "WORKER_ROUTE_UNAVAILABLE", "not_required"] },
+    "evidence_gate": { "enum": ["PASS", "DONE_EVIDENCE_MISSING", "USER_OUTCOME_PROOF_MISSING"] },
+    "no_forbidden_t0_action_after_stop": { "const": true },
+    "durable_control_gate": { "enum": ["PASS", "CANONICAL_CONTROL_PATH_UNAVAILABLE"] },
+    "final_state": {
+      "enum": ["ROUTED", "BLOCKED", "CONTROL_REPAIR_RECORDED", "DONE"]
+    },
+    "primary_blocker": {
+      "enum": [
+        "UNSAFE_T0_RUNTIME_MODE_YOLO",
+        "DIRECT_SHELL_BY_T0",
+        "DIRECT_OBJECT_STORAGE_BY_T0",
+        "DIRECT_INFRA_DISCOVERY_BY_T0",
+        "T0_CONTROL_PLANE_ROUTE_UNAVAILABLE",
+        "WORKER_ROUTE_UNAVAILABLE",
+        "PHYSICAL_TASK_WRITE_MISSING",
+        "DONE_EVIDENCE_MISSING",
+        "USER_OUTCOME_PROOF_MISSING",
+        "AUTH_ACCESS_MISSING",
+        "SCOPE_AUTHORITY_MISSING",
+        "CANONICAL_CONTROL_PATH_UNAVAILABLE"
+      ]
+    }
+  }
+}
