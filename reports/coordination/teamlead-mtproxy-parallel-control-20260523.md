@@ -12,6 +12,8 @@ safe_to_replay: false
 role: T0_control_plane
 status: blocked
 primary_blocker: WORKER_REPORT_MISSING
+pr: 18
+head_commit: 022c596487cb87989b09fd4650af1ba94b48bc21
 ---
 
 # TeamLead MTProxy Parallel Control Receipt
@@ -40,6 +42,12 @@ or infrastructure changes.
 | Proxy/Docker/MTProxy worker | `RUN-proxy-docker-mtproxy-domain-route-20260523` | implementation, proxy/Docker/MTProxy/domain route evidence |
 
 T0 did not reuse the worker RUN_ID and did not open a second implementation run.
+
+## GitHub Evidence
+
+- TeamLead PR: `#18`.
+- Branch: `agenthub/teamlead-mtproxy-parallel-control-20260523`.
+- Head commit: `022c596487cb87989b09fd4650af1ba94b48bc21`.
 
 ## Worker Evidence Review
 
@@ -86,6 +94,8 @@ receipt should be registered with:
 | Report path exists | PASS |
 | Worker final state not fabricated | PASS |
 | Worker evidence complete | BLOCKED: `WORKER_REPORT_MISSING` |
+| AgentHub execute receipt | PASS: `2334e87861c566598689894ab3b5180e11282ae24f529526332ca1c4556e380e` |
+| AgentHub merge | BLOCKED: sandbox-only evidence cannot close implementation acceptance |
 
 ## Final State
 
