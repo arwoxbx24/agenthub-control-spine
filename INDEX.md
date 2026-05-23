@@ -37,6 +37,7 @@ status: draft
 | `reports/apps/AH-507-source-map.md` | source map | AH-507 | active |
 | `reports/apps/AH-507-chatgpt-control-app-adr.md` | architecture decision record | AH-507 | active |
 | `reports/apps/AH-507-validation-plan.md` | validation plan | AH-507 | active |
+| `reports/строй ремонт строя россия, отчетный блок.md` | self-audit and control improvement report | AH-509 | active |
 | `reports/receipts/AH-494-github-repo-setup-receipt.md` | setup receipt | AH-494 | draft |
 | `reports/receipts/AH-495-org-control-spine-migration-receipt.md` | migration receipt | AH-495 | active |
 | `reports/receipts/AH-500-github-secret-defense-rollout-receipt.md` | security rollout receipt | AH-500 | partial-with-blockers |
