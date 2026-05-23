@@ -16,8 +16,9 @@ status: PR_READY_NOT_AGENTHUB_DONE
 - Default branch readback: `main`.
 - Work branch: `agenthub/RUN-agenthub-global-control-spine-audit-20260523`.
 - Implementation commit: `fcfe673` (`Add AgentHub global control spine repair`).
+- Lifecycle correction commit: `ac38949` (`Amend PR16 with artifact lifecycle controls`).
 - Pull request: `#16`.
-- PR head after lifecycle correction: pending.
+- PR head after lifecycle correction: `ac38949`.
 - AgentHub create receipt: `db515ab512d6bdbc747ac9e1bafe87921c4d42a6989dce221e658e4f5ddbefee`.
 - AgentHub dispatch receipt: `775d78a293519e818ab7919795b4485f3d3f3c93157a9e5df9bf0be7ac5181e0`.
 - Task-service anchor: contract `NOOP`, `task_id=null`, duplicate signature `agenthub-global-control-spine-audit-repair-20260523`.
