@@ -5,7 +5,7 @@ owner_role: Security Worker
 source_task: AH-501
 created_at: 2026-05-22
 supersedes: none
-status: partial
+status: pass
 ---
 
 # AH-501 Secret Exclusion Current Content Summary
@@ -27,7 +27,7 @@ status: partial
 | `arwoxbx24/claude-profile-acc1` | `main` | #4 | MERGED | PASS_DEFAULT_CLEAN |
 | `arwoxbx24/claude-profile-acc2` | `main` | #1 | MERGED | PASS_DEFAULT_CLEAN |
 | `arwoxbx24/claude-shared` | `main` | #1 | MERGED | PASS_DEFAULT_CLEAN |
-| `arwoxbx24/browser-logger-extension` | `main` | #1 | MERGE_BLOCKED_REVIEW_REQUIRED | CURRENT_DEFAULT_FINDINGS: 1 |
+| `arwoxbx24/browser-logger-extension` | `main` | #1 | MERGED | PASS_DEFAULT_CLEAN |
 | `arwoxbx24/stroyremont` | `master` | #124 | MERGED | PASS_DEFAULT_CLEAN |
 | `arwoxbx24/yubikey-v1` | `main` | #1 | MERGED | PASS_DEFAULT_CLEAN |
 | `arwoxbx24/okna-plus` | `main` | #2 | MERGED | PASS_DEFAULT_CLEAN |
@@ -42,7 +42,7 @@ status: partial
 
 ## Remaining Blocker
 
-- `BLOCKER_BRANCH_PROTECTION_PREVENTS_CLEANUP_PR`: `arwoxbx24/browser-logger-extension` PR #1 is clean and its secret-scan check passed, but merge is blocked by review-required branch policy. Auto-merge is unavailable for this repository. No admin bypass was used.
+- none
 
 ## History
 
