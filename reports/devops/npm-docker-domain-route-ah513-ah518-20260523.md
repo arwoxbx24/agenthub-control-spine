@@ -5,7 +5,7 @@ owner_role: Scoped Implementation Worker
 source_task: AH-513/AH-518
 run_id: RUN-npm-docker-ah513-ah518-domain-route-20260523
 created_at: 2026-05-23
-status: partial-with-blocker
+status: complete
 lifecycle: operational_receipt
 default_load: false
 safe_to_replay: false
@@ -97,16 +97,29 @@ Public route checks after update:
 
 No raw secrets were printed or committed.
 
-## Remaining Blocker
+## Follow-up Closure: Active Raw-IP Tail
 
-Primary blocker: `DOCKER_ROUTE_SCOPE_UNCLEAR`.
+Follow-up RUN_ID: `FIX-20260523-NPM-RAW-IP-TAIL-CLOSURE`.
 
-Rows not converted:
+The previously blocked active rows were recovered and converted after service-owner proof was found:
 
-- `kpd.b244.ru` -> `172.17.0.1:3847`, enabled, public route currently returns `502`; no proven listening owner was found.
-- `yubikey-v1.b244.ru` -> `172.17.0.1:4000`, enabled, public route currently returns `502`; no proven listening owner was found.
-- Disabled/offline rows remain raw pending separate owner recovery: `claw.b244.ru`, `n8.b244.ru`, `openclaw.b244.ru`.
+| Domain | Before | After | Validation |
+|---|---|---|---|
+| `kpd.b244.ru` | `172.17.0.1:3847` | `kpd-proxy-upstream:80` | `https://kpd.b244.ru/api/kpd/health` returns `200` |
+| `yubikey-v1.b244.ru` | `172.17.0.1:4000` | `yubikey-v1-upstream:80` | `https://yubikey-v1.b244.ru/` returns `200` |
+
+Additional scoped repair:
+
+- Restored `kpd-proxy` PM2 execution by adding a compatibility symlink from the stale PM2 script path to the canonical project path, without deleting any PM2 entry.
+- Started canonical `yubikey-v1` PM2 process from `/root/workspaces/projects/yubikey-v1`.
+- Created semantic Docker bridge containers on `nginx-proxy-manager_default`:
+  - `kpd-proxy-upstream`
+  - `yubikey-v1-upstream`
+
+Final active raw-IP check: `[]`.
+
+Disabled/offline archival rows still contain raw IPs and were deliberately not changed because they are not active traffic routes: `claw.b244.ru`, `n8.b244.ru`, `openclaw.b244.ru`.
 
 ## Final State
 
-Partial implementation complete. Most active raw-IP rows were converted to stable Docker service names or scoped Docker bridge route names. `AH-513` and `AH-518` must remain not-Done until the remaining owner-unclear rows are resolved or explicitly excluded.
+Implementation complete for active Proxy Manager traffic routes. All enabled raw-IP upstream rows have been converted to stable Docker service names or scoped semantic Docker bridge route names. `AH-518` can be closed for the implementation slice; `AH-513` can be treated as closed for the addressed active-route architecture scope unless a separate future task explicitly reopens disabled archival rows.
