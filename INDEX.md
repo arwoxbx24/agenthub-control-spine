@@ -24,10 +24,12 @@ status: draft
 | `governance/secret-protection-policy.md` | governance policy | AH-500 | active |
 | `governance/agenthub-single-ingress-control.md` | governance control | AH-507 | active |
 | `governance/teamlead-t0-emergency-stop-control.md` | governance control | AH-510 | active |
+| `governance/agenthub-global-role-and-closure-control.md` | governance control | AH-GLOBAL-CONTROL-SPINE-AUDIT-20260523 | active |
 | `runbooks/chatgpt-github-connect.md` | runbook | AH-494 | draft |
 | `runbooks/secret-leak-response.md` | runbook | AH-500 | active |
 | `runbooks/agenthub-locked-run-recovery.md` | runbook | AH-507 | active |
 | `runbooks/teamlead-t0-role-drift-emergency-stop.md` | runbook | AH-510 | active |
+| `runbooks/agenthub-global-control-loop-closure.md` | runbook | AH-GLOBAL-CONTROL-SPINE-AUDIT-20260523 | active |
 | `templates/github/secret-scan-workflow.yml` | GitHub Actions template | AH-500 | active |
 | `.github/workflows/secret-scan.yml` | control-spine workflow | AH-500 | active |
 | `templates/security/gitleaks.toml` | scanner config template | AH-500 | active |
@@ -35,6 +37,7 @@ status: draft
 | `templates/git-hooks/pre-push-secret-scan.sh` | git hook template | AH-500 | active |
 | `prompts/security/teamlead-t0-github-secret-defense-rollout.txt` | reusable prompt | AH-500 | active |
 | `prompts/apps/AH-507-chatgpt-control-app-implementation-prompt.md` | implementation prompt | AH-507 | active |
+| `prompts/architecture/agenthub-global-control-spine-audit-and-repair.txt` | reusable prompt | AH-GLOBAL-CONTROL-SPINE-AUDIT-20260523 | active |
 | `apps/agenthub-chatgpt-control-app/` | Apps SDK / MCP prototype | AH-507 | pass |
 | `reports/apps/AH-507-source-map.md` | source map | AH-507 | active |
 | `reports/apps/AH-507-chatgpt-control-app-adr.md` | architecture decision record | AH-507 | active |
@@ -52,8 +55,10 @@ status: draft
 | `reports/write-proof/AH-507-chatgpt-control-app-write-proof.md` | write-proof status | AH-507 | pass |
 | `reports/security/AH-500-redacted-org-scan-summary.md` | redacted security scan summary | AH-500 | active |
 | `reports/security/AH-501-secret-exclusion-current-content-summary.md` | redacted repo hygiene summary | AH-501 | pass |
+| `reports/architecture/agenthub-global-control-spine-audit.md` | architecture audit | AH-GLOBAL-CONTROL-SPINE-AUDIT-20260523 | active |
 | `reports/handoffs/2026-05-22-current-chat-handoff.md` | chat handoff report | Current ChatGPT Project dialogue | active |
 | `reports/incidents/AH-511-agent-cycle-self-critique.md` | incident postmortem | AH-511 | active |
+| `reports/receipts/agenthub-global-control-spine-audit-repair-receipt.md` | control repair receipt | AH-GLOBAL-CONTROL-SPINE-AUDIT-20260523 | control-repair-recorded |
 | `skills-drafts/t0-non-authoring-gate/SKILL.md` | draft skill | AH-511 | draft |
 | `skills-drafts/devops-incident-diagnostics/SKILL.md` | draft skill | AH-511 | draft |
 | `skills-drafts/agenthub-evidence-loop-closure/SKILL.md` | draft skill | AH-511 | draft |
@@ -63,3 +68,6 @@ status: draft
 | `schemas/secret-scan-receipt.schema.json` | schema | AH-500 | active |
 | `schemas/agenthub-run-preflight.schema.json` | schema | AH-507/AH-510 | active |
 | `schemas/t0-emergency-stop-receipt.schema.json` | schema | AH-510 | active |
+| `schemas/agenthub-global-control-receipt.schema.json` | schema | AH-GLOBAL-CONTROL-SPINE-AUDIT-20260523 | active |
+| `schemas/task-service-payload-builder-contract.schema.json` | schema | AH-GLOBAL-CONTROL-SPINE-AUDIT-20260523 | active |
+| `schemas/service-dependency-graph.schema.json` | schema | AH-GLOBAL-CONTROL-SPINE-AUDIT-20260523 | active |

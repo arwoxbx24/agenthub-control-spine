@@ -12,6 +12,9 @@ status: draft
 
 ## 2026-05-23
 
+- Added the AgentHub global control-spine audit and repair package.
+- Added integrated global role and closure governance for T0 boundaries, worker ownership, blocker alternatives, evidence closure, Done taxonomy, hot-lane routing, no-repeat gate, task-service payloads, DevOps service graph, and final answer discipline.
+- Added the global control-loop closure runbook, unified receipt schema, task-service payload-builder contract schema, service dependency graph schema, reusable architecture repair prompt, and repair receipt.
 - Added AH-511 agent-cycle self-critique postmortem.
 - Added draft skills for T0 non-authoring, DevOps incident diagnostics, and AgentHub evidence loop closure.
 - Strengthened the T0/T1/Worker role matrix with a hard invalidation rule for direct T0 mutation.

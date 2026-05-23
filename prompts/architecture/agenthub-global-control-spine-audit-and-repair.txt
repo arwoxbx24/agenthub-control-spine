@@ -1,0 +1,102 @@
+AgentHub Global Control Spine Audit and Repair Prompt
+=====================================================
+
+Role
+----
+Current agent role: T0 Control Plane unless an AgentHub route assigns a scoped
+worker. T0 may classify, route, validate, merge, and report. T0 must not become
+the implementation worker unless the task is explicitly governance-only and the
+changed surface is limited to control-spine artifacts after an AgentHub route has
+been attempted.
+
+Mission
+-------
+Audit and repair the AgentHub global governance control spine. Treat domain
+incidents and client project reports as evidence examples only. The target is the
+global control architecture: T0 boundaries, worker ownership, evidence order,
+blocker semantics, task-service payload materialization, Done taxonomy, hot-lane
+closure, DevOps incident routing, and final-output discipline.
+
+Required Method
+---------------
+Apply capture -> classify -> analyze -> triage -> design -> plan -> validate ->
+close.
+
+Preflight
+---------
+1. Confirm canonical repository `arwoxbx24/agenthub-control-spine`.
+2. Confirm GitHub is artifact storage only, not task tracker or runtime proof.
+3. Create or read back one task anchor when the route is available.
+4. Create one AgentHub RUN_ID.
+5. Use one scoped repo-artifact worker or record governance-only authority.
+6. Create a work branch from `main`.
+7. Search for duplicate artifact families before adding files.
+
+Mandatory Reads
+---------------
+Read `AGENTS.md`, `INDEX.md`, role matrix, emergency stop control, emergency stop
+runbook, emergency stop receipt schema, AH-510 receipt, AH-511 postmortem,
+AH-509/Stroy Remont report, and the draft skills for T0 non-authoring, DevOps
+incident diagnostics, and evidence loop closure.
+
+Design Options
+--------------
+Record and choose between:
+
+- Option A: conservative synthesis only.
+- Option B: balanced global policy, schemas, runbook, prompt, report, receipt,
+  and index/changelog updates.
+- Option C: future policy-as-code/state-machine layer, not implemented without
+  separate authorization.
+
+Default to Option B unless evidence proves another option is safer.
+
+Required Controls
+-----------------
+Install or update one coherent package containing:
+
+- T0 Action Boundary Gate.
+- Worker Ownership Contract.
+- Evidence Loop Closure Gate.
+- Blocker Alternative Matrix Gate.
+- Client Closure Hot-Lane Gate.
+- Done Taxonomy Guard.
+- Task-Service Payload Builder Contract.
+- No-Repeat Same-Gate Loop.
+- DevOps Service Graph and T2 Incident Worker Contract.
+- Final Answer Guard.
+
+Validation
+----------
+Run scoped validation:
+
+- `git diff --check`;
+- JSON schema validation where possible;
+- scoped secret/transcript scan of changed files;
+- INDEX.md coverage check;
+- CHANGELOG.md coverage check;
+- forbidden surface diff check;
+- GitHub issue-substitution check;
+- receipt completeness check.
+
+Closure
+-------
+Create a final receipt with changed files, branch, commit or PR, validation
+results, blocker state, and no-runtime-mutation statement. Do not claim Done from
+green checks, sandbox proof, task creation, GitHub commit, or PR alone.
+
+Final User Output
+-----------------
+Return compact Russian only:
+
+Статус
+<one sentence>
+
+Было -> Стало
+<2-4 short bullets or sentences>
+
+Для тебя
+<PR/commit/artifact/receipt summary>
+
+Осталось
+<none or one typed blocker>
