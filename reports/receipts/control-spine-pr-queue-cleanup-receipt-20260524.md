@@ -50,7 +50,7 @@ safe_to_replay: false
 | PR | Action | Reason |
 |---|---|---|
 | `#24` | amend and keep open | Current single registrar/lifecycle PR. |
-| `#23` | defer | Task-specific artifact PR; review requirement still applies. |
+| `#23` | closed | Task-specific artifact PR closed as historical evidence tail; AH-521/AH-518 state remains in YouTrack. |
 | `#20` | closed | Superseded by AH-513/AH-518 YouTrack readback and PR `#22`. |
 | `#18` | closed | Superseded by merged worker PR `#19`. |
 | `#17` | closed | Useful lifecycle decisions extracted into current registrar PR `#24`. |
@@ -61,7 +61,7 @@ safe_to_replay: false
 | PR | State | Reason |
 |---|---|---|
 | `#24` | open | Current Registrar/control-spine PR; merge-ready pending review/branch protection. |
-| `#23` | open | Task-specific artifact PR; review requirement applies. |
+| `#23` | closed | Preserved as historical evidence only. |
 
 ## Artifact Lifecycle Counts
 
@@ -87,7 +87,8 @@ safe_to_replay: false
 | ARTIFACT_REGISTER covers indexed artifacts | PASS |
 | exactly one current context pack | PASS |
 | no report/receipt default-load | PASS |
-| every open PR has queue decision | PASS: `#24`, `#23` |
+| every open PR has queue decision | PASS: `#24` |
+| stale PR count after cleanup | PASS: `#16`, `#17`, `#18`, `#20`, and `#23` closed |
 | no runtime/product files changed | PASS |
 | merge attempt for `#24` | BLOCKED: base branch policy prohibits merge without required review |
 | safe admin merge route | SELECTED: artifact-only PR, validation passed, no runtime/client surface touched |
@@ -117,6 +118,10 @@ Admin merge was attempted and blocked by GitHub because at least one approving
 review from a write-access reviewer is required. Reviewer-route readback found
 only the PR author as a write/admin collaborator and no repository team route.
 The available Codex review is a comment, not an approving write-access review.
+
+Final PR tail cleanup closed PR `#23` as historical evidence only. The only
+remaining open PR is `#24`, which contains the registrar package and is blocked
+only by the missing non-author approving reviewer identity.
 
 AgentHub merge readback is also blocked by implementation-style residuals:
 `IMPLEMENTATION_ACCEPTANCE_MISSING`,
