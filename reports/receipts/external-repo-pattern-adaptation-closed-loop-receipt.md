@@ -24,6 +24,8 @@ safe_to_replay: false
 | repository | `arwoxbx24/agenthub-control-spine` |
 | branch | `agenthub/external-pattern-adaptation-closure-20260524` |
 | PR | `#35` |
+| branch head SHA | `9c379bf906536a2dfb07e34afc96f0a65cff5770` |
+| merge commit SHA | `e4163e5e5854763902caf6fff78c4c6c7017c751` |
 | roadmap | `governance/external-repo-pattern-adaptation-roadmap.md` |
 | Anthropic brief | `prompts/implementation/anthropic-knowledge-work-pattern-adaptation-worker.txt` |
 | Microsoft brief | `prompts/implementation/microsoft-ai-engineering-coach-pattern-adaptation-worker.txt` |
@@ -74,5 +76,6 @@ client projects.
 
 ## Final State
 
-READY_FOR_MERGE until PR validation, merge/readback, AgentHub merge, and
-YouTrack Done gate are complete.
+DONE_WITH_EVIDENCE after PR `#35` merge/readback, required `gitleaks` pass,
+index/register coverage, PR queue coverage, task readback, prompt quality
+scores above 85, and no-runtime/no-secret confirmation.
