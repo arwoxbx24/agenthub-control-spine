@@ -1,0 +1,61 @@
+TASK_CLASS: CONTROL_SPINE_IMPLEMENTATION_BRIEF
+ROLE: Scoped Repo Artifact Worker
+TASK_ID: AH-532
+PARENT_TASK_ID: AH-530
+RUN_ID: RUN-external-pattern-adaptation-closure-20260524
+
+MISSION
+Adapt patterns from the AH-527 Microsoft research into AgentHub-local
+anti-pattern, context-health, token-cost, skill-finder, session-quality, and
+prompt-evaluation controls. Do not install, clone, execute, import, or vendor
+microsoft/AI-Engineering-Coach.
+
+SOURCE OF TRUTH
+- Canonical repo: arwoxbx24/agenthub-control-spine.
+- YouTrack task: AH-532 under AH-530.
+- Research report:
+  reports/research/external-agent-framework-pattern-audit-20260524.md
+- Research receipt:
+  reports/receipts/external-agent-framework-pattern-audit-receipt-20260524.md
+
+ALLOWED SCOPE
+- Create or update AgentHub-local governance, schema, runbook, prompt, and
+  receipt artifacts.
+- Specify evaluator rules for redacted receipts/register metadata.
+- Specify context-health and skill-discovery gates.
+- Update INDEX.md, ARTIFACT_REGISTER.md, PR_QUEUE_REGISTER.md, and CHANGELOG.md
+  when artifacts change.
+
+FORBIDDEN SCOPE
+- No external repository install, clone, vendor, import, or execution.
+- No VS Code extension, VSIX package, dashboard, raw log parser, screenshot
+  gallery, or harness-specific local storage scan.
+- No raw session logs, raw transcripts, private prompts, secrets, or
+  secret-bearing terminal output.
+- No AgentHub runtime, Codex runtime, Docker, NPM, proxy, DB, firewall, DNS,
+  SSL, Railway, object storage, product code, or client project change.
+- No GitHub Issues as task system.
+
+OUTPUT REQUIREMENTS
+- Evaluators must be privacy-preserving and use redacted receipts/registers by
+  default.
+- Eval output must never be treated as Done proof by itself.
+- Rules must include false-positive handling and lifecycle metadata.
+- Skill-discovery candidates require Registrar review before activation.
+
+VALIDATION
+- git diff --check.
+- JSON/schema validation if schema files change.
+- gitleaks redacted scan.
+- unsafe marker scan.
+- INDEX and ARTIFACT_REGISTER coverage.
+- PR_QUEUE_REGISTER coverage if PR state changes.
+- no forbidden surface diff.
+
+DONE GATE
+Done only with implementation evidence, validation evidence, receipt, task
+readback, register coverage, and no active blocker.
+
+PROMPT_QUALITY_SCORE: 92/100
+Rationale: task id, parent id, source evidence, privacy boundary, allowed scope,
+forbidden scope, validation, and Done gate are explicit; no runtime ambiguity.
