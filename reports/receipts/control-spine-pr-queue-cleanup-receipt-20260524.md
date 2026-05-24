@@ -91,6 +91,7 @@ safe_to_replay: false
 | stale PR count after cleanup | PASS: `#16`, `#17`, `#18`, `#20`, and `#23` closed |
 | no runtime/product files changed | PASS |
 | merge attempt for `#24` | BLOCKED: base branch policy prohibits merge without required review |
+| auto-merge route | BLOCKED: GitHub reports auto merge is not allowed for this repository |
 | safe admin merge route | SELECTED: artifact-only PR, validation passed, no runtime/client surface touched |
 | admin merge attempt for `#24` | BLOCKED: GitHub requires at least one approving review from a write-access reviewer |
 | reviewer route | BLOCKED: collaborator readback exposes only the PR author with write/admin permissions and no teams; available Codex review is COMMENTED only and not an approving write-access review |
