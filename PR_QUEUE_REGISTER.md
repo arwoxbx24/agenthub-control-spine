@@ -33,7 +33,7 @@ instructions.
 | `#20` | `AH-513` / `AH-518` | `RUN-teamlead-ah513-ah518-control-20260523` | `agenthub/teamlead-ah513-ah518-control-20260523` | T0 control receipt | `SUPERSEDED_CLOSE` | Closed on 2026-05-24 as stale: later YouTrack readback and PR `#22` supersede its MTProxy scope-drift finding. | `AH-513`, `AH-518`, PR `#22`, commit `16267cd97be2d94f3a9dd82f6a0ef58c320e3835` | none after close |
 | `#18` | `AH-468` | `RUN-teamlead-mtproxy-parallel-control-20260523` | `agenthub/teamlead-mtproxy-parallel-control-20260523` | T0 control receipt | `SUPERSEDED_CLOSE` | Closed on 2026-05-24 as stale: worker evidence was later merged by PR `#19`; this older T0 receipt still says worker report missing. | PR `#19`, merge commit `dfc0eb4e5a5035a540a069d157eead9029248967` | none after close |
 | `#17` | lifecycle repair | `UNKNOWN_NOT_EXPOSED` | `agenthub/control-spine-lifecycle-20260523` | Repo artifact worker | `SUPERSEDED_CLOSE` | Closed on 2026-05-24 after useful lifecycle decisions were extracted into current registrar PR `#24`. | `governance/control-spine-registrar-policy.md`; `context/agenthub-current-context-pack.md`; `ARTIFACT_REGISTER.md` | none after close |
-| `#16` | global control repair | `RUN-agenthub-global-control-spine-audit-20260523` | `agenthub/RUN-agenthub-global-control-spine-audit-20260523` | Architecture/repo artifact worker | `NEEDS_REBASE_OR_REVALIDATION` | Defer; contains broader architecture material, but conflicts with main and must be rebased or extracted by Registrar before merge. | PR `#16` file list/readback | `PR_CONFLICT_REQUIRES_REBASE` |
+| `#16` | global control repair | `RUN-agenthub-global-control-spine-audit-20260523` | `agenthub/RUN-agenthub-global-control-spine-audit-20260523` | Architecture/repo artifact worker | `SUPERSEDED_CLOSE` | Closed on 2026-05-24 as stale/conflicting: current Registrar PR `#24` owns lifecycle/register/queue controls; any useful architecture content must be reintroduced through Registrar with revalidation. | PR `#16` file list/readback; PR `#24` registrar package | none after close |
 
 ## Closed PR Rule
 
@@ -45,6 +45,5 @@ before closure.
 
 | PR | Decision | Blocker |
 |---|---|---|
-| `#24` | current registrar PR, review/merge next | `REVIEW_REQUIREMENT_BLOCKS_MERGE` |
+| `#24` | current registrar PR, merge-ready pending review/branch protection | `REVIEW_REQUIREMENT_BLOCKS_MERGE` |
 | `#23` | task-specific artifact PR, defer to review | `REVIEW_REQUIREMENT_BLOCKS_MERGE` |
-| `#16` | architecture package, rebase/extract before merge | `PR_CONFLICT_REQUIRES_REBASE` |

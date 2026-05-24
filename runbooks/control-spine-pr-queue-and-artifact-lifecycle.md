@@ -36,9 +36,12 @@ Read from `main` first:
    - `DUPLICATE_ARTIFACT_TAIL`
    - `BLOCKED_BY_REVIEW_REQUIREMENT`
 5. Record decision in `PR_QUEUE_REGISTER.md`.
-6. Update `ARTIFACT_REGISTER.md` for changed or newly discovered artifacts.
-7. Close stale PRs only after register and receipt explain why.
-8. Validate:
+6. Convert missing register coverage, receipt, validation, task readback, PR
+   queue entry, duplicate branch/report, or stale PR state into a same-run
+   microtask.
+7. Update `ARTIFACT_REGISTER.md` for changed or newly discovered artifacts.
+8. Close stale PRs only after register and receipt explain why.
+9. Validate:
    - `git diff --check`
    - JSON parse for schema changes
    - secret/raw marker scan
@@ -48,7 +51,10 @@ Read from `main` first:
    - no reports/receipts default-load
    - every open PR has queue decision
    - no runtime/product files changed
-9. Update YouTrack with evidence and blocker.
+10. Attempt merge only if review/branch protection allows it.
+11. If review blocks merge, mark `MERGE_READY_REVIEW_REQUIRED` and record
+    `REVIEW_REQUIREMENT_BLOCKS_MERGE`.
+12. Update YouTrack with evidence and blocker.
 
 ## Worker Rule
 
@@ -68,3 +74,4 @@ Use one blocker:
 - `SID_WID_SESSION_ID_NOT_EXPOSED`
 - `UNSAFE_SECRET_OR_RAW_TRANSCRIPT_FOUND`
 - `LIFECYCLE_DECISION_CONFLICT`
+- `MERGE_READY_REVIEW_REQUIRED`

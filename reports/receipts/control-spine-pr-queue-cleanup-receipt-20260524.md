@@ -23,7 +23,7 @@ safe_to_replay: false
 | session_id | `UNKNOWN_NOT_EXPOSED` |
 | branch | `agenthub/teamlead-control-spine-system-inventory-20260524` |
 | PR | `#24` |
-| commit SHA | `f3c9adf9dd5e6d1db7a14ae23ca309b5553116e6` |
+| commit SHA | `GITHUB_PR_HEAD_READBACK_AFTER_FINAL_PUSH` |
 
 ## AgentHub Receipts
 
@@ -54,7 +54,14 @@ safe_to_replay: false
 | `#20` | closed | Superseded by AH-513/AH-518 YouTrack readback and PR `#22`. |
 | `#18` | closed | Superseded by merged worker PR `#19`. |
 | `#17` | closed | Useful lifecycle decisions extracted into current registrar PR `#24`. |
-| `#16` | defer | Conflicting broader architecture repair; must be rebased or extracted before merge. |
+| `#16` | closed | Conflicting stale architecture tail; Registrar PR `#24` is the current lifecycle/register lane. Any useful content must return through Registrar with revalidation. |
+
+## Open PRs After Closed-Loop Cleanup
+
+| PR | State | Reason |
+|---|---|---|
+| `#24` | open | Current Registrar/control-spine PR; merge-ready pending review/branch protection. |
+| `#23` | open | Task-specific artifact PR; review requirement applies. |
 
 ## Artifact Lifecycle Counts
 
@@ -80,7 +87,7 @@ safe_to_replay: false
 | ARTIFACT_REGISTER covers indexed artifacts | PASS |
 | exactly one current context pack | PASS |
 | no report/receipt default-load | PASS |
-| every open PR has queue decision | PASS: `#24`, `#23`, `#16` |
+| every open PR has queue decision | PASS: `#24`, `#23` |
 | no runtime/product files changed | PASS |
 | GitHub Issues not used as task system | PASS |
 | YouTrack task recorded | PASS: `AH-523` |

@@ -52,6 +52,32 @@ Only TeamLead/T0 Registrar may:
   pack, and baseline/register files;
 - decide archive/delete with evidence.
 
+## Closed-Loop Rule
+
+The Registrar must not interrupt the user for ordinary in-scope blockers. Missing
+proof becomes a same-run microtask when it concerns:
+
+- missing `INDEX.md`, `ARTIFACT_REGISTER.md`, or `PR_QUEUE_REGISTER.md`
+  coverage;
+- missing receipt, validation summary, task readback, or PR queue decision;
+- stale prompt replay risk;
+- conflicting report lifecycle status;
+- duplicate PR branch, duplicate report, or duplicate receipt;
+- stale PR state that can be closed with evidence.
+
+The Registrar may stop only for owner-only blockers:
+
+- `REVIEW_REQUIREMENT_BLOCKS_MERGE`;
+- `SECRET_OR_TOKEN_MISSING`;
+- `PRODUCTION_MUTATION_AUTHORITY_MISSING`;
+- `DESTRUCTIVE_ACTION_APPROVAL_REQUIRED`;
+- `PAYMENT_OR_ACCOUNT_OWNER_REQUIRED`;
+- `LEGAL_OR_SECURITY_APPROVAL_REQUIRED`.
+
+Even for owner-only blockers, the Registrar must finish all safe repository
+work first and record the blocker in YouTrack, `PR_QUEUE_REGISTER.md`, the
+receipt, and the PR body.
+
 Scoped workers may:
 
 - write their assigned task report/receipt;
@@ -111,6 +137,11 @@ Every open PR must have a queue decision:
 Stale PRs must be closed only after `PR_QUEUE_REGISTER.md` and the receipt state
 why useful evidence is already on main or represented in the current registrar
 PR.
+
+Target queue shape:
+
+- one Registrar/control-spine PR for registers, lifecycle, receipts, and queue;
+- at most one implementation/product PR per active implementation task.
 
 ## Delete and Quarantine Rule
 

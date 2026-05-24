@@ -17,7 +17,8 @@ status: draft
 - Marked reports, receipts, handoffs, and consumed prompts as non-default evidence in the lifecycle register.
 - Indexed previously present active governance/runbook artifacts that were missing from `INDEX.md`.
 - Added Control-Spine Registrar policy, current context pack, PR queue register, queue/lifecycle runbook, PR queue schema, and registrar cleanup receipt for `AH-523`.
-- Recorded PR queue actions for open tails: amend `#24`, defer `#23` and `#16`, close superseded `#20`, `#18`, and `#17`.
+- Recorded PR queue actions for open tails: amend `#24`, defer `#23`, close superseded/stale `#20`, `#18`, `#17`, and `#16`.
+- Added closed-loop rule: routine missing proof becomes same-run microtask; only owner-only gates may interrupt after safe work completes.
 
 ## 2026-05-23
 
