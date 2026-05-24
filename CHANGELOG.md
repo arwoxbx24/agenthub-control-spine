@@ -24,6 +24,7 @@ status: draft
 - Converted PR `#24` from user-facing review blocker to durable platform gate: `READY_BLOCKED_BY_PLATFORM_GATE` / `AUTONOMY_REVIEW_ROUTE_MISSING`, with AH-524 owning the non-user control-spine review route.
 - Added autonomous route readback for PR `#24`: self-approval, collaborator/team, GitHub App, repository/org secret, and safe-find preflight checks produced no reusable non-user reviewer route.
 - Resolved AH-524 by installing a control-spine-only autonomous artifact lane: `gitleaks` is required, impossible self-review is removed, force push/delete remain disabled, and PR `#24` was merged.
+- Added AH-527 external repository pattern audit for `anthropics/knowledge-work-plugins` and `microsoft/AI-Engineering-Coach`; decision is pattern adaptation only, with no runtime dependency or code import.
 
 ## 2026-05-23
 
