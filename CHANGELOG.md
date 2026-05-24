@@ -10,6 +10,10 @@ status: draft
 
 # Changelog
 
+## 2026-05-24
+
+- Added NPM gap closure report and receipt for `n8.b244.ru`, `dash.b244.ru`, and blocked `claw.b244.ru` follow-up without duplicating completed AH-513/AH-518 work.
+
 ## 2026-05-23
 
 - Added AH-513/AH-518 NPM Docker addressing worker report and receipt with partial implementation evidence and remaining blocker.
