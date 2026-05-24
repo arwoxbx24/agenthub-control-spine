@@ -22,6 +22,8 @@ safe_to_replay: false
 | repository | `arwoxbx24/agenthub-control-spine` |
 | branch | `agenthub/agent-output-link-intake-control-20260524` |
 | PR | `#33` |
+| branch head SHA | `c0635ecb67284c5f0bf116e6c50ded96ce25d709` |
+| merge commit SHA | `c0073059e346f49582db0582a32df2c9dcd8ffed` |
 | policy | `governance/agent-output-and-link-intake-control.md` |
 | runbook | `runbooks/agent-shortlink-intake-and-report-placement.md` |
 | schema | `schemas/agent-output-quality-receipt.schema.json` |
@@ -68,5 +70,6 @@ firewall, object storage, secrets, client product files, or production state.
 
 ## Final State
 
-READY_FOR_MERGE until PR validation, merge/readback, AgentHub merge, and
-YouTrack Done gate are complete.
+DONE_WITH_EVIDENCE after PR `#33` merge/readback, required `gitleaks` pass,
+index/register coverage, PR queue coverage, schema validation, and
+no-runtime/no-secret confirmation.
