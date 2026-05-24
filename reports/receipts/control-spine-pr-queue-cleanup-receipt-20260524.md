@@ -23,7 +23,16 @@ safe_to_replay: false
 | session_id | `UNKNOWN_NOT_EXPOSED` |
 | branch | `agenthub/teamlead-control-spine-system-inventory-20260524` |
 | PR | `#24` |
-| commit SHA | `PENDING_COMMIT` |
+| commit SHA | `f3c9adf9dd5e6d1db7a14ae23ca309b5553116e6` |
+
+## AgentHub Receipts
+
+| Action | Status | Receipt hash |
+|---|---|---|
+| create | PASS | `783a1ebe3bcb68c8f80b6c6b3b7148bdb04df40c5630a5145f16d8fda2a43eb7` |
+| dispatch | PASS | `9181e8b311ce9aecaf25f5acc17ef23ac07cac3b86858c9a18bcd70f00aee28a` |
+| execute | PASS | `76d19092982e3cd1bf57d2ae774625a52fb71b1050dea760cb70d1f8a3004343` |
+| merge | BLOCKED | `dc31c8da2b80bc769caf6f1ebdc77216ca2b3de537691ee767db40634a22a9e5` |
 
 ## Open PRs Before Cleanup
 
@@ -82,3 +91,9 @@ Primary blocker: `REVIEW_REQUIREMENT_BLOCKS_MERGE`.
 
 This blocker does not invalidate the repository artifact package. It means the
 registrar PR can be reviewed/merged only through repository review policy.
+
+AgentHub merge readback is also blocked by implementation-style residuals:
+`IMPLEMENTATION_ACCEPTANCE_MISSING`,
+`SANDBOX_ONLY_EVIDENCE_CANNOT_CLOSE_IMPLEMENTATION_TASK`, and
+`MCP_RECEIPT_REQUIRED_FOR_IMPLEMENTATION_DONE`. This receipt therefore claims
+repository governance artifact readiness only, not full AgentHub Done.
