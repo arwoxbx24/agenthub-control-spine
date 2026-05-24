@@ -23,7 +23,7 @@ safe_to_replay: false
 | session_id | `UNKNOWN_NOT_EXPOSED` |
 | branch | `agenthub/teamlead-control-spine-system-inventory-20260524` |
 | PR | `#24` |
-| commit SHA | `PENDING_AUTONOMY_PATCH_HEAD` |
+| autonomy gate patch commit SHA | `96663e21e9e199683a0c8f15d1cffde928578f1f` |
 
 ## AgentHub Receipts
 
