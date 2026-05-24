@@ -34,6 +34,7 @@ status: draft
 | `governance/control-spine-registrar-policy.md` | governance policy | AH-523 | active |
 | `governance/cyber-safe-prompt-wording-policy.md` | governance policy | AH-528 | active |
 | `governance/agent-output-and-link-intake-control.md` | governance policy | AH-529 | active |
+| `governance/external-repo-pattern-adaptation-roadmap.md` | architecture decision | AH-530 | active |
 | `runbooks/chatgpt-github-connect.md` | runbook | AH-494 | draft |
 | `runbooks/secret-leak-response.md` | runbook | AH-500 | active |
 | `runbooks/agenthub-locked-run-recovery.md` | runbook | AH-507 | active |
@@ -49,6 +50,8 @@ status: draft
 | `templates/git-hooks/pre-push-secret-scan.sh` | git hook template | AH-500 | active |
 | `prompts/security/teamlead-t0-github-secret-defense-rollout.txt` | reusable prompt | AH-500 | active |
 | `prompts/apps/AH-507-chatgpt-control-app-implementation-prompt.md` | implementation prompt | AH-507 | active |
+| `prompts/implementation/anthropic-knowledge-work-pattern-adaptation-worker.txt` | implementation brief | AH-531 | active |
+| `prompts/implementation/microsoft-ai-engineering-coach-pattern-adaptation-worker.txt` | implementation brief | AH-532 | active |
 | `apps/agenthub-chatgpt-control-app/` | Apps SDK / MCP prototype | AH-507 | pass |
 | `reports/apps/AH-507-source-map.md` | source map | AH-507 | active |
 | `reports/apps/AH-507-chatgpt-control-app-adr.md` | architecture decision record | AH-507 | active |
@@ -81,6 +84,7 @@ status: draft
 | `reports/receipts/external-agent-framework-pattern-audit-receipt-20260524.md` | external framework pattern research receipt | AH-527 | pass |
 | `reports/receipts/cyber-safe-prompt-wording-receipt-20260524.md` | cyber-safe prompt wording receipt | AH-528 | pass |
 | `reports/receipts/AH-529-agent-output-link-intake-repair-receipt.md` | agent output/link intake repair receipt | AH-529 | pass |
+| `reports/receipts/external-repo-pattern-adaptation-closed-loop-receipt.md` | external pattern adaptation receipt | AH-530 | pass |
 | `registries/agenthub-control-spine-id-register.md` | AgentHub/YouTrack/GitHub ID register | AH-522 | active |
 | `skills-drafts/t0-non-authoring-gate/SKILL.md` | draft skill | AH-511 | draft |
 | `skills-drafts/devops-incident-diagnostics/SKILL.md` | draft skill | AH-511 | draft |

@@ -1,0 +1,57 @@
+TASK_CLASS: CONTROL_SPINE_IMPLEMENTATION_BRIEF
+ROLE: Scoped Repo Artifact Worker
+TASK_ID: AH-531
+PARENT_TASK_ID: AH-530
+RUN_ID: RUN-external-pattern-adaptation-closure-20260524
+
+MISSION
+Adapt patterns from the AH-527 Anthropic research into AgentHub-local
+control-spine artifacts for skill-pack, command, connector, and workflow
+catalog design. Do not install, clone, execute, import, or vendor
+anthropics/knowledge-work-plugins.
+
+SOURCE OF TRUTH
+- Canonical repo: arwoxbx24/agenthub-control-spine.
+- YouTrack task: AH-531 under AH-530.
+- Research report:
+  reports/research/external-agent-framework-pattern-audit-20260524.md
+- Research receipt:
+  reports/receipts/external-agent-framework-pattern-audit-receipt-20260524.md
+
+ALLOWED SCOPE
+- Create or update AgentHub-local governance, schema, runbook, prompt, and
+  receipt artifacts.
+- Specify a skill-pack manifest or equivalent contract.
+- Specify command/connector separation for AgentHub MCP routes.
+- Update INDEX.md, ARTIFACT_REGISTER.md, PR_QUEUE_REGISTER.md, and CHANGELOG.md
+  when artifacts change.
+
+FORBIDDEN SCOPE
+- No external repository install, clone, vendor, import, or execution.
+- No copied connector credentials or external .mcp.json adoption.
+- No AgentHub runtime, Codex runtime, Docker, NPM, proxy, DB, firewall, DNS,
+  SSL, Railway, object storage, secrets, product code, or client project change.
+- No GitHub Issues as task system.
+
+OUTPUT REQUIREMENTS
+- Implementation design or artifacts must be AgentHub-local.
+- The design must include role ownership, lifecycle metadata, allowed surfaces,
+  forbidden surfaces, validation gates, evidence output, and receipt format.
+- External examples must remain `audit_only` until adapted and reviewed.
+
+VALIDATION
+- git diff --check.
+- JSON/schema validation if schema files change.
+- gitleaks redacted scan.
+- unsafe marker scan.
+- INDEX and ARTIFACT_REGISTER coverage.
+- PR_QUEUE_REGISTER coverage if PR state changes.
+- no forbidden surface diff.
+
+DONE GATE
+Done only with implementation evidence, validation evidence, receipt, task
+readback, register coverage, and no active blocker.
+
+PROMPT_QUALITY_SCORE: 91/100
+Rationale: task id, parent id, source evidence, allowed scope, forbidden scope,
+validation, and Done gate are explicit; no runtime or external-code ambiguity.

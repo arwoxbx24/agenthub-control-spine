@@ -28,6 +28,7 @@ status: draft
 - Added AH-528 cyber-safe prompt wording policy to normalize authorized defensive-maintenance prompts, block unsafe cyber wording, and reduce false-positive platform interruptions without bypassing safety.
 - Added AH-526 session failure report as an audit-only repository artifact with receipt, register coverage, and PR queue tracking after GitHub Issue `#28` was verified closed and sanitized.
 - Added AH-529 agent output and short-link intake controls for report placement, `STALE_LOCAL_LINK_INDEX`, compact final output, no-repeat gates, and evidence-backed Done.
+- Added AH-530/AH-531/AH-532 external repository pattern adaptation package: roadmap, Anthropic worker brief, Microsoft worker brief, and receipt; no external runtime install or code import.
 
 ## 2026-05-23
 
