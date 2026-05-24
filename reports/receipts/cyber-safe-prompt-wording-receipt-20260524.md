@@ -22,6 +22,8 @@ safe_to_replay: false
 | repository | `arwoxbx24/agenthub-control-spine` |
 | branch | `agenthub/cyber-safe-prompt-wording-20260524` |
 | PR | `#30` |
+| branch head SHA | `cf151f4a7571872a8448fe900db680130b792a4d` |
+| merge commit SHA | `746ef1efa05eda1ac3ebea4ddd4b9abb9b8f5bfe` |
 | policy | `governance/cyber-safe-prompt-wording-policy.md` |
 | receipt | `reports/receipts/cyber-safe-prompt-wording-receipt-20260524.md` |
 | AgentHub create receipt SHA-256 | `46c1ffecc5d6e1bc021096b9427115ea7f3e4cd0abcad1848e6c855c19ac29cf` |
@@ -65,5 +67,6 @@ owned assets.
 
 ## Final State
 
-READY_FOR_MERGE until PR validation, merge/readback, AgentHub merge, and
-YouTrack Done gate are complete.
+DONE_WITH_EVIDENCE after PR `#30` merge/readback, required `gitleaks` pass,
+index/register coverage, PR queue coverage, and no-runtime/no-secret
+confirmation.
