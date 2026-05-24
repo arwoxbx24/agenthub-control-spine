@@ -60,7 +60,8 @@
               "CONFLICTS_WITH_MAIN",
               "DUPLICATE_ARTIFACT_TAIL",
               "BLOCKED_BY_REVIEW_REQUIREMENT",
-              "READY_BLOCKED_BY_PLATFORM_GATE"
+              "READY_BLOCKED_BY_PLATFORM_GATE",
+              "MERGED"
             ]
           },
           "registrar_action": {

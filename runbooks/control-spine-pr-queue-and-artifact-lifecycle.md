@@ -36,6 +36,7 @@ Read from `main` first:
    - `DUPLICATE_ARTIFACT_TAIL`
    - `BLOCKED_BY_REVIEW_REQUIREMENT`
    - `READY_BLOCKED_BY_PLATFORM_GATE`
+   - `MERGED`
 5. Record decision in `PR_QUEUE_REGISTER.md`.
 6. Convert missing register coverage, receipt, validation, task readback, PR
    queue entry, duplicate branch/report, or stale PR state into a same-run
