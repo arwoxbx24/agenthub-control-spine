@@ -28,7 +28,7 @@ instructions.
 
 | PR | Task id | RUN_ID | Branch | Owner role | Queue class | Registrar action | Evidence link | Blocker |
 |---|---|---|---|---|---|---|---|---|
-| `#24` | `AH-522` / `AH-523` | `RUN-teamlead-control-spine-system-inventory-20260524`; `RUN-teamlead-control-spine-registrar-20260524` | `agenthub/teamlead-control-spine-system-inventory-20260524` | T0 Registrar | `MERGE_READY` | Amend as the single current registrar/lifecycle PR; keep open for review/merge. | `ARTIFACT_REGISTER.md`; `PR_QUEUE_REGISTER.md`; `reports/receipts/control-spine-pr-queue-cleanup-receipt-20260524.md` | `REVIEW_REQUIREMENT_BLOCKS_MERGE` until review/merge policy is satisfied. |
+| `#24` | `AH-522` / `AH-523` | `RUN-teamlead-control-spine-system-inventory-20260524`; `RUN-teamlead-control-spine-registrar-20260524` | `agenthub/teamlead-control-spine-system-inventory-20260524` | T0 Registrar | `MERGE_READY` | Amended as the single current registrar/lifecycle PR; merge attempt blocked by base branch policy. | `ARTIFACT_REGISTER.md`; `PR_QUEUE_REGISTER.md`; `reports/receipts/control-spine-pr-queue-cleanup-receipt-20260524.md` | `REVIEW_REQUIREMENT_BLOCKS_MERGE` |
 | `#23` | `AH-518` / `AH-521` | `RUN-close-ah521-deferred-done-20260524` | `agenthub/close-npm-gaps-no-dup-20260524` | Scoped worker/T0 closure | `BLOCKED_BY_REVIEW_REQUIREMENT` | Defer; task-specific artifact PR is mergeable but must keep exact review/blocker state. | `reports/devops/npm-gap-closure-no-dup-20260524.md` | `REVIEW_REQUIREMENT_BLOCKS_MERGE` |
 | `#20` | `AH-513` / `AH-518` | `RUN-teamlead-ah513-ah518-control-20260523` | `agenthub/teamlead-ah513-ah518-control-20260523` | T0 control receipt | `SUPERSEDED_CLOSE` | Closed on 2026-05-24 as stale: later YouTrack readback and PR `#22` supersede its MTProxy scope-drift finding. | `AH-513`, `AH-518`, PR `#22`, commit `16267cd97be2d94f3a9dd82f6a0ef58c320e3835` | none after close |
 | `#18` | `AH-468` | `RUN-teamlead-mtproxy-parallel-control-20260523` | `agenthub/teamlead-mtproxy-parallel-control-20260523` | T0 control receipt | `SUPERSEDED_CLOSE` | Closed on 2026-05-24 as stale: worker evidence was later merged by PR `#19`; this older T0 receipt still says worker report missing. | PR `#19`, merge commit `dfc0eb4e5a5035a540a069d157eead9029248967` | none after close |
@@ -45,5 +45,5 @@ before closure.
 
 | PR | Decision | Blocker |
 |---|---|---|
-| `#24` | current registrar PR, merge-ready pending review/branch protection | `REVIEW_REQUIREMENT_BLOCKS_MERGE` |
+| `#24` | current registrar PR, merge-ready; merge attempt blocked by branch policy | `REVIEW_REQUIREMENT_BLOCKS_MERGE` |
 | `#23` | task-specific artifact PR, defer to review | `REVIEW_REQUIREMENT_BLOCKS_MERGE` |
