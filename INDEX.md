@@ -14,6 +14,9 @@ status: draft
 |---|---|---|---|
 | `README.md` | repository overview | AH-494 | draft |
 | `AGENTS.md` | Codex/AgentHub local policy | AH-494 | draft |
+| `ARTIFACT_REGISTER.md` | artifact lifecycle/default-load register | AH-522 | active |
+| `PR_QUEUE_REGISTER.md` | PR queue decision register | AH-523 | active |
+| `context/agenthub-current-context-pack.md` | current default context pack | AH-523 | active |
 | `GOVERNANCE.md` | governance overview | AH-494 | draft |
 | `SECURITY.md` | security policy | AH-494 | draft |
 | `CHANGELOG.md` | changelog | AH-494 | draft |
@@ -24,10 +27,18 @@ status: draft
 | `governance/secret-protection-policy.md` | governance policy | AH-500 | active |
 | `governance/agenthub-single-ingress-control.md` | governance control | AH-507 | active |
 | `governance/teamlead-t0-emergency-stop-control.md` | governance control | AH-510 | active |
+| `governance/t0-t1-role-matrix.md` | governance control | AH-511 | active |
+| `governance/anti-fabrication-policy.md` | governance policy | AH-511 | active |
+| `governance/dangerous-action-policy.md` | governance policy | AH-511 | active |
+| `governance/token-context-budget.md` | governance policy | AH-511 | active |
+| `governance/control-spine-registrar-policy.md` | governance policy | AH-523 | active |
 | `runbooks/chatgpt-github-connect.md` | runbook | AH-494 | draft |
 | `runbooks/secret-leak-response.md` | runbook | AH-500 | active |
 | `runbooks/agenthub-locked-run-recovery.md` | runbook | AH-507 | active |
 | `runbooks/teamlead-t0-role-drift-emergency-stop.md` | runbook | AH-510 | active |
+| `runbooks/prompt-intake-flow.md` | runbook | AH-494 | active |
+| `runbooks/codex-cli-usage.md` | runbook | AH-494 | active |
+| `runbooks/control-spine-pr-queue-and-artifact-lifecycle.md` | runbook | AH-523 | active |
 | `templates/github/secret-scan-workflow.yml` | GitHub Actions template | AH-500 | active |
 | `.github/workflows/secret-scan.yml` | control-spine workflow | AH-500 | active |
 | `templates/security/gitleaks.toml` | scanner config template | AH-500 | active |
@@ -58,6 +69,10 @@ status: draft
 | `reports/receipts/mtproxy-domain-route-worker-receipt-20260523.md` | operational receipt | AH-468 | pass |
 | `reports/devops/npm-docker-domain-route-ah513-ah518-20260523.md` | devops worker report | AH-513/AH-518 | partial-with-blocker |
 | `reports/receipts/npm-docker-domain-route-ah513-ah518-receipt-20260523.md` | operational receipt | AH-513/AH-518 | partial-with-blocker |
+| `reports/control-spine/teamlead-system-inventory-20260524.md` | control-spine inventory report | AH-522 | operational-receipt |
+| `reports/receipts/teamlead-system-inventory-receipt-20260524.md` | control-spine inventory receipt | AH-522 | operational-receipt |
+| `reports/receipts/control-spine-pr-queue-cleanup-receipt-20260524.md` | control-spine registrar receipt | AH-523 | operational-receipt |
+| `registries/agenthub-control-spine-id-register.md` | AgentHub/YouTrack/GitHub ID register | AH-522 | active |
 | `skills-drafts/t0-non-authoring-gate/SKILL.md` | draft skill | AH-511 | draft |
 | `skills-drafts/devops-incident-diagnostics/SKILL.md` | draft skill | AH-511 | draft |
 | `skills-drafts/agenthub-evidence-loop-closure/SKILL.md` | draft skill | AH-511 | draft |
@@ -67,3 +82,4 @@ status: draft
 | `schemas/secret-scan-receipt.schema.json` | schema | AH-500 | active |
 | `schemas/agenthub-run-preflight.schema.json` | schema | AH-507/AH-510 | active |
 | `schemas/t0-emergency-stop-receipt.schema.json` | schema | AH-510 | active |
+| `schemas/control-spine-pr-queue-register.schema.json` | schema | AH-523 | active |

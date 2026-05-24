@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/arwoxbx24/agenthub-control-spine/schemas/control-spine-pr-queue-register.schema.json",
+  "title": "Control-Spine PR Queue Register",
+  "type": "object",
+  "required": ["repository", "run_id", "generated_at", "prs"],
+  "properties": {
+    "repository": {
+      "const": "arwoxbx24/agenthub-control-spine"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "prs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "pr_number",
+          "task_id",
+          "run_id",
+          "branch",
+          "owner_role",
+          "queue_class",
+          "registrar_action",
+          "evidence_ref",
+          "blocker"
+        ],
+        "properties": {
+          "pr_number": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "task_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "run_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "branch": {
+            "type": "string",
+            "minLength": 1
+          },
+          "owner_role": {
+            "enum": ["T0 Registrar", "T0 Control Plane", "T1 Architecture Broker", "Scoped Worker", "Verifier", "UNKNOWN_NOT_EXPOSED"]
+          },
+          "queue_class": {
+            "enum": [
+              "MERGE_READY",
+              "NEEDS_REBASE_OR_REVALIDATION",
+              "SUPERSEDED_CLOSE",
+              "CONFLICTS_WITH_MAIN",
+              "DUPLICATE_ARTIFACT_TAIL",
+              "BLOCKED_BY_REVIEW_REQUIREMENT",
+              "READY_BLOCKED_BY_PLATFORM_GATE"
+            ]
+          },
+          "registrar_action": {
+            "type": "string",
+            "minLength": 1
+          },
+          "evidence_ref": {
+            "type": "string",
+            "minLength": 1
+          },
+          "blocker": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
