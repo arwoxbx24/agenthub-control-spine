@@ -35,6 +35,7 @@ Read from `main` first:
    - `CONFLICTS_WITH_MAIN`
    - `DUPLICATE_ARTIFACT_TAIL`
    - `BLOCKED_BY_REVIEW_REQUIREMENT`
+   - `READY_BLOCKED_BY_PLATFORM_GATE`
 5. Record decision in `PR_QUEUE_REGISTER.md`.
 6. Convert missing register coverage, receipt, validation, task readback, PR
    queue entry, duplicate branch/report, or stale PR state into a same-run
@@ -51,9 +52,14 @@ Read from `main` first:
    - no reports/receipts default-load
    - every open PR has queue decision
    - no runtime/product files changed
-10. Attempt merge only if review/branch protection allows it.
-11. If review blocks merge, mark `MERGE_READY_REVIEW_REQUIRED` and record
-    `REVIEW_REQUIREMENT_BLOCKS_MERGE`.
+10. Attempt autonomous merge/review routes in order:
+    normal merge, existing approved reviewer/service account/GitHub App,
+    existing org/team reviewer, then safe admin merge only when branch
+    protection permits it.
+11. If every safe route fails, mark `READY_BLOCKED_BY_PLATFORM_GATE`, record
+    `AUTONOMY_REVIEW_ROUTE_MISSING`, and create or update one YouTrack task for
+    installing a non-user review route. Do not ask the user to click, approve,
+    merge, or choose a reviewer.
 12. Update YouTrack with evidence and blocker.
 
 ## Worker Rule
@@ -66,7 +72,10 @@ sent to TeamLead/T0 Registrar.
 
 Use one blocker:
 
-- `REVIEW_REQUIREMENT_BLOCKS_MERGE`
+- `AUTONOMY_REVIEW_ROUTE_MISSING`
+- `GITHUB_APP_APPROVER_MISSING`
+- `ORG_REVIEW_TEAM_UNAVAILABLE`
+- `BRANCH_PROTECTION_ADMIN_BYPASS_FORBIDDEN`
 - `PR_CONFLICT_REQUIRES_REBASE`
 - `ARTIFACT_REGISTER_MISSING_AND_CANNOT_WRITE`
 - `GITHUB_AUTH_WRITE_UNAVAILABLE`
@@ -74,4 +83,4 @@ Use one blocker:
 - `SID_WID_SESSION_ID_NOT_EXPOSED`
 - `UNSAFE_SECRET_OR_RAW_TRANSCRIPT_FOUND`
 - `LIFECYCLE_DECISION_CONFLICT`
-- `MERGE_READY_REVIEW_REQUIRED`
+- `READY_BLOCKED_BY_PLATFORM_GATE`

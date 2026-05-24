@@ -65,18 +65,37 @@ proof becomes a same-run microtask when it concerns:
 - duplicate PR branch, duplicate report, or duplicate receipt;
 - stale PR state that can be closed with evidence.
 
-The Registrar may stop only for owner-only blockers:
+The Registrar may stop only for non-user platform or authority blockers after
+all safe autonomous routes have been attempted and recorded:
 
-- `REVIEW_REQUIREMENT_BLOCKS_MERGE`;
+- `AUTONOMY_REVIEW_ROUTE_MISSING`;
+- `GITHUB_APP_APPROVER_MISSING`;
+- `ORG_REVIEW_TEAM_UNAVAILABLE`;
+- `BRANCH_PROTECTION_ADMIN_BYPASS_FORBIDDEN`;
 - `SECRET_OR_TOKEN_MISSING`;
 - `PRODUCTION_MUTATION_AUTHORITY_MISSING`;
 - `DESTRUCTIVE_ACTION_APPROVAL_REQUIRED`;
 - `PAYMENT_OR_ACCOUNT_OWNER_REQUIRED`;
 - `LEGAL_OR_SECURITY_APPROVAL_REQUIRED`.
 
-Even for owner-only blockers, the Registrar must finish all safe repository
-work first and record the blocker in YouTrack, `PR_QUEUE_REGISTER.md`, the
-receipt, and the PR body.
+Even for platform or authority blockers, the Registrar must finish all safe
+repository work first and record the blocker in YouTrack,
+`PR_QUEUE_REGISTER.md`, the receipt, and the PR body. The Registrar must not
+turn GitHub review gates into user-click requests.
+
+## Autonomous Review Route ADR
+
+| Option | Decision | Reason |
+|---|---|---|
+| A: keep review gate and queue ready PRs | rejected as final model | It stops user interruptions only after the gate is registered, but it leaves future PRs blocked until a reviewer route exists. |
+| B: dedicated service-account or GitHub App reviewer for control-spine artifact PRs only | accepted | It preserves branch protection, keeps product/runtime repositories out of scope, and removes Andrey from routine approvals. |
+| C: policy-as-code automatic merge for low-risk artifacts | deferred | It needs a separate policy engine and stronger validator evidence before automatic merge can be safe. |
+
+The accepted model is narrow: control-spine artifact PRs only, no product or
+runtime repositories, no global protection weakening, and no approval by the PR
+author. Until that route exists, queue class
+`READY_BLOCKED_BY_PLATFORM_GATE` with blocker `AUTONOMY_REVIEW_ROUTE_MISSING`
+is the correct durable state.
 
 Scoped workers may:
 
@@ -133,6 +152,7 @@ Every open PR must have a queue decision:
 - `CONFLICTS_WITH_MAIN`
 - `DUPLICATE_ARTIFACT_TAIL`
 - `BLOCKED_BY_REVIEW_REQUIREMENT`
+- `READY_BLOCKED_BY_PLATFORM_GATE`
 
 Stale PRs must be closed only after `PR_QUEUE_REGISTER.md` and the receipt state
 why useful evidence is already on main or represented in the current registrar

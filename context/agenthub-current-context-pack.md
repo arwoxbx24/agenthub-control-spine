@@ -52,9 +52,12 @@ task receipts. Workers must not clean or archive unrelated artifacts.
 
 Routine missing proof is not a chat blocker. Convert missing register coverage,
 receipt, validation, task readback, PR queue entry, or stale PR state into a
-same-run microtask. Stop only for owner-only blockers such as
-`REVIEW_REQUIREMENT_BLOCKS_MERGE`, secret/account-owner requirements, production
-authority, destructive approval, or legal/security approval.
+same-run microtask. GitHub review requirements are workflow gates, not user
+requests. Try autonomous merge/reviewer routes first; if none exists, record
+`AUTONOMY_REVIEW_ROUTE_MISSING` and a YouTrack remediation task. Stop only for
+non-user platform/authority blockers such as missing approved reviewer route,
+secret/account-owner requirements, production authority, destructive approval,
+or legal/security approval.
 
 ## Historical Material
 

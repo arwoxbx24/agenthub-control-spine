@@ -59,7 +59,8 @@
               "SUPERSEDED_CLOSE",
               "CONFLICTS_WITH_MAIN",
               "DUPLICATE_ARTIFACT_TAIL",
-              "BLOCKED_BY_REVIEW_REQUIREMENT"
+              "BLOCKED_BY_REVIEW_REQUIREMENT",
+              "READY_BLOCKED_BY_PLATFORM_GATE"
             ]
           },
           "registrar_action": {
