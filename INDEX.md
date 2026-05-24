@@ -72,6 +72,8 @@ status: draft
 | `reports/control-spine/teamlead-system-inventory-20260524.md` | control-spine inventory report | AH-522 | operational-receipt |
 | `reports/receipts/teamlead-system-inventory-receipt-20260524.md` | control-spine inventory receipt | AH-522 | operational-receipt |
 | `reports/receipts/control-spine-pr-queue-cleanup-receipt-20260524.md` | control-spine registrar receipt | AH-523 | operational-receipt |
+| `reports/research/external-agent-framework-pattern-audit-20260524.md` | external framework pattern research report | AH-527 | research-done |
+| `reports/receipts/external-agent-framework-pattern-audit-receipt-20260524.md` | external framework pattern research receipt | AH-527 | pass |
 | `registries/agenthub-control-spine-id-register.md` | AgentHub/YouTrack/GitHub ID register | AH-522 | active |
 | `skills-drafts/t0-non-authoring-gate/SKILL.md` | draft skill | AH-511 | draft |
 | `skills-drafts/devops-incident-diagnostics/SKILL.md` | draft skill | AH-511 | draft |
