@@ -22,7 +22,8 @@ safe_to_replay: false
 | repository | `arwoxbx24/agenthub-control-spine` |
 | branch | `agenthub/external-repo-pattern-audit-20260524` |
 | PR | `#26` |
-| commit SHA | PR `#26` branch head readback after push; self-referential final head is not embedded in this receipt. |
+| branch head SHA | `2911e8acd5c6c43eb997903b0add95ae77865813` |
+| merge commit SHA | `dbbab30caa33021e2662416d7c29f0205dcde3be` |
 | report | `reports/research/external-agent-framework-pattern-audit-20260524.md` |
 | receipt | `reports/receipts/external-agent-framework-pattern-audit-receipt-20260524.md` |
 
