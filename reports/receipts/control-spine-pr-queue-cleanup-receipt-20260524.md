@@ -91,15 +91,18 @@ safe_to_replay: false
 | no runtime/product files changed | PASS |
 | merge attempt for `#24` | BLOCKED: base branch policy prohibits merge without required review |
 | safe admin merge route | SELECTED: artifact-only PR, validation passed, no runtime/client surface touched |
+| admin merge attempt for `#24` | BLOCKED: GitHub requires at least one approving review from a write-access reviewer |
+| reviewer route | BLOCKED: collaborator readback exposes only the PR author with write/admin permissions and no teams; available Codex review is COMMENTED only and not an approving write-access review |
 | GitHub Issues not used as task system | PASS |
 | YouTrack task recorded | PASS: `AH-523` |
 
 ## Blocker
 
-Primary blocker: `REVIEW_REQUIREMENT_BLOCKS_MERGE`.
+Primary blocker: `INTERNAL_REVIEWER_IDENTITY_UNAVAILABLE`.
 
 This blocker does not invalidate the repository artifact package. It means the
-registrar PR can be reviewed/merged only through repository review policy.
+registrar PR can be reviewed/merged only after a non-author write-access
+reviewer route exists.
 
 Normal merge attempt result: `gh pr merge 24 --squash` returned base branch
 policy prohibition.
@@ -109,6 +112,11 @@ merge was blocked. Reason: PR `#24` changes only control-spine governance,
 register, context, schema, runbook, and receipt artifacts; validation passed;
 no runtime, product, client, infrastructure, secret, or live-service surface was
 touched.
+
+Admin merge was attempted and blocked by GitHub because at least one approving
+review from a write-access reviewer is required. Reviewer-route readback found
+only the PR author as a write/admin collaborator and no repository team route.
+The available Codex review is a comment, not an approving write-access review.
 
 AgentHub merge readback is also blocked by implementation-style residuals:
 `IMPLEMENTATION_ACCEPTANCE_MISSING`,

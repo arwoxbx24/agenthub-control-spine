@@ -19,6 +19,7 @@ status: draft
 - Added Control-Spine Registrar policy, current context pack, PR queue register, queue/lifecycle runbook, PR queue schema, and registrar cleanup receipt for `AH-523`.
 - Recorded PR queue actions for open tails: amend `#24`, defer `#23`, close superseded/stale `#20`, `#18`, `#17`, and `#16`.
 - Added closed-loop rule: routine missing proof becomes same-run microtask; only owner-only gates may interrupt after safe work completes.
+- Recorded review-gate handling for PR `#24`: normal merge and safe admin merge were attempted; final owner-only blocker is `INTERNAL_REVIEWER_IDENTITY_UNAVAILABLE`.
 
 ## 2026-05-23
 
