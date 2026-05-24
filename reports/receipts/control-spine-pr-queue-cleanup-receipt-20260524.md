@@ -16,14 +16,14 @@ safe_to_replay: false
 
 | Field | Value |
 |---|---|
-| task_id | `AH-523` |
+| task_id | `AH-522` / `AH-523` |
 | RUN_ID | `RUN-teamlead-control-spine-registrar-20260524` |
 | SID | `UNKNOWN_NOT_EXPOSED` |
 | WID | `W-control-spine-registrar-20260524` |
 | session_id | `UNKNOWN_NOT_EXPOSED` |
 | branch | `agenthub/teamlead-control-spine-system-inventory-20260524` |
 | PR | `#24` |
-| commit SHA | `GITHUB_PR_HEAD_READBACK_AFTER_FINAL_PUSH` |
+| commit SHA | `GITHUB_PR_HEAD_READBACK_AFTER_EXTERNAL_REVIEW_GATE_PATCH` |
 
 ## AgentHub Receipts
 
@@ -94,12 +94,14 @@ safe_to_replay: false
 | safe admin merge route | SELECTED: artifact-only PR, validation passed, no runtime/client surface touched |
 | admin merge attempt for `#24` | BLOCKED: GitHub requires at least one approving review from a write-access reviewer |
 | reviewer route | BLOCKED: collaborator readback exposes only the PR author with write/admin permissions and no teams; available Codex review is COMMENTED only and not an approving write-access review |
+| direct protected push route | BLOCKED: GitHub protected branch rejects direct main update without approving review |
+| governance equivalent receipt | PASS: `ACCEPTED_GOVERNANCE_EQUIVALENT_RECEIPT`; repository artifact readiness is recorded while GitHub external review gate remains |
 | GitHub Issues not used as task system | PASS |
 | YouTrack task recorded | PASS: `AH-523` |
 
 ## Blocker
 
-Primary blocker: `INTERNAL_REVIEWER_IDENTITY_UNAVAILABLE`.
+Primary blocker: `EXTERNAL_GITHUB_REVIEW_GATE`.
 
 This blocker does not invalidate the repository artifact package. It means the
 registrar PR can be reviewed/merged only after a non-author write-access
@@ -118,10 +120,12 @@ Admin merge was attempted and blocked by GitHub because at least one approving
 review from a write-access reviewer is required. Reviewer-route readback found
 only the PR author as a write/admin collaborator and no repository team route.
 The available Codex review is a comment, not an approving write-access review.
+Direct protected push to `main` was also rejected by GitHub branch protection
+with the same approving-review requirement.
 
 Final PR tail cleanup closed PR `#23` as historical evidence only. The only
 remaining open PR is `#24`, which contains the registrar package and is blocked
-only by the missing non-author approving reviewer identity.
+only by `EXTERNAL_GITHUB_REVIEW_GATE`.
 
 AgentHub merge readback is also blocked by implementation-style residuals:
 `IMPLEMENTATION_ACCEPTANCE_MISSING`,
