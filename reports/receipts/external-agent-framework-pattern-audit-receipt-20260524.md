@@ -21,6 +21,8 @@ safe_to_replay: false
 | worker_id | `T1-external-repo-pattern-audit-20260524` |
 | repository | `arwoxbx24/agenthub-control-spine` |
 | branch | `agenthub/external-repo-pattern-audit-20260524` |
+| PR | `#26` |
+| commit SHA | PR `#26` branch head readback after push; self-referential final head is not embedded in this receipt. |
 | report | `reports/research/external-agent-framework-pattern-audit-20260524.md` |
 | receipt | `reports/receipts/external-agent-framework-pattern-audit-receipt-20260524.md` |
 
@@ -60,6 +62,7 @@ validation gates, and typed blockers.
 | Install/import/vendor | PASS: none |
 | License check | PASS: Apache-2.0 and MIT identified |
 | No raw transcripts/secrets/env dumps | PASS |
+| PR queue register | PASS: PR `#26` recorded |
 | Technical artifact language | PASS: English |
 | User-facing output language | PASS: Russian final only |
 | Recommendation | PASS: pattern adaptation only |
@@ -78,4 +81,3 @@ Registrar hygiene.
 `RESEARCH_DONE_ALLOWED`: report exists, receipt exists, task anchor exists,
 both repositories were evaluated, license/security/privacy notes are included,
 and no runtime mutation occurred.
-

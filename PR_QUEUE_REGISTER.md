@@ -28,6 +28,7 @@ instructions.
 
 | PR | Task id | RUN_ID | Branch | Owner role | Queue class | Registrar action | Evidence link | Blocker |
 |---|---|---|---|---|---|---|---|---|
+| `#26` | `AH-527` | `RUN-agenthub-external-repo-pattern-audit-20260524` | `agenthub/external-repo-pattern-audit-20260524` | T1 Architecture Broker | `MERGE_READY` | Research/adaptation package for Anthropic and Microsoft public repos; no runtime dependency, no install, no code import. | `reports/research/external-agent-framework-pattern-audit-20260524.md`; `reports/receipts/external-agent-framework-pattern-audit-receipt-20260524.md` | none |
 | `#24` | `AH-522` / `AH-523` / `AH-524` | `RUN-teamlead-control-spine-system-inventory-20260524`; `RUN-teamlead-control-spine-registrar-20260524` | `agenthub/teamlead-control-spine-system-inventory-20260524` | T0 Registrar | `MERGED` | Merged on 2026-05-24 after AH-524 installed the autonomous control-spine artifact lane: required review removed for this repository only, required `gitleaks` status check enabled, force push/delete still disabled. | PR `#24`; merge commit `6f4ffc6e068b148ab8b7fe9531a9c5e9669de011`; `reports/receipts/control-spine-pr-queue-cleanup-receipt-20260524.md`; `AH-524` | none |
 | `#23` | `AH-518` / `AH-521` | `RUN-close-ah521-deferred-done-20260524` | `agenthub/close-npm-gaps-no-dup-20260524` | Scoped worker/T0 closure | `stale_closed` | Closed on 2026-05-24 as an unmerged artifact tail. AH-521/AH-518 state is recorded in YouTrack; PR evidence remains historical and is not default context. | PR `#23`; YouTrack `AH-521` and `AH-518` readback | none after close |
 | `#20` | `AH-513` / `AH-518` | `RUN-teamlead-ah513-ah518-control-20260523` | `agenthub/teamlead-ah513-ah518-control-20260523` | T0 control receipt | `SUPERSEDED_CLOSE` | Closed on 2026-05-24 as stale: later YouTrack readback and PR `#22` supersede its MTProxy scope-drift finding. | `AH-513`, `AH-518`, PR `#22`, commit `16267cd97be2d94f3a9dd82f6a0ef58c320e3835` | none after close |
@@ -45,4 +46,4 @@ before closure.
 
 | PR | Decision | Blocker |
 |---|---|---|
-| none | PR queue clean after PR `#24` merge; future control-spine artifact PRs use required `gitleaks` status check instead of impossible self-review gate | none |
+| `#26` | current research artifact PR; merge-ready after required `gitleaks` check | none |
