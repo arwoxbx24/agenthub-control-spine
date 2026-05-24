@@ -13,6 +13,7 @@ status: draft
 ## 2026-05-24
 
 - Added NPM gap closure report and receipt for `n8.b244.ru`, `dash.b244.ru`, and blocked `claw.b244.ru` follow-up without duplicating completed AH-513/AH-518 work.
+- Added AH-521 deferred no-start report and receipt for `claw.b244.ru` backend, preserving `CLAW_BACKEND_SERVICE_MISSING` without starting the service.
 
 ## 2026-05-23
 
