@@ -3,9 +3,9 @@ artifact_id: claw-backend-deferred-no-start-20260524
 artifact_type: devops-deferred-blocker-report
 owner_role: Scoped Claw Backend Worker
 source_task: AH-521
-run_id: RUN-claw-backend-deferred-no-start-20260524
+run_id: RUN-close-ah521-deferred-done-20260524
 created_at: 2026-05-24
-status: deferred-blocker
+status: closed-deferred
 lifecycle: operational_receipt
 default_load: false
 safe_to_replay: false
@@ -16,9 +16,9 @@ project_scope: proxy-manager/docker-addressing/claw
 
 ## Decision
 
-`claw.b244.ru` backend restoration is intentionally not executed in this run.
+`claw.b244.ru` backend restoration is intentionally not executed in this run, and `AH-521` is administratively closed to prevent duplicate agent tasks.
 
-The current user instruction explicitly forbids starting the `claw` service now. Therefore this run records the remaining gap as a scoped deferred blocker and does not mutate runtime, Docker, Proxy Manager, VPN, firewall, databases, or existing working routes.
+The current user instruction explicitly forbids starting the `claw` service now and requires the task to leave `Develop`. Therefore this run records the remaining gap as a closed deferred task and does not mutate runtime, Docker, Proxy Manager, VPN, firewall, databases, or existing working routes.
 
 ## Current Known State
 
@@ -33,11 +33,12 @@ The current user instruction explicitly forbids starting the `claw` service now.
 - Task anchor: `AH-521`.
 - `AH-513` and `AH-518` completed work remains unchanged.
 - No duplicate task was created.
-- The correct state for `AH-521` is not Done while backend startup is intentionally deferred.
+- `AH-521` is moved to `Done` as an administrative closure only.
+- This does not claim `claw.b244.ru` backend is running.
 
 ## Blocker
 
-Primary blocker: `CLAW_BACKEND_SERVICE_MISSING`.
+Final blocker state: `CLAW_BACKEND_SERVICE_MISSING_DEFERRED_BY_USER`.
 
 The blocker is intentionally preserved until a future scoped run is allowed to identify and restore the canonical OpenClaw backend service that listens on `18789`.
 
