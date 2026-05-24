@@ -20,6 +20,8 @@ safe_to_replay: false
 | repository | `arwoxbx24/agenthub-control-spine` |
 | branch | `agenthub/ah-526-session-failure-report` |
 | PR | `#29` |
+| branch head SHA | `bb53418bb2c77407d30555bfb4ae1643be8b7d71` |
+| merge commit SHA | `466e236ed471ba822e631c212de881b18f808d4e` |
 | issue cleanup | GitHub Issue `#28` verified `CLOSED`; body is sanitized and states the report must not be stored there. |
 | report | `reports/incidents/AH-526-session-failure-report.md` |
 | receipt | `reports/receipts/AH-526-session-failure-report-receipt.md` |
@@ -27,7 +29,7 @@ safe_to_replay: false
 ## Fact Readback
 
 - GitHub Issue `#28`: `CLOSED`, title `Removed`, body contains only a sanitized removal note.
-- PR `#29`: open during this receipt update; contains the AH-526 report file and this register/receipt repair.
+- PR `#29`: merged; contains the AH-526 report file and register/receipt repair.
 - Main branch before PR `#29`: AH-526 report not present.
 - Open PR queue during audit: PR `#29` only.
 - YouTrack `AH-526`: existing task found; stage `Done` before this reporting repair.
@@ -60,5 +62,5 @@ safe_to_replay: false
 
 ## Final State
 
-`MERGE_READY`: PR `#29` can be merged after required GitHub checks pass. The
+`DONE_WITH_EVIDENCE`: PR `#29` merged after required GitHub checks passed. The
 report is evidence only and must not be loaded as default instruction.
