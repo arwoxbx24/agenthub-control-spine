@@ -27,6 +27,7 @@ status: draft
 - Added AH-527 external repository pattern audit for `anthropics/knowledge-work-plugins` and `microsoft/AI-Engineering-Coach`; decision is pattern adaptation only, with no runtime dependency or code import.
 - Added AH-528 cyber-safe prompt wording policy to normalize authorized defensive-maintenance prompts, block unsafe cyber wording, and reduce false-positive platform interruptions without bypassing safety.
 - Added AH-526 session failure report as an audit-only repository artifact with receipt, register coverage, and PR queue tracking after GitHub Issue `#28` was verified closed and sanitized.
+- Added AH-529 agent output and short-link intake controls for report placement, `STALE_LOCAL_LINK_INDEX`, compact final output, no-repeat gates, and evidence-backed Done.
 
 ## 2026-05-23
 

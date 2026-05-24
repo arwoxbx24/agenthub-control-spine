@@ -60,6 +60,7 @@ Compatibility states from older records remain readable: `active_policy`,
 | `governance/token-context-budget.md` | `active_policy` | false | false | AH-511 | Token/context budget control. |
 | `governance/control-spine-registrar-policy.md` | `current_policy` | false | false | AH-523 | Registrar authority and lifecycle model. |
 | `governance/cyber-safe-prompt-wording-policy.md` | `active_policy` | false | false | AH-528 | Authorized defensive-maintenance wording gate for cyber-adjacent prompts. |
+| `governance/agent-output-and-link-intake-control.md` | `active_policy` | false | false | AH-529 | Report placement, short-link intake, final output, and Done guard control. |
 | `runbooks/chatgpt-github-connect.md` | `active_runbook` | false | false | AH-494 | Task-specific runbook. |
 | `runbooks/secret-leak-response.md` | `active_runbook` | false | false | AH-500 | Secret leak runbook. |
 | `runbooks/agenthub-locked-run-recovery.md` | `active_runbook` | false | false | AH-507 | Locked-run recovery. |
@@ -67,6 +68,7 @@ Compatibility states from older records remain readable: `active_policy`,
 | `runbooks/prompt-intake-flow.md` | `active_runbook` | false | false | AH-494 | Prompt intake runbook. |
 | `runbooks/codex-cli-usage.md` | `active_runbook` | false | false | AH-494 | Codex CLI usage runbook. |
 | `runbooks/control-spine-pr-queue-and-artifact-lifecycle.md` | `active_control` | false | false | AH-523 | Registrar queue/lifecycle runbook. |
+| `runbooks/agent-shortlink-intake-and-report-placement.md` | `active_control` | false | false | AH-529 | Short-link stale-index and report placement runbook. |
 | `templates/github/secret-scan-workflow.yml` | `active_policy` | false | false | AH-500 | Security workflow template. |
 | `.github/workflows/secret-scan.yml` | `active_policy` | false | false | AH-500 | Control-spine secret-scan workflow. |
 | `templates/security/gitleaks.toml` | `active_policy` | false | false | AH-500 | Scanner config. |
@@ -105,6 +107,7 @@ Compatibility states from older records remain readable: `active_policy`,
 | `schemas/agenthub-run-preflight.schema.json` | `active_policy` | false | false | AH-507/AH-510 | Schema. |
 | `schemas/t0-emergency-stop-receipt.schema.json` | `active_policy` | false | false | AH-510 | Schema. |
 | `schemas/control-spine-pr-queue-register.schema.json` | `active_control` | false | false | AH-523 | PR queue register schema. |
+| `schemas/agent-output-quality-receipt.schema.json` | `active_control` | false | false | AH-529 | Receipt schema for output/link/report quality gates. |
 | `skills-drafts/README.md` | `audit_only` | false | false | AH-511 | Draft skill directory note. |
 | `skills-drafts/t0-non-authoring-gate/SKILL.md` | `audit_only` | false | false | AH-511 | Draft skill, not active by default. |
 | `skills-drafts/devops-incident-diagnostics/SKILL.md` | `audit_only` | false | false | AH-511 | Draft skill, not active by default. |
@@ -117,3 +120,4 @@ Compatibility states from older records remain readable: `active_policy`,
 | `reports/research/external-agent-framework-pattern-audit-20260524.md` | `audit_only` | false | false | AH-527 | External repository pattern audit; not a default instruction. |
 | `reports/receipts/external-agent-framework-pattern-audit-receipt-20260524.md` | `operational_receipt` | false | false | AH-527 | Research receipt; proof only. |
 | `reports/receipts/cyber-safe-prompt-wording-receipt-20260524.md` | `operational_receipt` | false | false | AH-528 | Prompt wording policy receipt; proof only. |
+| `reports/receipts/AH-529-agent-output-link-intake-repair-receipt.md` | `operational_receipt` | false | false | AH-529 | Agent output and short-link intake repair receipt. |

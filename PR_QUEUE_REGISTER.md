@@ -28,6 +28,7 @@ instructions.
 
 | PR | Task id | RUN_ID | Branch | Owner role | Queue class | Registrar action | Evidence link | Blocker |
 |---|---|---|---|---|---|---|---|---|
+| `#33` | `AH-529` | `RUN-control-spine-agent-output-link-intake-repair-20260524` | `agenthub/agent-output-link-intake-control-20260524` | T0 Registrar | `MERGE_READY` | Corrective control package for report placement, short-link stale-index handling, compact final output, no-repeat gates, PR/report lifecycle, and evidence-backed Done. Merge only after required checks pass. | `governance/agent-output-and-link-intake-control.md`; `runbooks/agent-shortlink-intake-and-report-placement.md`; `schemas/agent-output-quality-receipt.schema.json`; `reports/receipts/AH-529-agent-output-link-intake-repair-receipt.md` | none |
 | `#29` | `AH-526` | `UNKNOWN_NOT_EXPOSED` | `agenthub/ah-526-session-failure-report` | T0 Registrar | `MERGED` | Merged on 2026-05-24 after required `gitleaks` passed. Incident report moved from GitHub Issue surface into repository artifact file, indexed, registered as audit-only, and paired with receipt. | PR `#29`; merge commit `466e236ed471ba822e631c212de881b18f808d4e`; `reports/incidents/AH-526-session-failure-report.md`; `reports/receipts/AH-526-session-failure-report-receipt.md`; Issue `#28` readback | none |
 | `#30` | `AH-528` | `RUN-control-spine-cyber-safe-prompt-wording-20260524` | `agenthub/cyber-safe-prompt-wording-20260524` | T0 Registrar | `MERGED` | Merged on 2026-05-24 after required `gitleaks` passed. Cyber-safe prompt wording policy added as governance-only control. No runtime, secret, or infrastructure surface touched. | PR `#30`; merge commit `746ef1efa05eda1ac3ebea4ddd4b9abb9b8f5bfe`; `governance/cyber-safe-prompt-wording-policy.md`; `reports/receipts/cyber-safe-prompt-wording-receipt-20260524.md` | none |
 | `#26` | `AH-527` | `RUN-agenthub-external-repo-pattern-audit-20260524` | `agenthub/external-repo-pattern-audit-20260524` | T1 Architecture Broker | `MERGED` | Merged on 2026-05-24 after required `gitleaks` passed. Research/adaptation package evaluates Anthropic and Microsoft public repos as pattern sources only; no runtime dependency, no install, no code import. | PR `#26`; merge commit `dbbab30caa33021e2662416d7c29f0205dcde3be`; `reports/research/external-agent-framework-pattern-audit-20260524.md`; `reports/receipts/external-agent-framework-pattern-audit-receipt-20260524.md` | none |
@@ -48,4 +49,4 @@ before closure.
 
 | PR | Decision | Blocker |
 |---|---|---|
-| none | PR queue clean after PR `#29` merge; AH-526 report remains audit-only and non-default | none |
+| `#33` | AH-529 corrective control PR; merge-ready after required checks pass | none |

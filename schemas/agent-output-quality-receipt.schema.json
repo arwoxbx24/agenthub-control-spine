@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/arwoxbx24/agenthub-control-spine/schemas/agent-output-quality-receipt.schema.json",
+  "title": "Agent Output Quality Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "run_id",
+    "decision",
+    "report_placement",
+    "link_intake",
+    "final_output",
+    "register_coverage",
+    "validation",
+    "forbidden_scope_confirmation",
+    "final_state"
+  ],
+  "properties": {
+    "task_id": { "type": "string", "minLength": 2 },
+    "run_id": { "type": "string", "minLength": 2 },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "ALREADY_SOLVED_RECEIPT_ONLY",
+        "AMEND_EXISTING_PR",
+        "CREATE_ONE_CORRECTIVE_PR",
+        "BLOCKED_WITH_EXACT_GATE"
+      ]
+    },
+    "report_placement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["github_issue_used", "repo_file_path", "status"],
+      "properties": {
+        "github_issue_used": { "type": "boolean" },
+        "repo_file_path": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["PASS", "FAIL", "NOT_APPLICABLE"]
+        }
+      }
+    },
+    "link_intake": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["resolver_mode", "stale_index", "blocker"],
+      "properties": {
+        "resolver_mode": {
+          "type": "string",
+          "enum": ["read", "download", "verify", "not_applicable"]
+        },
+        "stale_index": { "type": "boolean" },
+        "blocker": {
+          "type": "string",
+          "enum": [
+            "none",
+            "STALE_LOCAL_LINK_INDEX",
+            "LINK_INTAKE_ROUTE_UNAVAILABLE",
+            "SECRET_OR_RAW_TRANSCRIPT_RISK",
+            "FORBIDDEN_RUNTIME_SURFACE"
+          ]
+        }
+      }
+    },
+    "final_output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["format", "noise_gate"],
+      "properties": {
+        "format": {
+          "type": "string",
+          "enum": ["Fact_Action_Left", "not_applicable"]
+        },
+        "noise_gate": {
+          "type": "string",
+          "enum": ["PASS", "FAIL", "NOT_APPLICABLE"]
+        }
+      }
+    },
+    "register_coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["index", "artifact_register", "pr_queue_register"],
+      "properties": {
+        "index": { "type": "string", "enum": ["PASS", "FAIL"] },
+        "artifact_register": { "type": "string", "enum": ["PASS", "FAIL"] },
+        "pr_queue_register": { "type": "string", "enum": ["PASS", "FAIL", "NOT_APPLICABLE"] }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["diff_check", "secret_scan", "unsafe_marker_scan"],
+      "properties": {
+        "diff_check": { "type": "string", "enum": ["PASS", "FAIL"] },
+        "secret_scan": { "type": "string", "enum": ["PASS", "FAIL"] },
+        "unsafe_marker_scan": { "type": "string", "enum": ["PASS", "FAIL"] }
+      }
+    },
+    "forbidden_scope_confirmation": { "type": "string", "minLength": 2 },
+    "final_state": {
+      "type": "string",
+      "enum": [
+        "DONE_WITH_EVIDENCE",
+        "READY_BLOCKED_BY_PLATFORM_GATE",
+        "REPORT_PENDING_IN_PR",
+        "SAFETY_QUARANTINE"
+      ]
+    }
+  }
+}
