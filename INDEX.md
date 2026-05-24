@@ -66,6 +66,7 @@ status: draft
 | `reports/security/AH-501-secret-exclusion-current-content-summary.md` | redacted repo hygiene summary | AH-501 | pass |
 | `reports/handoffs/2026-05-22-current-chat-handoff.md` | chat handoff report | Current ChatGPT Project dialogue | active |
 | `reports/incidents/AH-511-agent-cycle-self-critique.md` | incident postmortem | AH-511 | active |
+| `reports/incidents/AH-526-session-failure-report.md` | incident postmortem | AH-526 | audit-only |
 | `reports/devops/mtproxy-domain-route-worker-20260523.md` | devops worker report | AH-468 | pass |
 | `reports/receipts/mtproxy-domain-route-worker-receipt-20260523.md` | operational receipt | AH-468 | pass |
 | `reports/devops/npm-docker-domain-route-ah513-ah518-20260523.md` | devops worker report | AH-513/AH-518 | partial-with-blocker |
@@ -73,6 +74,7 @@ status: draft
 | `reports/control-spine/teamlead-system-inventory-20260524.md` | control-spine inventory report | AH-522 | operational-receipt |
 | `reports/receipts/teamlead-system-inventory-receipt-20260524.md` | control-spine inventory receipt | AH-522 | operational-receipt |
 | `reports/receipts/control-spine-pr-queue-cleanup-receipt-20260524.md` | control-spine registrar receipt | AH-523 | operational-receipt |
+| `reports/receipts/AH-526-session-failure-report-receipt.md` | incident report placement receipt | AH-526 | pass |
 | `reports/research/external-agent-framework-pattern-audit-20260524.md` | external framework pattern research report | AH-527 | research-done |
 | `reports/receipts/external-agent-framework-pattern-audit-receipt-20260524.md` | external framework pattern research receipt | AH-527 | pass |
 | `reports/receipts/cyber-safe-prompt-wording-receipt-20260524.md` | cyber-safe prompt wording receipt | AH-528 | pass |
