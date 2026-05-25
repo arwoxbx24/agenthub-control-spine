@@ -1,0 +1,57 @@
+TASK_CLASS: AUTHORIZED_ADMIN_DEVOPS
+RUN_ID: <RUN_ID>
+TASK_ID: <TASK_ID>
+OWNER_AUTHORITY: <owner role and authorization source>
+
+This is authorized maintenance for owned/internal infrastructure. It is not
+offensive cybersecurity work and is not a request to bypass platform safety
+systems.
+
+Owned system:
+- <exact owned host/service/repo/environment>
+
+Intended outcome:
+- Restore availability, diagnose health, validate recovery, or produce one exact typed blocker.
+
+Allowed actions:
+- Read-only service ownership map.
+- Bounded health, process, port, log-summary, disk, memory, and endpoint checks.
+- Scoped config/service repair only if explicitly authorized.
+- Backup/checkpoint before any mutation.
+- Rollback and validation after any mutation.
+
+Forbidden actions:
+- No exploitation, payloads, credential collection, data exfiltration, stealth, persistence, malware, or public target testing.
+- No raw env, tokens, passwords, private keys, webhook URLs, or transcript links.
+- No Docker prune/reset/delete, volume deletion, or running container deletion without exact owner-only backup/rollback gate.
+- No DB/Nginx/proxy/firewall/DNS/SSL mutation unless this dispatch explicitly names the exact allowed action.
+- No T0 direct runtime mutation.
+
+Backup and rollback:
+- Required before any write: <checkpoint, branch, snapshot, compose backup, or rollback procedure>.
+
+Validation:
+- <endpoint/status/user-visible checks>
+- <artifact or receipt path>
+
+Evidence:
+- task readback;
+- route receipt;
+- changed files or runtime actions, if any;
+- no-secret proof;
+- validation result;
+- final blocker or Done gate.
+
+Final status:
+- DONE_WITH_EVIDENCE, or one exact typed blocker:
+  OPENAI_CYBER_FLAG_FALSE_POSITIVE_REPORTED |
+  TRUSTED_ACCESS_REQUIRED_FOR_HIGH_RISK_DEFENSIVE_CYBER |
+  LIVE_RUNTIME_ADAPTER_NOT_EXPOSED |
+  SANDBOX_ONLY_NOT_RUNTIME_PROOF |
+  T0_DIRECT_RUNTIME_MUTATION_FORBIDDEN |
+  OWNER_ONLY_IRREVERSIBLE_GATE |
+  MISSING_ACCOUNT_CREDENTIAL |
+  INSTRUCTION_SOURCE_DRIFT |
+  DUPLICATE_PR_OR_TASK_EXISTS |
+  PROMPT_SCORE_BELOW_85 |
+  SAFETY_QUARANTINE

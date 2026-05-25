@@ -37,6 +37,7 @@ status: draft
 | `governance/external-repo-pattern-adaptation-roadmap.md` | architecture decision | AH-530 | active |
 | `governance/agenthub-skill-pack-command-connector-patterns.md` | governance control | AH-531 | active |
 | `governance/agenthub-eval-context-health-patterns.md` | governance control | AH-532 | active |
+| `governance/openai-cyber-safe-request-router.md` | governance policy | AH-541 | active |
 | `runbooks/chatgpt-github-connect.md` | runbook | AH-494 | draft |
 | `runbooks/secret-leak-response.md` | runbook | AH-500 | active |
 | `runbooks/agenthub-locked-run-recovery.md` | runbook | AH-507 | active |
@@ -46,6 +47,7 @@ status: draft
 | `runbooks/control-spine-pr-queue-and-artifact-lifecycle.md` | runbook | AH-523 | active |
 | `runbooks/agent-shortlink-intake-and-report-placement.md` | runbook | AH-529 | active |
 | `runbooks/agenthub-pattern-adaptation-control-loop.md` | runbook | AH-531/AH-532 | active |
+| `runbooks/chatgpt-cyber-flag-recovery-runbook.md` | runbook | AH-541 | active |
 | `templates/github/secret-scan-workflow.yml` | GitHub Actions template | AH-500 | active |
 | `.github/workflows/secret-scan.yml` | control-spine workflow | AH-500 | active |
 | `templates/security/gitleaks.toml` | scanner config template | AH-500 | active |
@@ -55,6 +57,8 @@ status: draft
 | `prompts/apps/AH-507-chatgpt-control-app-implementation-prompt.md` | implementation prompt | AH-507 | active |
 | `prompts/implementation/anthropic-knowledge-work-pattern-adaptation-worker.txt` | implementation brief | AH-531 | active |
 | `prompts/implementation/microsoft-ai-engineering-coach-pattern-adaptation-worker.txt` | implementation brief | AH-532 | active |
+| `prompts/templates/agenthub-safe-devops-incident-dispatch.txt` | dispatch template | AH-541 | active |
+| `prompts/templates/agenthub-safe-control-plane-repair-dispatch.txt` | dispatch template | AH-541 | active |
 | `apps/agenthub-chatgpt-control-app/` | Apps SDK / MCP prototype | AH-507 | pass |
 | `reports/apps/AH-507-source-map.md` | source map | AH-507 | active |
 | `reports/apps/AH-507-chatgpt-control-app-adr.md` | architecture decision record | AH-507 | active |
@@ -90,6 +94,7 @@ status: draft
 | `reports/receipts/external-repo-pattern-adaptation-closed-loop-receipt.md` | external pattern adaptation receipt | AH-530 | pass |
 | `reports/receipts/AH-533-git-route-policy-receipt.md` | Git/GitHub route policy receipt | AH-533 | pass |
 | `reports/receipts/AH-531-AH-532-pattern-implementation-receipt.md` | external pattern implementation receipt | AH-531/AH-532 | pass |
+| `reports/receipts/RUN-agenthub-openai-cyber-flag-safe-router-20260525-openai-cyber-safe-router-receipt.md` | control-spine receipt | AH-541 | pending-validation |
 | `registries/agenthub-control-spine-id-register.md` | AgentHub/YouTrack/GitHub ID register | AH-522 | active |
 | `skills-drafts/t0-non-authoring-gate/SKILL.md` | draft skill | AH-511 | draft |
 | `skills-drafts/devops-incident-diagnostics/SKILL.md` | draft skill | AH-511 | draft |
@@ -112,4 +117,7 @@ status: draft
 | `reports/receipts/AH-536-AH-537-live-execution-route-repair-receipt.md` | live execution route repair receipt | AH-536/AH-537 | blocked-platform-gate |
 | `reports/receipts/AH-534-agenthub-safe-recovery-control-receipt.md` | control-spine receipt | AH-534 | operational-receipt |
 | `schemas/agenthub-only-execution-receipt.schema.json` | schema | AH-534 | active |
+| `schemas/agenthub_authorized_scope.schema.json` | schema | AH-541 | active |
 | `skills-drafts/agenthub-only-execution-boundary/SKILL.md` | draft skill | AH-534 | draft |
+| `.agents/skills/agenthub-openai-cyber-safe-request-router/SKILL.md` | active skill | AH-541 | active |
+| `evals/agenthub-cyber-safe-router/` | eval fixtures | AH-541 | active |
