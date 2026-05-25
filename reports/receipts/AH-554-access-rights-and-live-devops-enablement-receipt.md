@@ -84,6 +84,9 @@ not part of normal restoration.
 - AgentHub task ownership bind already exists for AH-536/AH-554 and W-devops-06.
 - JSON fixtures and schemas parsed locally.
 - Secret scan completed with no findings in changed files.
+- Post-merge review drift fixed: `schemas/agenthub-live-worker-authorization.schema.json`
+  now includes `P7_DOCKER_DESTRUCTIVE_CLEANUP` for owner-gated exact cleanup
+  contracts.
 
 ## Red-Team Gate
 
