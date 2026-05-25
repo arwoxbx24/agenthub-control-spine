@@ -21,6 +21,8 @@ safe_to_replay: false
 | linked YouTrack issue | `AH-541` |
 | repository | `arwoxbx24/agenthub-control-spine` |
 | branch | `agenthub/openai-cyber-safe-router-20260525` |
+| PR | `#44` |
+| implementation commit | `857a29aac8a9630237c4bd456fc2acd494731094` |
 | source task/scope signature | `agenthub-openai-cyber-flag-safe-router-and-agent-unblocking` |
 
 ## Active Skills
@@ -69,7 +71,8 @@ safeguard bypass.
 - register/index coverage: `PASS`
 - AgentHub MCP route: `PASS`, ledger
   `0f6cfa836f3170c8961445e50d0569f6503119e28ac787956db8ece56fe8f5b9`
-- PR/commit: `PENDING`
+- PR/commit: `PASS`, PR `#44`, commit
+  `857a29aac8a9630237c4bd456fc2acd494731094`
 - residual blocker: `none`
 
 Validation commands:
