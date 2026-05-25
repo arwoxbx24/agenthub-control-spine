@@ -36,6 +36,10 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
 - Direct ad-hoc `git` or `gh` mutation by T0 outside a task-bound AgentHub route
   is invalid evidence and must not be called Done. Workers and the Registrar may
   use `git`/`gh` only inside their assigned YouTrack task and AgentHub RUN.
+- Runtime, server, storage, package, Docker, database, proxy, broad filesystem,
+  and validation execution must route through AgentHub task/run/worker/evidence;
+  direct T0 shell mutation invalidates the run, and no control-spine receipt
+  means no Done.
 - Do not store secrets, tokens, private keys, env dumps, raw transcripts, or internal history links.
 - Do not fake SUCCESS from task creation, wrapper PASS, sandbox-only proof, or incomplete receipts.
 - Do not create task explosions; use one controlling task and bounded child tasks.
