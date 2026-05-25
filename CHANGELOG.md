@@ -13,6 +13,7 @@ status: draft
 ## 2026-05-25
 
 - Added AH-531/AH-532 AgentHub-local pattern implementation controls for skill-pack/command/connector separation, eval/context-health/token-loop/skill-discovery checks, and the pattern adaptation runbook; no external runtime install or code import.
+- Merged PR #39 and finalized AH-534 safe recovery receipt/PR queue state as `DONE_WITH_EVIDENCE` for the control-spine governance package; runtime live-adapter work remains scoped to AH-537.
 
 ## 2026-05-24
 
