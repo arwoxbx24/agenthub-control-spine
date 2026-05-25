@@ -29,6 +29,13 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
 - GitHub is the artifact repository, not a second task tracker.
 - This corporate organization repository is canonical for AgentHub governance prompts, reports, receipts, schemas, runbooks, and skill drafts.
 - The personal GitHub owner `arwoxb24` is prohibited for AgentHub control-spine work unless the user explicitly authorizes it for one future task.
+- Git and GitHub mutation for this repository must be task-bound and
+  AgentHub-routed. A valid route requires a YouTrack task, RUN_ID, role,
+  branch, allowed file surface, evidence, validation, and receipt before any
+  commit, push, PR, close, merge, branch change, or review-state change.
+- Direct ad-hoc `git` or `gh` mutation by T0 outside a task-bound AgentHub route
+  is invalid evidence and must not be called Done. Workers and the Registrar may
+  use `git`/`gh` only inside their assigned YouTrack task and AgentHub RUN.
 - Do not store secrets, tokens, private keys, env dumps, raw transcripts, or internal history links.
 - Do not fake SUCCESS from task creation, wrapper PASS, sandbox-only proof, or incomplete receipts.
 - Do not create task explosions; use one controlling task and bounded child tasks.

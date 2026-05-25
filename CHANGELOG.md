@@ -12,6 +12,7 @@ status: draft
 
 ## 2026-05-24
 
+- Added AH-533 Git/GitHub route policy: control-spine GitHub mutations must be YouTrack-task-bound and AgentHub-routed with RUN_ID, branch, evidence, validation, and receipt.
 - Added `ARTIFACT_REGISTER.md` to classify artifacts by lifecycle, default-load, and replay safety.
 - Added TeamLead system inventory report, receipt, and ID register for `AH-522` / `RUN-teamlead-control-spine-system-inventory-20260524`.
 - Marked reports, receipts, handoffs, and consumed prompts as non-default evidence in the lifecycle register.
