@@ -38,10 +38,17 @@ final_state: READY_BLOCKED_BY_PLATFORM_GATE
 
 - Duplicate task check: no separate safe-recovery task created; existing `AH-534` / PR `#39` reused.
 - Duplicate PR check: PR `#39` reused; no new PR opened.
+- Main integration: PR `#39` branch was merged with current `main`; register conflicts in `INDEX.md`, `ARTIFACT_REGISTER.md`, `PR_QUEUE_REGISTER.md`, and `CHANGELOG.md` were resolved without dropping existing main entries.
 - Role boundary: no new runtime, Docker, DB, proxy, firewall, DNS, SSL, object-storage, secret, or product mutation performed by this control package.
 - Artifact lifecycle: new prompt is not default-load and `safe_to_replay=false`; receipt is proof only.
 - Evidence gate: Done remains blocked for live runtime closure because AgentHub command worker dispatch reports `CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED`.
 - Redaction: no secrets, tokens, private keys, env dumps, raw terminal transcript, or internal history links are included.
+- `git diff --check`: PASS.
+- `gitleaks detect --no-git --redact --source .`: PASS, no leaks found.
+- JSON schema parse for `schemas/*.json`: PASS.
+- Unsafe marker scan for private keys, bearer tokens, raw env assignments, secret assignments, and raw internal history links: PASS.
+- `INDEX.md` / `ARTIFACT_REGISTER.md` / `PR_QUEUE_REGISTER.md` coverage for PR `#39` artifacts: PASS.
+- Forbidden runtime/client/infra surface diff check: PASS.
 
 ## Final State
 

@@ -12,9 +12,14 @@ safe_to_replay: false
 
 # Artifact Register
 
-This register is the lifecycle and default-load layer for the control-spine repository. `INDEX.md` lists artifacts. This file tells agents whether an artifact is current instruction, current register/baseline, evidence only, historical receipt, consumed prompt, quarantined material, or superseded state.
+This register is the lifecycle and default-load layer for the control-spine
+repository. `INDEX.md` lists artifacts. This file tells agents whether an
+artifact is current instruction, current register/baseline, evidence only,
+historical receipt, consumed prompt, quarantined material, or superseded state.
 
-Reports are evidence, not standing instructions. Receipts are proof, not prompts. One-time prompts are not safe to replay unless a current governance artifact explicitly says so.
+Reports are evidence, not standing instructions. Receipts are proof, not
+prompts. One-time prompts are not safe to replay unless a current governance
+artifact explicitly says so.
 
 Canonical lifecycle values in this register:
 
@@ -28,19 +33,20 @@ Canonical lifecycle values in this register:
 - `quarantine`
 - `deleted_policy_violation`
 
-Compatibility states from older records remain readable: `active_policy`, `active_runbook`, `historical_receipt`, `consumed_prompt`, and `quarantined`.
+Compatibility states from older records remain readable: `active_policy`,
+`active_runbook`, `historical_receipt`, `consumed_prompt`, and `quarantined`.
 
 | Artifact | Lifecycle | Default load | Safe to replay | Source task | Notes |
 |---|---|---:|---:|---|---|
 | `README.md` | `current_baseline` | true | false | AH-494 | Repository overview. |
-| `AGENTS.md` | `active_policy` | true | false | AH-494/AH-534 | Read-first local policy; AH-534 adds compact AgentHub-only execution rule. |
-| `INDEX.md` | `current_baseline` | true | false | AH-494/AH-534 | Artifact path index. |
-| `ARTIFACT_REGISTER.md` | `current_baseline` | true | false | AH-522/AH-534 | Lifecycle/default-load register. |
-| `PR_QUEUE_REGISTER.md` | `current_baseline` | true | false | AH-523/AH-534 | PR queue/register decisions. |
+| `AGENTS.md` | `active_policy` | true | false | AH-494 | Read-first local policy. |
+| `INDEX.md` | `current_baseline` | true | false | AH-494 | Artifact path index. |
+| `ARTIFACT_REGISTER.md` | `current_baseline` | true | false | AH-522 | Lifecycle/default-load register. |
+| `PR_QUEUE_REGISTER.md` | `current_baseline` | true | false | AH-523 | PR queue/register decisions. |
 | `context/agenthub-current-context-pack.md` | `current_context_pack` | true | false | AH-523 | Only default context pack. |
 | `GOVERNANCE.md` | `active_policy` | true | false | AH-494 | Governance overview. |
 | `SECURITY.md` | `active_policy` | false | false | AH-494 | Security policy. |
-| `CHANGELOG.md` | `audit_only` | false | false | AH-494/AH-534 | Change history. |
+| `CHANGELOG.md` | `audit_only` | false | false | AH-494 | Change history. |
 | `governance/task-first-policy.md` | `active_policy` | false | false | AH-494 | Task-first control. |
 | `governance/done-gate-policy.md` | `active_policy` | false | false | AH-494 | Done gate control. |
 | `governance/stale-prompt-quarantine.md` | `active_policy` | false | false | AH-494 | Stale prompt guard. |
@@ -53,10 +59,11 @@ Compatibility states from older records remain readable: `active_policy`, `activ
 | `governance/dangerous-action-policy.md` | `active_policy` | false | false | AH-511 | Dangerous action boundary. |
 | `governance/token-context-budget.md` | `active_policy` | false | false | AH-511 | Token/context budget control. |
 | `governance/control-spine-registrar-policy.md` | `current_policy` | false | false | AH-523 | Registrar authority and lifecycle model. |
-| `governance/cyber-safe-prompt-wording-policy.md` | `active_policy` | false | false | AH-528 | Defensive-maintenance wording gate. |
+| `governance/cyber-safe-prompt-wording-policy.md` | `active_policy` | false | false | AH-528 | Authorized defensive-maintenance wording gate for cyber-adjacent prompts. |
 | `governance/agent-output-and-link-intake-control.md` | `active_policy` | false | false | AH-529 | Report placement, short-link intake, final output, and Done guard control. |
-| `governance/external-repo-pattern-adaptation-roadmap.md` | `active_policy` | false | false | AH-530 | Pattern-only adaptation roadmap. |
-| `governance/agenthub-only-execution-discipline.md` | `active_policy` | false | false | AH-534 | AgentHub-only runtime/server/storage execution discipline; defines invalidation classes. |
+| `governance/external-repo-pattern-adaptation-roadmap.md` | `active_policy` | false | false | AH-530 | Pattern-only adaptation roadmap for AH-527 research. |
+| `governance/agenthub-skill-pack-command-connector-patterns.md` | `active_policy` | false | false | AH-531 | AgentHub-local skill-pack, command, and connector pattern control. |
+| `governance/agenthub-eval-context-health-patterns.md` | `active_policy` | false | false | AH-532 | AgentHub-local eval, context-health, token-loop, and skill-discovery control. |
 | `runbooks/chatgpt-github-connect.md` | `active_runbook` | false | false | AH-494 | Task-specific runbook. |
 | `runbooks/secret-leak-response.md` | `active_runbook` | false | false | AH-500 | Secret leak runbook. |
 | `runbooks/agenthub-locked-run-recovery.md` | `active_runbook` | false | false | AH-507 | Locked-run recovery. |
@@ -65,7 +72,7 @@ Compatibility states from older records remain readable: `active_policy`, `activ
 | `runbooks/codex-cli-usage.md` | `active_runbook` | false | false | AH-494 | Codex CLI usage runbook. |
 | `runbooks/control-spine-pr-queue-and-artifact-lifecycle.md` | `active_control` | false | false | AH-523 | Registrar queue/lifecycle runbook. |
 | `runbooks/agent-shortlink-intake-and-report-placement.md` | `active_control` | false | false | AH-529 | Short-link stale-index and report placement runbook. |
-| `runbooks/agenthub-only-violation-response.md` | `active_control` | false | false | AH-534 | Direct-shell/runtime violation response and continuation runbook. |
+| `runbooks/agenthub-pattern-adaptation-control-loop.md` | `active_control` | false | false | AH-531/AH-532 | External pattern adaptation control loop; no runtime mutation. |
 | `templates/github/secret-scan-workflow.yml` | `active_policy` | false | false | AH-500 | Security workflow template. |
 | `.github/workflows/secret-scan.yml` | `active_policy` | false | false | AH-500 | Control-spine secret-scan workflow. |
 | `templates/security/gitleaks.toml` | `active_policy` | false | false | AH-500 | Scanner config. |
@@ -81,7 +88,7 @@ Compatibility states from older records remain readable: `active_policy`, `activ
 | `reports/apps/AH-507-validation-plan.md` | `audit_only` | false | false | AH-507 | Historical validation plan. |
 | `reports/строй ремонт строя россия, отчетный блок.md` | `audit_only` | false | false | AH-509 | Findings promoted to governance; not default context. |
 | `reports/incidents/AH-511-agent-cycle-self-critique.md` | `audit_only` | false | false | AH-511 | Findings promoted to governance/skills; not default context. |
-| `reports/incidents/AH-526-session-failure-report.md` | `audit_only` | false | false | AH-526 | Incident postmortem; evidence only. |
+| `reports/incidents/AH-526-session-failure-report.md` | `audit_only` | false | false | AH-526 | Incident postmortem; evidence only, not default instruction. |
 | `reports/handoffs/2026-05-22-current-chat-handoff.md` | `audit_only` | false | false | Current ChatGPT Project dialogue | Handoff evidence only. |
 | `reports/security/AH-500-redacted-org-scan-summary.md` | `audit_only` | false | false | AH-500 | Redacted evidence summary. |
 | `reports/security/AH-501-secret-exclusion-current-content-summary.md` | `audit_only` | false | false | AH-501 | Redacted evidence summary. |
@@ -99,17 +106,6 @@ Compatibility states from older records remain readable: `active_policy`, `activ
 | `reports/receipts/AH-510-t0-emergency-stop-control-receipt.md` | `historical_receipt` | false | false | AH-510 | Receipt only. |
 | `reports/receipts/mtproxy-domain-route-worker-receipt-20260523.md` | `historical_receipt` | false | false | AH-468 | Operational receipt only. |
 | `reports/receipts/npm-docker-domain-route-ah513-ah518-receipt-20260523.md` | `historical_receipt` | false | false | AH-513/AH-518 | Operational receipt only. |
-| `reports/control-spine/teamlead-system-inventory-20260524.md` | `operational_receipt` | false | false | AH-522 | Inventory report for current run. |
-| `reports/receipts/teamlead-system-inventory-receipt-20260524.md` | `operational_receipt` | false | false | AH-522 | Inventory receipt for current run. |
-| `reports/receipts/control-spine-pr-queue-cleanup-receipt-20260524.md` | `operational_receipt` | false | false | AH-523 | Registrar queue cleanup receipt. |
-| `reports/receipts/AH-526-session-failure-report-receipt.md` | `operational_receipt` | false | false | AH-526 | Incident report placement and PR queue receipt. |
-| `reports/research/external-agent-framework-pattern-audit-20260524.md` | `audit_only` | false | false | AH-527 | External repository pattern audit; not default instruction. |
-| `reports/receipts/external-agent-framework-pattern-audit-receipt-20260524.md` | `operational_receipt` | false | false | AH-527 | Research receipt; proof only. |
-| `reports/receipts/cyber-safe-prompt-wording-receipt-20260524.md` | `operational_receipt` | false | false | AH-528 | Prompt wording policy receipt; proof only. |
-| `reports/receipts/AH-529-agent-output-link-intake-repair-receipt.md` | `operational_receipt` | false | false | AH-529 | Agent output and short-link intake repair receipt. |
-| `reports/receipts/external-repo-pattern-adaptation-closed-loop-receipt.md` | `operational_receipt` | false | false | AH-530 | External pattern adaptation readiness receipt. |
-| `reports/receipts/AH-533-git-route-policy-receipt.md` | `operational_receipt` | false | false | AH-533 | Git/GitHub route policy receipt; proof only. |
-| `reports/receipts/AH-534-agenthub-only-execution-discipline-receipt.md` | `operational_receipt` | false | false | AH-534 | AgentHub-only execution discipline receipt; proof only. |
 | `schemas/prompt-artifact.schema.json` | `active_policy` | false | false | AH-494 | Schema. |
 | `schemas/report-receipt.schema.json` | `active_policy` | false | false | AH-494 | Schema. |
 | `schemas/task-card.schema.json` | `active_policy` | false | false | AH-494 | Schema. |
@@ -118,15 +114,30 @@ Compatibility states from older records remain readable: `active_policy`, `activ
 | `schemas/t0-emergency-stop-receipt.schema.json` | `active_policy` | false | false | AH-510 | Schema. |
 | `schemas/control-spine-pr-queue-register.schema.json` | `active_control` | false | false | AH-523 | PR queue register schema. |
 | `schemas/agent-output-quality-receipt.schema.json` | `active_control` | false | false | AH-529 | Receipt schema for output/link/report quality gates. |
-| `schemas/agenthub-only-execution-receipt.schema.json` | `active_control` | false | false | AH-534 | Receipt schema for AgentHub-only execution discipline. |
 | `skills-drafts/README.md` | `audit_only` | false | false | AH-511 | Draft skill directory note. |
 | `skills-drafts/t0-non-authoring-gate/SKILL.md` | `audit_only` | false | false | AH-511 | Draft skill, not active by default. |
 | `skills-drafts/devops-incident-diagnostics/SKILL.md` | `audit_only` | false | false | AH-511 | Draft skill, not active by default. |
 | `skills-drafts/agenthub-evidence-loop-closure/SKILL.md` | `audit_only` | false | false | AH-511 | Draft skill, not active by default. |
-| `skills-drafts/agenthub-only-execution-boundary/SKILL.md` | `audit_only` | false | false | AH-534 | Draft skill, not active by default. |
 | `registries/agenthub-control-spine-id-register.md` | `current_baseline` | true | false | AH-522 | Current ID register. |
-
+| `reports/control-spine/teamlead-system-inventory-20260524.md` | `operational_receipt` | false | false | AH-522 | Inventory report for current run. |
+| `reports/receipts/teamlead-system-inventory-receipt-20260524.md` | `operational_receipt` | false | false | AH-522 | Inventory receipt for current run. |
+| `reports/receipts/control-spine-pr-queue-cleanup-receipt-20260524.md` | `operational_receipt` | false | false | AH-523 | Registrar queue cleanup receipt. |
+| `reports/receipts/AH-526-session-failure-report-receipt.md` | `operational_receipt` | false | false | AH-526 | Incident report placement and PR queue receipt. |
+| `reports/research/external-agent-framework-pattern-audit-20260524.md` | `audit_only` | false | false | AH-527 | External repository pattern audit; not a default instruction. |
+| `reports/receipts/external-agent-framework-pattern-audit-receipt-20260524.md` | `operational_receipt` | false | false | AH-527 | Research receipt; proof only. |
+| `reports/receipts/cyber-safe-prompt-wording-receipt-20260524.md` | `operational_receipt` | false | false | AH-528 | Prompt wording policy receipt; proof only. |
+| `reports/receipts/AH-529-agent-output-link-intake-repair-receipt.md` | `operational_receipt` | false | false | AH-529 | Agent output and short-link intake repair receipt. |
+| `reports/receipts/external-repo-pattern-adaptation-closed-loop-receipt.md` | `operational_receipt` | false | false | AH-530 | External pattern adaptation readiness receipt. |
+| `reports/receipts/AH-533-git-route-policy-receipt.md` | `operational_receipt` | false | false | AH-533 | Git/GitHub route policy receipt; proof only. |
+| `reports/receipts/AH-531-AH-532-pattern-implementation-receipt.md` | `operational_receipt` | false | false | AH-531/AH-532 | Pattern implementation receipt; proof only. |
+| `governance/agenthub-only-execution-discipline.md` | `active_policy` | false | false | AH-534 | AgentHub-only runtime/server/storage execution discipline; defines invalidation classes. |
 | `governance/agenthub-safe-recovery-control.md` | `active_policy` | false | false | AH-534 | Safe recovery control for blocker loops, task closure, runtime safety, and Caveman final output. |
+| `runbooks/agenthub-only-violation-response.md` | `active_control` | false | false | AH-534 | Direct-shell/runtime violation response and continuation runbook. |
+| `runbooks/agenthub-live-execution-adapter-remediation.md` | `active_control` | false | false | AH-537 | Live adapter remediation runbook for blocked command-worker dispatch. |
 | `runbooks/agenthub-safe-recovery-control-loop.md` | `active_control` | false | false | AH-534 | Closed-loop runbook for safe recovery, evidence, task lifecycle, and platform gates. |
 | `prompts/architecture/agenthub-safe-recovery-control-prompt.txt` | `consumed_prompt` | false | false | AH-534 | Neutral policy-safe prompt artifact; not replayed by default. |
+| `reports/receipts/AH-534-agenthub-only-execution-discipline-receipt.md` | `operational_receipt` | false | false | AH-534 | AgentHub-only execution discipline receipt; proof only. |
+| `reports/receipts/AH-536-AH-537-live-execution-route-repair-receipt.md` | `operational_receipt` | false | false | AH-536/AH-537 | Live execution adapter blocker receipt; proof only. |
 | `reports/receipts/AH-534-agenthub-safe-recovery-control-receipt.md` | `operational_receipt` | false | false | AH-534 | Receipt for safe recovery control package; proof only. |
+| `schemas/agenthub-only-execution-receipt.schema.json` | `active_control` | false | false | AH-534 | Receipt schema for AgentHub-only execution discipline. |
+| `skills-drafts/agenthub-only-execution-boundary/SKILL.md` | `audit_only` | false | false | AH-534 | Draft skill, not active by default. |
