@@ -28,6 +28,7 @@
           "P4_LIVE_RUNTIME_READ",
           "P5_LIVE_RUNTIME_MUTATE",
           "P6_DB_BACKUP_AND_SAFE_DB_ACTION",
+          "P7_DOCKER_DESTRUCTIVE_CLEANUP",
           "P8_PROXY_FIREWALL_EDGE"
         ]
       },
