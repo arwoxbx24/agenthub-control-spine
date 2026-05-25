@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/arwoxbx24/agenthub-control-spine/schemas/agenthub-only-execution-receipt.schema.json",
+  "title": "AgentHub-only execution receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "task_id",
+    "run_id",
+    "repository",
+    "final_state",
+    "route",
+    "invalidation_classes",
+    "changed_artifacts",
+    "validation",
+    "forbidden_surface_touched"
+  ],
+  "properties": {
+    "schema": {
+      "const": "agenthub_only_execution_receipt.v1"
+    },
+    "task_id": {
+      "type": "string",
+      "pattern": "^AH-[0-9]+$"
+    },
+    "run_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "repository": {
+      "const": "arwoxbx24/agenthub-control-spine"
+    },
+    "final_state": {
+      "type": "string",
+      "enum": [
+        "DONE_WITH_EVIDENCE",
+        "READY_BLOCKED_BY_PLATFORM_GATE",
+        "OWNER_ONLY_IRREVERSIBLE_GATE",
+        "FORBIDDEN_SCOPE_BLOCKER",
+        "WRONG_TASK"
+      ]
+    },
+    "route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["youtrack_task", "agenthub_run", "branch", "worker_or_registrar", "evidence_output"],
+      "properties": {
+        "youtrack_task": { "type": "string" },
+        "agenthub_run": { "type": "string" },
+        "branch": { "type": "string" },
+        "worker_or_registrar": { "type": "string" },
+        "evidence_output": { "type": "string" }
+      }
+    },
+    "invalidation_classes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "DIRECT_SHELL_MUTATION_BY_T0",
+          "DIRECT_RUNTIME_MUTATION_WITHOUT_AGENTHUB",
+          "YOLO_RUNTIME_MODE_FORBIDDEN",
+          "NO_CONTROL_SPINE_RECEIPT",
+          "CHAT_REPORT_INSTEAD_OF_REPO_RECEIPT",
+          "REPORT_THEN_STOP_LOOP",
+          "FAKE_DONE_FROM_REPORT",
+          "BROAD_COMMAND_WITHOUT_TASK",
+          "UNSAFE_STORAGE_WRITE",
+          "IMAGE_OR_LINK_NOT_VALIDATED",
+          "TASK_SERVICE_WRITEBACK_BYPASS",
+          "AGENTHUB_EXECUTION_ADAPTER_UNAVAILABLE"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "changed_artifacts": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": { "type": "string" }
+    },
+    "forbidden_surface_touched": {
+      "type": "boolean"
+    },
+    "blocker": {
+      "type": ["string", "null"]
+    }
+  }
+}
