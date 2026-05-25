@@ -24,6 +24,8 @@ Commit: `0ac83774fc4fd4f38d247d69145b82cdcab0742a`
 
 PR: `#45`
 
+Merge commit: `8a2f372a96cd0fa1d823752140ddff3bff0a21d4`
+
 ## Source Artifacts Read
 
 | Source | Claim status | Evidence |
@@ -91,4 +93,4 @@ No secrets, raw env dumps, tokens, private keys, cookies, DB data, or raw intern
 
 ## Final State
 
-`READY_TO_MERGE`. Repo-first controls are queued in PR `#45`; Lane F MinIO transport failure is scoped and has GitHub/YouTrack/AgentHub fallback evidence. No live runtime Done is claimed.
+`DONE_WITH_EVIDENCE` for control-spine lanes A/B/C. PR `#45` is merged, AH-542 carries task readback evidence, and Lane F MinIO transport failure is scoped with GitHub/YouTrack/AgentHub fallback evidence. No live runtime Done is claimed.
