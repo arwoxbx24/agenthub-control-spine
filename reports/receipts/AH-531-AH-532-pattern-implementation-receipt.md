@@ -36,7 +36,7 @@ as a dependency.
 | worker route | `agent_hub_mcp:RUN-pattern-implementation-ah531-ah532-20260525:ownership_bind:PASS` |
 | worker id | `W-reg-04` |
 | branch | `agenthub/pattern-implementation-ah531-ah532-20260525` |
-| PR | `PENDING_BEFORE_PR_CREATION` |
+| PR | `#38` |
 
 ## Implemented Artifacts
 
@@ -59,7 +59,7 @@ as a dependency.
 | gitleaks/redacted scan | PASS: no leaks found. |
 | unsafe marker scan | PASS: no secret, raw transcript, env dump, private key, token, credential, or internal history marker found. |
 | index/register coverage | PASS. |
-| PR queue coverage | PENDING_PR_NUMBER |
+| PR queue coverage | PASS: PR `#38` is recorded in `PR_QUEUE_REGISTER.md`. |
 | YouTrack readback | PENDING_FINAL_READBACK |
 
 ## Safety
@@ -73,4 +73,4 @@ as a dependency.
 
 ## Final State
 
-`PR_PENDING`
+`PR_READY_WITH_VALIDATION`
