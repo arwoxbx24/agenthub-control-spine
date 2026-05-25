@@ -10,6 +10,10 @@ status: draft
 
 # Changelog
 
+## 2026-05-25
+
+- Added AH-534 AgentHub-only execution discipline package: runtime/server/storage work must route through AgentHub task/run/worker/evidence, direct T0 shell/runtime mutation invalidates the run, missing control-spine receipt blocks Done, and execution-adapter unavailability becomes a platform remediation gate rather than direct fallback.
+
 ## 2026-05-24
 
 - Added AH-533 Git/GitHub route policy: control-spine GitHub mutations must be YouTrack-task-bound and AgentHub-routed with RUN_ID, branch, evidence, validation, and receipt.
