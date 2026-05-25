@@ -10,6 +10,10 @@ status: draft
 
 # Changelog
 
+## 2026-05-25
+
+- Added AH-531/AH-532 AgentHub-local pattern implementation controls for skill-pack/command/connector separation, eval/context-health/token-loop/skill-discovery checks, and the pattern adaptation runbook; no external runtime install or code import.
+
 ## 2026-05-24
 
 - Added AH-533 Git/GitHub route policy: control-spine GitHub mutations must be YouTrack-task-bound and AgentHub-routed with RUN_ID, branch, evidence, validation, and receipt.

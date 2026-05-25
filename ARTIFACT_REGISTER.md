@@ -62,6 +62,8 @@ Compatibility states from older records remain readable: `active_policy`,
 | `governance/cyber-safe-prompt-wording-policy.md` | `active_policy` | false | false | AH-528 | Authorized defensive-maintenance wording gate for cyber-adjacent prompts. |
 | `governance/agent-output-and-link-intake-control.md` | `active_policy` | false | false | AH-529 | Report placement, short-link intake, final output, and Done guard control. |
 | `governance/external-repo-pattern-adaptation-roadmap.md` | `active_policy` | false | false | AH-530 | Pattern-only adaptation roadmap for AH-527 research. |
+| `governance/agenthub-skill-pack-command-connector-patterns.md` | `active_policy` | false | false | AH-531 | AgentHub-local skill-pack, command, and connector pattern control. |
+| `governance/agenthub-eval-context-health-patterns.md` | `active_policy` | false | false | AH-532 | AgentHub-local eval, context-health, token-loop, and skill-discovery control. |
 | `runbooks/chatgpt-github-connect.md` | `active_runbook` | false | false | AH-494 | Task-specific runbook. |
 | `runbooks/secret-leak-response.md` | `active_runbook` | false | false | AH-500 | Secret leak runbook. |
 | `runbooks/agenthub-locked-run-recovery.md` | `active_runbook` | false | false | AH-507 | Locked-run recovery. |
@@ -70,6 +72,7 @@ Compatibility states from older records remain readable: `active_policy`,
 | `runbooks/codex-cli-usage.md` | `active_runbook` | false | false | AH-494 | Codex CLI usage runbook. |
 | `runbooks/control-spine-pr-queue-and-artifact-lifecycle.md` | `active_control` | false | false | AH-523 | Registrar queue/lifecycle runbook. |
 | `runbooks/agent-shortlink-intake-and-report-placement.md` | `active_control` | false | false | AH-529 | Short-link stale-index and report placement runbook. |
+| `runbooks/agenthub-pattern-adaptation-control-loop.md` | `active_control` | false | false | AH-531/AH-532 | External pattern adaptation control loop; no runtime mutation. |
 | `templates/github/secret-scan-workflow.yml` | `active_policy` | false | false | AH-500 | Security workflow template. |
 | `.github/workflows/secret-scan.yml` | `active_policy` | false | false | AH-500 | Control-spine secret-scan workflow. |
 | `templates/security/gitleaks.toml` | `active_policy` | false | false | AH-500 | Scanner config. |
@@ -126,3 +129,4 @@ Compatibility states from older records remain readable: `active_policy`,
 | `reports/receipts/AH-529-agent-output-link-intake-repair-receipt.md` | `operational_receipt` | false | false | AH-529 | Agent output and short-link intake repair receipt. |
 | `reports/receipts/external-repo-pattern-adaptation-closed-loop-receipt.md` | `operational_receipt` | false | false | AH-530 | External pattern adaptation readiness receipt. |
 | `reports/receipts/AH-533-git-route-policy-receipt.md` | `operational_receipt` | false | false | AH-533 | Git/GitHub route policy receipt; proof only. |
+| `reports/receipts/AH-531-AH-532-pattern-implementation-receipt.md` | `operational_receipt` | false | false | AH-531/AH-532 | Pattern implementation receipt; proof only. |
