@@ -12,6 +12,7 @@ status: draft
 
 ## 2026-05-25
 
+- Added AH-534 AgentHub safe recovery control package: neutral incident wording, task/child lifecycle gates, blocker-loop closure, live-adapter platform gate handling, Docker/DB/proxy safety rules, artifact lifecycle, PR queue, and Russian Caveman final-output control.
 - Added AH-536/AH-537 live execution route repair receipt and adapter remediation runbook: direct T0 runtime route-bypass is quarantined as invalid evidence, the live 502 incident remains open, and `CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED` is recorded as `READY_BLOCKED_BY_AGENTHUB_LIVE_ADAPTER`.
 - Tightened `schemas/agenthub-only-execution-receipt.schema.json` so route receipts require allowed surface, forbidden surface, validation contract, rollback/checkpoint, and evidence output.
 - Added AH-534 AgentHub-only execution discipline package: runtime/server/storage work must route through AgentHub task/run/worker/evidence, direct T0 shell/runtime mutation invalidates the run, missing control-spine receipt blocks Done, and execution-adapter unavailability becomes a platform remediation gate rather than direct fallback.
