@@ -21,11 +21,12 @@ Install a durable control-spine repair after direct T0 shell/runtime actions and
 | Field | Value |
 |---|---|
 | task | `AH-534` |
+| remediation task | `AH-535` |
 | RUN_ID | `RUN-control-spine-agenthub-only-execution-discipline-20260525` |
 | repository | `arwoxbx24/agenthub-control-spine` |
 | branch | `agenthub/agenthub-only-execution-discipline-20260525` |
 | owner role | `T0 Registrar` |
-| AgentHub route | `agent_hub_create:PASS` |
+| AgentHub route | `agent_hub_create:PASS`; `agent_hub_dispatch:PASS`; `agent_hub_execute:PASS`; fallback evidence registration `PASS`; merge `BLOCKED` |
 | PR | `#39` |
 
 ## Duplicate Check
@@ -83,7 +84,12 @@ The installed control defines:
 | INDEX coverage | PASS. |
 | ARTIFACT_REGISTER coverage | PASS. |
 | PR_QUEUE_REGISTER coverage | PASS: PR `#39` recorded. |
+| YouTrack evidence | PASS: `AH-534` updated, remediation task `AH-535` created. |
+
+## Platform Gate
+
+AgentHub merge still returns `MCP_RECEIPT_REQUIRED_FOR_IMPLEMENTATION_DONE` after fallback evidence registration. This is tracked as `AH-535` and does not require owner routine clicking.
 
 ## Final State
 
-`DONE_WITH_EVIDENCE`
+`READY_BLOCKED_BY_PLATFORM_GATE`
