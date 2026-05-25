@@ -151,3 +151,6 @@ status: draft
 | `reports/receipts/AH-536-AH-554-repo-first-runtime-closure-receipt-20260525.md` | corrective receipt | AH-536/AH-554 | blocked |
 | `reports/incidents/AGENTHUB-P0-repo-first-agent-execution-freeze-20260525.md` | corrective incident audit | AH-567/AH-536/AH-554 | blocked |
 | `reports/receipts/AGENTHUB-P0-repo-first-agent-execution-freeze-receipt-20260525.md` | corrective receipt | AH-567/AH-536/AH-554 | blocked |
+| `governance/agenthub-controlled-live-devops-permission-profile-ah536-ah554-ah567.md` | governance control | AH-567/AH-536/AH-554 | active |
+| `reports/incidents/AGENTHUB-P0-controlled-unfreeze-safe-permission-expansion-20260525.md` | corrective incident report | AH-567/AH-536/AH-554 | permission-profile-recorded |
+| `reports/receipts/AGENTHUB-P0-controlled-unfreeze-safe-permission-expansion-receipt-20260525.md` | corrective receipt | AH-567/AH-536/AH-554 | blocked-by-permission-auth |
