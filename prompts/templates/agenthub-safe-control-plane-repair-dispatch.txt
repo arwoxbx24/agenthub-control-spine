@@ -1,0 +1,47 @@
+TASK_CLASS: AGENTHUB_CONTROL_PLANE
+RUN_ID: <RUN_ID>
+TASK_ID: <TASK_ID>
+OWNER_AUTHORITY: <owner role and authorization source>
+
+This is AgentHub control-plane repair for prompts, routing, registers,
+templates, schemas, validators, hooks, final gates, receipts, or task evidence.
+It performs no production/runtime mutation.
+
+Owned repository:
+- arwoxbx24/agenthub-control-spine or other exact authorized control-plane repo.
+
+Allowed actions:
+- Read AGENTS.md, INDEX.md, registers, current context pack, and linked receipts.
+- Update governance, runbooks, prompt templates, schemas, validators/evals,
+  skill docs, registers, and receipts.
+- Update YouTrack task evidence.
+- Open or update one GitHub PR for this scope.
+- Run static lint, prompt lint, eval fixtures, register lint, PR queue lint,
+  no-secret checks, and red-team checks.
+
+Forbidden actions:
+- No production/runtime mutation.
+- No direct Docker, Nginx, DB, firewall, proxy, Portainer, PM2 deletion, or live service changes.
+- No secrets, raw env, private keys, tokens, passwords, or raw transcript links.
+- No public target testing.
+- No duplicate PR or duplicate task for the same scope.
+- No claim that OpenAI safeguards can be disabled.
+
+Live adapter capability policy:
+- Missing live command adapter blocks only live runtime mutation.
+- It does not block GitHub artifact work, YouTrack updates, register updates,
+  prompt/template repair, schema/eval work, receipts, or read-only analysis.
+- Use `LIVE_RUNTIME_ADAPTER_NOT_EXPOSED` only for live runtime mutation.
+- Use `SANDBOX_ONLY_NOT_RUNTIME_PROOF` when sandbox evidence is not production proof.
+- Use `T0_DIRECT_RUNTIME_MUTATION_FORBIDDEN` when direct T0 shell would be required.
+
+Validation:
+- Static lint: no secret patterns, raw env, or raw transcript links.
+- Prompt lint: safe normalizer present; no bypass/evasion instructions.
+- Task lint: task id, RUN_ID, repo, branch, owner, stage, evidence, and Done gate present.
+- Router evals: all fixtures pass.
+- Register lint: new artifacts indexed and lifecycle/default_load/safe_to_replay set.
+- PR queue lint: no duplicate PR or unowned open PR.
+
+Final status:
+- DONE_WITH_EVIDENCE, or one exact typed blocker from the router skill.

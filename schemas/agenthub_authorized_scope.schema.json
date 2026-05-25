@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/arwoxbx24/agenthub-control-spine/schemas/agenthub_authorized_scope.schema.json",
+  "title": "AgentHub Authorized Scope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_class",
+    "run_id",
+    "owner_authority",
+    "owned_environment",
+    "allowed_targets",
+    "forbidden_targets",
+    "allowed_actions",
+    "forbidden_actions",
+    "secrets_policy",
+    "destructive_action_policy",
+    "rollback_policy",
+    "validation_policy",
+    "final_gate"
+  ],
+  "properties": {
+    "task_class": {
+      "type": "string",
+      "enum": [
+        "AUTHORIZED_ADMIN_DEVOPS",
+        "AGENTHUB_CONTROL_PLANE",
+        "DEFENSIVE_SECURITY_AUTHORIZED",
+        "PROHIBITED_OR_OWNER_ONLY_RISK"
+      ]
+    },
+    "run_id": { "type": "string", "minLength": 1 },
+    "owner_authority": { "type": "string", "minLength": 1 },
+    "owned_environment": { "type": "string", "minLength": 1 },
+    "allowed_targets": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "forbidden_targets": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "allowed_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "forbidden_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "secrets_policy": { "type": "string", "minLength": 1 },
+    "destructive_action_policy": { "type": "string", "minLength": 1 },
+    "rollback_policy": { "type": "string", "minLength": 1 },
+    "validation_policy": { "type": "string", "minLength": 1 },
+    "final_gate": {
+      "type": "string",
+      "enum": [
+        "DONE_WITH_EVIDENCE",
+        "OPENAI_CYBER_FLAG_FALSE_POSITIVE_REPORTED",
+        "TRUSTED_ACCESS_REQUIRED_FOR_HIGH_RISK_DEFENSIVE_CYBER",
+        "LIVE_RUNTIME_ADAPTER_NOT_EXPOSED",
+        "SANDBOX_ONLY_NOT_RUNTIME_PROOF",
+        "T0_DIRECT_RUNTIME_MUTATION_FORBIDDEN",
+        "OWNER_ONLY_IRREVERSIBLE_GATE",
+        "MISSING_ACCOUNT_CREDENTIAL",
+        "INSTRUCTION_SOURCE_DRIFT",
+        "DUPLICATE_PR_OR_TASK_EXISTS",
+        "PROMPT_SCORE_BELOW_85",
+        "SAFETY_QUARANTINE"
+      ]
+    }
+  }
+}

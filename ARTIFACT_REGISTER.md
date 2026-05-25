@@ -64,6 +64,7 @@ Compatibility states from older records remain readable: `active_policy`,
 | `governance/external-repo-pattern-adaptation-roadmap.md` | `active_policy` | false | false | AH-530 | Pattern-only adaptation roadmap for AH-527 research. |
 | `governance/agenthub-skill-pack-command-connector-patterns.md` | `active_policy` | false | false | AH-531 | AgentHub-local skill-pack, command, and connector pattern control. |
 | `governance/agenthub-eval-context-health-patterns.md` | `active_policy` | false | false | AH-532 | AgentHub-local eval, context-health, token-loop, and skill-discovery control. |
+| `governance/openai-cyber-safe-request-router.md` | `active_policy` | false | false | AH-541 | Four-class OpenAI cyber-safe request router; clarity/compliance policy, not safeguard bypass. |
 | `runbooks/chatgpt-github-connect.md` | `active_runbook` | false | false | AH-494 | Task-specific runbook. |
 | `runbooks/secret-leak-response.md` | `active_runbook` | false | false | AH-500 | Secret leak runbook. |
 | `runbooks/agenthub-locked-run-recovery.md` | `active_runbook` | false | false | AH-507 | Locked-run recovery. |
@@ -73,6 +74,7 @@ Compatibility states from older records remain readable: `active_policy`,
 | `runbooks/control-spine-pr-queue-and-artifact-lifecycle.md` | `active_control` | false | false | AH-523 | Registrar queue/lifecycle runbook. |
 | `runbooks/agent-shortlink-intake-and-report-placement.md` | `active_control` | false | false | AH-529 | Short-link stale-index and report placement runbook. |
 | `runbooks/agenthub-pattern-adaptation-control-loop.md` | `active_control` | false | false | AH-531/AH-532 | External pattern adaptation control loop; no runtime mutation. |
+| `runbooks/chatgpt-cyber-flag-recovery-runbook.md` | `active_control` | false | false | AH-541 | Clean authorized-scope recovery steps for reported ChatGPT/Codex cyber warnings. |
 | `templates/github/secret-scan-workflow.yml` | `active_policy` | false | false | AH-500 | Security workflow template. |
 | `.github/workflows/secret-scan.yml` | `active_policy` | false | false | AH-500 | Control-spine secret-scan workflow. |
 | `templates/security/gitleaks.toml` | `active_policy` | false | false | AH-500 | Scanner config. |
@@ -82,6 +84,8 @@ Compatibility states from older records remain readable: `active_policy`,
 | `prompts/apps/AH-507-chatgpt-control-app-implementation-prompt.md` | `consumed_prompt` | false | false | AH-507 | One-time implementation prompt. |
 | `prompts/implementation/anthropic-knowledge-work-pattern-adaptation-worker.txt` | `active_control` | false | false | AH-531 | Future worker brief; no external install or runtime mutation. |
 | `prompts/implementation/microsoft-ai-engineering-coach-pattern-adaptation-worker.txt` | `active_control` | false | false | AH-532 | Future worker brief; privacy-preserving eval adaptation only. |
+| `prompts/templates/agenthub-safe-devops-incident-dispatch.txt` | `active_control` | false | false | AH-541 | Safe dispatch template for authorized owned infrastructure incidents. |
+| `prompts/templates/agenthub-safe-control-plane-repair-dispatch.txt` | `active_control` | false | false | AH-541 | Safe dispatch template for AgentHub control-plane repair without runtime mutation. |
 | `apps/agenthub-chatgpt-control-app/` | `audit_only` | false | false | AH-507 | Prototype app artifact, not governance instruction. |
 | `reports/apps/AH-507-source-map.md` | `audit_only` | false | false | AH-507 | Historical source map. |
 | `reports/apps/AH-507-chatgpt-control-app-adr.md` | `audit_only` | false | false | AH-507 | Historical ADR unless explicitly requested. |
@@ -114,6 +118,7 @@ Compatibility states from older records remain readable: `active_policy`,
 | `schemas/t0-emergency-stop-receipt.schema.json` | `active_policy` | false | false | AH-510 | Schema. |
 | `schemas/control-spine-pr-queue-register.schema.json` | `active_control` | false | false | AH-523 | PR queue register schema. |
 | `schemas/agent-output-quality-receipt.schema.json` | `active_control` | false | false | AH-529 | Receipt schema for output/link/report quality gates. |
+| `schemas/agenthub_authorized_scope.schema.json` | `active_control` | false | false | AH-541 | Authorized-scope schema for cyber-safe router dispatches. |
 | `skills-drafts/README.md` | `audit_only` | false | false | AH-511 | Draft skill directory note. |
 | `skills-drafts/t0-non-authoring-gate/SKILL.md` | `audit_only` | false | false | AH-511 | Draft skill, not active by default. |
 | `skills-drafts/devops-incident-diagnostics/SKILL.md` | `audit_only` | false | false | AH-511 | Draft skill, not active by default. |
@@ -141,3 +146,6 @@ Compatibility states from older records remain readable: `active_policy`,
 | `reports/receipts/AH-534-agenthub-safe-recovery-control-receipt.md` | `operational_receipt` | false | false | AH-534 | Receipt for safe recovery control package; proof only. |
 | `schemas/agenthub-only-execution-receipt.schema.json` | `active_control` | false | false | AH-534 | Receipt schema for AgentHub-only execution discipline. |
 | `skills-drafts/agenthub-only-execution-boundary/SKILL.md` | `audit_only` | false | false | AH-534 | Draft skill, not active by default. |
+| `.agents/skills/agenthub-openai-cyber-safe-request-router/SKILL.md` | `active_control` | false | false | AH-541 | Active router skill for cyber-adjacent AgentHub request classification. |
+| `evals/agenthub-cyber-safe-router/` | `active_control` | false | false | AH-541 | Router class and blocker fixture tests. |
+| `reports/receipts/RUN-agenthub-openai-cyber-flag-safe-router-20260525-openai-cyber-safe-router-receipt.md` | `operational_receipt` | false | false | AH-541 | Receipt for cyber-safe router installation and validation proof. |
