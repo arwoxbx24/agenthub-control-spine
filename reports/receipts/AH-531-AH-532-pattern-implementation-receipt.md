@@ -37,6 +37,7 @@ as a dependency.
 | worker id | `W-reg-04` |
 | branch | `agenthub/pattern-implementation-ah531-ah532-20260525` |
 | PR | `#38` |
+| merge commit | `30c4d6148af76504652d24a9bf489240f73d30d9` |
 
 ## Implemented Artifacts
 
@@ -60,7 +61,7 @@ as a dependency.
 | unsafe marker scan | PASS: no secret, raw transcript, env dump, private key, token, credential, or internal history marker found. |
 | index/register coverage | PASS. |
 | PR queue coverage | PASS: PR `#38` is recorded in `PR_QUEUE_REGISTER.md`. |
-| YouTrack readback | PENDING_FINAL_READBACK |
+| YouTrack readback | PENDING_FINAL_STAGE_UPDATE |
 
 ## Safety
 
@@ -73,4 +74,4 @@ as a dependency.
 
 ## Final State
 
-`PR_READY_WITH_VALIDATION`
+`DONE_WITH_EVIDENCE`
