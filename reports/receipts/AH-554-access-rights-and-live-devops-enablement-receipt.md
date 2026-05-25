@@ -98,7 +98,8 @@ not part of normal restoration.
 
 ## Final State
 
-Repo/control lanes: installed in PR.
+Repo/control lanes: installed and merged by PR #48,
+`fb1095baee6077a60049a0f47a8de3d1b892c35f`.
 
 Live runtime lane: `READY_BLOCKED_BY_PLATFORM_GATE` /
 `AGENTHUB_LIVE_WORKER_AUTH_MISSING`, local to AH-554.
