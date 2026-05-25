@@ -149,3 +149,15 @@ Compatibility states from older records remain readable: `active_policy`,
 | `.agents/skills/agenthub-openai-cyber-safe-request-router/SKILL.md` | `active_control` | false | false | AH-541 | Active router skill for cyber-adjacent AgentHub request classification. |
 | `evals/agenthub-cyber-safe-router/` | `active_control` | false | false | AH-541 | Router class and blocker fixture tests. |
 | `reports/receipts/RUN-agenthub-openai-cyber-flag-safe-router-20260525-openai-cyber-safe-router-receipt.md` | `operational_receipt` | false | false | AH-541 | Receipt for cyber-safe router installation and validation proof. |
+| `governance/agenthub-lane-router-and-blocker-scope-policy.md` | `active_policy` | false | false | AH-542 | Lane A-F blocker scope policy; prevents live-adapter absence from globally stopping repo/task/control lanes. |
+| `runbooks/agenthub-paralysis-breaker-runbook.md` | `active_control` | false | false | AH-542 | Read-before-write, task freeze, dedupe, PR queue, prompt quarantine, and lane blocker runbook. |
+| `schemas/agenthub-blocker-taxonomy.schema.json` | `active_control` | false | false | AH-542 | Blocker taxonomy schema requiring lane, missing capability, evidence class, and legal route. |
+| `governance/task-graph-closure-policy.md` | `active_policy` | false | false | AH-542 | Duplicate-task, parent/child Done, task readback, and evidence-class closure policy. |
+| `governance/repo-first-artifact-lifecycle-policy.md` | `active_policy` | false | false | AH-542 | Default-load, safe-to-replay, consumed prompt, and quarantine policy. |
+| `.agents/skills/agenthub-task-first-router/SKILL.md` | `active_control` | false | false | AH-542 | Active task-first router skill for duplicate prevention and task readback. |
+| `.agents/skills/agenthub-registrar-artifact-lifecycle/SKILL.md` | `active_control` | false | false | AH-542 | Active registrar lifecycle skill for index/register/default-load coverage. |
+| `.agents/skills/agenthub-git-pr-queue-control/SKILL.md` | `active_control` | false | false | AH-542 | Active PR queue skill for duplicate PR and stale PR loop prevention. |
+| `.agents/skills/agenthub-truth-redteam/SKILL.md` | `active_control` | false | false | AH-542 | Active evidence-class redteam skill for fake PASS/Done prevention. |
+| `.agents/skills/caveman-user-communication/SKILL.md` | `active_control` | false | false | AH-542 | Active final-output skill; Russian compact Fact/Action/Left only. |
+| `evals/agenthub-paralysis-breaker/` | `active_control` | false | false | AH-542 | Regression fixtures for same-gate loop, sandbox-only Done, live-adapter lane scoping, duplicate tasks, parent closure, artifact lifecycle, and final output. |
+| `reports/receipts/RUN-agenthub-p0-paralysis-breaker-repo-first-control-repair-20260525-receipt.md` | `operational_receipt` | false | false | AH-542 | Receipt for AH-542 paralysis breaker control package; proof only, not instruction. |

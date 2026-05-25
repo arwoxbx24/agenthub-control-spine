@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/agenthub-blocker-taxonomy.schema.json",
+  "title": "AgentHub Blocker Taxonomy",
+  "type": "object",
+  "required": [
+    "run_id",
+    "scope_signature",
+    "lane",
+    "final_state",
+    "blocker_type",
+    "missing_capability",
+    "evidence_class",
+    "evidence_pointer",
+    "next_legal_route"
+  ],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string" },
+    "scope_signature": { "type": "string", "minLength": 1 },
+    "lane": { "type": "string", "enum": ["A", "B", "C", "D", "E", "F"] },
+    "lane_name": {
+      "type": "string",
+      "enum": [
+        "control_spine_repo",
+        "youtrack_task_graph",
+        "agenthub_mcp_routing",
+        "live_runtime",
+        "browser_user_outcome",
+        "user_communication"
+      ]
+    },
+    "final_state": {
+      "type": "string",
+      "enum": [
+        "DONE_WITH_EVIDENCE",
+        "READY_BLOCKED_BY_PLATFORM_GATE",
+        "OWNER_ONLY_IRREVERSIBLE_GATE",
+        "FORBIDDEN_SCOPE_BLOCKER",
+        "SAFETY_QUARANTINE"
+      ]
+    },
+    "blocker_type": {
+      "type": "string",
+      "enum": [
+        "none",
+        "CONTROL_SPINE_REPO_ROUTE_MISSING",
+        "GITHUB_AUTH_MISSING",
+        "YOUTRACK_MCP_UNAVAILABLE",
+        "YOUTRACK_AUTH_MISSING",
+        "AGENTHUB_LEDGER_UNAVAILABLE",
+        "AGENTHUB_LIVE_WORKER_ROUTE_MISSING",
+        "LIVE_ADAPTER_ENABLEMENT_REQUIRED",
+        "DEVOPS_WORKER_AUTH_MISSING",
+        "BROWSER_WORKER_ROUTE_MISSING",
+        "PR_QUEUE_CONFLICT_NEEDS_REBASE",
+        "TASK_GRAPH_DUPLICATE_COLLAPSE_REQUIRED",
+        "BLOCKER_COLLAPSE_LOOP",
+        "INSTRUCTION_SOURCE_DRIFT",
+        "PROMPT_DEFECT_BELOW_85",
+        "OWNER_ONLY_DESTRUCTIVE_GATE",
+        "SAFETY_QUARANTINE_REQUIRED"
+      ]
+    },
+    "missing_capability": { "type": "string" },
+    "evidence_class": {
+      "type": "string",
+      "enum": [
+        "VERIFIED_BY_REPO",
+        "VERIFIED_BY_YOUTRACK",
+        "VERIFIED_BY_AGENTHUB_LEDGER",
+        "VERIFIED_BY_RUNTIME_WORKER",
+        "USER_REPORTED_NOT_VERIFIED",
+        "HYPOTHESIS",
+        "CONTRADICTED"
+      ]
+    },
+    "evidence_pointer": { "type": "string", "minLength": 1 },
+    "next_legal_route": { "type": "string", "minLength": 1 },
+    "global_blocker": { "type": "boolean", "default": false },
+    "same_gate_attempt_count": { "type": "integer", "minimum": 0, "maximum": 2 }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "blocker_type": { "const": "none" } } },
+      "then": { "properties": { "missing_capability": { "const": "none" } } }
+    },
+    {
+      "if": { "properties": { "final_state": { "const": "DONE_WITH_EVIDENCE" } } },
+      "then": {
+        "properties": {
+          "blocker_type": { "const": "none" },
+          "global_blocker": { "const": false }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}
