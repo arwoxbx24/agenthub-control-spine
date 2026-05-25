@@ -85,7 +85,7 @@ status: draft
 | `reports/receipts/cyber-safe-prompt-wording-receipt-20260524.md` | cyber-safe prompt wording receipt | AH-528 | pass |
 | `reports/receipts/AH-529-agent-output-link-intake-repair-receipt.md` | agent output/link intake repair receipt | AH-529 | pass |
 | `reports/receipts/external-repo-pattern-adaptation-closed-loop-receipt.md` | external pattern adaptation receipt | AH-530 | pass |
-| `reports/receipts/AH-533-git-route-policy-receipt.md` | Git/GitHub route policy receipt | AH-533 | pending-validation |
+| `reports/receipts/AH-533-git-route-policy-receipt.md` | Git/GitHub route policy receipt | AH-533 | pass |
 | `registries/agenthub-control-spine-id-register.md` | AgentHub/YouTrack/GitHub ID register | AH-522 | active |
 | `skills-drafts/t0-non-authoring-gate/SKILL.md` | draft skill | AH-511 | draft |
 | `skills-drafts/devops-incident-diagnostics/SKILL.md` | draft skill | AH-511 | draft |

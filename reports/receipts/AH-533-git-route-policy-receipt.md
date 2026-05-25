@@ -28,7 +28,7 @@ YouTrack task and AgentHub RUN.
 | worker route | `agent_hub_mcp:RUN-control-spine-git-route-policy-20260525:ownership_bind:PASS` |
 | worker id | `W-reg-03` |
 | branch | `agenthub/git-route-policy-20260525` |
-| PR | `PENDING_BEFORE_PR_CREATION` |
+| PR | `#37` |
 
 ## Changed Artifacts
 
@@ -66,4 +66,4 @@ YouTrack task and AgentHub RUN.
 
 ## Final State
 
-`PR_PENDING`
+`PR_READY_WITH_VALIDATION`
