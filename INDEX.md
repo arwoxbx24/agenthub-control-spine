@@ -35,6 +35,8 @@ status: draft
 | `governance/cyber-safe-prompt-wording-policy.md` | governance policy | AH-528 | active |
 | `governance/agent-output-and-link-intake-control.md` | governance policy | AH-529 | active |
 | `governance/external-repo-pattern-adaptation-roadmap.md` | architecture decision | AH-530 | active |
+| `governance/agenthub-skill-pack-command-connector-patterns.md` | governance control | AH-531 | active |
+| `governance/agenthub-eval-context-health-patterns.md` | governance control | AH-532 | active |
 | `runbooks/chatgpt-github-connect.md` | runbook | AH-494 | draft |
 | `runbooks/secret-leak-response.md` | runbook | AH-500 | active |
 | `runbooks/agenthub-locked-run-recovery.md` | runbook | AH-507 | active |
@@ -43,6 +45,7 @@ status: draft
 | `runbooks/codex-cli-usage.md` | runbook | AH-494 | active |
 | `runbooks/control-spine-pr-queue-and-artifact-lifecycle.md` | runbook | AH-523 | active |
 | `runbooks/agent-shortlink-intake-and-report-placement.md` | runbook | AH-529 | active |
+| `runbooks/agenthub-pattern-adaptation-control-loop.md` | runbook | AH-531/AH-532 | active |
 | `templates/github/secret-scan-workflow.yml` | GitHub Actions template | AH-500 | active |
 | `.github/workflows/secret-scan.yml` | control-spine workflow | AH-500 | active |
 | `templates/security/gitleaks.toml` | scanner config template | AH-500 | active |
@@ -86,6 +89,7 @@ status: draft
 | `reports/receipts/AH-529-agent-output-link-intake-repair-receipt.md` | agent output/link intake repair receipt | AH-529 | pass |
 | `reports/receipts/external-repo-pattern-adaptation-closed-loop-receipt.md` | external pattern adaptation receipt | AH-530 | pass |
 | `reports/receipts/AH-533-git-route-policy-receipt.md` | Git/GitHub route policy receipt | AH-533 | pass |
+| `reports/receipts/AH-531-AH-532-pattern-implementation-receipt.md` | external pattern implementation receipt | AH-531/AH-532 | pending-validation |
 | `registries/agenthub-control-spine-id-register.md` | AgentHub/YouTrack/GitHub ID register | AH-522 | active |
 | `skills-drafts/t0-non-authoring-gate/SKILL.md` | draft skill | AH-511 | draft |
 | `skills-drafts/devops-incident-diagnostics/SKILL.md` | draft skill | AH-511 | draft |
