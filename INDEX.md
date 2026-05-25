@@ -145,3 +145,4 @@ status: draft
 | `reports/receipts/RUN-agenthub-p0-paralysis-breaker-repo-first-control-repair-20260525-receipt.md` | control-spine receipt | AH-542 | operational-receipt |
 | `reports/audits/AH-554-access-rights-and-live-worker-audit-20260525.md` | audit report | AH-554 | audit-only |
 | `reports/receipts/AH-554-access-rights-and-live-devops-enablement-receipt.md` | control-spine receipt | AH-554 | operational-receipt |
+| `reports/receipts/AH-536-AH-554-AH-550-route-enablement-and-runtime-repair-receipt-20260525.md` | operational receipt | AH-536/AH-554/AH-550/AH-557 | done-with-residuals |

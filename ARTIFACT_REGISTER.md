@@ -173,3 +173,4 @@ Compatibility states from older records remain readable: `active_policy`,
 | `evals/agenthub-access-rights-and-live-worker-gates/` | `active_control` | false | false | AH-554 | Regression fixtures for access rights, live-worker safety, and closure gates. |
 | `reports/audits/AH-554-access-rights-and-live-worker-audit-20260525.md` | `audit_only` | false | false | AH-554 | Access rights and live-worker audit report; evidence only. |
 | `reports/receipts/AH-554-access-rights-and-live-devops-enablement-receipt.md` | `operational_receipt` | false | false | AH-554 | Receipt for installed access-rights controls and residual live-worker blocker. |
+| `reports/receipts/AH-536-AH-554-AH-550-route-enablement-and-runtime-repair-receipt-20260525.md` | `operational_receipt` | false | false | AH-536/AH-554/AH-550/AH-557 | Route enablement and scoped runtime repair receipt; BMC direct runtime restored, AH-554 public upstream residual remains. |
