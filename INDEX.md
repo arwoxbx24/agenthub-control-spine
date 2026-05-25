@@ -156,3 +156,4 @@ status: draft
 | `reports/receipts/AGENTHUB-P0-controlled-unfreeze-safe-permission-expansion-receipt-20260525.md` | corrective receipt | AH-567/AH-536/AH-554 | superseded-by-break-glass-profile |
 | `governance/agenthub-break-glass-safe-route-recovery-profile-ah536-ah554-ah567.md` | governance control | AH-567/AH-536/AH-554 | active |
 | `reports/receipts/AGENTHUB-P0-break-glass-safe-route-recovery-start-receipt-20260525.md` | route-unblock start receipt | AH-567/AH-536/AH-554 | route-profile-started |
+| `reports/receipts/AGENTHUB-P0-break-glass-safe-route-recovery-final-receipt-20260525.md` | final route recovery receipt | AH-567/AH-536/AH-554 | blocked-by-edge-npm-auth |
