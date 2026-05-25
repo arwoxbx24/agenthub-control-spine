@@ -20,7 +20,9 @@ Task: `AH-542`
 
 Branch: `agenthub/ah542-paralysis-breaker-controls-20260525`
 
-PR: pending creation at first receipt commit.
+Commit: `0ac83774fc4fd4f38d247d69145b82cdcab0742a`
+
+PR: `#45`
 
 ## Source Artifacts Read
 
@@ -75,9 +77,11 @@ PR: pending creation at first receipt commit.
 
 ## Validation Results
 
-- Schema syntax: pending local validation.
-- Secret scan: pending local validation.
-- PR queue readback: pending after PR creation.
+- Schema syntax: PASS (`jq empty schemas/agenthub-blocker-taxonomy.schema.json`).
+- Fixture syntax: PASS (`jq empty evals/agenthub-paralysis-breaker/fixtures.json`).
+- Diff hygiene: PASS (`git diff --check`).
+- Secret scan: PASS (`gitleaks detect --no-git --source . --redact --verbose`).
+- PR queue readback: PR `#45` recorded in `PR_QUEUE_REGISTER.md`.
 - AgentHub merge: pending after repo PR evidence.
 
 ## Security
@@ -86,4 +90,4 @@ No secrets, raw env dumps, tokens, private keys, cookies, DB data, or raw intern
 
 ## Final State
 
-`READY_FOR_PR_VALIDATION` until PR is created, queue entry updated with PR number, validation passes, AgentHub merge receipt is recorded, and AH-542 is updated.
+`READY_BLOCKED_BY_PLATFORM_GATE` for merge only until PR checks/merge route complete. Repo-first controls are queued in PR `#45`; no live runtime Done is claimed.
