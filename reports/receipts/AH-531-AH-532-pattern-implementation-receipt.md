@@ -61,7 +61,7 @@ as a dependency.
 | unsafe marker scan | PASS: no secret, raw transcript, env dump, private key, token, credential, or internal history marker found. |
 | index/register coverage | PASS. |
 | PR queue coverage | PASS: PR `#38` is recorded in `PR_QUEUE_REGISTER.md`. |
-| YouTrack readback | PENDING_FINAL_STAGE_UPDATE |
+| YouTrack readback | PASS: AH-531 and AH-532 are `Done` with implementation evidence, validation evidence, receipt evidence, `NO_BLOCKER`, and `DONE_WITH_EVIDENCE`. |
 
 ## Safety
 
