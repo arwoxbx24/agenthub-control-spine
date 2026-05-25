@@ -158,3 +158,4 @@ status: draft
 | `reports/receipts/AGENTHUB-P0-break-glass-safe-route-recovery-start-receipt-20260525.md` | route-unblock start receipt | AH-567/AH-536/AH-554 | route-profile-started |
 | `reports/receipts/AGENTHUB-P0-break-glass-safe-route-recovery-final-receipt-20260525.md` | final route recovery receipt | AH-567/AH-536/AH-554 | blocked-by-edge-npm-auth |
 | `reports/incidents/AGENTHUB-P0-break-glass-safe-route-recovery-report-20260525.md` | corrective incident report | AH-567/AH-536/AH-554 | blocked-by-edge-npm-auth |
+| `reports/receipts/AGENTHUB-P0-npm-api-only-route-recovery-start-receipt-20260525.md` | route-unblock start receipt | AH-567/AH-536/AH-554 | npm-api-route-started |
