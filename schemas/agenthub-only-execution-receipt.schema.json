@@ -36,6 +36,8 @@
       "enum": [
         "DONE_WITH_EVIDENCE",
         "READY_BLOCKED_BY_PLATFORM_GATE",
+        "READY_BLOCKED_BY_AGENTHUB_LIVE_ADAPTER",
+        "INVALID_SESSION_QUARANTINED",
         "OWNER_ONLY_IRREVERSIBLE_GATE",
         "FORBIDDEN_SCOPE_BLOCKER",
         "WRONG_TASK"
@@ -44,12 +46,39 @@
     "route": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["youtrack_task", "agenthub_run", "branch", "worker_or_registrar", "evidence_output"],
+      "required": [
+        "youtrack_task",
+        "agenthub_run",
+        "branch",
+        "worker_or_registrar",
+        "allowed_surface",
+        "forbidden_surface",
+        "validation_contract",
+        "rollback_or_checkpoint",
+        "evidence_output"
+      ],
       "properties": {
         "youtrack_task": { "type": "string" },
         "agenthub_run": { "type": "string" },
         "branch": { "type": "string" },
         "worker_or_registrar": { "type": "string" },
+        "worker_id": { "type": "string" },
+        "allowed_surface": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "forbidden_surface": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "validation_contract": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "rollback_or_checkpoint": { "type": "string" },
         "evidence_output": { "type": "string" }
       }
     },
