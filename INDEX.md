@@ -126,10 +126,22 @@ status: draft
 | `schemas/agenthub-blocker-taxonomy.schema.json` | schema | AH-542 | active |
 | `governance/task-graph-closure-policy.md` | governance policy | AH-542 | active |
 | `governance/repo-first-artifact-lifecycle-policy.md` | governance policy | AH-542 | active |
+| `governance/agenthub-access-rights-and-live-worker-enablement-policy.md` | governance policy | AH-554 | active |
+| `governance/agenthub-docker-db-proxy-safety-policy.md` | governance policy | AH-554 | active |
+| `governance/agenthub-task-cycle-full-closure-policy.md` | governance policy | AH-554 | active |
+| `schemas/agenthub-access-capability-matrix.schema.json` | schema | AH-554 | active |
+| `schemas/agenthub-live-worker-authorization.schema.json` | schema | AH-554 | active |
+| `runbooks/agenthub-access-audit-and-live-devops-enablement.md` | runbook | AH-554 | active |
+| `runbooks/agenthub-502-live-runtime-recovery-safe-runbook.md` | runbook | AH-554 | active |
 | `.agents/skills/agenthub-task-first-router/SKILL.md` | active skill | AH-542 | active |
 | `.agents/skills/agenthub-registrar-artifact-lifecycle/SKILL.md` | active skill | AH-542 | active |
 | `.agents/skills/agenthub-git-pr-queue-control/SKILL.md` | active skill | AH-542 | active |
 | `.agents/skills/agenthub-truth-redteam/SKILL.md` | active skill | AH-542 | active |
 | `.agents/skills/caveman-user-communication/SKILL.md` | active skill | AH-542 | active |
+| `.agents/skills/agenthub-permission-gate-router/SKILL.md` | active skill | AH-554 | active |
+| `.agents/skills/agenthub-live-devops-safety/SKILL.md` | active skill | AH-554 | active |
 | `evals/agenthub-paralysis-breaker/` | eval fixtures | AH-542 | active |
+| `evals/agenthub-access-rights-and-live-worker-gates/` | eval fixtures | AH-554 | active |
 | `reports/receipts/RUN-agenthub-p0-paralysis-breaker-repo-first-control-repair-20260525-receipt.md` | control-spine receipt | AH-542 | operational-receipt |
+| `reports/audits/AH-554-access-rights-and-live-worker-audit-20260525.md` | audit report | AH-554 | audit-only |
+| `reports/receipts/AH-554-access-rights-and-live-devops-enablement-receipt.md` | control-spine receipt | AH-554 | operational-receipt |

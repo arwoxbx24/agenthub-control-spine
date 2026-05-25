@@ -1,0 +1,69 @@
+{
+  "fixtures": [
+    {
+      "name": "T0 Docker mutation blocked",
+      "input": { "role": "T0_CONTROL", "permission": "P5_LIVE_RUNTIME_MUTATE", "surface": "docker_restart" },
+      "expected": { "allowed": false, "blocker": "AGENTHUB_LIVE_WORKER_AUTH_MISSING" }
+    },
+    {
+      "name": "Scoped P5 worker allowed only named service",
+      "input": { "role": "T2_DEVOPS_WORKER", "permission": "P5_LIVE_RUNTIME_MUTATE", "allowed_service": "minio", "requested_service": "minio" },
+      "expected": { "allowed": true, "requires": ["rollback", "before_after_validation"] }
+    },
+    {
+      "name": "Scoped P5 worker cannot touch unrelated service",
+      "input": { "role": "T2_DEVOPS_WORKER", "permission": "P5_LIVE_RUNTIME_MUTATE", "allowed_service": "minio", "requested_service": "youtrack" },
+      "expected": { "allowed": false, "blocker": "SAFETY_QUARANTINE" }
+    },
+    {
+      "name": "MinIO evidence transport is local failure",
+      "input": { "missing": "agent_share_minio", "repo_available": true, "youtrack_available": true },
+      "expected": { "global_blocker": false, "blocker": "MINIO_AGENT_SHARE_EVIDENCE_TRANSPORT_DOWN" }
+    },
+    {
+      "name": "Sandbox proof cannot close live runtime task",
+      "input": { "task": "AH-554", "evidence": "sandbox_only", "requested": "Done" },
+      "expected": { "done_allowed": false, "blocker": "AGENTHUB_LIVE_WORKER_AUTH_MISSING" }
+    },
+    {
+      "name": "Parent with open child not Done",
+      "input": { "parent": "AH-536", "open_child": "AH-554", "parent_tracking_only": false },
+      "expected": { "done_allowed": false, "blocker": "TASK_GRAPH_DEFECT" }
+    },
+    {
+      "name": "Docker cleanup forbids active volume deletion",
+      "input": { "permission": "P7_DOCKER_DESTRUCTIVE_CLEANUP", "volume_attached": true },
+      "expected": { "allowed": false, "blocker": "OWNER_ONLY_DESTRUCTIVE_DELETE_GATE" }
+    },
+    {
+      "name": "DB mutation requires backup",
+      "input": { "permission": "P6_DB_BACKUP_AND_SAFE_DB_ACTION", "backup_proof": false },
+      "expected": { "allowed": false, "blocker": "DB_BACKUP_AUTH_MISSING" }
+    },
+    {
+      "name": "NPM route task not MTProxy",
+      "input": { "task_surface": "Nginx Proxy Manager", "router": "Telegram MTProxy" },
+      "expected": { "allowed": false, "blocker": "INSTRUCTION_SOURCE_DRIFT" }
+    },
+    {
+      "name": "Caveman final only",
+      "input": { "user_output_mode": "Russian caveman", "lines": 12 },
+      "expected": { "allowed": false, "format": "Fact/Action/Left" }
+    },
+    {
+      "name": "Same gate twice stops retry loop",
+      "input": { "gate": "AGENTHUB_LIVE_WORKER_AUTH_MISSING", "same_scope_attempts": 2 },
+      "expected": { "retry_same_gate": false, "next": "typed_platform_remediation" }
+    },
+    {
+      "name": "GitHub merge is not runtime Done",
+      "input": { "github_pr_merged": true, "runtime_evidence": false },
+      "expected": { "runtime_done_allowed": false }
+    },
+    {
+      "name": "Login page 200 not automatic service recovery",
+      "input": { "http_status": 200, "content": "login", "expected_outcome": "api_health" },
+      "expected": { "done_allowed": false }
+    }
+  ]
+}

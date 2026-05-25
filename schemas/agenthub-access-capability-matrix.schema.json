@@ -1,0 +1,76 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/arwoxbx24/agenthub-control-spine/schemas/agenthub-access-capability-matrix.schema.json",
+  "title": "AgentHub Access Capability Matrix",
+  "type": "object",
+  "required": ["task_id", "run_id", "permissions"],
+  "additionalProperties": false,
+  "properties": {
+    "task_id": { "type": "string", "pattern": "^AH-[0-9]+$" },
+    "run_id": { "type": "string", "minLength": 8 },
+    "permissions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "class",
+          "allowed_roles",
+          "required_evidence",
+          "approval_source",
+          "denied_conditions",
+          "fallback_route",
+          "blocker"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "class": {
+            "type": "string",
+            "enum": [
+              "P0_CONTROL_READ",
+              "P1_REPO_ARTIFACT_WRITE",
+              "P2_YOUTRACK_TASK_WRITE",
+              "P3_MCP_CONTROL",
+              "P4_LIVE_RUNTIME_READ",
+              "P5_LIVE_RUNTIME_MUTATE",
+              "P6_DB_BACKUP_AND_SAFE_DB_ACTION",
+              "P7_DOCKER_DESTRUCTIVE_CLEANUP",
+              "P8_PROXY_FIREWALL_EDGE",
+              "P9_SECRET_OR_ACCOUNT_GATE"
+            ]
+          },
+          "allowed_roles": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1
+          },
+          "required_evidence": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "approval_source": { "type": "string", "minLength": 1 },
+          "denied_conditions": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+          "fallback_route": { "type": "string", "minLength": 1 },
+          "blocker": {
+            "type": "string",
+            "enum": [
+              "GITHUB_WRITE_ROUTE_REQUIRED",
+              "GITHUB_PROTECTED_MAIN_GITLEAKS_GATE",
+              "YOUTRACK_API_AUTH_REQUIRED",
+              "AGENTHUB_MCP_TOOL_UNAVAILABLE",
+              "AGENTHUB_LIVE_WORKER_AUTH_MISSING",
+              "AGENTHUB_LIVE_ADAPTER_MISSING",
+              "DOCKER_HOST_ACCESS_MISSING",
+              "PORTAINER_ACCESS_MISSING",
+              "DB_BACKUP_AUTH_MISSING",
+              "PROXY_CONFIG_AUTH_MISSING",
+              "FIREWALL_DNS_SSL_OWNER_GATE",
+              "MINIO_AGENT_SHARE_EVIDENCE_TRANSPORT_DOWN",
+              "OWNER_ONLY_DESTRUCTIVE_DELETE_GATE",
+              "INSTRUCTION_SOURCE_DRIFT",
+              "TASK_GRAPH_DEFECT",
+              "SAFETY_QUARANTINE"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

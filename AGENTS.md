@@ -47,6 +47,10 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
   require a scoped worker contract with rollback/checkpoint and validation. No
   prune, volume delete, DB mutation, secret read, or broad cleanup is allowed by
   default.
+- Live access must use the P0-P9 permission model in
+  `governance/agenthub-access-rights-and-live-worker-enablement-policy.md`.
+  T0/T1 may hold control/read/repo/task/MCP permissions, but live runtime
+  mutation requires a task-bound T2 worker, rollback, and validation.
 - Parent tasks cannot move to Done while child implementation tasks remain open,
   failed, unvalidated, or blocked unless the parent is explicitly tracking-only.
 - User-facing final output must be compact Russian Caveman format: `Fact`,
