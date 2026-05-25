@@ -149,3 +149,5 @@ status: draft
 | `reports/receipts/AH-536-AH-554-live-runtime-edge-closure-20260525.md` | operational receipt | AH-536/AH-554 | superseded-by-repo-first-audit |
 | `reports/audits/AH-536-AH-554-repo-first-runtime-closure-audit-20260525.md` | corrective audit | AH-536/AH-554 | blocked |
 | `reports/receipts/AH-536-AH-554-repo-first-runtime-closure-receipt-20260525.md` | corrective receipt | AH-536/AH-554 | blocked |
+| `reports/incidents/AGENTHUB-P0-repo-first-agent-execution-freeze-20260525.md` | corrective incident audit | AH-567/AH-536/AH-554 | blocked |
+| `reports/receipts/AGENTHUB-P0-repo-first-agent-execution-freeze-receipt-20260525.md` | corrective receipt | AH-567/AH-536/AH-554 | blocked |
