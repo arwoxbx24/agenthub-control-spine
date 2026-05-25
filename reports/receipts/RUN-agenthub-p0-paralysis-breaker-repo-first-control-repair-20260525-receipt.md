@@ -82,7 +82,8 @@ PR: `#45`
 - Diff hygiene: PASS (`git diff --check`).
 - Secret scan: PASS (`gitleaks detect --no-git --source . --redact --verbose`).
 - PR queue readback: PR `#45` recorded in `PR_QUEUE_REGISTER.md`.
-- AgentHub merge: pending after repo PR evidence.
+- AgentHub merge: PASS for RUN ledger after repo PR evidence.
+- Artifact share: FAIL, `agent_share` reported MinIO unavailable via localhost and remote endpoint.
 
 ## Security
 
@@ -90,4 +91,4 @@ No secrets, raw env dumps, tokens, private keys, cookies, DB data, or raw intern
 
 ## Final State
 
-`READY_BLOCKED_BY_PLATFORM_GATE` for merge only until PR checks/merge route complete. Repo-first controls are queued in PR `#45`; no live runtime Done is claimed.
+`READY_BLOCKED_BY_PLATFORM_GATE` for merge/share only until PR merge route and MinIO-backed artifact sharing complete. Repo-first controls are queued in PR `#45`; no live runtime Done is claimed.
