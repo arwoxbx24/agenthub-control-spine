@@ -12,7 +12,7 @@ created_at: 2026-05-25
 lifecycle_status: operational_receipt
 default_load: false
 safe_to_replay: false
-final_state: READY_BLOCKED_BY_PLATFORM_GATE
+final_state: DONE_WITH_EVIDENCE
 ---
 
 # AH-534 AgentHub Safe Recovery Control Receipt
@@ -22,6 +22,7 @@ final_state: READY_BLOCKED_BY_PLATFORM_GATE
 - Canonical repository: `arwoxbx24/agenthub-control-spine`.
 - Read-first files checked on PR `#39` branch: `AGENTS.md`, `INDEX.md`, `ARTIFACT_REGISTER.md`, `PR_QUEUE_REGISTER.md`.
 - Controlling PR: `#39`, branch `agenthub/agenthub-only-execution-discipline-20260525`.
+- PR merge commit: `4eb472106422703b87752b1c94ae3f9b2e17a762`.
 - Controlling task: `AH-534`.
 - Related open blockers: `AH-535` and `AH-537`.
 - Live incident task: `AH-536` remains not safely closable through AgentHub Done because the live adapter route is blocked.
@@ -49,11 +50,13 @@ final_state: READY_BLOCKED_BY_PLATFORM_GATE
 - Unsafe marker scan for private keys, bearer tokens, raw env assignments, secret assignments, and raw internal history links: PASS.
 - `INDEX.md` / `ARTIFACT_REGISTER.md` / `PR_QUEUE_REGISTER.md` coverage for PR `#39` artifacts: PASS.
 - Forbidden runtime/client/infra surface diff check: PASS.
+- GitHub required `gitleaks` check on PR `#39`: PASS.
+- AgentHub MCP dispatch/execute/merge for `RUN-agenthub-safe-recovery-control-20260525`: PASS after scoped sandbox verifier evidence was attached.
 
 ## Final State
 
-`READY_BLOCKED_BY_PLATFORM_GATE`.
+`DONE_WITH_EVIDENCE` for the control-spine safe recovery package.
 
-Exact blocker: `AGENTHUB_LIVE_ADAPTER_MISSING` / `CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED`.
+Residual runtime blocker: `AGENTHUB_LIVE_ADAPTER_MISSING` / `CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED` remains scoped to `AH-537` and must not be treated as a blocker for the merged governance artifact package.
 
-Next autonomous action: repair or enable an approved AgentHub live worker adapter for `AH-537`, then rerun scoped worker validation before closing `AH-536` or any parent task.
+Next autonomous action: repair or enable an approved AgentHub live worker adapter under `AH-537` before any future live Docker/proxy/runtime worker can close runtime incident tasks.
