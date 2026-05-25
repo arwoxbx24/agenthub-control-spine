@@ -146,3 +146,4 @@ status: draft
 | `reports/audits/AH-554-access-rights-and-live-worker-audit-20260525.md` | audit report | AH-554 | audit-only |
 | `reports/receipts/AH-554-access-rights-and-live-devops-enablement-receipt.md` | control-spine receipt | AH-554 | operational-receipt |
 | `reports/receipts/AH-536-AH-554-AH-550-route-enablement-and-runtime-repair-receipt-20260525.md` | operational receipt | AH-536/AH-554/AH-550/AH-557 | done-with-residuals |
+| `reports/receipts/AH-536-AH-554-live-runtime-edge-closure-20260525.md` | operational receipt | AH-536/AH-554 | done-with-evidence |
