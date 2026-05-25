@@ -73,7 +73,9 @@ safeguard bypass.
   `0f6cfa836f3170c8961445e50d0569f6503119e28ac787956db8ece56fe8f5b9`
 - PR/commit: `PASS`, PR `#44`, commit
   `857a29aac8a9630237c4bd456fc2acd494731094`
-- residual blocker: `none`
+- router residual blocker: `none`
+- artifact-share delivery: `BLOCKED`, exact reason
+  `BLOCKED: MinIO unavailable via localhost and remote endpoint`
 
 Validation commands:
 
@@ -101,4 +103,14 @@ Validation commands:
 
 ## Residual
 
-none
+Router implementation residual: none.
+
+Artifact delivery residual:
+
+- `agent_share` attempted for
+  `@artifacts/agenthub-openai-cyber-safe-router-20260525/receipt.md`.
+- Result: `BLOCKED: MinIO unavailable via localhost and remote endpoint`.
+- No Nginx, NPM, database, proxy, Docker, firewall, credential, or secret
+  surface was inspected or mutated to repair delivery.
+- Local delivery-blocker receipt:
+  `@artifacts/agenthub-openai-cyber-safe-router-20260525/agent-share-blocked.md`.
