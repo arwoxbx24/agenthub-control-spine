@@ -40,6 +40,17 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
   and validation execution must route through AgentHub task/run/worker/evidence;
   direct T0 shell mutation invalidates the run, and no control-spine receipt
   means no Done.
+- Live incident work must not fall back from AgentHub adapter blockers to manual
+  T0 shell. If the adapter reports `CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED`,
+  keep the task open, update the receipt, and repair the AgentHub route.
+- Docker, DB, proxy, firewall, DNS, SSL, object storage, and service changes
+  require a scoped worker contract with rollback/checkpoint and validation. No
+  prune, volume delete, DB mutation, secret read, or broad cleanup is allowed by
+  default.
+- Parent tasks cannot move to Done while child implementation tasks remain open,
+  failed, unvalidated, or blocked unless the parent is explicitly tracking-only.
+- User-facing final output must be compact Russian Caveman format: `Fact`,
+  `Action`, `Left`.
 - Do not store secrets, tokens, private keys, env dumps, raw transcripts, or internal history links.
 - Do not fake SUCCESS from task creation, wrapper PASS, sandbox-only proof, or incomplete receipts.
 - Do not create task explosions; use one controlling task and bounded child tasks.
