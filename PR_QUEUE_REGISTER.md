@@ -58,3 +58,4 @@ before closure.
 | PR | Decision | Blocker |
 |---|---|---|
 | `#48` | Merged on 2026-05-25; installs AH-554 access-rights/live-worker enablement controls. | Runtime repair remains local to AH-554: `AGENTHUB_LIVE_WORKER_AUTH_MISSING`. |
+| branch `agenthub/ah536-ah554-final-receipt-20260525` | Existing evidence branch updated on 2026-05-25 with repo-first corrective audit and receipt; no new PR opened per user instruction. | `AGENTHUB_LIVE_WORKER_ROUTE_BLOCKED`: fresh public readback still has active 502s; direct T0 runtime mutation is invalid closure evidence. |
