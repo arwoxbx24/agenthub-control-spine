@@ -103,3 +103,8 @@ status: draft
 | `schemas/control-spine-pr-queue-register.schema.json` | schema | AH-523 | active |
 | `schemas/agent-output-quality-receipt.schema.json` | schema | AH-529 | active |
 | `schemas/agenthub-only-execution-receipt.schema.json` | schema | AH-534 | active |
+
+| `governance/agenthub-safe-recovery-control.md` | governance control | AH-534 | active |
+| `runbooks/agenthub-safe-recovery-control-loop.md` | runbook | AH-534 | active |
+| `prompts/architecture/agenthub-safe-recovery-control-prompt.txt` | architecture prompt | AH-534 | consumed-prompt |
+| `reports/receipts/AH-534-agenthub-safe-recovery-control-receipt.md` | control-spine receipt | AH-534 | operational-receipt |
