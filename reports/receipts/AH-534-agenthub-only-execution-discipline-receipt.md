@@ -26,14 +26,14 @@ Install a durable control-spine repair after direct T0 shell/runtime actions and
 | branch | `agenthub/agenthub-only-execution-discipline-20260525` |
 | owner role | `T0 Registrar` |
 | AgentHub route | `agent_hub_create:PASS` |
-| PR | pending at receipt creation |
+| PR | `#39` |
 
 ## Duplicate Check
 
 | Surface | Result |
 |---|---|
-| GitHub open PR search | PASS: no equivalent open PR found. |
-| YouTrack unresolved search | PASS: no equivalent unresolved task found. |
+| GitHub open PR search | PASS: no equivalent open PR found before PR `#39`. |
+| YouTrack unresolved search | PASS: no equivalent unresolved task found before `AH-534`. |
 | AH-533 / PR #37 | AMEND_NEEDED: Git/GitHub route rule was merged, but runtime/server/storage AgentHub-only execution discipline and invalidation classes were missing. |
 
 ## Installed Artifacts
@@ -48,7 +48,7 @@ Install a durable control-spine repair after direct T0 shell/runtime actions and
 | `AGENTS.md` | Compact default rule. |
 | `INDEX.md` | Artifact coverage. |
 | `ARTIFACT_REGISTER.md` | Lifecycle/default-load/replay coverage. |
-| `PR_QUEUE_REGISTER.md` | PR queue coverage. |
+| `PR_QUEUE_REGISTER.md` | PR queue coverage for `#39`. |
 | `CHANGELOG.md` | Change record. |
 
 ## Invalidation Classes
@@ -82,7 +82,7 @@ The installed control defines:
 | no runtime/server mutation | PASS: no runtime, Docker, data store, proxy, storage, firewall, DNS, SSL, Railway, or product surface touched. |
 | INDEX coverage | PASS. |
 | ARTIFACT_REGISTER coverage | PASS. |
-| PR_QUEUE_REGISTER coverage | PASS. |
+| PR_QUEUE_REGISTER coverage | PASS: PR `#39` recorded. |
 
 ## Final State
 
