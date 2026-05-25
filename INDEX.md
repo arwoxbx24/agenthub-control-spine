@@ -132,4 +132,4 @@ status: draft
 | `.agents/skills/agenthub-truth-redteam/SKILL.md` | active skill | AH-542 | active |
 | `.agents/skills/caveman-user-communication/SKILL.md` | active skill | AH-542 | active |
 | `evals/agenthub-paralysis-breaker/` | eval fixtures | AH-542 | active |
-| `reports/receipts/RUN-agenthub-p0-paralysis-breaker-repo-first-control-repair-20260525-receipt.md` | control-spine receipt | AH-542 | pending-validation |
+| `reports/receipts/RUN-agenthub-p0-paralysis-breaker-repo-first-control-repair-20260525-receipt.md` | control-spine receipt | AH-542 | operational-receipt |
