@@ -102,3 +102,14 @@ status: draft
 | `schemas/t0-emergency-stop-receipt.schema.json` | schema | AH-510 | active |
 | `schemas/control-spine-pr-queue-register.schema.json` | schema | AH-523 | active |
 | `schemas/agent-output-quality-receipt.schema.json` | schema | AH-529 | active |
+| `governance/agenthub-only-execution-discipline.md` | governance control | AH-534 | active |
+| `governance/agenthub-safe-recovery-control.md` | governance control | AH-534 | active |
+| `runbooks/agenthub-only-violation-response.md` | runbook | AH-534 | active |
+| `runbooks/agenthub-live-execution-adapter-remediation.md` | runbook | AH-537 | active |
+| `runbooks/agenthub-safe-recovery-control-loop.md` | runbook | AH-534 | active |
+| `prompts/architecture/agenthub-safe-recovery-control-prompt.txt` | architecture prompt | AH-534 | consumed-prompt |
+| `reports/receipts/AH-534-agenthub-only-execution-discipline-receipt.md` | AgentHub-only execution discipline receipt | AH-534 | pass |
+| `reports/receipts/AH-536-AH-537-live-execution-route-repair-receipt.md` | live execution route repair receipt | AH-536/AH-537 | blocked-platform-gate |
+| `reports/receipts/AH-534-agenthub-safe-recovery-control-receipt.md` | control-spine receipt | AH-534 | operational-receipt |
+| `schemas/agenthub-only-execution-receipt.schema.json` | schema | AH-534 | active |
+| `skills-drafts/agenthub-only-execution-boundary/SKILL.md` | draft skill | AH-534 | draft |

@@ -130,3 +130,14 @@ Compatibility states from older records remain readable: `active_policy`,
 | `reports/receipts/external-repo-pattern-adaptation-closed-loop-receipt.md` | `operational_receipt` | false | false | AH-530 | External pattern adaptation readiness receipt. |
 | `reports/receipts/AH-533-git-route-policy-receipt.md` | `operational_receipt` | false | false | AH-533 | Git/GitHub route policy receipt; proof only. |
 | `reports/receipts/AH-531-AH-532-pattern-implementation-receipt.md` | `operational_receipt` | false | false | AH-531/AH-532 | Pattern implementation receipt; proof only. |
+| `governance/agenthub-only-execution-discipline.md` | `active_policy` | false | false | AH-534 | AgentHub-only runtime/server/storage execution discipline; defines invalidation classes. |
+| `governance/agenthub-safe-recovery-control.md` | `active_policy` | false | false | AH-534 | Safe recovery control for blocker loops, task closure, runtime safety, and Caveman final output. |
+| `runbooks/agenthub-only-violation-response.md` | `active_control` | false | false | AH-534 | Direct-shell/runtime violation response and continuation runbook. |
+| `runbooks/agenthub-live-execution-adapter-remediation.md` | `active_control` | false | false | AH-537 | Live adapter remediation runbook for blocked command-worker dispatch. |
+| `runbooks/agenthub-safe-recovery-control-loop.md` | `active_control` | false | false | AH-534 | Closed-loop runbook for safe recovery, evidence, task lifecycle, and platform gates. |
+| `prompts/architecture/agenthub-safe-recovery-control-prompt.txt` | `consumed_prompt` | false | false | AH-534 | Neutral policy-safe prompt artifact; not replayed by default. |
+| `reports/receipts/AH-534-agenthub-only-execution-discipline-receipt.md` | `operational_receipt` | false | false | AH-534 | AgentHub-only execution discipline receipt; proof only. |
+| `reports/receipts/AH-536-AH-537-live-execution-route-repair-receipt.md` | `operational_receipt` | false | false | AH-536/AH-537 | Live execution adapter blocker receipt; proof only. |
+| `reports/receipts/AH-534-agenthub-safe-recovery-control-receipt.md` | `operational_receipt` | false | false | AH-534 | Receipt for safe recovery control package; proof only. |
+| `schemas/agenthub-only-execution-receipt.schema.json` | `active_control` | false | false | AH-534 | Receipt schema for AgentHub-only execution discipline. |
+| `skills-drafts/agenthub-only-execution-boundary/SKILL.md` | `audit_only` | false | false | AH-534 | Draft skill, not active by default. |

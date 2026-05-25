@@ -52,3 +52,6 @@ status: draft
 - Added GitHub secret-defense policy, response runbook, scanner templates, hooks, workflow, schema, redacted org scan summary, and rollout receipt.
 - Added AH-501 current-content secret exclusion summary and receipt.
 - Marked AH-501 secret exclusion complete after `browser-logger-extension` PR #1 merge and clean redacted rescan.
+- Added AH-534 AgentHub safe recovery control package: neutral incident wording, task/child lifecycle gates, blocker-loop closure, live-adapter platform gate handling, Docker/DB/proxy safety rules, artifact lifecycle, PR queue, and Russian Caveman final-output control.
+- Added AH-536/AH-537 live execution route repair receipt and adapter remediation runbook: direct T0 runtime route-bypass is quarantined as invalid evidence and `CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED` is recorded as `READY_BLOCKED_BY_AGENTHUB_LIVE_ADAPTER`.
+- Added AH-534 AgentHub-only execution discipline package: runtime/server/storage work must route through AgentHub task/run/worker/evidence, direct T0 shell/runtime mutation invalidates the run, and missing control-spine receipt blocks Done.
