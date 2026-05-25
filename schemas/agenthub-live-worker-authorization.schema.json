@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/arwoxbx24/agenthub-control-spine/schemas/agenthub-live-worker-authorization.schema.json",
+  "title": "AgentHub Live Worker Authorization",
+  "type": "object",
+  "required": [
+    "task_id",
+    "run_id",
+    "worker_id",
+    "permission_classes",
+    "allowed_surface",
+    "forbidden_surface",
+    "rollback_required",
+    "validation_contract",
+    "evidence_output",
+    "final_blocker_on_failure"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "task_id": { "type": "string", "pattern": "^AH-[0-9]+$" },
+    "run_id": { "type": "string", "minLength": 8 },
+    "worker_id": { "type": "string", "pattern": "^W-[A-Za-z0-9-]+$" },
+    "permission_classes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "P4_LIVE_RUNTIME_READ",
+          "P5_LIVE_RUNTIME_MUTATE",
+          "P6_DB_BACKUP_AND_SAFE_DB_ACTION",
+          "P8_PROXY_FIREWALL_EDGE"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "allowed_surface": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "forbidden_surface": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "rollback_required": { "type": "boolean", "const": true },
+    "validation_contract": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "evidence_output": { "type": "string", "minLength": 1 },
+    "final_blocker_on_failure": {
+      "type": "string",
+      "enum": [
+        "AGENTHUB_LIVE_WORKER_AUTH_MISSING",
+        "AGENTHUB_LIVE_ADAPTER_MISSING",
+        "DOCKER_HOST_ACCESS_MISSING",
+        "PORTAINER_ACCESS_MISSING",
+        "DB_BACKUP_AUTH_MISSING",
+        "PROXY_CONFIG_AUTH_MISSING",
+        "FIREWALL_DNS_SSL_OWNER_GATE",
+        "OWNER_ONLY_DESTRUCTIVE_DELETE_GATE",
+        "SAFETY_QUARANTINE"
+      ]
+    }
+  }
+}

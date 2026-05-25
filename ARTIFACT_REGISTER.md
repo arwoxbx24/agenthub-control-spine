@@ -161,3 +161,15 @@ Compatibility states from older records remain readable: `active_policy`,
 | `.agents/skills/caveman-user-communication/SKILL.md` | `active_control` | false | false | AH-542 | Active final-output skill; Russian compact Fact/Action/Left only. |
 | `evals/agenthub-paralysis-breaker/` | `active_control` | false | false | AH-542 | Regression fixtures for same-gate loop, sandbox-only Done, live-adapter lane scoping, duplicate tasks, parent closure, artifact lifecycle, and final output. |
 | `reports/receipts/RUN-agenthub-p0-paralysis-breaker-repo-first-control-repair-20260525-receipt.md` | `operational_receipt` | false | false | AH-542 | Receipt for AH-542 paralysis breaker control package; proof only, not instruction. |
+| `governance/agenthub-access-rights-and-live-worker-enablement-policy.md` | `active_policy` | false | false | AH-554 | P0-P9 scoped capability model; live worker enablement without permissive bypass. |
+| `governance/agenthub-docker-db-proxy-safety-policy.md` | `active_policy` | false | false | AH-554 | Docker, DB, proxy, firewall, DNS, SSL, and destructive-action safety gates. |
+| `governance/agenthub-task-cycle-full-closure-policy.md` | `active_policy` | false | false | AH-554 | Full task-cycle closure and AH-536/AH-554 parent-child Done gate. |
+| `schemas/agenthub-access-capability-matrix.schema.json` | `active_control` | false | false | AH-554 | JSON schema for P0-P9 capability matrix. |
+| `schemas/agenthub-live-worker-authorization.schema.json` | `active_control` | false | false | AH-554 | JSON schema for scoped live-worker authorization contracts. |
+| `runbooks/agenthub-access-audit-and-live-devops-enablement.md` | `active_control` | false | false | AH-554 | Access audit and live DevOps enablement runbook. |
+| `runbooks/agenthub-502-live-runtime-recovery-safe-runbook.md` | `active_control` | false | false | AH-554 | Safe 502 live runtime recovery runbook for T2 DevOps workers. |
+| `.agents/skills/agenthub-permission-gate-router/SKILL.md` | `active_control` | false | false | AH-554 | Active skill for permission class routing and local blocker split. |
+| `.agents/skills/agenthub-live-devops-safety/SKILL.md` | `active_control` | false | false | AH-554 | Active skill for safe live DevOps execution gates. |
+| `evals/agenthub-access-rights-and-live-worker-gates/` | `active_control` | false | false | AH-554 | Regression fixtures for access rights, live-worker safety, and closure gates. |
+| `reports/audits/AH-554-access-rights-and-live-worker-audit-20260525.md` | `audit_only` | false | false | AH-554 | Access rights and live-worker audit report; evidence only. |
+| `reports/receipts/AH-554-access-rights-and-live-devops-enablement-receipt.md` | `operational_receipt` | false | false | AH-554 | Receipt for installed access-rights controls and residual live-worker blocker. |

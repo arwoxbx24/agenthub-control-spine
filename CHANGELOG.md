@@ -12,6 +12,7 @@ status: draft
 
 ## 2026-05-25
 
+- Added AH-554 access-rights and live-worker enablement controls: P0-P9 scoped permission matrix, live-worker authorization schema, Docker/DB/proxy safety policy, full task-cycle closure policy, safe 502 recovery runbook, active permission/live DevOps skills, eval fixtures, audit, and receipt; no runtime mutation.
 - Added AH-541 OpenAI cyber-safe request router: four classes, safe request normalizer, dispatch templates, authorized-scope schema, eval fixtures, recovery runbook, active skill, and receipt; no runtime/Docker/DB/Nginx/proxy mutation.
 - Added AH-531/AH-532 AgentHub-local pattern implementation controls for skill-pack/command/connector separation, eval/context-health/token-loop/skill-discovery checks, and the pattern adaptation runbook; no external runtime install or code import.
 - Merged PR #39 and finalized AH-534 safe recovery receipt/PR queue state as `DONE_WITH_EVIDENCE` for the control-spine governance package; runtime live-adapter work remains scoped to AH-537.
