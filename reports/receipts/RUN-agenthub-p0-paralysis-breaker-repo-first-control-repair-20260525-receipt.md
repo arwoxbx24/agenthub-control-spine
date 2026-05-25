@@ -83,7 +83,7 @@ PR: `#45`
 - Secret scan: PASS (`gitleaks detect --no-git --source . --redact --verbose`).
 - PR queue readback: PR `#45` recorded in `PR_QUEUE_REGISTER.md`.
 - AgentHub merge: PASS for RUN ledger after repo PR evidence.
-- Artifact share: FAIL, `agent_share` reported MinIO unavailable via localhost and remote endpoint.
+- Artifact share: FAIL, `agent_share` reported MinIO unavailable via localhost and remote endpoint. This is lane F evidence transport only and is not a blocker for lanes A/B/C because GitHub PR, YouTrack AH-542, and AgentHub ledger evidence are available.
 
 ## Security
 
@@ -91,4 +91,4 @@ No secrets, raw env dumps, tokens, private keys, cookies, DB data, or raw intern
 
 ## Final State
 
-`READY_BLOCKED_BY_PLATFORM_GATE` for merge/share only until PR merge route and MinIO-backed artifact sharing complete. Repo-first controls are queued in PR `#45`; no live runtime Done is claimed.
+`READY_TO_MERGE`. Repo-first controls are queued in PR `#45`; Lane F MinIO transport failure is scoped and has GitHub/YouTrack/AgentHub fallback evidence. No live runtime Done is claimed.
