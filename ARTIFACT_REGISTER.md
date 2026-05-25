@@ -125,3 +125,8 @@ Compatibility states from older records remain readable: `active_policy`, `activ
 | `skills-drafts/agenthub-evidence-loop-closure/SKILL.md` | `audit_only` | false | false | AH-511 | Draft skill, not active by default. |
 | `skills-drafts/agenthub-only-execution-boundary/SKILL.md` | `audit_only` | false | false | AH-534 | Draft skill, not active by default. |
 | `registries/agenthub-control-spine-id-register.md` | `current_baseline` | true | false | AH-522 | Current ID register. |
+
+| `governance/agenthub-safe-recovery-control.md` | `active_policy` | false | false | AH-534 | Safe recovery control for blocker loops, task closure, runtime safety, and Caveman final output. |
+| `runbooks/agenthub-safe-recovery-control-loop.md` | `active_control` | false | false | AH-534 | Closed-loop runbook for safe recovery, evidence, task lifecycle, and platform gates. |
+| `prompts/architecture/agenthub-safe-recovery-control-prompt.txt` | `consumed_prompt` | false | false | AH-534 | Neutral policy-safe prompt artifact; not replayed by default. |
+| `reports/receipts/AH-534-agenthub-safe-recovery-control-receipt.md` | `operational_receipt` | false | false | AH-534 | Receipt for safe recovery control package; proof only. |
