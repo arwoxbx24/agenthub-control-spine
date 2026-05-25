@@ -1,0 +1,39 @@
+{
+  "fixtures": [
+    {
+      "name": "same blocker twice becomes architecture repair",
+      "input": { "scope_signature": "same", "blocker_type": "LIVE_ADAPTER_ENABLEMENT_REQUIRED", "attempts": 2 },
+      "expected": { "next": "BLOCKER_COLLAPSE_LOOP", "retry_same_gate": false }
+    },
+    {
+      "name": "sandbox proof cannot close production Done",
+      "input": { "evidence": "sandbox_only", "requested_final_state": "DONE_WITH_EVIDENCE" },
+      "expected": { "allowed": false, "blocker_type": "AGENTHUB_LIVE_WORKER_ROUTE_MISSING" }
+    },
+    {
+      "name": "live adapter missing blocks runtime lane only",
+      "input": { "missing": "live_adapter", "lanes_available": ["A", "B", "C", "F"] },
+      "expected": { "global_blocker": false, "blocked_lane": "D" }
+    },
+    {
+      "name": "duplicate task creation is blocked",
+      "input": { "matching_scope_task_exists": true },
+      "expected": { "create_new_task": false, "action": "reuse_or_link" }
+    },
+    {
+      "name": "parent with open children cannot be Done",
+      "input": { "parent_tracking_only": false, "open_children": 1 },
+      "expected": { "done_allowed": false }
+    },
+    {
+      "name": "prompt and report default load false",
+      "input": { "artifact_type": "prompt", "lifecycle_status": "consumed_prompt" },
+      "expected": { "default_load": false, "safe_to_replay": false }
+    },
+    {
+      "name": "final output short Russian caveman",
+      "input": { "user_facing": true },
+      "expected": { "format": "Fact/Action/Left", "max_lines": 3 }
+    }
+  ]
+}

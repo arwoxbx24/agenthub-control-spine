@@ -121,3 +121,15 @@ status: draft
 | `skills-drafts/agenthub-only-execution-boundary/SKILL.md` | draft skill | AH-534 | draft |
 | `.agents/skills/agenthub-openai-cyber-safe-request-router/SKILL.md` | active skill | AH-541 | active |
 | `evals/agenthub-cyber-safe-router/` | eval fixtures | AH-541 | active |
+| `governance/agenthub-lane-router-and-blocker-scope-policy.md` | governance policy | AH-542 | active |
+| `runbooks/agenthub-paralysis-breaker-runbook.md` | runbook | AH-542 | active |
+| `schemas/agenthub-blocker-taxonomy.schema.json` | schema | AH-542 | active |
+| `governance/task-graph-closure-policy.md` | governance policy | AH-542 | active |
+| `governance/repo-first-artifact-lifecycle-policy.md` | governance policy | AH-542 | active |
+| `.agents/skills/agenthub-task-first-router/SKILL.md` | active skill | AH-542 | active |
+| `.agents/skills/agenthub-registrar-artifact-lifecycle/SKILL.md` | active skill | AH-542 | active |
+| `.agents/skills/agenthub-git-pr-queue-control/SKILL.md` | active skill | AH-542 | active |
+| `.agents/skills/agenthub-truth-redteam/SKILL.md` | active skill | AH-542 | active |
+| `.agents/skills/caveman-user-communication/SKILL.md` | active skill | AH-542 | active |
+| `evals/agenthub-paralysis-breaker/` | eval fixtures | AH-542 | active |
+| `reports/receipts/RUN-agenthub-p0-paralysis-breaker-repo-first-control-repair-20260525-receipt.md` | control-spine receipt | AH-542 | pending-validation |
