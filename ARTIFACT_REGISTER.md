@@ -193,3 +193,5 @@ Compatibility states from older records remain readable: `active_policy`,
 | `reports/receipts/AH-572-live-runtime-read-route-factcheck-receipt-20260526.md` | `operational_receipt` | false | false | AH-572 | Receipt for AH-572 live runtime read route factcheck; proof only, not an active instruction. |
 | `reports/audits/AH-572-live-runtime-readonly-inventory-20260526.md` | `audit_only` | false | false | AH-572 | Sanitized read-only Docker/NPM inventory collected through the scoped T2/P4 live runtime read route. |
 | `reports/receipts/AH-572-live-runtime-readonly-inventory-receipt-20260526.md` | `operational_receipt` | false | false | AH-572 | Receipt for AH-572 scoped live runtime read-only inventory; proof only, not an active instruction. |
+| `reports/audits/AH-585-control-spine-repository-hygiene-20260526.md` | `audit_only` | false | false | AH-585 | Registrar-only hygiene report for current PR/register/branch lifecycle state. |
+| `reports/receipts/AH-585-control-spine-repository-hygiene-receipt-20260526.md` | `operational_receipt` | false | false | AH-585 | Receipt for control-spine repository hygiene; proof only, not an active instruction. |
