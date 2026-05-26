@@ -186,3 +186,6 @@ Compatibility states from older records remain readable: `active_policy`,
 | `governance/policies/agenthub/pr52-policy-install-control.md` | `active_control` | false | false | AH-570 | Approved install-path bridge from PR #52 repository policy to AgentHub runtime policy/hook/validator/template files. |
 | `reports/receipts/P0-pr52-policy-install-path-decision-20260526.md` | `operational_receipt` | false | false | AH-570 | Records approved runtime/control-spine install paths and rollback metadata before runtime writes. |
 | `reports/receipts/P0-pr52-policy-install-validation-20260526.md` | `operational_receipt` | false | false | AH-570 | Records dry-run validation, scoped secret scans, and ready-to-merge queue decision for PR #52. |
+| `governance/policies/agenthub/t0-live-root-hard-enforcement-addendum-20260526.md` | `active_policy` | false | false | AH-554 | P0 addendum for T0 live-root hard enforcement; source policy, not a runtime repair command. |
+| `evals/agenthub-t0-live-root-hard-enforcement/fixtures.json` | `active_control` | false | false | AH-554 | Negative-test fixtures for T0 deny, scoped command gate, stale replay, and same-gate loop control. |
+| `reports/receipts/P0-t0-live-root-hard-enforcement-addendum-20260526.md` | `operational_receipt` | false | false | AH-554 | Receipt for PR #55 addendum package and runtime enforcement readback. |

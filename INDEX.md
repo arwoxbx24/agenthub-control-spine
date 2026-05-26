@@ -158,3 +158,6 @@ status: draft
 | `governance/policies/agenthub/pr52-policy-install-control.md` | policy install control | AH-570 | active |
 | `reports/receipts/P0-pr52-policy-install-path-decision-20260526.md` | install path decision receipt | AH-570 | operational-receipt |
 | `reports/receipts/P0-pr52-policy-install-validation-20260526.md` | validation receipt | AH-570 | operational-receipt |
+| `governance/policies/agenthub/t0-live-root-hard-enforcement-addendum-20260526.md` | governance policy | AH-554 | active |
+| `evals/agenthub-t0-live-root-hard-enforcement/fixtures.json` | eval fixtures | AH-554 | active |
+| `reports/receipts/P0-t0-live-root-hard-enforcement-addendum-20260526.md` | operational receipt | AH-554 | operational-receipt |
