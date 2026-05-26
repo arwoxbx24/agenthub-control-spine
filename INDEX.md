@@ -165,3 +165,5 @@ status: draft
 | `reports/receipts/AH-572-live-runtime-read-route-factcheck-receipt-20260526.md` | operational receipt | AH-572 | operational-receipt |
 | `reports/audits/AH-572-live-runtime-readonly-inventory-20260526.md` | audit report | AH-572 | audit-only |
 | `reports/receipts/AH-572-live-runtime-readonly-inventory-receipt-20260526.md` | operational receipt | AH-572 | operational-receipt |
+| `reports/audits/AH-585-control-spine-repository-hygiene-20260526.md` | audit report | AH-585 | audit-only |
+| `reports/receipts/AH-585-control-spine-repository-hygiene-receipt-20260526.md` | operational receipt | AH-585 | operational-receipt |
