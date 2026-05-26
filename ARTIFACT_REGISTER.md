@@ -189,3 +189,5 @@ Compatibility states from older records remain readable: `active_policy`,
 | `governance/policies/agenthub/t0-live-root-hard-enforcement-addendum-20260526.md` | `active_policy` | false | false | AH-554 | P0 addendum for T0 live-root hard enforcement; source policy, not a runtime repair command. |
 | `evals/agenthub-t0-live-root-hard-enforcement/fixtures.json` | `active_control` | false | false | AH-554 | Negative-test fixtures for T0 deny, scoped command gate, stale replay, and same-gate loop control. |
 | `reports/receipts/P0-t0-live-root-hard-enforcement-addendum-20260526.md` | `operational_receipt` | false | false | AH-554 | Receipt for PR #55 addendum package and runtime enforcement readback. |
+| `reports/audits/AH-572-live-runtime-read-route-factcheck-20260526.md` | `audit_only` | false | false | AH-572 | Factcheck report explaining why AH-572 still lacks a live Docker/NPM read executor after control-plane permission expansion. |
+| `reports/receipts/AH-572-live-runtime-read-route-factcheck-receipt-20260526.md` | `operational_receipt` | false | false | AH-572 | Receipt for AH-572 live runtime read route factcheck; proof only, not an active instruction. |
