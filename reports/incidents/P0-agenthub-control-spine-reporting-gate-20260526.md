@@ -31,7 +31,7 @@ Each entry includes timestamp UTC, task_id, RUN_ID, role, action class, allowed 
 
 ## Journal Entries
 
-### 2026-05-26T11:15:00Z — REPORT_PREFLIGHT
+### 2026-05-26T11:15:00Z - REPORT_PREFLIGHT
 
 - task_id: AH-570
 - RUN_ID: RUN-P0-20260526-route-recovery
@@ -45,7 +45,7 @@ Each entry includes timestamp UTC, task_id, RUN_ID, role, action class, allowed 
 - typed_blocker: none
 - secret_redaction_statement: no secrets or raw private material read into this journal.
 
-### 2026-05-26T11:16:00Z — REPORTING_GATE_PLAN
+### 2026-05-26T11:16:00Z - REPORTING_GATE_PLAN
 
 - task_id: AH-570
 - RUN_ID: RUN-P0-20260526-route-recovery
@@ -62,7 +62,7 @@ Each entry includes timestamp UTC, task_id, RUN_ID, role, action class, allowed 
 - typed_blocker: none
 - secret_redaction_statement: no secrets included.
 
-### 2026-05-26T11:17:00Z — CURRENT_STATE_CARRIED_FORWARD
+### 2026-05-26T11:17:00Z - CURRENT_STATE_CARRIED_FORWARD
 
 - task_id: AH-570
 - RUN_ID: RUN-P0-20260526-route-recovery
@@ -79,7 +79,7 @@ Each entry includes timestamp UTC, task_id, RUN_ID, role, action class, allowed 
 - typed_blocker: T0_HOOK_INSTALL_PATH_REQUIRED remains for hard owner stop/no-code pre-tool interrupt.
 - secret_redaction_statement: no secrets or raw transcripts included.
 
-### 2026-05-26T11:18:00Z — REGISTER_ROUTE_STATUS
+### 2026-05-26T11:18:00Z - REGISTER_ROUTE_STATUS
 
 - task_id: AH-570
 - RUN_ID: RUN-P0-20260526-route-recovery
@@ -93,12 +93,68 @@ Each entry includes timestamp UTC, task_id, RUN_ID, role, action class, allowed 
 - typed_blocker: CONTROL_SPINE_REGISTER_PATCH_ROUTE_REQUIRED
 - secret_redaction_statement: no secrets included.
 
+### 2026-05-26T11:19:00Z - REPORTING_GATE_ARTIFACT_WRITTEN
+
+- task_id: AH-570
+- RUN_ID: RUN-P0-20260526-route-recovery
+- role: REGISTRAR
+- action_class: REGISTER
+- allowed_scope: write mandatory reporting gate as a repository control artifact on the active AH-570 PR branch.
+- forbidden_scope_check: no runtime/product mutation; no direct shell; no duplicate task creation.
+- result: SUCCESS
+- evidence_artifact_path: `governance/agenthub-mandatory-control-spine-reporting-gate.md`
+- validation_result: artifact created on branch `agenthub/ah570-silent-runaway-forensic-control-20260526`.
+- typed_blocker: none
+- secret_redaction_statement: no secrets or raw private material included.
+
+### 2026-05-26T11:20:00Z - REPORTING_GATE_RECEIPT_WRITTEN
+
+- task_id: AH-570
+- RUN_ID: RUN-P0-20260526-route-recovery
+- role: REGISTRAR
+- action_class: REGISTER
+- allowed_scope: write registrar receipt for reporting gate install on PR #51.
+- forbidden_scope_check: no runtime/product mutation; no direct shell; no broad register rewrite.
+- result: SUCCESS
+- evidence_artifact_path: `reports/receipts/P0-control-spine-reporting-gate-20260526.md`
+- validation_result: receipt records canonical repo, read-before-execution files, installed controls, residual register blocker, and no-forbidden-zone proof.
+- typed_blocker: CONTROL_SPINE_REGISTER_PATCH_ROUTE_REQUIRED remains for register/index/queue patch coverage.
+- secret_redaction_statement: no secrets or raw private material included.
+
+### 2026-05-26T11:21:00Z - REPORTING_FAILURE_FORENSIC_WRITTEN
+
+- task_id: AH-570
+- RUN_ID: RUN-P0-20260526-route-recovery
+- role: T0 / VERIFIER / REGISTRAR
+- action_class: VERIFY
+- allowed_scope: record compact forensic summary of the missing report-first gate and corrective control.
+- forbidden_scope_check: no product/runtime/service mutation; no direct shell; no new task.
+- result: SUCCESS
+- evidence_artifact_path: `reports/audits/P0-agenthub-reporting-failure-forensic-20260526.md`
+- validation_result: summary records failure mode, corrective control, task consolidation state, forbidden scope review, evidence classification, and typed residual blocker.
+- typed_blocker: CONTROL_SPINE_REGISTER_PATCH_ROUTE_REQUIRED
+- secret_redaction_statement: no secrets, raw transcripts, env dumps, or unrelated logs included.
+
+### 2026-05-26T11:22:00Z - REGISTER_PATCH_GATE
+
+- task_id: AH-570
+- RUN_ID: RUN-P0-20260526-route-recovery
+- role: REGISTRAR
+- action_class: BLOCK
+- allowed_scope: decide whether to patch `INDEX.md`, `ARTIFACT_REGISTER.md`, and `PR_QUEUE_REGISTER.md` in this pass.
+- forbidden_scope_check: no broad full-register rewrite by T0; no new task loop; no report-only success claim.
+- result: BLOCKED
+- evidence_artifact_path: this journal; `reports/receipts/P0-control-spine-reporting-gate-20260526.md`; PR #51.
+- validation_result: required register files were read, but only whole-file replacement is exposed in the current connector route; safe targeted patch route is not available in this pass.
+- typed_blocker: CONTROL_SPINE_REGISTER_PATCH_ROUTE_REQUIRED
+- secret_redaction_statement: no secrets included.
+
 ## Missing Action Coverage
 
 Actions before this addendum were already summarized in PR #51 artifacts. This journal marks them as mirrored/summarized in control-spine and does not rely on chat-only, terminal-only, local-only, or YouTrack-only evidence.
 
-## Final State At Journal Creation
+## Final State At Latest Journal Update
 
 CONTROL_SPINE_REGISTER_PATCH_ROUTE_REQUIRED
 
-The reporting gate artifact route is active on PR #51, but final Done is blocked until safe register/index patch coverage exists or a registrar-owned patch route is provided.
+The reporting gate artifact route is active on PR #51, and the required journal, receipt, and forensic summary exist in the repository branch. Final Done remains blocked until safe register/index/queue patch coverage exists or a registrar-owned patch route is provided.
