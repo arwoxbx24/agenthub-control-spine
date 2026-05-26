@@ -163,3 +163,5 @@ status: draft
 | `reports/receipts/P0-t0-live-root-hard-enforcement-addendum-20260526.md` | operational receipt | AH-554 | operational-receipt |
 | `reports/audits/AH-572-live-runtime-read-route-factcheck-20260526.md` | audit report | AH-572 | audit-only |
 | `reports/receipts/AH-572-live-runtime-read-route-factcheck-receipt-20260526.md` | operational receipt | AH-572 | operational-receipt |
+| `reports/audits/AH-572-live-runtime-readonly-inventory-20260526.md` | audit report | AH-572 | audit-only |
+| `reports/receipts/AH-572-live-runtime-readonly-inventory-receipt-20260526.md` | operational receipt | AH-572 | operational-receipt |
