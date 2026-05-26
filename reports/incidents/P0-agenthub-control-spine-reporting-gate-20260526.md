@@ -177,6 +177,20 @@ Each entry includes timestamp UTC, task_id, RUN_ID, role, action class, allowed 
 - typed_blocker: CONTROL_SPINE_REGISTER_PATCH_ROUTE_REQUIRED
 - secret_redaction_statement: no secrets included.
 
+### 2026-05-26T12:40:00Z - FINAL_SUCCESS_REQUIREMENTS_REPORT_PLAN
+
+- task_id: AH-570
+- RUN_ID: RUN-P0-20260526-route-recovery
+- role: T0 / VERIFIER
+- action_class: VERIFY
+- allowed_scope: write a deep repository report that states exactly what must be true before the owner can be told that PR #51 and AH-570 are fully closed successfully.
+- forbidden_scope_check: no runtime/product mutation; no register rewrite; no new PR; no new task.
+- result: SUCCESS
+- evidence_artifact_path: planned file `reports/audits/P0-pr51-final-success-closure-requirements-20260526.md`.
+- validation_result: planned report uses existing PR #51, AH-570, and current register/hook blockers only.
+- typed_blocker: none
+- secret_redaction_statement: no secrets, raw transcripts, env dumps, or private links will be included.
+
 ## Missing Action Coverage
 
 Actions before this addendum were already summarized in PR #51 artifacts. This journal marks them as mirrored/summarized in control-spine and does not rely on chat-only, terminal-only, local-only, or YouTrack-only evidence.
