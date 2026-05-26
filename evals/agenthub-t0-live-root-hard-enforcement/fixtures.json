@@ -1,0 +1,18 @@
+{
+  "schema": "agenthub.t0_live_root_hard_enforcement.fixtures.v1",
+  "source_task": "AH-554",
+  "run_id": "RUN-P0-T0-LIVE-ROOT-HARD-ENFORCEMENT-20260526",
+  "created_at": "2026-05-26",
+  "fixtures": [
+    {"name": "t0_shell_attempt", "actor_role": "T0_CONTROL", "action_class": "SHELL", "expected": "BLOCKED_T0_DIRECT_AUTHORSHIP"},
+    {"name": "t0_docker_attempt", "actor_role": "T0_CONTROL", "action_class": "DOCKER", "expected": "BLOCKED_T0_DIRECT_AUTHORSHIP"},
+    {"name": "t0_code_edit_attempt", "actor_role": "T0_CONTROL", "action_class": "CODE_EDIT", "expected": "BLOCKED_T0_DIRECT_AUTHORSHIP"},
+    {"name": "command_without_scoped_t2", "actor_role": "T0_CONTROL", "worker_role": "T0_CONTROL", "adapter": "command", "expected": "COMMAND_ADAPTER_REQUIRES_SCOPED_T2_AUTHORITY"},
+    {"name": "t2_policy_installer_allowed_policy_file", "actor_role": "T2_POLICY_INSTALLER", "authority_profile": "SCOPED_POLICY_INSTALL", "allowed_surfaces": ["governance/policies/agenthub/", "schemas/agenthub/"], "expected": "PASS"},
+    {"name": "t2_live_worker_readonly_triage", "actor_role": "T2_LIVE_WORKER", "authority_profile": "SCOPED_READONLY_TRIAGE", "rollback_path_required": true, "receipt_path_required": true, "expected": "PASS"},
+    {"name": "t2_destructive_cleanup", "actor_role": "T2_LIVE_WORKER", "action_class": "DESTRUCTIVE_CLEANUP", "expected": "BLOCKED_DESTRUCTIVE_ACTION"},
+    {"name": "missing_role_metadata", "actor_role": null, "authority_profile": null, "expected": "ROLE_AUTHORITY_MISSING"},
+    {"name": "audit_only_report_replay", "artifact_lifecycle": "audit_only", "requested_use": "active_instruction", "expected": "STALE_REPORT_REPLAY_BLOCKED"},
+    {"name": "third_same_gate_retry", "same_gate_retry_count": 3, "expected": "SAME_GATE_LOOP_BLOCKED"}
+  ]
+}
