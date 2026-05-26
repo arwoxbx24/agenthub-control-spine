@@ -61,6 +61,14 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
 - Every prompt/report update must update `INDEX.md`.
 - Future agents must read `ARTIFACT_REGISTER.md`, `PR_QUEUE_REGISTER.md`, and
   `context/agenthub-current-context-pack.md` before historical reports.
+- System-wide AgentHub permission routing must follow
+  `governance/policies/agenthub/pr52-policy-install-control.md`,
+  `governance/permission-profiles/agenthub-permission-profile-matrix.md`,
+  `governance/permission-profiles/agenthub-permission-validator.md`, and
+  `governance/core-versioning/codex-core-version-control-policy.md`.
+  Safe control-plane work is auto-allowed only when scoped, redacted, and
+  task-bound; dangerous runtime work requires a T2 profile, rollback,
+  validation, and receipt.
 - Reports and receipts are evidence, not instructions. Prompts are consumed
   after execution unless the register explicitly says `safe_to_replay=true`.
 - Only TeamLead/T0 Registrar may close stale PRs, archive/quarantine unrelated

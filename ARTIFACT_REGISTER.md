@@ -177,3 +177,36 @@ Compatibility states from older records remain readable: `active_policy`,
 | `evals/agenthub-access-rights-and-live-worker-gates/` | `active_control` | false | false | AH-554 | Regression fixtures for access rights, live-worker safety, and closure gates. |
 | `reports/audits/AH-554-access-rights-and-live-worker-audit-20260525.md` | `audit_only` | false | false | AH-554 | Access rights and live-worker audit report; evidence only. |
 | `reports/receipts/AH-554-access-rights-and-live-devops-enablement-receipt.md` | `operational_receipt` | false | false | AH-554 | Receipt for installed access-rights controls and residual live-worker blocker. |
+| `reports/audits/P0-system-wide-permission-core-versioning-architecture-20260526.md` | `audit_only` | false | false | AH-570 | Architecture report for permission profiles and core version-control lifecycle; evidence only. |
+| `governance/permission-profiles/agenthub-permission-profile-matrix.md` | `active_policy` | false | false | AH-570 | Permission profile matrix separating safe control work from dangerous runtime work. |
+| `governance/permission-profiles/agenthub-permission-validator.md` | `active_control` | false | false | AH-570 | Validator rules for auto-allow, manifest, denial, and quarantine outcomes. |
+| `governance/core-versioning/codex-core-version-control-policy.md` | `active_policy` | false | false | AH-570 | Core release/checkpoint/rollback policy; raw runtime dumps forbidden. |
+| `schemas/permission-manifest.schema.json` | `active_control` | false | false | AH-570 | Schema for one-shot permission requests that replace vague blockers. |
+| `schemas/core-change-receipt.schema.json` | `active_control` | false | false | AH-570 | Schema for AgentHub-core release/change receipts. |
+| `runbooks/rollback/agenthub-core-rollback-runbook.md` | `active_control` | false | false | AH-570 | Rollback and quarantine runbook for AgentHub-core policy/hook failures. |
+| `evals/agenthub-system-permission-core-versioning/fixtures.json` | `active_control` | false | false | AH-570 | Static fixtures for safe auto-allow, T0 deny, manifest, quarantine, and rollback gates. |
+| `quarantine/README.md` | `quarantine` | false | false | AH-570 | Quarantine directory index; evidence only, not replayable. |
+| `reports/receipts/P0-system-wide-permission-core-versioning-installed-20260526.md` | `operational_receipt` | false | false | AH-570 | Installation receipt for agenthub-core.20260526.1 repository architecture package. |
+| `governance/policies/agenthub/pr52-policy-install-control.md` | `active_control` | false | false | AH-570 | Approved install-path bridge from PR #52 repository policy to AgentHub runtime policy/hook/validator/template files. |
+| `reports/receipts/P0-pr52-policy-install-path-decision-20260526.md` | `operational_receipt` | false | false | AH-570 | Records approved runtime/control-spine install paths and rollback metadata before runtime writes. |
+| `reports/receipts/P0-pr52-policy-install-validation-20260526.md` | `operational_receipt` | false | false | AH-570 | Records dry-run validation, scoped secret scans, and ready-to-merge queue decision for PR #52. |
+| `governance/policies/agenthub/t0-live-root-hard-enforcement-addendum-20260526.md` | `active_policy` | false | false | AH-554 | P0 addendum for T0 live-root hard enforcement; source policy, not a runtime repair command. |
+| `evals/agenthub-t0-live-root-hard-enforcement/fixtures.json` | `active_control` | false | false | AH-554 | Negative-test fixtures for T0 deny, scoped command gate, stale replay, and same-gate loop control. |
+| `reports/receipts/P0-t0-live-root-hard-enforcement-addendum-20260526.md` | `operational_receipt` | false | false | AH-554 | Receipt for PR #55 addendum package and runtime enforcement readback. |
+| `reports/audits/AH-572-live-runtime-read-route-factcheck-20260526.md` | `audit_only` | false | false | AH-572 | Factcheck report explaining why AH-572 still lacks a live Docker/NPM read executor after control-plane permission expansion. |
+| `reports/receipts/AH-572-live-runtime-read-route-factcheck-receipt-20260526.md` | `operational_receipt` | false | false | AH-572 | Receipt for AH-572 live runtime read route factcheck; proof only, not an active instruction. |
+| `reports/audits/AH-572-live-runtime-readonly-inventory-20260526.md` | `audit_only` | false | false | AH-572 | Sanitized read-only Docker/NPM inventory collected through the scoped T2/P4 live runtime read route. |
+| `reports/receipts/AH-572-live-runtime-readonly-inventory-receipt-20260526.md` | `operational_receipt` | false | false | AH-572 | Receipt for AH-572 scoped live runtime read-only inventory; proof only, not an active instruction. |
+| `reports/audits/AH-585-control-spine-repository-hygiene-20260526.md` | `audit_only` | false | false | AH-585 | Registrar-only hygiene report for current PR/register/branch lifecycle state. |
+| `reports/receipts/AH-585-control-spine-repository-hygiene-receipt-20260526.md` | `operational_receipt` | false | false | AH-585 | Receipt for control-spine repository hygiene; proof only, not an active instruction. |
+| `schemas/agenthub-owner-requirements-ledger.schema.json` | `active_control` | false | false | AH-590 | Schema for owner requirements ledger entries and acceptance mapping. |
+| `schemas/agenthub-run-checkpoint.schema.json` | `active_control` | false | false | AH-590 | Schema for durable AgentHub resume checkpoints. |
+| `governance/agenthub-backend-only-output-policy.md` | `active_policy` | false | false | AH-590 | Backend-only owner communication and evidence placement policy. |
+| `governance/agenthub-role-permission-profiles.md` | `active_policy` | false | false | AH-590 | Role-scoped permission profile policy for T0/T1/T2/Registrar/Verifier. |
+| `governance/agenthub-model-routing-and-token-economy.md` | `active_policy` | false | false | AH-590 | Model routing and token economy policy for AgentHub work. |
+| `governance/agenthub-resume-from-run-policy.md` | `active_policy` | false | false | AH-590 | Resume/checkpoint lifecycle policy. |
+| `governance/agenthub-technical-assignment-methodology-router.md` | `active_policy` | false | false | AH-590 | Technical-assignment and methodology router policy. |
+| `runbooks/agenthub-backend-only-linear-cycle-runbook.md` | `active_control` | false | false | AH-590 | Backend-only linear execution and closure runbook. |
+| `evals/agenthub-control-policy-regression-suite.md` | `active_control` | false | false | AH-590 | Regression fixtures for T0 boundary, reporting, model routing, resume, duplicate, and Done gates. |
+| `reports/audits/P0-full-owner-requirements-intake-ledger-20260526.md` | `audit_only` | false | false | AH-590 | Full owner requirements intake ledger; evidence only, not active instruction. |
+| `reports/receipts/P0-agenthub-backend-only-repo-first-architecture-receipt-20260526.md` | `operational_receipt` | false | false | AH-590 | Receipt for backend-only repo-first architecture package. |

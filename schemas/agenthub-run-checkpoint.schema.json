@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/arwoxbx24/agenthub-control-spine/schemas/agenthub-run-checkpoint.schema.json",
+  "title": "AgentHub run checkpoint",
+  "type": "object",
+  "required": [
+    "schema",
+    "run_id",
+    "task_id",
+    "role",
+    "scope_signature",
+    "last_completed_phase",
+    "last_receipt_path",
+    "validation_state",
+    "safe_to_resume",
+    "replay_risk"
+  ],
+  "properties": {
+    "schema": {
+      "const": "agenthub.run_checkpoint.v1"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    },
+    "worker_id": {
+      "type": "string"
+    },
+    "scope_signature": {
+      "type": "string"
+    },
+    "branch": {
+      "type": "string"
+    },
+    "last_completed_phase": {
+      "type": "string"
+    },
+    "last_receipt_path": {
+      "type": "string"
+    },
+    "validation_state": {
+      "enum": ["not_started", "running", "pass", "fail", "quarantine"]
+    },
+    "blocker_state": {
+      "type": "string"
+    },
+    "pending_next_action": {
+      "type": "string"
+    },
+    "safe_to_resume": {
+      "type": "boolean"
+    },
+    "replay_risk": {
+      "type": "boolean"
+    },
+    "superseded_by": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

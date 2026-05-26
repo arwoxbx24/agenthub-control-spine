@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/arwoxbx24/agenthub-control-spine/schemas/agenthub-owner-requirements-ledger.schema.json",
+  "title": "AgentHub owner requirements ledger",
+  "type": "object",
+  "required": ["schema", "source_task", "run_id", "requirements"],
+  "properties": {
+    "schema": {
+      "const": "agenthub.owner_requirements_ledger.v1"
+    },
+    "source_task": {
+      "type": "string"
+    },
+    "run_id": {
+      "type": "string"
+    },
+    "requirements": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "title", "status", "normalized_requirement", "acceptance"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^R[0-9]{2,3}_[A-Z0-9_]+$"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "enum": ["accepted", "corrected", "rejected", "duplicate", "needs_verification"]
+          },
+          "normalized_requirement": {
+            "type": "string"
+          },
+          "risk_if_missing": {
+            "type": "string"
+          },
+          "control_surface": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "acceptance": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/arwoxbx24/agenthub-control-spine/schemas/permission-manifest.schema.json",
+  "title": "AgentHub Permission Request Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "requested_profile",
+    "task_id",
+    "run_id",
+    "action_class",
+    "exact_scope",
+    "safety_class",
+    "blast_radius",
+    "rollback_plan",
+    "validation_plan",
+    "expected_evidence",
+    "forbidden_zones",
+    "requested_duration",
+    "owner_only_gate",
+    "redaction_statement"
+  ],
+  "properties": {
+    "requested_profile": {
+      "type": "string",
+      "enum": [
+        "T0_CONTROL_AUDIT",
+        "REGISTRAR_CONTROL_SPINE",
+        "T1_ARCHITECT_CONTROL",
+        "T2_SCOPED_WORKER",
+        "T2_DEVOPS_REPAIR",
+        "T2_APP_WORKER",
+        "T2_PROXY_EDGE_WORKER",
+        "T2_REPO_PATCH_WORKER",
+        "T2_QA_BROWSER_WORKER",
+        "VERIFIER_READONLY",
+        "BREAK_GLASS_CONTROLLED"
+      ]
+    },
+    "task_id": { "type": "string", "pattern": "^[A-Z]+-[0-9]+$" },
+    "run_id": { "type": "string", "minLength": 3 },
+    "action_class": {
+      "type": "string",
+      "enum": ["READ", "ROUTE", "DISPATCH", "MUTATE", "VERIFY", "REGISTER", "CLOSE", "BLOCK"]
+    },
+    "exact_scope": { "type": "string", "minLength": 3 },
+    "safety_class": { "type": "string", "enum": ["safe_control", "dangerous_runtime", "owner_only"] },
+    "blast_radius": { "type": "string", "minLength": 3 },
+    "rollback_plan": { "type": "string", "minLength": 3 },
+    "validation_plan": { "type": "string", "minLength": 3 },
+    "expected_evidence": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "forbidden_zones": { "type": "array", "items": { "type": "string" } },
+    "requested_duration": { "type": "string", "minLength": 3 },
+    "owner_only_gate": { "type": "boolean" },
+    "redaction_statement": { "type": "string", "minLength": 3 }
+  }
+}
