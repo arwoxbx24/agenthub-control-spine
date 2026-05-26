@@ -48,6 +48,43 @@ source for that T2 execution route.
 8. Phase 7: resource limits verified by runtime evidence.
 9. Phase 8: close loop with typed final state and no secret leakage.
 
+## Process Hardening Addendum
+
+This addendum was added after the `RUN-komodo-full-contour-implementation-20260526`
+readback showed a repeated live-route failure before Docker execution:
+`CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED`.
+
+The Komodo contour must not keep creating reports or dependency reshuffles while
+the same route gate is failing. The current executable sequence is now fixed:
+
+1. `AH-578` owns the only active live-route unblock gate for rollback,
+   daemon/network, logging, and resource-limit evidence.
+2. `AH-574` must wait for `AH-578` live-route evidence before Core/Periphery
+   baseline installation.
+3. `AH-575`, `AH-576`, and `AH-577` remain dependency-gated until `AH-574`
+   has live baseline proof.
+4. `AH-579` remains final acceptance only and must not start until all required
+   runtime evidence is attached.
+5. `AH-571` remains the parent/tracking task and must not be marked production
+   Done while any runtime child still lacks evidence.
+
+Allowed next action:
+
+- register or enable one scoped `T2/P4_LIVE_RUNTIME_READ` route for `AH-578`;
+- run bounded read-only rollback preflight through that route;
+- only after read-only evidence, decide whether a separate scoped mutation route
+  is required for daemon/network/Komodo installation.
+
+Forbidden next actions:
+
+- direct T0 shell, Docker, NPM, DB, firewall, DNS, SSL, or service mutation;
+- another duplicate Komodo report task;
+- another retry of the same command adapter gate without route repair evidence;
+- marking `AH-574` or `AH-571` Done from PR or sandbox evidence.
+
+If the live read route still cannot be registered, the exact terminal owner
+gate is `LIVE_WORKER_ROUTE_REQUIRED_FOR_AH578`, not a new Komodo backlog item.
+
 ## Architecture Tasks
 
 ### A1. Edge Network Contract

@@ -113,6 +113,7 @@ Compatibility states from older records remain readable: `active_policy`,
 | `reports/receipts/mtproxy-domain-route-worker-receipt-20260523.md` | `historical_receipt` | false | false | AH-468 | Operational receipt only. |
 | `reports/receipts/npm-docker-domain-route-ah513-ah518-receipt-20260523.md` | `historical_receipt` | false | false | AH-513/AH-518 | Operational receipt only. |
 | `reports/receipts/RUN-komodo-orchestration-20260526-receipt.md` | `operational_receipt` | false | false | AH-571 | Receipt for Komodo orchestration report, task creation, repository package, and corrected-contract realignment. |
+| `reports/receipts/RUN-komodo-process-hardening-20260526-receipt.md` | `operational_receipt` | false | false | AH-571 | Receipt for Komodo process hardening after repeated live-route gate failure; records AH-578 as the single active route unblock gate. |
 | `schemas/prompt-artifact.schema.json` | `active_policy` | false | false | AH-494 | Schema. |
 | `schemas/report-receipt.schema.json` | `active_policy` | false | false | AH-494 | Schema. |
 | `schemas/task-card.schema.json` | `active_policy` | false | false | AH-494 | Schema. |
