@@ -173,3 +173,16 @@ Compatibility states from older records remain readable: `active_policy`,
 | `evals/agenthub-access-rights-and-live-worker-gates/` | `active_control` | false | false | AH-554 | Regression fixtures for access rights, live-worker safety, and closure gates. |
 | `reports/audits/AH-554-access-rights-and-live-worker-audit-20260525.md` | `audit_only` | false | false | AH-554 | Access rights and live-worker audit report; evidence only. |
 | `reports/receipts/AH-554-access-rights-and-live-devops-enablement-receipt.md` | `operational_receipt` | false | false | AH-554 | Receipt for installed access-rights controls and residual live-worker blocker. |
+| `reports/audits/P0-system-wide-permission-core-versioning-architecture-20260526.md` | `audit_only` | false | false | AH-570 | Architecture report for permission profiles and core version-control lifecycle; evidence only. |
+| `governance/permission-profiles/agenthub-permission-profile-matrix.md` | `active_policy` | false | false | AH-570 | Permission profile matrix separating safe control work from dangerous runtime work. |
+| `governance/permission-profiles/agenthub-permission-validator.md` | `active_control` | false | false | AH-570 | Validator rules for auto-allow, manifest, denial, and quarantine outcomes. |
+| `governance/core-versioning/codex-core-version-control-policy.md` | `active_policy` | false | false | AH-570 | Core release/checkpoint/rollback policy; raw runtime dumps forbidden. |
+| `schemas/permission-manifest.schema.json` | `active_control` | false | false | AH-570 | Schema for one-shot permission requests that replace vague blockers. |
+| `schemas/core-change-receipt.schema.json` | `active_control` | false | false | AH-570 | Schema for AgentHub-core release/change receipts. |
+| `runbooks/rollback/agenthub-core-rollback-runbook.md` | `active_control` | false | false | AH-570 | Rollback and quarantine runbook for AgentHub-core policy/hook failures. |
+| `evals/agenthub-system-permission-core-versioning/fixtures.json` | `active_control` | false | false | AH-570 | Static fixtures for safe auto-allow, T0 deny, manifest, quarantine, and rollback gates. |
+| `quarantine/README.md` | `quarantine` | false | false | AH-570 | Quarantine directory index; evidence only, not replayable. |
+| `reports/receipts/P0-system-wide-permission-core-versioning-installed-20260526.md` | `operational_receipt` | false | false | AH-570 | Installation receipt for agenthub-core.20260526.1 repository architecture package. |
+| `governance/policies/agenthub/pr52-policy-install-control.md` | `active_control` | false | false | AH-570 | Approved install-path bridge from PR #52 repository policy to AgentHub runtime policy/hook/validator/template files. |
+| `reports/receipts/P0-pr52-policy-install-path-decision-20260526.md` | `operational_receipt` | false | false | AH-570 | Records approved runtime/control-spine install paths and rollback metadata before runtime writes. |
+| `reports/receipts/P0-pr52-policy-install-validation-20260526.md` | `operational_receipt` | false | false | AH-570 | Records dry-run validation, scoped secret scans, and ready-to-merge queue decision for PR #52. |

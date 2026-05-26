@@ -145,3 +145,16 @@ status: draft
 | `reports/receipts/RUN-agenthub-p0-paralysis-breaker-repo-first-control-repair-20260525-receipt.md` | control-spine receipt | AH-542 | operational-receipt |
 | `reports/audits/AH-554-access-rights-and-live-worker-audit-20260525.md` | audit report | AH-554 | audit-only |
 | `reports/receipts/AH-554-access-rights-and-live-devops-enablement-receipt.md` | control-spine receipt | AH-554 | operational-receipt |
+| `reports/audits/P0-system-wide-permission-core-versioning-architecture-20260526.md` | architecture audit | AH-570 | audit-only |
+| `governance/permission-profiles/agenthub-permission-profile-matrix.md` | governance policy | AH-570 | active |
+| `governance/permission-profiles/agenthub-permission-validator.md` | governance validator | AH-570 | active |
+| `governance/core-versioning/codex-core-version-control-policy.md` | governance policy | AH-570 | active |
+| `schemas/permission-manifest.schema.json` | schema | AH-570 | active |
+| `schemas/core-change-receipt.schema.json` | schema | AH-570 | active |
+| `runbooks/rollback/agenthub-core-rollback-runbook.md` | rollback runbook | AH-570 | active |
+| `evals/agenthub-system-permission-core-versioning/fixtures.json` | eval fixtures | AH-570 | active |
+| `quarantine/README.md` | quarantine index | AH-570 | quarantine |
+| `reports/receipts/P0-system-wide-permission-core-versioning-installed-20260526.md` | installation receipt | AH-570 | operational-receipt |
+| `governance/policies/agenthub/pr52-policy-install-control.md` | policy install control | AH-570 | active |
+| `reports/receipts/P0-pr52-policy-install-path-decision-20260526.md` | install path decision receipt | AH-570 | operational-receipt |
+| `reports/receipts/P0-pr52-policy-install-validation-20260526.md` | validation receipt | AH-570 | operational-receipt |

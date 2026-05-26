@@ -1,0 +1,58 @@
+{
+  "schema": "agenthub.permission_core_versioning.fixtures.v1",
+  "release_id": "agenthub-core.20260526.1",
+  "source_task": "AH-570",
+  "fixtures": [
+    {
+      "name": "t0_shell_code_attempt_blocked",
+      "profile": "T0_CONTROL_AUDIT",
+      "action": "MUTATE",
+      "surface": "shell_or_code",
+      "expected": "DENY_T0_DIRECT_MUTATION"
+    },
+    {
+      "name": "safe_repo_receipt_allowed",
+      "profile": "REGISTRAR_CONTROL_SPINE",
+      "action": "REGISTER",
+      "surface": "control_spine_report_receipt_register",
+      "expected": "ALLOW_SAFE_CONTROL_ACTION"
+    },
+    {
+      "name": "missing_permission_creates_manifest",
+      "profile": "T0_CONTROL_AUDIT",
+      "action": "MUTATE",
+      "surface": "proxy_edge_runtime",
+      "expected": "REQUIRE_PERMISSION_MANIFEST"
+    },
+    {
+      "name": "same_blocker_twice_quarantines",
+      "profile": "T1_ARCHITECT_CONTROL",
+      "action": "ROUTE",
+      "surface": "same_gate_retry",
+      "repeat_count": 2,
+      "expected": "CONTROL_LOOP_QUARANTINE"
+    },
+    {
+      "name": "core_change_requires_checkpoint_and_rollback",
+      "profile": "REGISTRAR_CONTROL_SPINE",
+      "action": "REGISTER",
+      "surface": "agenthub_core_policy",
+      "expected": "ALLOW_SAFE_CONTROL_ACTION"
+    },
+    {
+      "name": "report_without_register_not_done",
+      "profile": "VERIFIER_READONLY",
+      "action": "VERIFY",
+      "surface": "audit_report_only",
+      "expected": "BLOCK_DONE_EVIDENCE_MISSING"
+    },
+    {
+      "name": "owner_stop_halts_mutation",
+      "profile": "BREAK_GLASS_CONTROLLED",
+      "action": "MUTATE",
+      "surface": "runtime_repair_after_stop",
+      "owner_signal": "STOP",
+      "expected": "CONTROL_LOOP_QUARANTINE"
+    }
+  ]
+}
