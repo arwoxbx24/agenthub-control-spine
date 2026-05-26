@@ -149,6 +149,34 @@ Each entry includes timestamp UTC, task_id, RUN_ID, role, action class, allowed 
 - typed_blocker: CONTROL_SPINE_REGISTER_PATCH_ROUTE_REQUIRED
 - secret_redaction_statement: no secrets included.
 
+### 2026-05-26T12:24:33Z - REGISTRAR_WORKER_PATCH_ATTEMPT
+
+- task_id: AH-570
+- RUN_ID: RUN-P0-20260526-route-recovery
+- role: REGISTRAR
+- action_class: ROUTE
+- allowed_scope: use one compact AgentHub registrar worker to patch only `INDEX.md`, `ARTIFACT_REGISTER.md`, and `PR_QUEUE_REGISTER.md` on existing PR #51 branch.
+- forbidden_scope_check: no runtime/product mutation; no Docker, Nginx, DB, proxy, firewall, Appsmith, n8n, BMC, stroyremont, or new PR/task.
+- result: BLOCKED
+- evidence_artifact_path: AgentHub MCP dispatch receipt for worker `REGISTRAR-pr51-register-patch`.
+- validation_result: AgentHub MCP rejected non-sandbox command adapter dispatch with `CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED`; no patch worker executed.
+- typed_blocker: CONTROL_SPINE_REGISTER_PATCH_ROUTE_REQUIRED
+- secret_redaction_statement: no secrets included; no command output containing sensitive material was stored.
+
+### 2026-05-26T12:26:00Z - FULL_REPLACEMENT_SAFETY_DECISION
+
+- task_id: AH-570
+- RUN_ID: RUN-P0-20260526-route-recovery
+- role: REGISTRAR
+- action_class: BLOCK
+- allowed_scope: evaluate fallback full-file replacement for large register files.
+- forbidden_scope_check: no broad full-register rewrite if exact no-loss verification cannot be performed in this route.
+- result: BLOCKED
+- evidence_artifact_path: this journal and PR #51.
+- validation_result: `INDEX.md`, `ARTIFACT_REGISTER.md`, and `PR_QUEUE_REGISTER.md` were fetched from the PR branch. Safe targeted patch tool is not exposed; command worker route is blocked; manual full replacement of large registers by T0 risks unrelated row loss/reorder and is not accepted as safe registrar patch.
+- typed_blocker: CONTROL_SPINE_REGISTER_PATCH_ROUTE_REQUIRED
+- secret_redaction_statement: no secrets included.
+
 ## Missing Action Coverage
 
 Actions before this addendum were already summarized in PR #51 artifacts. This journal marks them as mirrored/summarized in control-spine and does not rely on chat-only, terminal-only, local-only, or YouTrack-only evidence.
@@ -157,4 +185,4 @@ Actions before this addendum were already summarized in PR #51 artifacts. This j
 
 CONTROL_SPINE_REGISTER_PATCH_ROUTE_REQUIRED
 
-The reporting gate artifact route is active on PR #51, and the required journal, receipt, and forensic summary exist in the repository branch. Final Done remains blocked until safe register/index/queue patch coverage exists or a registrar-owned patch route is provided.
+The reporting gate artifact route is active on PR #51, and the required journal, receipt, and forensic summary exist in the repository branch. Final Done remains blocked because safe register/index/queue patch coverage could not be completed: the command registrar worker route is blocked and manual broad full-register replacement is not a safe accepted patch route for this pass.
