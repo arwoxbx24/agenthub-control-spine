@@ -195,3 +195,14 @@ Compatibility states from older records remain readable: `active_policy`,
 | `reports/receipts/AH-572-live-runtime-readonly-inventory-receipt-20260526.md` | `operational_receipt` | false | false | AH-572 | Receipt for AH-572 scoped live runtime read-only inventory; proof only, not an active instruction. |
 | `reports/audits/AH-585-control-spine-repository-hygiene-20260526.md` | `audit_only` | false | false | AH-585 | Registrar-only hygiene report for current PR/register/branch lifecycle state. |
 | `reports/receipts/AH-585-control-spine-repository-hygiene-receipt-20260526.md` | `operational_receipt` | false | false | AH-585 | Receipt for control-spine repository hygiene; proof only, not an active instruction. |
+| `schemas/agenthub-owner-requirements-ledger.schema.json` | `active_control` | false | false | AH-590 | Schema for owner requirements ledger entries and acceptance mapping. |
+| `schemas/agenthub-run-checkpoint.schema.json` | `active_control` | false | false | AH-590 | Schema for durable AgentHub resume checkpoints. |
+| `governance/agenthub-backend-only-output-policy.md` | `active_policy` | false | false | AH-590 | Backend-only owner communication and evidence placement policy. |
+| `governance/agenthub-role-permission-profiles.md` | `active_policy` | false | false | AH-590 | Role-scoped permission profile policy for T0/T1/T2/Registrar/Verifier. |
+| `governance/agenthub-model-routing-and-token-economy.md` | `active_policy` | false | false | AH-590 | Model routing and token economy policy for AgentHub work. |
+| `governance/agenthub-resume-from-run-policy.md` | `active_policy` | false | false | AH-590 | Resume/checkpoint lifecycle policy. |
+| `governance/agenthub-technical-assignment-methodology-router.md` | `active_policy` | false | false | AH-590 | Technical-assignment and methodology router policy. |
+| `runbooks/agenthub-backend-only-linear-cycle-runbook.md` | `active_control` | false | false | AH-590 | Backend-only linear execution and closure runbook. |
+| `evals/agenthub-control-policy-regression-suite.md` | `active_control` | false | false | AH-590 | Regression fixtures for T0 boundary, reporting, model routing, resume, duplicate, and Done gates. |
+| `reports/audits/P0-full-owner-requirements-intake-ledger-20260526.md` | `audit_only` | false | false | AH-590 | Full owner requirements intake ledger; evidence only, not active instruction. |
+| `reports/receipts/P0-agenthub-backend-only-repo-first-architecture-receipt-20260526.md` | `operational_receipt` | false | false | AH-590 | Receipt for backend-only repo-first architecture package. |
