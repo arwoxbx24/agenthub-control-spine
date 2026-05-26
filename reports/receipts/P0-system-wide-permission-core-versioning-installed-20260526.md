@@ -46,11 +46,17 @@ safe_to_replay: false
 
 ## Runtime Hook Status
 
-This repository package installs architecture, policy, schema, runbook, and
-fixtures. It does not mutate AgentHub runtime hooks from T0. Runtime activation
-still requires the approved AgentHub policy install path.
+The approved install path set was selected and finalized in:
 
-Typed residual: `AGENTHUB_POLICY_INSTALL_PATH_REQUIRED`.
+- `reports/receipts/P0-pr52-policy-install-path-decision-20260526.md`
+- `reports/receipts/P0-pr52-policy-install-validation-20260526.md`
+
+Runtime policy, hook instructions, validator, and permission-manifest template
+were installed under the approved AgentHub orchestration paths. Dry-run
+validation passed for T0 direct mutation denial, scoped T2 allow, reporting
+gate failure, loop quarantine, and owner STOP handling.
+
+Typed residual: none for PR #52 policy-install path.
 
 ## Forbidden Zones
 

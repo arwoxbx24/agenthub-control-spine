@@ -62,6 +62,7 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
 - Future agents must read `ARTIFACT_REGISTER.md`, `PR_QUEUE_REGISTER.md`, and
   `context/agenthub-current-context-pack.md` before historical reports.
 - System-wide AgentHub permission routing must follow
+  `governance/policies/agenthub/pr52-policy-install-control.md`,
   `governance/permission-profiles/agenthub-permission-profile-matrix.md`,
   `governance/permission-profiles/agenthub-permission-validator.md`, and
   `governance/core-versioning/codex-core-version-control-policy.md`.

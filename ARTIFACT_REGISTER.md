@@ -183,3 +183,6 @@ Compatibility states from older records remain readable: `active_policy`,
 | `evals/agenthub-system-permission-core-versioning/fixtures.json` | `active_control` | false | false | AH-570 | Static fixtures for safe auto-allow, T0 deny, manifest, quarantine, and rollback gates. |
 | `quarantine/README.md` | `quarantine` | false | false | AH-570 | Quarantine directory index; evidence only, not replayable. |
 | `reports/receipts/P0-system-wide-permission-core-versioning-installed-20260526.md` | `operational_receipt` | false | false | AH-570 | Installation receipt for agenthub-core.20260526.1 repository architecture package. |
+| `governance/policies/agenthub/pr52-policy-install-control.md` | `active_control` | false | false | AH-570 | Approved install-path bridge from PR #52 repository policy to AgentHub runtime policy/hook/validator/template files. |
+| `reports/receipts/P0-pr52-policy-install-path-decision-20260526.md` | `operational_receipt` | false | false | AH-570 | Records approved runtime/control-spine install paths and rollback metadata before runtime writes. |
+| `reports/receipts/P0-pr52-policy-install-validation-20260526.md` | `operational_receipt` | false | false | AH-570 | Records dry-run validation, scoped secret scans, and ready-to-merge queue decision for PR #52. |

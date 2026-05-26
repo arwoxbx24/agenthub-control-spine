@@ -155,3 +155,6 @@ status: draft
 | `evals/agenthub-system-permission-core-versioning/fixtures.json` | eval fixtures | AH-570 | active |
 | `quarantine/README.md` | quarantine index | AH-570 | quarantine |
 | `reports/receipts/P0-system-wide-permission-core-versioning-installed-20260526.md` | installation receipt | AH-570 | operational-receipt |
+| `governance/policies/agenthub/pr52-policy-install-control.md` | policy install control | AH-570 | active |
+| `reports/receipts/P0-pr52-policy-install-path-decision-20260526.md` | install path decision receipt | AH-570 | operational-receipt |
+| `reports/receipts/P0-pr52-policy-install-validation-20260526.md` | validation receipt | AH-570 | operational-receipt |
