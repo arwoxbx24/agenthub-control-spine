@@ -64,4 +64,6 @@ before closure.
 
 | PR | Decision | Blocker |
 |---|---|---|
+| `#54` | Open draft for `AH-571`; clean branch `agenthub/komodo-orchestration-roadmap-20260526` from `origin/main`; adds Komodo orchestration report, implementation decomposition, receipts, index/register coverage, 2026-05-26 approved corrected contract realignment, and process hardening that pins `AH-578` as the single active live-route unblock gate. | none for documentation/process review; live rollout remains gated by `AH-578` route evidence before `AH-574` baseline. |
+| `#53` | Closed on 2026-05-26 before review because the first branch inherited unrelated evidence history; superseded by clean PR `#54`. | none after close |
 | `#48` | Merged on 2026-05-25; installs AH-554 access-rights/live-worker enablement controls. | Runtime repair remains local to AH-554: `AGENTHUB_LIVE_WORKER_AUTH_MISSING`. |
