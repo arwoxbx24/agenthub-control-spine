@@ -191,6 +191,20 @@ Each entry includes timestamp UTC, task_id, RUN_ID, role, action class, allowed 
 - typed_blocker: none
 - secret_redaction_statement: no secrets, raw transcripts, env dumps, or private links will be included.
 
+### 2026-05-26T12:42:00Z - FINAL_SUCCESS_REQUIREMENTS_REPORT_WRITTEN
+
+- task_id: AH-570
+- RUN_ID: RUN-P0-20260526-route-recovery
+- role: T0 / VERIFIER
+- action_class: VERIFY
+- allowed_scope: create a deep closure requirements report in the existing PR #51 branch.
+- forbidden_scope_check: no runtime/product mutation; no register rewrite; no new PR; no new task.
+- result: SUCCESS
+- evidence_artifact_path: `reports/audits/P0-pr51-final-success-closure-requirements-20260526.md`.
+- validation_result: report records the exact conditions for claiming full success, including register coverage, PR queue state, T0 hook proof, branch protection/secret scan evidence, YouTrack readback, merge/Done gates, and current honest final state.
+- typed_blocker: CONTROL_SPINE_REGISTER_PATCH_ROUTE_REQUIRED remains current.
+- secret_redaction_statement: no secrets, raw transcripts, env dumps, or private links included.
+
 ## Missing Action Coverage
 
 Actions before this addendum were already summarized in PR #51 artifacts. This journal marks them as mirrored/summarized in control-spine and does not rely on chat-only, terminal-only, local-only, or YouTrack-only evidence.
@@ -199,4 +213,4 @@ Actions before this addendum were already summarized in PR #51 artifacts. This j
 
 CONTROL_SPINE_REGISTER_PATCH_ROUTE_REQUIRED
 
-The reporting gate artifact route is active on PR #51, and the required journal, receipt, and forensic summary exist in the repository branch. Final Done remains blocked because safe register/index/queue patch coverage could not be completed: the command registrar worker route is blocked and manual broad full-register replacement is not a safe accepted patch route for this pass.
+The reporting gate artifact route is active on PR #51, and the required journal, receipt, forensic summary, and final success requirements report exist in the repository branch. Final Done remains blocked because safe register/index/queue patch coverage could not be completed: the command registrar worker route is blocked and manual broad full-register replacement is not a safe accepted patch route for this pass.
