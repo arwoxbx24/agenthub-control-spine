@@ -98,6 +98,8 @@ Compatibility states from older records remain readable: `active_policy`,
 | `reports/security/AH-501-secret-exclusion-current-content-summary.md` | `audit_only` | false | false | AH-501 | Redacted evidence summary. |
 | `reports/devops/mtproxy-domain-route-worker-20260523.md` | `audit_only` | false | false | AH-468 | Domain worker report, not global instruction. |
 | `reports/devops/npm-docker-domain-route-ah513-ah518-20260523.md` | `audit_only` | false | false | AH-513/AH-518 | Domain worker report, not global instruction. |
+| `reports/devops/komodo-orchestration-roadmap-20260526.md` | `audit_only` | false | false | AH-571 | Komodo/NPM/Portainer orchestration architecture report with the 2026-05-26 approved corrected contract; source-grounded planning only, not live rollout evidence. |
+| `reports/devops/komodo-orchestration-task-decomposition-20260526.md` | `active_control` | false | false | AH-571 | Bounded implementation backlog and phase 0-8 corrected-contract checklist for future AgentHub live DevOps tasks. |
 | `reports/write-proof/AH-507-chatgpt-control-app-write-proof.md` | `historical_receipt` | false | false | AH-507 | Write proof only. |
 | `reports/receipts/AH-494-github-repo-setup-receipt.md` | `historical_receipt` | false | false | AH-494 | Receipt only. |
 | `reports/receipts/AH-495-org-control-spine-migration-receipt.md` | `historical_receipt` | false | false | AH-495 | Receipt only. |
@@ -110,6 +112,7 @@ Compatibility states from older records remain readable: `active_policy`,
 | `reports/receipts/AH-510-t0-emergency-stop-control-receipt.md` | `historical_receipt` | false | false | AH-510 | Receipt only. |
 | `reports/receipts/mtproxy-domain-route-worker-receipt-20260523.md` | `historical_receipt` | false | false | AH-468 | Operational receipt only. |
 | `reports/receipts/npm-docker-domain-route-ah513-ah518-receipt-20260523.md` | `historical_receipt` | false | false | AH-513/AH-518 | Operational receipt only. |
+| `reports/receipts/RUN-komodo-orchestration-20260526-receipt.md` | `operational_receipt` | false | false | AH-571 | Receipt for Komodo orchestration report, task creation, repository package, and corrected-contract realignment. |
 | `schemas/prompt-artifact.schema.json` | `active_policy` | false | false | AH-494 | Schema. |
 | `schemas/report-receipt.schema.json` | `active_policy` | false | false | AH-494 | Schema. |
 | `schemas/task-card.schema.json` | `active_policy` | false | false | AH-494 | Schema. |

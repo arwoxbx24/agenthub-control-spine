@@ -82,7 +82,10 @@ status: draft
 | `reports/devops/mtproxy-domain-route-worker-20260523.md` | devops worker report | AH-468 | pass |
 | `reports/receipts/mtproxy-domain-route-worker-receipt-20260523.md` | operational receipt | AH-468 | pass |
 | `reports/devops/npm-docker-domain-route-ah513-ah518-20260523.md` | devops worker report | AH-513/AH-518 | partial-with-blocker |
+| `reports/devops/komodo-orchestration-roadmap-20260526.md` | devops architecture report | AH-571 | audit-only |
+| `reports/devops/komodo-orchestration-task-decomposition-20260526.md` | implementation task decomposition | AH-571 | active-control |
 | `reports/receipts/npm-docker-domain-route-ah513-ah518-receipt-20260523.md` | operational receipt | AH-513/AH-518 | partial-with-blocker |
+| `reports/receipts/RUN-komodo-orchestration-20260526-receipt.md` | control-spine receipt | AH-571 | operational-receipt |
 | `reports/control-spine/teamlead-system-inventory-20260524.md` | control-spine inventory report | AH-522 | operational-receipt |
 | `reports/receipts/teamlead-system-inventory-receipt-20260524.md` | control-spine inventory receipt | AH-522 | operational-receipt |
 | `reports/receipts/control-spine-pr-queue-cleanup-receipt-20260524.md` | control-spine registrar receipt | AH-523 | operational-receipt |
