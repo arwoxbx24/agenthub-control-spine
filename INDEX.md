@@ -167,3 +167,14 @@ status: draft
 | `reports/receipts/AH-572-live-runtime-readonly-inventory-receipt-20260526.md` | operational receipt | AH-572 | operational-receipt |
 | `reports/audits/AH-585-control-spine-repository-hygiene-20260526.md` | audit report | AH-585 | audit-only |
 | `reports/receipts/AH-585-control-spine-repository-hygiene-receipt-20260526.md` | operational receipt | AH-585 | operational-receipt |
+| `schemas/agenthub-owner-requirements-ledger.schema.json` | schema | AH-590 | active |
+| `schemas/agenthub-run-checkpoint.schema.json` | schema | AH-590 | active |
+| `governance/agenthub-backend-only-output-policy.md` | governance policy | AH-590 | active |
+| `governance/agenthub-role-permission-profiles.md` | governance policy | AH-590 | active |
+| `governance/agenthub-model-routing-and-token-economy.md` | governance policy | AH-590 | active |
+| `governance/agenthub-resume-from-run-policy.md` | governance policy | AH-590 | active |
+| `governance/agenthub-technical-assignment-methodology-router.md` | governance policy | AH-590 | active |
+| `runbooks/agenthub-backend-only-linear-cycle-runbook.md` | runbook | AH-590 | active |
+| `evals/agenthub-control-policy-regression-suite.md` | eval fixtures | AH-590 | active |
+| `reports/audits/P0-full-owner-requirements-intake-ledger-20260526.md` | requirements ledger | AH-590 | audit-only |
+| `reports/receipts/P0-agenthub-backend-only-repo-first-architecture-receipt-20260526.md` | operational receipt | AH-590 | operational-receipt |
