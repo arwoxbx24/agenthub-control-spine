@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/arwoxbx24/agenthub-control-spine/schemas/core-change-receipt.schema.json",
+  "title": "AgentHub Core Change Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "release_id",
+    "source_task",
+    "run_id",
+    "branch",
+    "changed_control_surfaces",
+    "rollback_ref",
+    "eval_result",
+    "receipt_path",
+    "youtrack_readback",
+    "secret_redaction"
+  ],
+  "properties": {
+    "release_id": { "type": "string", "pattern": "^agenthub-core\\.[0-9]{8}\\.[0-9]+$" },
+    "source_task": { "type": "string", "pattern": "^[A-Z]+-[0-9]+$" },
+    "run_id": { "type": "string", "minLength": 3 },
+    "branch": { "type": "string", "minLength": 3 },
+    "pr": { "type": ["string", "null"] },
+    "commit": { "type": ["string", "null"] },
+    "changed_control_surfaces": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "rollback_ref": { "type": "string", "minLength": 3 },
+    "eval_result": { "type": "string", "enum": ["PASS", "FAIL", "PARTIAL", "BLOCKED"] },
+    "receipt_path": { "type": "string", "minLength": 3 },
+    "youtrack_readback": { "type": "string", "minLength": 3 },
+    "secret_redaction": { "type": "string", "enum": ["PASS", "FAIL", "NOT_RUN"] }
+  }
+}
