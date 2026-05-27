@@ -91,6 +91,7 @@ status: draft
 | `reports/receipts/RUN-komodo-process-hardening-20260526-receipt.md` | control-spine receipt | AH-571 | operational-receipt |
 | `reports/receipts/AH-574-komodo-live-install-20260526.md` | operational receipt | AH-574 | operational-receipt |
 | `reports/receipts/AH-575-komodo-orchestrator-readback-20260527.md` | operational receipt | AH-575 | operational-receipt |
+| `reports/receipts/AH-575-komodo-live-read-route-enable-20260527.md` | operational receipt | AH-575 | operational-receipt |
 | `reports/control-spine/teamlead-system-inventory-20260524.md` | control-spine inventory report | AH-522 | operational-receipt |
 | `reports/receipts/teamlead-system-inventory-receipt-20260524.md` | control-spine inventory receipt | AH-522 | operational-receipt |
 | `reports/receipts/control-spine-pr-queue-cleanup-receipt-20260524.md` | control-spine registrar receipt | AH-523 | operational-receipt |
