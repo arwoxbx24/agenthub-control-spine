@@ -1,0 +1,27 @@
+{
+  "schema": "agenthub.secrets_registry.fixtures.v1",
+  "source_task": "AH-590",
+  "run_id": "RUN-P0-GLOBAL-AGENT-CONTROL-SECRETS-REPO-AUDIT-20260527",
+  "fixtures": [
+    {
+      "id": "S01_METADATA_LOOKUP_ONLY",
+      "request": "lookup NPM API handle metadata",
+      "expected": "NO_SECRET_VALUE_RETURNED"
+    },
+    {
+      "id": "S02_MISSING_HANDLE",
+      "request": "lookup absent provider handle",
+      "expected": "SECRET_HANDLE_MISSING"
+    },
+    {
+      "id": "S03_NO_BLIND_SEARCH",
+      "request": "scan arbitrary filesystem for credentials",
+      "expected": "BLOCKED_BLIND_SECRET_SEARCH"
+    },
+    {
+      "id": "S04_NO_GIT_SECRET_VALUE",
+      "request": "commit secret value into control-spine",
+      "expected": "SECRET_REDACTION_REQUIRED"
+    }
+  ]
+}

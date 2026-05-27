@@ -67,6 +67,9 @@ Compatibility states from older records remain readable: `active_policy`,
 | `governance/openai-cyber-safe-request-router.md` | `active_policy` | false | false | AH-541 | Four-class OpenAI cyber-safe request router; clarity/compliance policy, not safeguard bypass. |
 | `governance/policies/t0-direct-action-hard-stop-policy.md` | `active_policy` | false | false | AH-590 | Current hard-stop policy binding T0 direct shell/code/Docker/runtime denial to AgentHub-core enforcement evidence. |
 | `governance/policies/backend-only-owner-communication-policy.md` | `active_policy` | false | false | AH-590 | Current backend-only owner communication policy for final-only chat and mixed-output quarantine. |
+| `governance/global-agent-control-enforcement-policy.md` | `active_policy` | false | false | AH-590 | Global enforcement policy for T0 direct-action denial, run-id normalization, repo-first reporting, and same-gate loop breaker. |
+| `governance/secrets-registry-policy.md` | `active_policy` | false | false | AH-590 | Per-service secret handle registry policy; metadata-only, no secret values in Git/chat/logs. |
+| `governance/model-token-routing-policy.md` | `active_policy` | false | false | AH-590 | Registry-driven model and token routing policy; no expensive routine loops. |
 | `runbooks/chatgpt-github-connect.md` | `active_runbook` | false | false | AH-494 | Task-specific runbook. |
 | `runbooks/secret-leak-response.md` | `active_runbook` | false | false | AH-500 | Secret leak runbook. |
 | `runbooks/agenthub-locked-run-recovery.md` | `active_runbook` | false | false | AH-507 | Locked-run recovery. |
@@ -209,16 +212,24 @@ Compatibility states from older records remain readable: `active_policy`,
 | `schemas/agenthub-owner-requirements-ledger.schema.json` | `active_control` | false | false | AH-590 | Schema for owner requirements ledger entries and acceptance mapping. |
 | `schemas/agenthub-run-checkpoint.schema.json` | `active_control` | false | false | AH-590 | Schema for durable AgentHub resume checkpoints. |
 | `schemas/agent-run-isolation.schema.json` | `active_control` | false | false | AH-590 | Schema for RUN_ID/task_id/role/scope isolation across agent streams. |
+| `schemas/secrets-manifest.schema.json` | `active_control` | false | false | AH-590 | Schema for redacted secret handle metadata registry. |
 | `governance/agenthub-backend-only-output-policy.md` | `active_policy` | false | false | AH-590 | Backend-only owner communication and evidence placement policy. |
 | `governance/agenthub-role-permission-profiles.md` | `active_policy` | false | false | AH-590 | Role-scoped permission profile policy for T0/T1/T2/Registrar/Verifier. |
 | `governance/agenthub-model-routing-and-token-economy.md` | `active_policy` | false | false | AH-590 | Model routing and token economy policy for AgentHub work. |
 | `governance/agenthub-resume-from-run-policy.md` | `active_policy` | false | false | AH-590 | Resume/checkpoint lifecycle policy. |
 | `governance/agenthub-technical-assignment-methodology-router.md` | `active_policy` | false | false | AH-590 | Technical-assignment and methodology router policy. |
 | `runbooks/agenthub-backend-only-linear-cycle-runbook.md` | `active_control` | false | false | AH-590 | Backend-only linear execution and closure runbook. |
+| `runbooks/t0-direct-action-violation-response.md` | `active_control` | false | false | AH-590 | Response runbook for T0 direct command/code/runtime bypass attempts. |
+| `runbooks/secret-handle-missing-owner-guide.md` | `active_control` | false | false | AH-590 | Owner-safe guide for missing secret handle remediation without chat-secret leakage. |
 | `evals/agenthub-control-policy-regression-suite.md` | `active_control` | false | false | AH-590 | Regression fixtures for T0 boundary, reporting, model routing, resume, duplicate, and Done gates. |
 | `evals/t0-hard-stop-negative-tests.md` | `active_control` | false | false | AH-590 | Negative tests for T0 direct-action denial, unscoped command adapter, backend-only output, session isolation, and report registration. |
+| `evals/global-agent-control/fixtures.json` | `active_control` | false | false | AH-590 | Fixtures for T0 direct-action denials, T2 read-route allowance, run-id alias normalization, and same-gate loop control. |
+| `evals/secrets-registry/fixtures.json` | `active_control` | false | false | AH-590 | Fixtures for metadata-only secret handle lookup and missing-handle behavior. |
+| `registries/secrets-manifest.redacted.md` | `current_baseline` | false | false | AH-590 | Redacted secret-handle manifest; metadata only, no secret values. |
 | `reports/audits/P0-full-owner-requirements-intake-ledger-20260526.md` | `audit_only` | false | false | AH-590 | Full owner requirements intake ledger; evidence only, not active instruction. |
+| `reports/audits/P0-global-agent-control-secrets-and-repo-audit-20260527.md` | `audit_only` | false | false | AH-590 | Fact-based audit for PR #68/#69, T0 bypass, run-id schema mismatch, secrets registry, and repo-first residuals. |
 | `reports/incidents/P0-t0-boundary-violation-multi-agent-runaway-20260527.md` | `audit_only` | false | false | AH-590 | Incident report for owner-reported T0 boundary, mixed agent output, task-debt, and repo-first recurrence; evidence only. |
 | `reports/receipts/P0-agenthub-backend-only-repo-first-architecture-receipt-20260526.md` | `operational_receipt` | false | false | AH-590 | Receipt for backend-only repo-first architecture package. |
 | `reports/receipts/P0-t0-hard-stop-multi-agent-isolation-receipt-20260527.md` | `operational_receipt` | false | false | AH-590 | Receipt for the 2026-05-27 T0 hard-stop, multi-agent isolation, backend-only, and repo-first corrective package. |
 | `reports/receipts/P0-task-debt-consolidation-receipt-20260527.md` | `operational_receipt` | false | false | AH-590 | Receipt for scope-family task-debt consolidation and duplicate-prevention rules. |
+| `reports/receipts/P0-global-agent-control-secrets-and-repo-receipt-20260527.md` | `operational_receipt` | false | false | AH-590 | Receipt for global agent control, secrets registry, run-id schema normalization, and repo register coverage. |

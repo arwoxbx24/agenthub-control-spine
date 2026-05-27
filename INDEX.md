@@ -40,6 +40,9 @@ status: draft
 | `governance/openai-cyber-safe-request-router.md` | governance policy | AH-541 | active |
 | `governance/policies/t0-direct-action-hard-stop-policy.md` | governance policy | AH-590 | active |
 | `governance/policies/backend-only-owner-communication-policy.md` | governance policy | AH-590 | active |
+| `governance/global-agent-control-enforcement-policy.md` | governance policy | AH-590 | active |
+| `governance/secrets-registry-policy.md` | governance policy | AH-590 | active |
+| `governance/model-token-routing-policy.md` | governance policy | AH-590 | active |
 | `runbooks/chatgpt-github-connect.md` | runbook | AH-494 | draft |
 | `runbooks/secret-leak-response.md` | runbook | AH-500 | active |
 | `runbooks/agenthub-locked-run-recovery.md` | runbook | AH-507 | active |
@@ -181,16 +184,24 @@ status: draft
 | `schemas/agenthub-owner-requirements-ledger.schema.json` | schema | AH-590 | active |
 | `schemas/agenthub-run-checkpoint.schema.json` | schema | AH-590 | active |
 | `schemas/agent-run-isolation.schema.json` | schema | AH-590 | active |
+| `schemas/secrets-manifest.schema.json` | schema | AH-590 | active |
 | `governance/agenthub-backend-only-output-policy.md` | governance policy | AH-590 | active |
 | `governance/agenthub-role-permission-profiles.md` | governance policy | AH-590 | active |
 | `governance/agenthub-model-routing-and-token-economy.md` | governance policy | AH-590 | active |
 | `governance/agenthub-resume-from-run-policy.md` | governance policy | AH-590 | active |
 | `governance/agenthub-technical-assignment-methodology-router.md` | governance policy | AH-590 | active |
 | `runbooks/agenthub-backend-only-linear-cycle-runbook.md` | runbook | AH-590 | active |
+| `runbooks/t0-direct-action-violation-response.md` | runbook | AH-590 | active |
+| `runbooks/secret-handle-missing-owner-guide.md` | runbook | AH-590 | active |
 | `evals/agenthub-control-policy-regression-suite.md` | eval fixtures | AH-590 | active |
 | `evals/t0-hard-stop-negative-tests.md` | eval fixtures | AH-590 | active |
+| `evals/global-agent-control/fixtures.json` | eval fixtures | AH-590 | active |
+| `evals/secrets-registry/fixtures.json` | eval fixtures | AH-590 | active |
+| `registries/secrets-manifest.redacted.md` | redacted registry | AH-590 | active |
 | `reports/audits/P0-full-owner-requirements-intake-ledger-20260526.md` | requirements ledger | AH-590 | audit-only |
+| `reports/audits/P0-global-agent-control-secrets-and-repo-audit-20260527.md` | audit report | AH-590 | audit-only |
 | `reports/incidents/P0-t0-boundary-violation-multi-agent-runaway-20260527.md` | incident report | AH-590 | audit-only |
 | `reports/receipts/P0-agenthub-backend-only-repo-first-architecture-receipt-20260526.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-t0-hard-stop-multi-agent-isolation-receipt-20260527.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-task-debt-consolidation-receipt-20260527.md` | operational receipt | AH-590 | operational-receipt |
+| `reports/receipts/P0-global-agent-control-secrets-and-repo-receipt-20260527.md` | operational receipt | AH-590 | operational-receipt |
