@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/arwoxbx24/agenthub-control-spine/schemas/agent-run-isolation.schema.json",
+  "title": "AgentHub Agent Run Isolation",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "task_id",
+    "actor_role",
+    "worker_role",
+    "scope_signature",
+    "repo",
+    "branch",
+    "product_scope",
+    "authority_profile",
+    "allowed_surfaces",
+    "forbidden_surfaces",
+    "evidence_path",
+    "receipt_path",
+    "owner_output_policy",
+    "secret_redaction_gate"
+  ],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "actor_role": {
+      "type": "string",
+      "enum": ["T0_CONTROL", "T1_ARCHITECT", "T2_WORKER", "T2_LIVE_WORKER", "VERIFIER", "REGISTRAR"]
+    },
+    "worker_role": { "type": "string", "minLength": 1 },
+    "scope_signature": { "type": "string", "minLength": 1 },
+    "repo": { "type": "string", "minLength": 1 },
+    "branch": { "type": "string", "minLength": 1 },
+    "product_scope": { "type": "string", "minLength": 1 },
+    "ssh_context": { "type": ["string", "null"] },
+    "authority_profile": { "type": "string", "minLength": 1 },
+    "allowed_surfaces": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "forbidden_surfaces": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "evidence_path": { "type": "string", "minLength": 1 },
+    "receipt_path": { "type": "string", "minLength": 1 },
+    "owner_output_policy": {
+      "type": "string",
+      "enum": ["backend_only", "final_only", "owner_only_blocker_only"]
+    },
+    "secret_redaction_gate": {
+      "type": "string",
+      "enum": ["PASS", "FAIL", "NOT_RUN"]
+    },
+    "status": {
+      "type": "string",
+      "enum": ["planned", "running", "done", "blocked", "quarantined", "superseded"]
+    }
+  }
+}
