@@ -1,0 +1,48 @@
+{
+  "schema": "agenthub.global_agent_control.fixtures.v1",
+  "source_task": "AH-590",
+  "run_id": "RUN-P0-GLOBAL-AGENT-CONTROL-SECRETS-REPO-AUDIT-20260527",
+  "fixtures": [
+    {
+      "id": "E01_T0_PYTHON_BLOCKED",
+      "actor_role": "T0_CONTROL",
+      "action_class": "PYTHON_COMMAND",
+      "expected": "BLOCKED_T0_DIRECT_AUTHORSHIP"
+    },
+    {
+      "id": "E02_T0_DOCKER_BLOCKED",
+      "actor_role": "T0_CONTROL",
+      "action_class": "DOCKER",
+      "expected": "BLOCKED_T0_DIRECT_AUTHORSHIP"
+    },
+    {
+      "id": "E03_T0_TWC_YC_BLOCKED",
+      "actor_role": "T0_CONTROL",
+      "action_class": "PROVIDER_CLI",
+      "expected": "BLOCKED_T0_DIRECT_AUTHORSHIP"
+    },
+    {
+      "id": "E04_T0_PRODUCT_EDIT_BLOCKED",
+      "actor_role": "T0_CONTROL",
+      "action_class": "PRODUCT_FILE_WRITE",
+      "expected": "BLOCKED_T0_DIRECT_AUTHORSHIP"
+    },
+    {
+      "id": "E05_T2_READ_ROUTE_ALLOWED",
+      "actor_role": "T2_LIVE_WORKER",
+      "authority_profile": "P4_LIVE_RUNTIME_READ_ROUTE",
+      "action_class": "READ_ONLY_INVENTORY",
+      "expected": "ALLOW_WITH_RECEIPT"
+    },
+    {
+      "id": "E06_RUN_ID_ALIAS_NORMALIZED",
+      "input_field": "RUN_ID",
+      "expected_persisted_field": "run_id"
+    },
+    {
+      "id": "E07_SAME_GATE_THIRD_RETRY_BLOCKED",
+      "same_gate_failures": 2,
+      "next_attempt_expected": "GATE_LOOP_ARCHITECTURE_REPAIR_REQUIRED"
+    }
+  ]
+}
