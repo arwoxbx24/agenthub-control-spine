@@ -118,6 +118,7 @@ Compatibility states from older records remain readable: `active_policy`,
 | `reports/receipts/RUN-komodo-process-hardening-20260526-receipt.md` | `operational_receipt` | false | false | AH-571 | Receipt for Komodo process hardening after repeated live-route gate failure; records AH-578 as the single active route unblock gate. |
 | `reports/receipts/AH-574-komodo-live-install-20260526.md` | `operational_receipt` | false | false | AH-574 | Receipt for scoped Komodo v2 local baseline installation and AgentHub verifier evidence; proof only, not a standing instruction or public proxy claim. |
 | `reports/receipts/AH-575-komodo-orchestrator-readback-20260527.md` | `operational_receipt` | false | false | AH-575 | Receipt for scoped Komodo Docker-orchestrator readback; proof only, not a public NPM/domain exposure or service migration claim. |
+| `reports/receipts/AH-575-komodo-live-read-route-enable-20260527.md` | `operational_receipt` | false | false | AH-575 | Receipt for scoped Komodo live-read route enablement and container inventory; proof only, not a public edge/domain change or service migration claim. |
 | `schemas/prompt-artifact.schema.json` | `active_policy` | false | false | AH-494 | Schema. |
 | `schemas/report-receipt.schema.json` | `active_policy` | false | false | AH-494 | Schema. |
 | `schemas/task-card.schema.json` | `active_policy` | false | false | AH-494 | Schema. |
