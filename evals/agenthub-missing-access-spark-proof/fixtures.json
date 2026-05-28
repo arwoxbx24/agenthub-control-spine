@@ -1,0 +1,94 @@
+{
+  "schema": "agenthub.missing_access_spark_proof_tests.v1",
+  "source_task": "AH-590",
+  "run_id": "RUN-P0-CODEX-SPARK-TRUE-EXECUTION-20260528",
+  "cases": [
+    {
+      "id": "MISSING_ACCESS_NO_SURFACE_FAILS",
+      "input": {
+        "case_type": "missing_access",
+        "blocker_type": "MISSING_ACCESS",
+        "missing_access_human": "A required route is unavailable.",
+        "required_actor": "PLATFORM_ADMIN",
+        "required_route": "AgentHub live Codex worker route",
+        "why_needed": "Spark worker cannot be dispatched.",
+        "safe_next_action": "Repair route or return exact blocker.",
+        "evidence_ref": "runtime receipt"
+      },
+      "expected": "MISSING_ACCESS_BLOCKER_SCHEMA_INVALID"
+    },
+    {
+      "id": "GENERIC_ROUTE_BLOCKED_FAILS",
+      "input": {
+        "case_type": "missing_access",
+        "blocker_type": "MISSING_ACCESS",
+        "missing_access_surface": "route blocked",
+        "missing_access_human": "A route is blocked.",
+        "required_actor": "PLATFORM_ADMIN",
+        "required_route": "AgentHub live Codex worker route",
+        "why_needed": "Spark worker cannot be dispatched.",
+        "safe_next_action": "Repair route or return exact blocker.",
+        "evidence_ref": "runtime receipt"
+      },
+      "expected": "MISSING_ACCESS_BLOCKER_SCHEMA_INVALID"
+    },
+    {
+      "id": "VALID_MISSING_ACCESS_PASSES",
+      "input": {
+        "case_type": "missing_access",
+        "blocker_type": "MISSING_ACCESS",
+        "missing_access_surface": "agenthub.codex_spark.worker.dispatch.profile",
+        "missing_access_human": "Codex Spark worker dispatch profile is unavailable.",
+        "required_actor": "PLATFORM_ADMIN",
+        "required_route": "AgentHub model-router Codex Spark worker adapter",
+        "why_needed": "A real Spark execution receipt is required before Done.",
+        "safe_next_action": "Enable the adapter or return CODEX_SPARK_ROUTE_NOT_REGISTERED.",
+        "evidence_ref": "RUN-P0-CODEX-SPARK-TRUE-EXECUTION-20260528"
+      },
+      "expected": "MISSING_ACCESS_BLOCKER_VALID"
+    },
+    {
+      "id": "SPARK_POLICY_WITHOUT_RUNTIME_RECEIPT_FAILS",
+      "input": {
+        "case_type": "spark_proof",
+        "actor_role": "T2_CODEX_WORKER",
+        "action_class": "CODE_EDIT",
+        "selected_model": "gpt-5.3-codex-spark"
+      },
+      "expected": "CODEX_SPARK_USAGE_PROOF_UNAVAILABLE"
+    },
+    {
+      "id": "FALLBACK_WITHOUT_SPARK_UNAVAILABLE_PROOF_FAILS",
+      "input": {
+        "case_type": "spark_proof",
+        "actor_role": "T2_CODEX_WORKER",
+        "action_class": "CONFIG_EDIT",
+        "selected_model": "gpt-5.1-codex-mini",
+        "same_run_fallback": true
+      },
+      "expected": "CODEX_SPARK_ROUTE_NOT_REGISTERED"
+    },
+    {
+      "id": "T0_DIRECT_CODE_FAILS",
+      "input": {
+        "case_type": "spark_proof",
+        "actor_role": "T0_CONTROL",
+        "action_class": "CODE_EDIT",
+        "selected_model": "gpt-5.3-codex-spark"
+      },
+      "expected": "T0_DIRECT_ACTION_VIOLATION"
+    },
+    {
+      "id": "VALID_SPARK_RECEIPT_PASSES",
+      "input": {
+        "case_type": "spark_proof",
+        "actor_role": "T2_CODEX_WORKER",
+        "action_class": "CODE_EDIT",
+        "selected_model": "gpt-5.3-codex-spark",
+        "receipt_model_id": "gpt-5.3-codex-spark",
+        "model_execution_receipt": "agenthub-runtime-receipt"
+      },
+      "expected": "CODEX_SPARK_RUNTIME_PROOF_PASS"
+    }
+  ]
+}
