@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "methodology-router.schema.json",
+  "title": "Project Methodology Router Selection",
+  "type": "object",
+  "required": [
+    "TASK_CLASS",
+    "ROLE",
+    "ACTIVE_METHODS",
+    "FORBIDDEN_METHODS",
+    "ACTIVE_SKILLS",
+    "FORBIDDEN_SKILLS",
+    "SCOPE_SIGNATURE",
+    "NEGATIVE_MATCHES",
+    "RUN_ID",
+    "EVIDENCE_TARGETS"
+  ],
+  "properties": {
+    "TASK_CLASS": { "type": "string", "minLength": 1 },
+    "ROLE": { "type": "string", "minLength": 1 },
+    "ACTIVE_METHODS": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 1, "maximum": 25 },
+      "uniqueItems": true
+    },
+    "FORBIDDEN_METHODS": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 1, "maximum": 25 },
+      "uniqueItems": true
+    },
+    "ACTIVE_SKILLS": { "type": "array", "items": { "type": "string" } },
+    "FORBIDDEN_SKILLS": { "type": "array", "items": { "type": "string" } },
+    "SCOPE_SIGNATURE": { "type": "string", "minLength": 1 },
+    "NEGATIVE_MATCHES": { "type": "array", "items": { "type": "string" } },
+    "RUN_ID": { "type": "string", "pattern": "^RUN-" },
+    "EVIDENCE_TARGETS": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}
+

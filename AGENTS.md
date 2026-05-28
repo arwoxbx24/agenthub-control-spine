@@ -28,6 +28,15 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
 - YouTrack remains the task system.
 - GitHub is the artifact repository, not a second task tracker.
 - This corporate organization repository is canonical for AgentHub governance prompts, reports, receipts, schemas, runbooks, and skill drafts.
+- The five stable ChatGPT Project Sources are mirrored in
+  `governance/project-sources/chatgpt-project-five-source-mirror.md`; methodology
+  HTML is catalog source material only and must not become a sixth always-loaded
+  Project Source.
+- Methodology selection must use
+  `governance/methodologies/methodology-router-policy.md` and
+  `governance/methodologies/ai-agent-methodology-catalog.md`. Agents must record
+  active/forbidden methods and skills before serious worker action, and must not
+  load all 25 methods by default.
 - The personal GitHub owner `arwoxb24` is prohibited for AgentHub control-spine work unless the user explicitly authorizes it for one future task.
 - Git and GitHub mutation for this repository must be task-bound and
   AgentHub-routed. A valid route requires a YouTrack task, RUN_ID, role,
