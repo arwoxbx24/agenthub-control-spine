@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agenthub_methodology_router.schema.json",
+  "title": "AgentHub Methodology Router Decision",
+  "type": "object",
+  "required": [
+    "TASK_CLASS",
+    "ROLE",
+    "RUN_ID",
+    "METHODOLOGY_PROFILE",
+    "ACTIVE_METHODS",
+    "FORBIDDEN_METHODS",
+    "WHY_SELECTED",
+    "EXPECTED_ARTIFACTS",
+    "ACCEPTANCE_GATES"
+  ],
+  "properties": {
+    "TASK_CLASS": { "type": "string", "minLength": 1 },
+    "ROLE": { "type": "string", "minLength": 1 },
+    "RUN_ID": { "type": "string", "pattern": "^RUN-" },
+    "METHODOLOGY_PROFILE": {
+      "type": "string",
+      "enum": ["MICRO", "STANDARD", "INCIDENT", "FULL_ARCHITECTURE", "CODE_IMPLEMENTATION", "QA_VALIDATION", "REGISTRAR"]
+    },
+    "ACTIVE_METHODS": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 1, "maximum": 25 },
+      "uniqueItems": true
+    },
+    "FORBIDDEN_METHODS": {
+      "type": "array",
+      "items": { "type": "integer", "minimum": 1, "maximum": 25 },
+      "uniqueItems": true
+    },
+    "WHY_SELECTED": {
+      "type": "object",
+      "additionalProperties": { "type": "string", "minLength": 1 }
+    },
+    "EXPECTED_ARTIFACTS": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "ACCEPTANCE_GATES": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}
+

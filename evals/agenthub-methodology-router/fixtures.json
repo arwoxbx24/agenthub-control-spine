@@ -1,0 +1,228 @@
+{
+  "schema": "agenthub.methodology_router.fixtures.v1",
+  "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+  "cases": [
+    {
+      "id": "N10_INCIDENT_WITHOUT_REQUIRED_METHODS",
+      "input": {
+        "TASK_CLASS": "INCIDENT_DEBUG",
+        "ROLE": "T2_DEVOPS_WORKER",
+        "RUN_ID": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "METHODOLOGY_PROFILE": "INCIDENT",
+        "ACTIVE_METHODS": [1, 4, 25],
+        "FORBIDDEN_METHODS": [7, 8, 22],
+        "WHY_SELECTED": { "1": "tool loop" },
+        "EXPECTED_ARTIFACTS": ["incident receipt"],
+        "ACCEPTANCE_GATES": ["debug ladder"]
+      },
+      "expected": "DENY_PROFILE_METHODS_MISSING"
+    },
+    {
+      "id": "N11_ARCH_WITHOUT_ADR_OPTIONS",
+      "input": {
+        "TASK_CLASS": "ARCHITECTURE",
+        "ROLE": "T1_ARCHITECT",
+        "RUN_ID": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "METHODOLOGY_PROFILE": "FULL_ARCHITECTURE",
+        "ACTIVE_METHODS": [1, 2, 3, 4, 5, 21, 23, 24],
+        "FORBIDDEN_METHODS": [8, 22],
+        "WHY_SELECTED": { "5": "architecture decision" },
+        "EXPECTED_ARTIFACTS": ["ADR"],
+        "ACCEPTANCE_GATES": ["options"],
+        "options_recorded": false
+      },
+      "expected": "DENY_ARCH_METHODS_MISSING"
+    },
+    {
+      "id": "N12_CODE_WITHOUT_TEST_REVIEW_METHODS",
+      "input": {
+        "TASK_CLASS": "CODE_CHANGE",
+        "ROLE": "T2_CODEX_WORKER",
+        "RUN_ID": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "METHODOLOGY_PROFILE": "CODE_IMPLEMENTATION",
+        "ACTIVE_METHODS": [1, 3, 23, 24],
+        "FORBIDDEN_METHODS": [7, 8, 22],
+        "WHY_SELECTED": { "23": "GitOps" },
+        "EXPECTED_ARTIFACTS": ["PR"],
+        "ACCEPTANCE_GATES": ["tests"],
+        "codex_route_attempted": true
+      },
+      "expected": "DENY_PROFILE_METHODS_MISSING"
+    },
+    {
+      "id": "N13_REPO_FIRST_MISSING",
+      "input": {
+        "TASK_CLASS": "ARCHITECTURE",
+        "ROLE": "T1_ARCHITECT",
+        "RUN_ID": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "METHODOLOGY_PROFILE": "FULL_ARCHITECTURE",
+        "ACTIVE_METHODS": [1, 2, 3, 4, 5, 21, 23, 24],
+        "FORBIDDEN_METHODS": [8, 22],
+        "WHY_SELECTED": { "23": "repo-first evidence" },
+        "EXPECTED_ARTIFACTS": ["audit"],
+        "ACCEPTANCE_GATES": ["receipt"],
+        "options_recorded": true,
+        "repo_first_required": true,
+        "evidence_target_path": ""
+      },
+      "expected": "DENY_REPO_FIRST_MISSING"
+    },
+    {
+      "id": "N14_GITHUB_ONLY_DONE",
+      "input": {
+        "TASK_CLASS": "STANDARD",
+        "ROLE": "REGISTRAR",
+        "RUN_ID": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "METHODOLOGY_PROFILE": "REGISTRAR",
+        "ACTIVE_METHODS": [1, 3, 17, 23, 24],
+        "FORBIDDEN_METHODS": [6, 7, 8, 22],
+        "WHY_SELECTED": { "17": "change classification" },
+        "EXPECTED_ARTIFACTS": ["PR"],
+        "ACCEPTANCE_GATES": ["task readback"],
+        "repo_first_required": true,
+        "evidence_target_path": "reports/receipts/x.md",
+        "github_only_done": true
+      },
+      "expected": "DENY_GITHUB_ONLY_DONE"
+    },
+    {
+      "id": "N15_PARENT_DONE_WITH_OPEN_CHILDREN",
+      "input": { "secret_in_output": false, "parent_done": true, "open_children": 1 },
+      "expected": "DENY_PARENT_DONE_WITH_OPEN_CHILDREN"
+    },
+    {
+      "id": "N16_STALE_REPORT_REPLAY",
+      "input": { "artifact_lifecycle": "audit_only", "used_as_instruction": true },
+      "expected": "DENY_STALE_REPORT_REPLAY"
+    },
+    {
+      "id": "N17_SECRET_LEAK",
+      "input": { "secret_in_output": true },
+      "expected": "DENY_SECRET_LEAK"
+    },
+    {
+      "id": "N18_REPEATED_BLOCKER",
+      "input": { "same_blocker_count": 2 },
+      "expected": "DENY_BLOCKER_LOOP_SELF_REPAIR_REQUIRED"
+    },
+    {
+      "id": "N19_ALL_METHODS_FOR_SIMPLE_TASK",
+      "input": {
+        "TASK_CLASS": "SIMPLE_TEXT",
+        "ROLE": "T0_CONTROL",
+        "RUN_ID": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "METHODOLOGY_PROFILE": "MICRO",
+        "ACTIVE_METHODS": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        "FORBIDDEN_METHODS": [],
+        "WHY_SELECTED": { "1": "overloaded" },
+        "EXPECTED_ARTIFACTS": ["answer"],
+        "ACCEPTANCE_GATES": ["brief"]
+      },
+      "expected": "DENY_TOKEN_BLOAT_METHODOLOGY_OVERLOAD"
+    },
+    {
+      "id": "N20_USER_NOISE_BACKEND_ONLY",
+      "input": { "backend_only_mode": true, "intermediate_user_output": true },
+      "expected": "DENY_USER_NOISE"
+    },
+    {
+      "id": "N21_SANDBOX_AS_PRODUCT_DONE",
+      "input": { "claims_product_done": true, "sandbox_only": true },
+      "expected": "DENY_SANDBOX_AS_PRODUCT_DONE"
+    },
+    {
+      "id": "P1_MICRO_SIMPLE_ANSWER",
+      "input": {
+        "TASK_CLASS": "SIMPLE_TEXT",
+        "ROLE": "T0_CONTROL",
+        "RUN_ID": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "METHODOLOGY_PROFILE": "MICRO",
+        "ACTIVE_METHODS": [1],
+        "FORBIDDEN_METHODS": [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25],
+        "WHY_SELECTED": { "1": "single internal action" },
+        "EXPECTED_ARTIFACTS": ["short answer"],
+        "ACCEPTANCE_GATES": ["no tool loop"]
+      },
+      "expected": "ALLOW_METHOD_PROFILE"
+    },
+    {
+      "id": "P2_ARCHITECTURE_SELECTS_ADR_C4",
+      "input": {
+        "TASK_CLASS": "ARCHITECTURE",
+        "ROLE": "T1_ARCHITECT",
+        "RUN_ID": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "METHODOLOGY_PROFILE": "FULL_ARCHITECTURE",
+        "ACTIVE_METHODS": [1, 2, 3, 4, 5, 6, 21, 23, 24],
+        "FORBIDDEN_METHODS": [7, 8, 22],
+        "WHY_SELECTED": { "5": "ADR", "6": "system boundary" },
+        "EXPECTED_ARTIFACTS": ["ADR", "C4 context"],
+        "ACCEPTANCE_GATES": ["options"],
+        "options_recorded": true,
+        "system_boundary_applies": true
+      },
+      "expected": "ALLOW_METHOD_PROFILE"
+    },
+    {
+      "id": "P3_RUNTIME_INCIDENT_METHODS",
+      "input": {
+        "TASK_CLASS": "INCIDENT_DEBUG",
+        "ROLE": "T2_DEVOPS_WORKER",
+        "RUN_ID": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "METHODOLOGY_PROFILE": "INCIDENT",
+        "ACTIVE_METHODS": [1, 4, 19, 20, 21, 25],
+        "FORBIDDEN_METHODS": [7, 8, 22],
+        "WHY_SELECTED": { "19": "debug ladder", "25": "SRE" },
+        "EXPECTED_ARTIFACTS": ["incident receipt"],
+        "ACCEPTANCE_GATES": ["read-only evidence"]
+      },
+      "expected": "ALLOW_METHOD_PROFILE"
+    },
+    {
+      "id": "P4_CODE_TASK_METHODS",
+      "input": {
+        "TASK_CLASS": "CODE_CHANGE",
+        "ROLE": "T2_CODEX_WORKER",
+        "RUN_ID": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "METHODOLOGY_PROFILE": "CODE_IMPLEMENTATION",
+        "ACTIVE_METHODS": [1, 3, 9, 10, 18, 23, 24],
+        "FORBIDDEN_METHODS": [7, 8, 22],
+        "WHY_SELECTED": { "10": "behavior change", "18": "PR review" },
+        "EXPECTED_ARTIFACTS": ["tests", "PR"],
+        "ACCEPTANCE_GATES": ["validator pass"],
+        "codex_route_attempted": true
+      },
+      "expected": "ALLOW_METHOD_PROFILE"
+    },
+    {
+      "id": "P5_REGISTRAR_METHODS",
+      "input": {
+        "TASK_CLASS": "REGISTRAR_WORK",
+        "ROLE": "REGISTRAR",
+        "RUN_ID": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "METHODOLOGY_PROFILE": "REGISTRAR",
+        "ACTIVE_METHODS": [1, 3, 17, 23, 24],
+        "FORBIDDEN_METHODS": [6, 7, 8, 9, 10, 11, 12, 22],
+        "WHY_SELECTED": { "23": "artifact lifecycle" },
+        "EXPECTED_ARTIFACTS": ["register update"],
+        "ACCEPTANCE_GATES": ["readback"]
+      },
+      "expected": "ALLOW_METHOD_PROFILE"
+    },
+    {
+      "id": "P8_VERIFIER_REJECTS_WEAK_DONE",
+      "input": {
+        "TASK_CLASS": "QA",
+        "ROLE": "VERIFIER",
+        "RUN_ID": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "METHODOLOGY_PROFILE": "QA_VALIDATION",
+        "ACTIVE_METHODS": [1, 4, 9, 18, 24],
+        "FORBIDDEN_METHODS": [7, 8, 22],
+        "WHY_SELECTED": { "18": "review checklist" },
+        "EXPECTED_ARTIFACTS": ["verification receipt"],
+        "ACCEPTANCE_GATES": ["evidence mapped"]
+      },
+      "expected": "ALLOW_METHOD_PROFILE"
+    }
+  ]
+}
+
