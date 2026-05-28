@@ -218,6 +218,7 @@ status: draft
 | `reports/audits/P0-agenthub-x-capability-self-audit-20260528.md` | audit report | AH-590 | audit-only |
 | `reports/audits/P0-agenthub-x-self-critique-correction-20260528.md` | self-critique report | AH-590 | audit-only |
 | `reports/audits/P0-codex-spark-model-router-pr80-residual-audit-20260528.md` | audit report | AH-590 | audit-only |
+| `reports/audits/P0-pr82-fallback-evidence-gate-fact-audit-20260528.md` | audit report | AH-590 | audit-only |
 | `reports/incidents/P0-t0-boundary-violation-multi-agent-runaway-20260527.md` | incident report | AH-590 | audit-only |
 | `reports/receipts/P0-agenthub-backend-only-repo-first-architecture-receipt-20260526.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-t0-hard-stop-multi-agent-isolation-receipt-20260527.md` | operational receipt | AH-590 | operational-receipt |
@@ -225,3 +226,4 @@ status: draft
 | `reports/receipts/P0-global-agent-control-secrets-and-repo-receipt-20260527.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-codex-spark-model-router-pr80-residual-receipt-20260528.md` | operational receipt | AH-590 | operational-receipt |
+| `reports/receipts/P0-pr82-fallback-evidence-gate-fix-receipt-20260528.md` | operational receipt | AH-590 | operational-receipt |

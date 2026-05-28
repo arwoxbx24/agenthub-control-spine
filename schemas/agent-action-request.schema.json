@@ -53,6 +53,13 @@
     "forbidden_surfaces": { "type": "array", "minItems": 1, "items": { "type": "string" } },
     "worker_model": { "type": "string", "minLength": 1 },
     "model_route_reason": { "type": "string", "minLength": 1 },
+    "codex_available": { "type": "boolean" },
+    "primary_route_unavailable": { "type": "boolean" },
+    "primary_attempt_evidence_ref": { "type": "string", "minLength": 1 },
+    "codex_unavailable_evidence_ref": { "type": "string", "minLength": 1 },
+    "same_run_fallback": { "type": "boolean" },
+    "fallback_run_id": { "type": "string", "minLength": 8 },
+    "fallback_model": { "type": "string", "minLength": 1 },
     "fallback_reason": {
       "type": ["string", "null"],
       "description": "Required field. Must be null when primary Codex route is used; non-empty when same-RUN fallback is used."
