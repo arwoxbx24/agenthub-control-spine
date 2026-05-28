@@ -67,6 +67,8 @@ Compatibility states from older records remain readable: `active_policy`,
 | `governance/openai-cyber-safe-request-router.md` | `active_policy` | false | false | AH-541 | Four-class OpenAI cyber-safe request router; clarity/compliance policy, not safeguard bypass. |
 | `governance/policies/t0-direct-action-hard-stop-policy.md` | `active_policy` | false | false | AH-590 | Current hard-stop policy binding T0 direct shell/code/Docker/runtime denial to AgentHub-core enforcement evidence. |
 | `governance/policies/backend-only-owner-communication-policy.md` | `active_policy` | false | false | AH-590 | Current backend-only owner communication policy for final-only chat and mixed-output quarantine. |
+| `governance/policies/agenthub-self-healing-core-policy.md` | `active_policy` | false | false | AH-590 | Durable self-healing loop policy for ordinary route/model/registrar/task-debt defects before owner-facing blockers. |
+| `governance/policies/agenthub-capability-matrix.md` | `active_policy` | false | false | AH-590 | Role x surface x operation x model-route capability matrix for action authorization receipts. |
 | `governance/global-agent-control-enforcement-policy.md` | `active_policy` | false | false | AH-590 | Global enforcement policy for T0 direct-action denial, run-id normalization, repo-first reporting, and same-gate loop breaker. |
 | `governance/secrets-registry-policy.md` | `active_policy` | false | false | AH-590 | Per-service secret handle registry policy; metadata-only, no secret values in Git/chat/logs. |
 | `governance/model-token-routing-policy.md` | `active_policy` | false | false | AH-590 | Registry-driven model and token routing policy; no expensive routine loops. |
@@ -84,6 +86,8 @@ Compatibility states from older records remain readable: `active_policy`,
 | `runbooks/agenthub-pattern-adaptation-control-loop.md` | `active_control` | false | false | AH-531/AH-532 | External pattern adaptation control loop; no runtime mutation. |
 | `runbooks/chatgpt-cyber-flag-recovery-runbook.md` | `active_control` | false | false | AH-541 | Clean authorized-scope recovery steps for reported ChatGPT/Codex cyber warnings. |
 | `runbooks/agenthub-x-capability-remediation.md` | `active_control` | false | false | AH-590 | Same-RUN remediation procedure for missing routine AgentHub X capability, hook, adapter, or worker profile. |
+| `runbooks/agenthub-self-healing-route-recovery.md` | `active_control` | false | false | AH-590 | Same-RUN recovery path for route, model, registrar, task-debt, and evidence-route defects. |
+| `runbooks/agenthub-secrets-handle-registry.md` | `active_control` | false | false | AH-590 | Redacted secret-handle registry procedure and missing-handle owner guide flow. |
 | `templates/github/secret-scan-workflow.yml` | `active_policy` | false | false | AH-500 | Security workflow template. |
 | `.github/workflows/secret-scan.yml` | `active_policy` | false | false | AH-500 | Control-spine secret-scan workflow. |
 | `templates/security/gitleaks.toml` | `active_policy` | false | false | AH-500 | Scanner config. |
@@ -136,6 +140,9 @@ Compatibility states from older records remain readable: `active_policy`,
 | `schemas/t0-emergency-stop-receipt.schema.json` | `active_policy` | false | false | AH-510 | Schema. |
 | `schemas/agenthub-x-capability-matrix.schema.json` | `active_policy` | false | false | AH-590 | JSON schema for the AgentHub X closed-contour capability matrix. |
 | `schemas/agent-action-request.schema.json` | `active_policy` | false | false | AH-590 | JSON schema for pre-action policy gate requests. |
+| `schemas/agenthub_action_authorization_receipt.schema.json` | `active_policy` | false | false | AH-590 | JSON schema for mandatory pre-action authorization receipts. |
+| `schemas/agenthub_capability_matrix.schema.json` | `active_policy` | false | false | AH-590 | JSON schema for self-healing capability matrix records. |
+| `schemas/agenthub_self_healing_event.schema.json` | `active_policy` | false | false | AH-590 | JSON schema for same-RUN self-healing defect events. |
 | `schemas/control-spine-pr-queue-register.schema.json` | `active_control` | false | false | AH-523 | PR queue register schema. |
 | `schemas/agent-output-quality-receipt.schema.json` | `active_control` | false | false | AH-529 | Receipt schema for output/link/report quality gates. |
 | `schemas/agenthub_authorized_scope.schema.json` | `active_control` | false | false | AH-541 | Authorized-scope schema for cyber-safe router dispatches. |
@@ -240,6 +247,8 @@ Compatibility states from older records remain readable: `active_policy`,
 | `evals/t0-hard-stop-negative-tests.md` | `active_control` | false | false | AH-590 | Negative tests for T0 direct-action denial, unscoped command adapter, backend-only output, session isolation, and report registration. |
 | `evals/global-agent-control/fixtures.json` | `active_control` | false | false | AH-590 | Fixtures for T0 direct-action denials, T2 read-route allowance, run-id alias normalization, and same-gate loop control. |
 | `evals/secrets-registry/fixtures.json` | `active_control` | false | false | AH-590 | Fixtures for metadata-only secret handle lookup and missing-handle behavior. |
+| `evals/agenthub-self-healing/fixtures/fixtures.json` | `active_control` | false | false | AH-590 | E1-E15 self-healing negative and repair-route fixtures. |
+| `validators/agenthub_self_healing_validator.rb` | `active_control` | false | false | AH-590 | Deterministic validator for AgentHub self-healing E1-E15 fixtures. |
 | `registries/secrets-manifest.redacted.md` | `current_baseline` | false | false | AH-590 | Redacted secret-handle manifest; metadata only, no secret values. |
 | `reports/audits/P0-full-owner-requirements-intake-ledger-20260526.md` | `audit_only` | false | false | AH-590 | Full owner requirements intake ledger; evidence only, not active instruction. |
 | `reports/audits/P0-global-agent-control-secrets-and-repo-audit-20260527.md` | `audit_only` | false | false | AH-590 | Fact-based audit for PR #68/#69, T0 bypass, run-id schema mismatch, secrets registry, and repo-first residuals. |
@@ -247,6 +256,7 @@ Compatibility states from older records remain readable: `active_policy`,
 | `reports/audits/P0-agenthub-x-self-critique-correction-20260528.md` | `audit_only` | false | false | AH-590 | Reflexion, 5 Whys, FMEA, self-critique, negative tests, and residual typed defects for the same run. |
 | `reports/audits/P0-codex-spark-model-router-pr80-residual-audit-20260528.md` | `audit_only` | false | false | AH-590 | Fact audit and validation matrix for Codex Spark model-router enforcement and PR80 surface-bound residual fix. |
 | `reports/audits/P0-pr82-fallback-evidence-gate-fact-audit-20260528.md` | `audit_only` | false | false | AH-590 | Fact audit for PR #82/#83 residual fallback_reason-only bypass and minimal same-RUN evidence gate patch. |
+| `reports/audits/P0-agenthub-self-healing-core-architecture-audit-20260528.md` | `audit_only` | false | false | AH-590 | Fact audit, 5 Whys, FMEA, evidence map, and residual risk for self-healing core controls. |
 | `reports/incidents/P0-t0-boundary-violation-multi-agent-runaway-20260527.md` | `audit_only` | false | false | AH-590 | Incident report for owner-reported T0 boundary, mixed agent output, task-debt, and repo-first recurrence; evidence only. |
 | `reports/receipts/P0-agenthub-backend-only-repo-first-architecture-receipt-20260526.md` | `operational_receipt` | false | false | AH-590 | Receipt for backend-only repo-first architecture package. |
 | `reports/receipts/P0-t0-hard-stop-multi-agent-isolation-receipt-20260527.md` | `operational_receipt` | false | false | AH-590 | Receipt for the 2026-05-27 T0 hard-stop, multi-agent isolation, backend-only, and repo-first corrective package. |
@@ -255,3 +265,5 @@ Compatibility states from older records remain readable: `active_policy`,
 | `reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md` | `operational_receipt` | false | false | AH-590 | Receipt for AgentHub X capability matrix, validators, evals, two-level audit, and repo-first hard enforcement package. |
 | `reports/receipts/P0-codex-spark-model-router-pr80-residual-receipt-20260528.md` | `operational_receipt` | false | false | AH-590 | Receipt for Codex Spark model-router enforcement, same-RUN fallback, surface-bound validation, and model-evidence Done gate. |
 | `reports/receipts/P0-pr82-fallback-evidence-gate-fix-receipt-20260528.md` | `operational_receipt` | false | false | AH-590 | Receipt for PR #82/#83 fallback evidence gate correction, validator evals, registers, and readback. |
+| `reports/receipts/P0-agenthub-self-healing-core-install-receipt-20260528.md` | `operational_receipt` | false | false | AH-590 | Installation receipt for self-healing core policy, schemas, runbooks, validator, E1-E15 evals, and register coverage. |
+| `reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md` | `operational_receipt` | false | false | AH-590 | Negative-test receipt proving E1-E15 expected outcomes. |
