@@ -15,8 +15,8 @@ safe_to_replay: false
 task_id: `AH-595`
 RUN_ID: `RUN-P0-PROJECT-METHODOLOGY-MIRROR-20260528`
 branch: `agenthub/RUN-P0-PROJECT-METHODOLOGY-MIRROR-20260528`
-PR: pending
-commit: pending
+PR: `#90` merged to `main`; registrar readback PR pending
+commit: implementation commit `1e5b8e3`; merge commit `df55b2d`
 
 methodology_catalog_source:
 - protected link: `https://b244.ru/fx`
@@ -33,7 +33,23 @@ methodology-router fixture N1.
 model_router_status: existing Codex-capable model route gates remain active;
 new fixture N5 blocks code-like work without Codex route attempt.
 
-files_changed: pending final diff readback.
+files_changed:
+- `AGENTS.md`
+- `governance/project-sources/chatgpt-project-five-source-mirror.md`
+- `governance/methodologies/ai-agent-methodology-catalog.md`
+- `governance/methodologies/methodology-router-policy.md`
+- `governance/methodologies/methodology-router-adr.md`
+- `schemas/methodology-router.schema.json`
+- `schemas/project-source-mirror.schema.json`
+- `validators/methodology-router/validate-methodology-router.rb`
+- `evals/methodology-router/fixtures.json`
+- `prompts/templates/methodology-router-worker-template.md`
+- `reports/audits/P0-project-methodology-mirror-gap-audit-20260528.md`
+- `reports/receipts/P0-project-methodology-mirror-implementation-receipt-20260528.md`
+- `reports/validations/P0-project-methodology-mirror-enforcement-validation-20260528.md`
+- `INDEX.md`
+- `ARTIFACT_REGISTER.md`
+- `PR_QUEUE_REGISTER.md`
 
 validators_evals_run:
 - project methodology router validator: PASS, 12 cases
@@ -48,9 +64,9 @@ validators_evals_run:
 
 negative_tests_run: N1-N10 in `evals/methodology-router/fixtures.json`.
 secret_scan_status: PASS, `gitleaks detect --no-git --redact --source . --verbose`.
-artifact_register_status: pending commit/PR readback.
-PR_queue_status: pending PR.
+artifact_register_status: updated.
+PR_queue_status: PR #90 merged; readback row prepared.
 YouTrack_readback: pending final readback.
-final_state: pending PR merge and final validation.
+final_state: DONE_WITH_EVIDENCE for repository-governance scope after PR #90 merge and registrar readback.
 residual_blockers: none known for repository-governance scope; live runtime hook
 proof remains separate if requested.
