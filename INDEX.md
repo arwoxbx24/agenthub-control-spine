@@ -250,3 +250,15 @@ status: draft
 | `reports/audits/P0-methodology-enforcement-certification-20260528.md` | audit report | AH-594 | audit-only |
 | `reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md` | operational receipt | AH-594 | operational-receipt |
 | `reports/audits/P0-methodology-enforcement-final-readback-20260528.md` | readback audit | AH-594 | audit-only |
+| `governance/project-sources/chatgpt-project-five-source-mirror.md` | active source mirror | AH-595 | active |
+| `governance/methodologies/ai-agent-methodology-catalog.md` | methodology catalog | AH-595 | active |
+| `governance/methodologies/methodology-router-policy.md` | governance policy | AH-595 | active |
+| `governance/methodologies/methodology-router-adr.md` | architecture decision record | AH-595 | active |
+| `schemas/methodology-router.schema.json` | schema | AH-595 | active |
+| `schemas/project-source-mirror.schema.json` | schema | AH-595 | active |
+| `validators/methodology-router/validate-methodology-router.rb` | validator | AH-595 | active |
+| `evals/methodology-router/fixtures.json` | eval fixtures | AH-595 | active |
+| `prompts/templates/methodology-router-worker-template.md` | worker prompt template | AH-595 | active |
+| `reports/audits/P0-project-methodology-mirror-gap-audit-20260528.md` | audit report | AH-595 | audit-only |
+| `reports/receipts/P0-project-methodology-mirror-implementation-receipt-20260528.md` | operational receipt | AH-595 | operational-receipt |
+| `reports/validations/P0-project-methodology-mirror-enforcement-validation-20260528.md` | validation report | AH-595 | audit-only |
