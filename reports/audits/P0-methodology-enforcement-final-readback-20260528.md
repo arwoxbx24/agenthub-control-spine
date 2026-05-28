@@ -12,18 +12,20 @@ safe_to_replay: false
 
 # P0 Methodology Enforcement Final Readback
 
-Status: pending PR merge.
+Status: PR #88 merged; registrar readback update prepared.
 
 Readback targets:
 
-- PR state
-- merge commit
-- validator/eval state on final `main`
-- `INDEX.md`
-- `ARTIFACT_REGISTER.md`
-- `PR_QUEUE_REGISTER.md`
-- YouTrack `AH-594`
-- AgentHub merge receipt
+- PR state: `#88` merged
+- merge commit: `ced64ac`
+- validator/eval state on final `main`: pending post-readback main validation
+- `INDEX.md`: updated
+- `ARTIFACT_REGISTER.md`: updated
+- `PR_QUEUE_REGISTER.md`: updated by this registrar readback
+- YouTrack `AH-594`: pending final Done readback
+- AgentHub merge receipt: pending final merge call
 
-Final decision will be updated after merge.
-
+Final decision: `DONE_WITH_EVIDENCE` for repository-governance methodology
+router and black-box route registry scope, subject to post-readback validation
+and task readback. Live runtime hook installation is not claimed from repository
+files and remains a separately scoped runtime proof requirement if needed.
