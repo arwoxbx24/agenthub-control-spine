@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/arwoxbx24/agenthub-control-spine/schemas/agenthub-x-capability-matrix.schema.json",
+  "title": "AgentHub X Capability Matrix",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "run_id", "source_task", "profiles", "owner_only_gates", "missing_capability_rule"],
+  "properties": {
+    "schema": { "const": "agenthub.x.capability_matrix.v1" },
+    "run_id": { "type": "string", "minLength": 8 },
+    "source_task": { "type": "string", "pattern": "^AH-[0-9]+$" },
+    "profiles": {
+      "type": "array",
+      "minItems": 9,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "profile",
+          "owner_role",
+          "allowed_actions",
+          "forbidden_actions",
+          "allowed_surfaces",
+          "forbidden_surfaces",
+          "required_evidence",
+          "validation",
+          "receipt_required"
+        ],
+        "properties": {
+          "profile": {
+            "enum": [
+              "CONTROL_PLANE_ADMIN",
+              "T0_CONTROL_ONLY",
+              "T1_ARCHITECT",
+              "T2_CODEX_IMPLEMENTER",
+              "P4_RUNTIME_READ",
+              "P4_RUNTIME_REPAIR",
+              "SECRET_HANDLE_READER",
+              "VERIFIER_READONLY",
+              "REGISTRAR"
+            ]
+          },
+          "owner_role": { "type": "string", "minLength": 1 },
+          "allowed_actions": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "forbidden_actions": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "allowed_surfaces": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "forbidden_surfaces": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "required_evidence": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "validation": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "receipt_required": { "const": true }
+        }
+      }
+    },
+    "owner_only_gates": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "EXTERNAL_CREDENTIAL_REQUIRED",
+          "LEGAL_AUTHORITY_REQUIRED",
+          "PAYMENT_AUTHORITY_REQUIRED",
+          "OWNER_ONLY_DESTRUCTIVE_DELETE_GATE",
+          "NON_DELEGABLE_IDENTITY_PROOF_REQUIRED",
+          "SECRET_HANDLE_MISSING"
+        ]
+      },
+      "minItems": 1
+    },
+    "missing_capability_rule": {
+      "enum": ["INTERNAL_CAPABILITY_REMEDIATION_REQUIRED"]
+    }
+  }
+}

@@ -43,6 +43,8 @@ status: draft
 | `governance/global-agent-control-enforcement-policy.md` | governance policy | AH-590 | active |
 | `governance/secrets-registry-policy.md` | governance policy | AH-590 | active |
 | `governance/model-token-routing-policy.md` | governance policy | AH-590 | active |
+| `governance/agenthub-x-capability-matrix.md` | governance policy | AH-590 | active |
+| `governance/adr/ADR-agenthub-x-controlled-capability-matrix-20260528.md` | architecture decision record | AH-590 | active |
 | `runbooks/chatgpt-github-connect.md` | runbook | AH-494 | draft |
 | `runbooks/secret-leak-response.md` | runbook | AH-500 | active |
 | `runbooks/agenthub-locked-run-recovery.md` | runbook | AH-507 | active |
@@ -53,6 +55,7 @@ status: draft
 | `runbooks/agent-shortlink-intake-and-report-placement.md` | runbook | AH-529 | active |
 | `runbooks/agenthub-pattern-adaptation-control-loop.md` | runbook | AH-531/AH-532 | active |
 | `runbooks/chatgpt-cyber-flag-recovery-runbook.md` | runbook | AH-541 | active |
+| `runbooks/agenthub-x-capability-remediation.md` | runbook | AH-590 | active |
 | `templates/github/secret-scan-workflow.yml` | GitHub Actions template | AH-500 | active |
 | `.github/workflows/secret-scan.yml` | control-spine workflow | AH-500 | active |
 | `templates/security/gitleaks.toml` | scanner config template | AH-500 | active |
@@ -119,6 +122,8 @@ status: draft
 | `schemas/secret-scan-receipt.schema.json` | schema | AH-500 | active |
 | `schemas/agenthub-run-preflight.schema.json` | schema | AH-507/AH-510 | active |
 | `schemas/t0-emergency-stop-receipt.schema.json` | schema | AH-510 | active |
+| `schemas/agenthub-x-capability-matrix.schema.json` | schema | AH-590 | active |
+| `schemas/agent-action-request.schema.json` | schema | AH-590 | active |
 | `schemas/control-spine-pr-queue-register.schema.json` | schema | AH-523 | active |
 | `schemas/agent-output-quality-receipt.schema.json` | schema | AH-529 | active |
 | `governance/agenthub-only-execution-discipline.md` | governance control | AH-534 | active |
@@ -156,6 +161,15 @@ status: draft
 | `.agents/skills/agenthub-live-devops-safety/SKILL.md` | active skill | AH-554 | active |
 | `evals/agenthub-paralysis-breaker/` | eval fixtures | AH-542 | active |
 | `evals/agenthub-access-rights-and-live-worker-gates/` | eval fixtures | AH-554 | active |
+| `evals/t0-direct-action-negative-tests/` | eval fixtures | AH-590 | active |
+| `evals/agenthub-x-capability-matrix/` | eval fixtures | AH-590 | active |
+| `evals/agenthub-x-capability-positive-tests/` | eval fixtures | AH-590 | active |
+| `evals/model-token-routing/` | eval fixtures | AH-590 | active |
+| `evals/repo-first-reporting/` | eval fixtures | AH-590 | active |
+| `validators/agenthub_action_policy_validator.rb` | validator | AH-590 | active |
+| `validators/t0_direct_action_hard_stop.rb` | validator | AH-590 | active |
+| `validators/model_token_router_validator.rb` | validator | AH-590 | active |
+| `validators/repo_first_receipt_gate.rb` | validator | AH-590 | active |
 | `reports/receipts/RUN-agenthub-p0-paralysis-breaker-repo-first-control-repair-20260525-receipt.md` | control-spine receipt | AH-542 | operational-receipt |
 | `reports/audits/AH-554-access-rights-and-live-worker-audit-20260525.md` | audit report | AH-554 | audit-only |
 | `reports/receipts/AH-554-access-rights-and-live-devops-enablement-receipt.md` | control-spine receipt | AH-554 | operational-receipt |
@@ -200,8 +214,11 @@ status: draft
 | `registries/secrets-manifest.redacted.md` | redacted registry | AH-590 | active |
 | `reports/audits/P0-full-owner-requirements-intake-ledger-20260526.md` | requirements ledger | AH-590 | audit-only |
 | `reports/audits/P0-global-agent-control-secrets-and-repo-audit-20260527.md` | audit report | AH-590 | audit-only |
+| `reports/audits/P0-agenthub-x-capability-self-audit-20260528.md` | audit report | AH-590 | audit-only |
+| `reports/audits/P0-agenthub-x-self-critique-correction-20260528.md` | self-critique report | AH-590 | audit-only |
 | `reports/incidents/P0-t0-boundary-violation-multi-agent-runaway-20260527.md` | incident report | AH-590 | audit-only |
 | `reports/receipts/P0-agenthub-backend-only-repo-first-architecture-receipt-20260526.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-t0-hard-stop-multi-agent-isolation-receipt-20260527.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-task-debt-consolidation-receipt-20260527.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-global-agent-control-secrets-and-repo-receipt-20260527.md` | operational receipt | AH-590 | operational-receipt |
+| `reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md` | operational receipt | AH-590 | operational-receipt |

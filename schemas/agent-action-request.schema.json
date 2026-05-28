@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/arwoxbx24/agenthub-control-spine/schemas/agent-action-request.schema.json",
+  "title": "AgentHub Agent Action Request",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "task_id",
+    "actor_role",
+    "authority_profile",
+    "action_class",
+    "scope_signature",
+    "allowed_surfaces",
+    "forbidden_surfaces",
+    "evidence_path",
+    "receipt_path"
+  ],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 8 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "actor_role": {
+      "enum": [
+        "T0_CONTROL",
+        "T1_ARCHITECT",
+        "T2_CODEX_IMPLEMENTER",
+        "P4_RUNTIME_READ",
+        "P4_RUNTIME_REPAIR",
+        "SECRET_HANDLE_READER",
+        "VERIFIER_READONLY",
+        "REGISTRAR"
+      ]
+    },
+    "authority_profile": {
+      "enum": [
+        "CONTROL_PLANE_ADMIN",
+        "T0_CONTROL_ONLY",
+        "T1_ARCHITECT",
+        "T2_CODEX_IMPLEMENTER",
+        "P4_RUNTIME_READ",
+        "P4_RUNTIME_REPAIR",
+        "SECRET_HANDLE_READER",
+        "VERIFIER_READONLY",
+        "REGISTRAR"
+      ]
+    },
+    "action_class": { "type": "string", "minLength": 1 },
+    "scope_signature": { "type": "string", "minLength": 1 },
+    "allowed_surfaces": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "forbidden_surfaces": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "evidence_path": { "type": "string", "minLength": 1 },
+    "receipt_path": { "type": "string", "minLength": 1 },
+    "methodology_profile": {
+      "enum": ["MICRO", "STANDARD", "FULL", "INCIDENT"]
+    },
+    "same_gate_failures": { "type": "integer", "minimum": 0 },
+    "owner_only_gate": {
+      "enum": [
+        "none",
+        "EXTERNAL_CREDENTIAL_REQUIRED",
+        "LEGAL_AUTHORITY_REQUIRED",
+        "PAYMENT_AUTHORITY_REQUIRED",
+        "OWNER_ONLY_DESTRUCTIVE_DELETE_GATE",
+        "NON_DELEGABLE_IDENTITY_PROOF_REQUIRED",
+        "SECRET_HANDLE_MISSING"
+      ]
+    }
+  }
+}
