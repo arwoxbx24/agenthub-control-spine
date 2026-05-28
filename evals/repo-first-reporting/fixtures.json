@@ -1,0 +1,46 @@
+{
+  "schema": "agenthub.x.repo_first_reporting_tests.v1",
+  "source_task": "AH-590",
+  "run_id": "RUN-P0-AGENTHUB-X-CAPABILITY-HARD-ENFORCEMENT-20260528",
+  "cases": [
+    {
+      "id": "FULL_EVIDENCE_DONE",
+      "input": {
+        "receipt_path": true,
+        "audit_path": true,
+        "index_registered": true,
+        "artifact_registered": true,
+        "pr_queue_registered": true,
+        "task_readback": true,
+        "secret_scan": true
+      },
+      "expected": "DONE_WITH_EVIDENCE"
+    },
+    {
+      "id": "MISSING_RECEIPT_NOT_DONE",
+      "input": {
+        "receipt_path": false,
+        "audit_path": true,
+        "index_registered": true,
+        "artifact_registered": true,
+        "pr_queue_registered": true,
+        "task_readback": true,
+        "secret_scan": true
+      },
+      "expected": "NOT_DONE_CONTROL_SPINE_RECEIPT_MISSING"
+    },
+    {
+      "id": "MISSING_TASK_READBACK_NOT_DONE",
+      "input": {
+        "receipt_path": true,
+        "audit_path": true,
+        "index_registered": true,
+        "artifact_registered": true,
+        "pr_queue_registered": true,
+        "task_readback": false,
+        "secret_scan": true
+      },
+      "expected": "NOT_DONE_TASK_READBACK_MISSING"
+    }
+  ]
+}

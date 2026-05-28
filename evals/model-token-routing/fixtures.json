@@ -1,0 +1,32 @@
+{
+  "schema": "agenthub.x.model_token_routing_tests.v1",
+  "source_task": "AH-590",
+  "run_id": "RUN-P0-AGENTHUB-X-CAPABILITY-HARD-ENFORCEMENT-20260528",
+  "cases": [
+    {
+      "id": "T0_CONTROL_NO_COMMAND_LOOP",
+      "input": { "task_class": "T0_CONTROL", "requests_code_or_command": true },
+      "expected": "DENY_CODE_OR_COMMAND_FOR_T0"
+    },
+    {
+      "id": "T0_CONTROL_ALLOWED_FOR_ROUTING",
+      "input": { "task_class": "T0_CONTROL", "requests_code_or_command": false },
+      "expected": "CONTROL_MODEL_ALLOWED"
+    },
+    {
+      "id": "CODE_CONFIG_REQUIRES_CODEX",
+      "input": { "task_class": "T2_CODEX_IMPLEMENTER", "model_class": "GENERAL_REASONING" },
+      "expected": "CODEX_CAPABLE_MODEL_REQUIRED"
+    },
+    {
+      "id": "CODE_CONFIG_CODEX_PASS",
+      "input": { "task_class": "T2_CODEX_IMPLEMENTER", "model_class": "CODEX_CAPABLE" },
+      "expected": "CODEX_WORKER_REQUIRED_PASS"
+    },
+    {
+      "id": "SAME_GATE_THIRD_RETRY_FORBIDDEN",
+      "input": { "task_class": "P4_RUNTIME_READ", "has_scope": true, "same_gate_failures": 2 },
+      "expected": "SAME_GATE_LOOP_BLOCKED"
+    }
+  ]
+}

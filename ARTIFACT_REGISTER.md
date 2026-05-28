@@ -70,6 +70,8 @@ Compatibility states from older records remain readable: `active_policy`,
 | `governance/global-agent-control-enforcement-policy.md` | `active_policy` | false | false | AH-590 | Global enforcement policy for T0 direct-action denial, run-id normalization, repo-first reporting, and same-gate loop breaker. |
 | `governance/secrets-registry-policy.md` | `active_policy` | false | false | AH-590 | Per-service secret handle registry policy; metadata-only, no secret values in Git/chat/logs. |
 | `governance/model-token-routing-policy.md` | `active_policy` | false | false | AH-590 | Registry-driven model and token routing policy; no expensive routine loops. |
+| `governance/agenthub-x-capability-matrix.md` | `active_policy` | false | false | AH-590 | Closed-contour AgentHub X capability matrix with T0 control-only boundary, worker profiles, owner-only gates, internal remediation, methodology gate, and loop breaker. |
+| `governance/adr/ADR-agenthub-x-controlled-capability-matrix-20260528.md` | `active_policy` | false | false | AH-590 | Architecture decision for controlled capability matrix instead of strict blockers or unrestricted root. |
 | `runbooks/chatgpt-github-connect.md` | `active_runbook` | false | false | AH-494 | Task-specific runbook. |
 | `runbooks/secret-leak-response.md` | `active_runbook` | false | false | AH-500 | Secret leak runbook. |
 | `runbooks/agenthub-locked-run-recovery.md` | `active_runbook` | false | false | AH-507 | Locked-run recovery. |
@@ -80,6 +82,7 @@ Compatibility states from older records remain readable: `active_policy`,
 | `runbooks/agent-shortlink-intake-and-report-placement.md` | `active_control` | false | false | AH-529 | Short-link stale-index and report placement runbook. |
 | `runbooks/agenthub-pattern-adaptation-control-loop.md` | `active_control` | false | false | AH-531/AH-532 | External pattern adaptation control loop; no runtime mutation. |
 | `runbooks/chatgpt-cyber-flag-recovery-runbook.md` | `active_control` | false | false | AH-541 | Clean authorized-scope recovery steps for reported ChatGPT/Codex cyber warnings. |
+| `runbooks/agenthub-x-capability-remediation.md` | `active_control` | false | false | AH-590 | Same-RUN remediation procedure for missing routine AgentHub X capability, hook, adapter, or worker profile. |
 | `templates/github/secret-scan-workflow.yml` | `active_policy` | false | false | AH-500 | Security workflow template. |
 | `.github/workflows/secret-scan.yml` | `active_policy` | false | false | AH-500 | Control-spine secret-scan workflow. |
 | `templates/security/gitleaks.toml` | `active_policy` | false | false | AH-500 | Scanner config. |
@@ -130,6 +133,8 @@ Compatibility states from older records remain readable: `active_policy`,
 | `schemas/secret-scan-receipt.schema.json` | `active_policy` | false | false | AH-500 | Schema. |
 | `schemas/agenthub-run-preflight.schema.json` | `active_policy` | false | false | AH-507/AH-510 | Schema. |
 | `schemas/t0-emergency-stop-receipt.schema.json` | `active_policy` | false | false | AH-510 | Schema. |
+| `schemas/agenthub-x-capability-matrix.schema.json` | `active_policy` | false | false | AH-590 | JSON schema for the AgentHub X closed-contour capability matrix. |
+| `schemas/agent-action-request.schema.json` | `active_policy` | false | false | AH-590 | JSON schema for pre-action policy gate requests. |
 | `schemas/control-spine-pr-queue-register.schema.json` | `active_control` | false | false | AH-523 | PR queue register schema. |
 | `schemas/agent-output-quality-receipt.schema.json` | `active_control` | false | false | AH-529 | Receipt schema for output/link/report quality gates. |
 | `schemas/agenthub_authorized_scope.schema.json` | `active_control` | false | false | AH-541 | Authorized-scope schema for cyber-safe router dispatches. |
@@ -185,6 +190,15 @@ Compatibility states from older records remain readable: `active_policy`,
 | `.agents/skills/agenthub-permission-gate-router/SKILL.md` | `active_control` | false | false | AH-554 | Active skill for permission class routing and local blocker split. |
 | `.agents/skills/agenthub-live-devops-safety/SKILL.md` | `active_control` | false | false | AH-554 | Active skill for safe live DevOps execution gates. |
 | `evals/agenthub-access-rights-and-live-worker-gates/` | `active_control` | false | false | AH-554 | Regression fixtures for access rights, live-worker safety, and closure gates. |
+| `evals/t0-direct-action-negative-tests/` | `active_control` | false | false | AH-590 | Negative fixtures proving T0 direct shell, provider CLI, product edit, secret dump, and git mutation are denied before execution. |
+| `evals/agenthub-x-capability-matrix/` | `active_control` | false | false | AH-590 | Machine-readable AgentHub X capability matrix fixture matching the schema profile set and owner-only/remediation gates. |
+| `evals/agenthub-x-capability-positive-tests/` | `active_control` | false | false | AH-590 | Positive fixtures proving T0 route, T1 ADR, T2 Codex, P4 read/repair, secret-handle metadata, verifier, registrar, and remediation paths. |
+| `evals/model-token-routing/` | `active_control` | false | false | AH-590 | Fixtures for Codex-capable code/config routing, T0 command denial, and same-gate loop stop. |
+| `evals/repo-first-reporting/` | `active_control` | false | false | AH-590 | Fixtures requiring audit, receipt, registers, PR queue, task readback, and secret scan before Done. |
+| `validators/agenthub_action_policy_validator.rb` | `active_control` | false | false | AH-590 | Deterministic AgentHub X pre-action policy validator for profile and capability routing fixtures. |
+| `validators/t0_direct_action_hard_stop.rb` | `active_control` | false | false | AH-590 | Deterministic negative-test validator for T0 direct-action hard stop fixtures. |
+| `validators/model_token_router_validator.rb` | `active_control` | false | false | AH-590 | Deterministic model/token routing validator for Codex worker and loop-stop fixtures. |
+| `validators/repo_first_receipt_gate.rb` | `active_control` | false | false | AH-590 | Deterministic repo-first Done gate validator for receipt/register/readback fixtures. |
 | `reports/audits/AH-554-access-rights-and-live-worker-audit-20260525.md` | `audit_only` | false | false | AH-554 | Access rights and live-worker audit report; evidence only. |
 | `reports/receipts/AH-554-access-rights-and-live-devops-enablement-receipt.md` | `operational_receipt` | false | false | AH-554 | Receipt for installed access-rights controls and residual live-worker blocker. |
 | `reports/audits/P0-system-wide-permission-core-versioning-architecture-20260526.md` | `audit_only` | false | false | AH-570 | Architecture report for permission profiles and core version-control lifecycle; evidence only. |
@@ -228,8 +242,11 @@ Compatibility states from older records remain readable: `active_policy`,
 | `registries/secrets-manifest.redacted.md` | `current_baseline` | false | false | AH-590 | Redacted secret-handle manifest; metadata only, no secret values. |
 | `reports/audits/P0-full-owner-requirements-intake-ledger-20260526.md` | `audit_only` | false | false | AH-590 | Full owner requirements intake ledger; evidence only, not active instruction. |
 | `reports/audits/P0-global-agent-control-secrets-and-repo-audit-20260527.md` | `audit_only` | false | false | AH-590 | Fact-based audit for PR #68/#69, T0 bypass, run-id schema mismatch, secrets registry, and repo-first residuals. |
+| `reports/audits/P0-agenthub-x-capability-self-audit-20260528.md` | `audit_only` | false | false | AH-590 | F1-F8 fact table, root causes, capability gaps, controls, risk, and rollback for AgentHub X hard enforcement. |
+| `reports/audits/P0-agenthub-x-self-critique-correction-20260528.md` | `audit_only` | false | false | AH-590 | Reflexion, 5 Whys, FMEA, self-critique, negative tests, and residual typed defects for the same run. |
 | `reports/incidents/P0-t0-boundary-violation-multi-agent-runaway-20260527.md` | `audit_only` | false | false | AH-590 | Incident report for owner-reported T0 boundary, mixed agent output, task-debt, and repo-first recurrence; evidence only. |
 | `reports/receipts/P0-agenthub-backend-only-repo-first-architecture-receipt-20260526.md` | `operational_receipt` | false | false | AH-590 | Receipt for backend-only repo-first architecture package. |
 | `reports/receipts/P0-t0-hard-stop-multi-agent-isolation-receipt-20260527.md` | `operational_receipt` | false | false | AH-590 | Receipt for the 2026-05-27 T0 hard-stop, multi-agent isolation, backend-only, and repo-first corrective package. |
 | `reports/receipts/P0-task-debt-consolidation-receipt-20260527.md` | `operational_receipt` | false | false | AH-590 | Receipt for scope-family task-debt consolidation and duplicate-prevention rules. |
 | `reports/receipts/P0-global-agent-control-secrets-and-repo-receipt-20260527.md` | `operational_receipt` | false | false | AH-590 | Receipt for global agent control, secrets registry, run-id schema normalization, and repo register coverage. |
+| `reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md` | `operational_receipt` | false | false | AH-590 | Receipt for AgentHub X capability matrix, validators, evals, two-level audit, and repo-first hard enforcement package. |

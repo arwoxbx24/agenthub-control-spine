@@ -1,0 +1,115 @@
+{
+  "schema": "agenthub.x.capability_matrix.v1",
+  "run_id": "RUN-P0-AGENTHUB-X-CAPABILITY-HARD-ENFORCEMENT-20260528",
+  "source_task": "AH-590",
+  "profiles": [
+    {
+      "profile": "CONTROL_PLANE_ADMIN",
+      "owner_role": "AgentHub X / Lifecycle Controller / Registrar",
+      "allowed_actions": ["policy_update", "hook_contract_update", "validator_update", "schema_update", "register_update"],
+      "forbidden_actions": ["product_runtime_mutation", "docker_mutation", "db_mutation", "proxy_dns_firewall_mutation"],
+      "allowed_surfaces": ["control_spine_governance", "schemas", "validators", "evals", "runbooks", "registers"],
+      "forbidden_surfaces": ["product_runtime", "client_project_code", "secrets", "database", "edge_proxy"],
+      "required_evidence": ["policy_diff", "validation_output", "receipt", "register_update"],
+      "validation": ["json_check", "validator_eval", "secret_scan", "repo_first_receipt_gate"],
+      "receipt_required": true
+    },
+    {
+      "profile": "T0_CONTROL_ONLY",
+      "owner_role": "TeamLead T0",
+      "allowed_actions": ["intake", "classify", "route_worker", "verify_receipt", "final_owner_summary"],
+      "forbidden_actions": ["shell", "linux_command", "docker", "python_node_php_ruby_go", "git_mutation", "product_edit", "secret_read"],
+      "allowed_surfaces": ["task_metadata", "run_metadata", "receipts", "sanitized_registers"],
+      "forbidden_surfaces": ["runtime", "product_code", "secrets", "database", "proxy", "firewall"],
+      "required_evidence": ["run_id", "task_id", "route_receipt", "final_readback"],
+      "validation": ["t0_direct_action_negative_tests"],
+      "receipt_required": true
+    },
+    {
+      "profile": "T1_ARCHITECT",
+      "owner_role": "Architect",
+      "allowed_actions": ["adr", "method_selection", "risk_review", "micro_tz"],
+      "forbidden_actions": ["runtime_mutation", "product_code_edit"],
+      "allowed_surfaces": ["architecture_docs", "governance_docs", "worker_contracts"],
+      "forbidden_surfaces": ["runtime", "database", "secrets"],
+      "required_evidence": ["adr", "risk_table", "methodology_profile"],
+      "validation": ["truth_redteam", "review_checklist"],
+      "receipt_required": true
+    },
+    {
+      "profile": "T2_CODEX_IMPLEMENTER",
+      "owner_role": "Scoped code/config worker",
+      "allowed_actions": ["code_edit", "config_edit", "yaml_edit", "shell_script_edit", "test_execution"],
+      "forbidden_actions": ["unscoped_runtime_mutation", "secret_print", "cross_project_mutation"],
+      "allowed_surfaces": ["assigned_repo", "assigned_branch", "assigned_files"],
+      "forbidden_surfaces": ["unassigned_repo", "secrets", "live_runtime_without_profile"],
+      "required_evidence": ["diff", "tests", "secret_scan", "pr", "receipt"],
+      "validation": ["code_review", "test_plan", "repo_first_receipt_gate"],
+      "receipt_required": true
+    },
+    {
+      "profile": "P4_RUNTIME_READ",
+      "owner_role": "Runtime read worker / Verifier",
+      "allowed_actions": ["bounded_runtime_inventory", "docker_read", "npm_read", "dns_read", "yc_twc_read", "log_summary"],
+      "forbidden_actions": ["mutation", "env_dump", "secret_read", "broad_log_scan"],
+      "allowed_surfaces": ["approved_adapter", "incident_time_window", "redacted_output"],
+      "forbidden_surfaces": ["secrets", "database_records", "unrelated_services"],
+      "required_evidence": ["bounded_output", "redaction", "scope_statement"],
+      "validation": ["redaction_check", "surface_check"],
+      "receipt_required": true
+    },
+    {
+      "profile": "P4_RUNTIME_REPAIR",
+      "owner_role": "Runtime repair worker",
+      "allowed_actions": ["scoped_docker_repair", "scoped_npm_repair", "scoped_dns_ssl_repair", "scoped_pm2_systemd_repair"],
+      "forbidden_actions": ["broad_infra_change", "db_write", "prune_reset_delete", "secret_exposure", "cross_project_mutation"],
+      "allowed_surfaces": ["explicit_service", "explicit_surface", "rollback_checkpoint"],
+      "forbidden_surfaces": ["unrelated_service", "database", "secrets", "global_proxy"],
+      "required_evidence": ["rollback", "before_validation", "after_validation", "receipt"],
+      "validation": ["scoped_repair_check", "user_outcome_when_applicable"],
+      "receipt_required": true
+    },
+    {
+      "profile": "SECRET_HANDLE_READER",
+      "owner_role": "Secret metadata worker",
+      "allowed_actions": ["secret_handle_lookup", "owner_metadata_read", "rotation_status_read"],
+      "forbidden_actions": ["print_secret_value", "env_dump", "arbitrary_secret_search", "commit_secret_value"],
+      "allowed_surfaces": ["global_secret_registry_metadata", "redacted_manifest"],
+      "forbidden_surfaces": ["secret_values", "raw_env", "private_keys"],
+      "required_evidence": ["handle_name", "owner", "scope", "last_verified_at", "redaction_statement"],
+      "validation": ["secret_redaction_gate"],
+      "receipt_required": true
+    },
+    {
+      "profile": "VERIFIER_READONLY",
+      "owner_role": "Verifier",
+      "allowed_actions": ["repo_validation", "task_validation", "runtime_evidence_validation", "public_outcome_validation"],
+      "forbidden_actions": ["mutation"],
+      "allowed_surfaces": ["read_only_evidence", "public_outcome"],
+      "forbidden_surfaces": ["runtime_mutation", "secret_values"],
+      "required_evidence": ["validation_report"],
+      "validation": ["truth_redteam"],
+      "receipt_required": true
+    },
+    {
+      "profile": "REGISTRAR",
+      "owner_role": "Registrar",
+      "allowed_actions": ["update_index", "update_artifact_register", "update_pr_queue", "update_lifecycle_state", "task_readback"],
+      "forbidden_actions": ["runtime_mutation", "product_mutation"],
+      "allowed_surfaces": ["INDEX.md", "ARTIFACT_REGISTER.md", "PR_QUEUE_REGISTER.md", "lifecycle_records"],
+      "forbidden_surfaces": ["product_runtime", "client_project_code"],
+      "required_evidence": ["register_diff", "receipt", "readback"],
+      "validation": ["repo_first_receipt_gate"],
+      "receipt_required": true
+    }
+  ],
+  "owner_only_gates": [
+    "EXTERNAL_CREDENTIAL_REQUIRED",
+    "LEGAL_AUTHORITY_REQUIRED",
+    "PAYMENT_AUTHORITY_REQUIRED",
+    "OWNER_ONLY_DESTRUCTIVE_DELETE_GATE",
+    "NON_DELEGABLE_IDENTITY_PROOF_REQUIRED",
+    "SECRET_HANDLE_MISSING"
+  ],
+  "missing_capability_rule": "INTERNAL_CAPABILITY_REMEDIATION_REQUIRED"
+}
