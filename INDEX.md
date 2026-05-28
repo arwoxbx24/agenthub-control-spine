@@ -45,6 +45,7 @@ status: draft
 | `governance/model-token-routing-policy.md` | governance policy | AH-590 | active |
 | `governance/agenthub-x-capability-matrix.md` | governance policy | AH-590 | active |
 | `governance/adr/ADR-agenthub-x-controlled-capability-matrix-20260528.md` | architecture decision record | AH-590 | active |
+| `governance/adr/ADR-codex-spark-model-router-enforcement-20260528.md` | architecture decision record | AH-590 | active |
 | `runbooks/chatgpt-github-connect.md` | runbook | AH-494 | draft |
 | `runbooks/secret-leak-response.md` | runbook | AH-500 | active |
 | `runbooks/agenthub-locked-run-recovery.md` | runbook | AH-507 | active |
@@ -216,9 +217,11 @@ status: draft
 | `reports/audits/P0-global-agent-control-secrets-and-repo-audit-20260527.md` | audit report | AH-590 | audit-only |
 | `reports/audits/P0-agenthub-x-capability-self-audit-20260528.md` | audit report | AH-590 | audit-only |
 | `reports/audits/P0-agenthub-x-self-critique-correction-20260528.md` | self-critique report | AH-590 | audit-only |
+| `reports/audits/P0-codex-spark-model-router-pr80-residual-audit-20260528.md` | audit report | AH-590 | audit-only |
 | `reports/incidents/P0-t0-boundary-violation-multi-agent-runaway-20260527.md` | incident report | AH-590 | audit-only |
 | `reports/receipts/P0-agenthub-backend-only-repo-first-architecture-receipt-20260526.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-t0-hard-stop-multi-agent-isolation-receipt-20260527.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-task-debt-consolidation-receipt-20260527.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-global-agent-control-secrets-and-repo-receipt-20260527.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md` | operational receipt | AH-590 | operational-receipt |
+| `reports/receipts/P0-codex-spark-model-router-pr80-residual-receipt-20260528.md` | operational receipt | AH-590 | operational-receipt |

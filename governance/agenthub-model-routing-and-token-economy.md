@@ -21,7 +21,7 @@ Do not hardcode unavailable model names.
 |---|---|
 | P0 architecture/control decision | top reasoning model, bounded context |
 | technical assignment / ADR | strong reasoning model with compact source packet |
-| code/config/YAML/Bash/frontend/backend/tests | approved Codex/code-specialized worker |
+| code/config/YAML/Bash/frontend/backend/tests/IaC | approved Codex/code-specialized worker; prefer `gpt-5.3-codex-spark`, then `gpt-5.3-codex`, when available |
 | registrar/register/PR queue hygiene | low or medium cost model or deterministic tool |
 | verification/QA/browser | verifier-capable model/tool route |
 | security redaction | deterministic scanner first, model second |
@@ -41,3 +41,6 @@ Any code, shell script, YAML, Compose, frontend, backend, migration, build,
 test, or DevOps code task must be routed to a code-specialized worker. T0 must
 not manually author or patch the implementation.
 
+Worker receipts for these tasks must record `worker_model`,
+`model_route_reason`, `codex_available`, `fallback_reason`, and token/context
+budget class. Missing model evidence blocks Done.

@@ -1,103 +1,187 @@
 {
   "schema": "agenthub.x.t0_direct_action_negative_tests.v1",
   "source_task": "AH-590",
-  "run_id": "RUN-P0-AGENTHUB-X-CAPABILITY-HARD-ENFORCEMENT-20260528",
+  "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
   "cases": [
     {
       "id": "T0_DOCKER_PS_BLOCKED",
       "input": {
-        "run_id": "RUN-P0-AGENTHUB-X-CAPABILITY-HARD-ENFORCEMENT-20260528",
+        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
         "task_id": "AH-590",
         "actor_role": "T0_CONTROL",
         "authority_profile": "T0_CONTROL_ONLY",
         "action_class": "DOCKER",
         "scope_signature": "P0_AGENTHUB_X_CAPABILITY_MATRIX",
         "evidence_path": "reports/audits/P0-agenthub-x-capability-self-audit-20260528.md",
-        "receipt_path": "reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md"
+        "receipt_path": "reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md",
+        "allowed_surfaces": [
+          "control-spine-governance"
+        ],
+        "forbidden_surfaces": [
+          "product-runtime",
+          "secrets",
+          "database",
+          "proxy"
+        ],
+        "worker_model": "gpt-5.4-mini",
+        "model_route_reason": "Non-implementation control route",
+        "fallback_reason": null
       },
       "expected": "BLOCKED_T0_DIRECT_AUTHORSHIP"
     },
     {
       "id": "T0_TWC_BLOCKED",
       "input": {
-        "run_id": "RUN-P0-AGENTHUB-X-CAPABILITY-HARD-ENFORCEMENT-20260528",
+        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
         "task_id": "AH-590",
         "actor_role": "T0_CONTROL",
         "authority_profile": "T0_CONTROL_ONLY",
         "action_class": "TWC",
         "scope_signature": "P0_AGENTHUB_X_CAPABILITY_MATRIX",
         "evidence_path": "reports/audits/P0-agenthub-x-capability-self-audit-20260528.md",
-        "receipt_path": "reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md"
+        "receipt_path": "reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md",
+        "allowed_surfaces": [
+          "control-spine-governance"
+        ],
+        "forbidden_surfaces": [
+          "product-runtime",
+          "secrets",
+          "database",
+          "proxy"
+        ],
+        "worker_model": "gpt-5.4-mini",
+        "model_route_reason": "Non-implementation control route",
+        "fallback_reason": null
       },
       "expected": "BLOCKED_T0_DIRECT_AUTHORSHIP"
     },
     {
       "id": "T0_YC_BLOCKED",
       "input": {
-        "run_id": "RUN-P0-AGENTHUB-X-CAPABILITY-HARD-ENFORCEMENT-20260528",
+        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
         "task_id": "AH-590",
         "actor_role": "T0_CONTROL",
         "authority_profile": "T0_CONTROL_ONLY",
         "action_class": "YC",
         "scope_signature": "P0_AGENTHUB_X_CAPABILITY_MATRIX",
         "evidence_path": "reports/audits/P0-agenthub-x-capability-self-audit-20260528.md",
-        "receipt_path": "reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md"
+        "receipt_path": "reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md",
+        "allowed_surfaces": [
+          "control-spine-governance"
+        ],
+        "forbidden_surfaces": [
+          "product-runtime",
+          "secrets",
+          "database",
+          "proxy"
+        ],
+        "worker_model": "gpt-5.4-mini",
+        "model_route_reason": "Non-implementation control route",
+        "fallback_reason": null
       },
       "expected": "BLOCKED_T0_DIRECT_AUTHORSHIP"
     },
     {
       "id": "T0_PYTHON_BLOCKED",
       "input": {
-        "run_id": "RUN-P0-AGENTHUB-X-CAPABILITY-HARD-ENFORCEMENT-20260528",
+        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
         "task_id": "AH-590",
         "actor_role": "T0_CONTROL",
         "authority_profile": "T0_CONTROL_ONLY",
         "action_class": "PYTHON",
         "scope_signature": "P0_AGENTHUB_X_CAPABILITY_MATRIX",
         "evidence_path": "reports/audits/P0-agenthub-x-capability-self-audit-20260528.md",
-        "receipt_path": "reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md"
+        "receipt_path": "reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md",
+        "allowed_surfaces": [
+          "control-spine-governance"
+        ],
+        "forbidden_surfaces": [
+          "product-runtime",
+          "secrets",
+          "database",
+          "proxy"
+        ],
+        "worker_model": "gpt-5.4-mini",
+        "model_route_reason": "Non-implementation control route",
+        "fallback_reason": null
       },
       "expected": "BLOCKED_T0_DIRECT_AUTHORSHIP"
     },
     {
       "id": "T0_PRODUCT_EDIT_BLOCKED",
       "input": {
-        "run_id": "RUN-P0-AGENTHUB-X-CAPABILITY-HARD-ENFORCEMENT-20260528",
+        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
         "task_id": "AH-590",
         "actor_role": "T0_CONTROL",
         "authority_profile": "T0_CONTROL_ONLY",
         "action_class": "PRODUCT_FILE_WRITE",
         "scope_signature": "P0_AGENTHUB_X_CAPABILITY_MATRIX",
         "evidence_path": "reports/audits/P0-agenthub-x-capability-self-audit-20260528.md",
-        "receipt_path": "reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md"
+        "receipt_path": "reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md",
+        "allowed_surfaces": [
+          "control-spine-governance"
+        ],
+        "forbidden_surfaces": [
+          "product-runtime",
+          "secrets",
+          "database",
+          "proxy"
+        ],
+        "worker_model": "gpt-5.4-mini",
+        "model_route_reason": "Non-implementation control route",
+        "fallback_reason": null
       },
       "expected": "BLOCKED_T0_DIRECT_AUTHORSHIP"
     },
     {
       "id": "T0_SECRET_DUMP_BLOCKED",
       "input": {
-        "run_id": "RUN-P0-AGENTHUB-X-CAPABILITY-HARD-ENFORCEMENT-20260528",
+        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
         "task_id": "AH-590",
         "actor_role": "T0_CONTROL",
         "authority_profile": "T0_CONTROL_ONLY",
         "action_class": "SECRET_ENV_DUMP",
         "scope_signature": "P0_AGENTHUB_X_CAPABILITY_MATRIX",
         "evidence_path": "reports/audits/P0-agenthub-x-capability-self-audit-20260528.md",
-        "receipt_path": "reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md"
+        "receipt_path": "reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md",
+        "allowed_surfaces": [
+          "control-spine-governance"
+        ],
+        "forbidden_surfaces": [
+          "product-runtime",
+          "secrets",
+          "database",
+          "proxy"
+        ],
+        "worker_model": "gpt-5.4-mini",
+        "model_route_reason": "Non-implementation control route",
+        "fallback_reason": null
       },
       "expected": "BLOCKED_T0_DIRECT_AUTHORSHIP"
     },
     {
       "id": "T0_GIT_MUTATION_BLOCKED",
       "input": {
-        "run_id": "RUN-P0-AGENTHUB-X-CAPABILITY-HARD-ENFORCEMENT-20260528",
+        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
         "task_id": "AH-590",
         "actor_role": "T0_CONTROL",
         "authority_profile": "T0_CONTROL_ONLY",
         "action_class": "GIT_MUTATION",
         "scope_signature": "P0_AGENTHUB_X_CAPABILITY_MATRIX",
         "evidence_path": "reports/audits/P0-agenthub-x-capability-self-audit-20260528.md",
-        "receipt_path": "reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md"
+        "receipt_path": "reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md",
+        "allowed_surfaces": [
+          "control-spine-governance"
+        ],
+        "forbidden_surfaces": [
+          "product-runtime",
+          "secrets",
+          "database",
+          "proxy"
+        ],
+        "worker_model": "gpt-5.4-mini",
+        "model_route_reason": "Non-implementation control route",
+        "fallback_reason": null
       },
       "expected": "BLOCKED_T0_DIRECT_AUTHORSHIP"
     }

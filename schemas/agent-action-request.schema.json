@@ -13,6 +13,9 @@
     "scope_signature",
     "allowed_surfaces",
     "forbidden_surfaces",
+    "worker_model",
+    "model_route_reason",
+    "fallback_reason",
     "evidence_path",
     "receipt_path"
   ],
@@ -48,6 +51,12 @@
     "scope_signature": { "type": "string", "minLength": 1 },
     "allowed_surfaces": { "type": "array", "minItems": 1, "items": { "type": "string" } },
     "forbidden_surfaces": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "worker_model": { "type": "string", "minLength": 1 },
+    "model_route_reason": { "type": "string", "minLength": 1 },
+    "fallback_reason": {
+      "type": ["string", "null"],
+      "description": "Required field. Must be null when primary Codex route is used; non-empty when same-RUN fallback is used."
+    },
     "evidence_path": { "type": "string", "minLength": 1 },
     "receipt_path": { "type": "string", "minLength": 1 },
     "methodology_profile": {

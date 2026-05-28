@@ -1,32 +1,94 @@
 {
-  "schema": "agenthub.x.model_token_routing_tests.v1",
+  "schema": "agenthub.x.model_token_routing_tests.v2",
   "source_task": "AH-590",
-  "run_id": "RUN-P0-AGENTHUB-X-CAPABILITY-HARD-ENFORCEMENT-20260528",
+  "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
   "cases": [
     {
       "id": "T0_CONTROL_NO_COMMAND_LOOP",
-      "input": { "task_class": "T0_CONTROL", "requests_code_or_command": true },
+      "input": {
+        "task_class": "T0_CONTROL",
+        "requests_code_or_command": true,
+        "worker_model": "gpt-5.4-mini",
+        "model_route_reason": "T0 may classify and route only"
+      },
       "expected": "DENY_CODE_OR_COMMAND_FOR_T0"
     },
     {
       "id": "T0_CONTROL_ALLOWED_FOR_ROUTING",
-      "input": { "task_class": "T0_CONTROL", "requests_code_or_command": false },
+      "input": {
+        "task_class": "T0_CONTROL",
+        "requests_code_or_command": false,
+        "worker_model": "gpt-5.4-mini",
+        "model_route_reason": "T0 control route for classification"
+      },
       "expected": "CONTROL_MODEL_ALLOWED"
     },
     {
-      "id": "CODE_CONFIG_REQUIRES_CODEX",
-      "input": { "task_class": "T2_CODEX_IMPLEMENTER", "model_class": "GENERAL_REASONING" },
-      "expected": "CODEX_CAPABLE_MODEL_REQUIRED"
+      "id": "CODE_CONFIG_SPARK_AVAILABLE_USES_SPARK",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "codex_available": true,
+        "worker_model": "gpt-5.3-codex-spark",
+        "model_route_reason": "Codex Spark available for code/config task",
+        "fallback_reason": null
+      },
+      "expected": "CODEX_PRIMARY_ROUTE_PASS"
     },
     {
-      "id": "CODE_CONFIG_CODEX_PASS",
-      "input": { "task_class": "T2_CODEX_IMPLEMENTER", "model_class": "CODEX_CAPABLE" },
-      "expected": "CODEX_WORKER_REQUIRED_PASS"
+      "id": "CODE_CONFIG_CODEX_AVAILABLE_GENERAL_REJECTED",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "codex_available": true,
+        "worker_model": "gpt-5.5",
+        "model_route_reason": "Incorrect general model attempt for code/config task",
+        "fallback_reason": null
+      },
+      "expected": "CODEX_SPARK_ROUTE_REQUIRED"
+    },
+    {
+      "id": "CODEX_UNAVAILABLE_SAME_RUN_FALLBACK",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "codex_available": false,
+        "same_run_fallback": true,
+        "worker_model": "gpt-5.1-codex-mini",
+        "model_route_reason": "Primary Codex capacity unavailable; same-RUN fallback selected",
+        "fallback_reason": "PRIMARY_CODEX_CAPACITY_UNAVAILABLE"
+      },
+      "expected": "SAME_RUN_CODEX_FALLBACK_PASS"
+    },
+    {
+      "id": "CODEX_UNAVAILABLE_DUP_RUN_OR_T0_FAIL",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "codex_available": false,
+        "same_run_fallback": false,
+        "worker_model": "gpt-5.5",
+        "model_route_reason": "Invalid fallback outside Codex worker policy",
+        "fallback_reason": "PRIMARY_CODEX_CAPACITY_UNAVAILABLE"
+      },
+      "expected": "CODEX_RUNTIME_PROFILE_UNAVAILABLE"
     },
     {
       "id": "SAME_GATE_THIRD_RETRY_FORBIDDEN",
-      "input": { "task_class": "P4_RUNTIME_READ", "has_scope": true, "same_gate_failures": 2 },
-      "expected": "SAME_GATE_LOOP_BLOCKED"
+      "input": {
+        "task_class": "P4_RUNTIME_READ",
+        "has_scope": true,
+        "same_gate_failures": 2,
+        "worker_model": "gpt-5.4-mini",
+        "model_route_reason": "Loop guard for repeated same gate"
+      },
+      "expected": "ARCHITECTURE_REPAIR_REQUIRED"
+    },
+    {
+      "id": "MISSING_MODEL_ROUTE_EVIDENCE",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "codex_available": true,
+        "worker_model": "",
+        "model_route_reason": ""
+      },
+      "expected": "MODEL_ROUTE_EVIDENCE_MISSING"
     }
   ]
 }

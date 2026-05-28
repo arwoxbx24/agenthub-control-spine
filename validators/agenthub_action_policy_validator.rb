@@ -36,8 +36,13 @@ def blank?(value)
 end
 
 def decision(input)
-  required = %w[run_id task_id actor_role authority_profile action_class scope_signature evidence_path receipt_path]
+  required = %w[
+    run_id task_id actor_role authority_profile action_class scope_signature
+    evidence_path receipt_path
+  ]
   return "ROLE_AUTHORITY_MISSING" if required.any? { |key| blank?(input[key]) }
+  return "BLOCKED_SURFACE_BOUNDS_MISSING" if blank?(input["allowed_surfaces"]) || blank?(input["forbidden_surfaces"])
+  return "MODEL_ROUTE_EVIDENCE_MISSING" if !input.key?("fallback_reason") || blank?(input["worker_model"]) || blank?(input["model_route_reason"])
 
   return "SAME_GATE_LOOP_BLOCKED" if input.fetch("same_gate_failures", 0).to_i >= 2
 
@@ -57,7 +62,16 @@ def decision(input)
   when "T1_ARCHITECT"
     %w[ADR METHOD_SELECTION RISK_REVIEW MICRO_TZ].include?(action) ? "ALLOW_WITH_RECEIPT" : "INTERNAL_CAPABILITY_REMEDIATION_REQUIRED"
   when "T2_CODEX_IMPLEMENTER"
-    %w[CODE_EDIT CONFIG_EDIT YAML_EDIT SHELL_SCRIPT_EDIT TEST_EXECUTION].include?(action) ? "ALLOW_WITH_RECEIPT" : "INTERNAL_CAPABILITY_REMEDIATION_REQUIRED"
+    return "CODEX_CAPABLE_MODEL_REQUIRED" unless input.fetch("model_class", "") == "CODEX_CAPABLE"
+    codex_primary_models = %w[gpt-5.3-codex-spark gpt-5.3-codex]
+    codex_fallback_models = %w[gpt-5.1-codex-mini gpt-5.4-mini]
+    model = input.fetch("worker_model", "")
+
+    return "CODEX_CAPABLE_MODEL_REQUIRED" unless (codex_primary_models + codex_fallback_models).include?(model)
+    return "FALLBACK_REASON_FORBIDDEN_ON_PRIMARY_ROUTE" if codex_primary_models.include?(model) && !input.fetch("fallback_reason").nil?
+    return "FALLBACK_REASON_REQUIRED" if codex_fallback_models.include?(model) && blank?(input.fetch("fallback_reason"))
+
+    %w[CODE_EDIT CONFIG_EDIT YAML_EDIT SHELL_SCRIPT_EDIT TEST_EXECUTION].include?(action) ? "ALLOW_WITH_MODEL_RECEIPT" : "INTERNAL_CAPABILITY_REMEDIATION_REQUIRED"
   when "P4_RUNTIME_READ"
     %w[RUNTIME_READ DOCKER_READ NPM_READ DNS_READ YC_READ TWC_READ LOG_SUMMARY CURL_READ].include?(action) ? "ALLOW_WITH_RECEIPT" : "INTERNAL_CAPABILITY_REMEDIATION_REQUIRED"
   when "P4_RUNTIME_REPAIR"
