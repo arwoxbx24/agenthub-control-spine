@@ -16,7 +16,7 @@ RUN_ID: `RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528`
 source_task: `AH-594`
 repo: `arwoxbx24/agenthub-control-spine`
 branch: `agenthub/RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528`
-PR: pending
+PR: `#88` merged to `main`; registrar readback PR pending
 methodology_profile: `FULL_ARCHITECTURE`
 active_roles: T0_CONTROL, T1_ARCHITECT, T2_CODEX_WORKER, VERIFIER, REGISTRAR
 
@@ -57,5 +57,5 @@ evals_run:
 secret_scan: PASS, `gitleaks detect --no-git --redact --source . --verbose`
 negative_tests: N1-N22 represented across the two fixture sets
 positive_tests: P1-P10 represented across the two fixture sets
-residuals: live runtime hook installation is not claimed from repository-only evidence
-final_state: pending PR merge, register readback, and YouTrack readback
+residuals: live runtime hook installation is not claimed from repository-only evidence; repository-governance enforcement scope has no active residual
+final_state: `DONE_WITH_EVIDENCE` for repository-governance scope after PR #88 merge; final task readback recorded under `AH-594`

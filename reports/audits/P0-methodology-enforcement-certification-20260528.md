@@ -176,6 +176,7 @@ adds audit/receipt/readback artifacts.
 
 ## 14. Final Decision
 
-Pre-merge decision: repository-governance controls installed locally; final
-state pending PR merge, register readback, secret scan, and YouTrack readback.
-
+Decision after PR #88 merge: `DONE_WITH_EVIDENCE` for repository-governance
+methodology router and black-box route registry scope after registrar readback,
+post-readback validation, and task readback. Live runtime hook installation is
+not claimed from repository files.
