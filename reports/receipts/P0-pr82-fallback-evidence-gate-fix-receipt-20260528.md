@@ -39,8 +39,8 @@ T0 boundary result: T0 direct authorship remains rejected by existing negative
 fixtures and validator path.
 
 register updates: audit and receipt registered in `INDEX.md` and
-`ARTIFACT_REGISTER.md`; PR queue records this follow-up branch as in progress
-until PR merge.
+`ARTIFACT_REGISTER.md`; PR queue readback records PR `#84` merged at
+`4818a56f25d19afd13bd45249f15fc689b3cab61`.
 
 YouTrack readback: AH-590 evidence attached through AgentHub task-service
 receipt; YouTrack draft `3-623` was updated with scope and validation evidence
@@ -57,5 +57,5 @@ because the connector returned a draft id rather than a canonical AH issue id.
 - secret scan: PASS, `gitleaks detect --no-git --redact`
 - forbidden runtime/product mutation: none performed
 
-final_status: validation PASS; PR merge pending
-residuals: none known before final validation
+final_status: DONE_WITH_EVIDENCE
+residuals: none for repository-governance scope
