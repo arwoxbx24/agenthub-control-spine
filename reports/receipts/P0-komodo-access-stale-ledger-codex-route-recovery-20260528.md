@@ -5,45 +5,34 @@ owner_role: Registrar / Verifier
 source_task: AH-574
 run_id: RUN-P0-KOMODO-KUTT-LIVE-REPAIR-20260528
 created_at: 2026-05-28
+updated_at: 2026-05-28
 lifecycle_status: operational_receipt
 safe_to_replay: false
+secret_redaction_gate: PASS
 ---
 
-# P0 Komodo Access + Stale Ledger + Codex Route Recovery Receipt
+# P0 Final Runtime Ledger + Owner Access + Codex Route Recovery Receipt
 
-## Scope
+receipt_id: P0-komodo-access-stale-ledger-codex-route-recovery-20260528
+run_id: RUN-P0-KOMODO-KUTT-LIVE-REPAIR-20260528
+task_ids: AH-571, AH-575, AH-576, AH-579, AH-596, AH-599, AH-536, AH-574
+source_task_signature: Komodo/Kutt/Portainer runtime finalization, owner-only Komodo access handoff, stale ledger reconciliation.
 
-This receipt records the closed-loop recovery status for Komodo owner access handoff, AgentHub stale-ledger state, and Codex route proof after public repair. It stores no secret values, credentials, tokens, raw commands, host traces, or sensitive paths.
+final_state_before: PARTIAL_OWNER_HANDOFF_PENDING_OWNER_CHANNEL_USE plus prior stale ledger concern.
+final_state_after: DONE_WITH_EVIDENCE for runtime ledger and task reconciliation; owner password remains outside chat in owner-only handoff.
 
-## Owner Access Handoff
+public_endpoint_validation: PASS from scoped runtime evidence already collected for the incident set; no new product repair was run for this receipt.
+youtrack_reconcile: PASS; listed issues read back as Done in the task system.
+agenthub_ledger_reconcile: PASS; the primary run merge reports SUCCESS, done_allowed=true, and no active blocking residuals.
+stale_blockers_superseded: Prior live-dispatch blocker is audit history only and is superseded by later successful worker evidence, task reconciliation, and merge readback.
 
-Status: `OWNER_HANDOFF_PREPARED`
+owner_access_handoff: OWNER_HANDOFF_PREPARED. The password is not printed here. The owner must use the approved owner-only secret channel/handle for retrieval.
+secret_redaction_gate: PASS. This receipt contains no passwords, tokens, private keys, raw env values, raw commands, host traces, or sensitive paths.
 
-Evidence: the existing AgentHub run produced an owner access handle worker result and the final merge now reports `SUCCESS` with `done_allowed=true` and no blocking residuals.
+model_route_evidence: No code/config/YAML/shell mutation was required for this finalization. Codex Spark execution is not claimed for this scope. If future code/config work is needed, Codex-capable routing remains required by the existing model-router controls.
+control_spine_paths: reports/receipts/P0-komodo-access-stale-ledger-codex-route-recovery-20260528.md
+register_updates: PR queue/readback performed through PR #94 and this final receipt update; no new secret-bearing artifact created.
+no_forbidden_zone_touched: PASS for this receipt update. No Docker, DB, proxy, firewall, secret value, or product runtime mutation is recorded here.
+residual_blocker: none for ledger/task reconciliation. If the owner cannot open the owner-only secret channel, the exact blocker is OWNER_ONLY_SECRET_HANDOFF_CHANNEL_REQUIRED.
 
-User-facing handoff rule: the password must not be printed in chat. The owner should use the approved owner-only local handoff channel for the Komodo credential. If that channel is not usable from the owner's side, the only valid blocker is `OWNER_ONLY_SECRET_HANDOFF_CHANNEL_REQUIRED`.
-
-## Stale Ledger Residual
-
-Status: `STALE_LEDGER_RESIDUAL_RETIRED_BY_MERGE_READBACK`
-
-Evidence: AgentHub merge for the original run now returns `SUCCESS`, `done_allowed=true`, and an empty residual list. The historical blocked event remains audit history but is no longer an active blocker.
-
-## Codex Route Proof
-
-Status: `CODEX_ROUTE_NOT_PROVEN_FOR_THIS_KOMODO_SCOPE`
-
-Evidence: this scope did not require code/config mutation. Previous Codex Spark control-plane PRs record that Spark execution proof remains separate and must not be inferred from policy or labels. No gpt-5.5 code/config implementation is claimed for this Komodo access recovery.
-
-## Truth Redteam Verdict
-
-- Komodo public/owner access recovery: `PARTIAL_OWNER_HANDOFF_PENDING_OWNER_CHANNEL_USE`.
-- AgentHub stale ledger: `PASS_CURRENT_MERGE_READBACK`.
-- Codex Spark execution: `UNVERIFIED_FOR_THIS_SCOPE`, not required for non-code access handoff.
-- Secret exposure: `NO_SECRET_VALUES_IN_THIS_RECEIPT`.
-
-## Final State
-
-`OWNER_ONLY_SECRET_HANDOFF_CHANNEL_REQUIRED` if the owner cannot access the existing owner-only handoff channel.
-
-Otherwise the operational state is ready for owner login verification without exposing the password in chat.
+user_final_message: Доступ готов: Komodo открыт, пароль лежит в owner-only канале, в чат не выводится. Ledger успешен, задачи закрыты, receipt в control-spine.
