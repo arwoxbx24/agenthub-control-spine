@@ -1,12 +1,12 @@
 {
   "schema": "agenthub.x.capability_positive_tests.v1",
   "source_task": "AH-590",
-  "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
+  "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
   "cases": [
     {
       "id": "T0_CAN_ROUTE",
       "input": {
-        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
         "task_id": "AH-590",
         "actor_role": "T0_CONTROL",
         "authority_profile": "T0_CONTROL_ONLY",
@@ -32,7 +32,7 @@
     {
       "id": "T1_CAN_APPROVE_ADR",
       "input": {
-        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
         "task_id": "AH-590",
         "actor_role": "T1_ARCHITECT",
         "authority_profile": "T1_ARCHITECT",
@@ -58,7 +58,7 @@
     {
       "id": "T2_CODEX_CAN_EDIT_SCOPED_CONFIG",
       "input": {
-        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
         "task_id": "AH-590",
         "actor_role": "T2_CODEX_IMPLEMENTER",
         "authority_profile": "T2_CODEX_IMPLEMENTER",
@@ -78,14 +78,15 @@
         "worker_model": "gpt-5.3-codex-spark",
         "model_route_reason": "Codex-capable worker required for implementation-capable action",
         "fallback_reason": null,
-        "model_class": "CODEX_CAPABLE"
+        "model_class": "CODEX_CAPABLE",
+        "codex_available": true
       },
-      "expected": "ALLOW_WITH_MODEL_RECEIPT"
+      "expected": "ALLOW_CODEX_PRIMARY_WITH_SURFACE_EVIDENCE"
     },
     {
       "id": "P4_READ_CAN_COLLECT_BOUNDED_EVIDENCE",
       "input": {
-        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
         "task_id": "AH-590",
         "actor_role": "P4_RUNTIME_READ",
         "authority_profile": "P4_RUNTIME_READ",
@@ -111,7 +112,7 @@
     {
       "id": "P4_REPAIR_REQUIRES_ROLLBACK",
       "input": {
-        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
         "task_id": "AH-590",
         "actor_role": "P4_RUNTIME_REPAIR",
         "authority_profile": "P4_RUNTIME_REPAIR",
@@ -137,7 +138,7 @@
     {
       "id": "SECRET_HANDLE_METADATA_ONLY",
       "input": {
-        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
         "task_id": "AH-590",
         "actor_role": "SECRET_HANDLE_READER",
         "authority_profile": "SECRET_HANDLE_READER",
@@ -163,7 +164,7 @@
     {
       "id": "VERIFIER_READONLY_PASS",
       "input": {
-        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
         "task_id": "AH-590",
         "actor_role": "VERIFIER_READONLY",
         "authority_profile": "VERIFIER_READONLY",
@@ -189,7 +190,7 @@
     {
       "id": "REGISTRAR_CAN_UPDATE_INDEX",
       "input": {
-        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
         "task_id": "AH-590",
         "actor_role": "REGISTRAR",
         "authority_profile": "REGISTRAR",
@@ -215,7 +216,7 @@
     {
       "id": "MISSING_ROUTINE_CAPABILITY_REMEDIATES",
       "input": {
-        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
         "task_id": "AH-590",
         "actor_role": "P4_RUNTIME_READ",
         "authority_profile": "P4_RUNTIME_READ",
@@ -241,7 +242,7 @@
     {
       "id": "MISSING_SURFACE_BOUNDS_BLOCKED",
       "input": {
-        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
         "task_id": "AH-590",
         "actor_role": "T2_CODEX_IMPLEMENTER",
         "authority_profile": "T2_CODEX_IMPLEMENTER",
@@ -252,14 +253,15 @@
         "worker_model": "gpt-5.3-codex-spark",
         "model_route_reason": "Codex Spark available for code/config task",
         "fallback_reason": null,
-        "model_class": "CODEX_CAPABLE"
+        "model_class": "CODEX_CAPABLE",
+        "codex_available": true
       },
-      "expected": "BLOCKED_SURFACE_BOUNDS_MISSING"
+      "expected": "BLOCK_MISSING_ALLOWED_SURFACES"
     },
     {
       "id": "MISSING_ACTION_MODEL_EVIDENCE_BLOCKED",
       "input": {
-        "run_id": "RUN-P0-CODEX-SPARK-MODEL-ROUTER-PR80-FIX-20260528",
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
         "task_id": "AH-590",
         "actor_role": "T2_CODEX_IMPLEMENTER",
         "authority_profile": "T2_CODEX_IMPLEMENTER",
@@ -279,9 +281,230 @@
         "worker_model": "",
         "model_route_reason": "",
         "fallback_reason": null,
-        "model_class": "CODEX_CAPABLE"
+        "model_class": "CODEX_CAPABLE",
+        "codex_available": true
       },
       "expected": "MODEL_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "id": "ALLOW_CODEX_PRIMARY_WITH_SURFACE_EVIDENCE",
+      "input": {
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
+        "task_id": "AH-590",
+        "actor_role": "T2_CODEX_IMPLEMENTER",
+        "authority_profile": "T2_CODEX_IMPLEMENTER",
+        "action_class": "CONFIG_EDIT",
+        "scope_signature": "P0_PR82_FALLBACK_EVIDENCE_GATE",
+        "evidence_path": "reports/audits/P0-pr82-fallback-evidence-gate-fact-audit-20260528.md",
+        "receipt_path": "reports/receipts/P0-pr82-fallback-evidence-gate-fix-receipt-20260528.md",
+        "allowed_surfaces": [
+          "control-spine-governance"
+        ],
+        "forbidden_surfaces": [
+          "product-runtime",
+          "secrets",
+          "database",
+          "proxy"
+        ],
+        "model_route_reason": "Codex-capable worker required for implementation-capable action",
+        "model_class": "CODEX_CAPABLE",
+        "worker_model": "gpt-5.3-codex-spark",
+        "fallback_reason": null,
+        "codex_available": true
+      },
+      "expected": "ALLOW_CODEX_PRIMARY_WITH_SURFACE_EVIDENCE"
+    },
+    {
+      "id": "ALLOW_SAME_RUN_FALLBACK_WITH_PRIMARY_UNAVAILABLE_EVIDENCE",
+      "input": {
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
+        "task_id": "AH-590",
+        "actor_role": "T2_CODEX_IMPLEMENTER",
+        "authority_profile": "T2_CODEX_IMPLEMENTER",
+        "action_class": "CONFIG_EDIT",
+        "scope_signature": "P0_PR82_FALLBACK_EVIDENCE_GATE",
+        "evidence_path": "reports/audits/P0-pr82-fallback-evidence-gate-fact-audit-20260528.md",
+        "receipt_path": "reports/receipts/P0-pr82-fallback-evidence-gate-fix-receipt-20260528.md",
+        "allowed_surfaces": [
+          "control-spine-governance"
+        ],
+        "forbidden_surfaces": [
+          "product-runtime",
+          "secrets",
+          "database",
+          "proxy"
+        ],
+        "model_route_reason": "Codex-capable worker required for implementation-capable action",
+        "model_class": "CODEX_CAPABLE",
+        "worker_model": "gpt-5.1-codex-mini",
+        "fallback_reason": "PRIMARY_CODEX_CAPACITY_UNAVAILABLE",
+        "codex_available": false,
+        "same_run_fallback": true,
+        "fallback_run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
+        "codex_unavailable_evidence_ref": "reports/receipts/primary-codex-unavailable-20260528.json",
+        "fallback_model": "gpt-5.1-codex-mini"
+      },
+      "expected": "ALLOW_SAME_RUN_FALLBACK_WITH_PRIMARY_UNAVAILABLE_EVIDENCE"
+    },
+    {
+      "id": "BLOCK_FALLBACK_REASON_ONLY",
+      "input": {
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
+        "task_id": "AH-590",
+        "actor_role": "T2_CODEX_IMPLEMENTER",
+        "authority_profile": "T2_CODEX_IMPLEMENTER",
+        "action_class": "CONFIG_EDIT",
+        "scope_signature": "P0_PR82_FALLBACK_EVIDENCE_GATE",
+        "evidence_path": "reports/audits/P0-pr82-fallback-evidence-gate-fact-audit-20260528.md",
+        "receipt_path": "reports/receipts/P0-pr82-fallback-evidence-gate-fix-receipt-20260528.md",
+        "allowed_surfaces": [
+          "control-spine-governance"
+        ],
+        "forbidden_surfaces": [
+          "product-runtime",
+          "secrets",
+          "database",
+          "proxy"
+        ],
+        "model_route_reason": "Codex-capable worker required for implementation-capable action",
+        "model_class": "CODEX_CAPABLE",
+        "worker_model": "gpt-5.4-mini",
+        "fallback_reason": "PRIMARY_CODEX_CAPACITY_UNAVAILABLE"
+      },
+      "expected": "BLOCK_FALLBACK_REASON_ONLY"
+    },
+    {
+      "id": "BLOCK_FALLBACK_DIFFERENT_RUN",
+      "input": {
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
+        "task_id": "AH-590",
+        "actor_role": "T2_CODEX_IMPLEMENTER",
+        "authority_profile": "T2_CODEX_IMPLEMENTER",
+        "action_class": "CONFIG_EDIT",
+        "scope_signature": "P0_PR82_FALLBACK_EVIDENCE_GATE",
+        "evidence_path": "reports/audits/P0-pr82-fallback-evidence-gate-fact-audit-20260528.md",
+        "receipt_path": "reports/receipts/P0-pr82-fallback-evidence-gate-fix-receipt-20260528.md",
+        "allowed_surfaces": [
+          "control-spine-governance"
+        ],
+        "forbidden_surfaces": [
+          "product-runtime",
+          "secrets",
+          "database",
+          "proxy"
+        ],
+        "model_route_reason": "Codex-capable worker required for implementation-capable action",
+        "model_class": "CODEX_CAPABLE",
+        "worker_model": "gpt-5.1-codex-mini",
+        "fallback_reason": "PRIMARY_CODEX_CAPACITY_UNAVAILABLE",
+        "primary_route_unavailable": true,
+        "same_run_fallback": true,
+        "fallback_run_id": "RUN-OTHER",
+        "primary_attempt_evidence_ref": "reports/receipts/primary-codex-unavailable-20260528.json",
+        "fallback_model": "gpt-5.1-codex-mini"
+      },
+      "expected": "BLOCK_FALLBACK_DIFFERENT_RUN"
+    },
+    {
+      "id": "BLOCK_MISSING_ALLOWED_SURFACES",
+      "input": {
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
+        "task_id": "AH-590",
+        "actor_role": "T2_CODEX_IMPLEMENTER",
+        "authority_profile": "T2_CODEX_IMPLEMENTER",
+        "action_class": "CONFIG_EDIT",
+        "scope_signature": "P0_PR82_FALLBACK_EVIDENCE_GATE",
+        "evidence_path": "reports/audits/P0-pr82-fallback-evidence-gate-fact-audit-20260528.md",
+        "receipt_path": "reports/receipts/P0-pr82-fallback-evidence-gate-fix-receipt-20260528.md",
+        "forbidden_surfaces": [
+          "product-runtime",
+          "secrets",
+          "database",
+          "proxy"
+        ],
+        "model_route_reason": "Codex-capable worker required for implementation-capable action",
+        "model_class": "CODEX_CAPABLE",
+        "worker_model": "gpt-5.3-codex-spark",
+        "fallback_reason": null,
+        "codex_available": true
+      },
+      "expected": "BLOCK_MISSING_ALLOWED_SURFACES"
+    },
+    {
+      "id": "BLOCK_MISSING_FORBIDDEN_SURFACES",
+      "input": {
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
+        "task_id": "AH-590",
+        "actor_role": "T2_CODEX_IMPLEMENTER",
+        "authority_profile": "T2_CODEX_IMPLEMENTER",
+        "action_class": "CONFIG_EDIT",
+        "scope_signature": "P0_PR82_FALLBACK_EVIDENCE_GATE",
+        "evidence_path": "reports/audits/P0-pr82-fallback-evidence-gate-fact-audit-20260528.md",
+        "receipt_path": "reports/receipts/P0-pr82-fallback-evidence-gate-fix-receipt-20260528.md",
+        "allowed_surfaces": [
+          "control-spine-governance"
+        ],
+        "model_route_reason": "Codex-capable worker required for implementation-capable action",
+        "model_class": "CODEX_CAPABLE",
+        "worker_model": "gpt-5.3-codex-spark",
+        "fallback_reason": null,
+        "codex_available": true
+      },
+      "expected": "BLOCK_MISSING_FORBIDDEN_SURFACES"
+    },
+    {
+      "id": "BLOCK_NON_CODEX_MODEL_FOR_CODE_MUTATION",
+      "input": {
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
+        "task_id": "AH-590",
+        "actor_role": "T2_CODEX_IMPLEMENTER",
+        "authority_profile": "T2_CODEX_IMPLEMENTER",
+        "action_class": "CONFIG_EDIT",
+        "scope_signature": "P0_PR82_FALLBACK_EVIDENCE_GATE",
+        "evidence_path": "reports/audits/P0-pr82-fallback-evidence-gate-fact-audit-20260528.md",
+        "receipt_path": "reports/receipts/P0-pr82-fallback-evidence-gate-fix-receipt-20260528.md",
+        "allowed_surfaces": [
+          "control-spine-governance"
+        ],
+        "forbidden_surfaces": [
+          "product-runtime",
+          "secrets",
+          "database",
+          "proxy"
+        ],
+        "model_route_reason": "Codex-capable worker required for implementation-capable action",
+        "model_class": "CODEX_CAPABLE",
+        "worker_model": "gpt-5.5",
+        "fallback_reason": null,
+        "codex_available": true
+      },
+      "expected": "BLOCK_NON_CODEX_MODEL_FOR_CODE_MUTATION"
+    },
+    {
+      "id": "NON_CODE_LIGHTWEIGHT_ROUTE_ALLOWED",
+      "input": {
+        "run_id": "RUN-P0-PR82-FALLBACK-GATE-20260528",
+        "task_id": "AH-590",
+        "actor_role": "VERIFIER_READONLY",
+        "authority_profile": "VERIFIER_READONLY",
+        "action_class": "VALIDATE_REPO",
+        "scope_signature": "P0_PR82_FALLBACK_EVIDENCE_GATE",
+        "evidence_path": "reports/audits/P0-pr82-fallback-evidence-gate-fact-audit-20260528.md",
+        "receipt_path": "reports/receipts/P0-pr82-fallback-evidence-gate-fix-receipt-20260528.md",
+        "allowed_surfaces": [
+          "control-spine-governance"
+        ],
+        "forbidden_surfaces": [
+          "product-runtime",
+          "secrets",
+          "database",
+          "proxy"
+        ],
+        "worker_model": "gpt-5.4-mini",
+        "model_route_reason": "Read-only validation may use lightweight route",
+        "fallback_reason": null
+      },
+      "expected": "ALLOW_READONLY"
     }
   ]
 }

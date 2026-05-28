@@ -41,7 +41,8 @@ def decision(input)
     evidence_path receipt_path
   ]
   return "ROLE_AUTHORITY_MISSING" if required.any? { |key| blank?(input[key]) }
-  return "BLOCKED_SURFACE_BOUNDS_MISSING" if blank?(input["allowed_surfaces"]) || blank?(input["forbidden_surfaces"])
+  return "BLOCK_MISSING_ALLOWED_SURFACES" if blank?(input["allowed_surfaces"])
+  return "BLOCK_MISSING_FORBIDDEN_SURFACES" if blank?(input["forbidden_surfaces"])
   return "MODEL_ROUTE_EVIDENCE_MISSING" if !input.key?("fallback_reason") || blank?(input["worker_model"]) || blank?(input["model_route_reason"])
 
   return "SAME_GATE_LOOP_BLOCKED" if input.fetch("same_gate_failures", 0).to_i >= 2
@@ -66,12 +67,25 @@ def decision(input)
     codex_primary_models = %w[gpt-5.3-codex-spark gpt-5.3-codex]
     codex_fallback_models = %w[gpt-5.1-codex-mini gpt-5.4-mini]
     model = input.fetch("worker_model", "")
+    mutation_actions = %w[CODE_EDIT CONFIG_EDIT YAML_EDIT SHELL_SCRIPT_EDIT TEST_EXECUTION IAC_EDIT]
 
-    return "CODEX_CAPABLE_MODEL_REQUIRED" unless (codex_primary_models + codex_fallback_models).include?(model)
+    return "BLOCK_NON_CODEX_MODEL_FOR_CODE_MUTATION" unless (codex_primary_models + codex_fallback_models).include?(model)
     return "FALLBACK_REASON_FORBIDDEN_ON_PRIMARY_ROUTE" if codex_primary_models.include?(model) && !input.fetch("fallback_reason").nil?
-    return "FALLBACK_REASON_REQUIRED" if codex_fallback_models.include?(model) && blank?(input.fetch("fallback_reason"))
 
-    %w[CODE_EDIT CONFIG_EDIT YAML_EDIT SHELL_SCRIPT_EDIT TEST_EXECUTION].include?(action) ? "ALLOW_WITH_MODEL_RECEIPT" : "INTERNAL_CAPABILITY_REMEDIATION_REQUIRED"
+    if codex_fallback_models.include?(model)
+      fallback_model = input["fallback_model"]
+      primary_unavailable = input["codex_available"] == false || input["primary_route_unavailable"] == true
+      evidence_ref = input["primary_attempt_evidence_ref"] || input["codex_unavailable_evidence_ref"]
+      same_run = input["same_run_fallback"] == true
+
+      return "BLOCK_FALLBACK_REASON_ONLY" if blank?(input.fetch("fallback_reason")) || blank?(fallback_model) || !primary_unavailable || blank?(evidence_ref) || !same_run
+      return "BLOCK_NON_CODEX_MODEL_FOR_CODE_MUTATION" unless codex_fallback_models.include?(fallback_model)
+      return "BLOCK_FALLBACK_DIFFERENT_RUN" unless input["fallback_run_id"] == input["run_id"]
+
+      return mutation_actions.include?(action) ? "ALLOW_SAME_RUN_FALLBACK_WITH_PRIMARY_UNAVAILABLE_EVIDENCE" : "INTERNAL_CAPABILITY_REMEDIATION_REQUIRED"
+    end
+
+    mutation_actions.include?(action) ? "ALLOW_CODEX_PRIMARY_WITH_SURFACE_EVIDENCE" : "INTERNAL_CAPABILITY_REMEDIATION_REQUIRED"
   when "P4_RUNTIME_READ"
     %w[RUNTIME_READ DOCKER_READ NPM_READ DNS_READ YC_READ TWC_READ LOG_SUMMARY CURL_READ].include?(action) ? "ALLOW_WITH_RECEIPT" : "INTERNAL_CAPABILITY_REMEDIATION_REQUIRED"
   when "P4_RUNTIME_REPAIR"
