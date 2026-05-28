@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/arwoxbx24/agenthub-control-spine/schemas/agenthub_missing_access_blocker.schema.json",
+  "title": "AgentHub Missing Access Blocker",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "blocker_type",
+    "missing_access_surface",
+    "missing_access_human",
+    "required_actor",
+    "required_route",
+    "why_needed",
+    "safe_next_action",
+    "evidence_ref"
+  ],
+  "properties": {
+    "blocker_type": { "const": "MISSING_ACCESS" },
+    "missing_access_surface": {
+      "type": "string",
+      "minLength": 8,
+      "not": { "enum": ["blocked", "need access", "route blocked", "missing permissions", "AGENTHUB_LIVE_WORKER_ROUTE_REQUIRED"] }
+    },
+    "missing_access_human": { "type": "string", "minLength": 12, "maxLength": 180 },
+    "required_actor": { "enum": ["OWNER", "REGISTRAR", "T2_WORKER", "PLATFORM_ADMIN", "EXTERNAL_PROVIDER"] },
+    "required_route": { "type": "string", "minLength": 8 },
+    "why_needed": { "type": "string", "minLength": 12 },
+    "safe_next_action": { "type": "string", "minLength": 12 },
+    "evidence_ref": { "type": "string", "minLength": 8 }
+  }
+}
