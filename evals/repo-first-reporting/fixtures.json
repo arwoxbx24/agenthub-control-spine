@@ -12,7 +12,9 @@
         "artifact_registered": true,
         "pr_queue_registered": true,
         "task_readback": true,
-        "secret_scan": true
+        "secret_scan": true,
+        "worker_model": true,
+        "model_route_reason": true
       },
       "expected": "DONE_WITH_EVIDENCE"
     },
@@ -25,7 +27,9 @@
         "artifact_registered": true,
         "pr_queue_registered": true,
         "task_readback": true,
-        "secret_scan": true
+        "secret_scan": true,
+        "worker_model": true,
+        "model_route_reason": true
       },
       "expected": "NOT_DONE_CONTROL_SPINE_RECEIPT_MISSING"
     },
@@ -38,9 +42,26 @@
         "artifact_registered": true,
         "pr_queue_registered": true,
         "task_readback": false,
-        "secret_scan": true
+        "secret_scan": true,
+        "worker_model": true,
+        "model_route_reason": true
       },
       "expected": "NOT_DONE_TASK_READBACK_MISSING"
+    },
+    {
+      "id": "MISSING_MODEL_ROUTE_EVIDENCE_NOT_DONE",
+      "input": {
+        "receipt_path": true,
+        "audit_path": true,
+        "index_registered": true,
+        "artifact_registered": true,
+        "pr_queue_registered": true,
+        "task_readback": true,
+        "secret_scan": true,
+        "worker_model": false,
+        "model_route_reason": false
+      },
+      "expected": "NOT_DONE_MODEL_ROUTE_EVIDENCE_MISSING"
     }
   ]
 }

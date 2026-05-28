@@ -14,6 +14,7 @@ def done_decision(input)
   return "NOT_DONE_PR_QUEUE_MISSING" unless input.fetch("pr_queue_registered", false)
   return "NOT_DONE_TASK_READBACK_MISSING" unless input.fetch("task_readback", false)
   return "NOT_DONE_SECRET_SCAN_MISSING" unless input.fetch("secret_scan", false)
+  return "NOT_DONE_MODEL_ROUTE_EVIDENCE_MISSING" unless input.fetch("worker_model", false) && input.fetch("model_route_reason", false)
 
   "DONE_WITH_EVIDENCE"
 end

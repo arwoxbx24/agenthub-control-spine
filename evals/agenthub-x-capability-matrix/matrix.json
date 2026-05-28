@@ -43,7 +43,7 @@
       "forbidden_actions": ["unscoped_runtime_mutation", "secret_print", "cross_project_mutation"],
       "allowed_surfaces": ["assigned_repo", "assigned_branch", "assigned_files"],
       "forbidden_surfaces": ["unassigned_repo", "secrets", "live_runtime_without_profile"],
-      "required_evidence": ["diff", "tests", "secret_scan", "pr", "receipt"],
+      "required_evidence": ["worker_model", "model_route_reason", "diff", "tests", "secret_scan", "pr", "receipt"],
       "validation": ["code_review", "test_plan", "repo_first_receipt_gate"],
       "receipt_required": true
     },

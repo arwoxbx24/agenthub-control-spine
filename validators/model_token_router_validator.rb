@@ -8,7 +8,8 @@ doc = JSON.parse(File.read(path))
 cases = doc.fetch("cases")
 
 def route(input)
-  return "SAME_GATE_LOOP_BLOCKED" if input.fetch("same_gate_failures", 0).to_i >= 2
+  return "ARCHITECTURE_REPAIR_REQUIRED" if input.fetch("same_gate_failures", 0).to_i >= 2
+  return "MODEL_ROUTE_EVIDENCE_MISSING" if input.fetch("worker_model", "").empty? || input.fetch("model_route_reason", "").empty?
 
   case input.fetch("task_class")
   when "T0_CONTROL"
@@ -17,7 +18,22 @@ def route(input)
   when "T1_ARCHITECT"
     "REASONING_MODEL_ALLOWED_WITH_BOUNDED_SOURCE_PACKET"
   when "T2_CODEX_IMPLEMENTER"
-    input.fetch("model_class") == "CODEX_CAPABLE" ? "CODEX_WORKER_REQUIRED_PASS" : "CODEX_CAPABLE_MODEL_REQUIRED"
+    codex_primary_models = %w[gpt-5.3-codex-spark gpt-5.3-codex]
+    codex_fallback_models = %w[gpt-5.1-codex-mini gpt-5.4-mini]
+    model = input.fetch("worker_model", "")
+
+    if input.fetch("codex_available", false)
+      return "CODEX_SPARK_ROUTE_REQUIRED" unless codex_primary_models.include?(model)
+      return "FALLBACK_REASON_FORBIDDEN_ON_PRIMARY_ROUTE" unless input.fetch("fallback_reason", nil).nil?
+
+      "CODEX_PRIMARY_ROUTE_PASS"
+    elsif input.fetch("same_run_fallback", false) && codex_fallback_models.include?(model)
+      return "FALLBACK_REASON_REQUIRED" if input.fetch("fallback_reason", "").empty?
+
+      "SAME_RUN_CODEX_FALLBACK_PASS"
+    else
+      "CODEX_RUNTIME_PROFILE_UNAVAILABLE"
+    end
   when "P4_RUNTIME_READ", "P4_RUNTIME_REPAIR"
     input.fetch("has_scope", false) ? "RISK_SCOPED_MODEL_ALLOWED" : "RUNTIME_SCOPE_REQUIRED"
   when "VERIFIER", "REGISTRAR"
