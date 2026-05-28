@@ -15,11 +15,11 @@ safe_to_replay: false
 RUN_ID: `RUN-P0-SELF-HEALING-CORE-20260528`
 source_task: `AH-590`
 scope_signature: `AGENTHUB_SELF_HEALING_CORE`
-status: validation PASS; PR merge pending
+status: `SELF_HEALING_CORE_INSTALLED_DONE_WITH_EVIDENCE`
 
-PRs: pending
-commits: pending
-YouTrack_readback: pending
+PRs: `#86` merged to `main`
+commits: implementation commit `4192cfc`; merge commit `1a181af`
+YouTrack_readback: `AH-590` evidence prepared for final Done readback; draft `3-624`
 
 installed_controls:
 - self-healing core policy
@@ -44,7 +44,7 @@ negative_tests: E1-E15 PASS via `validators/agenthub_self_healing_validator.rb`
 failed_tests_and_repairs: none
 T0_direct_action_block_evidence: E1 and E2 PASS
 Codex_route_evidence: E5 and E6 PASS
-register_coverage: pending PR/register merge readback
+register_coverage: `INDEX.md`, `ARTIFACT_REGISTER.md`, and `PR_QUEUE_REGISTER.md` updated; PR #86 merged and readback row prepared
 validation:
 - self-healing E1-E15: PASS, 15 cases
 - action-policy positive/regression eval: PASS, 19 cases
@@ -55,4 +55,4 @@ validation:
 - git diff check: PASS
 - secret scan: PASS, `gitleaks detect --no-git --redact`
 owner_only_residuals: none known for repository-governance scope
-final_done_gate: pending validation, PR merge, register update, and task readback
+final_done_gate: repository-governance scope PASS; final task-system readback is recorded under `AH-590`
