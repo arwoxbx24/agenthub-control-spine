@@ -1,0 +1,304 @@
+{
+  "schema": "agenthub.blackbox_routes.fixtures.v1",
+  "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+  "registered_routes": [
+    "shell_direct",
+    "language_runtime",
+    "docker_compose",
+    "kubernetes_systemctl_service",
+    "git_gh_write",
+    "cloud_cli",
+    "curl_http_api",
+    "ssh_terminal",
+    "mcp_tool",
+    "agenthub_adapter",
+    "browser_headless",
+    "db_client",
+    "proxy_npm_dns_ssl"
+  ],
+  "cases": [
+    {
+      "id": "N1_T0_DOCKER_PS",
+      "input": {
+        "registered_routes": ["docker_compose"],
+        "route_id": "docker_compose",
+        "actor_role": "T0_CONTROL",
+        "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "task_id": "AH-594",
+        "operation": "runtime_read",
+        "target_surface": "Docker_read",
+        "allowed_surfaces": ["Docker_read"],
+        "forbidden_surfaces": ["Docker_write"],
+        "repo_receipt_target": "reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md"
+      },
+      "expected": "DENY_T0_DIRECT_ACTION"
+    },
+    {
+      "id": "N2_T0_DIRECT_CLI_SET",
+      "input": {
+        "registered_routes": ["shell_direct"],
+        "route_id": "shell_direct",
+        "actor_role": "T0_CONTROL",
+        "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "task_id": "AH-594",
+        "operation": "cli_command",
+        "target_surface": "production_runtime",
+        "allowed_surfaces": ["production_runtime"],
+        "forbidden_surfaces": ["secret_values"],
+        "repo_receipt_target": "reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md"
+      },
+      "expected": "DENY_T0_DIRECT_ACTION"
+    },
+    {
+      "id": "N3_T1_RUNTIME_MUTATION",
+      "input": {
+        "registered_routes": ["agenthub_adapter"],
+        "route_id": "agenthub_adapter",
+        "actor_role": "T1_ARCHITECT",
+        "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "task_id": "AH-594",
+        "operation": "runtime_mutate",
+        "target_surface": "production_runtime",
+        "allowed_surfaces": ["production_runtime"],
+        "forbidden_surfaces": ["DB_write"],
+        "repo_receipt_target": "reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md"
+      },
+      "expected": "DENY_ARCHITECT_RUNTIME_ACTION"
+    },
+    {
+      "id": "N4_T2_RUN_ID_MISSING",
+      "input": {
+        "registered_routes": ["agenthub_adapter"],
+        "route_id": "agenthub_adapter",
+        "actor_role": "T2_CODEX_WORKER",
+        "run_id": "",
+        "task_id": "AH-594",
+        "operation": "code_edit",
+        "target_surface": "control_spine_repo",
+        "allowed_surfaces": ["control_spine_repo"],
+        "forbidden_surfaces": ["product_repo"],
+        "repo_receipt_target": "reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md"
+      },
+      "expected": "DENY_RUN_ID_MISSING"
+    },
+    {
+      "id": "N5_T2_TASK_ID_MISSING",
+      "input": {
+        "registered_routes": ["agenthub_adapter"],
+        "route_id": "agenthub_adapter",
+        "actor_role": "T2_CODEX_WORKER",
+        "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "task_id": "",
+        "operation": "code_edit",
+        "target_surface": "control_spine_repo",
+        "allowed_surfaces": ["control_spine_repo"],
+        "forbidden_surfaces": ["product_repo"],
+        "repo_receipt_target": "reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md"
+      },
+      "expected": "DENY_TASK_ID_MISSING"
+    },
+    {
+      "id": "N6_SURFACE_NOT_ALLOWED",
+      "input": {
+        "registered_routes": ["agenthub_adapter"],
+        "route_id": "agenthub_adapter",
+        "actor_role": "T2_CODEX_WORKER",
+        "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "task_id": "AH-594",
+        "operation": "runtime_read",
+        "target_surface": "DB_write",
+        "allowed_surfaces": ["DB_read"],
+        "forbidden_surfaces": ["secret_values"],
+        "repo_receipt_target": "reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md"
+      },
+      "expected": "DENY_SURFACE_NOT_ALLOWED"
+    },
+    {
+      "id": "N7_SURFACE_FORBIDDEN",
+      "input": {
+        "registered_routes": ["agenthub_adapter"],
+        "route_id": "agenthub_adapter",
+        "actor_role": "T2_CODEX_WORKER",
+        "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "task_id": "AH-594",
+        "operation": "runtime_read",
+        "target_surface": "DB_write",
+        "allowed_surfaces": ["DB_read"],
+        "forbidden_surfaces": ["DB_write"],
+        "repo_receipt_target": "reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md"
+      },
+      "expected": "DENY_SURFACE_FORBIDDEN"
+    },
+    {
+      "id": "N8_CODE_WITHOUT_CODEX_ROUTE",
+      "input": {
+        "registered_routes": ["agenthub_adapter"],
+        "route_id": "agenthub_adapter",
+        "actor_role": "T2_CODEX_WORKER",
+        "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "task_id": "AH-594",
+        "operation": "code_edit",
+        "target_surface": "control_spine_repo",
+        "allowed_surfaces": ["control_spine_repo"],
+        "forbidden_surfaces": ["product_repo"],
+        "code_like": true,
+        "codex_route_attempted": false,
+        "repo_receipt_target": "reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md"
+      },
+      "expected": "DENY_MODEL_ROUTER_MISSING"
+    },
+    {
+      "id": "N9_FALLBACK_UNPROVEN",
+      "input": {
+        "registered_routes": ["agenthub_adapter"],
+        "route_id": "agenthub_adapter",
+        "actor_role": "T2_CODEX_WORKER",
+        "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "task_id": "AH-594",
+        "operation": "code_edit",
+        "target_surface": "control_spine_repo",
+        "allowed_surfaces": ["control_spine_repo"],
+        "forbidden_surfaces": ["product_repo"],
+        "code_like": true,
+        "codex_route_attempted": true,
+        "fallback_model_used": true,
+        "same_run_fallback": false,
+        "repo_receipt_target": "reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md"
+      },
+      "expected": "DENY_MODEL_FALLBACK_UNPROVEN"
+    },
+    {
+      "id": "N18_REPEAT_FAILURE_SELF_REPAIR",
+      "input": {
+        "registered_routes": ["agenthub_adapter"],
+        "route_id": "agenthub_adapter",
+        "actor_role": "T2_CODEX_WORKER",
+        "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "task_id": "AH-594",
+        "operation": "code_edit",
+        "target_surface": "control_spine_repo",
+        "allowed_surfaces": ["control_spine_repo"],
+        "forbidden_surfaces": ["product_repo"],
+        "same_gate_failures": 2,
+        "repo_receipt_target": "reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md"
+      },
+      "expected": "STOP_RETRY_AND_SELF_REPAIR_POLICY"
+    },
+    {
+      "id": "N22_UNBOUND_SSH_SESSION",
+      "input": {
+        "registered_routes": ["ssh_terminal"],
+        "route_id": "ssh_terminal",
+        "actor_role": "T2_DEVOPS_WORKER",
+        "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "task_id": "AH-594",
+        "operation": "runtime_read",
+        "target_surface": "production_runtime",
+        "allowed_surfaces": ["production_runtime"],
+        "forbidden_surfaces": ["secret_values"],
+        "session_bound": false,
+        "repo_receipt_target": "reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md"
+      },
+      "expected": "DENY_SESSION_UNBOUND"
+    },
+    {
+      "id": "U1_UNREGISTERED_ROUTE",
+      "input": {
+        "registered_routes": ["mcp_tool"],
+        "route_id": "unknown_cli",
+        "actor_role": "T2_CODEX_WORKER",
+        "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "task_id": "AH-594",
+        "operation": "code_edit",
+        "target_surface": "control_spine_repo",
+        "allowed_surfaces": ["control_spine_repo"],
+        "forbidden_surfaces": ["product_repo"],
+        "repo_receipt_target": "reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md"
+      },
+      "expected": "DENY_UNREGISTERED_ROUTE"
+    },
+    {
+      "id": "R1_NO_REPO_RECEIPT",
+      "input": {
+        "registered_routes": ["mcp_tool"],
+        "route_id": "mcp_tool",
+        "actor_role": "T0_CONTROL",
+        "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "task_id": "AH-594",
+        "operation": "classify",
+        "target_surface": "AgentHub_lifecycle",
+        "allowed_surfaces": ["AgentHub_lifecycle"],
+        "forbidden_surfaces": ["product_repo"],
+        "repo_receipt_target": ""
+      },
+      "expected": "DENY_NO_REPO_RECEIPT_TARGET"
+    },
+    {
+      "id": "P6_T0_CLASSIFIES_THROUGH_MCP",
+      "input": {
+        "registered_routes": ["mcp_tool"],
+        "route_id": "mcp_tool",
+        "actor_role": "T0_CONTROL",
+        "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "task_id": "AH-594",
+        "operation": "classify",
+        "target_surface": "AgentHub_lifecycle",
+        "allowed_surfaces": ["AgentHub_lifecycle"],
+        "forbidden_surfaces": ["product_repo"],
+        "repo_receipt_target": "reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md"
+      },
+      "expected": "ALLOW_T0_CONTROL_ROUTE"
+    },
+    {
+      "id": "P7_T2_SCOPED_WORKER",
+      "input": {
+        "registered_routes": ["agenthub_adapter"],
+        "route_id": "agenthub_adapter",
+        "actor_role": "T2_CODEX_WORKER",
+        "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "task_id": "AH-594",
+        "operation": "code_edit",
+        "target_surface": "control_spine_repo",
+        "allowed_surfaces": ["control_spine_repo"],
+        "forbidden_surfaces": ["product_repo"],
+        "code_like": true,
+        "codex_route_attempted": true,
+        "repo_receipt_target": "reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md"
+      },
+      "expected": "ALLOW_SCOPED_ROUTE_WITH_RECEIPT"
+    },
+    {
+      "id": "P9_REGISTRAR_UPDATES_REGISTERS",
+      "input": {
+        "registered_routes": ["git_gh_write"],
+        "route_id": "git_gh_write",
+        "actor_role": "REGISTRAR",
+        "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "task_id": "AH-594",
+        "operation": "patch_register",
+        "target_surface": "control_spine_repo",
+        "allowed_surfaces": ["control_spine_repo"],
+        "forbidden_surfaces": ["product_repo"],
+        "repo_receipt_target": "reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md"
+      },
+      "expected": "ALLOW_REGISTRAR_ROUTE"
+    },
+    {
+      "id": "P10_SELF_REPAIR_ROUTE",
+      "input": {
+        "registered_routes": ["agenthub_adapter"],
+        "route_id": "agenthub_adapter",
+        "actor_role": "T2_CODEX_WORKER",
+        "run_id": "RUN-P0-METHODOLOGY-ENFORCEMENT-CERTIFICATION-20260528",
+        "task_id": "AH-594",
+        "operation": "route_repair",
+        "target_surface": "AgentHub_lifecycle",
+        "allowed_surfaces": ["AgentHub_lifecycle"],
+        "forbidden_surfaces": ["product_repo"],
+        "repo_receipt_target": "reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md"
+      },
+      "expected": "ALLOW_SCOPED_ROUTE_WITH_RECEIPT"
+    }
+  ]
+}
+

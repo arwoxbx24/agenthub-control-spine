@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agenthub_blackbox_route_registry.schema.json",
+  "title": "AgentHub Black-Box Route Registry",
+  "type": "object",
+  "required": ["routes"],
+  "properties": {
+    "routes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "route_id",
+          "owner_role",
+          "allowed_roles",
+          "forbidden_roles",
+          "allowed_task_classes",
+          "forbidden_task_classes",
+          "allowed_operations",
+          "forbidden_operations",
+          "allowed_surfaces",
+          "forbidden_surfaces",
+          "required_evidence",
+          "required_redaction",
+          "required_run_id",
+          "kill_switch",
+          "max_retries_before_self_repair",
+          "repo_receipt_required",
+          "current_status"
+        ],
+        "properties": {
+          "route_id": { "type": "string", "minLength": 1 },
+          "owner_role": { "type": "string", "minLength": 1 },
+          "allowed_roles": { "type": "array", "items": { "type": "string" } },
+          "forbidden_roles": { "type": "array", "items": { "type": "string" } },
+          "allowed_task_classes": { "type": "array", "items": { "type": "string" } },
+          "forbidden_task_classes": { "type": "array", "items": { "type": "string" } },
+          "allowed_operations": { "type": "array", "items": { "type": "string" } },
+          "forbidden_operations": { "type": "array", "items": { "type": "string" } },
+          "allowed_surfaces": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "forbidden_surfaces": { "type": "array", "items": { "type": "string" } },
+          "required_evidence": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "required_redaction": { "type": "boolean" },
+          "required_run_id": { "type": "boolean" },
+          "kill_switch": { "type": "boolean" },
+          "max_retries_before_self_repair": { "type": "integer", "minimum": 0 },
+          "repo_receipt_required": { "type": "boolean" },
+          "current_status": { "type": "string", "enum": ["allowed", "blocked", "quarantine", "owner_only_gate"] }
+        }
+      }
+    }
+  }
+}
+

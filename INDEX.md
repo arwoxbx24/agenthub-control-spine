@@ -239,3 +239,14 @@ status: draft
 | `reports/receipts/P0-pr82-fallback-evidence-gate-fix-receipt-20260528.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-agenthub-self-healing-core-install-receipt-20260528.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md` | operational receipt | AH-590 | operational-receipt |
+| `governance/agenthub-methodology-router.md` | governance policy | AH-594 | active |
+| `governance/agenthub-blackbox-route-registry.md` | governance control | AH-594 | active |
+| `schemas/agenthub_methodology_router.schema.json` | schema | AH-594 | active |
+| `schemas/agenthub_blackbox_route_registry.schema.json` | schema | AH-594 | active |
+| `validators/agenthub_methodology_router_validator.rb` | validator | AH-594 | active |
+| `validators/agenthub_blackbox_route_validator.rb` | validator | AH-594 | active |
+| `evals/agenthub-methodology-router/fixtures.json` | eval fixtures | AH-594 | active |
+| `evals/agenthub-blackbox-routes/fixtures.json` | eval fixtures | AH-594 | active |
+| `reports/audits/P0-methodology-enforcement-certification-20260528.md` | audit report | AH-594 | audit-only |
+| `reports/receipts/P0-methodology-enforcement-certification-receipt-20260528.md` | operational receipt | AH-594 | operational-receipt |
+| `reports/audits/P0-methodology-enforcement-final-readback-20260528.md` | readback audit | AH-594 | audit-only |
