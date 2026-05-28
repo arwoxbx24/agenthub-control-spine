@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/arwoxbx24/agenthub-control-spine/schemas/agenthub_self_healing_event.schema.json",
+  "title": "AgentHub Self-Healing Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "run_id",
+    "task_id",
+    "scope_signature",
+    "defect_class",
+    "defect_source",
+    "remediation_route",
+    "owner_only",
+    "state",
+    "evidence_path"
+  ],
+  "properties": {
+    "event_id": { "type": "string", "minLength": 8 },
+    "run_id": { "type": "string", "minLength": 8 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "scope_signature": { "type": "string", "minLength": 1 },
+    "defect_class": {
+      "enum": [
+        "POLICY_DEFECT",
+        "ROUTE_DEFECT",
+        "REGISTRAR_DEFECT",
+        "MODEL_DEFECT",
+        "TASK_DEBT_DEFECT",
+        "SESSION_ISOLATION_DEFECT",
+        "SECRET_HANDLE_DEFECT",
+        "OWNER_ONLY_GATE"
+      ]
+    },
+    "defect_source": { "type": "string", "minLength": 1 },
+    "remediation_route": { "type": "string", "minLength": 1 },
+    "owner_only": { "type": "boolean" },
+    "state": {
+      "enum": [
+        "OPEN",
+        "REPAIR_ROUTED",
+        "REPAIRED",
+        "VALIDATED",
+        "OWNER_ONLY_BLOCKED",
+        "QUARANTINED"
+      ]
+    },
+    "evidence_path": { "type": "string", "minLength": 1 },
+    "retry_count": { "type": "integer", "minimum": 0 },
+    "same_run_required": { "type": "boolean" }
+  }
+}

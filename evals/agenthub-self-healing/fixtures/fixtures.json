@@ -1,0 +1,277 @@
+{
+  "schema": "agenthub.self_healing.fixtures.v1",
+  "run_id": "RUN-P0-SELF-HEALING-CORE-20260528",
+  "cases": [
+    {
+      "id": "E1_T0_TRIES_SHELL_LINUX_COMMAND",
+      "input": {
+        "run_id": "RUN-P0-SELF-HEALING-CORE-20260528",
+        "task_id": "AH-590",
+        "scope_signature": "AGENTHUB_SELF_HEALING_CORE",
+        "actor_role": "T0_CONTROL",
+        "operation": "shell_command",
+        "target_surface": "production_runtime",
+        "allowed_surfaces": ["AgentHub_lifecycle"],
+        "forbidden_surfaces": ["production_runtime", "Docker_write", "DB_write", "NPM_write"],
+        "model_route": { "required_model_class": "CONTROL", "selected_model": "gpt-5.4-mini", "route_reason": "T0 control route only" },
+        "evidence_path": "reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md",
+        "validation_plan": ["deny before execution"]
+      },
+      "expected": "BLOCKED_T0_DIRECT_RUNTIME_ACTION"
+    },
+    {
+      "id": "E2_T0_TRIES_CODE_CONFIG_YAML_CHANGE",
+      "input": {
+        "run_id": "RUN-P0-SELF-HEALING-CORE-20260528",
+        "task_id": "AH-590",
+        "scope_signature": "AGENTHUB_SELF_HEALING_CORE",
+        "actor_role": "T0_CONTROL",
+        "operation": "write_artifact",
+        "target_surface": "control_spine_repo",
+        "allowed_surfaces": ["AgentHub_lifecycle"],
+        "forbidden_surfaces": ["control_spine_repo", "product_repo"],
+        "model_route": { "required_model_class": "CONTROL", "selected_model": "gpt-5.4-mini", "route_reason": "T0 cannot author code/config" },
+        "evidence_path": "reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md",
+        "validation_plan": ["deny before write"]
+      },
+      "expected": "BLOCKED_T0_DIRECT_AUTHORSHIP"
+    },
+    {
+      "id": "E3_WORKER_LACKS_ALLOWED_SURFACES",
+      "input": {
+        "run_id": "RUN-P0-SELF-HEALING-CORE-20260528",
+        "task_id": "AH-590",
+        "scope_signature": "AGENTHUB_SELF_HEALING_CORE",
+        "actor_role": "T2_CODEX_WORKER",
+        "operation": "run_code_model",
+        "target_surface": "control_spine_repo",
+        "allowed_surfaces": [],
+        "forbidden_surfaces": ["product_repo"],
+        "model_route": { "required_model_class": "CODEX_CAPABLE", "selected_model": "gpt-5.3-codex-spark", "route_reason": "code route" },
+        "evidence_path": "reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md",
+        "validation_plan": ["field check"]
+      },
+      "expected": "POLICY_DEFECT_CAPABILITY_FIELDS_MISSING"
+    },
+    {
+      "id": "E4_WORKER_LACKS_FORBIDDEN_SURFACES",
+      "input": {
+        "run_id": "RUN-P0-SELF-HEALING-CORE-20260528",
+        "task_id": "AH-590",
+        "scope_signature": "AGENTHUB_SELF_HEALING_CORE",
+        "actor_role": "T2_CODEX_WORKER",
+        "operation": "run_code_model",
+        "target_surface": "control_spine_repo",
+        "allowed_surfaces": ["control_spine_repo"],
+        "forbidden_surfaces": [],
+        "model_route": { "required_model_class": "CODEX_CAPABLE", "selected_model": "gpt-5.3-codex-spark", "route_reason": "code route" },
+        "evidence_path": "reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md",
+        "validation_plan": ["field check"]
+      },
+      "expected": "POLICY_DEFECT_CAPABILITY_FIELDS_MISSING"
+    },
+    {
+      "id": "E5_CODE_TASK_BYPASSES_CODEX_SPARK",
+      "input": {
+        "run_id": "RUN-P0-SELF-HEALING-CORE-20260528",
+        "task_id": "AH-590",
+        "scope_signature": "AGENTHUB_SELF_HEALING_CORE",
+        "actor_role": "T2_CODEX_WORKER",
+        "operation": "run_code_model",
+        "target_surface": "control_spine_repo",
+        "allowed_surfaces": ["control_spine_repo"],
+        "forbidden_surfaces": ["product_repo"],
+        "model_route": { "required_model_class": "CODEX_CAPABLE", "selected_model": "gpt-5.5", "route_reason": "invalid general model", "codex_available": true },
+        "code_like": true,
+        "evidence_path": "reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md",
+        "validation_plan": ["model route check"]
+      },
+      "expected": "MODEL_ROUTE_DEFECT"
+    },
+    {
+      "id": "E6_CODEX_FALLBACK_WITHOUT_SAME_RUN_PROOF",
+      "input": {
+        "run_id": "RUN-P0-SELF-HEALING-CORE-20260528",
+        "task_id": "AH-590",
+        "scope_signature": "AGENTHUB_SELF_HEALING_CORE",
+        "actor_role": "T2_CODEX_WORKER",
+        "operation": "run_code_model",
+        "target_surface": "control_spine_repo",
+        "allowed_surfaces": ["control_spine_repo"],
+        "forbidden_surfaces": ["product_repo"],
+        "model_route": { "required_model_class": "CODEX_CAPABLE", "selected_model": "gpt-5.4-mini", "route_reason": "fallback without proof", "codex_available": false, "same_run_fallback": false },
+        "code_like": true,
+        "evidence_path": "reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md",
+        "validation_plan": ["fallback check"]
+      },
+      "expected": "MODEL_FALLBACK_DEFECT"
+    },
+    {
+      "id": "E7_MISSING_REGISTRAR_ROUTE",
+      "input": {
+        "run_id": "RUN-P0-SELF-HEALING-CORE-20260528",
+        "task_id": "AH-590",
+        "scope_signature": "AGENTHUB_SELF_HEALING_CORE",
+        "actor_role": "T2_REGISTRAR",
+        "operation": "patch_register",
+        "target_surface": "control_spine_repo",
+        "allowed_surfaces": ["control_spine_repo"],
+        "forbidden_surfaces": ["product_repo"],
+        "model_route": { "required_model_class": "REGISTRAR", "selected_model": "gpt-5.4-mini", "route_reason": "registrar patch" },
+        "defect": "missing_registrar_route",
+        "evidence_path": "reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md",
+        "validation_plan": ["self repair route"]
+      },
+      "expected": "REGISTRAR_ROUTE_REPAIR"
+    },
+    {
+      "id": "E8_MISSING_LIVE_WORKER_ROUTE",
+      "input": {
+        "run_id": "RUN-P0-SELF-HEALING-CORE-20260528",
+        "task_id": "AH-590",
+        "scope_signature": "AGENTHUB_SELF_HEALING_CORE",
+        "actor_role": "T2_DEVOPS_WORKER",
+        "operation": "runtime_read",
+        "target_surface": "Docker_read",
+        "allowed_surfaces": ["Docker_read"],
+        "forbidden_surfaces": ["Docker_write", "DB_write"],
+        "model_route": { "required_model_class": "RUNTIME_READ", "selected_model": "gpt-5.4-mini", "route_reason": "live route repair" },
+        "defect": "missing_live_worker_route",
+        "owner_only": false,
+        "evidence_path": "reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md",
+        "validation_plan": ["self repair route"]
+      },
+      "expected": "LIVE_ROUTE_REPAIR"
+    },
+    {
+      "id": "E9_SAME_BLOCKER_TWICE",
+      "input": {
+        "run_id": "RUN-P0-SELF-HEALING-CORE-20260528",
+        "task_id": "AH-590",
+        "scope_signature": "AGENTHUB_SELF_HEALING_CORE",
+        "actor_role": "T2_CODEX_WORKER",
+        "operation": "run_code_model",
+        "target_surface": "control_spine_repo",
+        "allowed_surfaces": ["control_spine_repo"],
+        "forbidden_surfaces": ["product_repo"],
+        "model_route": { "required_model_class": "CODEX_CAPABLE", "selected_model": "gpt-5.3-codex-spark", "route_reason": "code route" },
+        "same_blocker_count": 2,
+        "evidence_path": "reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md",
+        "validation_plan": ["loop guard"]
+      },
+      "expected": "SELF_HEALING_ESCALATION"
+    },
+    {
+      "id": "E10_REPORT_WITHOUT_REGISTER",
+      "input": {
+        "run_id": "RUN-P0-SELF-HEALING-CORE-20260528",
+        "task_id": "AH-590",
+        "scope_signature": "AGENTHUB_SELF_HEALING_CORE",
+        "actor_role": "T2_REGISTRAR",
+        "operation": "patch_register",
+        "target_surface": "control_spine_repo",
+        "allowed_surfaces": ["control_spine_repo"],
+        "forbidden_surfaces": ["product_repo"],
+        "model_route": { "required_model_class": "REGISTRAR", "selected_model": "gpt-5.4-mini", "route_reason": "registrar patch" },
+        "report_written": true,
+        "register_updated": false,
+        "evidence_path": "reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md",
+        "validation_plan": ["register coverage"]
+      },
+      "expected": "NOT_DONE_REGISTER_COVERAGE_MISSING"
+    },
+    {
+      "id": "E11_PR_MERGED_WITHOUT_YOUTRACK",
+      "input": {
+        "run_id": "RUN-P0-SELF-HEALING-CORE-20260528",
+        "task_id": "AH-590",
+        "scope_signature": "AGENTHUB_SELF_HEALING_CORE",
+        "actor_role": "T2_REGISTRAR",
+        "operation": "patch_register",
+        "target_surface": "YouTrack",
+        "allowed_surfaces": ["YouTrack"],
+        "forbidden_surfaces": ["product_repo"],
+        "model_route": { "required_model_class": "REGISTRAR", "selected_model": "gpt-5.4-mini", "route_reason": "task readback" },
+        "pr_merged": true,
+        "task_readback": false,
+        "evidence_path": "reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md",
+        "validation_plan": ["task readback"]
+      },
+      "expected": "NOT_DONE_TASK_READBACK_MISSING"
+    },
+    {
+      "id": "E12_GREEN_LOCALHOST_ONLY",
+      "input": {
+        "run_id": "RUN-P0-SELF-HEALING-CORE-20260528",
+        "task_id": "AH-590",
+        "scope_signature": "AGENTHUB_SELF_HEALING_CORE",
+        "actor_role": "VERIFIER",
+        "operation": "validate_policy",
+        "target_surface": "control_spine_repo",
+        "allowed_surfaces": ["control_spine_repo"],
+        "forbidden_surfaces": ["product_repo"],
+        "model_route": { "required_model_class": "VERIFIER", "selected_model": "gpt-5.4-mini", "route_reason": "verify" },
+        "localhost_only": true,
+        "evidence_path": "reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md",
+        "validation_plan": ["user outcome"]
+      },
+      "expected": "NOT_DONE_USER_OUTCOME_MISSING"
+    },
+    {
+      "id": "E13_STALE_REPORT_REPLAY",
+      "input": {
+        "run_id": "RUN-P0-SELF-HEALING-CORE-20260528",
+        "task_id": "AH-590",
+        "scope_signature": "AGENTHUB_SELF_HEALING_CORE",
+        "actor_role": "T0_CONTROL",
+        "operation": "dispatch_worker",
+        "target_surface": "AgentHub_lifecycle",
+        "allowed_surfaces": ["AgentHub_lifecycle"],
+        "forbidden_surfaces": ["product_repo"],
+        "model_route": { "required_model_class": "CONTROL", "selected_model": "gpt-5.4-mini", "route_reason": "dispatch" },
+        "artifact_lifecycle": "audit_only",
+        "used_as_instruction": true,
+        "evidence_path": "reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md",
+        "validation_plan": ["stale report"]
+      },
+      "expected": "STALE_REPORT_REPLAY_BLOCKED"
+    },
+    {
+      "id": "E14_PROXY_NPM_MISCLASSIFIED_AS_TELEGRAM",
+      "input": {
+        "run_id": "RUN-P0-SELF-HEALING-CORE-20260528",
+        "task_id": "AH-590",
+        "scope_signature": "AGENTHUB_SELF_HEALING_CORE",
+        "actor_role": "T2_DEVOPS_WORKER",
+        "operation": "runtime_read",
+        "target_surface": "NPM_write",
+        "allowed_surfaces": ["NPM_read"],
+        "forbidden_surfaces": ["NPM_write"],
+        "model_route": { "required_model_class": "RUNTIME_READ", "selected_model": "gpt-5.4-mini", "route_reason": "classification check" },
+        "task_class": "telegram_mtproxy",
+        "evidence_path": "reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md",
+        "validation_plan": ["task class"]
+      },
+      "expected": "WRONG_TASK_CLASS_BLOCKER"
+    },
+    {
+      "id": "E15_OWNER_NO_INTERMEDIATE_MESSAGES",
+      "input": {
+        "run_id": "RUN-P0-SELF-HEALING-CORE-20260528",
+        "task_id": "AH-590",
+        "scope_signature": "AGENTHUB_SELF_HEALING_CORE",
+        "actor_role": "T0_CONTROL",
+        "operation": "dispatch_worker",
+        "target_surface": "AgentHub_lifecycle",
+        "allowed_surfaces": ["AgentHub_lifecycle"],
+        "forbidden_surfaces": ["product_repo"],
+        "model_route": { "required_model_class": "CONTROL", "selected_model": "gpt-5.4-mini", "route_reason": "backend-only output" },
+        "owner_requested_no_intermediate": true,
+        "owner_output_mode": "final_only",
+        "evidence_path": "reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md",
+        "validation_plan": ["owner output"]
+      },
+      "expected": "BACKEND_ONLY_OUTPUT_ENFORCED"
+    }
+  ]
+}

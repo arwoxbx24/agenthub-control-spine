@@ -40,6 +40,8 @@ status: draft
 | `governance/openai-cyber-safe-request-router.md` | governance policy | AH-541 | active |
 | `governance/policies/t0-direct-action-hard-stop-policy.md` | governance policy | AH-590 | active |
 | `governance/policies/backend-only-owner-communication-policy.md` | governance policy | AH-590 | active |
+| `governance/policies/agenthub-self-healing-core-policy.md` | governance policy | AH-590 | active |
+| `governance/policies/agenthub-capability-matrix.md` | governance policy | AH-590 | active |
 | `governance/global-agent-control-enforcement-policy.md` | governance policy | AH-590 | active |
 | `governance/secrets-registry-policy.md` | governance policy | AH-590 | active |
 | `governance/model-token-routing-policy.md` | governance policy | AH-590 | active |
@@ -57,6 +59,8 @@ status: draft
 | `runbooks/agenthub-pattern-adaptation-control-loop.md` | runbook | AH-531/AH-532 | active |
 | `runbooks/chatgpt-cyber-flag-recovery-runbook.md` | runbook | AH-541 | active |
 | `runbooks/agenthub-x-capability-remediation.md` | runbook | AH-590 | active |
+| `runbooks/agenthub-self-healing-route-recovery.md` | runbook | AH-590 | active |
+| `runbooks/agenthub-secrets-handle-registry.md` | runbook | AH-590 | active |
 | `templates/github/secret-scan-workflow.yml` | GitHub Actions template | AH-500 | active |
 | `.github/workflows/secret-scan.yml` | control-spine workflow | AH-500 | active |
 | `templates/security/gitleaks.toml` | scanner config template | AH-500 | active |
@@ -125,6 +129,9 @@ status: draft
 | `schemas/t0-emergency-stop-receipt.schema.json` | schema | AH-510 | active |
 | `schemas/agenthub-x-capability-matrix.schema.json` | schema | AH-590 | active |
 | `schemas/agent-action-request.schema.json` | schema | AH-590 | active |
+| `schemas/agenthub_action_authorization_receipt.schema.json` | schema | AH-590 | active |
+| `schemas/agenthub_capability_matrix.schema.json` | schema | AH-590 | active |
+| `schemas/agenthub_self_healing_event.schema.json` | schema | AH-590 | active |
 | `schemas/control-spine-pr-queue-register.schema.json` | schema | AH-523 | active |
 | `schemas/agent-output-quality-receipt.schema.json` | schema | AH-529 | active |
 | `governance/agenthub-only-execution-discipline.md` | governance control | AH-534 | active |
@@ -167,10 +174,12 @@ status: draft
 | `evals/agenthub-x-capability-positive-tests/` | eval fixtures | AH-590 | active |
 | `evals/model-token-routing/` | eval fixtures | AH-590 | active |
 | `evals/repo-first-reporting/` | eval fixtures | AH-590 | active |
+| `evals/agenthub-self-healing/fixtures/fixtures.json` | eval fixtures | AH-590 | active |
 | `validators/agenthub_action_policy_validator.rb` | validator | AH-590 | active |
 | `validators/t0_direct_action_hard_stop.rb` | validator | AH-590 | active |
 | `validators/model_token_router_validator.rb` | validator | AH-590 | active |
 | `validators/repo_first_receipt_gate.rb` | validator | AH-590 | active |
+| `validators/agenthub_self_healing_validator.rb` | validator | AH-590 | active |
 | `reports/receipts/RUN-agenthub-p0-paralysis-breaker-repo-first-control-repair-20260525-receipt.md` | control-spine receipt | AH-542 | operational-receipt |
 | `reports/audits/AH-554-access-rights-and-live-worker-audit-20260525.md` | audit report | AH-554 | audit-only |
 | `reports/receipts/AH-554-access-rights-and-live-devops-enablement-receipt.md` | control-spine receipt | AH-554 | operational-receipt |
@@ -219,6 +228,7 @@ status: draft
 | `reports/audits/P0-agenthub-x-self-critique-correction-20260528.md` | self-critique report | AH-590 | audit-only |
 | `reports/audits/P0-codex-spark-model-router-pr80-residual-audit-20260528.md` | audit report | AH-590 | audit-only |
 | `reports/audits/P0-pr82-fallback-evidence-gate-fact-audit-20260528.md` | audit report | AH-590 | audit-only |
+| `reports/audits/P0-agenthub-self-healing-core-architecture-audit-20260528.md` | audit report | AH-590 | audit-only |
 | `reports/incidents/P0-t0-boundary-violation-multi-agent-runaway-20260527.md` | incident report | AH-590 | audit-only |
 | `reports/receipts/P0-agenthub-backend-only-repo-first-architecture-receipt-20260526.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-t0-hard-stop-multi-agent-isolation-receipt-20260527.md` | operational receipt | AH-590 | operational-receipt |
@@ -227,3 +237,5 @@ status: draft
 | `reports/receipts/P0-agenthub-x-capability-self-audit-hard-enforcement-receipt-20260528.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-codex-spark-model-router-pr80-residual-receipt-20260528.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-pr82-fallback-evidence-gate-fix-receipt-20260528.md` | operational receipt | AH-590 | operational-receipt |
+| `reports/receipts/P0-agenthub-self-healing-core-install-receipt-20260528.md` | operational receipt | AH-590 | operational-receipt |
+| `reports/receipts/P0-agenthub-self-healing-negative-tests-20260528.md` | operational receipt | AH-590 | operational-receipt |
