@@ -273,3 +273,5 @@ status: draft
 | `reports/receipts/P0-codex-spark-usage-metric-contradiction-receipt-20260529.md` | operational receipt | AH-601 | operational-receipt |
 | `reports/audits/P0-codex-spark-hard-route-execution-audit-20260529.md` | audit report | AH-601 | audit-only |
 | `reports/receipts/P0-codex-spark-hard-route-execution-receipt-20260529.md` | operational receipt | AH-601 | operational-receipt |
+| `reports/audits/P0-codex-spark-route-technology-repair-audit-20260529.md` | audit report | AH-601 | audit-only |
+| `reports/receipts/P0-codex-spark-route-technology-repair-receipt-20260529.md` | operational receipt | AH-601 | operational-receipt |

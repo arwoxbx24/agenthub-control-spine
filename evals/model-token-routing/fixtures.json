@@ -89,6 +89,91 @@
         "model_route_reason": ""
       },
       "expected": "MODEL_ROUTE_EVIDENCE_MISSING"
+    },
+    {
+      "id": "SPARK_PROOF_COMMAND_REQUEST_REJECTED",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "codex_available": true,
+        "worker_model": "gpt-5.3-codex-spark",
+        "model_route_reason": "Spark proof closure requires independent platform proof",
+        "fallback_reason": null,
+        "spark_execution_proof_closure": true,
+        "actual_model": "gpt-5.3-codex-spark",
+        "model_proof_source": "command_request"
+      },
+      "expected": "CODEX_SPARK_USAGE_TELEMETRY_UNAVAILABLE"
+    },
+    {
+      "id": "SPARK_PROOF_WORKER_SELF_REPORT_REJECTED",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "codex_available": true,
+        "worker_model": "gpt-5.3-codex-spark",
+        "model_route_reason": "Spark proof closure requires independent platform proof",
+        "fallback_reason": null,
+        "spark_execution_proof_closure": true,
+        "actual_model": "gpt-5.3-codex-spark",
+        "model_proof_source": "worker_self_report"
+      },
+      "expected": "CODEX_SPARK_USAGE_TELEMETRY_UNAVAILABLE"
+    },
+    {
+      "id": "SPARK_PROOF_USAGE_METRIC_CONTRADICTED",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "codex_available": true,
+        "worker_model": "gpt-5.3-codex-spark",
+        "model_route_reason": "Owner-visible usage meter contradicts command proof",
+        "fallback_reason": null,
+        "spark_execution_proof_closure": true,
+        "actual_model": "gpt-5.3-codex-spark",
+        "model_proof_source": "platform_resolved_model_receipt",
+        "usage_metric_status": "contradicted"
+      },
+      "expected": "CODEX_SPARK_USAGE_TELEMETRY_UNAVAILABLE"
+    },
+    {
+      "id": "SPARK_PROOF_ACTUAL_MODEL_MISSING",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "codex_available": true,
+        "worker_model": "gpt-5.3-codex-spark",
+        "model_route_reason": "Spark proof closure requires actual model",
+        "fallback_reason": null,
+        "spark_execution_proof_closure": true,
+        "actual_model": "",
+        "model_proof_source": "platform_resolved_model_receipt"
+      },
+      "expected": "CODEX_SPARK_EXECUTION_NOT_PROVEN"
+    },
+    {
+      "id": "SPARK_PROOF_PLATFORM_RECEIPT_PASS",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "codex_available": true,
+        "worker_model": "gpt-5.3-codex-spark",
+        "model_route_reason": "Independent platform receipt names Spark",
+        "fallback_reason": null,
+        "spark_execution_proof_closure": true,
+        "actual_model": "gpt-5.3-codex-spark",
+        "model_proof_source": "platform_resolved_model_receipt"
+      },
+      "expected": "CODEX_SPARK_EXECUTION_PROOF_PASS"
+    },
+    {
+      "id": "SPARK_PROOF_OWNER_USAGE_DELTA_PASS",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "codex_available": true,
+        "worker_model": "gpt-5.3-codex-spark",
+        "model_route_reason": "Owner-visible usage delta proves Spark",
+        "fallback_reason": null,
+        "spark_execution_proof_closure": true,
+        "actual_model": "gpt-5.3-codex-spark",
+        "model_proof_source": "owner_visible_usage_delta"
+      },
+      "expected": "CODEX_SPARK_EXECUTION_PROOF_PASS"
     }
   ]
 }

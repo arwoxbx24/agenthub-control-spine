@@ -22,6 +22,23 @@ def route(input)
     codex_fallback_models = %w[gpt-5.1-codex-mini gpt-5.4-mini]
     model = input.fetch("worker_model", "")
 
+    if input.fetch("spark_execution_proof_closure", false)
+      valid_proof_sources = %w[platform_resolved_model_receipt owner_visible_usage_delta]
+      rejected_proof_sources = %w[
+        command_request worker_self_report policy_only validator_only merged_pr sandbox_only
+      ]
+      actual_model = input.fetch("actual_model", "").to_s
+      proof_source = input.fetch("model_proof_source", "").to_s
+
+      return "CODEX_SPARK_EXECUTION_NOT_PROVEN" if actual_model.empty?
+      return "CODEX_SPARK_ROUTE_NOT_EXECUTED" unless actual_model == "gpt-5.3-codex-spark"
+      return "CODEX_SPARK_USAGE_TELEMETRY_UNAVAILABLE" if input.fetch("usage_metric_status", "") == "contradicted"
+      return "CODEX_SPARK_USAGE_TELEMETRY_UNAVAILABLE" if rejected_proof_sources.include?(proof_source)
+      return "CODEX_SPARK_USAGE_TELEMETRY_UNAVAILABLE" unless valid_proof_sources.include?(proof_source)
+
+      return "CODEX_SPARK_EXECUTION_PROOF_PASS"
+    end
+
     if input.fetch("codex_available", false)
       return "CODEX_SPARK_ROUTE_REQUIRED" unless codex_primary_models.include?(model)
       return "FALLBACK_REASON_FORBIDDEN_ON_PRIMARY_ROUTE" unless input.fetch("fallback_reason", nil).nil?

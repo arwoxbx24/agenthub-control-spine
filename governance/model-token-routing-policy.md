@@ -47,6 +47,27 @@ Every dispatch receipt for implementation-capable work must include:
 - token/context budget class;
 - residuals.
 
+## Codex Spark Execution Proof Gate
+
+Spark route closure requires independent proof of the resolved model. The
+following evidence classes are not enough for `DONE_WITH_EVIDENCE`:
+
+- command-line request text such as `codex exec -m gpt-5.3-codex-spark`;
+- worker self-report of `actual_model`;
+- merged PR;
+- installed policy or validator;
+- sandbox-only proof without independent platform model identity.
+
+Accepted Spark execution proof must be one of:
+
+- a platform/model invocation receipt that independently names
+  `gpt-5.3-codex-spark` as the resolved model; or
+- owner-visible usage telemetry showing Spark usage changed for the proof run.
+
+If the owner-visible Spark usage metric contradicts local command/request
+evidence, the terminal blocker is `CODEX_SPARK_USAGE_TELEMETRY_UNAVAILABLE`
+until independent platform proof exists.
+
 ## Loop and Budget Rules
 
 - no full chat history to workers;
