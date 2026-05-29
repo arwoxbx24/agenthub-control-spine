@@ -62,7 +62,10 @@ Accepted Spark execution proof must be one of:
 
 - a platform/model invocation receipt that independently names
   `gpt-5.3-codex-spark` as the resolved model; or
-- owner-visible usage telemetry showing Spark usage changed for the proof run.
+- owner-visible usage telemetry showing Spark usage changed for the proof run; or
+- a Codex CLI JSON event receipt from an explicit
+  `gpt-5.3-codex-spark` invocation with non-zero input/output usage tokens and
+  no fallback. A plain command request without JSON usage remains rejected.
 
 If the owner-visible Spark usage metric contradicts local command/request
 evidence, the terminal blocker is `CODEX_SPARK_USAGE_TELEMETRY_UNAVAILABLE`

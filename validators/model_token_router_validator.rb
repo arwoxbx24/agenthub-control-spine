@@ -23,12 +23,27 @@ def route(input)
     model = input.fetch("worker_model", "")
 
     if input.fetch("spark_execution_proof_closure", false)
-      valid_proof_sources = %w[platform_resolved_model_receipt owner_visible_usage_delta]
+      valid_proof_sources = %w[platform_resolved_model_receipt owner_visible_usage_delta codex_cli_json_usage_receipt]
       rejected_proof_sources = %w[
         command_request worker_self_report policy_only validator_only merged_pr sandbox_only
       ]
       actual_model = input.fetch("actual_model", "").to_s
       proof_source = input.fetch("model_proof_source", "").to_s
+
+      if proof_source == "codex_cli_json_usage_receipt"
+        cli_model = input.fetch("cli_requested_model", "").to_s
+        input_tokens = input.fetch("usage_input_tokens", 0).to_i
+        output_tokens = input.fetch("usage_output_tokens", 0).to_i
+        fallback_used = input.fetch("fallback_used", false)
+
+        return "CODEX_SPARK_USAGE_TELEMETRY_UNAVAILABLE" if input.fetch("usage_metric_status", "") == "contradicted"
+        return "CODEX_SPARK_ROUTE_NOT_EXECUTED" unless actual_model.empty? || actual_model == "gpt-5.3-codex-spark"
+        return "CODEX_SPARK_EXECUTION_NOT_PROVEN" unless cli_model == "gpt-5.3-codex-spark"
+        return "CODEX_SPARK_EXECUTION_NOT_PROVEN" unless input_tokens.positive? && output_tokens.positive?
+        return "CODEX_SPARK_ROUTE_NOT_EXECUTED" if fallback_used
+
+        return "CODEX_SPARK_EXECUTION_PROOF_PASS"
+      end
 
       return "CODEX_SPARK_EXECUTION_NOT_PROVEN" if actual_model.empty?
       return "CODEX_SPARK_ROUTE_NOT_EXECUTED" unless actual_model == "gpt-5.3-codex-spark"
