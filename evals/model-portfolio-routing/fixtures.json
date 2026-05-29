@@ -1,0 +1,257 @@
+{
+  "schema": "agenthub.model_portfolio_routing_tests.v1",
+  "source_task": "AH-590",
+  "run_id": "RUN-P0-GLOBAL-MODEL-PORTFOLIO-ROUTE-CLOSURE-20260529",
+  "routes": [
+    {
+      "id": "CONTROL_T0_ROUTING_ONLY",
+      "input": {
+        "route_class": "CONTROL_T0",
+        "task_class": "T0_CONTROL",
+        "actor_role": "T0_CONTROL",
+        "actor_model": "gpt-5.5",
+        "task_surface": "routing",
+        "code_config_surface": false,
+        "route_state": "active",
+        "canary_status": "active_task_proof",
+        "proof_source": "agenthub_control_receipt",
+        "open_pr_queue_state": "none"
+      },
+      "expected": "MODEL_ROUTE_CLASSIFIED"
+    },
+    {
+      "id": "CONTROL_T0_CODE_DENIED",
+      "input": {
+        "route_class": "CONTROL_T0",
+        "task_class": "T0_CONTROL",
+        "actor_role": "T0_CONTROL",
+        "actor_model": "gpt-5.5",
+        "task_surface": "code",
+        "code_config_surface": true,
+        "requests_code_or_command": true,
+        "route_state": "active",
+        "canary_status": "active_task_proof",
+        "proof_source": "agenthub_control_receipt"
+      },
+      "expected": "T0_DIRECT_CODE_AUTHORSHIP_DETECTED"
+    },
+    {
+      "id": "ARCHITECT_BOUNDED_SOURCE_PASS",
+      "input": {
+        "route_class": "ARCHITECT_T1",
+        "task_class": "T1_ARCHITECT",
+        "actor_role": "T1_ARCHITECT",
+        "actor_model": "gpt-5.5",
+        "task_surface": "architecture",
+        "bounded_source_packet": true,
+        "route_state": "active",
+        "canary_status": "active_task_proof",
+        "proof_source": "architecture_receipt"
+      },
+      "expected": "MODEL_ROUTE_CLASSIFIED"
+    },
+    {
+      "id": "CODEX_PRIMARY_SPARK_JSON_PROOF_PASS",
+      "input": {
+        "route_class": "CODEX_PRIMARY_T2",
+        "task_class": "T2_CODEX_WORKER",
+        "actor_role": "T2_CODEX_WORKER",
+        "actor_model": "gpt-5.3-codex-spark",
+        "task_surface": "code config yaml shell",
+        "code_config_surface": true,
+        "route_state": "active",
+        "canary_status": "active_task_proof",
+        "proof_source": "codex_cli_json_usage_receipt",
+        "requested_model": "gpt-5.3-codex-spark",
+        "usage_input_tokens": 27158,
+        "usage_output_tokens": 823,
+        "fallback_used": false
+      },
+      "expected": "MODEL_ROUTE_CLASSIFIED"
+    },
+    {
+      "id": "CODEX_PRIMARY_GPT55_DENIED",
+      "input": {
+        "route_class": "CODEX_PRIMARY_T2",
+        "task_class": "T2_CODEX_WORKER",
+        "actor_role": "T2_CODEX_WORKER",
+        "actor_model": "gpt-5.5",
+        "task_surface": "code",
+        "code_config_surface": true,
+        "route_state": "active",
+        "canary_status": "active_task_proof",
+        "proof_source": "command_request"
+      },
+      "expected": "PRIMARY_MODEL_CODE_AUTHORSHIP_DETECTED"
+    },
+    {
+      "id": "CODEX_FALLBACK_WITH_SAME_RUN_PROOF_PASS",
+      "input": {
+        "route_class": "CODEX_FALLBACK_T2",
+        "task_class": "T2_CODEX_WORKER",
+        "actor_role": "T2_CODEX_WORKER",
+        "actor_model": "gpt-5.1-codex-mini",
+        "task_surface": "config",
+        "code_config_surface": true,
+        "route_state": "active",
+        "canary_status": "active_task_proof",
+        "proof_source": "same_run_fallback_receipt",
+        "fallback_used": true,
+        "same_run_unavailability_proof": "same-run-spark-unavailable"
+      },
+      "expected": "MODEL_ROUTE_CLASSIFIED"
+    },
+    {
+      "id": "CODEX_FALLBACK_WITHOUT_PROOF_DENIED",
+      "input": {
+        "route_class": "CODEX_FALLBACK_T2",
+        "task_class": "T2_CODEX_WORKER",
+        "actor_role": "T2_CODEX_WORKER",
+        "actor_model": "gpt-5.1-codex-mini",
+        "task_surface": "config",
+        "code_config_surface": true,
+        "route_state": "active",
+        "canary_status": "active_task_proof",
+        "proof_source": "fallback_request",
+        "fallback_used": true,
+        "same_run_unavailability_proof": ""
+      },
+      "expected": "FALLBACK_WITHOUT_SPARK_UNAVAILABILITY_PROOF"
+    },
+    {
+      "id": "REGISTRAR_LOWER_COST_PASS",
+      "input": {
+        "route_class": "REGISTRAR",
+        "task_class": "T2_REGISTRAR",
+        "actor_role": "T2_REGISTRAR",
+        "actor_model": "deterministic_tool",
+        "task_surface": "register",
+        "route_state": "active",
+        "canary_status": "active_task_proof",
+        "proof_source": "register_patch_receipt"
+      },
+      "expected": "MODEL_ROUTE_CLASSIFIED"
+    },
+    {
+      "id": "VERIFIER_MUTATION_DENIED",
+      "input": {
+        "route_class": "VERIFIER_QA",
+        "task_class": "VERIFIER",
+        "actor_role": "VERIFIER",
+        "actor_model": "verifier_route",
+        "task_surface": "validation",
+        "attempts_mutation": true,
+        "route_state": "active",
+        "canary_status": "active_task_proof",
+        "proof_source": "verification_receipt"
+      },
+      "expected": "VERIFIER_MUTATION_FORBIDDEN"
+    },
+    {
+      "id": "SECURITY_SCANNER_FIRST_PASS",
+      "input": {
+        "route_class": "SECURITY_REDACTION",
+        "task_class": "SECURITY_REDACTION",
+        "actor_role": "SECURITY_REDACTION",
+        "actor_model": "deterministic_scanner",
+        "task_surface": "secret redaction",
+        "deterministic_scanner_first": true,
+        "route_state": "active",
+        "canary_status": "active_task_proof",
+        "proof_source": "gitleaks_redacted_receipt"
+      },
+      "expected": "MODEL_ROUTE_CLASSIFIED"
+    },
+    {
+      "id": "BROWSER_ROUTE_IDLE_ACCEPTED",
+      "input": {
+        "route_class": "BROWSER_PRODUCT_QA",
+        "task_class": "BROWSER_PRODUCT_QA",
+        "actor_role": "BROWSER_PRODUCT_QA",
+        "actor_model": "browser_qa_route",
+        "task_surface": "browser",
+        "route_state": "idle",
+        "canary_status": "MODEL_ROUTE_IDLE_NO_ELIGIBLE_TASKS",
+        "proof_source": "idle_classification"
+      },
+      "expected": "MODEL_ROUTE_CLASSIFIED"
+    },
+    {
+      "id": "DEVOPS_UNAVAILABLE_TYPED_BLOCKER_ACCEPTED",
+      "input": {
+        "route_class": "DEVOPS_RUNTIME",
+        "task_class": "T2_DEVOPS_WORKER",
+        "actor_role": "T2_DEVOPS_WORKER",
+        "actor_model": "scoped_devops_worker",
+        "task_surface": "runtime",
+        "route_state": "unavailable",
+        "canary_status": "typed_unavailable",
+        "proof_source": "owner_only_gate_receipt",
+        "residual_blocker": "OWNER_ONLY_CREDENTIAL_OR_PLAN_GATE"
+      },
+      "expected": "MODEL_ROUTE_CLASSIFIED"
+    },
+    {
+      "id": "OWNER_METER_RESIDUAL_NOT_GPT55_PERMISSION",
+      "input": {
+        "route_class": "CODEX_PRIMARY_T2",
+        "task_class": "T2_CODEX_WORKER",
+        "actor_role": "T2_CODEX_WORKER",
+        "actor_model": "gpt-5.5",
+        "task_surface": "code",
+        "code_config_surface": true,
+        "route_state": "active",
+        "canary_status": "active_task_proof",
+        "proof_source": "owner_visible_meter_contradiction",
+        "residual_blocker": "CODEX_SPARK_PLATFORM_METER_UNAVAILABLE"
+      },
+      "expected": "PRIMARY_MODEL_CODE_AUTHORSHIP_DETECTED"
+    },
+    {
+      "id": "STALE_PROMPT_CANNOT_OVERRIDE_REGISTER",
+      "input": {
+        "route_class": "CONTROL_T0",
+        "task_class": "T0_CONTROL",
+        "actor_role": "T0_CONTROL",
+        "actor_model": "gpt-5.5",
+        "task_surface": "routing",
+        "route_state": "active",
+        "canary_status": "active_task_proof",
+        "proof_source": "stale_prompt",
+        "artifact_lifecycle_status": "consumed_prompt"
+      },
+      "expected": "STALE_ARTIFACT_REPLAY_FORBIDDEN"
+    },
+    {
+      "id": "OPEN_PR_WITHOUT_QUEUE_STATE_DENIED",
+      "input": {
+        "route_class": "REGISTRAR",
+        "task_class": "T2_REGISTRAR",
+        "actor_role": "T2_REGISTRAR",
+        "actor_model": "deterministic_tool",
+        "task_surface": "pr_queue",
+        "route_state": "active",
+        "canary_status": "active_task_proof",
+        "proof_source": "pr_queue_scan",
+        "open_pr_queue_state": "missing"
+      },
+      "expected": "STALE_PR_QUEUE_RECONCILIATION_REQUIRED"
+    },
+    {
+      "id": "THIRD_SAME_GATE_FAILURE_ESCALATES",
+      "input": {
+        "route_class": "CONTROL_T0",
+        "task_class": "T0_CONTROL",
+        "actor_role": "T0_CONTROL",
+        "actor_model": "gpt-5.5",
+        "task_surface": "routing",
+        "same_gate_failures": 2,
+        "route_state": "active",
+        "canary_status": "active_task_proof",
+        "proof_source": "loop_guard"
+      },
+      "expected": "SELF_HEALING_ESCALATION"
+    }
+  ]
+}
+

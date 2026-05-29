@@ -279,3 +279,11 @@ status: draft
 | `reports/receipts/P0-codex-spark-json-usage-execution-receipt-20260529.md` | operational receipt | AH-601 | operational-receipt |
 | `reports/audits/P0-codex-spark-circuit-breaker-full-closure-audit-20260529.md` | audit report | AH-601 | audit-only |
 | `reports/receipts/P0-codex-spark-circuit-breaker-full-closure-receipt-20260529.md` | operational receipt | AH-601 | operational-receipt |
+| `governance/model-portfolio-utilization-policy.md` | governance policy | AH-590 | active |
+| `schemas/model_route_invocation_receipt.schema.json` | schema | AH-590 | active |
+| `validators/model_portfolio_router_validator.rb` | validator | AH-590 | active |
+| `evals/model-portfolio-routing/fixtures.json` | eval fixtures | AH-590 | active |
+| `reports/audits/P0-global-model-portfolio-route-evaluation-20260529.md` | audit report | AH-590 | audit-only |
+| `reports/validations/P0-global-model-portfolio-route-validation-20260529.md` | validation report | AH-590 | audit-only |
+| `reports/receipts/P0-global-model-portfolio-inventory-receipt-20260529.md` | operational receipt | AH-590 | operational-receipt |
+| `reports/receipts/P0-global-model-portfolio-route-closure-receipt-20260529.md` | operational receipt | AH-590 | operational-receipt |
