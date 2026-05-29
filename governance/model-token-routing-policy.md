@@ -22,7 +22,7 @@ AgentHub model selection is registry-driven. Agents must not hardcode stale mode
 |---|---|
 | P0 architecture/control decision | top reasoning route, bounded source packet |
 | Technical assignment / ADR | architecture route with compact evidence |
-| Code/config/YAML/shell/frontend/backend/tests/IaC | Codex-capable scoped worker; prefer `gpt-5.3-codex-spark`, then `gpt-5.3-codex`, when available |
+| Code/config/YAML/shell/frontend/backend/tests/IaC | Codex CLI/AgentHub worker with requested and resolved model `gpt-5.3-codex-spark`; fallback only with same-RUN Spark model-selection unavailability proof |
 | Registrar/register/PR queue | deterministic tool or lower-cost route |
 | Verifier/QA | verifier-capable route |
 | Security redaction | deterministic scanner first, model second |
@@ -30,9 +30,13 @@ AgentHub model selection is registry-driven. Agents must not hardcode stale mode
 ## Codex Spark Enforcement
 
 Code, config, shell, YAML, frontend, backend, test, and infrastructure-as-code
-tasks must route to a Codex-capable worker profile before any general reasoning
-model. If `gpt-5.3-codex-spark` or `gpt-5.3-codex` is available in the approved
-runtime registry, the worker receipt must use one of those primary routes.
+tasks must route to the dedicated Codex Spark code-authoring model before any
+general reasoning model. The required code-authoring route is exactly
+`gpt-5.3-codex-spark` in the standard Codex model selector or an equivalent
+AgentHub worker receipt. `gpt-5.3-codex`, `gpt-5.5`, `gpt-5.4`,
+`gpt-5.4-mini`, and `gpt-5.1-codex-mini` are not substitutes for Spark when
+Spark can be selected. Any fallback requires same-RUN proof that
+`gpt-5.3-codex-spark` is unavailable or cannot be selected.
 
 ## Primary Model Burn Circuit Breaker
 
@@ -47,7 +51,7 @@ The circuit breaker requires:
 - `circuit_breaker_active=true` before code/config work starts;
 - `actor_model` on every implementation-capable dispatch;
 - Spark/Codex worker route for code/config work;
-- same-RUN Spark unavailability proof before any non-Spark Codex fallback;
+- same-RUN Spark model-selection unavailability proof before any non-Spark fallback;
 - hard denial for GPT-5.5/main/base/primary fallback on code/config proof;
 - same-gate retry stop after two failures.
 
@@ -79,14 +83,51 @@ Accepted Spark execution proof must be one of:
 
 - a platform/model invocation receipt that independently names
   `gpt-5.3-codex-spark` as the resolved model; or
-- owner-visible usage telemetry showing Spark usage changed for the proof run; or
+- platform invocation telemetry showing Spark usage for the proof run; or
 - a Codex CLI JSON event receipt from an explicit
   `gpt-5.3-codex-spark` invocation with non-zero input/output usage tokens and
   no fallback. A plain command request without JSON usage remains rejected.
 
-If the owner-visible Spark usage metric contradicts local command/request
-evidence, the terminal blocker is `CODEX_SPARK_USAGE_TELEMETRY_UNAVAILABLE`
-until independent platform proof exists.
+If local command/request evidence cannot show the selected and resolved Spark
+model, the terminal state is `CODEX_SPARK_USAGE_TELEMETRY_UNAVAILABLE` until
+independent platform proof or Codex CLI JSON usage exists.
+
+## Codex Spark Code-Authoring Model Gate
+
+The active P0 requirement is model selection, not a separate analytics page.
+Every AgentHub task that writes code, config, YAML, shell, frontend, backend,
+tests, or IaC must prove:
+
+- `requested_model=gpt-5.3-codex-spark`;
+- `resolved_model` or `actual_model=gpt-5.3-codex-spark`;
+- `fallback_used=false`, unless the same RUN records Spark selector
+  unavailability;
+- `code_artifact_path` or equivalent changed-file evidence exists;
+- no GPT-5.5/main/base/primary model authored implementation text.
+
+The following sources cannot close this code-authoring model gate:
+
+- `gpt-5.3-codex` or any non-Spark Codex route while Spark is selectable;
+- terminal finalizer receipts that omit the selected/resolved Spark model;
+- merged PRs without Spark route evidence;
+- policy-only or validator-only changes;
+- sandbox lease/requeue work;
+- command-request-only proof without resolved model or CLI JSON usage.
+
+Allowed terminal states for this contour are:
+
+- `DONE_WITH_CODEX_SPARK_CODE_AUTHORING_MODEL`;
+- `CODEX_SPARK_CODE_AUTHORING_REQUIRED`;
+- `CODEX_SPARK_MODEL_SELECTOR_NOT_SET`;
+- `CODEX_SPARK_RESOLVED_MODEL_MISMATCH`;
+- `CODEX_SPARK_MODEL_SELECTION_UNAVAILABLE`;
+- `PRIMARY_MODEL_CODE_AUTHORSHIP_DETECTED`;
+- `MODEL_ROUTER_INSTALLATION_DEFECT`;
+- `WRONG_TASK_EXECUTION_RECOVERY_REQUIRED`.
+
+The lease/timeout sandbox auto-requeue class is explicitly unrelated to this
+proof contour. It cannot satisfy or contribute to Codex Spark code-authoring
+model proof.
 
 ## Loop and Budget Rules
 
