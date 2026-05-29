@@ -277,3 +277,5 @@ status: draft
 | `reports/receipts/P0-codex-spark-route-technology-repair-receipt-20260529.md` | operational receipt | AH-601 | operational-receipt |
 | `reports/audits/P0-codex-spark-json-usage-execution-audit-20260529.md` | audit report | AH-601 | audit-only |
 | `reports/receipts/P0-codex-spark-json-usage-execution-receipt-20260529.md` | operational receipt | AH-601 | operational-receipt |
+| `reports/audits/P0-codex-spark-circuit-breaker-full-closure-audit-20260529.md` | audit report | AH-601 | audit-only |
+| `reports/receipts/P0-codex-spark-circuit-breaker-full-closure-receipt-20260529.md` | operational receipt | AH-601 | operational-receipt |

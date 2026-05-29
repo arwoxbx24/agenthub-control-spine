@@ -46,6 +46,85 @@
       "expected": "CODEX_SPARK_ROUTE_REQUIRED"
     },
     {
+      "id": "CIRCUIT_BREAKER_PRIMARY_MODEL_CODE_BURN_DENIED",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "actor_role": "T2_CODEX_IMPLEMENTER",
+        "actor_model": "gpt-5.5",
+        "worker_model": "gpt-5.5",
+        "model_route_reason": "Primary model attempted code/config authorship",
+        "primary_model_burn_circuit_breaker": true,
+        "circuit_breaker_active": true,
+        "task_surface": "code config yaml shell",
+        "code_config_surface": true
+      },
+      "expected": "PRIMARY_MODEL_CODE_AUTHORSHIP_DETECTED"
+    },
+    {
+      "id": "CIRCUIT_BREAKER_T0_CODE_AUTHORING_DENIED",
+      "input": {
+        "task_class": "T0_CONTROL",
+        "actor_role": "T0_CONTROL",
+        "actor_model": "gpt-5.5",
+        "worker_model": "gpt-5.4-mini",
+        "model_route_reason": "T0 attempted code/config authorship",
+        "primary_model_burn_circuit_breaker": true,
+        "circuit_breaker_active": true,
+        "task_surface": "code",
+        "requests_code_or_command": true
+      },
+      "expected": "PRIMARY_MODEL_CODE_AUTHORSHIP_DETECTED"
+    },
+    {
+      "id": "CIRCUIT_BREAKER_SPARK_CODE_ROUTE_ALLOWED",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "actor_role": "T2_CODEX_IMPLEMENTER",
+        "actor_model": "gpt-5.3-codex-spark",
+        "worker_model": "gpt-5.3-codex-spark",
+        "model_route_reason": "Circuit breaker routes code/config to Spark",
+        "primary_model_burn_circuit_breaker": true,
+        "circuit_breaker_active": true,
+        "task_surface": "code config yaml shell",
+        "code_config_surface": true,
+        "codex_available": true,
+        "fallback_reason": null
+      },
+      "expected": "CODEX_PRIMARY_ROUTE_PASS"
+    },
+    {
+      "id": "CIRCUIT_BREAKER_MISSING_INSTALL_DENIED",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "actor_role": "T2_CODEX_IMPLEMENTER",
+        "actor_model": "gpt-5.3-codex-spark",
+        "worker_model": "gpt-5.3-codex-spark",
+        "model_route_reason": "Circuit breaker must be active before code/config work",
+        "primary_model_burn_circuit_breaker": true,
+        "circuit_breaker_active": false,
+        "task_surface": "code",
+        "code_config_surface": true
+      },
+      "expected": "PRIMARY_MODEL_BURN_CIRCUIT_BREAKER_UNAVAILABLE"
+    },
+    {
+      "id": "CIRCUIT_BREAKER_NON_SPARK_FALLBACK_WITHOUT_PROOF_DENIED",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "actor_role": "T2_CODEX_IMPLEMENTER",
+        "actor_model": "gpt-5.1-codex-mini",
+        "worker_model": "gpt-5.1-codex-mini",
+        "model_route_reason": "Fallback tried without same-RUN Spark unavailability proof",
+        "primary_model_burn_circuit_breaker": true,
+        "circuit_breaker_active": true,
+        "task_surface": "config",
+        "code_config_surface": true,
+        "fallback_used": true,
+        "same_run_spark_unavailable_proof": false
+      },
+      "expected": "FALLBACK_WITHOUT_SPARK_UNAVAILABILITY_PROOF"
+    },
+    {
       "id": "CODEX_UNAVAILABLE_SAME_RUN_FALLBACK",
       "input": {
         "task_class": "T2_CODEX_IMPLEMENTER",

@@ -34,6 +34,23 @@ tasks must route to a Codex-capable worker profile before any general reasoning
 model. If `gpt-5.3-codex-spark` or `gpt-5.3-codex` is available in the approved
 runtime registry, the worker receipt must use one of those primary routes.
 
+## Primary Model Burn Circuit Breaker
+
+For code/config/YAML/shell/programming work, the primary/main/base reasoning
+model is limited to classification and routing. It must not author, patch,
+generate, validate, or run implementation work. The circuit breaker returns a
+hard defect before generation when any primary model attempts code/config
+authorship.
+
+The circuit breaker requires:
+
+- `circuit_breaker_active=true` before code/config work starts;
+- `actor_model` on every implementation-capable dispatch;
+- Spark/Codex worker route for code/config work;
+- same-RUN Spark unavailability proof before any non-Spark Codex fallback;
+- hard denial for GPT-5.5/main/base/primary fallback on code/config proof;
+- same-gate retry stop after two failures.
+
 If primary Codex capacity is unavailable, fallback must stay in the same
 `run_id` and use an approved lower-cost Codex-capable or mini worker route. T0
 direct authorship and broad general-model command loops remain forbidden.

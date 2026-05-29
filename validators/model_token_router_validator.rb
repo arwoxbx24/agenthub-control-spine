@@ -9,6 +9,30 @@ cases = doc.fetch("cases")
 
 def route(input)
   return "ARCHITECTURE_REPAIR_REQUIRED" if input.fetch("same_gate_failures", 0).to_i >= 2
+
+  if input.fetch("primary_model_burn_circuit_breaker", false)
+    primary_models = %w[gpt-5.5 main base primary]
+    codex_models = %w[gpt-5.3-codex-spark gpt-5.3-codex gpt-5.1-codex-mini gpt-5.4-mini]
+    surface = input.fetch("task_surface", "").to_s
+    code_surface = input.fetch("code_config_surface", false) ||
+                   surface.match?(/\b(code|config|yaml|shell|programming|test|frontend|backend|iac)\b/i)
+    actor_role = input.fetch("actor_role", input.fetch("task_class", "")).to_s
+    actor_model = input.fetch("actor_model", input.fetch("worker_model", "")).to_s
+
+    if code_surface
+      return "PRIMARY_MODEL_BURN_CIRCUIT_BREAKER_UNAVAILABLE" unless input.fetch("circuit_breaker_active", false)
+      return "PRIMARY_MODEL_CODE_AUTHORSHIP_DETECTED" if primary_models.include?(actor_model)
+      return "T0_DIRECT_CODE_AUTHORSHIP_DETECTED" if actor_role == "T0_CONTROL" && input.fetch("requests_code_or_command", false)
+
+      if input.fetch("fallback_used", false)
+        return "FALLBACK_WITHOUT_SPARK_UNAVAILABILITY_PROOF" unless input.fetch("same_run_spark_unavailable_proof", false)
+        return "CODEX_SPARK_ROUTE_NOT_EXECUTED" unless codex_models.include?(actor_model)
+      end
+
+      return "CODEX_SPARK_ROUTE_REQUIRED" unless codex_models.include?(actor_model)
+    end
+  end
+
   return "MODEL_ROUTE_EVIDENCE_MISSING" if input.fetch("worker_model", "").empty? || input.fetch("model_route_reason", "").empty?
 
   case input.fetch("task_class")
