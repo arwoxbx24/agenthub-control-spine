@@ -262,3 +262,6 @@ status: draft
 | `reports/audits/P0-project-methodology-mirror-gap-audit-20260528.md` | audit report | AH-595 | audit-only |
 | `reports/receipts/P0-project-methodology-mirror-implementation-receipt-20260528.md` | operational receipt | AH-595 | operational-receipt |
 | `reports/validations/P0-project-methodology-mirror-enforcement-validation-20260528.md` | validation report | AH-595 | audit-only |
+| `reports/incidents/P0-komodo-kutt-agenthub-final-closure-report-20260528.md` | incident report | AH-574 | audit-only |
+| `reports/receipts/P0-komodo-kutt-agenthub-final-closure-receipt-20260528.md` | operational receipt | AH-574 | operational-receipt |
+| `reports/audits/P0-agenthub-prompt-implementation-ledger-readback-20260528.md` | prompt implementation readback | AH-574 | audit-only |
