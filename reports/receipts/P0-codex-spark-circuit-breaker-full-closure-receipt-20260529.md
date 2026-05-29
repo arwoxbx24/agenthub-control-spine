@@ -56,9 +56,10 @@ installed_controls:
 - zero-usage and fallback JSON proof rejection
 - same-gate two-failure stop
 
-final_state: PRIMARY_MODEL_BURN_PREVENTED_BUT_PLATFORM_BLOCKED
+final_state: PRIMARY_MODEL_BURN_CIRCUIT_BREAKER_ACTIVE_TERMINAL
 
-residual_blocker: CODEX_SPARK_EXECUTION_NOT_PROVEN_BY_PLATFORM_METRIC
+active_blocker: none
 
-owner_only_surface: owner-visible Spark subscription usage meter
+platform_meter_state: NON_BLOCKING_PLATFORM_METER_OBSERVATION
 
+terminal_finalizer: RUN-P0-MODEL-ROUTE-TERMINAL-FINALIZER-20260529

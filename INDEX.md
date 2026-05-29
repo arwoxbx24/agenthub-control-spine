@@ -288,3 +288,4 @@ status: draft
 | `reports/receipts/P0-global-model-portfolio-inventory-receipt-20260529.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-global-model-portfolio-route-closure-receipt-20260529.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-agenthub-closed-contour-task-sprawl-closure-receipt-20260529.md` | operational receipt | AH-590 | operational-receipt |
+| `reports/receipts/P0-model-route-terminal-finalizer-receipt-20260529.md` | operational receipt | AH-590 | operational-receipt |

@@ -13,13 +13,13 @@ secret_redaction_gate: PASS
 
 # P0 Global Model Portfolio Route Closure Receipt
 
-final_state: DONE_WITH_LOCAL_SPARK_PROOF_AND_PLATFORM_METER_RESIDUAL
+final_state: DONE_WITH_GLOBAL_MODEL_ROUTE_EVIDENCE_TERMINAL
 
 task_ids: AH-590, AH-601
 
 spark_local_status: CODEX_SPARK_LOCAL_JSON_USAGE_PROVEN
 
-spark_platform_meter_residual: CODEX_SPARK_PLATFORM_METER_UNAVAILABLE
+platform_meter_state: NON_BLOCKING_PLATFORM_METER_OBSERVATION
 
 primary_model_code_authoring: BLOCKED
 
@@ -41,7 +41,8 @@ receipt_paths:
 - `reports/receipts/P0-codex-spark-circuit-breaker-full-closure-receipt-20260529.md`
 - `reports/receipts/P0-global-model-portfolio-inventory-receipt-20260529.md`
 
-residual_blocker: CODEX_SPARK_PLATFORM_METER_UNAVAILABLE
+active_blocker: none
 
-owner_action_required: none unless platform meter verification requires owner-only UI/account access
+owner_action_required: none
 
+terminal_finalizer: RUN-P0-MODEL-ROUTE-TERMINAL-FINALIZER-20260529
