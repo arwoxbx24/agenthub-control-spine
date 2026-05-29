@@ -45,6 +45,7 @@ status: draft
 | `governance/global-agent-control-enforcement-policy.md` | governance policy | AH-590 | active |
 | `governance/secrets-registry-policy.md` | governance policy | AH-590 | active |
 | `governance/model-token-routing-policy.md` | governance policy | AH-590 | active |
+| `reports/receipts/P0-codex-spark-code-authoring-model-enforcement-receipt-20260529.md` | operational receipt | AH-590/AH-601 | active |
 | `governance/agenthub-x-capability-matrix.md` | governance policy | AH-590 | active |
 | `governance/adr/ADR-agenthub-x-controlled-capability-matrix-20260528.md` | architecture decision record | AH-590 | active |
 | `governance/adr/ADR-codex-spark-model-router-enforcement-20260528.md` | architecture decision record | AH-590 | active |

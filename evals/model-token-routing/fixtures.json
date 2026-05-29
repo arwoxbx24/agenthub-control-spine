@@ -24,6 +24,18 @@
       "expected": "CONTROL_MODEL_ALLOWED"
     },
     {
+      "id": "WRONG_TASK_LEASE_REQUEUE_CANNOT_CLOSE_CODE_AUTHORING_MODEL",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "worker_model": "gpt-5.3-codex-spark",
+        "model_route_reason": "Wrong-task recovery must quarantine lease/requeue work as unrelated to Codex Spark code-authoring model proof",
+        "wrong_task_recovery": true,
+        "wrong_task_change_type": "lease_requeue",
+        "counts_as_code_authoring_model_proof": true
+      },
+      "expected": "WRONG_TASK_EXECUTION_RECOVERY_REQUIRED"
+    },
+    {
       "id": "CODE_CONFIG_SPARK_AVAILABLE_USES_SPARK",
       "input": {
         "task_class": "T2_CODEX_IMPLEMENTER",
@@ -44,6 +56,64 @@
         "fallback_reason": null
       },
       "expected": "CODEX_SPARK_ROUTE_REQUIRED"
+    },
+    {
+      "id": "CODE_AUTHORING_SPARK_SELECTOR_PASS",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "worker_model": "gpt-5.3-codex-spark",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_model": "gpt-5.3-codex-spark",
+        "model_route_reason": "Codex model selector selected Spark for AgentHub code authoring",
+        "code_authoring_model_enforcement": true,
+        "code_artifact_path": "evals/model-token-routing/fixtures.json",
+        "fallback_used": false
+      },
+      "expected": "CODEX_SPARK_CODE_AUTHORING_PASS"
+    },
+    {
+      "id": "CODE_AUTHORING_GPT53_CODEX_REJECTED_WHEN_SPARK_SELECTABLE",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "worker_model": "gpt-5.3-codex",
+        "requested_model": "gpt-5.3-codex",
+        "resolved_model": "gpt-5.3-codex",
+        "actual_model": "gpt-5.3-codex",
+        "model_route_reason": "Non-Spark Codex route attempted code authoring while Spark is required",
+        "code_authoring_model_enforcement": true,
+        "code_artifact_path": "evals/model-token-routing/fixtures.json",
+        "fallback_used": false
+      },
+      "expected": "CODEX_SPARK_CODE_AUTHORING_REQUIRED"
+    },
+    {
+      "id": "CODE_AUTHORING_MODEL_SELECTOR_MISSING",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "worker_model": "gpt-5.3-codex-spark",
+        "model_route_reason": "Code authoring receipt omitted requested model selector value",
+        "code_authoring_model_enforcement": true,
+        "actual_model": "gpt-5.3-codex-spark",
+        "code_artifact_path": "evals/model-token-routing/fixtures.json",
+        "fallback_used": false
+      },
+      "expected": "CODEX_SPARK_MODEL_SELECTOR_NOT_SET"
+    },
+    {
+      "id": "CODE_AUTHORING_RESOLVED_MODEL_MISMATCH",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "worker_model": "gpt-5.3-codex-spark",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex",
+        "actual_model": "gpt-5.3-codex",
+        "model_route_reason": "Requested Spark but actual model resolved to non-Spark",
+        "code_authoring_model_enforcement": true,
+        "code_artifact_path": "evals/model-token-routing/fixtures.json",
+        "fallback_used": false
+      },
+      "expected": "CODEX_SPARK_RESOLVED_MODEL_MISMATCH"
     },
     {
       "id": "CIRCUIT_BREAKER_PRIMARY_MODEL_CODE_BURN_DENIED",
@@ -91,6 +161,23 @@
         "fallback_reason": null
       },
       "expected": "CODEX_PRIMARY_ROUTE_PASS"
+    },
+    {
+      "id": "CIRCUIT_BREAKER_CODEX_SELECTOR_NON_SPARK_DENIED",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "actor_role": "T2_CODEX_IMPLEMENTER",
+        "actor_model": "gpt-5.3-codex",
+        "worker_model": "gpt-5.3-codex",
+        "model_route_reason": "Code/config authorship must use gpt-5.3-codex-spark while Spark is selectable",
+        "primary_model_burn_circuit_breaker": true,
+        "circuit_breaker_active": true,
+        "task_surface": "code config yaml shell frontend backend test iac",
+        "code_config_surface": true,
+        "fallback_reason": null,
+        "codex_cli_model_selector_available": true
+      },
+      "expected": "CODEX_SPARK_CODE_AUTHORING_REQUIRED"
     },
     {
       "id": "CIRCUIT_BREAKER_MISSING_INSTALL_DENIED",

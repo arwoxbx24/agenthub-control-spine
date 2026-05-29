@@ -9,6 +9,12 @@ cases = doc.fetch("cases")
 
 def route(input)
   return "ARCHITECTURE_REPAIR_REQUIRED" if input.fetch("same_gate_failures", 0).to_i >= 2
+  if input.fetch("wrong_task_recovery", false)
+    wrong_change = input.fetch("wrong_task_change_type", "").to_s
+    if wrong_change == "lease_requeue" && input.fetch("counts_as_code_authoring_model_proof", false)
+      return "WRONG_TASK_EXECUTION_RECOVERY_REQUIRED"
+    end
+  end
 
   if input.fetch("primary_model_burn_circuit_breaker", false)
     primary_models = %w[gpt-5.5 main base primary]
@@ -23,6 +29,10 @@ def route(input)
       return "PRIMARY_MODEL_BURN_CIRCUIT_BREAKER_UNAVAILABLE" unless input.fetch("circuit_breaker_active", false)
       return "PRIMARY_MODEL_CODE_AUTHORSHIP_DETECTED" if primary_models.include?(actor_model)
       return "T0_DIRECT_CODE_AUTHORSHIP_DETECTED" if actor_role == "T0_CONTROL" && input.fetch("requests_code_or_command", false)
+      if input.fetch("codex_cli_model_selector_available", input.fetch("codex_cloud_available", false)) &&
+         actor_model != "gpt-5.3-codex-spark"
+        return "CODEX_SPARK_CODE_AUTHORING_REQUIRED"
+      end
 
       if input.fetch("fallback_used", false)
         return "FALLBACK_WITHOUT_SPARK_UNAVAILABILITY_PROOF" unless input.fetch("same_run_spark_unavailable_proof", false)
@@ -42,9 +52,26 @@ def route(input)
   when "T1_ARCHITECT"
     "REASONING_MODEL_ALLOWED_WITH_BOUNDED_SOURCE_PACKET"
   when "T2_CODEX_IMPLEMENTER"
-    codex_primary_models = %w[gpt-5.3-codex-spark gpt-5.3-codex]
-    codex_fallback_models = %w[gpt-5.1-codex-mini gpt-5.4-mini]
+    codex_primary_models = %w[gpt-5.3-codex-spark]
+    codex_fallback_models = %w[gpt-5.3-codex gpt-5.1-codex-mini gpt-5.4-mini]
     model = input.fetch("worker_model", "")
+
+    if input.fetch("code_authoring_model_enforcement", false)
+      requested_model = input.fetch("requested_model", input.fetch("cli_requested_model", "")).to_s
+      actual_model = input.fetch("actual_model", input.fetch("resolved_model", model)).to_s
+      artifact_path = input.fetch("code_artifact_path", input.fetch("proof_artifact_path", "")).to_s
+
+      return "PRIMARY_MODEL_CODE_AUTHORSHIP_DETECTED" if %w[gpt-5.5 main base primary].include?(model) ||
+                                                         %w[gpt-5.5 main base primary].include?(actual_model)
+      return "CODEX_SPARK_MODEL_SELECTOR_NOT_SET" if requested_model.empty?
+      return "CODEX_SPARK_CODE_AUTHORING_REQUIRED" unless requested_model == "gpt-5.3-codex-spark"
+      return "FALLBACK_WITHOUT_SPARK_UNAVAILABILITY_PROOF" if input.fetch("fallback_used", false) &&
+                                                              !input.fetch("same_run_spark_unavailable_proof", false)
+      return "CODEX_SPARK_RESOLVED_MODEL_MISMATCH" unless actual_model == "gpt-5.3-codex-spark"
+      return "MODEL_ROUTE_EVIDENCE_MISSING" if artifact_path.empty?
+
+      return "CODEX_SPARK_CODE_AUTHORING_PASS"
+    end
 
     if input.fetch("spark_execution_proof_closure", false)
       valid_proof_sources = %w[platform_resolved_model_receipt owner_visible_usage_delta codex_cli_json_usage_receipt]

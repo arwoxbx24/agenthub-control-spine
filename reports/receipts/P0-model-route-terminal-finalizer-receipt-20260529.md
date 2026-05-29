@@ -17,11 +17,11 @@ secret_redaction_gate: PASS
 
 final_state: DONE_WITH_GLOBAL_MODEL_ROUTE_EVIDENCE_TERMINAL
 
-platform_meter_state: NON_BLOCKING_PLATFORM_METER_OBSERVATION
+code_authoring_model_state: SUPERSEDED_FOR_STRICT_SPARK_SELECTOR_BY_RUN_P0_CODEX_SPARK_CODE_AUTHORING_MODEL_ENFORCEMENT_20260529
 
-active_blocker: none
+active_blocker: none for control-spine router enforcement
 
-owner_action_required: none
+owner_action_required: switch any already-open Codex UI session to `gpt-5.3-codex-spark` with the model selector; future CLI launches use the updated default config.
 
 ## Evidence Bound
 
@@ -39,6 +39,7 @@ owner_action_required: none
 
 ## Decision Rule Applied
 
-Installed policy tracks owner-visible Spark meter state separately and does not
-treat it as a hard Done gate when local Codex JSON usage proof exists. Therefore
-the terminal state is Done, not residual-blocked.
+Installed local policy closure remains historical for repository routing. The
+active correction is strict Spark code-authoring model selection: code/config
+work must use requested and resolved `gpt-5.3-codex-spark`, and non-Spark routes
+cannot substitute for it while Spark is selectable.
