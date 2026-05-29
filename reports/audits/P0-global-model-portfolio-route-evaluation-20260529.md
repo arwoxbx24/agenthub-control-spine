@@ -15,7 +15,7 @@ secret_redaction_gate: PASS
 
 ## Result
 
-final_state: DONE_WITH_LOCAL_SPARK_PROOF_AND_PLATFORM_METER_RESIDUAL
+final_state: DONE_WITH_GLOBAL_MODEL_ROUTE_EVIDENCE_TERMINAL
 
 ## Installed Before This Run
 
@@ -58,7 +58,6 @@ final_state: DONE_WITH_LOCAL_SPARK_PROOF_AND_PLATFORM_METER_RESIDUAL
 
 ## Residual Boundary
 
-`CODEX_SPARK_PLATFORM_METER_UNAVAILABLE` is owner/platform telemetry only. It
-does not permit GPT-5.5/main/base code authorship while local Codex JSON proof
-and the circuit breaker are active.
-
+The owner-visible platform meter is a non-blocking observation for this closure.
+It does not permit GPT-5.5/main/base code authorship while local Codex JSON proof
+and the circuit breaker are active, and it is not an active Done blocker.

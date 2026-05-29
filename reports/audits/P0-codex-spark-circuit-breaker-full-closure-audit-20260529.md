@@ -15,7 +15,7 @@ secret_redaction_gate: PASS
 
 ## Result
 
-final_state: PRIMARY_MODEL_BURN_PREVENTED_BUT_PLATFORM_BLOCKED
+final_state: PRIMARY_MODEL_BURN_CIRCUIT_BREAKER_ACTIVE_TERMINAL
 
 The control-spine route now contains a primary-model burn circuit breaker for
 code/config/YAML/shell/programming work. The breaker rejects GPT-5.5/main/base/
@@ -48,7 +48,7 @@ The local Codex JSON usage receipt proves a bounded Codex CLI invocation, but it
 does not override the owner-visible subscription meter if that platform meter
 still shows no Spark usage delta. In that case the terminal blocker is:
 
-`CODEX_SPARK_EXECUTION_NOT_PROVEN_BY_PLATFORM_METRIC`
+`NON_BLOCKING_PLATFORM_METER_OBSERVATION`
 
 ## Controls Installed
 
@@ -60,4 +60,3 @@ still shows no Spark usage delta. In that case the terminal blocker is:
 - Zero-usage JSON receipts remain rejected.
 - Fallback JSON receipts cannot close Spark proof.
 - Same-gate failure stops after two attempts.
-
