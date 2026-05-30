@@ -45,7 +45,7 @@ by the implementation branch/PR for closure.
 
 PR #115 was confirmed open, draft, and audit-only. Its body states audit/report
 and implementation-prompt scope only, with no installed control implementation.
-It is preserved as source evidence and superseded by this implementation PR.
+It is preserved as source evidence and superseded by implementation PR #116.
 
 ## Validation
 
@@ -53,8 +53,8 @@ Initial targeted validation:
 
 - `ruby validators/t0_escape_boundary_gates_validator.rb evals/t0-escape-boundary-gates/fixtures.json` - `PASS`
 
-Final validation was run before publication and recorded in the implementation
-PR body and final task readback.
+Final validation was run before publication and recorded in implementation PR
+#116.
 
 ## Safety
 
