@@ -45,6 +45,9 @@ status: draft
 | `governance/global-agent-control-enforcement-policy.md` | governance policy | AH-590 | active |
 | `governance/secrets-registry-policy.md` | governance policy | AH-590 | active |
 | `governance/model-token-routing-policy.md` | governance policy | AH-590 | active |
+| `reports/receipts/P0-codex-spark-code-authoring-model-enforcement-receipt-20260529.md` | operational receipt | AH-590/AH-601 | active |
+| `reports/receipts/P0-runtime-spark-route-restore-implementation-receipt-20260529.md` | implementation receipt | AH-590/AH-601 | active |
+| `reports/validations/P0-runtime-spark-route-restore-validation-20260529.md` | validation report | AH-590/AH-601 | active |
 | `governance/agenthub-x-capability-matrix.md` | governance policy | AH-590 | active |
 | `governance/adr/ADR-agenthub-x-controlled-capability-matrix-20260528.md` | architecture decision record | AH-590 | active |
 | `governance/adr/ADR-codex-spark-model-router-enforcement-20260528.md` | architecture decision record | AH-590 | active |
@@ -285,3 +288,30 @@ status: draft
 | `reports/audits/P0-project-methodology-mirror-gap-audit-20260528.md` | audit report | AH-595 | audit-only |
 | `reports/receipts/P0-project-methodology-mirror-implementation-receipt-20260528.md` | operational receipt | AH-595 | operational-receipt |
 | `reports/validations/P0-project-methodology-mirror-enforcement-validation-20260528.md` | validation report | AH-595 | audit-only |
+| `reports/incidents/P0-komodo-kutt-agenthub-final-closure-report-20260528.md` | incident report | AH-574 | audit-only |
+| `reports/receipts/P0-komodo-kutt-agenthub-final-closure-receipt-20260528.md` | operational receipt | AH-574 | operational-receipt |
+| `reports/audits/P0-agenthub-prompt-implementation-ledger-readback-20260528.md` | prompt implementation readback | AH-574 | audit-only |
+| `reports/audits/P0-codex-spark-mandatory-execution-factcheck-20260529.md` | audit report | AH-601 | audit-only |
+| `reports/receipts/P0-codex-spark-mandatory-execution-guardrail-receipt-20260529.md` | operational receipt | AH-601 | operational-receipt |
+| `reports/audits/P0-codex-spark-real-execution-proof-audit-20260529.md` | audit report | AH-601 | audit-only |
+| `reports/receipts/P0-codex-spark-real-execution-proof-receipt-20260529.md` | operational receipt | AH-601 | operational-receipt |
+| `reports/audits/P0-codex-spark-usage-metric-contradiction-audit-20260529.md` | audit report | AH-601 | audit-only |
+| `reports/receipts/P0-codex-spark-usage-metric-contradiction-receipt-20260529.md` | operational receipt | AH-601 | operational-receipt |
+| `reports/audits/P0-codex-spark-hard-route-execution-audit-20260529.md` | audit report | AH-601 | audit-only |
+| `reports/receipts/P0-codex-spark-hard-route-execution-receipt-20260529.md` | operational receipt | AH-601 | operational-receipt |
+| `reports/audits/P0-codex-spark-route-technology-repair-audit-20260529.md` | audit report | AH-601 | audit-only |
+| `reports/receipts/P0-codex-spark-route-technology-repair-receipt-20260529.md` | operational receipt | AH-601 | operational-receipt |
+| `reports/audits/P0-codex-spark-json-usage-execution-audit-20260529.md` | audit report | AH-601 | audit-only |
+| `reports/receipts/P0-codex-spark-json-usage-execution-receipt-20260529.md` | operational receipt | AH-601 | operational-receipt |
+| `reports/audits/P0-codex-spark-circuit-breaker-full-closure-audit-20260529.md` | audit report | AH-601 | audit-only |
+| `reports/receipts/P0-codex-spark-circuit-breaker-full-closure-receipt-20260529.md` | operational receipt | AH-601 | operational-receipt |
+| `governance/model-portfolio-utilization-policy.md` | governance policy | AH-590 | active |
+| `schemas/model_route_invocation_receipt.schema.json` | schema | AH-590 | active |
+| `validators/model_portfolio_router_validator.rb` | validator | AH-590 | active |
+| `evals/model-portfolio-routing/fixtures.json` | eval fixtures | AH-590 | active |
+| `reports/audits/P0-global-model-portfolio-route-evaluation-20260529.md` | audit report | AH-590 | audit-only |
+| `reports/validations/P0-global-model-portfolio-route-validation-20260529.md` | validation report | AH-590 | audit-only |
+| `reports/receipts/P0-global-model-portfolio-inventory-receipt-20260529.md` | operational receipt | AH-590 | operational-receipt |
+| `reports/receipts/P0-global-model-portfolio-route-closure-receipt-20260529.md` | operational receipt | AH-590 | operational-receipt |
+| `reports/receipts/P0-agenthub-closed-contour-task-sprawl-closure-receipt-20260529.md` | operational receipt | AH-590 | operational-receipt |
+| `reports/receipts/P0-model-route-terminal-finalizer-receipt-20260529.md` | operational receipt | AH-590 | operational-receipt |

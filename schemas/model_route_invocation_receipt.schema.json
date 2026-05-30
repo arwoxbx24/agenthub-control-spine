@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agenthub.model_route_invocation_receipt.v1",
+  "type": "object",
+  "required": [
+    "task_id",
+    "run_id",
+    "worker_id",
+    "route_class",
+    "task_class",
+    "requested_model_or_registry_key",
+    "proof_source",
+    "fallback_used",
+    "artifact_path",
+    "artifact_hash",
+    "no_secret_leak",
+    "no_runtime_mutation",
+    "residual_blocker"
+  ],
+  "properties": {
+    "task_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "worker_id": { "type": "string", "minLength": 1 },
+    "route_class": {
+      "type": "string",
+      "enum": [
+        "CONTROL_T0",
+        "ARCHITECT_T1",
+        "CODEX_PRIMARY_T2",
+        "CODEX_FALLBACK_T2",
+        "REGISTRAR",
+        "VERIFIER_QA",
+        "SECURITY_REDACTION",
+        "BROWSER_PRODUCT_QA",
+        "DEVOPS_RUNTIME"
+      ]
+    },
+    "task_class": { "type": "string", "minLength": 1 },
+    "requested_model_or_registry_key": { "type": "string", "minLength": 1 },
+    "resolved_model": { "type": "string" },
+    "proof_source": { "type": "string", "minLength": 1 },
+    "usage_input_tokens": { "type": "integer", "minimum": 0 },
+    "usage_output_tokens": { "type": "integer", "minimum": 0 },
+    "fallback_used": { "type": "boolean" },
+    "fallback_reason": { "type": ["string", "null"] },
+    "same_run_unavailability_proof": { "type": ["string", "null"] },
+    "artifact_path": { "type": "string", "minLength": 1 },
+    "artifact_hash": { "type": "string", "minLength": 12 },
+    "no_secret_leak": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "no_runtime_mutation": { "type": "string", "enum": ["PASS", "FAIL", "not_applicable"] },
+    "residual_blocker": { "type": ["string", "null"] }
+  },
+  "additionalProperties": true
+}
+

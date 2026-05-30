@@ -22,23 +22,38 @@ AgentHub model selection is registry-driven. Agents must not hardcode stale mode
 |---|---|
 | P0 architecture/control decision | top reasoning route, bounded source packet |
 | Technical assignment / ADR | architecture route with compact evidence |
-| Code/config/YAML/shell/frontend/backend/tests/IaC | Codex-capable scoped worker; prefer `gpt-5.3-codex-spark`, then `gpt-5.3-codex`, when available |
+| Code/config/YAML/shell/frontend/backend/tests/IaC | Codex CLI/AgentHub worker with requested and resolved model `gpt-5.3-codex-spark`; fallback only with same-RUN Spark model-selection unavailability proof |
 | Registrar/register/PR queue | deterministic tool or lower-cost route |
 | Verifier/QA | verifier-capable route |
 | Security redaction | deterministic scanner first, model second |
 
-The complete model portfolio route map is installed in
-`governance/model-portfolio-utilization-policy.md`. That policy is the
-authoritative matrix for T0 pre-gateway, T1 architecture, T2 code/config,
-task-service, verifier, research, and security/redaction route classes.
-
 ## Codex Spark Enforcement
 
 Code, config, shell, YAML, frontend, backend, test, and infrastructure-as-code
-tasks must route to a Codex-capable worker profile before any general reasoning
-model. If `gpt-5.3-codex-spark` is available in the approved runtime registry,
-the worker receipt must request and resolve to `gpt-5.3-codex-spark`. A receipt
-whose actual route is `agenthub-sandbox-worker` is not Spark proof.
+tasks must route to the dedicated Codex Spark code-authoring model before any
+general reasoning model. The required code-authoring route is exactly
+`gpt-5.3-codex-spark` in the standard Codex model selector or an equivalent
+AgentHub worker receipt. `gpt-5.3-codex`, `gpt-5.5`, `gpt-5.4`,
+`gpt-5.4-mini`, and `gpt-5.1-codex-mini` are not substitutes for Spark when
+Spark can be selected. Any fallback requires same-RUN proof that
+`gpt-5.3-codex-spark` is unavailable or cannot be selected.
+
+## Primary Model Burn Circuit Breaker
+
+For code/config/YAML/shell/programming work, the primary/main/base reasoning
+model is limited to classification and routing. It must not author, patch,
+generate, validate, or run implementation work. The circuit breaker returns a
+hard defect before generation when any primary model attempts code/config
+authorship.
+
+The circuit breaker requires:
+
+- `circuit_breaker_active=true` before code/config work starts;
+- `actor_model` on every implementation-capable dispatch;
+- Spark/Codex worker route for code/config work;
+- same-RUN Spark model-selection unavailability proof before any non-Spark fallback;
+- hard denial for GPT-5.5/main/base/primary fallback on code/config proof;
+- same-gate retry stop after two failures.
 
 If primary Codex capacity is unavailable, fallback must stay in the same
 `run_id` and use the approved chain: `gpt-5.3-codex`, then `gpt-5.4-mini`,
@@ -59,6 +74,81 @@ Every dispatch receipt for implementation-capable work must include:
 - `return_to_spark_when_available`;
 - token/context budget class;
 - residuals.
+
+## Codex Spark Execution Proof Gate
+
+Spark route closure requires independent proof of the resolved model. The
+following evidence classes are not enough for `DONE_WITH_EVIDENCE`:
+
+- command-line request text such as `codex exec -m gpt-5.3-codex-spark`;
+- worker self-report of `actual_model`;
+- merged PR;
+- installed policy or validator;
+- sandbox-only proof without independent platform model identity.
+
+Accepted Spark execution proof must be one of:
+
+- a platform/model invocation receipt that independently names
+  `gpt-5.3-codex-spark` as the resolved model; or
+- platform invocation telemetry showing Spark usage for the proof run; or
+- a Codex CLI JSON event receipt from an explicit
+  `gpt-5.3-codex-spark` invocation with non-zero input/output usage tokens and
+  no fallback. A plain command request without JSON usage remains rejected.
+
+If local command/request evidence cannot show the selected and resolved Spark
+model, the terminal state is `CODEX_SPARK_USAGE_TELEMETRY_UNAVAILABLE` until
+independent platform proof or Codex CLI JSON usage exists.
+
+## Codex Spark Code-Authoring Model Gate
+
+The active P0 requirement is model selection, not a separate analytics page.
+Every AgentHub task that writes code, config, YAML, shell, frontend, backend,
+tests, or IaC must prove:
+
+- `requested_model=gpt-5.3-codex-spark`;
+- `resolved_model` or `actual_model=gpt-5.3-codex-spark`;
+- `fallback_used=false`, unless the same RUN records Spark selector
+  unavailability;
+- `code_artifact_path` or equivalent changed-file evidence exists;
+- no GPT-5.5/main/base/primary model authored implementation text.
+
+The following sources cannot close this code-authoring model gate:
+
+- `gpt-5.3-codex` or any non-Spark Codex route while Spark is selectable;
+- terminal finalizer receipts that omit the selected/resolved Spark model;
+- merged PRs without Spark route evidence;
+- policy-only or validator-only changes;
+- sandbox lease/requeue work;
+- command-request-only proof without resolved model or CLI JSON usage.
+
+Allowed terminal states for this contour are:
+
+- `DONE_WITH_CODEX_SPARK_CODE_AUTHORING_MODEL`;
+- `CODEX_SPARK_CODE_AUTHORING_REQUIRED`;
+- `CODEX_SPARK_MODEL_SELECTOR_NOT_SET`;
+- `CODEX_SPARK_RESOLVED_MODEL_MISMATCH`;
+- `CODEX_SPARK_MODEL_SELECTION_UNAVAILABLE`;
+- `PRIMARY_MODEL_CODE_AUTHORSHIP_DETECTED`;
+- `MODEL_ROUTER_INSTALLATION_DEFECT`;
+- `WRONG_TASK_EXECUTION_RECOVERY_REQUIRED`.
+
+The lease/timeout sandbox auto-requeue class is explicitly unrelated to this
+proof contour. It cannot satisfy or contribute to Codex Spark code-authoring
+model proof.
+
+## Model Portfolio And Continuous Loop Binding
+
+The complete model portfolio route map is installed in
+`governance/model-portfolio-utilization-policy.md`. Code/config/YAML/shell/test,
+frontend, backend, and IaC work must include `requested_model`,
+`resolved_model`, and `actual_route`. `agenthub-sandbox-worker` is not accepted
+as Spark proof.
+
+Implementation-capable dispatch receipts must also include
+`same_run_fallback_proof`, `return_to_spark_when_available`, and
+`owner_manual_model_required=false`. Task-service routing must complete task
+creation, microtasks, evidence, validation, tracker update, PR/readback, and
+Done without owner progress readback.
 
 ## Loop and Budget Rules
 
