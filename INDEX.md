@@ -48,6 +48,17 @@ status: draft
 | `reports/receipts/P0-codex-spark-code-authoring-model-enforcement-receipt-20260529.md` | operational receipt | AH-590/AH-601 | active |
 | `reports/receipts/P0-runtime-spark-route-restore-implementation-receipt-20260529.md` | implementation receipt | AH-590/AH-601 | active |
 | `reports/validations/P0-runtime-spark-route-restore-validation-20260529.md` | validation report | AH-590/AH-601 | active |
+| `governance/codex-native-capability-router-policy.md` | governance policy | AH-622 | active |
+| `schemas/codex_native_worker_receipt.schema.json` | schema | AH-622 | active |
+| `validators/codex_native_capability_router_validator.rb` | active control | AH-622 | active |
+| `evals/codex-native-capability-router/fixtures.json` | eval fixtures | AH-622 | active |
+| `runbooks/codex-native-spawn-subagent-worker-runbook.md` | runbook | AH-622 | active |
+| `prompts/implementation/agenthub-codex-native-spawn-worker-template.txt` | worker template | AH-622 | active |
+| `reports/receipts/P0-codex-native-spark-spawn-canary-20260530.md` | canary receipt | AH-622 | active |
+| `reports/receipts/P0-codex-native-readonly-parallel-canary-20260530.md` | canary receipt | AH-622 | active |
+| `reports/receipts/P0-codex-native-mcp-diagnostic-canary-20260530.md` | canary receipt | AH-622 | active |
+| `reports/receipts/P0-codex-native-background-terminal-canary-20260530.md` | canary receipt | AH-622 | active |
+| `reports/receipts/P0-codex-native-capability-enrichment-implementation-receipt-20260530.md` | operational receipt | AH-622 | active |
 | `governance/agenthub-x-capability-matrix.md` | governance policy | AH-590 | active |
 | `governance/adr/ADR-agenthub-x-controlled-capability-matrix-20260528.md` | architecture decision record | AH-590 | active |
 | `governance/adr/ADR-codex-spark-model-router-enforcement-20260528.md` | architecture decision record | AH-590 | active |

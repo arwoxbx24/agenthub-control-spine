@@ -1,0 +1,368 @@
+{
+  "cases": [
+    {
+      "id": "N1_t0_attempts_code",
+      "input": {
+        "route_class": "CODEX_EXEC_NONINTERACTIVE_WORKER",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "T0_CONTROL",
+        "requested_model": "gpt-5.5",
+        "resolved_model": "gpt-5.5",
+        "actual_route": "gpt-5.5",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["governance"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "requests_implementation_mutation": true
+      },
+      "expected": "T0_CODE_AUTHORSHIP_BLOCKED"
+    },
+    {
+      "id": "N2_sandbox_claims_spark",
+      "input": {
+        "route_class": "CODEX_SPARK_SPAWN_WORKER",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "T2_CODE_AUTHOR",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_route": "agenthub-sandbox-worker",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["reports/receipts"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"]
+      },
+      "expected": "SANDBOX_ROUTE_NOT_SPARK_PROOF"
+    },
+    {
+      "id": "N3_spawn_missing_model_receipt",
+      "input": {
+        "route_class": "CODEX_SPARK_SPAWN_WORKER",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "T2_CODE_AUTHOR",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_route": "gpt-5.3-codex-spark",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["reports/receipts"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "subagent_id": "",
+        "parent_run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530"
+      },
+      "expected": "SPAWNED_MODEL_RECEIPT_REQUIRED"
+    },
+    {
+      "id": "N4_spawn_model_mismatch",
+      "input": {
+        "route_class": "CODEX_SPARK_SPAWN_WORKER",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "T2_CODE_AUTHOR",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_route": "gpt-5.3-codex",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["reports/receipts"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "subagent_id": "019e-native-mismatch",
+        "parent_run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "output_artifact_path": "reports/receipts/canary.md",
+        "output_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "safety_gate": "PASS",
+        "secret_redaction": "PASS",
+        "output_artifact_exists": true
+      },
+      "expected": "SPAWNED_MODEL_MISMATCH_BLOCKED"
+    },
+    {
+      "id": "N5_parallel_same_file_edit",
+      "input": {
+        "route_class": "CODEX_SUBAGENT_PARALLEL_READONLY",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "QA",
+        "requested_model": "gpt-5.4-mini",
+        "resolved_model": "gpt-5.4-mini",
+        "actual_route": "gpt-5.4-mini",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["evals/codex-native-capability-router/fixtures.json"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "write_mode": true,
+        "write_surfaces": ["evals/codex-native-capability-router/fixtures.json"],
+        "other_active_write_surfaces": ["evals/codex-native-capability-router/fixtures.json"]
+      },
+      "expected": "PARALLEL_WRITE_CONFLICT_BLOCKED"
+    },
+    {
+      "id": "P1_readonly_parallel_mini",
+      "input": {
+        "route_class": "CODEX_SUBAGENT_PARALLEL_READONLY",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "READONLY_TRIAGE",
+        "requested_model": "gpt-5.4-mini",
+        "resolved_model": "gpt-5.4-mini",
+        "actual_route": "gpt-5.4-mini",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["evals/model-token-routing/fixtures.json", "evals/model-portfolio-routing/fixtures.json"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "write_mode": false
+      },
+      "expected": "CODEX_SUBAGENT_PARALLEL_READONLY_ALLOWED"
+    },
+    {
+      "id": "P2_t2_spark_spawn",
+      "input": {
+        "route_class": "CODEX_SPARK_SPAWN_WORKER",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "T2_CODE_AUTHOR",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_route": "gpt-5.3-codex-spark",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["reports/receipts/P0-codex-native-spark-spawn-canary-20260530.md"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "subagent_id": "019e7877-1278-7543-970d-fe1a99e584a9",
+        "parent_run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "output_artifact_path": "reports/receipts/P0-codex-native-spark-spawn-canary-20260530.md",
+        "output_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "safety_gate": "PASS",
+        "secret_redaction": "PASS",
+        "output_artifact_exists": true
+      },
+      "expected": "CODEX_SPARK_SPAWN_WORKER_ALLOWED"
+    },
+    {
+      "id": "P3_fallback_with_same_run_proof",
+      "input": {
+        "route_class": "T2_CODE_FALLBACK",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "T2_CODE_FALLBACK",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex",
+        "actual_route": "gpt-5.3-codex",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["governance/codex-native-capability-router-policy.md"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "same_run_spark_unavailable_proof": "PASS",
+        "return_to_spark": true
+      },
+      "expected": "CODEX_FALLBACK_ALLOWED"
+    },
+    {
+      "id": "N6_fallback_without_proof",
+      "input": {
+        "route_class": "T2_CODE_FALLBACK",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "T2_CODE_FALLBACK",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex",
+        "actual_route": "gpt-5.3-codex",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["governance/codex-native-capability-router-policy.md"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "same_run_spark_unavailable_proof": "MISSING",
+        "return_to_spark": true
+      },
+      "expected": "CODEX_FALLBACK_PROOF_REQUIRED"
+    },
+    {
+      "id": "N7_mcp_missing_for_mcp_task",
+      "input": {
+        "route_class": "CODEX_MCP_DIAGNOSTIC_RUN",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "T2_FAST_SCAN",
+        "requested_model": "gpt-5.4-mini",
+        "resolved_model": "gpt-5.4-mini",
+        "actual_route": "gpt-5.4-mini",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["MCP diagnostics"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "mcp_dependent_task": true,
+        "mcp_diagnostic_receipt": "MISSING"
+      },
+      "expected": "MCP_DIAGNOSTIC_REQUIRED"
+    },
+    {
+      "id": "N8_background_runaway",
+      "input": {
+        "route_class": "CODEX_BACKGROUND_TERMINAL_CONTROL",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "QA",
+        "requested_model": "gpt-5.4-mini",
+        "resolved_model": "gpt-5.4-mini",
+        "actual_route": "gpt-5.4-mini",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["background terminal state"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "background_runaway_detected": true,
+        "current_session_owned": false,
+        "stop_or_remediation_path": "MISSING",
+        "ps_or_equivalent_check": "PASS"
+      },
+      "expected": "BACKGROUND_RUNAWAY_REMEDIATION_REQUIRED"
+    },
+    {
+      "id": "N9_secret_output",
+      "input": {
+        "route_class": "CODEX_EXEC_NONINTERACTIVE_WORKER",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "T2_CODE_AUTHOR",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_route": "gpt-5.3-codex-spark",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["reports/receipts"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "secret_output_detected": true
+      },
+      "expected": "SECRET_OUTPUT_QUARANTINE_REQUIRED"
+    },
+    {
+      "id": "P4_exec_noninteractive",
+      "input": {
+        "route_class": "CODEX_EXEC_NONINTERACTIVE_WORKER",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "T2_CODE_AUTHOR",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_route": "gpt-5.3-codex-spark",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["reports/receipts"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "non_interactive": true,
+        "profile": "t2-code-author"
+      },
+      "expected": "CODEX_EXEC_NONINTERACTIVE_ALLOWED"
+    },
+    {
+      "id": "P5_profiled_role",
+      "input": {
+        "route_class": "CODEX_PROFILED_ROLE_RUN",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "T2_CODE_AUTHOR",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_route": "gpt-5.3-codex-spark",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["governance", "validators", "evals"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "profile": "t2-code-author",
+        "sandbox": "workspace-write",
+        "permission_profile": "control-spine-scoped",
+        "hooks_bound": true
+      },
+      "expected": "PROFILED_ROLE_RUN_ALLOWED"
+    },
+    {
+      "id": "N10_danger_full_access_unscoped",
+      "input": {
+        "route_class": "CODEX_PERMISSION_GUARDED_RUN",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "T2_CODE_AUTHOR",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_route": "gpt-5.3-codex-spark",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["runtime"],
+        "forbidden_surfaces": ["Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "sandbox": "danger-full-access",
+        "permission_profile": "unscoped",
+        "isolated_sandbox_task": false,
+        "receipt_path_exists": false
+      },
+      "expected": "DANGER_FULL_ACCESS_BLOCKED"
+    },
+    {
+      "id": "P6_mcp_diagnostic",
+      "input": {
+        "route_class": "CODEX_MCP_DIAGNOSTIC_RUN",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "T2_FAST_SCAN",
+        "requested_model": "gpt-5.4-mini",
+        "resolved_model": "gpt-5.4-mini",
+        "actual_route": "gpt-5.4-mini",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["MCP diagnostics"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "mcp_dependent_task": true,
+        "mcp_diagnostic_receipt": "PASS"
+      },
+      "expected": "CODEX_MCP_DIAGNOSTIC_ALLOWED"
+    },
+    {
+      "id": "P7_background_check",
+      "input": {
+        "route_class": "CODEX_BACKGROUND_TERMINAL_CONTROL",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "QA",
+        "requested_model": "gpt-5.4-mini",
+        "resolved_model": "gpt-5.4-mini",
+        "actual_route": "gpt-5.4-mini",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["background terminal state"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "background_runaway_detected": false,
+        "ps_or_equivalent_check": "PASS"
+      },
+      "expected": "BACKGROUND_TERMINAL_CONTROL_ALLOWED"
+    },
+    {
+      "id": "P8_feature_flag_control",
+      "input": {
+        "route_class": "CODEX_FEATURE_FLAG_CONTROL",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "QA",
+        "requested_model": "gpt-5.4-mini",
+        "resolved_model": "gpt-5.4-mini",
+        "actual_route": "gpt-5.4-mini",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["feature flags"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "feature_enable_requested": true,
+        "validator_coverage": "PASS",
+        "feature_list_receipt": "PASS"
+      },
+      "expected": "CODEX_FEATURE_FLAG_CONTROL_ALLOWED"
+    },
+    {
+      "id": "P9_done_gate",
+      "input": {
+        "route_class": "DONE_GATE",
+        "run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+        "task_id": "AH-622",
+        "actor_role": "REGISTRAR",
+        "requested_model": "deterministic",
+        "resolved_model": "deterministic",
+        "actual_route": "deterministic",
+        "owner_manual_model_required": false,
+        "allowed_surfaces": ["INDEX.md", "ARTIFACT_REGISTER.md", "PR_QUEUE_REGISTER.md"],
+        "forbidden_surfaces": ["runtime", "Docker", "DB", "proxy", "firewall", "DNS", "secrets"],
+        "policy": "PASS",
+        "schema": "PASS",
+        "validator": "PASS",
+        "fixtures": "PASS",
+        "spark_spawn_canary": "PASS",
+        "readonly_parallel_canary": "PASS",
+        "mcp_diagnostic_canary": "PASS",
+        "background_terminal_canary": "PASS",
+        "registers": "PASS",
+        "task_readback": "PASS",
+        "active_blocker": "none"
+      },
+      "expected": "DONE_WITH_CODEX_NATIVE_SPAWN_AND_CLI_GUARDRAILS"
+    }
+  ]
+}
