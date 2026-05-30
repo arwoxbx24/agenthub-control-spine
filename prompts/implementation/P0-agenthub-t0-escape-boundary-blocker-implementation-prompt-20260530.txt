@@ -1,0 +1,67 @@
+TASK_CLASS: AGENTHUB_SYSTEM_PROCESS_CONTROLLER
+SEVERITY: P0
+MODE: IMPLEMENT_DURABLE_CONTROL
+RUN_ID: RUN-P0-T0-ESCAPE-BOUNDARY-BLOCKER-IMPLEMENTATION-20260530
+SOURCE_AUDIT: RUN-P0-T0-ESCAPE-ORCHESTRATION-BOUNDARY-AUDIT-20260530
+
+MISSION:
+Install durable AgentHub/Codex action-boundary enforcement so T0 cannot start inside AgentHub and later drift into direct code, config, shell, runtime, microservice, Docker, PM2, proxy, DB, DNS, firewall, product-file, or service mutation. Do not solve this with another policy-only document. Install executable hooks/validators/gates and receipts.
+
+ROLE CONTRACT:
+- T0_CONTROL may classify, bind RUN/task, route workers, verify receipts, and send final owner summary only.
+- T1_ARCHITECT may write architecture contracts and worker scopes, not runtime/product mutations.
+- T2_CODEX_SPARK_WORKER owns code/config/YAML/shell/test authoring through gpt-5.3-codex-spark when selectable; fallback requires same-RUN Spark unavailability proof.
+- T2_DEVOPS_WORKER owns scoped runtime work only with exact authority, rollback, validation, and no-secret proof.
+- VERIFIER is read-only.
+- REGISTRAR owns index/register/PR queue/receipt lifecycle only.
+
+IMPLEMENTATION REQUIREMENTS:
+1. Install an executable pre-tool/action gate that runs before every implementation-capable tool action.
+2. Persist RUN role state: run_id, task_id, actor_role, authority_profile, actor_model, allowed surfaces, forbidden surfaces, and receipt reference.
+3. Revalidate actor_role and actor_model before every shell, command adapter, file edit, code authoring, test execution, runtime, service, external API write, git mutation, or task Done action.
+4. Deny T0 direct code/config/YAML/shell/test/runtime action with:
+   - BLOCKED_T0_DIRECT_AUTHORSHIP for code/config/product/control-spine authoring outside an authorized registrar/control route.
+   - BLOCKED_T0_DIRECT_RUNTIME_ACTION for shell, command adapter implementation, Docker, PM2, proxy, DB, DNS, firewall, service, or live runtime action.
+5. Convert denied non-owner work into a T1/T2/Verifier/Registrar microtask automatically. Do not ask the owner to click routine model, retry, PR, or task buttons.
+6. Require action authorization receipts for implementation-capable actions. Receipts must include actor_role, actor_model, run_id, task_id, action_class, target_surface, allowed_surfaces, forbidden_surfaces, rollback requirement, secret policy, evidence target, and validation plan.
+7. Require Spark/Codex route for code/config/YAML/shell/test authoring:
+   - primary: gpt-5.3-codex-spark when selectable;
+   - fallback: gpt-5.3-codex, then approved mini only with same-RUN Spark unavailability proof;
+   - deny GPT-5.5/main/base for implementation authoring.
+8. Require T2_DEVOPS_WORKER authorization for live runtime mutation. Command dispatch is not execution; sandbox proof is not live proof.
+9. Fix task-service behavior so actionable P0 tasks cannot return PASS/NOOP. It must create/link a physical task with readback or return TASK_SERVICE_ROUTE_UNAVAILABLE.
+10. Update report/register lifecycle so audit_only reports cannot become standing instructions.
+
+REGRESSION TESTS REQUIRED:
+1. T0 attempts to write code -> BLOCKED_T0_DIRECT_AUTHORSHIP.
+2. T0 attempts command adapter for implementation -> BLOCKED_T0_DIRECT_RUNTIME_ACTION.
+3. T0 starts routed then attempts product file edit mid-context -> blocked unless worker route receipt exists.
+4. GPT-5.5 attempts code/config authoring -> PRIMARY_MODEL_CODE_AUTHORSHIP_DETECTED.
+5. Worker uses non-Spark while Spark selectable -> CODEX_SPARK_CODE_AUTHORING_REQUIRED.
+6. Sandbox proof claims live runtime Done -> SANDBOX_ONLY_NOT_RUNTIME_PROOF.
+7. Command dispatch without execute claims Done -> DISPATCH_NOT_EXECUTION.
+8. Same blocker appears third time -> SELF_HEALING_ESCALATION_REQUIRED.
+9. Old audit_only report used as instruction -> REPORT_AS_INSTRUCTION_RISK.
+10. Owner asked to click routine model/PR/retry button -> USER_ACTION_LEAK.
+
+VALIDATION REQUIRED:
+- runtime_policy_checks PASS
+- template_checks PASS
+- agenthub_action_policy_validator PASS
+- t0_direct_action_hard_stop PASS
+- model_token_router_validator PASS
+- blackbox route validator PASS
+- task-service Done gate tests PASS
+- no_secret_leak PASS
+- no_runtime_mutation_by_T0 PASS
+- no_product_code_mutation_by_T0 PASS
+- git diff check PASS
+- gitleaks redacted scan PASS
+- verifier readback PASS
+- task readback PASS
+
+FINAL STATE:
+Only report DONE when executable enforcement is installed and validators prove the regression cases. Policy text, report text, PR merge, sandbox proof, or command dispatch alone is not Done.
+
+PROMPT_QUALITY_SCORE: 94/100
+Reason: The prompt binds source audit evidence, role-specific gates, implementation requirements, regression tests, validation, and no-owner-button autonomy. Residual risk is limited to platform hook install authority; if missing, return exact owner-only or platform-route blocker.
