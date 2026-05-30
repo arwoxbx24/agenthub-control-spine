@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/t0_escape_boundary_action.schema.json",
+  "title": "T0 Escape Boundary Action Receipt",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "run_id",
+    "task_id",
+    "scope_signature",
+    "actor_role",
+    "actor_model",
+    "worker_id",
+    "action_class",
+    "target_surface",
+    "allowed_surfaces",
+    "forbidden_surfaces",
+    "route_receipt",
+    "model_route",
+    "secret_redaction",
+    "evidence_path",
+    "validation_plan",
+    "owner_output_mode"
+  ],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "scope_signature": { "type": "string", "minLength": 1 },
+    "actor_role": {
+      "type": "string",
+      "enum": [
+        "T0_CONTROL",
+        "T1_ARCHITECT",
+        "T2_CODEX_WORKER",
+        "T2_DEVOPS_WORKER",
+        "REGISTRAR",
+        "VERIFIER"
+      ]
+    },
+    "actor_model": { "type": "string", "minLength": 1 },
+    "worker_id": { "type": "string", "minLength": 1 },
+    "action_class": { "type": "string", "minLength": 1 },
+    "target_surface": { "type": "string", "minLength": 1 },
+    "allowed_surfaces": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1
+    },
+    "forbidden_surfaces": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "route_receipt": { "type": "string", "minLength": 1 },
+    "model_route": { "type": "string", "minLength": 1 },
+    "secret_redaction": {
+      "type": "string",
+      "enum": ["PASS", "FAIL", "MISSING"]
+    },
+    "evidence_path": { "type": "string", "minLength": 1 },
+    "validation_plan": { "type": "string", "minLength": 1 },
+    "owner_output_mode": {
+      "type": "string",
+      "enum": ["SUPPRESSED_UNTIL_FINAL", "FINAL_ONLY", "PROGRESS_NARRATION"]
+    }
+  }
+}

@@ -88,6 +88,19 @@ Every authorization receipt must include:
 - `owner_only_check`
 - `model_route`
 
+Implementation-capable actions must also pass the P0 T0 escape boundary gates
+from `governance/policies/t0-escape-boundary-gates-policy.md` before any tool,
+dispatch, merge, task transition, register update, live adapter call, or Done
+attempt:
+
+- `T0_DIRECT_ACTION_GATE`
+- `ROLE_STATE_REVALIDATION_GATE`
+- `CODE_AUTHORING_ROUTE_GATE`
+- `LIVE_ADAPTER_AUTHORITY_GATE`
+- `TASK_SERVICE_CONTINUOUS_LOOP_GATE`
+- `DONE_GATE_HARDENER`
+- `OWNER_OUTPUT_SUPPRESSION_GATE`
+
 ## Matrix Entries
 
 | Role | Operation | Surface | Required model/tool route | Authority | Required outcome |
@@ -95,8 +108,13 @@ Every authorization receipt must include:
 | `T0_CONTROL` | `dispatch_worker` | `AgentHub_lifecycle` | control route | control-only | `ALLOW_CONTROL_ROUTE` |
 | `T0_CONTROL` | `runtime_mutate` | any runtime surface | none | denied | `BLOCKED_T0_DIRECT_RUNTIME_ACTION` |
 | `T0_CONTROL` | `write_artifact` | `control_spine_repo` | none | denied | `BLOCKED_T0_DIRECT_AUTHORSHIP` |
+| `T0_CONTROL` | `run_code_model` | any implementation surface | none | denied | `BLOCKED_T0_DIRECT_AUTHORSHIP` |
+| `T0_CONTROL` | `external_api_write` | live/runtime/task-service implementation surface | none | denied unless final/route-only control action | `BLOCKED_T0_DIRECT_RUNTIME_ACTION` |
 | `T1_ARCHITECT` | `install_policy` | `control_spine_repo` | architecture route | policy author | `ALLOW_POLICY_ARCHITECTURE` |
 | `T2_CODEX_WORKER` | `run_code_model` | `control_spine_repo` | Codex primary, same-RUN Codex fallback only | scoped worker | `ALLOW_CODEX_AUTHORIZED_WORKER` |
+| `T2_CODEX_WORKER` | `write_artifact` | assigned code/config/YAML/shell/test/IaC surface | `gpt-5.3-codex-spark` primary; same-RUN fallback evidence required | scoped worker | `ALLOW_CODEX_SPARK_SCOPED_AUTHORING` |
+| `T2_DEVOPS_WORKER` | `runtime_mutate` | assigned live/runtime surface only | live-worker route with rollback, validation, and no-secret proof | scoped live worker | `ALLOW_T2_LIVE_WORKER_SCOPED_RUNTIME_ACTION` |
 | `T2_REGISTRAR` | `patch_register` | `control_spine_repo` | deterministic or low-cost registrar route | scoped registrar | `ALLOW_REGISTRAR_PATCH` |
 | `T2_SECRET_HANDLE_REGISTRAR` | `write_artifact` | `secrets_manifest` | registrar route | metadata-only | `ALLOW_SECRET_HANDLE_METADATA` |
 | `VERIFIER` | `validate_policy` | assigned evidence | verifier route | read-only | `ALLOW_READONLY_VERIFY` |
+| `REGISTRAR` | `patch_register` | lifecycle/register/task readback surface | registrar route | lifecycle-only | `ALLOW_REGISTRAR_LIFECYCLE` |
