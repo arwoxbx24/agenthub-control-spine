@@ -4,7 +4,7 @@
       "id": "P1_t0_routes_without_authoring",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "T0_CONTROL",
         "actor_model": "gpt-5.5",
@@ -26,7 +26,7 @@
       "id": "P2_t2_codex_spark_authoring_allowed",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "T2_CODEX_WORKER",
         "actor_model": "gpt-5.3-codex-spark",
@@ -50,7 +50,7 @@
       "id": "P3_registrar_register_update_allowed",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "REGISTRAR",
         "actor_model": "gpt-5.4-mini",
@@ -72,7 +72,7 @@
       "id": "P4_verifier_readonly_allowed",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "VERIFIER",
         "actor_model": "gpt-5.4-mini",
@@ -94,7 +94,7 @@
       "id": "P5_t2_live_worker_runtime_allowed",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "T2_DEVOPS_WORKER",
         "actor_model": "gpt-5.3-codex-spark",
@@ -122,7 +122,7 @@
       "id": "P6_done_with_evidence_allowed",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "T0_CONTROL",
         "actor_model": "gpt-5.5",
@@ -153,7 +153,7 @@
       "id": "P7_routine_missing_proof_microtask_allowed",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "REGISTRAR",
         "actor_model": "gpt-5.4-mini",
@@ -177,7 +177,7 @@
       "id": "N1_t0_code_authoring_blocked",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "T0_CONTROL",
         "actor_model": "gpt-5.5",
@@ -199,7 +199,7 @@
       "id": "N2_t0_runtime_action_blocked",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "T0_CONTROL",
         "actor_model": "gpt-5.5",
@@ -221,7 +221,7 @@
       "id": "N3_mid_context_role_drift_blocked",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "T2_CODEX_WORKER",
         "actor_model": "gpt-5.3-codex-spark",
@@ -246,7 +246,7 @@
       "id": "N4_gpt55_code_authoring_blocked",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "T2_CODEX_WORKER",
         "actor_model": "gpt-5.5",
@@ -269,7 +269,7 @@
       "id": "N5_non_spark_while_spark_selectable_blocked",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "T2_CODEX_WORKER",
         "actor_model": "gpt-5.3-codex",
@@ -293,7 +293,7 @@
       "id": "N6_sandbox_done_for_live_blocked",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "T0_CONTROL",
         "actor_model": "gpt-5.5",
@@ -317,7 +317,7 @@
       "id": "N7_dispatch_without_execute_blocked",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "T0_CONTROL",
         "actor_model": "gpt-5.5",
@@ -340,7 +340,7 @@
       "id": "N8_owner_progress_narration_blocked",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "T0_CONTROL",
         "actor_model": "gpt-5.5",
@@ -363,7 +363,7 @@
       "id": "N9_routine_owner_button_blocked",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "REGISTRAR",
         "actor_model": "gpt-5.4-mini",
@@ -387,7 +387,7 @@
       "id": "N10_audit_only_done_blocked",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "T0_CONTROL",
         "actor_model": "gpt-5.5",
@@ -410,7 +410,7 @@
       "id": "N11_duplicate_run_blocked",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "T0_CONTROL",
         "actor_model": "gpt-5.5",
@@ -433,7 +433,7 @@
       "id": "N12_technical_dump_final_blocked",
       "input": {
         "run_id": "RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530",
-        "task_id": "3-640",
+        "task_id": "AH-618",
         "scope_signature": "P0_T0_ESCAPE_BOUNDARY_GATES",
         "actor_role": "T0_CONTROL",
         "actor_model": "gpt-5.5",

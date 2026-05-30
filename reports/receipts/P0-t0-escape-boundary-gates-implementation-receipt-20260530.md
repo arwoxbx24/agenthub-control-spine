@@ -2,7 +2,7 @@
 artifact_id: p0-t0-escape-boundary-gates-implementation-receipt-20260530
 artifact_type: implementation_receipt
 owner_role: T2 Codex Worker / Registrar / Verifier
-source_task: 3-640
+source_task: AH-618
 run_id: RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530
 created_at: 2026-05-30
 lifecycle_status: operational_receipt

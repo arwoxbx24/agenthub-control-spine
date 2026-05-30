@@ -241,11 +241,11 @@ status: draft
 | `reports/audits/P0-t0-escape-J-final-boundary-decision-20260530.md` | audit report | 3-640 | audit-only |
 | `prompts/implementation/P0-agenthub-t0-escape-boundary-blocker-implementation-prompt-20260530.txt` | implementation prompt | 3-640 | active-control |
 | `reports/receipts/P0-t0-escape-orchestration-boundary-audit-receipt-20260530.md` | operational receipt | 3-640 | operational-receipt |
-| `governance/policies/t0-escape-boundary-gates-policy.md` | governance policy | 3-640 | active |
-| `schemas/t0_escape_boundary_action.schema.json` | schema | 3-640 | active |
-| `validators/t0_escape_boundary_gates_validator.rb` | validator | 3-640 | active |
-| `evals/t0-escape-boundary-gates/fixtures.json` | eval fixtures | 3-640 | active |
-| `reports/receipts/P0-t0-escape-boundary-gates-implementation-receipt-20260530.md` | implementation receipt | 3-640 | operational-receipt |
+| `governance/policies/t0-escape-boundary-gates-policy.md` | governance policy | AH-618 | active |
+| `schemas/t0_escape_boundary_action.schema.json` | schema | AH-618 | active |
+| `validators/t0_escape_boundary_gates_validator.rb` | validator | AH-618 | active |
+| `evals/t0-escape-boundary-gates/fixtures.json` | eval fixtures | AH-618 | active |
+| `reports/receipts/P0-t0-escape-boundary-gates-implementation-receipt-20260530.md` | implementation receipt | AH-618 | operational-receipt |
 | `reports/incidents/P0-t0-boundary-violation-multi-agent-runaway-20260527.md` | incident report | AH-590 | audit-only |
 | `reports/receipts/P0-agenthub-backend-only-repo-first-architecture-receipt-20260526.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-t0-hard-stop-multi-agent-isolation-receipt-20260527.md` | operational receipt | AH-590 | operational-receipt |

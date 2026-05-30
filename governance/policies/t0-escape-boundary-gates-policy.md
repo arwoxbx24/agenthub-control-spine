@@ -2,7 +2,7 @@
 artifact_id: t0-escape-boundary-gates-policy
 artifact_type: active_policy
 owner_role: T1 Architect / AgentHub Core Controller
-source_task: 3-640
+source_task: AH-618
 run_id: RUN-P0-T0-ESCAPE-BOUNDARY-GATES-IMPLEMENTATION-20260530
 created_at: 2026-05-30
 lifecycle_status: active_policy
