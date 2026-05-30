@@ -56,15 +56,22 @@ The circuit breaker requires:
 - same-gate retry stop after two failures.
 
 If primary Codex capacity is unavailable, fallback must stay in the same
-`run_id` and use an approved lower-cost Codex-capable or mini worker route. T0
-direct authorship and broad general-model command loops remain forbidden.
+`run_id` and use the approved chain: `gpt-5.3-codex`, then `gpt-5.4-mini`,
+then `gpt-5.4`. The fallback receipt must include same-RUN unavailability proof
+and must automatically return to Spark when Spark becomes available. T0 direct
+authorship and broad general-model command loops remain forbidden.
 
 Every dispatch receipt for implementation-capable work must include:
 
 - `worker_model`;
+- `requested_model`;
+- `resolved_model`;
+- `actual_route`;
 - `model_route_reason`;
 - `codex_available`;
 - `fallback_reason` when fallback is used, otherwise `null`;
+- `same_run_fallback_proof`;
+- `return_to_spark_when_available`;
 - token/context budget class;
 - residuals.
 
@@ -128,6 +135,20 @@ Allowed terminal states for this contour are:
 The lease/timeout sandbox auto-requeue class is explicitly unrelated to this
 proof contour. It cannot satisfy or contribute to Codex Spark code-authoring
 model proof.
+
+## Model Portfolio And Continuous Loop Binding
+
+The complete model portfolio route map is installed in
+`governance/model-portfolio-utilization-policy.md`. Code/config/YAML/shell/test,
+frontend, backend, and IaC work must include `requested_model`,
+`resolved_model`, and `actual_route`. `agenthub-sandbox-worker` is not accepted
+as Spark proof.
+
+Implementation-capable dispatch receipts must also include
+`same_run_fallback_proof`, `return_to_spark_when_available`, and
+`owner_manual_model_required=false`. Task-service routing must complete task
+creation, microtasks, evidence, validation, tracker update, PR/readback, and
+Done without owner progress readback.
 
 ## Loop and Budget Rules
 

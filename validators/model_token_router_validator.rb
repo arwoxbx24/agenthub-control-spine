@@ -52,9 +52,14 @@ def route(input)
   when "T1_ARCHITECT"
     "REASONING_MODEL_ALLOWED_WITH_BOUNDED_SOURCE_PACKET"
   when "T2_CODEX_IMPLEMENTER"
-    codex_primary_models = %w[gpt-5.3-codex-spark]
-    codex_fallback_models = %w[gpt-5.3-codex gpt-5.1-codex-mini gpt-5.4-mini]
+    codex_primary_model = "gpt-5.3-codex-spark"
+    codex_fallback_models = %w[gpt-5.3-codex gpt-5.4-mini gpt-5.4]
     model = input.fetch("worker_model", "")
+    requested = input.fetch("requested_model", model)
+    resolved = input.fetch("resolved_model", model)
+    actual_route = input.fetch("actual_route", resolved)
+
+    return "SANDBOX_ROUTE_NOT_SPARK_PROOF" if actual_route == "agenthub-sandbox-worker"
 
     if input.fetch("code_authoring_model_enforcement", false)
       requested_model = input.fetch("requested_model", input.fetch("cli_requested_model", "")).to_s
@@ -106,12 +111,14 @@ def route(input)
     end
 
     if input.fetch("codex_available", false)
-      return "CODEX_SPARK_ROUTE_REQUIRED" unless codex_primary_models.include?(model)
+      return "CODEX_SPARK_ROUTE_REQUIRED" unless [requested, resolved, actual_route, model].all? { |value| value == codex_primary_model }
       return "FALLBACK_REASON_FORBIDDEN_ON_PRIMARY_ROUTE" unless input.fetch("fallback_reason", nil).nil?
 
-      "CODEX_PRIMARY_ROUTE_PASS"
+      "CODEX_SPARK_ROUTE_PASS"
     elsif input.fetch("same_run_fallback", false) && codex_fallback_models.include?(model)
       return "FALLBACK_REASON_REQUIRED" if input.fetch("fallback_reason", "").empty?
+      return "FALLBACK_PROOF_REQUIRED" unless input.fetch("same_run_fallback_proof", "PASS") == "PASS"
+      return "RETURN_TO_SPARK_REQUIRED" unless input.fetch("return_to_spark_when_available", true) == true
 
       "SAME_RUN_CODEX_FALLBACK_PASS"
     else

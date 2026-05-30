@@ -1,257 +1,237 @@
 {
-  "schema": "agenthub.model_portfolio_routing_tests.v1",
-  "source_task": "AH-590",
-  "run_id": "RUN-P0-GLOBAL-MODEL-PORTFOLIO-ROUTE-CLOSURE-20260529",
-  "routes": [
+  "cases": [
     {
-      "id": "CONTROL_T0_ROUTING_ONLY",
+      "id": "P1_t0_pregateway",
       "input": {
-        "route_class": "CONTROL_T0",
-        "task_class": "T0_CONTROL",
-        "actor_role": "T0_CONTROL",
-        "actor_model": "gpt-5.5",
-        "task_surface": "routing",
-        "code_config_surface": false,
-        "route_state": "active",
-        "canary_status": "active_task_proof",
-        "proof_source": "agenthub_control_receipt",
-        "open_pr_queue_state": "none"
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "T0_PREGATEWAY",
+        "task_class": "control",
+        "worker_role": "T0_CONTROL",
+        "requested_model": "gpt-5.5",
+        "resolved_model": "gpt-5.5",
+        "actual_route": "gpt-5.5",
+        "owner_manual_model_required": false
       },
-      "expected": "MODEL_ROUTE_CLASSIFIED"
+      "expected": "T0_ROUTE_PASS"
     },
     {
-      "id": "CONTROL_T0_CODE_DENIED",
+      "id": "P2_t1_architect",
       "input": {
-        "route_class": "CONTROL_T0",
-        "task_class": "T0_CONTROL",
-        "actor_role": "T0_CONTROL",
-        "actor_model": "gpt-5.5",
-        "task_surface": "code",
-        "code_config_surface": true,
-        "requests_code_or_command": true,
-        "route_state": "active",
-        "canary_status": "active_task_proof",
-        "proof_source": "agenthub_control_receipt"
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "T1_ARCHITECT",
+        "task_class": "architecture",
+        "worker_role": "T1_ARCHITECT",
+        "requested_model": "gpt-5.4",
+        "resolved_model": "gpt-5.4",
+        "actual_route": "gpt-5.4",
+        "owner_manual_model_required": false
       },
-      "expected": "T0_DIRECT_CODE_AUTHORSHIP_DETECTED"
+      "expected": "T1_ROUTE_PASS"
     },
     {
-      "id": "ARCHITECT_BOUNDED_SOURCE_PASS",
+      "id": "P3_spark_code_canary",
       "input": {
-        "route_class": "ARCHITECT_T1",
-        "task_class": "T1_ARCHITECT",
-        "actor_role": "T1_ARCHITECT",
-        "actor_model": "gpt-5.5",
-        "task_surface": "architecture",
-        "bounded_source_packet": true,
-        "route_state": "active",
-        "canary_status": "active_task_proof",
-        "proof_source": "architecture_receipt"
-      },
-      "expected": "MODEL_ROUTE_CLASSIFIED"
-    },
-    {
-      "id": "CODEX_PRIMARY_SPARK_JSON_PROOF_PASS",
-      "input": {
-        "route_class": "CODEX_PRIMARY_T2",
-        "task_class": "T2_CODEX_WORKER",
-        "actor_role": "T2_CODEX_WORKER",
-        "actor_model": "gpt-5.3-codex-spark",
-        "task_surface": "code config yaml shell",
-        "code_config_surface": true,
-        "route_state": "active",
-        "canary_status": "active_task_proof",
-        "proof_source": "codex_cli_json_usage_receipt",
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "T2_CODEX_IMPLEMENTER",
+        "task_class": "config",
+        "worker_role": "T2_CODEX_IMPLEMENTER",
         "requested_model": "gpt-5.3-codex-spark",
-        "usage_input_tokens": 27158,
-        "usage_output_tokens": 823,
-        "fallback_used": false
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_route": "gpt-5.3-codex-spark",
+        "owner_manual_model_required": false,
+        "spark_available": true,
+        "code_artifact_path_exists": true
       },
-      "expected": "MODEL_ROUTE_CLASSIFIED"
+      "expected": "CODEX_SPARK_CANARY_PASS"
     },
     {
-      "id": "CODEX_PRIMARY_GPT55_DENIED",
+      "id": "P4_fallback_canary",
       "input": {
-        "route_class": "CODEX_PRIMARY_T2",
-        "task_class": "T2_CODEX_WORKER",
-        "actor_role": "T2_CODEX_WORKER",
-        "actor_model": "gpt-5.5",
-        "task_surface": "code",
-        "code_config_surface": true,
-        "route_state": "active",
-        "canary_status": "active_task_proof",
-        "proof_source": "command_request"
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "T2_CODEX_IMPLEMENTER",
+        "task_class": "test",
+        "worker_role": "T2_CODEX_IMPLEMENTER",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex",
+        "actual_route": "gpt-5.3-codex",
+        "owner_manual_model_required": false,
+        "spark_available": false,
+        "same_run_fallback_proof": "PASS",
+        "fallback_reason": "SPARK_UNAVAILABLE_SIMULATED_CANARY",
+        "return_to_spark_when_available": true
       },
-      "expected": "PRIMARY_MODEL_CODE_AUTHORSHIP_DETECTED"
+      "expected": "CODEX_FALLBACK_CANARY_PASS"
     },
     {
-      "id": "CODEX_FALLBACK_WITH_SAME_RUN_PROOF_PASS",
+      "id": "P5_task_service_route",
       "input": {
-        "route_class": "CODEX_FALLBACK_T2",
-        "task_class": "T2_CODEX_WORKER",
-        "actor_role": "T2_CODEX_WORKER",
-        "actor_model": "gpt-5.1-codex-mini",
-        "task_surface": "config",
-        "code_config_surface": true,
-        "route_state": "active",
-        "canary_status": "active_task_proof",
-        "proof_source": "same_run_fallback_receipt",
-        "fallback_used": true,
-        "same_run_unavailability_proof": "same-run-spark-unavailable"
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "TASK_SERVICE",
+        "task_class": "task_service",
+        "worker_role": "TASK_SERVICE",
+        "requested_model": "deterministic",
+        "resolved_model": "deterministic",
+        "actual_route": "deterministic",
+        "owner_manual_model_required": false
       },
-      "expected": "MODEL_ROUTE_CLASSIFIED"
+      "expected": "TASK_SERVICE_ROUTE_PASS"
     },
     {
-      "id": "CODEX_FALLBACK_WITHOUT_PROOF_DENIED",
+      "id": "P6_research_not_spark",
       "input": {
-        "route_class": "CODEX_FALLBACK_T2",
-        "task_class": "T2_CODEX_WORKER",
-        "actor_role": "T2_CODEX_WORKER",
-        "actor_model": "gpt-5.1-codex-mini",
-        "task_surface": "config",
-        "code_config_surface": true,
-        "route_state": "active",
-        "canary_status": "active_task_proof",
-        "proof_source": "fallback_request",
-        "fallback_used": true,
-        "same_run_unavailability_proof": ""
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "RESEARCH",
+        "task_class": "research",
+        "worker_role": "RESEARCH",
+        "requested_model": "gpt-5.4-mini",
+        "resolved_model": "gpt-5.4-mini",
+        "actual_route": "tool_search",
+        "owner_manual_model_required": false
       },
-      "expected": "FALLBACK_WITHOUT_SPARK_UNAVAILABILITY_PROOF"
+      "expected": "RESEARCH_ROUTE_PASS"
     },
     {
-      "id": "REGISTRAR_LOWER_COST_PASS",
+      "id": "P7_continuous_loop",
       "input": {
-        "route_class": "REGISTRAR",
-        "task_class": "T2_REGISTRAR",
-        "actor_role": "T2_REGISTRAR",
-        "actor_model": "deterministic_tool",
-        "task_surface": "register",
-        "route_state": "active",
-        "canary_status": "active_task_proof",
-        "proof_source": "register_patch_receipt"
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "CONTINUOUS_TASK_LOOP",
+        "task_class": "task_loop",
+        "worker_role": "TASK_SERVICE",
+        "requested_model": "deterministic",
+        "resolved_model": "deterministic",
+        "actual_route": "deterministic",
+        "owner_manual_model_required": false,
+        "request_capture": "PASS",
+        "duplicate_check": "PASS",
+        "task_creation": "PASS",
+        "microtask_execution": "PASS",
+        "stage_movement": "PASS",
+        "evidence_attachment": "PASS",
+        "validation": "PASS",
+        "done_gate": "PASS",
+        "final_output": "PASS",
+        "owner_progress_readback": false
       },
-      "expected": "MODEL_ROUTE_CLASSIFIED"
+      "expected": "CONTINUOUS_LOOP_PASS"
     },
     {
-      "id": "VERIFIER_MUTATION_DENIED",
+      "id": "P8_done_gate",
       "input": {
-        "route_class": "VERIFIER_QA",
-        "task_class": "VERIFIER",
-        "actor_role": "VERIFIER",
-        "actor_model": "verifier_route",
-        "task_surface": "validation",
-        "attempts_mutation": true,
-        "route_state": "active",
-        "canary_status": "active_task_proof",
-        "proof_source": "verification_receipt"
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "DONE_GATE",
+        "task_class": "closure",
+        "worker_role": "VERIFIER",
+        "requested_model": "deterministic",
+        "resolved_model": "deterministic",
+        "actual_route": "deterministic",
+        "owner_manual_model_required": false,
+        "model_portfolio_installed": "PASS",
+        "continuous_loop_installed": "PASS",
+        "t0_escape_gate_installed": "PASS",
+        "spark_canary": "PASS",
+        "fallback_canary": "PASS",
+        "validators": "PASS",
+        "registers": "PASS",
+        "task_readback": "PASS",
+        "pr_finalized": "PASS",
+        "active_blocker": "none"
       },
-      "expected": "VERIFIER_MUTATION_FORBIDDEN"
+      "expected": "DONE_WITH_MODEL_PORTFOLIO_AND_CONTINUOUS_LOOP_EVIDENCE"
     },
     {
-      "id": "SECURITY_SCANNER_FIRST_PASS",
+      "id": "N1_t0_code_blocked",
       "input": {
-        "route_class": "SECURITY_REDACTION",
-        "task_class": "SECURITY_REDACTION",
-        "actor_role": "SECURITY_REDACTION",
-        "actor_model": "deterministic_scanner",
-        "task_surface": "secret redaction",
-        "deterministic_scanner_first": true,
-        "route_state": "active",
-        "canary_status": "active_task_proof",
-        "proof_source": "gitleaks_redacted_receipt"
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "T2_CODEX_IMPLEMENTER",
+        "task_class": "code",
+        "worker_role": "T0_CONTROL",
+        "requested_model": "gpt-5.5",
+        "resolved_model": "gpt-5.5",
+        "actual_route": "gpt-5.5",
+        "owner_manual_model_required": false
       },
-      "expected": "MODEL_ROUTE_CLASSIFIED"
+      "expected": "T0_CODE_AUTHORSHIP_BLOCKED"
     },
     {
-      "id": "BROWSER_ROUTE_IDLE_ACCEPTED",
+      "id": "N2_t1_mutation_blocked",
       "input": {
-        "route_class": "BROWSER_PRODUCT_QA",
-        "task_class": "BROWSER_PRODUCT_QA",
-        "actor_role": "BROWSER_PRODUCT_QA",
-        "actor_model": "browser_qa_route",
-        "task_surface": "browser",
-        "route_state": "idle",
-        "canary_status": "MODEL_ROUTE_IDLE_NO_ELIGIBLE_TASKS",
-        "proof_source": "idle_classification"
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "T2_CODEX_IMPLEMENTER",
+        "task_class": "yaml",
+        "worker_role": "T1_ARCHITECT",
+        "requested_model": "gpt-5.4",
+        "resolved_model": "gpt-5.4",
+        "actual_route": "gpt-5.4",
+        "owner_manual_model_required": false
       },
-      "expected": "MODEL_ROUTE_CLASSIFIED"
+      "expected": "T1_IMPLEMENTATION_MUTATION_BLOCKED"
     },
     {
-      "id": "DEVOPS_UNAVAILABLE_TYPED_BLOCKER_ACCEPTED",
+      "id": "N3_sandbox_not_spark",
       "input": {
-        "route_class": "DEVOPS_RUNTIME",
-        "task_class": "T2_DEVOPS_WORKER",
-        "actor_role": "T2_DEVOPS_WORKER",
-        "actor_model": "scoped_devops_worker",
-        "task_surface": "runtime",
-        "route_state": "unavailable",
-        "canary_status": "typed_unavailable",
-        "proof_source": "owner_only_gate_receipt",
-        "residual_blocker": "OWNER_ONLY_CREDENTIAL_OR_PLAN_GATE"
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "T2_CODEX_IMPLEMENTER",
+        "task_class": "config",
+        "worker_role": "T2_CODEX_IMPLEMENTER",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "agenthub-sandbox-worker",
+        "actual_route": "agenthub-sandbox-worker",
+        "owner_manual_model_required": false,
+        "spark_available": true,
+        "code_artifact_path_exists": true
       },
-      "expected": "MODEL_ROUTE_CLASSIFIED"
+      "expected": "SANDBOX_ROUTE_NOT_SPARK_PROOF"
     },
     {
-      "id": "OWNER_METER_RESIDUAL_NOT_GPT55_PERMISSION",
+      "id": "N4_owner_model_choice_blocked",
       "input": {
-        "route_class": "CODEX_PRIMARY_T2",
-        "task_class": "T2_CODEX_WORKER",
-        "actor_role": "T2_CODEX_WORKER",
-        "actor_model": "gpt-5.5",
-        "task_surface": "code",
-        "code_config_surface": true,
-        "route_state": "active",
-        "canary_status": "active_task_proof",
-        "proof_source": "owner_visible_meter_contradiction",
-        "residual_blocker": "CODEX_SPARK_PLATFORM_METER_UNAVAILABLE"
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "T2_CODEX_IMPLEMENTER",
+        "task_class": "config",
+        "worker_role": "T2_CODEX_IMPLEMENTER",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_route": "gpt-5.3-codex-spark",
+        "owner_manual_model_required": true
       },
-      "expected": "PRIMARY_MODEL_CODE_AUTHORSHIP_DETECTED"
+      "expected": "OWNER_MANUAL_MODEL_SELECTION_BLOCKED"
     },
     {
-      "id": "STALE_PROMPT_CANNOT_OVERRIDE_REGISTER",
+      "id": "N5_pr_only_done_blocked",
       "input": {
-        "route_class": "CONTROL_T0",
-        "task_class": "T0_CONTROL",
-        "actor_role": "T0_CONTROL",
-        "actor_model": "gpt-5.5",
-        "task_surface": "routing",
-        "route_state": "active",
-        "canary_status": "active_task_proof",
-        "proof_source": "stale_prompt",
-        "artifact_lifecycle_status": "consumed_prompt"
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "DONE_GATE",
+        "task_class": "closure",
+        "worker_role": "VERIFIER",
+        "requested_model": "deterministic",
+        "resolved_model": "deterministic",
+        "actual_route": "deterministic",
+        "owner_manual_model_required": false,
+        "model_portfolio_installed": "PASS",
+        "continuous_loop_installed": "PASS",
+        "t0_escape_gate_installed": "PASS",
+        "spark_canary": "PASS",
+        "fallback_canary": "PASS",
+        "validators": "PASS",
+        "registers": "PASS",
+        "task_readback": "PASS",
+        "pr_finalized": "MISSING",
+        "active_blocker": "none"
       },
-      "expected": "STALE_ARTIFACT_REPLAY_FORBIDDEN"
-    },
-    {
-      "id": "OPEN_PR_WITHOUT_QUEUE_STATE_DENIED",
-      "input": {
-        "route_class": "REGISTRAR",
-        "task_class": "T2_REGISTRAR",
-        "actor_role": "T2_REGISTRAR",
-        "actor_model": "deterministic_tool",
-        "task_surface": "pr_queue",
-        "route_state": "active",
-        "canary_status": "active_task_proof",
-        "proof_source": "pr_queue_scan",
-        "open_pr_queue_state": "missing"
-      },
-      "expected": "STALE_PR_QUEUE_RECONCILIATION_REQUIRED"
-    },
-    {
-      "id": "THIRD_SAME_GATE_FAILURE_ESCALATES",
-      "input": {
-        "route_class": "CONTROL_T0",
-        "task_class": "T0_CONTROL",
-        "actor_role": "T0_CONTROL",
-        "actor_model": "gpt-5.5",
-        "task_surface": "routing",
-        "same_gate_failures": 2,
-        "route_state": "active",
-        "canary_status": "active_task_proof",
-        "proof_source": "loop_guard"
-      },
-      "expected": "SELF_HEALING_ESCALATION"
+      "expected": "DONE_GATE_EVIDENCE_MISSING"
     }
   ]
 }
-

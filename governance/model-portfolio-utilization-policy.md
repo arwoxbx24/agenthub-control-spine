@@ -1,10 +1,10 @@
 ---
 artifact_id: model-portfolio-utilization-policy
 artifact_type: active_policy
-owner_role: T1 Architect / Model Route Controller
-source_task: AH-590
-run_id: RUN-P0-GLOBAL-MODEL-PORTFOLIO-ROUTE-CLOSURE-20260529
-created_at: 2026-05-29
+owner_role: T1 Architect / Model Router Controller
+source_task: AH-615
+run_id: RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530
+created_at: 2026-05-30
 lifecycle_status: active_policy
 default_load: false
 safe_to_replay: false
@@ -12,38 +12,56 @@ safe_to_replay: false
 
 # Model Portfolio Utilization Policy
 
-## Decision
+AgentHub selects models inside the control plane. The owner must not be asked
+to run `/model`, choose a model, click a routine button, or continue a normal
+automation cycle.
 
-AgentHub model routing is portfolio-based. A route is healthy only when eligible
-tasks are assigned to the correct route class, wrong routes are blocked, and the
-route has canary proof, active eligible task proof, an idle classification, or a
-typed unavailable blocker.
+## Route Matrix
 
-## Route Classes
+| Route class | Purpose | Primary route | Fallback | Forbidden |
+|---|---|---|---|---|
+| `T0_PREGATEWAY` | owner intent, classify, bind task/RUN, route, verify, final summary | `gpt-5.5` for P0/P1 control classification | `gpt-5.4` only for lower-risk control summaries | code/config/YAML/shell/test authoring, runtime mutation |
+| `T1_ARCHITECT` | architecture, assignment, ADR, decomposition | `gpt-5.4` | `gpt-5.5` only for high-risk P0/P1 control architecture | direct implementation mutation |
+| `T2_CODEX_IMPLEMENTER` | code, config, YAML, shell, tests, frontend, backend, IaC | `gpt-5.3-codex-spark` | `gpt-5.3-codex`, then `gpt-5.4-mini`, then `gpt-5.4`, only with same-RUN Spark/Codex unavailable proof | GPT-5.5/main/base code authorship, sandbox route as Spark proof, owner manual model selection |
+| `TASK_SERVICE` | task card, parent/child binding, status, evidence, Done readback | deterministic tool route | `gpt-5.4-mini`; `gpt-5.2` only for complex persistent task-service orchestration | Spark for non-code task updates |
+| `VERIFIER` | QA, truth-redteam, PR/receipt validation | deterministic validator or `gpt-5.4-mini` | `gpt-5.4` for complex cross-source review | mutation |
+| `RESEARCH` | official docs, source reading, comparison | search/tool route plus `gpt-5.4-mini` or `gpt-5.4` | none unless documented | Spark for information-only work |
+| `SECURITY_REDACTION` | secret scan, redaction, output safety | deterministic scanner | `gpt-5.4-mini` verifier | secret values in chat, repo, logs, or receipts |
 
-| Route class | Purpose | Required evidence |
-|---|---|---|
-| `CONTROL_T0` | intake, classification, routing, final owner output | control route receipt; no code authorship |
-| `ARCHITECT_T1` | incident architecture, ADR, bounded source design | bounded source packet and architecture receipt |
-| `CODEX_PRIMARY_T2` | code/config/YAML/shell/frontend/backend/test/IaC | Spark/Codex proof; primary model denied |
-| `CODEX_FALLBACK_T2` | same-RUN Codex fallback | same-RUN Spark/Codex unavailability proof |
-| `REGISTRAR` | index/register/PR queue/task readback | deterministic or lower-cost registrar receipt |
-| `VERIFIER_QA` | read-only evidence and validation review | read-only verifier receipt |
-| `SECURITY_REDACTION` | secret/raw-output checks | deterministic scanner proof first |
-| `BROWSER_PRODUCT_QA` | browser/user outcome checks | browser/user outcome evidence |
-| `DEVOPS_RUNTIME` | scoped live runtime work | exact live task, rollback, validation |
+## Enforcement
 
-## Global Rules
+Every implementation-capable worker receipt must include:
 
-- GPT-5.5/main/base/primary models may classify and reason, but must not author
-  code/config/YAML/shell implementation.
-- Code/config/YAML/shell work prefers `gpt-5.3-codex-spark` when available,
-  then `gpt-5.3-codex`, then same-RUN approved Codex fallback.
-- Owner-visible Spark subscription meter residual is tracked separately as
-  `CODEX_SPARK_PLATFORM_METER_UNAVAILABLE`; it does not permit GPT-5.5
-  fallback for code work when local Codex JSON usage proof exists.
-- Stale prompts/reports cannot override `ARTIFACT_REGISTER.md` lifecycle.
-- Open PR queue entries must have owner role, queue class, next action,
-  evidence link, and blocker.
-- Same-gate third failure becomes `SELF_HEALING_ESCALATION`.
+- `task_class`
+- `requested_model`
+- `resolved_model`
+- `actual_route`
+- `worker_role`
+- `run_id`
+- `fallback_reason`
+- `same_run_fallback_proof`
+- `spark_available`
+- `return_to_spark_when_available`
+- `owner_manual_model_required`
 
+For code/config/YAML/shell/test/frontend/backend/IaC, `requested_model` and
+`resolved_model` must be `gpt-5.3-codex-spark` when Spark is selectable.
+`agenthub-sandbox-worker` is never accepted as Spark proof.
+
+## Continuous Loop
+
+AgentHub task service must execute the full cycle without owner readback:
+
+1. request capture;
+2. duplicate check;
+3. parent/child task creation or exact route blocker;
+4. microtask execution;
+5. stage movement;
+6. evidence attachment;
+7. validation;
+8. Done gate;
+9. final owner message.
+
+Routine missing task, register, PR, validation, or receipt proof becomes a
+same-RUN microtask. Owner-facing output remains suppressed until final Done or
+one exact owner-only irreversible blocker.

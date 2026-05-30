@@ -5,68 +5,87 @@ require "json"
 
 path = ARGV.fetch(0)
 doc = JSON.parse(File.read(path))
-cases = doc.fetch("routes")
+cases = doc.fetch("cases")
 
-PRIMARY_MODELS = %w[gpt-5.5 main base primary].freeze
-CODEX_MODELS = %w[gpt-5.3-codex-spark gpt-5.3-codex gpt-5.1-codex-mini gpt-5.4-mini].freeze
-VALID_ROUTE_CLASSES = %w[
-  CONTROL_T0 ARCHITECT_T1 CODEX_PRIMARY_T2 CODEX_FALLBACK_T2 REGISTRAR
-  VERIFIER_QA SECURITY_REDACTION BROWSER_PRODUCT_QA DEVOPS_RUNTIME
-].freeze
-VALID_CANARY_STATES = %w[
-  active_task_proof canary_proof MODEL_ROUTE_IDLE_NO_ELIGIBLE_TASKS typed_unavailable
+CODE_CLASSES = %w[
+  code config yaml shell test frontend backend iac
 ].freeze
 
-def present?(value)
-  !value.nil? && value.to_s.strip != ""
+SPARK = "gpt-5.3-codex-spark"
+CODEX_FALLBACK = %w[gpt-5.3-codex gpt-5.4-mini gpt-5.4].freeze
+
+def blank?(value)
+  value.nil? || (value.respond_to?(:empty?) && value.empty?)
 end
 
-def code_surface?(input)
-  input.fetch("code_config_surface", false) ||
-    input.fetch("task_surface", "").to_s.match?(/\b(code|config|yaml|shell|frontend|backend|test|iac|programming)\b/i)
+def required_missing?(input, fields)
+  fields.any? { |field| blank?(input[field]) }
 end
 
 def route(input)
-  return "SELF_HEALING_ESCALATION" if input.fetch("same_gate_failures", 0).to_i >= 2
-  return "MODEL_ROUTE_CLASS_MISSING" unless VALID_ROUTE_CLASSES.include?(input.fetch("route_class", ""))
-  return "MODEL_ROUTE_CANARY_UNAVAILABLE" unless VALID_CANARY_STATES.include?(input.fetch("canary_status", ""))
-  return "STALE_PR_QUEUE_RECONCILIATION_REQUIRED" if input.fetch("open_pr_queue_state", "none") == "missing"
-  return "STALE_ARTIFACT_REPLAY_FORBIDDEN" if input.fetch("artifact_lifecycle_status", "") == "consumed_prompt" &&
-                                               input.fetch("proof_source", "") == "stale_prompt"
+  common = %w[run_id task_id route_class task_class worker_role requested_model resolved_model actual_route owner_manual_model_required]
+  return "MODEL_PORTFOLIO_RECEIPT_MISSING" if required_missing?(input, common)
+  return "OWNER_MANUAL_MODEL_SELECTION_BLOCKED" if input["owner_manual_model_required"] == true
 
-  actor_role = input.fetch("actor_role", "")
-  actor_model = input.fetch("actor_model", "")
+  route_class = input.fetch("route_class")
+  task_class = input.fetch("task_class")
+  requested = input.fetch("requested_model")
+  resolved = input.fetch("resolved_model")
+  actual = input.fetch("actual_route")
 
-  if code_surface?(input)
-    return "T0_DIRECT_CODE_AUTHORSHIP_DETECTED" if actor_role == "T0_CONTROL" && input.fetch("requests_code_or_command", false)
-    return "PRIMARY_MODEL_CODE_AUTHORSHIP_DETECTED" if PRIMARY_MODELS.include?(actor_model)
-  end
+  if CODE_CLASSES.include?(task_class)
+    return "T0_CODE_AUTHORSHIP_BLOCKED" if input["worker_role"] == "T0_CONTROL"
+    return "T1_IMPLEMENTATION_MUTATION_BLOCKED" if input["worker_role"] == "T1_ARCHITECT"
+    return "CODEX_SPARK_ROUTE_REQUIRED" unless input["worker_role"] == "T2_CODEX_IMPLEMENTER"
+    return "SANDBOX_ROUTE_NOT_SPARK_PROOF" if actual == "agenthub-sandbox-worker"
 
-  return "VERIFIER_MUTATION_FORBIDDEN" if input.fetch("route_class") == "VERIFIER_QA" && input.fetch("attempts_mutation", false)
+    if input.fetch("spark_available", true) == true
+      return "CODEX_SPARK_ROUTE_REQUIRED" unless requested == SPARK && resolved == SPARK && actual == SPARK
+      return "CODEX_SPARK_CANARY_PASS" if input["code_artifact_path_exists"] == true
 
-  case input.fetch("route_class")
-  when "CODEX_PRIMARY_T2"
-    return "CODEX_SPARK_ROUTE_REQUIRED" unless CODEX_MODELS.include?(actor_model)
-    if input.fetch("proof_source", "") == "codex_cli_json_usage_receipt"
-      return "CODEX_SPARK_EXECUTION_NOT_PROVEN" unless input.fetch("requested_model", "") == "gpt-5.3-codex-spark"
-      return "CODEX_SPARK_EXECUTION_NOT_PROVEN" unless input.fetch("usage_input_tokens", 0).to_i.positive? &&
-                                                    input.fetch("usage_output_tokens", 0).to_i.positive?
-      return "CODEX_SPARK_ROUTE_NOT_EXECUTED" if input.fetch("fallback_used", false)
+      return "CODE_ARTIFACT_MISSING"
     end
-  when "CODEX_FALLBACK_T2"
-    return "CODEX_SPARK_ROUTE_NOT_EXECUTED" unless CODEX_MODELS.include?(actor_model)
-    return "FALLBACK_WITHOUT_SPARK_UNAVAILABILITY_PROOF" unless present?(input.fetch("same_run_unavailability_proof", ""))
+
+    fallback_ok = CODEX_FALLBACK.include?(resolved) &&
+                  actual == resolved &&
+                  input["same_run_fallback_proof"] == "PASS" &&
+                  !blank?(input["fallback_reason"]) &&
+                  input["return_to_spark_when_available"] == true
+    return fallback_ok ? "CODEX_FALLBACK_CANARY_PASS" : "CODEX_FALLBACK_PROOF_REQUIRED"
+  end
+
+  case route_class
+  when "T0_PREGATEWAY"
+    return "T0_ROUTE_PASS" if input["worker_role"] == "T0_CONTROL" && %w[gpt-5.5 gpt-5.4].include?(resolved)
+  when "T1_ARCHITECT"
+    return "T1_ROUTE_PASS" if input["worker_role"] == "T1_ARCHITECT" && %w[gpt-5.4 gpt-5.5].include?(resolved)
+  when "TASK_SERVICE"
+    return "TASK_SERVICE_ROUTE_PASS" if input["worker_role"] == "TASK_SERVICE" && %w[deterministic gpt-5.4-mini gpt-5.2].include?(resolved)
+  when "VERIFIER"
+    return "VERIFIER_ROUTE_PASS" if input["worker_role"] == "VERIFIER" && %w[deterministic gpt-5.4-mini gpt-5.4].include?(resolved)
+  when "RESEARCH"
+    return "RESEARCH_ROUTE_PASS" if input["worker_role"] == "RESEARCH" && %w[tool_search gpt-5.4-mini gpt-5.4].include?(resolved) && requested != SPARK
   when "SECURITY_REDACTION"
-    return "SECURITY_SCANNER_FIRST_REQUIRED" unless input.fetch("deterministic_scanner_first", false)
-  when "ARCHITECT_T1"
-    return "BOUNDED_SOURCE_PACKET_REQUIRED" unless input.fetch("bounded_source_packet", false)
+    return "SECURITY_ROUTE_PASS" if input["worker_role"] == "SECURITY" && %w[deterministic gpt-5.4-mini].include?(resolved)
+  when "CONTINUOUS_TASK_LOOP"
+    required = %w[
+      request_capture duplicate_check task_creation microtask_execution
+      stage_movement evidence_attachment validation done_gate final_output
+    ]
+    return "CONTINUOUS_LOOP_PASS" if required.all? { |field| input[field] == "PASS" } &&
+                                     input["owner_progress_readback"] == false
+    return "CONTINUOUS_LOOP_PROOF_REQUIRED"
+  when "DONE_GATE"
+    done_required = %w[
+      model_portfolio_installed continuous_loop_installed t0_escape_gate_installed
+      spark_canary fallback_canary validators registers task_readback pr_finalized
+    ]
+    return "DONE_WITH_MODEL_PORTFOLIO_AND_CONTINUOUS_LOOP_EVIDENCE" if done_required.all? { |field| input[field] == "PASS" } &&
+                                                                       input["active_blocker"] == "none"
+    return "DONE_GATE_EVIDENCE_MISSING"
   end
 
-  if input.fetch("route_state", "") == "unavailable"
-    return "MODEL_ROUTE_UNAVAILABLE_BLOCKER_MISSING" unless present?(input.fetch("residual_blocker", ""))
-  end
-
-  "MODEL_ROUTE_CLASSIFIED"
+  "MODEL_PORTFOLIO_ROUTE_MISSING"
 end
 
 failures = cases.filter_map do |item|
