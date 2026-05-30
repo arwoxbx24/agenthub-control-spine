@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/codex_native_worker_receipt.schema.json",
+  "title": "Codex Native Worker Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "route_class",
+    "subagent_id",
+    "parent_run_id",
+    "task_id",
+    "actor_role",
+    "requested_model",
+    "resolved_model",
+    "actual_route",
+    "allowed_surfaces",
+    "forbidden_surfaces",
+    "owner_manual_model_required",
+    "output_artifact_path",
+    "output_sha256",
+    "safety_gate",
+    "secret_redaction",
+    "final_state"
+  ],
+  "properties": {
+    "route_class": {
+      "type": "string",
+      "enum": [
+        "CODEX_EXEC_NONINTERACTIVE_WORKER",
+        "CODEX_SPARK_SPAWN_WORKER",
+        "CODEX_SUBAGENT_PARALLEL_READONLY",
+        "CODEX_PROFILED_ROLE_RUN",
+        "CODEX_PERMISSION_GUARDED_RUN",
+        "CODEX_MCP_DIAGNOSTIC_RUN",
+        "CODEX_BACKGROUND_TERMINAL_CONTROL",
+        "CODEX_FEATURE_FLAG_CONTROL"
+      ]
+    },
+    "subagent_id": { "type": "string", "minLength": 1 },
+    "parent_run_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "actor_role": {
+      "type": "string",
+      "enum": [
+        "T0_CONTROL",
+        "T1_ARCHITECT",
+        "T2_WORKER",
+        "T2_CODE_AUTHOR",
+        "T2_CODE_FALLBACK",
+        "T2_FAST_SCAN",
+        "QA",
+        "VERIFIER",
+        "REGISTRAR",
+        "READONLY_TRIAGE",
+        "TASK_SERVICE",
+        "SECURITY_REDACTION"
+      ]
+    },
+    "requested_model": { "type": "string", "minLength": 1 },
+    "resolved_model": { "type": "string", "minLength": 1 },
+    "actual_route": { "type": "string", "minLength": 1 },
+    "owner_manual_model_required": { "type": "boolean" },
+    "allowed_surfaces": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "forbidden_surfaces": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true
+    },
+    "output_artifact_path": { "type": "string", "minLength": 1 },
+    "output_sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "safety_gate": { "type": "string", "enum": ["PASS", "BLOCKED", "QUARANTINE"] },
+    "secret_redaction": { "type": "string", "enum": ["PASS", "BLOCKED", "QUARANTINE"] },
+    "final_state": {
+      "type": "string",
+      "enum": [
+        "DONE_WITH_CODEX_NATIVE_SPAWN_AND_CLI_GUARDRAILS",
+        "READY_BLOCKED_BY_CODEX_SUBAGENT_ROUTE_UNAVAILABLE",
+        "READY_BLOCKED_BY_SPARK_MODEL_INVOCATION_UNAVAILABLE",
+        "MODEL_PORTFOLIO_REGRESSION_BLOCKED",
+        "HOOK_ENFORCEMENT_INCOMPLETE",
+        "TASK_SERVICE_ROUTE_BLOCKED",
+        "SAFETY_QUARANTINE"
+      ]
+    }
+  }
+}

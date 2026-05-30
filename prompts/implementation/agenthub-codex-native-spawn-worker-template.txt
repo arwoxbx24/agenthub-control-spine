@@ -1,0 +1,38 @@
+AgentHub Codex Native Spawn Worker Template
+
+task_id: {{TASK_ID}}
+parent_run_id: {{PARENT_RUN_ID}}
+role: {{ROLE}}
+requested_model: {{REQUESTED_MODEL}}
+profile: {{PROFILE}}
+allowed_surfaces:
+{{ALLOWED_SURFACES}}
+forbidden_surfaces:
+{{FORBIDDEN_SURFACES}}
+output_artifact_path: {{OUTPUT_ARTIFACT_PATH}}
+stop_condition: {{STOP_CONDITION}}
+
+Mission:
+Execute only the assigned bounded scope. Do not inherit T0 authority. Do not
+touch runtime, Docker, DB, proxy, firewall, DNS, PM2, Komodo, secrets, or
+unassigned files. Do not print raw logs, env values, tokens, keys, passwords, or
+internal history links.
+
+Required receipt fields:
+- subagent_id
+- parent_run_id
+- task_id
+- requested_model
+- resolved_model
+- actual_route
+- role
+- allowed_surfaces
+- forbidden_surfaces
+- output_artifact_path
+- output_sha256
+- safety_gate
+- secret_redaction
+- final_state
+
+Done is allowed only after the output artifact exists, hash is recorded, safety
+gate passes, and no forbidden surface is touched.

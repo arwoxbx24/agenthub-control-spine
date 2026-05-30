@@ -49,6 +49,13 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
   and validation execution must route through AgentHub task/run/worker/evidence;
   direct T0 shell mutation invalidates the run, and no control-spine receipt
   means no Done.
+- Codex-native execution must route through
+  `governance/codex-native-capability-router-policy.md`. Spawned/subagent,
+  `codex exec`, profiled, permission-guarded, MCP diagnostic, background
+  terminal, and feature-flag routes require explicit task/RUN binding, model,
+  role, allowed surfaces, forbidden surfaces, receipt, and validation. T0 cannot
+  use spawned workers as a bypass for implementation, and
+  `agenthub-sandbox-worker` is not Spark proof.
 - Live incident work must not fall back from AgentHub adapter blockers to manual
   T0 shell. If the adapter reports `CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED`,
   keep the task open, update the receipt, and repair the AgentHub route.
