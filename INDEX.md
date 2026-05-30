@@ -246,6 +246,12 @@ status: draft
 | `validators/t0_escape_boundary_gates_validator.rb` | validator | AH-618 | active |
 | `evals/t0-escape-boundary-gates/fixtures.json` | eval fixtures | AH-618 | active |
 | `reports/receipts/P0-t0-escape-boundary-gates-implementation-receipt-20260530.md` | implementation receipt | AH-618 | operational-receipt |
+| `governance/model-portfolio-utilization-policy.md` | governance policy | AH-615 | active |
+| `validators/model_portfolio_router_validator.rb` | validator | AH-615 | active |
+| `evals/model-portfolio-routing/fixtures.json` | eval fixtures | AH-615 | active |
+| `reports/receipts/P0-model-portfolio-spark-canary-20260530.md` | model route canary receipt | AH-615 | operational-receipt |
+| `reports/receipts/P0-model-portfolio-fallback-canary-20260530.md` | model route canary receipt | AH-615 | operational-receipt |
+| `reports/receipts/P0-model-portfolio-continuous-loop-implementation-receipt-20260530.md` | implementation receipt | AH-615 | operational-receipt |
 | `reports/incidents/P0-t0-boundary-violation-multi-agent-runaway-20260527.md` | incident report | AH-590 | audit-only |
 | `reports/receipts/P0-agenthub-backend-only-repo-first-architecture-receipt-20260526.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-t0-hard-stop-multi-agent-isolation-receipt-20260527.md` | operational receipt | AH-590 | operational-receipt |

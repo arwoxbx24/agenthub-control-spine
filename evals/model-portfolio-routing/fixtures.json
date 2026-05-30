@@ -1,0 +1,237 @@
+{
+  "cases": [
+    {
+      "id": "P1_t0_pregateway",
+      "input": {
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "T0_PREGATEWAY",
+        "task_class": "control",
+        "worker_role": "T0_CONTROL",
+        "requested_model": "gpt-5.5",
+        "resolved_model": "gpt-5.5",
+        "actual_route": "gpt-5.5",
+        "owner_manual_model_required": false
+      },
+      "expected": "T0_ROUTE_PASS"
+    },
+    {
+      "id": "P2_t1_architect",
+      "input": {
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "T1_ARCHITECT",
+        "task_class": "architecture",
+        "worker_role": "T1_ARCHITECT",
+        "requested_model": "gpt-5.4",
+        "resolved_model": "gpt-5.4",
+        "actual_route": "gpt-5.4",
+        "owner_manual_model_required": false
+      },
+      "expected": "T1_ROUTE_PASS"
+    },
+    {
+      "id": "P3_spark_code_canary",
+      "input": {
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "T2_CODEX_IMPLEMENTER",
+        "task_class": "config",
+        "worker_role": "T2_CODEX_IMPLEMENTER",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_route": "gpt-5.3-codex-spark",
+        "owner_manual_model_required": false,
+        "spark_available": true,
+        "code_artifact_path_exists": true
+      },
+      "expected": "CODEX_SPARK_CANARY_PASS"
+    },
+    {
+      "id": "P4_fallback_canary",
+      "input": {
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "T2_CODEX_IMPLEMENTER",
+        "task_class": "test",
+        "worker_role": "T2_CODEX_IMPLEMENTER",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex",
+        "actual_route": "gpt-5.3-codex",
+        "owner_manual_model_required": false,
+        "spark_available": false,
+        "same_run_fallback_proof": "PASS",
+        "fallback_reason": "SPARK_UNAVAILABLE_SIMULATED_CANARY",
+        "return_to_spark_when_available": true
+      },
+      "expected": "CODEX_FALLBACK_CANARY_PASS"
+    },
+    {
+      "id": "P5_task_service_route",
+      "input": {
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "TASK_SERVICE",
+        "task_class": "task_service",
+        "worker_role": "TASK_SERVICE",
+        "requested_model": "deterministic",
+        "resolved_model": "deterministic",
+        "actual_route": "deterministic",
+        "owner_manual_model_required": false
+      },
+      "expected": "TASK_SERVICE_ROUTE_PASS"
+    },
+    {
+      "id": "P6_research_not_spark",
+      "input": {
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "RESEARCH",
+        "task_class": "research",
+        "worker_role": "RESEARCH",
+        "requested_model": "gpt-5.4-mini",
+        "resolved_model": "gpt-5.4-mini",
+        "actual_route": "tool_search",
+        "owner_manual_model_required": false
+      },
+      "expected": "RESEARCH_ROUTE_PASS"
+    },
+    {
+      "id": "P7_continuous_loop",
+      "input": {
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "CONTINUOUS_TASK_LOOP",
+        "task_class": "task_loop",
+        "worker_role": "TASK_SERVICE",
+        "requested_model": "deterministic",
+        "resolved_model": "deterministic",
+        "actual_route": "deterministic",
+        "owner_manual_model_required": false,
+        "request_capture": "PASS",
+        "duplicate_check": "PASS",
+        "task_creation": "PASS",
+        "microtask_execution": "PASS",
+        "stage_movement": "PASS",
+        "evidence_attachment": "PASS",
+        "validation": "PASS",
+        "done_gate": "PASS",
+        "final_output": "PASS",
+        "owner_progress_readback": false
+      },
+      "expected": "CONTINUOUS_LOOP_PASS"
+    },
+    {
+      "id": "P8_done_gate",
+      "input": {
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "DONE_GATE",
+        "task_class": "closure",
+        "worker_role": "VERIFIER",
+        "requested_model": "deterministic",
+        "resolved_model": "deterministic",
+        "actual_route": "deterministic",
+        "owner_manual_model_required": false,
+        "model_portfolio_installed": "PASS",
+        "continuous_loop_installed": "PASS",
+        "t0_escape_gate_installed": "PASS",
+        "spark_canary": "PASS",
+        "fallback_canary": "PASS",
+        "validators": "PASS",
+        "registers": "PASS",
+        "task_readback": "PASS",
+        "pr_finalized": "PASS",
+        "active_blocker": "none"
+      },
+      "expected": "DONE_WITH_MODEL_PORTFOLIO_AND_CONTINUOUS_LOOP_EVIDENCE"
+    },
+    {
+      "id": "N1_t0_code_blocked",
+      "input": {
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "T2_CODEX_IMPLEMENTER",
+        "task_class": "code",
+        "worker_role": "T0_CONTROL",
+        "requested_model": "gpt-5.5",
+        "resolved_model": "gpt-5.5",
+        "actual_route": "gpt-5.5",
+        "owner_manual_model_required": false
+      },
+      "expected": "T0_CODE_AUTHORSHIP_BLOCKED"
+    },
+    {
+      "id": "N2_t1_mutation_blocked",
+      "input": {
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "T2_CODEX_IMPLEMENTER",
+        "task_class": "yaml",
+        "worker_role": "T1_ARCHITECT",
+        "requested_model": "gpt-5.4",
+        "resolved_model": "gpt-5.4",
+        "actual_route": "gpt-5.4",
+        "owner_manual_model_required": false
+      },
+      "expected": "T1_IMPLEMENTATION_MUTATION_BLOCKED"
+    },
+    {
+      "id": "N3_sandbox_not_spark",
+      "input": {
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "T2_CODEX_IMPLEMENTER",
+        "task_class": "config",
+        "worker_role": "T2_CODEX_IMPLEMENTER",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "agenthub-sandbox-worker",
+        "actual_route": "agenthub-sandbox-worker",
+        "owner_manual_model_required": false,
+        "spark_available": true,
+        "code_artifact_path_exists": true
+      },
+      "expected": "SANDBOX_ROUTE_NOT_SPARK_PROOF"
+    },
+    {
+      "id": "N4_owner_model_choice_blocked",
+      "input": {
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "T2_CODEX_IMPLEMENTER",
+        "task_class": "config",
+        "worker_role": "T2_CODEX_IMPLEMENTER",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_route": "gpt-5.3-codex-spark",
+        "owner_manual_model_required": true
+      },
+      "expected": "OWNER_MANUAL_MODEL_SELECTION_BLOCKED"
+    },
+    {
+      "id": "N5_pr_only_done_blocked",
+      "input": {
+        "run_id": "RUN-P0-MODEL-PORTFOLIO-CONTINUOUS-LOOP-20260530",
+        "task_id": "AH-615",
+        "route_class": "DONE_GATE",
+        "task_class": "closure",
+        "worker_role": "VERIFIER",
+        "requested_model": "deterministic",
+        "resolved_model": "deterministic",
+        "actual_route": "deterministic",
+        "owner_manual_model_required": false,
+        "model_portfolio_installed": "PASS",
+        "continuous_loop_installed": "PASS",
+        "t0_escape_gate_installed": "PASS",
+        "spark_canary": "PASS",
+        "fallback_canary": "PASS",
+        "validators": "PASS",
+        "registers": "PASS",
+        "task_readback": "PASS",
+        "pr_finalized": "MISSING",
+        "active_blocker": "none"
+      },
+      "expected": "DONE_GATE_EVIDENCE_MISSING"
+    }
+  ]
+}

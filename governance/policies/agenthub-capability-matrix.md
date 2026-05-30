@@ -113,8 +113,10 @@ attempt:
 | `T1_ARCHITECT` | `install_policy` | `control_spine_repo` | architecture route | policy author | `ALLOW_POLICY_ARCHITECTURE` |
 | `T2_CODEX_WORKER` | `run_code_model` | `control_spine_repo` | Codex primary, same-RUN Codex fallback only | scoped worker | `ALLOW_CODEX_AUTHORIZED_WORKER` |
 | `T2_CODEX_WORKER` | `write_artifact` | assigned code/config/YAML/shell/test/IaC surface | `gpt-5.3-codex-spark` primary; same-RUN fallback evidence required | scoped worker | `ALLOW_CODEX_SPARK_SCOPED_AUTHORING` |
+| `T2_CODEX_WORKER` | `run_code_model` | `Codex_model_route` | requested/resolved `gpt-5.3-codex-spark`; fallback chain requires same-RUN proof and return-to-Spark flag | scoped worker | `CODEX_SPARK_CANARY_PASS` |
 | `T2_DEVOPS_WORKER` | `runtime_mutate` | assigned live/runtime surface only | live-worker route with rollback, validation, and no-secret proof | scoped live worker | `ALLOW_T2_LIVE_WORKER_SCOPED_RUNTIME_ACTION` |
 | `T2_REGISTRAR` | `patch_register` | `control_spine_repo` | deterministic or low-cost registrar route | scoped registrar | `ALLOW_REGISTRAR_PATCH` |
 | `T2_SECRET_HANDLE_REGISTRAR` | `write_artifact` | `secrets_manifest` | registrar route | metadata-only | `ALLOW_SECRET_HANDLE_METADATA` |
 | `VERIFIER` | `validate_policy` | assigned evidence | verifier route | read-only | `ALLOW_READONLY_VERIFY` |
 | `REGISTRAR` | `patch_register` | lifecycle/register/task readback surface | registrar route | lifecycle-only | `ALLOW_REGISTRAR_LIFECYCLE` |
+| `TASK_SERVICE` | `update_task` | `YouTrack` | deterministic first, `gpt-5.4-mini` for text, `gpt-5.2` only for complex persistent orchestration | task lifecycle | `TASK_SERVICE_ROUTE_PASS` |

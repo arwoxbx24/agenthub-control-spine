@@ -28,17 +28,23 @@
       "input": {
         "task_class": "T2_CODEX_IMPLEMENTER",
         "codex_available": true,
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_route": "gpt-5.3-codex-spark",
         "worker_model": "gpt-5.3-codex-spark",
         "model_route_reason": "Codex Spark available for code/config task",
         "fallback_reason": null
       },
-      "expected": "CODEX_PRIMARY_ROUTE_PASS"
+      "expected": "CODEX_SPARK_ROUTE_PASS"
     },
     {
       "id": "CODE_CONFIG_CODEX_AVAILABLE_GENERAL_REJECTED",
       "input": {
         "task_class": "T2_CODEX_IMPLEMENTER",
         "codex_available": true,
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.5",
+        "actual_route": "gpt-5.5",
         "worker_model": "gpt-5.5",
         "model_route_reason": "Incorrect general model attempt for code/config task",
         "fallback_reason": null
@@ -51,11 +57,30 @@
         "task_class": "T2_CODEX_IMPLEMENTER",
         "codex_available": false,
         "same_run_fallback": true,
-        "worker_model": "gpt-5.1-codex-mini",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex",
+        "actual_route": "gpt-5.3-codex",
+        "worker_model": "gpt-5.3-codex",
         "model_route_reason": "Primary Codex capacity unavailable; same-RUN fallback selected",
-        "fallback_reason": "PRIMARY_CODEX_CAPACITY_UNAVAILABLE"
+        "fallback_reason": "PRIMARY_CODEX_CAPACITY_UNAVAILABLE",
+        "same_run_fallback_proof": "PASS",
+        "return_to_spark_when_available": true
       },
       "expected": "SAME_RUN_CODEX_FALLBACK_PASS"
+    },
+    {
+      "id": "CODE_CONFIG_SPARK_AVAILABLE_SANDBOX_REJECTED",
+      "input": {
+        "task_class": "T2_CODEX_IMPLEMENTER",
+        "codex_available": true,
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "agenthub-sandbox-worker",
+        "actual_route": "agenthub-sandbox-worker",
+        "worker_model": "agenthub-sandbox-worker",
+        "model_route_reason": "Sandbox worker mismatch from AH-615",
+        "fallback_reason": null
+      },
+      "expected": "SANDBOX_ROUTE_NOT_SPARK_PROOF"
     },
     {
       "id": "CODEX_UNAVAILABLE_DUP_RUN_OR_T0_FAIL",

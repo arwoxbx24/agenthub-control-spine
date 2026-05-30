@@ -27,23 +27,36 @@ AgentHub model selection is registry-driven. Agents must not hardcode stale mode
 | Verifier/QA | verifier-capable route |
 | Security redaction | deterministic scanner first, model second |
 
+The complete model portfolio route map is installed in
+`governance/model-portfolio-utilization-policy.md`. That policy is the
+authoritative matrix for T0 pre-gateway, T1 architecture, T2 code/config,
+task-service, verifier, research, and security/redaction route classes.
+
 ## Codex Spark Enforcement
 
 Code, config, shell, YAML, frontend, backend, test, and infrastructure-as-code
 tasks must route to a Codex-capable worker profile before any general reasoning
-model. If `gpt-5.3-codex-spark` or `gpt-5.3-codex` is available in the approved
-runtime registry, the worker receipt must use one of those primary routes.
+model. If `gpt-5.3-codex-spark` is available in the approved runtime registry,
+the worker receipt must request and resolve to `gpt-5.3-codex-spark`. A receipt
+whose actual route is `agenthub-sandbox-worker` is not Spark proof.
 
 If primary Codex capacity is unavailable, fallback must stay in the same
-`run_id` and use an approved lower-cost Codex-capable or mini worker route. T0
-direct authorship and broad general-model command loops remain forbidden.
+`run_id` and use the approved chain: `gpt-5.3-codex`, then `gpt-5.4-mini`,
+then `gpt-5.4`. The fallback receipt must include same-RUN unavailability proof
+and must automatically return to Spark when Spark becomes available. T0 direct
+authorship and broad general-model command loops remain forbidden.
 
 Every dispatch receipt for implementation-capable work must include:
 
 - `worker_model`;
+- `requested_model`;
+- `resolved_model`;
+- `actual_route`;
 - `model_route_reason`;
 - `codex_available`;
 - `fallback_reason` when fallback is used, otherwise `null`;
+- `same_run_fallback_proof`;
+- `return_to_spark_when_available`;
 - token/context budget class;
 - residuals.
 
