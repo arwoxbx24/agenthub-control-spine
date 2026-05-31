@@ -68,6 +68,13 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
   progress/status prose is blocked from owner chat. Mutation requires a
   controlling task or exact task-route blocker, duplicate check, technical
   assignment, acceptance gates, rollback plan, and declared forbidden zones.
+- Boundary, backup, and docs/API-first guardrails must follow
+  `governance/boundary-backup-docs-first-guardrail-policy.md`. Workers need a
+  `SCOPE_MANIFEST` before mutation, exact `WRITE_ALLOWED_ROOTS`, rollback proof,
+  docs/API decision record where required, and T1-approved scope expansion for
+  newly discovered paths. `/root/gemini-space`, `/root/codex-space`, `/tmp`,
+  Docker data, DB data, proxy/firewall/DNS, cert/key, and secret paths cannot be
+  accepted as production implementation evidence by default.
 - Packaged products, vendor apps, Dockerized products, CMS, SaaS, panels,
   MCP servers, task services, and unknown product surfaces must follow
   `governance/api-documentation-first-guardrail-policy.md` before mutation.

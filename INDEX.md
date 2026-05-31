@@ -90,6 +90,15 @@ status: draft
 | `evals/no-interaction-task-first/fixtures.json` | eval fixtures | AH-P0-NO-INTERACTION-TASK-FIRST | active |
 | `reports/audits/P0-no-interaction-task-first-closed-loop-audit-20260531.md` | audit report | AH-P0-NO-INTERACTION-TASK-FIRST | audit-only |
 | `reports/receipts/P0-no-interaction-task-first-closed-loop-implementation-receipt-20260531.md` | operational receipt | AH-P0-NO-INTERACTION-TASK-FIRST | active |
+| `governance/boundary-backup-docs-first-guardrail-policy.md` | governance policy | AH-P0-BOUNDARY-BACKUP-DOCS-FIRST | active |
+| `governance/adr/ADR-boundary-backup-docs-first-guardrail-20260531.md` | architecture decision record | AH-P0-BOUNDARY-BACKUP-DOCS-FIRST | active |
+| `schemas/scope_manifest.schema.json` | schema | AH-P0-BOUNDARY-BACKUP-DOCS-FIRST | active |
+| `templates/boundary-backup/scope-manifest-template.md` | template | AH-P0-BOUNDARY-BACKUP-DOCS-FIRST | active |
+| `templates/boundary-backup/scope-expansion-request-template.md` | template | AH-P0-BOUNDARY-BACKUP-DOCS-FIRST | active |
+| `validators/boundary_backup_docs_first_validator.rb` | validator | AH-P0-BOUNDARY-BACKUP-DOCS-FIRST | active |
+| `evals/boundary-backup-docs-first/fixtures.json` | eval fixtures | AH-P0-BOUNDARY-BACKUP-DOCS-FIRST | active |
+| `reports/audits/P0-boundary-backup-docs-first-guardrail-audit-20260531.md` | audit report | AH-P0-BOUNDARY-BACKUP-DOCS-FIRST | audit-only |
+| `reports/receipts/P0-boundary-backup-docs-first-guardrail-implementation-receipt-20260531.md` | operational receipt | AH-P0-BOUNDARY-BACKUP-DOCS-FIRST | active |
 | `governance/agenthub-x-capability-matrix.md` | governance policy | AH-590 | active |
 | `governance/adr/ADR-agenthub-x-controlled-capability-matrix-20260528.md` | architecture decision record | AH-590 | active |
 | `governance/adr/ADR-codex-spark-model-router-enforcement-20260528.md` | architecture decision record | AH-590 | active |

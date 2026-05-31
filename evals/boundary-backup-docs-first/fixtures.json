@@ -1,0 +1,156 @@
+{
+  "cases": [
+    {
+      "id": "TEST_SCOPE_001",
+      "input": { "gate": "path_write", "target_path": "/root/gemini-space/hiddify/file.py", "WRITE_ALLOWED_ROOTS": ["/opt/hiddify"] },
+      "expected": "FORBIDDEN_SCOPE_BLOCKER"
+    },
+    {
+      "id": "TEST_SCOPE_002",
+      "input": { "gate": "path_write", "target_path": "/root/codex-space/hiddify/file.py", "WRITE_ALLOWED_ROOTS": ["/opt/hiddify"] },
+      "expected": "FORBIDDEN_SCOPE_BLOCKER"
+    },
+    {
+      "id": "TEST_SCOPE_003",
+      "input": { "gate": "path_write", "target_path": "/tmp/production-proof/file.py", "WRITE_ALLOWED_ROOTS": ["/tmp/production-proof"], "claims_production_done": true },
+      "expected": "NON_LIVE_PATH_EVIDENCE"
+    },
+    {
+      "id": "TEST_SCOPE_004",
+      "input": { "gate": "path_write", "target_path": "/srv/app/file.py", "WRITE_ALLOWED_ROOTS": ["/srv/other"] },
+      "expected": "OUT_OF_SCOPE_MUTATION"
+    },
+    {
+      "id": "TEST_SCOPE_005",
+      "input": { "gate": "scope_expansion", "new_path_discovered": true, "write_attempted": true, "t1_scope_approved": false },
+      "expected": "SCOPE_EXPANSION_REQUIRED"
+    },
+    {
+      "id": "TEST_BACKUP_001",
+      "input": { "gate": "backup", "mutation_requested": true, "backup_hash": "", "rollback_plan": "" },
+      "expected": "NO_ROLLBACK_POINT"
+    },
+    {
+      "id": "TEST_BACKUP_002",
+      "input": { "gate": "backup", "broad_directory_copy": true, "size_proof": "MISSING" },
+      "expected": "BACKUP_SIZE_UNKNOWN"
+    },
+    {
+      "id": "TEST_BACKUP_003",
+      "input": { "gate": "backup", "data_volume_or_db_backup": true, "explicit_backup_gate": false },
+      "expected": "FORBIDDEN_DATA_BACKUP"
+    },
+    {
+      "id": "TEST_DOCS_001",
+      "input": { "gate": "docs_api", "existing_product": true, "docs_decision_record": "MISSING" },
+      "expected": "DOCUMENTATION_REQUIRED_BEFORE_MUTATION"
+    },
+    {
+      "id": "TEST_DOCS_002",
+      "input": { "gate": "docs_api", "trivial_owned_syntax_fix": true, "scope_backup_test": "PASS" },
+      "expected": "DOCS_GATE_PASS"
+    },
+    {
+      "id": "TEST_API_001",
+      "input": { "gate": "docs_api", "api_or_ui_available": true, "direct_db_patch": true, "docs_decision_record": "PASS" },
+      "expected": "API_FIRST_VIOLATION"
+    },
+    {
+      "id": "TEST_DOCKER_001",
+      "input": { "gate": "docker_db", "role": "T0_CONTROL", "docker_or_db_mutation": true },
+      "expected": "BLOCKED_T0_DIRECT_MUTATION"
+    },
+    {
+      "id": "TEST_DOCKER_002",
+      "input": { "gate": "docker_db", "command_class": "docker_volume_prune" },
+      "expected": "FORBIDDEN_DOCKER_DATA_DESTRUCTION"
+    },
+    {
+      "id": "TEST_CHAT_001",
+      "input": { "gate": "chat_loop", "state": "ACTIVE_RUN", "progress_chat_to_user": true },
+      "expected": "MID_CYCLE_CHAT_STOP"
+    },
+    {
+      "id": "TEST_LOOP_001",
+      "input": { "gate": "chat_loop", "same_gate_failures": 2, "architecture_repair_microtask": false },
+      "expected": "DEADLOCK_LOOP_DETECTED"
+    },
+    {
+      "id": "TEST_DONE_001",
+      "input": { "gate": "done_gate", "done_claim": true, "green_curl_only": true },
+      "expected": "USER_OUTCOME_PROOF_REQUIRED"
+    },
+    {
+      "id": "TEST_DONE_002",
+      "input": { "gate": "done_gate", "done_claim": true, "implementation_evidence": "PASS", "validation_evidence": "MISSING", "receipt": "PASS", "task_readback": "MISSING", "no_blocker": "PASS" },
+      "expected": "DONE_GATE_INCOMPLETE"
+    },
+    {
+      "id": "TEST_CONTEXT_001",
+      "input": { "gate": "chat_loop", "context_window_failure": true, "same_huge_prompt_retry": true },
+      "expected": "TOKEN_BLOAT_RETRY"
+    },
+    {
+      "id": "positive-scope-manifest",
+      "input": {
+        "gate": "scope_manifest",
+        "RUN_ID": "RUN-P0-BOUNDARY-BACKUP-DOCS-FIRST-20260531",
+        "task_id": "AH-P0-BOUNDARY-BACKUP-DOCS-FIRST",
+        "task_class": "AGENTHUB_SYSTEM_PROCESS",
+        "role": "T2_WORKER",
+        "worker_id": "worker-1",
+        "product_or_service": "control-spine",
+        "objective": "install guardrail",
+        "READ_ALLOWED_ROOTS": ["/root/workspaces/projects/agenthub-control-spine"],
+        "WRITE_ALLOWED_ROOTS": ["/root/workspaces/projects/agenthub-control-spine/governance"],
+        "EXEC_ALLOWED_COMMAND_CLASSES": ["ruby_validator"],
+        "FORBIDDEN_ROOTS": ["/root/gemini-space", "/root/codex-space", "/var/lib/docker"],
+        "FORBIDDEN_COMMAND_CLASSES": ["DB_write"],
+        "ACTIVE_RUNTIME_PATH_PROOF": "not_applicable_repo_control",
+        "OFFICIAL_MECHANISM_DECISION": "repo_policy",
+        "BACKUP_PLAN": "git branch",
+        "ROLLBACK_PLAN": "git revert",
+        "VALIDATION_PLAN": "validators",
+        "DYNAMIC_SCOPE_EXPANSION_POLICY": "request_before_write",
+        "NO_USER_CHAT_POLICY": "buffer_active_run"
+      },
+      "expected": "SCOPE_MANIFEST_PASS"
+    },
+    {
+      "id": "positive-backup-gate",
+      "input": { "gate": "backup", "mutation_requested": true, "backup_hash": "abc123", "rollback_plan": "git revert", "backup_size_mb": 1 },
+      "expected": "BACKUP_GATE_PASS"
+    },
+    {
+      "id": "positive-no-blind-mutation",
+      "input": {
+        "gate": "blind_mutation",
+        "mutation_requested": true,
+        "current_state_proof": "PASS",
+        "source_of_truth": "PASS",
+        "official_mechanism_decision": "PASS",
+        "active_target_path_proof": "PASS",
+        "scope_manifest": "PASS",
+        "backup_or_rollback": "PASS",
+        "validation_plan": "PASS",
+        "task_evidence_target": "PASS",
+        "no_secret_policy": "PASS",
+        "forbidden_zone_proof": "PASS"
+      },
+      "expected": "NO_BLIND_MUTATION_PASS"
+    },
+    {
+      "id": "positive-done",
+      "input": {
+        "gate": "done_gate",
+        "done_claim": true,
+        "implementation_evidence": "PASS",
+        "validation_evidence": "PASS",
+        "receipt": "PASS",
+        "task_readback": "PASS",
+        "no_blocker": "PASS"
+      },
+      "expected": "DONE_WITH_EVIDENCE"
+    }
+  ]
+}
