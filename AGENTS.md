@@ -56,6 +56,12 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
   role, allowed surfaces, forbidden surfaces, receipt, and validation. T0 cannot
   use spawned workers as a bypass for implementation, and
   `agenthub-sandbox-worker` is not Spark proof.
+- Closed-loop recovery work must follow
+  `governance/agenthub-closed-loop-recovery-policy.md`. After initial capture,
+  routine missing proof, PR queue gaps, register gaps, task comments, validation
+  routing, and same-gate retries must become same-run remediation or one typed
+  platform blocker, not owner readback. `SPAWNED_WORKER_DISPATCH` receipts must
+  record requested, resolved, and actual model proof.
 - Live incident work must not fall back from AgentHub adapter blockers to manual
   T0 shell. If the adapter reports `CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED`,
   keep the task open, update the receipt, and repair the AgentHub route.

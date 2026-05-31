@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/closed_loop_autonomy.schema.json",
+  "title": "Closed Loop Autonomy Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "scope_signature",
+    "capture_complete",
+    "duplicate_check",
+    "task_binding",
+    "worker_dispatch",
+    "validation",
+    "tracker_update",
+    "register_update",
+    "pr_queue_update",
+    "owner_interruption",
+    "owner_only_gate",
+    "final_state"
+  ],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "scope_signature": { "type": "string", "minLength": 1 },
+    "capture_complete": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "duplicate_check": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "task_binding": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "worker_dispatch": { "type": "string", "enum": ["PASS", "FAIL", "NOT_APPLICABLE"] },
+    "validation": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "tracker_update": { "type": "string", "enum": ["PASS", "FAIL", "NOT_APPLICABLE"] },
+    "register_update": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "pr_queue_update": { "type": "string", "enum": ["PASS", "FAIL"] },
+    "owner_interruption": { "type": "boolean" },
+    "owner_only_gate": { "type": ["string", "null"] },
+    "final_state": {
+      "type": "string",
+      "enum": ["DONE_WITH_EVIDENCE", "READY_BLOCKED_BY_PLATFORM_GATE", "OWNER_ONLY_IRREVERSIBLE_GATE", "FORBIDDEN_SCOPE_BLOCKER", "INSTRUCTION_SOURCE_DRIFT", "WRONG_TASK_CLASS_BLOCKER", "SAFETY_QUARANTINE"]
+    }
+  }
+}

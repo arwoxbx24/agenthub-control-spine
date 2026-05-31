@@ -1,0 +1,285 @@
+{
+  "cases": [
+    {
+      "id": "t0_direct_code_blocked",
+      "input": {
+        "gate": "t0_boundary",
+        "role": "T0_CONTROL",
+        "mutation_requested": true
+      },
+      "expected": "BLOCKED_T0_DIRECT_AUTHORSHIP"
+    },
+    {
+      "id": "forbidden_runtime_surface_without_authority",
+      "input": {
+        "gate": "t0_boundary",
+        "role": "T2_CODEX_SPARK_WORKER",
+        "touched_surfaces": ["Docker"],
+        "scoped_worker_authority": "FAIL"
+      },
+      "expected": "FORBIDDEN_SCOPE_BLOCKER"
+    },
+    {
+      "id": "model_actual_missing",
+      "input": {
+        "gate": "model_actual_proof",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark"
+      },
+      "expected": "MODEL_ROUTE_ACTUAL_NOT_PROVEN"
+    },
+    {
+      "id": "spark_requested_sandbox_actual_rejected",
+      "input": {
+        "gate": "model_actual_proof",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_model": "agenthub-sandbox-worker",
+        "model_proof_ref": "worker-self-report"
+      },
+      "expected": "CODEX_SPARK_ACTUAL_MODEL_NOT_PROVEN"
+    },
+    {
+      "id": "spark_actual_pass",
+      "input": {
+        "gate": "model_actual_proof",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_model": "gpt-5.3-codex-spark",
+        "model_proof_ref": "codex-cli-json-usage-receipt"
+      },
+      "expected": "MODEL_ROUTE_ACTUAL_PROOF_PASS"
+    },
+    {
+      "id": "approved_fallback_pass",
+      "input": {
+        "gate": "model_actual_proof",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex",
+        "actual_model": "gpt-5.3-codex",
+        "model_proof_ref": "same-run-fallback-receipt",
+        "fallback_approved": true,
+        "same_run_fallback_proof": "PASS",
+        "return_to_spark": true
+      },
+      "expected": "MODEL_ROUTE_ACTUAL_PROOF_PASS"
+    },
+    {
+      "id": "spawned_receipt_missing",
+      "input": {
+        "gate": "spawned_dispatch",
+        "run_id": "RUN-P0-CLOSED-LOOP-RECOVERY-20260531",
+        "requested_model": "gpt-5.3-codex-spark"
+      },
+      "expected": "SPAWNED_WORKER_RECEIPT_MISSING"
+    },
+    {
+      "id": "spawned_dispatch_pass",
+      "input": {
+        "gate": "spawned_dispatch",
+        "event_id": "evt-1",
+        "run_id": "RUN-P0-CLOSED-LOOP-RECOVERY-20260531",
+        "parent_agent_id": "t0",
+        "spawned_agent_id": "019e7e12-c5ec-77f3-989a-42cfea25d484",
+        "task_id": "AH-P0-CLOSED-LOOP-RECOVERY",
+        "role": "T2_CODEX_SPARK_WORKER",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_model": "gpt-5.3-codex-spark",
+        "model_proof_ref": "codex-json-receipt",
+        "scope_signature": "closed-loop-recovery",
+        "prompt_hash": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+        "evidence_refs": ["reports/receipts/P0-closed-loop-recovery-implementation-receipt-20260531.md"],
+        "no_user_interruption_proof": "PASS"
+      },
+      "expected": "SPAWNED_WORKER_DISPATCH_PASS"
+    },
+    {
+      "id": "parallel_write_conflict",
+      "input": {
+        "gate": "spawned_dispatch",
+        "event_id": "evt-2",
+        "run_id": "RUN-P0-CLOSED-LOOP-RECOVERY-20260531",
+        "parent_agent_id": "t0",
+        "spawned_agent_id": "worker",
+        "task_id": "AH-P0-CLOSED-LOOP-RECOVERY",
+        "role": "T2_CODEX_SPARK_WORKER",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_model": "gpt-5.3-codex-spark",
+        "model_proof_ref": "receipt",
+        "scope_signature": "closed-loop-recovery",
+        "prompt_hash": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+        "evidence_refs": ["artifact"],
+        "no_user_interruption_proof": "PASS",
+        "parallel_write": true,
+        "disjoint_worktree": false
+      },
+      "expected": "SPAWNED_WRITE_CONFLICT"
+    },
+    {
+      "id": "closed_loop_pass",
+      "input": {
+        "gate": "closed_loop",
+        "capture": "PASS",
+        "duplicate_check": "PASS",
+        "task_binding": "PASS",
+        "validation": "PASS",
+        "tracker_update": "PASS",
+        "register_update": "PASS",
+        "pr_queue_update": "PASS",
+        "final_owner_output": "PASS"
+      },
+      "expected": "CLOSED_LOOP_AUTONOMY_PASS"
+    },
+    {
+      "id": "owner_action_leak",
+      "input": {
+        "gate": "closed_loop",
+        "owner_interruption": true,
+        "owner_only_gate": false
+      },
+      "expected": "USER_ACTION_LEAK"
+    },
+    {
+      "id": "duplicate_run_loop",
+      "input": {
+        "gate": "retry_loop",
+        "duplicate_scope_signature": true,
+        "new_evidence_since_last_run": false
+      },
+      "expected": "DUPLICATE_RUN_OR_WORKER_LOOP"
+    },
+    {
+      "id": "same_gate_loop",
+      "input": {
+        "gate": "retry_loop",
+        "same_gate_failures": 2,
+        "architecture_repair_or_typed_blocker": false
+      },
+      "expected": "REPEATED_GATE_LOOP"
+    },
+    {
+      "id": "audit_report_not_instruction",
+      "input": {
+        "gate": "artifact_lifecycle",
+        "artifact_lifecycle": "audit_only",
+        "used_as_instruction": true
+      },
+      "expected": "ARTIFACT_LIFECYCLE_DRIFT"
+    },
+    {
+      "id": "open_pr_missing_queue",
+      "input": {
+        "gate": "artifact_lifecycle",
+        "open_pr": true,
+        "pr_queue_state": ""
+      },
+      "expected": "PR_QUEUE_STATE_MISSING"
+    },
+    {
+      "id": "closure_without_task_readback",
+      "input": {
+        "gate": "artifact_lifecycle",
+        "implementation_closure": true,
+        "task_readback": "FAIL"
+      },
+      "expected": "NO_TASK_READBACK"
+    },
+    {
+      "id": "product_claim_without_user_outcome",
+      "input": {
+        "gate": "evidence_quality",
+        "product_claim": true,
+        "user_outcome_proof": "FAIL"
+      },
+      "expected": "NO_USER_OUTCOME_PROOF"
+    },
+    {
+      "id": "secret_risk",
+      "input": {
+        "gate": "evidence_quality",
+        "secret_or_raw_link_detected": true
+      },
+      "expected": "SECRET_OR_RAW_LINK_RISK"
+    },
+    {
+      "id": "mcp_env_not_proof",
+      "input": {
+        "gate": "evidence_quality",
+        "mcp_claim": true,
+        "mcp_tool_receipt": "FAIL"
+      },
+      "expected": "MCP_PROOF_REQUIRED"
+    },
+    {
+      "id": "slash_command_not_backend_proof",
+      "input": {
+        "gate": "evidence_quality",
+        "slash_command_only": true
+      },
+      "expected": "SLASH_COMMAND_NOT_BACKEND_PROOF"
+    },
+    {
+      "id": "dangerous_cli_bypass",
+      "input": {
+        "gate": "evidence_quality",
+        "dangerous_bypass_flag": true
+      },
+      "expected": "DANGEROUS_CLI_BYPASS_BLOCKED"
+    },
+    {
+      "id": "hiddify_uuid_missing",
+      "input": {
+        "gate": "hiddify_child",
+        "uuid_link_proof": "FAIL"
+      },
+      "expected": "HIDDIFY_UUID_LINK_NOT_PROVEN"
+    },
+    {
+      "id": "hiddify_uuidless_payload",
+      "input": {
+        "gate": "hiddify_child",
+        "uuid_link_proof": "PASS",
+        "uuidless_payload": true
+      },
+      "expected": "HIDDIFY_UUID_LESS_PAYLOAD_LEAK"
+    },
+    {
+      "id": "hiddify_domain_hardcode",
+      "input": {
+        "gate": "hiddify_child",
+        "uuid_link_proof": "PASS",
+        "domain_hardcoded": true
+      },
+      "expected": "DOMAIN_HARDCODE_RISK"
+    },
+    {
+      "id": "done_with_evidence",
+      "input": {
+        "gate": "done_gate",
+        "final_state": "DONE_WITH_EVIDENCE",
+        "all_required_evidence": "PASS"
+      },
+      "expected": "DONE_WITH_EVIDENCE"
+    },
+    {
+      "id": "platform_gate_final",
+      "input": {
+        "gate": "done_gate",
+        "final_state": "READY_BLOCKED_BY_PLATFORM_GATE",
+        "all_required_evidence": "PASS"
+      },
+      "expected": "READY_BLOCKED_BY_PLATFORM_GATE"
+    },
+    {
+      "id": "generic_done_rejected",
+      "input": {
+        "gate": "done_gate",
+        "final_state": "BLOCKED",
+        "all_required_evidence": "PASS"
+      },
+      "expected": "DONE_GATE_EVIDENCE_MISSING"
+    }
+  ]
+}
