@@ -63,6 +63,14 @@ status: draft
 | `validators/three_component_cycle_validator.rb` | validator | AH-615/AH-619/AH-622 | active |
 | `evals/three-component-cycle/fixtures.json` | eval fixtures | AH-615/AH-619/AH-622 | active |
 | `reports/receipts/P0-three-component-cycle-implementation-receipt-20260531.md` | operational receipt | AH-615/AH-619/AH-622 | active |
+| `governance/agenthub-closed-loop-recovery-policy.md` | governance policy | AH-P0-CLOSED-LOOP-RECOVERY | active |
+| `schemas/spawned_worker_dispatch.schema.json` | schema | AH-P0-CLOSED-LOOP-RECOVERY | active |
+| `schemas/closed_loop_autonomy.schema.json` | schema | AH-P0-CLOSED-LOOP-RECOVERY | active |
+| `validators/closed_loop_recovery_validator.rb` | validator | AH-P0-CLOSED-LOOP-RECOVERY | active |
+| `evals/closed-loop-recovery/fixtures.json` | eval fixtures | AH-P0-CLOSED-LOOP-RECOVERY | active |
+| `prompts/closed-loop/agenthub_closed_loop_worker_dispatch.txt` | worker template | AH-P0-CLOSED-LOOP-RECOVERY | active |
+| `prompts/closed-loop/agenthub_architect_recovery_contract.txt` | architect contract | AH-P0-CLOSED-LOOP-RECOVERY | active |
+| `reports/receipts/P0-closed-loop-recovery-implementation-receipt-20260531.md` | operational receipt | AH-P0-CLOSED-LOOP-RECOVERY | active |
 | `governance/agenthub-x-capability-matrix.md` | governance policy | AH-590 | active |
 | `governance/adr/ADR-agenthub-x-controlled-capability-matrix-20260528.md` | architecture decision record | AH-590 | active |
 | `governance/adr/ADR-codex-spark-model-router-enforcement-20260528.md` | architecture decision record | AH-590 | active |

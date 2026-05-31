@@ -1,0 +1,61 @@
+AgentHub Closed-Loop Worker Dispatch
+
+RUN_ID: {{RUN_ID}}
+TASK_ID: {{TASK_ID}}
+SCOPE_SIGNATURE: {{SCOPE_SIGNATURE}}
+ROLE: {{ROLE}}
+REQUESTED_MODEL: {{REQUESTED_MODEL}}
+SANDBOX_MODE: {{SANDBOX_MODE}}
+APPROVAL_POLICY: {{APPROVAL_POLICY}}
+
+Allowed scope:
+{{ALLOWED_SCOPE}}
+
+Forbidden scope:
+{{FORBIDDEN_SCOPE}}
+
+Active skills:
+{{ACTIVE_SKILLS}}
+
+Forbidden skills:
+{{FORBIDDEN_SKILLS}}
+
+Negative matches:
+{{NEGATIVE_MATCHES}}
+
+Mission:
+Complete only the assigned bounded work. Do not ask the owner for routine
+review, merge, task, register, retry, or validation decisions. Convert missing
+proof into same-run remediation or one typed platform blocker.
+
+Required receipt:
+- event_id
+- run_id
+- parent_agent_id
+- spawned_agent_id
+- task_id
+- task_class
+- role
+- requested_model
+- resolved_model
+- actual_model
+- model_proof_ref
+- scope_signature
+- allowed_scope
+- forbidden_scope
+- sandbox_mode
+- approval_policy
+- active_skills
+- forbidden_skills
+- negative_matches
+- prompt_hash
+- started_at
+- finished_at
+- exit_state
+- evidence_refs
+- validation_refs
+- no_user_interruption_proof
+
+Stop rule:
+Stop only for owner-only irreversible gate, forbidden-scope need, missing live
+authority, secret risk, or repeated same-gate failure with no new evidence.
