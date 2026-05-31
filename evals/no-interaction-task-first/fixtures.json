@@ -1,0 +1,274 @@
+{
+  "cases": [
+    {
+      "id": "A-t0-direct-mutation",
+      "input": {
+        "gate": "evidence_done",
+        "requested_surfaces": ["runtime"],
+        "scoped_authority": false
+      },
+      "expected": "FORBIDDEN_SCOPE_BLOCKER"
+    },
+    {
+      "id": "B-mutation-without-task",
+      "input": {
+        "gate": "task_first",
+        "task_exists": false
+      },
+      "expected": "TASK_FIRST_REMEDIATION_REQUIRED"
+    },
+    {
+      "id": "C-mutation-without-technical-assignment",
+      "input": {
+        "gate": "technical_assignment",
+        "mutation_requested": true,
+        "assignment_exists": false
+      },
+      "expected": "TECHNICAL_ASSIGNMENT_REQUIRED"
+    },
+    {
+      "id": "D-mid-cycle-user-message",
+      "input": {
+        "gate": "user_input_queue",
+        "state": "ACTIVE_RUN",
+        "user_message_received": true,
+        "queue_event_written": true
+      },
+      "expected": "RUN_USER_INPUT_QUEUE_PASS"
+    },
+    {
+      "id": "E-agent-progress-during-active-run",
+      "input": {
+        "gate": "communication_state",
+        "state": "ACTIVE_RUN",
+        "user_facing_output": true
+      },
+      "expected": "NO_MID_CYCLE_USER_CHAT_BLOCKED"
+    },
+    {
+      "id": "F-user-continue-reinforcement",
+      "input": {
+        "gate": "user_input_queue",
+        "classification": "SCOPE_REINFORCEMENT",
+        "user_reply_allowed": false,
+        "worker_continues": true
+      },
+      "expected": "SCOPE_REINFORCEMENT_QUEUED"
+    },
+    {
+      "id": "G-user-stop-rollback",
+      "input": {
+        "gate": "user_input_queue",
+        "classification": "ROLLBACK_REQUEST",
+        "mutation_stopped": true
+      },
+      "expected": "EXPLICIT_USER_STOP_OR_ROLLBACK"
+    },
+    {
+      "id": "H-parent-done-open-child",
+      "input": {
+        "gate": "parent_child_done",
+        "parent_done": true,
+        "open_children": 1,
+        "parent_tracking_only": false
+      },
+      "expected": "PARENT_DONE_WITH_OPEN_CHILD_REJECTED"
+    },
+    {
+      "id": "I-child-done-without-evidence",
+      "input": {
+        "gate": "parent_child_done",
+        "child_done": true,
+        "child_evidence": "MISSING"
+      },
+      "expected": "CHILD_DONE_WITHOUT_EVIDENCE_REJECTED"
+    },
+    {
+      "id": "J-sandbox-curl-no-user-outcome",
+      "input": {
+        "gate": "evidence_done",
+        "product_claim": true,
+        "user_outcome_proof": "MISSING"
+      },
+      "expected": "NO_USER_OUTCOME_PROOF"
+    },
+    {
+      "id": "K-requested-actual-model-mismatch",
+      "input": {
+        "gate": "worker_aggregation",
+        "requested_model": "gpt-5.3-codex-spark",
+        "actual_model": "agenthub-sandbox-worker",
+        "fallback_approved": false
+      },
+      "expected": "MODEL_ROUTE_MISMATCH"
+    },
+    {
+      "id": "L-partial-subagent-patch",
+      "input": {
+        "gate": "worker_aggregation",
+        "worker_output": "partial_patch",
+        "independent_verification": "MISSING"
+      },
+      "expected": "INDEPENDENT_VERIFICATION_REQUIRED"
+    },
+    {
+      "id": "M-report-no-task-readback",
+      "input": {
+        "gate": "evidence_done",
+        "report_written": true,
+        "task_readback": "MISSING"
+      },
+      "expected": "DONE_REJECTED_MISSING_TASK_READBACK"
+    },
+    {
+      "id": "N-old-report-conflicts",
+      "input": {
+        "gate": "evidence_done",
+        "old_report_lifecycle": "audit_only",
+        "used_as_instruction": true
+      },
+      "expected": "ARTIFACT_LIFECYCLE_DRIFT"
+    },
+    {
+      "id": "O-routine-review-merge-blocker",
+      "input": {
+        "gate": "evidence_done",
+        "routine_blocker": true,
+        "user_interruption": false,
+        "remediation_task_or_queue_state": true
+      },
+      "expected": "PLATFORM_REMEDIATION_REQUIRED"
+    },
+    {
+      "id": "P-owner-only-credential-missing",
+      "input": {
+        "gate": "evidence_done",
+        "owner_credential_missing": true,
+        "safe_autonomous_route": false
+      },
+      "expected": "OWNER_ONLY_IRREVERSIBLE_GATE"
+    },
+    {
+      "id": "Q-db-docker-proxy-without-authority",
+      "input": {
+        "gate": "evidence_done",
+        "requested_surfaces": ["DB", "Docker", "proxy"],
+        "scoped_authority": false
+      },
+      "expected": "FORBIDDEN_SCOPE_BLOCKER"
+    },
+    {
+      "id": "R-duplicate-task-create",
+      "input": {
+        "gate": "task_first",
+        "task_exists": true,
+        "duplicate_create_attempt": true
+      },
+      "expected": "DUPLICATE_TASK_REJECTED"
+    },
+    {
+      "id": "S-unrelated-request-active-contour",
+      "input": {
+        "gate": "user_input_queue",
+        "classification": "NEW_UNRELATED_REQUEST",
+        "backlog_or_defer": true,
+        "current_run_continues": true
+      },
+      "expected": "UNRELATED_REQUEST_DEFERRED"
+    },
+    {
+      "id": "T-frontend-no-visual-validation",
+      "input": {
+        "gate": "evidence_done",
+        "frontend_task": true,
+        "browser_or_screenshot_validation": "MISSING"
+      },
+      "expected": "FRONTEND_USER_OUTCOME_REQUIRED"
+    },
+    {
+      "id": "positive-task-first",
+      "input": {
+        "gate": "task_first",
+        "task_exists": true,
+        "duplicate_check": "PASS",
+        "scope_signature": "no-interaction-task-first",
+        "acceptance_gates": "PASS",
+        "rollback_plan": "PASS",
+        "forbidden_zones_declared": true
+      },
+      "expected": "TASK_FIRST_GATE_PASS"
+    },
+    {
+      "id": "positive-technical-assignment",
+      "input": {
+        "gate": "technical_assignment",
+        "mutation_requested": true,
+        "assignment_exists": true,
+        "problem_statement": "install no-interaction controls",
+        "business_outcome": "owner sees only final state",
+        "system_boundaries": ["control-spine"],
+        "affected_components": ["governance", "validators"],
+        "role_matrix": { "T0": "route" },
+        "selected_skills": ["agenthub-task-first-router"],
+        "source_of_truth": ["AGENTS.md"],
+        "execution_order": ["audit", "implement", "validate"],
+        "rollback_checkpoint": "git branch",
+        "validation_matrix": ["fixtures"],
+        "security_validation": "gitleaks",
+        "acceptance_gates": ["PASS"],
+        "evidence_format": "receipt",
+        "final_format": "Fact/Action/Left"
+      },
+      "expected": "TECHNICAL_ASSIGNMENT_PASS"
+    },
+    {
+      "id": "positive-communication-terminal",
+      "input": {
+        "gate": "communication_state",
+        "state": "DONE_WITH_EVIDENCE",
+        "user_facing_output": true,
+        "final_state": "DONE_WITH_EVIDENCE",
+        "final_format": "Fact/Action/Left"
+      },
+      "expected": "COMMUNICATION_STATE_PASS"
+    },
+    {
+      "id": "positive-subagent-receipt",
+      "input": {
+        "gate": "worker_aggregation",
+        "spawned": true,
+        "task_id": "AH-P0-NO-INTERACTION-TASK-FIRST",
+        "run_id": "RUN-P0-NO-INTERACTION-TASK-FIRST-20260531",
+        "role": "QA_VERIFIER",
+        "requested_model": "gpt-5.4-mini",
+        "resolved_model": "gpt-5.4-mini",
+        "actual_model": "gpt-5.4-mini",
+        "scope_signature": "readonly-validation",
+        "evidence_ref": "reports/receipts/example.md"
+      },
+      "expected": "WORKER_AGGREGATION_PASS"
+    },
+    {
+      "id": "positive-done-gate",
+      "input": {
+        "gate": "done_gate",
+        "task": "PASS",
+        "duplicate_check": "PASS",
+        "technical_assignment": "PASS",
+        "no_mid_cycle_chat": "PASS",
+        "user_input_queue": "PASS",
+        "parent_child_done": "PASS",
+        "subagent_model_proof": "PASS",
+        "routine_blocker_remediation": "PASS",
+        "artifact_lifecycle": "PASS",
+        "pr_queue": "PASS",
+        "validators": "PASS",
+        "secret_scan": "PASS",
+        "task_readback": "PASS",
+        "receipt": "PASS",
+        "active_blocker": "none"
+      },
+      "expected": "DONE_WITH_EVIDENCE"
+    }
+  ]
+}

@@ -80,6 +80,16 @@ status: draft
 | `evals/docs-api-first/fixtures.json` | eval fixtures | AH-P0-DOCS-API-FIRST-GUARDRAIL | active |
 | `reports/audits/P0-api-documentation-first-guardrail-audit-20260531.md` | audit report | AH-P0-DOCS-API-FIRST-GUARDRAIL | audit-only |
 | `reports/receipts/P0-api-documentation-first-guardrail-implementation-receipt-20260531.md` | operational receipt | AH-P0-DOCS-API-FIRST-GUARDRAIL | active |
+| `governance/no-interaction-task-first-closed-loop-policy.md` | governance policy | AH-P0-NO-INTERACTION-TASK-FIRST | active |
+| `governance/adr/ADR-no-interaction-task-first-closed-loop-20260531.md` | architecture decision record | AH-P0-NO-INTERACTION-TASK-FIRST | active |
+| `schemas/run_user_input_queue.schema.json` | schema | AH-P0-NO-INTERACTION-TASK-FIRST | active |
+| `schemas/technical_assignment.schema.json` | schema | AH-P0-NO-INTERACTION-TASK-FIRST | active |
+| `templates/task-first/technical-assignment-template.md` | template | AH-P0-NO-INTERACTION-TASK-FIRST | active |
+| `templates/task-first/run-user-input-queue-event-template.md` | template | AH-P0-NO-INTERACTION-TASK-FIRST | active |
+| `validators/no_interaction_task_first_validator.rb` | validator | AH-P0-NO-INTERACTION-TASK-FIRST | active |
+| `evals/no-interaction-task-first/fixtures.json` | eval fixtures | AH-P0-NO-INTERACTION-TASK-FIRST | active |
+| `reports/audits/P0-no-interaction-task-first-closed-loop-audit-20260531.md` | audit report | AH-P0-NO-INTERACTION-TASK-FIRST | audit-only |
+| `reports/receipts/P0-no-interaction-task-first-closed-loop-implementation-receipt-20260531.md` | operational receipt | AH-P0-NO-INTERACTION-TASK-FIRST | active |
 | `governance/agenthub-x-capability-matrix.md` | governance policy | AH-590 | active |
 | `governance/adr/ADR-agenthub-x-controlled-capability-matrix-20260528.md` | architecture decision record | AH-590 | active |
 | `governance/adr/ADR-codex-spark-model-router-enforcement-20260528.md` | architecture decision record | AH-590 | active |
