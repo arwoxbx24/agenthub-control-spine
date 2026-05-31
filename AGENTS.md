@@ -68,6 +68,13 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
   progress/status prose is blocked from owner chat. Mutation requires a
   controlling task or exact task-route blocker, duplicate check, technical
   assignment, acceptance gates, rollback plan, and declared forbidden zones.
+- No-chat deadlock contours must follow
+  `governance/no-chat-deadlock-contour-policy.md`. Active-run user deltas are
+  buffered as `USER_DELTA_QUEUE`, not treated as stop events; third identical
+  retry is denied after two same-gate failures; model/spawn receipts are
+  mandatory for worker claims; task-service `NOOP` without physical issue id is
+  a typed blocker for Done; final owner output is restricted to Russian
+  `Fact/Action/Left`.
 - Boundary, backup, and docs/API-first guardrails must follow
   `governance/boundary-backup-docs-first-guardrail-policy.md`. Workers need a
   `SCOPE_MANIFEST` before mutation, exact `WRITE_ALLOWED_ROOTS`, rollback proof,

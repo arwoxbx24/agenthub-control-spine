@@ -99,6 +99,14 @@ status: draft
 | `evals/boundary-backup-docs-first/fixtures.json` | eval fixtures | AH-P0-BOUNDARY-BACKUP-DOCS-FIRST | active |
 | `reports/audits/P0-boundary-backup-docs-first-guardrail-audit-20260531.md` | audit report | AH-P0-BOUNDARY-BACKUP-DOCS-FIRST | audit-only |
 | `reports/receipts/P0-boundary-backup-docs-first-guardrail-implementation-receipt-20260531.md` | operational receipt | AH-P0-BOUNDARY-BACKUP-DOCS-FIRST | active |
+| `governance/no-chat-deadlock-contour-policy.md` | governance policy | AH-P0-NO-CHAT-DEADLOCK-CONTOUR | active |
+| `governance/adr/ADR-no-chat-deadlock-contour-20260531.md` | architecture decision record | AH-P0-NO-CHAT-DEADLOCK-CONTOUR | active |
+| `schemas/user_delta_queue.schema.json` | schema | AH-P0-NO-CHAT-DEADLOCK-CONTOUR | active |
+| `templates/no-chat-deadlock/worker-final-evidence-template.md` | template | AH-P0-NO-CHAT-DEADLOCK-CONTOUR | active |
+| `validators/no_chat_deadlock_contour_validator.rb` | validator | AH-P0-NO-CHAT-DEADLOCK-CONTOUR | active |
+| `evals/no-chat-deadlock-contour/fixtures.json` | eval fixtures | AH-P0-NO-CHAT-DEADLOCK-CONTOUR | active |
+| `reports/audits/P0-no-chat-deadlock-contour-audit-20260531.md` | audit report | AH-P0-NO-CHAT-DEADLOCK-CONTOUR | audit-only |
+| `reports/receipts/P0-no-chat-deadlock-contour-implementation-receipt-20260531.md` | operational receipt | AH-P0-NO-CHAT-DEADLOCK-CONTOUR | active |
 | `governance/agenthub-x-capability-matrix.md` | governance policy | AH-590 | active |
 | `governance/adr/ADR-agenthub-x-controlled-capability-matrix-20260528.md` | architecture decision record | AH-590 | active |
 | `governance/adr/ADR-codex-spark-model-router-enforcement-20260528.md` | architecture decision record | AH-590 | active |

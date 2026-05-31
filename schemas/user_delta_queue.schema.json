@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/user_delta_queue.schema.json",
+  "title": "AgentHub User Delta Queue Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "run_id",
+    "task_id",
+    "received_at",
+    "classification",
+    "message_hash",
+    "safe_checkpoint_action",
+    "stops_active_worker",
+    "user_reply_allowed"
+  ],
+  "properties": {
+    "event_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "received_at": { "type": "string", "minLength": 1 },
+    "classification": {
+      "type": "string",
+      "enum": ["SCOPE_CHANGE", "CORRECTION", "WRONG_INPUT", "URGENCY", "OWNER_ONLY_GATE", "ABUSE_NOISE", "VALIDATION_DATA"]
+    },
+    "message_hash": { "type": "string", "minLength": 8 },
+    "safe_checkpoint_action": { "type": "string", "minLength": 1 },
+    "stops_active_worker": { "type": "boolean" },
+    "user_reply_allowed": { "type": "boolean" },
+    "task_or_tz_addendum_ref": { "type": "string" }
+  }
+}
