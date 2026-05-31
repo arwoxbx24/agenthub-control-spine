@@ -1,0 +1,236 @@
+{
+  "cases": [
+    {
+      "id": "model_code_uses_spark",
+      "input": {
+        "component": "model_routing",
+        "actor_role": "T2_CODEX_SPARK_WORKER",
+        "task_surface": "code",
+        "spark_available": true,
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_route": "gpt-5.3-codex-spark"
+      },
+      "expected": "CODEX_SPARK_ROUTE_PASS"
+    },
+    {
+      "id": "sandbox_not_spark",
+      "input": {
+        "component": "model_routing",
+        "actor_role": "T2_CODEX_SPARK_WORKER",
+        "task_surface": "code",
+        "requested_model": "gpt-5.3-codex-spark",
+        "actual_route": "agenthub-sandbox-worker"
+      },
+      "expected": "SANDBOX_ROUTE_NOT_SPARK_PROOF"
+    },
+    {
+      "id": "fallback_with_same_run_proof",
+      "input": {
+        "component": "model_routing",
+        "task_surface": "code",
+        "spark_available": false,
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex",
+        "same_run_spark_unavailable_proof": "PASS",
+        "return_to_spark": true
+      },
+      "expected": "CODEX_FALLBACK_PASS"
+    },
+    {
+      "id": "fallback_without_proof",
+      "input": {
+        "component": "model_routing",
+        "task_surface": "code",
+        "spark_available": false,
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex",
+        "return_to_spark": true
+      },
+      "expected": "CODEX_FALLBACK_PROOF_REQUIRED"
+    },
+    {
+      "id": "t0_code_blocked",
+      "input": {
+        "component": "model_routing",
+        "actor_role": "T0_CONTROL",
+        "task_surface": "backend"
+      },
+      "expected": "T0_CODE_AUTHORSHIP_BLOCKED"
+    },
+    {
+      "id": "spawn_spark_pass",
+      "input": {
+        "component": "native_spawn",
+        "spawned_id": "019e7e12-c5ec-77f3-989a-42cfea25d484",
+        "task_id": "AH-619",
+        "run_id": "RUN-P0-THREE-COMPONENT-AUDIT-20260531",
+        "actor_role": "T2_CODEX_SPARK_WORKER",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_route": "gpt-5.3-codex-spark",
+        "output_artifact_path": "reports/receipts/P0-three-component-cycle-implementation-receipt-20260531.md",
+        "output_sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+        "touched_surfaces": []
+      },
+      "expected": "SPARK_SPAWN_PASS"
+    },
+    {
+      "id": "spawn_without_contract",
+      "input": {
+        "component": "native_spawn",
+        "actor_role": "T2_CODEX_SPARK_WORKER",
+        "requested_model": "gpt-5.3-codex-spark"
+      },
+      "expected": "SPAWN_ROUTE_CONTRACT_REQUIRED"
+    },
+    {
+      "id": "spawn_forbidden_db_secret_uuid",
+      "input": {
+        "component": "native_spawn",
+        "spawned_id": "worker",
+        "task_id": "AH-619",
+        "run_id": "RUN-P0-THREE-COMPONENT-AUDIT-20260531",
+        "actor_role": "T2_CODEX_SPARK_WORKER",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_route": "gpt-5.3-codex-spark",
+        "output_artifact_path": "artifact.md",
+        "output_sha256": "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef",
+        "touched_surfaces": ["DB"]
+      },
+      "expected": "SPAWNED_FORBIDDEN_SURFACE_BLOCKED"
+    },
+    {
+      "id": "cli_t0_readonly",
+      "input": {
+        "component": "cli_profile",
+        "profile": "T0_CONTROL",
+        "sandbox": "read-only",
+        "can_write": false
+      },
+      "expected": "CLI_T0_PROFILE_PASS"
+    },
+    {
+      "id": "cli_t2_spark_workspace",
+      "input": {
+        "component": "cli_profile",
+        "profile": "T2_CODEX_SPARK_WORKER",
+        "requested_model": "gpt-5.3-codex-spark",
+        "sandbox": "workspace-write"
+      },
+      "expected": "CLI_T2_SPARK_PROFILE_PASS"
+    },
+    {
+      "id": "cli_unknown_profile",
+      "input": {
+        "component": "cli_profile",
+        "profile": "UNKNOWN",
+        "sandbox": "read-only"
+      },
+      "expected": "UNKNOWN_PROFILE_BLOCKED"
+    },
+    {
+      "id": "cli_danger_unscoped",
+      "input": {
+        "component": "cli_profile",
+        "profile": "VERIFIER",
+        "sandbox": "danger-full-access",
+        "isolated_authorized_sandbox": false
+      },
+      "expected": "DANGER_FULL_ACCESS_BLOCKED"
+    },
+    {
+      "id": "hidden_loop_pass",
+      "input": {
+        "component": "continuous_loop",
+        "request_capture": "PASS",
+        "task_link": "PASS",
+        "worker_spawn": "PASS",
+        "validation": "PASS",
+        "tracker_update": "PASS",
+        "final_owner_output": "PASS",
+        "mid_run_owner_output": false
+      },
+      "expected": "HIDDEN_CONTINUOUS_LOOP_PASS"
+    },
+    {
+      "id": "mid_run_output_blocked",
+      "input": {
+        "component": "continuous_loop",
+        "mid_run_owner_output": true
+      },
+      "expected": "OWNER_OUTPUT_SUPPRESSION_GATE_MISSING"
+    },
+    {
+      "id": "same_gate_needs_self_healing",
+      "input": {
+        "component": "continuous_loop",
+        "same_gate_failures": 2,
+        "self_healing_task_created": false
+      },
+      "expected": "SAME_GATE_SELF_HEALING_REQUIRED"
+    },
+    {
+      "id": "hiddify_uuid_flow_pass",
+      "input": {
+        "component": "hiddify_flow",
+        "canonical_real_project_path": "PASS",
+        "browser_validation": "PASS",
+        "user_link_shape": "https://example.test/client/01234567-89ab-cdef-0123-456789abcdef/",
+        "uuidless_client_payload": false,
+        "db_mutation": false,
+        "secret_output": false,
+        "uuid_regeneration": false
+      },
+      "expected": "HIDDIFY_UUID_LINK_FLOW_PASS"
+    },
+    {
+      "id": "hiddify_current_path_blocked",
+      "input": {
+        "component": "hiddify_flow",
+        "canonical_real_project_path": "FAIL",
+        "browser_validation": "PASS",
+        "user_link_shape": "https://example.test/client/01234567-89ab-cdef-0123-456789abcdef/"
+      },
+      "expected": "HIDDIFY_CANONICAL_PATH_REQUIRED"
+    },
+    {
+      "id": "hiddify_browser_not_proven",
+      "input": {
+        "component": "hiddify_flow",
+        "canonical_real_project_path": "PASS",
+        "browser_validation": "NOT_PROVEN",
+        "user_link_shape": "https://example.test/client/01234567-89ab-cdef-0123-456789abcdef/"
+      },
+      "expected": "HIDDIFY_BROWSER_VALIDATION_FAILED"
+    },
+    {
+      "id": "hiddify_uuidless_payload_blocked",
+      "input": {
+        "component": "hiddify_flow",
+        "canonical_real_project_path": "PASS",
+        "browser_validation": "PASS",
+        "user_link_shape": "https://example.test/client/",
+        "uuidless_client_payload": true
+      },
+      "expected": "HIDDIFY_UUID_LINK_FLOW_NOT_FIXED"
+    },
+    {
+      "id": "done_gate_runtime_blocker",
+      "input": {
+        "component": "done_gate",
+        "repo_baseline": "PASS",
+        "native_spawn": "PASS",
+        "cli_profile": "PASS",
+        "continuous_loop": "PASS",
+        "hiddify_acceptance": "FAIL",
+        "registers": "PASS",
+        "tracker_readback": "PASS",
+        "secret_scan": "PASS",
+        "active_blocker": "LIVE_ADAPTER_AUTHORITY_GATE_REQUIRED"
+      },
+      "expected": "LIVE_ADAPTER_AUTHORITY_GATE_REQUIRED"
+    }
+  ]
+}

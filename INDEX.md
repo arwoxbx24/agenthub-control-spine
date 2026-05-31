@@ -60,6 +60,9 @@ status: draft
 | `reports/receipts/P0-codex-native-mcp-diagnostic-canary-20260530.md` | canary receipt | AH-622 | active |
 | `reports/receipts/P0-codex-native-background-terminal-canary-20260530.md` | canary receipt | AH-622 | active |
 | `reports/receipts/P0-codex-native-capability-enrichment-implementation-receipt-20260530.md` | operational receipt | AH-622 | active |
+| `validators/three_component_cycle_validator.rb` | validator | AH-615/AH-619/AH-622 | active |
+| `evals/three-component-cycle/fixtures.json` | eval fixtures | AH-615/AH-619/AH-622 | active |
+| `reports/receipts/P0-three-component-cycle-implementation-receipt-20260531.md` | operational receipt | AH-615/AH-619/AH-622 | active |
 | `governance/agenthub-x-capability-matrix.md` | governance policy | AH-590 | active |
 | `governance/adr/ADR-agenthub-x-controlled-capability-matrix-20260528.md` | architecture decision record | AH-590 | active |
 | `governance/adr/ADR-codex-spark-model-router-enforcement-20260528.md` | architecture decision record | AH-590 | active |
