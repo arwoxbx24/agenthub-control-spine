@@ -1,0 +1,99 @@
+{
+  "cases": [
+    {
+      "id": "active-run-progress-before-done",
+      "input": { "gate": "no_mid_cycle_user_chat", "state": "ACTIVE_RUN", "user_facing_progress": true },
+      "expected": "USER_CHAT_STOP_DEFECT"
+    },
+    {
+      "id": "user-do-not-stop-buffered",
+      "input": { "gate": "user_delta_queue", "state": "ACTIVE_RUN", "user_message_received": true, "delta_queued": true, "delta_classification": "URGENCY", "stops_active_worker": false },
+      "expected": "USER_DELTA_QUEUE_PASS"
+    },
+    {
+      "id": "worker-gemini-space",
+      "input": { "gate": "forbidden_directory", "changed_paths": ["/root/gemini-space/app/file.py"] },
+      "expected": "FORBIDDEN_SCOPE_TOUCH"
+    },
+    {
+      "id": "worker-non-live-path-live-exists",
+      "input": { "gate": "live_path_proof", "implementation_claim": true, "live_path_proof": "MISSING", "repo_canonical": false },
+      "expected": "LIVE_PATH_NOT_PROVEN"
+    },
+    {
+      "id": "mutation-before-tz",
+      "input": { "gate": "tz_before_mutation", "mutation_requested": true, "task_id": "AH-1", "run_id": "RUN-1" },
+      "expected": "TZ_BEFORE_MUTATION_BLOCKED"
+    },
+    {
+      "id": "requested-actual-model-mismatch",
+      "input": { "gate": "model_route_receipt", "requested_model": "gpt-5.3-codex-spark", "actual_model": "agenthub-sandbox-worker", "approved_same_run_fallback": false },
+      "expected": "MODEL_ROUTE_MISMATCH"
+    },
+    {
+      "id": "third-same-retry",
+      "input": { "gate": "deadlock_breaker", "same_gate_failures": 2, "third_identical_retry": true },
+      "expected": "DEADLOCK_RETRY_LIMIT_REACHED"
+    },
+    {
+      "id": "worker-pass-qa-not-proven",
+      "input": { "gate": "no_fake_pass", "implementation_claim": "PASS", "qa_state": "NOT_PROVEN" },
+      "expected": "NO_FAKE_PASS_BLOCKED"
+    },
+    {
+      "id": "task-service-noop-done",
+      "input": { "gate": "task_service_physical_write", "done_requested": true, "task_service_status": "NOOP", "issue_id": "" },
+      "expected": "TASK_SERVICE_PHYSICAL_WRITE_MISSING"
+    },
+    {
+      "id": "final-output-long-report",
+      "input": { "gate": "final_output_compressor", "final_output": "Fact: ok\nAction: ok\nDetails: long report\nLeft: none" },
+      "expected": "FINAL_OUTPUT_POLICY_FAIL"
+    },
+    {
+      "id": "product-db-before-api-docs",
+      "input": { "gate": "product_api_first", "product_task": true, "direct_db_before_api_docs": true },
+      "expected": "API_OR_DOCS_MECHANISM_NOT_FOUND"
+    },
+    {
+      "id": "t0-direct-mutation",
+      "input": { "gate": "t0_boundary", "role": "T0_CONTROL", "implementation_mutation": true },
+      "expected": "BLOCKED_T0_DIRECT_MUTATION"
+    },
+    {
+      "id": "owner-only-gate",
+      "input": { "gate": "done_gate", "typed_blocker": "OWNER_ONLY_IRREVERSIBLE_GATE" },
+      "expected": "OWNER_ONLY_IRREVERSIBLE_GATE"
+    },
+    {
+      "id": "spawn-receipt-missing",
+      "input": { "gate": "spawn_receipt", "spawned_work": true, "spawn_receipt": "not_applicable" },
+      "expected": "SPAWN_RECEIPT_MISSING"
+    },
+    {
+      "id": "context-bloat-retry",
+      "input": { "gate": "deadlock_breaker", "context_window_failures": 2, "same_huge_prompt_retry": true },
+      "expected": "CONTEXT_BLOAT_DEFECT"
+    },
+    {
+      "id": "valid-final-output",
+      "input": { "gate": "final_output_compressor", "final_output": "Fact: контур закрыт.\nAction: валидаторы PASS.\nLeft: none" },
+      "expected": "FINAL_OUTPUT_COMPRESSOR_PASS"
+    },
+    {
+      "id": "valid-done",
+      "input": {
+        "gate": "done_gate",
+        "implementation_evidence": "PASS",
+        "validation_evidence": "PASS",
+        "receipt": "PASS",
+        "task_readback": "PASS",
+        "no_blocker": "PASS",
+        "no_forbidden_zone": "PASS",
+        "register_index": "PASS",
+        "pr_queue": "PASS"
+      },
+      "expected": "DONE_WITH_EVIDENCE"
+    }
+  ]
+}
