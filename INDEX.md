@@ -71,6 +71,15 @@ status: draft
 | `prompts/closed-loop/agenthub_closed_loop_worker_dispatch.txt` | worker template | AH-P0-CLOSED-LOOP-RECOVERY | active |
 | `prompts/closed-loop/agenthub_architect_recovery_contract.txt` | architect contract | AH-P0-CLOSED-LOOP-RECOVERY | active |
 | `reports/receipts/P0-closed-loop-recovery-implementation-receipt-20260531.md` | operational receipt | AH-P0-CLOSED-LOOP-RECOVERY | active |
+| `governance/api-documentation-first-guardrail-policy.md` | governance policy | AH-P0-DOCS-API-FIRST-GUARDRAIL | active |
+| `governance/adr/ADR-api-documentation-first-agenthub-guardrail-20260531.md` | architecture decision record | AH-P0-DOCS-API-FIRST-GUARDRAIL | active |
+| `templates/api-first/api-route-sheet-template.md` | template | AH-P0-DOCS-API-FIRST-GUARDRAIL | active |
+| `templates/api-first/documentation-lookup-gate-template.md` | template | AH-P0-DOCS-API-FIRST-GUARDRAIL | active |
+| `schemas/truth_ledger.schema.json` | schema | AH-P0-DOCS-API-FIRST-GUARDRAIL | active |
+| `validators/api_documentation_first_guardrail_validator.rb` | validator | AH-P0-DOCS-API-FIRST-GUARDRAIL | active |
+| `evals/docs-api-first/fixtures.json` | eval fixtures | AH-P0-DOCS-API-FIRST-GUARDRAIL | active |
+| `reports/audits/P0-api-documentation-first-guardrail-audit-20260531.md` | audit report | AH-P0-DOCS-API-FIRST-GUARDRAIL | audit-only |
+| `reports/receipts/P0-api-documentation-first-guardrail-implementation-receipt-20260531.md` | operational receipt | AH-P0-DOCS-API-FIRST-GUARDRAIL | active |
 | `governance/agenthub-x-capability-matrix.md` | governance policy | AH-590 | active |
 | `governance/adr/ADR-agenthub-x-controlled-capability-matrix-20260528.md` | architecture decision record | AH-590 | active |
 | `governance/adr/ADR-codex-spark-model-router-enforcement-20260528.md` | architecture decision record | AH-590 | active |

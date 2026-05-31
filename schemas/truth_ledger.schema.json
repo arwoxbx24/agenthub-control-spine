@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/truth_ledger.schema.json",
+  "title": "Truth Ledger",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["run_id", "claims"],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["claim_id", "claim", "status"],
+        "properties": {
+          "claim_id": { "type": "string", "minLength": 1 },
+          "claim": { "type": "string", "minLength": 1 },
+          "status": {
+            "type": "string",
+            "enum": ["EVIDENCED", "HYPOTHESIS", "UNVERIFIED", "REJECTED"]
+          },
+          "evidence_ref": { "type": ["string", "null"] },
+          "risk": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

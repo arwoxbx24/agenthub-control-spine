@@ -62,6 +62,14 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
   routing, and same-gate retries must become same-run remediation or one typed
   platform blocker, not owner readback. `SPAWNED_WORKER_DISPATCH` receipts must
   record requested, resolved, and actual model proof.
+- Packaged products, vendor apps, Dockerized products, CMS, SaaS, panels,
+  MCP servers, task services, and unknown product surfaces must follow
+  `governance/api-documentation-first-guardrail-policy.md` before mutation.
+  Use official documentation and supported mechanisms first: API, admin panel,
+  CLI, SDK, MCP, documented config, migration, or supported deploy route.
+  Direct product DB mutation, container-internal vendored-code surgery,
+  hardcoded UUID/password/domain fixes, and undocumented product-state changes
+  are forbidden unless the explicit emergency authority and ADR gates pass.
 - Live incident work must not fall back from AgentHub adapter blockers to manual
   T0 shell. If the adapter reports `CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED`,
   keep the task open, update the receipt, and repair the AgentHub route.

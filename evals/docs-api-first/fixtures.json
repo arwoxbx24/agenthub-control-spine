@@ -1,0 +1,244 @@
+{
+  "cases": [
+    {
+      "id": "packaged_product_requires_docs",
+      "input": {
+        "gate": "surface_classification",
+        "surface_class": "ready_made_product",
+        "documentation_lookup": "FAIL"
+      },
+      "expected": "DOCS_LOOKUP_REQUIRED"
+    },
+    {
+      "id": "unknown_product_no_mutation",
+      "input": {
+        "gate": "surface_classification",
+        "surface_class": "unknown_product",
+        "product_identified": false
+      },
+      "expected": "UNVERIFIED_PRODUCT_SURFACE"
+    },
+    {
+      "id": "owned_code_trivial_syntax_no_docs",
+      "input": {
+        "gate": "surface_classification",
+        "surface_class": "owned_application_code",
+        "trivial_local_error": true,
+        "compiler_or_test_evidence": "PASS"
+      },
+      "expected": "OWNED_CODE_LOCAL_FIX_ALLOWED"
+    },
+    {
+      "id": "framework_uncertain_requires_docs",
+      "input": {
+        "gate": "surface_classification",
+        "surface_class": "owned_application_code",
+        "framework_uncertain": true,
+        "documentation_lookup": "FAIL"
+      },
+      "expected": "DOCS_LOOKUP_REQUIRED"
+    },
+    {
+      "id": "packaged_product_api_route_required",
+      "input": {
+        "gate": "api_route_sheet",
+        "surface_class": "dockerized_product",
+        "supported_mechanism": "direct_db"
+      },
+      "expected": "API_ROUTE_REQUIRED"
+    },
+    {
+      "id": "api_route_sheet_incomplete",
+      "input": {
+        "gate": "api_route_sheet",
+        "surface_class": "ready_made_product",
+        "supported_mechanism": "api",
+        "product_name": "Hiddify",
+        "official_docs_ref": "https://example.invalid/docs",
+        "auth_method": "admin session"
+      },
+      "expected": "API_ROUTE_SHEET_INCOMPLETE"
+    },
+    {
+      "id": "api_route_sheet_pass",
+      "input": {
+        "gate": "api_route_sheet",
+        "surface_class": "ready_made_product",
+        "supported_mechanism": "admin_panel",
+        "product_name": "Hiddify",
+        "official_docs_ref": "official-doc-ref",
+        "auth_method": "admin session",
+        "validation_route": "browser user path",
+        "rollback_route": "documented config rollback",
+        "forbidden_direct_internals": ["DB", "container overlay"]
+      },
+      "expected": "API_ROUTE_SHEET_PASS"
+    },
+    {
+      "id": "t0_mutation_blocked",
+      "input": {
+        "gate": "mutation_firewall",
+        "role": "T0_CONTROL",
+        "mutation_requested": true
+      },
+      "expected": "BLOCKED_T0_DIRECT_AUTHORSHIP"
+    },
+    {
+      "id": "direct_mysql_blocked",
+      "input": {
+        "gate": "mutation_firewall",
+        "direct_db_write": true,
+        "db_mutation_authority": false
+      },
+      "expected": "BLOCKED_PRODUCT_DB_MUTATION"
+    },
+    {
+      "id": "container_internal_surgery_blocked",
+      "input": {
+        "gate": "mutation_firewall",
+        "container_internal_patch": true,
+        "docker_internal_emergency_authority": false
+      },
+      "expected": "BLOCKED_PRODUCT_INTERNAL_DOCKER_SURGERY"
+    },
+    {
+      "id": "docs_unavailable_mutation_blocked",
+      "input": {
+        "gate": "mutation_firewall",
+        "surface_class": "ready_made_product",
+        "mutation_requested": true,
+        "documentation_lookup": "FAIL"
+      },
+      "expected": "DOCS_UNAVAILABLE_MUTATION_FAIL"
+    },
+    {
+      "id": "hardcoded_domain_blocked",
+      "input": {
+        "gate": "mutation_firewall",
+        "hardcoded_domain_or_uuid": true
+      },
+      "expected": "DOMAIN_HARDCODE_RISK"
+    },
+    {
+      "id": "fake_pass_blocked",
+      "input": {
+        "gate": "truth_ledger",
+        "claim_status": "UNVERIFIED",
+        "claims_done": true
+      },
+      "expected": "FAKE_PASS_BLOCKED"
+    },
+    {
+      "id": "model_route_mismatch",
+      "input": {
+        "gate": "truth_ledger",
+        "requested_model": "gpt-5.3-codex-spark",
+        "actual_model": "agenthub-sandbox-worker"
+      },
+      "expected": "MODEL_ROUTE_MISMATCH"
+    },
+    {
+      "id": "mcp_shell_var_not_proof",
+      "input": {
+        "gate": "truth_ledger",
+        "mcp_claim": true,
+        "mcp_tool_receipt": "FAIL"
+      },
+      "expected": "MCP_PROOF_REQUIRED"
+    },
+    {
+      "id": "curl_homepage_not_user_outcome",
+      "input": {
+        "gate": "truth_ledger",
+        "product_done_claim": true,
+        "user_outcome_proof": "FAIL"
+      },
+      "expected": "NO_USER_OUTCOME_PROOF"
+    },
+    {
+      "id": "old_audit_report_not_instruction",
+      "input": {
+        "gate": "artifact_lifecycle",
+        "old_report_lifecycle": "audit_only",
+        "used_as_instruction": true
+      },
+      "expected": "ARTIFACT_LIFECYCLE_DRIFT"
+    },
+    {
+      "id": "pr_without_queue_state",
+      "input": {
+        "gate": "artifact_lifecycle",
+        "pr_created": true,
+        "pr_queue_owner_state": "FAIL"
+      },
+      "expected": "PR_QUEUE_FAIL"
+    },
+    {
+      "id": "artifact_without_registers",
+      "input": {
+        "gate": "artifact_lifecycle",
+        "artifact_added": true,
+        "index_and_register": "FAIL"
+      },
+      "expected": "REGISTRAR_FAIL"
+    },
+    {
+      "id": "user_output_technical_dump",
+      "input": {
+        "gate": "user_front",
+        "final_contains_technical_dump": true
+      },
+      "expected": "USER_OUTPUT_POLICY_FAIL"
+    },
+    {
+      "id": "mid_cycle_chat_leak",
+      "input": {
+        "gate": "user_front",
+        "mid_cycle_user_chat": true,
+        "owner_only_gate": false
+      },
+      "expected": "USER_ACTION_LEAK"
+    },
+    {
+      "id": "same_gate_two_failures",
+      "input": {
+        "gate": "retry_loop",
+        "same_gate_failures": 2,
+        "architecture_repair_or_typed_blocker": false
+      },
+      "expected": "REPEATED_GATE_LOOP"
+    },
+    {
+      "id": "emergency_missing_adr_authority",
+      "input": {
+        "gate": "emergency_exception",
+        "docs_checked": "PASS",
+        "api_absent": "PASS",
+        "adr": "FAIL",
+        "rollback": "PASS",
+        "explicit_authority": "FAIL",
+        "user_outcome_validation": "PASS"
+      },
+      "expected": "EMERGENCY_SCOPE_BLOCKED"
+    },
+    {
+      "id": "done_with_evidence",
+      "input": {
+        "gate": "done_gate",
+        "audit": "PASS",
+        "adr": "PASS",
+        "policy": "PASS",
+        "schemas": "PASS",
+        "validator": "PASS",
+        "fixtures": "PASS",
+        "templates": "PASS",
+        "registers": "PASS",
+        "pr_queue": "PASS",
+        "receipt": "PASS",
+        "security_scan": "PASS",
+        "active_blocker": "none"
+      },
+      "expected": "DONE_WITH_EVIDENCE"
+    }
+  ]
+}
