@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/run_user_input_queue.schema.json",
+  "title": "Run User Input Queue Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "run_id",
+    "task_id",
+    "received_at",
+    "active_state",
+    "classification",
+    "message_hash",
+    "routing_action",
+    "user_reply_allowed",
+    "evidence_ref"
+  ],
+  "properties": {
+    "event_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "received_at": { "type": "string", "minLength": 1 },
+    "active_state": {
+      "type": "string",
+      "enum": [
+        "INTAKE_CAPTURE",
+        "TASK_BOOTSTRAP",
+        "TECHNICAL_ASSIGNMENT",
+        "ACTIVE_RUN",
+        "INTERNAL_BLOCKER_REMEDIATION",
+        "VALIDATION",
+        "FINAL_AGGREGATION",
+        "DONE_WITH_EVIDENCE",
+        "OWNER_ONLY_IRREVERSIBLE_GATE",
+        "SAFETY_QUARANTINE",
+        "EXPLICIT_USER_STOP_OR_ROLLBACK",
+        "READY_BLOCKED_BY_PLATFORM_GATE",
+        "FORBIDDEN_SCOPE_BLOCKER",
+        "INSTRUCTION_SOURCE_DRIFT"
+      ]
+    },
+    "classification": {
+      "type": "string",
+      "enum": [
+        "SCOPE_REINFORCEMENT",
+        "SCOPE_CORRECTION",
+        "NEW_RELATED_REQUIREMENT",
+        "NEW_UNRELATED_REQUEST",
+        "SAFETY_WARNING",
+        "EMERGENCY_STOP",
+        "ROLLBACK_REQUEST",
+        "OWNER_CREDENTIAL_OR_AUTHORITY_INPUT",
+        "NOISE_OR_DUPLICATE"
+      ]
+    },
+    "message_hash": { "type": "string", "minLength": 8 },
+    "routing_action": { "type": "string", "minLength": 1 },
+    "affected_child_task": { "type": "string" },
+    "user_reply_allowed": { "type": "boolean" },
+    "terminal_state": { "type": "string" },
+    "evidence_ref": { "type": "string", "minLength": 1 }
+  }
+}

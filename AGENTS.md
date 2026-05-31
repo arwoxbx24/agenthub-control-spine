@@ -62,6 +62,12 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
   routing, and same-gate retries must become same-run remediation or one typed
   platform blocker, not owner readback. `SPAWNED_WORKER_DISPATCH` receipts must
   record requested, resolved, and actual model proof.
+- No-interaction task-first work must follow
+  `governance/no-interaction-task-first-closed-loop-policy.md`. During
+  `ACTIVE_RUN`, user messages are queued as `RUN_USER_INPUT_QUEUE` events and
+  progress/status prose is blocked from owner chat. Mutation requires a
+  controlling task or exact task-route blocker, duplicate check, technical
+  assignment, acceptance gates, rollback plan, and declared forbidden zones.
 - Packaged products, vendor apps, Dockerized products, CMS, SaaS, panels,
   MCP servers, task services, and unknown product surfaces must follow
   `governance/api-documentation-first-guardrail-policy.md` before mutation.
