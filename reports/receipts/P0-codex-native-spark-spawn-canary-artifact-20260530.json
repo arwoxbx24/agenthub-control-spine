@@ -1,0 +1,15 @@
+{
+  "artifact_id": "p0-codex-native-spark-spawn-canary-artifact-20260530",
+  "artifact_type": "codex_native_spawn_canary_output",
+  "task_id": "AH-622",
+  "parent_run_id": "RUN-P0-CODEX-NATIVE-CAPABILITY-ROUTER-20260530",
+  "subagent_id": "019e7877-1278-7543-970d-fe1a99e584a9",
+  "requested_model": "gpt-5.3-codex-spark",
+  "resolved_model": "gpt-5.3-codex-spark",
+  "actual_route": "gpt-5.3-codex-spark",
+  "worker_profile": "not agenthub-sandbox-worker",
+  "scope": "harmless canary config artifact",
+  "safety_gate": "PASS",
+  "secret_redaction": "PASS",
+  "runtime_mutation": false
+}

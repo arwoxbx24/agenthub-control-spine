@@ -55,6 +55,7 @@ status: draft
 | `runbooks/codex-native-spawn-subagent-worker-runbook.md` | runbook | AH-622 | active |
 | `prompts/implementation/agenthub-codex-native-spawn-worker-template.txt` | worker template | AH-622 | active |
 | `reports/receipts/P0-codex-native-spark-spawn-canary-20260530.md` | canary receipt | AH-622 | active |
+| `reports/receipts/P0-codex-native-spark-spawn-canary-artifact-20260530.json` | canary output artifact | AH-622 | active |
 | `reports/receipts/P0-codex-native-readonly-parallel-canary-20260530.md` | canary receipt | AH-622 | active |
 | `reports/receipts/P0-codex-native-mcp-diagnostic-canary-20260530.md` | canary receipt | AH-622 | active |
 | `reports/receipts/P0-codex-native-background-terminal-canary-20260530.md` | canary receipt | AH-622 | active |

@@ -19,6 +19,7 @@ role: T2_CODE_AUTHOR
 
 allowed_files:
   - reports/receipts/P0-codex-native-spark-spawn-canary-20260530.md
+  - reports/receipts/P0-codex-native-spark-spawn-canary-artifact-20260530.json
 forbidden_surfaces:
   - runtime
   - Docker
@@ -30,8 +31,8 @@ forbidden_surfaces:
   - Komodo
   - secrets
 
-output_artifact_path: reports/receipts/P0-codex-native-spark-spawn-canary-20260530.md
-worker_output_sha256: 38a224e33c09872ecffd023fc35aa1c320b3222a864b130d4530f4b327d32040
+output_artifact_path: reports/receipts/P0-codex-native-spark-spawn-canary-artifact-20260530.json
+worker_output_sha256: 673ac1e3e53d5dbbc865fabe04472dfe21caa303c2a94b65ed6762c46e0cae10
 
 safety_gates: PASS
 final_state: DONE_WITH_CODEX_NATIVE_SPAWN_AND_CLI_GUARDRAILS
