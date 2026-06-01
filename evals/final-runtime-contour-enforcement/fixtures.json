@@ -1,0 +1,115 @@
+{
+  "cases": [
+    {
+      "id": "01-gemini-space-hiddify-rejected",
+      "input": {
+        "gate": "forbidden_path_pretool",
+        "write_requested": true,
+        "paths": ["/root/gemini-space/hiddify/app.py"]
+      },
+      "expected": "FORBIDDEN_PATH_MUTATION"
+    },
+    {
+      "id": "02-mid-contour-chat-buffered",
+      "input": {
+        "gate": "silent_until_terminal",
+        "contour_open": true,
+        "terminal_state": false,
+        "user_facing_output": true
+      },
+      "expected": "MID_CYCLE_USER_CHAT_BLOCKED"
+    },
+    {
+      "id": "03-user-delta-does-not-stop-worker",
+      "input": {
+        "gate": "user_delta_queue",
+        "user_message_received": true,
+        "delta_recorded": true,
+        "delta_class": "SAFETY_CONSTRAINT_UPDATE",
+        "worker_stopped": false
+      },
+      "expected": "USER_DELTA_QUEUE_PASS"
+    },
+    {
+      "id": "04-model-route-mismatch",
+      "input": {
+        "gate": "model_spawn_receipt",
+        "spawned_implementation": true,
+        "spawn_receipt": "receipt:1",
+        "requested_model": "gpt-5.3-codex-spark",
+        "actual_model": "agenthub-sandbox-worker",
+        "approved_same_run_fallback": false
+      },
+      "expected": "MODEL_ROUTE_MISMATCH"
+    },
+    {
+      "id": "05-spawn-receipt-not-applicable",
+      "input": {
+        "gate": "model_spawn_receipt",
+        "spawned_implementation": true,
+        "spawn_receipt": "not_applicable",
+        "requested_model": "gpt-5.3-codex-spark",
+        "actual_model": "gpt-5.3-codex-spark"
+      },
+      "expected": "SPAWN_RECEIPT_MISSING"
+    },
+    {
+      "id": "06-done-parser-defect",
+      "input": {
+        "gate": "done_gate_parser",
+        "implementation_evidence": "PASS",
+        "validation_evidence": "PASS",
+        "receipt": "PASS",
+        "no_blocker": "PASS",
+        "parser_result": "REJECT"
+      },
+      "expected": "DONE_GATE_PARSER_DEFECT"
+    },
+    {
+      "id": "07-duplicate-task-blocked-not-freeze",
+      "input": {
+        "gate": "anti_spam_not_freeze",
+        "duplicate_master_exists": true,
+        "new_task_create_requested": true,
+        "existing_task_stage_update": true
+      },
+      "expected": "DUPLICATE_TASK_BLOCKED_EXISTING_WORK_ALLOWED"
+    },
+    {
+      "id": "08-parent-done-child-open",
+      "input": {
+        "gate": "task_graph",
+        "parent_stage": "Done",
+        "children": [{ "stage": "Review" }]
+      },
+      "expected": "PARENT_DONE_CHILD_OPEN"
+    },
+    {
+      "id": "09-context-overflow-loop-breaker",
+      "input": {
+        "gate": "context_budget_loop_breaker",
+        "context_overflows": 2,
+        "full_prompt_replay": true
+      },
+      "expected": "LOOP_BREAKER_TRIGGERED"
+    },
+    {
+      "id": "10-valid-final-contour",
+      "input": {
+        "gate": "final_contour_done",
+        "implementation_evidence": "PASS",
+        "validation_evidence": "PASS",
+        "agenthub_receipt": "PASS",
+        "youtrack_readback": "PASS",
+        "register_index": "PASS",
+        "pr_queue": "PASS",
+        "user_outcome": "PASS",
+        "no_blocker": "PASS",
+        "no_forbidden_zone": "PASS",
+        "security_scan": "PASS"
+      },
+      "expected": "DONE_WITH_EVIDENCE"
+    }
+  ]
+}
+
