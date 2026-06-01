@@ -52,6 +52,8 @@ Result: `PASS`.
 - AgentHub execute: `PASS`.
 - AgentHub merge: `PASS`.
 - Merge status: `SUCCESS`.
+- GitHub PR: `#134`.
+- GitHub merge commit: `464d69ef3be37f40c75d7bb918fefcede533bb29`.
 - Scope: repository governance controls only.
 - Forbidden zones touched: none.
 
