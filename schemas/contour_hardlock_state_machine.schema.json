@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub-control-spine.local/schemas/contour_hardlock_state_machine.schema.json",
+  "title": "AgentHub Contour Hardlock State Machine",
+  "type": "object",
+  "required": [
+    "contour_id",
+    "run_id",
+    "state",
+    "task_graph",
+    "user_message_policy",
+    "scope_policy",
+    "model_spawn_policy",
+    "done_gate"
+  ],
+  "properties": {
+    "contour_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "state": {
+      "type": "string",
+      "enum": [
+        "INTAKE",
+        "CONTOUR_CREATED",
+        "TASK_GRAPH_READY",
+        "ARCHITECTURE_LOCKED",
+        "WORKER_DISPATCHED",
+        "IMPLEMENTATION_IN_PROGRESS",
+        "IMPLEMENTATION_EVIDENCE_READY",
+        "QA_IN_PROGRESS",
+        "QA_PASS",
+        "TASKS_CLOSING",
+        "REGISTERS_UPDATED",
+        "DONE_WITH_EVIDENCE",
+        "OWNER_ONLY_IRREVERSIBLE_GATE",
+        "PLATFORM_GATE_BLOCKED",
+        "SAFETY_QUARANTINE"
+      ]
+    },
+    "task_graph": {
+      "type": "object",
+      "required": ["parent_issue_id", "children", "duplicate_check", "task_readback"],
+      "properties": {
+        "parent_issue_id": { "type": ["string", "null"] },
+        "children": { "type": "array", "items": { "type": "object" } },
+        "duplicate_check": { "type": "string", "enum": ["PASS", "FAIL", "BLOCKED"] },
+        "task_readback": { "type": "string", "enum": ["PASS", "FAIL", "BLOCKED"] }
+      }
+    },
+    "user_message_policy": {
+      "type": "object",
+      "required": ["mid_cycle_chat_allowed", "buffer_name"],
+      "properties": {
+        "mid_cycle_chat_allowed": { "type": "boolean", "const": false },
+        "buffer_name": { "type": "string", "minLength": 1 }
+      }
+    },
+    "scope_policy": {
+      "type": "object",
+      "required": ["canonical_work_roots", "forbidden_roots", "rollback_required"],
+      "properties": {
+        "canonical_work_roots": { "type": "array", "items": { "type": "string" } },
+        "forbidden_roots": { "type": "array", "items": { "type": "string" } },
+        "rollback_required": { "type": "boolean", "const": true }
+      }
+    },
+    "model_spawn_policy": {
+      "type": "object",
+      "required": ["requested_model", "resolved_model", "actual_model", "spawn_receipt"],
+      "properties": {
+        "requested_model": { "type": "string" },
+        "resolved_model": { "type": "string" },
+        "actual_model": { "type": "string" },
+        "spawn_receipt": { "type": "string" }
+      }
+    },
+    "done_gate": {
+      "type": "object",
+      "required": ["implementation_evidence", "validation_evidence", "receipt", "no_blocker"],
+      "properties": {
+        "implementation_evidence": { "type": "string", "enum": ["PASS", "FAIL", "BLOCKED", "NOT_REQUIRED"] },
+        "validation_evidence": { "type": "string", "enum": ["PASS", "FAIL", "BLOCKED", "NOT_REQUIRED"] },
+        "receipt": { "type": "string", "enum": ["PASS", "FAIL", "BLOCKED"] },
+        "no_blocker": { "type": "string", "enum": ["PASS", "FAIL"] }
+      }
+    }
+  },
+  "additionalProperties": false
+}

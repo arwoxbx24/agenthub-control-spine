@@ -114,6 +114,11 @@ status: draft
 | `validators/contour_task_graph_validator.rb` | validator | AH-CONTOUR-TASK-GRAPH-20260601 | active |
 | `evals/contour-task-graph/fixtures.json` | eval fixtures | AH-CONTOUR-TASK-GRAPH-20260601 | active |
 | `reports/receipts/P0-contour-task-graph-gate-implementation-receipt-20260601.md` | operational receipt | AH-CONTOUR-TASK-GRAPH-20260601 | partial-with-platform-blocker |
+| `governance/contour-hardlock-no-chat-task-graph-policy.md` | governance policy | AH-CONTOUR-HARDLOCK-NO-CHAT-TASK-GRAPH-20260601 | active |
+| `schemas/contour_hardlock_state_machine.schema.json` | schema | AH-CONTOUR-HARDLOCK-NO-CHAT-TASK-GRAPH-20260601 | active |
+| `validators/contour_hardlock_no_chat_task_graph_validator.rb` | validator | AH-CONTOUR-HARDLOCK-NO-CHAT-TASK-GRAPH-20260601 | active |
+| `evals/contour-hardlock-no-chat-task-graph/fixtures.json` | eval fixtures | AH-CONTOUR-HARDLOCK-NO-CHAT-TASK-GRAPH-20260601 | active |
+| `reports/receipts/P0-contour-hardlock-no-chat-task-graph-receipt-20260601.md` | operational receipt | AH-CONTOUR-HARDLOCK-NO-CHAT-TASK-GRAPH-20260601 | partial-with-platform-blocker |
 | `governance/agenthub-x-capability-matrix.md` | governance policy | AH-590 | active |
 | `governance/adr/ADR-agenthub-x-controlled-capability-matrix-20260528.md` | architecture decision record | AH-590 | active |
 | `governance/adr/ADR-codex-spark-model-router-enforcement-20260528.md` | architecture decision record | AH-590 | active |

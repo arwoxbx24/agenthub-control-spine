@@ -1,0 +1,176 @@
+{
+  "cases": [
+    {
+      "id": "01-user-facing-progress-before-terminal",
+      "input": { "gate": "contour_state_machine", "state": "IMPLEMENTATION_IN_PROGRESS", "user_facing_output": true },
+      "expected": "USER_CHAT_STOP_DEFECT"
+    },
+    {
+      "id": "02-final-state-output-allowed",
+      "input": { "gate": "contour_state_machine", "state": "DONE_WITH_EVIDENCE", "user_facing_output": true },
+      "expected": "CONTOUR_STATE_MACHINE_PASS"
+    },
+    {
+      "id": "03-mutation-without-physical-task",
+      "input": { "gate": "task_first_physical_write", "mutation_requested": true, "issue_id": "", "task_readback": "FAIL" },
+      "expected": "TASK_SERVICE_PHYSICAL_WRITE_MISSING"
+    },
+    {
+      "id": "04-platform-task-blocker-allows-no-mutation-path",
+      "input": { "gate": "task_first_physical_write", "mutation_requested": true, "issue_id": "", "task_readback": "BLOCKED", "typed_blocker": "TASK_SERVICE_PHYSICAL_WRITE_MISSING" },
+      "expected": "TASK_FIRST_PHYSICAL_WRITE_PASS"
+    },
+    {
+      "id": "05-parent-done-child-review",
+      "input": { "gate": "task_graph_stage", "parent_stage": "Done", "children": [{ "stage": "Review" }], "tasks": [{ "stage": "Done", "contour_id": "C1" }, { "stage": "Review", "contour_id": "C1" }] },
+      "expected": "PARENT_DONE_CHILD_OPEN"
+    },
+    {
+      "id": "06-orphan-task",
+      "input": { "gate": "task_graph_stage", "parent_stage": "Review", "children": [], "tasks": [{ "stage": "Develop", "contour_id": "" }] },
+      "expected": "ORPHAN_TASK_IN_CONTOUR"
+    },
+    {
+      "id": "07-duplicate-task",
+      "input": { "gate": "task_graph_stage", "parent_stage": "Develop", "children": [], "tasks": [{ "stage": "Develop", "contour_id": "C1" }], "duplicate_open_issue": true },
+      "expected": "DUPLICATE_TASK_IN_CONTOUR"
+    },
+    {
+      "id": "08-no-mid-cycle-chat",
+      "input": { "gate": "no_mid_cycle_chat", "contour_open": true, "user_facing_output": true },
+      "expected": "USER_CHAT_STOP_DEFECT"
+    },
+    {
+      "id": "09-user-correction-buffered",
+      "input": { "gate": "message_buffer", "user_message_received": true, "delta_recorded": true, "delta_class": "CORRECTION", "worker_stopped": false },
+      "expected": "MESSAGE_BUFFER_PASS"
+    },
+    {
+      "id": "10-user-message-stops-worker",
+      "input": { "gate": "message_buffer", "user_message_received": true, "delta_recorded": true, "delta_class": "URGENCY", "worker_stopped": true },
+      "expected": "USER_CHAT_STOP_DEFECT"
+    },
+    {
+      "id": "11-t0-code-mutation",
+      "input": { "gate": "t0_boundary", "role": "T0_CONTROL", "mutation_class": "code" },
+      "expected": "T0_DIRECT_MUTATION_ATTEMPT"
+    },
+    {
+      "id": "12-worker-gemini-space",
+      "input": { "gate": "worker_path_scope", "changed_paths": ["/root/gemini-space/hiddify/file.py"], "allowed_paths": ["/srv/hiddify"] },
+      "expected": "FORBIDDEN_PATH_MUTATION"
+    },
+    {
+      "id": "13-worker-temp-production",
+      "input": { "gate": "worker_path_scope", "changed_paths": ["/tmp/hiddify.patch"], "allowed_paths": ["/srv/hiddify"] },
+      "expected": "FORBIDDEN_PATH_MUTATION"
+    },
+    {
+      "id": "14-live-path-missing",
+      "input": { "gate": "worker_path_scope", "changed_paths": ["/srv/hiddify/file.py"], "allowed_paths": ["/srv/hiddify"], "implementation_claim": true, "live_path_proof": "MISSING" },
+      "expected": "LIVE_PATH_NOT_PROVEN"
+    },
+    {
+      "id": "15-api-docs-first-violation",
+      "input": { "gate": "api_docs_first", "finished_product": true, "direct_internal_mutation": true, "official_mechanism_decision": "NOT_CHECKED" },
+      "expected": "API_DOCS_FIRST_VIOLATION"
+    },
+    {
+      "id": "16-api-docs-adr-exhausted",
+      "input": { "gate": "api_docs_first", "finished_product": true, "direct_internal_mutation": true, "official_mechanism_decision": "EXHAUSTED_WITH_ADR" },
+      "expected": "API_DOCS_FIRST_PASS"
+    },
+    {
+      "id": "17-no-rollback",
+      "input": { "gate": "backup_rollback", "mutation_requested": true, "rollback_proof": "MISSING" },
+      "expected": "BACKUP_ROLLBACK_MISSING"
+    },
+    {
+      "id": "18-huge-backup-attempt",
+      "input": { "gate": "backup_rollback", "mutation_requested": false, "backup_size": "UNKNOWN_LARGE", "backup_attempted": true },
+      "expected": "BACKUP_ROLLBACK_MISSING"
+    },
+    {
+      "id": "19-spark-requested-sandbox-actual",
+      "input": { "gate": "spawn_model_receipt", "spawned_work": true, "spawn_receipt": "receipt:1", "requested_model": "gpt-5.3-codex-spark", "actual_model": "agenthub-sandbox-worker", "approved_same_run_fallback": false },
+      "expected": "MODEL_ROUTE_MISMATCH"
+    },
+    {
+      "id": "20-spawn-receipt-missing",
+      "input": { "gate": "spawn_model_receipt", "spawned_work": true, "spawn_receipt": "not_applicable", "requested_model": "gpt-5.3-codex-spark", "actual_model": "gpt-5.3-codex-spark" },
+      "expected": "SPAWN_RECEIPT_MISSING"
+    },
+    {
+      "id": "21-third-identical-retry",
+      "input": { "gate": "loop_breaker", "same_gate_failures": 2, "third_identical_retry": true },
+      "expected": "LOOP_BREAKER_TRIGGERED"
+    },
+    {
+      "id": "22-full-prompt-replay-after-overflow",
+      "input": { "gate": "loop_breaker", "context_overflows": 2, "full_prompt_replay": true },
+      "expected": "LOOP_BREAKER_TRIGGERED"
+    },
+    {
+      "id": "23-green-curl-no-user-outcome",
+      "input": { "gate": "truth_done", "done_requested": true, "product_or_ui_task": true, "user_outcome": "MISSING", "validation_state": "PASS", "task_stage": "Done" },
+      "expected": "USER_OUTCOME_NOT_PROVEN"
+    },
+    {
+      "id": "24-partial-validation-done",
+      "input": { "gate": "truth_done", "done_requested": true, "product_or_ui_task": false, "validation_state": "NOT_PROVEN", "task_stage": "Done" },
+      "expected": "DONE_GATE_PARSER_DEFECT"
+    },
+    {
+      "id": "25-pr-without-queue-state",
+      "input": { "gate": "artifact_pr_security", "artifact_changed": false, "pr_open": true, "pr_queue_state": "" },
+      "expected": "PR_QUEUE_STATE_MISSING"
+    },
+    {
+      "id": "26-artifact-register-missing",
+      "input": { "gate": "artifact_pr_security", "artifact_changed": true, "register_updated": false, "pr_open": false },
+      "expected": "ARTIFACT_LIFECYCLE_DEFECT"
+    },
+    {
+      "id": "27-secret-in-receipt",
+      "input": { "gate": "artifact_pr_security", "artifact_changed": false, "pr_open": false, "receipt_contains_secret_or_raw_link": true },
+      "expected": "SECRET_OR_RAW_LINK_RISK"
+    },
+    {
+      "id": "28-final-output-long",
+      "input": { "gate": "final_output", "output": "Fact: ok\nAction: ok\nDetails: logs\nLeft: none" },
+      "expected": "FINAL_OUTPUT_POLICY_FAIL"
+    },
+    {
+      "id": "29-final-output-valid",
+      "input": { "gate": "final_output", "output": "Fact: контур закрыт.\nAction: валидаторы PASS.\nLeft: none" },
+      "expected": "FINAL_OUTPUT_PASS"
+    },
+    {
+      "id": "30-contour-done-valid",
+      "input": {
+        "gate": "contour_done",
+        "tasks": [{ "stage": "Done" }, { "stage": "Superseded" }],
+        "implementation_evidence": "PASS",
+        "validation_evidence": "PASS",
+        "agenthub_receipt": "PASS",
+        "task_readback": "PASS",
+        "no_blocker": "PASS",
+        "register_index": "PASS",
+        "pr_queue": "PASS",
+        "no_forbidden_paths": "PASS",
+        "security_scan": "PASS"
+      },
+      "expected": "DONE_WITH_EVIDENCE"
+    },
+    {
+      "id": "31-contour-open",
+      "input": { "gate": "contour_done", "tasks": [{ "stage": "Done" }, { "stage": "Review" }] },
+      "expected": "YOUTRACK_CONTOUR_OPEN"
+    },
+    {
+      "id": "32-contour-platform-blocker",
+      "input": { "gate": "contour_done", "typed_blocker": "TASK_SERVICE_PHYSICAL_WRITE_MISSING" },
+      "expected": "TASK_SERVICE_PHYSICAL_WRITE_MISSING"
+    }
+  ]
+}
