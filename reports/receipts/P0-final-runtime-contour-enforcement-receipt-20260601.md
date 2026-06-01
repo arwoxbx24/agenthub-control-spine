@@ -25,6 +25,8 @@ artifact lifecycle, and security controls.
 - Added `evals/final-runtime-contour-enforcement/fixtures.json`.
 - Updated `AGENTS.md`, `INDEX.md`, `ARTIFACT_REGISTER.md`, and
   `PR_QUEUE_REGISTER.md` for lifecycle and queue coverage.
+- Opened PR `#140` on branch
+  `agenthub/RUN-P0-FINAL-CONTOUR-RUNTIME-ENFORCEMENT-20260601`.
 
 ## Live Readback Evidence
 
