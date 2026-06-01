@@ -27,6 +27,8 @@ artifact lifecycle, and security controls.
   `PR_QUEUE_REGISTER.md` for lifecycle and queue coverage.
 - Opened PR `#140` on branch
   `agenthub/RUN-P0-FINAL-CONTOUR-RUNTIME-ENFORCEMENT-20260601`.
+- PR `#140` merged on 2026-06-01 with merge commit
+  `51a7a537d0749bff4dbdb22a2e172ca46d792279`.
 
 ## Live Readback Evidence
 
