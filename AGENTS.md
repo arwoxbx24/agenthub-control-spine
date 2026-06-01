@@ -82,6 +82,13 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
   final owner output. AgentHub merge `SUCCESS`, GitHub PR state, QA-only proof,
   or custom-field `PASS` cannot close a contour while any YouTrack task remains
   in `Backlog`, `Develop`, `Review`, or `Test`.
+- Contour hardlock execution must follow
+  `governance/contour-hardlock-no-chat-task-graph-policy.md`. The hardlock
+  composes task-first physical write, no-mid-cycle-chat, message buffering,
+  stage graph, T0 boundary, worker path scope, API/docs-first, rollback,
+  spawn/model receipt, loop breaker, truth Done, artifact lifecycle, PR queue,
+  and final-output gates. It is a release gate for AgentHub/Codex governance
+  contours and is not live product/runtime mutation authority.
 - Boundary, backup, and docs/API-first guardrails must follow
   `governance/boundary-backup-docs-first-guardrail-policy.md`. Workers need a
   `SCOPE_MANIFEST` before mutation, exact `WRITE_ALLOWED_ROOTS`, rollback proof,
