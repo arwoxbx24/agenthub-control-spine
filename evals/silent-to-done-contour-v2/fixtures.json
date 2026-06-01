@@ -1,0 +1,165 @@
+{
+  "cases": [
+    {
+      "id": "01-intake-question-limit",
+      "input": { "gate": "silent_output_state", "state": "INTAKE", "questions_asked": 4 },
+      "expected": "INTAKE_QUESTION_LIMIT_EXCEEDED"
+    },
+    {
+      "id": "02-mid-contour-progress-output",
+      "input": { "gate": "silent_output_state", "state": "IMPLEMENTATION_IN_PROGRESS", "user_output": true },
+      "expected": "MID_CYCLE_USER_CHAT_BLOCKED"
+    },
+    {
+      "id": "03-terminal-done-output",
+      "input": { "gate": "silent_output_state", "state": "DONE_WITH_EVIDENCE", "user_output": true },
+      "expected": "USER_OUTPUT_STATE_PASS"
+    },
+    {
+      "id": "04-forbidden-phrase-prinyal",
+      "input": { "gate": "forbidden_phrase", "contour_open": true, "message": "Принял, продолжаю" },
+      "expected": "MID_CYCLE_USER_CHAT_BLOCKED"
+    },
+    {
+      "id": "05-user-correction-buffered",
+      "input": {
+        "gate": "message_buffer",
+        "user_message_received": true,
+        "timestamp": "2026-06-01T09:00:00Z",
+        "normalized_intent": "CORRECTION",
+        "severity": "high",
+        "modifies_scope": true,
+        "owner_only_irreversible": false,
+        "affected_tasks": ["AH-626"],
+        "answered_user": false
+      },
+      "expected": "MESSAGE_BUFFER_PASS"
+    },
+    {
+      "id": "06-user-correction-answered",
+      "input": {
+        "gate": "message_buffer",
+        "user_message_received": true,
+        "timestamp": "2026-06-01T09:00:00Z",
+        "normalized_intent": "CORRECTION",
+        "severity": "high",
+        "modifies_scope": true,
+        "owner_only_irreversible": false,
+        "affected_tasks": ["AH-626"],
+        "answered_user": true
+      },
+      "expected": "MID_CYCLE_USER_CHAT_BLOCKED"
+    },
+    {
+      "id": "07-owner-only-gate",
+      "input": {
+        "gate": "message_buffer",
+        "user_message_received": true,
+        "timestamp": "2026-06-01T09:00:00Z",
+        "normalized_intent": "OWNER_ONLY_GATE",
+        "severity": "critical",
+        "modifies_scope": false,
+        "owner_only_irreversible": true,
+        "affected_tasks": ["AH-626"]
+      },
+      "expected": "OWNER_ONLY_IRREVERSIBLE_GATE"
+    },
+    {
+      "id": "08-task-service-two-failures-ledger",
+      "input": { "gate": "task_service_circuit_breaker", "physical_write_failed": true, "same_failure_count": 2, "local_ledger_created": true },
+      "expected": "TASK_SERVICE_PHYSICAL_WRITE_REPAIR_REQUIRED"
+    },
+    {
+      "id": "09-task-service-third-retry",
+      "input": { "gate": "task_service_circuit_breaker", "physical_write_failed": true, "same_failure_count": 3, "local_ledger_created": true },
+      "expected": "TASK_SERVICE_PHYSICAL_WRITE_REPAIR_REQUIRED"
+    },
+    {
+      "id": "10-forbidden-gemini-space",
+      "input": { "gate": "path_authority", "changed_paths": ["/root/gemini-space/hiddify/app.py"] },
+      "expected": "FORBIDDEN_PATH_MUTATION"
+    },
+    {
+      "id": "11-path-authority-missing",
+      "input": { "gate": "path_authority", "write_requested": true, "active_root_proof": "PASS" },
+      "expected": "PATH_AUTHORITY_MISSING"
+    },
+    {
+      "id": "12-path-authority-pass",
+      "input": {
+        "gate": "path_authority",
+        "write_requested": true,
+        "active_root_proof": "PASS",
+        "allowed_write_paths": ["governance"],
+        "forbidden_paths": ["/root/gemini-space"],
+        "rollback_proof": "PASS",
+        "validation_path": "validators"
+      },
+      "expected": "PATH_AUTHORITY_PASS"
+    },
+    {
+      "id": "13-model-route-mismatch",
+      "input": { "gate": "model_spawn_receipt", "spawned_work": true, "spawn_receipt": "receipt:1", "requested_model": "gpt-5.3-codex-spark", "actual_model": "agenthub-sandbox-worker" },
+      "expected": "MODEL_ROUTE_MISMATCH"
+    },
+    {
+      "id": "14-spawn-receipt-missing",
+      "input": { "gate": "model_spawn_receipt", "spawned_work": true, "spawn_receipt": "not_applicable", "requested_model": "gpt-5.3-codex-spark", "actual_model": "gpt-5.3-codex-spark" },
+      "expected": "SPAWN_RECEIPT_MISSING"
+    },
+    {
+      "id": "15-qa-substitutes-implementation",
+      "input": { "gate": "model_spawn_receipt", "spawned_work": false, "role": "QA", "counts_as_implementation": true, "requested_model": "gpt-5.3-codex", "actual_model": "gpt-5.3-codex" },
+      "expected": "QA_CANNOT_SUBSTITUTE_IMPLEMENTATION"
+    },
+    {
+      "id": "16-full-chat-history-worker",
+      "input": { "gate": "retry_budget", "full_chat_history_in_worker_prompt": true },
+      "expected": "TOKEN_BLOAT_DEFECT"
+    },
+    {
+      "id": "17-third-same-gate-attempt",
+      "input": { "gate": "retry_budget", "same_gate_failures": 2, "third_attempt": true },
+      "expected": "RETRY_CIRCUIT_BREAKER_TRIGGERED"
+    },
+    {
+      "id": "18-blocked-restart-not-done",
+      "input": { "gate": "done_gate", "validation_state": "BLOCKED_RESTART_REQUIRED", "model_route_gate": "PASS" },
+      "expected": "DONE_BLOCKED_NOT_PROVEN"
+    },
+    {
+      "id": "19-done-forbidden-path-proof",
+      "input": { "gate": "done_gate", "validation_state": "PASS", "evidence_paths": ["/tmp/proof.txt"], "model_route_gate": "PASS" },
+      "expected": "DONE_BLOCKED_FORBIDDEN_PATH"
+    },
+    {
+      "id": "20-done-model-route-fail",
+      "input": { "gate": "done_gate", "validation_state": "PASS", "model_route_gate": "FAIL" },
+      "expected": "DONE_BLOCKED_MODEL_ROUTE"
+    },
+    {
+      "id": "21-task-service-blocker-not-active-defect",
+      "input": { "gate": "done_gate", "task_service_blocker": "TASK_SERVICE_PHYSICAL_WRITE_REPAIR_REQUIRED", "task_service_is_active_defect": false },
+      "expected": "DONE_BLOCKED_TASK_SERVICE_REPAIR_REQUIRED"
+    },
+    {
+      "id": "22-valid-done",
+      "input": {
+        "gate": "done_gate",
+        "validation_state": "PASS",
+        "model_route_gate": "PASS",
+        "master_task_readback": "PASS",
+        "child_tasks_terminal": "PASS",
+        "implementation_evidence": "PASS",
+        "qa_evidence": "PASS",
+        "security_scan": "PASS",
+        "path_authority": "PASS",
+        "model_spawn_receipt": "PASS",
+        "agenthub_receipt": "PASS",
+        "register_pr_queue": "PASS",
+        "no_active_blocker": "PASS"
+      },
+      "expected": "DONE_WITH_EVIDENCE"
+    }
+  ]
+}

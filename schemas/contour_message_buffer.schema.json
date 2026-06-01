@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub-control-spine.local/schemas/contour_message_buffer.schema.json",
+  "title": "AgentHub Contour Message Buffer Event",
+  "type": "object",
+  "required": [
+    "timestamp",
+    "run_id",
+    "contour_id",
+    "normalized_intent",
+    "severity",
+    "modifies_scope",
+    "owner_only_irreversible",
+    "affected_tasks"
+  ],
+  "properties": {
+    "timestamp": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "contour_id": { "type": "string", "minLength": 1 },
+    "normalized_intent": {
+      "type": "string",
+      "enum": [
+        "CORRECTION",
+        "CLARIFICATION",
+        "URGENCY",
+        "SCOPE_CHANGE",
+        "OWNER_ONLY_GATE",
+        "STOP_REQUEST",
+        "NOISE",
+        "VALIDATION_DATA"
+      ]
+    },
+    "severity": { "type": "string", "enum": ["low", "medium", "high", "critical"] },
+    "modifies_scope": { "type": "boolean" },
+    "owner_only_irreversible": { "type": "boolean" },
+    "affected_tasks": { "type": "array", "items": { "type": "string" } },
+    "scope_update_ref": { "type": ["string", "null"] },
+    "microtask_ref": { "type": ["string", "null"] }
+  },
+  "additionalProperties": false
+}
