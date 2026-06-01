@@ -96,6 +96,14 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
   buffered as `contour_message_buffer` events; task-service write failures use
   the `TASK_SERVICE_PHYSICAL_WRITE_REPAIR_REQUIRED` circuit breaker instead of
   repeated retries or fake Done.
+- Final runtime contour enforcement must follow
+  `governance/final-runtime-contour-enforcement-policy.md`. It composes
+  silent-to-terminal, user-delta buffering, forbidden-path pretool, live-path
+  proof, physical YouTrack write/readback, Done parser repair, model/spawn
+  receipt, context loop breaker, anti-spam-not-freeze, stale prompt quarantine,
+  evidence/no-secret, and user-outcome proof gates. The bad examples in
+  `evals/final-runtime-contour-enforcement/fixtures.json` are release-blocking
+  negative fixtures.
 - Boundary, backup, and docs/API-first guardrails must follow
   `governance/boundary-backup-docs-first-guardrail-policy.md`. Workers need a
   `SCOPE_MANIFEST` before mutation, exact `WRITE_ALLOWED_ROOTS`, rollback proof,
