@@ -75,6 +75,13 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
   mandatory for worker claims; task-service `NOOP` without physical issue id is
   a typed blocker for Done; final owner output is restricted to Russian
   `Fact/Action/Left`.
+- Contour task graph closure must follow
+  `governance/contour-task-graph-gate-policy.md`. Every actionable contour
+  needs one `CONTOUR_ID`, physical YouTrack parent/child readback, canonical
+  stage inventory, duplicate/orphan checks, and terminal child states before
+  final owner output. AgentHub merge `SUCCESS`, GitHub PR state, QA-only proof,
+  or custom-field `PASS` cannot close a contour while any YouTrack task remains
+  in `Backlog`, `Develop`, `Review`, or `Test`.
 - Boundary, backup, and docs/API-first guardrails must follow
   `governance/boundary-backup-docs-first-guardrail-policy.md`. Workers need a
   `SCOPE_MANIFEST` before mutation, exact `WRITE_ALLOWED_ROOTS`, rollback proof,

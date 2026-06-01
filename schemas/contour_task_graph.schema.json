@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/contour_task_graph.schema.json",
+  "title": "AgentHub Contour Task Graph",
+  "type": "object",
+  "required": [
+    "contour_id",
+    "run_id",
+    "scope_signature",
+    "parent_issue_id",
+    "tasks",
+    "stage_inventory",
+    "evidence_inventory",
+    "validation_inventory",
+    "blocker_inventory",
+    "final_receipt"
+  ],
+  "properties": {
+    "contour_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "source_user_request_hash": { "type": "string" },
+    "scope_signature": { "type": "string", "minLength": 1 },
+    "parent_issue_id": { "type": "string", "minLength": 1 },
+    "allowed_directories": { "type": "array", "items": { "type": "string" } },
+    "forbidden_directories": { "type": "array", "items": { "type": "string" } },
+    "tasks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "issue_id",
+          "contour_id",
+          "run_id",
+          "stage",
+          "owner_role",
+          "duplicate_signature",
+          "parent_issue_id",
+          "implementation_evidence",
+          "validation_evidence",
+          "task_readback"
+        ],
+        "properties": {
+          "issue_id": { "type": "string", "minLength": 1 },
+          "contour_id": { "type": "string", "minLength": 1 },
+          "run_id": { "type": "string", "minLength": 1 },
+          "stage": { "type": "string" },
+          "owner_role": { "type": "string" },
+          "duplicate_signature": { "type": "string" },
+          "parent_issue_id": { "type": "string" },
+          "implementation_evidence": { "type": "string" },
+          "validation_evidence": { "type": "string" },
+          "task_readback": { "type": "string" },
+          "blocker": { "type": "string" }
+        }
+      }
+    },
+    "stage_inventory": { "type": "object" },
+    "evidence_inventory": { "type": "object" },
+    "validation_inventory": { "type": "object" },
+    "blocker_inventory": { "type": "object" },
+    "final_receipt": { "type": "object" }
+  }
+}
