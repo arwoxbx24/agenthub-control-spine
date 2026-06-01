@@ -36,6 +36,8 @@ firewall, DNS, SSL, secrets, or live runtime configuration.
 - Existing API/documentation-first validator: PASS.
 - Ruby syntax checks: PASS.
 - Secret string scan for new artifacts: PASS.
+- GitHub PR: `#136`.
+- Merge commit: `8f598a58bf545c80f28177ffe6cb4fe7b074a285`.
 
 ## Prompt Quality
 
