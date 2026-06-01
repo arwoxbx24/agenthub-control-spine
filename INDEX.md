@@ -107,6 +107,13 @@ status: draft
 | `evals/no-chat-deadlock-contour/fixtures.json` | eval fixtures | AH-P0-NO-CHAT-DEADLOCK-CONTOUR | active |
 | `reports/audits/P0-no-chat-deadlock-contour-audit-20260531.md` | audit report | AH-P0-NO-CHAT-DEADLOCK-CONTOUR | audit-only |
 | `reports/receipts/P0-no-chat-deadlock-contour-implementation-receipt-20260531.md` | operational receipt | AH-P0-NO-CHAT-DEADLOCK-CONTOUR | active |
+| `governance/contour-task-graph-gate-policy.md` | governance policy | AH-CONTOUR-TASK-GRAPH-20260601 | active |
+| `governance/adr/ADR-contour-task-graph-gate-20260601.md` | architecture decision record | AH-CONTOUR-TASK-GRAPH-20260601 | active |
+| `schemas/contour_task_graph.schema.json` | schema | AH-CONTOUR-TASK-GRAPH-20260601 | active |
+| `templates/task-first/contour-task-card-template.md` | task template | AH-CONTOUR-TASK-GRAPH-20260601 | active |
+| `validators/contour_task_graph_validator.rb` | validator | AH-CONTOUR-TASK-GRAPH-20260601 | active |
+| `evals/contour-task-graph/fixtures.json` | eval fixtures | AH-CONTOUR-TASK-GRAPH-20260601 | active |
+| `reports/receipts/P0-contour-task-graph-gate-implementation-receipt-20260601.md` | operational receipt | AH-CONTOUR-TASK-GRAPH-20260601 | partial-with-platform-blocker |
 | `governance/agenthub-x-capability-matrix.md` | governance policy | AH-590 | active |
 | `governance/adr/ADR-agenthub-x-controlled-capability-matrix-20260528.md` | architecture decision record | AH-590 | active |
 | `governance/adr/ADR-codex-spark-model-router-enforcement-20260528.md` | architecture decision record | AH-590 | active |

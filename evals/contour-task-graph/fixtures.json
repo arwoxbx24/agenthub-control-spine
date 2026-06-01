@@ -1,0 +1,118 @@
+{
+  "cases": [
+    {
+      "id": "parent-done-child-review",
+      "input": {
+        "gate": "parent_child_done",
+        "parent_stage": "Done",
+        "children": [{ "issue_id": "AH-2", "stage": "Review" }]
+      },
+      "expected": "PARENT_DONE_CHILD_OPEN"
+    },
+    {
+      "id": "agenthub-merge-success-youtrack-review",
+      "input": {
+        "gate": "no_fake_done_when_youtrack_open",
+        "agenthub_merge": "SUCCESS",
+        "done_requested": true,
+        "tasks": [{ "issue_id": "AH-1", "stage": "Review" }]
+      },
+      "expected": "YOUTRACK_CONTOUR_OPEN"
+    },
+    {
+      "id": "task-service-null-issue-blocks-mutation",
+      "input": {
+        "gate": "task_service_physical_write",
+        "mutation_requested": true,
+        "task_service_status": "NOOP",
+        "issue_id": null,
+        "task_readback": false
+      },
+      "expected": "TASK_SERVICE_PHYSICAL_WRITE_MISSING"
+    },
+    {
+      "id": "worker-gemini-space-rejected",
+      "input": {
+        "gate": "worker_scope_allowlist",
+        "changed_paths": ["/root/gemini-space/hiddify/file.py"],
+        "allowed_paths": ["/root/workspaces/projects/agenthub-control-spine"]
+      },
+      "expected": "FORBIDDEN_SCOPE_TOUCH"
+    },
+    {
+      "id": "user-message-develop-buffered",
+      "input": {
+        "gate": "message_buffer_delta",
+        "state": "Develop",
+        "user_message_received": true,
+        "delta_recorded": true,
+        "worker_stopped": false
+      },
+      "expected": "CONTOUR_INPUT_DELTA_PASS"
+    },
+    {
+      "id": "duplicate-scope-updated-not-recreated",
+      "input": {
+        "gate": "task_explosion_guard",
+        "duplicate_open_issue": true,
+        "created_new_issue": false,
+        "active_child_count": 3
+      },
+      "expected": "TASK_EXPLOSION_GUARD_PASS"
+    },
+    {
+      "id": "more-than-seven-children-needs-t1",
+      "input": {
+        "gate": "task_explosion_guard",
+        "active_child_count": 8,
+        "t1_split_decision": false
+      },
+      "expected": "TASK_EXPLOSION_REQUIRES_T1_DECISION"
+    },
+    {
+      "id": "same-gate-failure-twice-blocks-third",
+      "input": {
+        "gate": "same_gate_retry_limit",
+        "same_gate_failures": 2,
+        "third_identical_retry": true
+      },
+      "expected": "DEADLOCK_RETRY_LIMIT_REACHED"
+    },
+    {
+      "id": "t0-code-blocked",
+      "input": {
+        "gate": "t0_boundary",
+        "role": "T0_CONTROL",
+        "code_mutation": true
+      },
+      "expected": "BLOCKED_T0_DIRECT_MUTATION"
+    },
+    {
+      "id": "qa-only-proof-blocked",
+      "input": {
+        "gate": "qa_implementation_substitution",
+        "implementation_evidence": "MISSING",
+        "qa_evidence": "PASS",
+        "done_requested": true
+      },
+      "expected": "QA_ONLY_PROOF_NOT_IMPLEMENTATION"
+    },
+    {
+      "id": "valid-contour-done",
+      "input": {
+        "gate": "contour_done",
+        "parent_stage": "Done",
+        "tasks": [
+          { "issue_id": "AH-1", "stage": "Done", "implementation_evidence": "PASS", "validation_evidence": "PASS", "task_readback": "PASS" },
+          { "issue_id": "AH-2", "stage": "Superseded", "implementation_evidence": "not_applicable", "validation_evidence": "PASS", "task_readback": "PASS" }
+        ],
+        "agenthub_receipt": "PASS",
+        "no_orphans": true,
+        "no_duplicates": true,
+        "no_forbidden_paths": true,
+        "register_pr_evidence": "PASS"
+      },
+      "expected": "DONE_WITH_EVIDENCE"
+    }
+  ]
+}
