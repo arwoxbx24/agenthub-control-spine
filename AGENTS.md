@@ -89,6 +89,13 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
   spawn/model receipt, loop breaker, truth Done, artifact lifecycle, PR queue,
   and final-output gates. It is a release gate for AgentHub/Codex governance
   contours and is not live product/runtime mutation authority.
+- Silent-to-Done v2 execution must follow
+  `governance/silent-to-done-contour-v2-policy.md`. After first contour
+  dispatch, user-facing output is blocked until `DONE_WITH_EVIDENCE`,
+  `OWNER_ONLY_IRREVERSIBLE_GATE`, or `SAFETY_QUARANTINE`; user corrections are
+  buffered as `contour_message_buffer` events; task-service write failures use
+  the `TASK_SERVICE_PHYSICAL_WRITE_REPAIR_REQUIRED` circuit breaker instead of
+  repeated retries or fake Done.
 - Boundary, backup, and docs/API-first guardrails must follow
   `governance/boundary-backup-docs-first-guardrail-policy.md`. Workers need a
   `SCOPE_MANIFEST` before mutation, exact `WRITE_ALLOWED_ROOTS`, rollback proof,
