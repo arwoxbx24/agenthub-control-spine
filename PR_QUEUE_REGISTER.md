@@ -106,6 +106,7 @@ before closure.
 
 | PR | Decision | Blocker |
 |---|---|---|
+| `#142` | Open implementation evidence PR for `AH-675`; updated from receipt-only to runtime-proof registration after actual @runtime hook/gate/policy/validator installation and full runtime validation PASS. | none |
 | `#54` | Merged on 2026-05-26 for `AH-571`; adds Komodo orchestration report, implementation decomposition, receipts, index/register coverage, 2026-05-26 approved corrected contract realignment, and process hardening that pins `AH-578` as the single active live-route unblock gate. | none for repository/process scope; live rollout remains gated by `AH-578` route evidence before `AH-574` baseline. |
 | `#53` | Closed on 2026-05-26 before review because the first branch inherited unrelated evidence history; superseded by clean PR `#54`. | none after close |
 | `#48` | Merged on 2026-05-25; installs AH-554 access-rights/live-worker enablement controls. | Runtime repair remains local to AH-554: `AGENTHUB_LIVE_WORKER_AUTH_MISSING`. |
