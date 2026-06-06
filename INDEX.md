@@ -123,7 +123,11 @@ status: draft
 | `schemas/contour_message_buffer.schema.json` | schema | AH-SILENT-TO-DONE-V2-20260601 | active |
 | `validators/silent_to_done_contour_v2_validator.rb` | validator | AH-SILENT-TO-DONE-V2-20260601 | active |
 | `evals/silent-to-done-contour-v2/fixtures.json` | eval fixtures | AH-SILENT-TO-DONE-V2-20260601 | active |
-| `reports/receipts/P0-silent-to-done-contour-v2-receipt-20260601.md` | operational receipt | AH-SILENT-TO-DONE-V2-20260601 | partial-with-platform-blocker |
+| `reports/receipts/P0-silent-to-done-contour-v2-receipt-20260601.md` | operational receipt | AH-SILENT-TO-DONE-V2-20260601 | superseded-by-AH-632 |
+| `governance/final-runtime-contour-enforcement-policy.md` | governance policy | AH-632 | active |
+| `validators/final_runtime_contour_enforcement_validator.rb` | validator | AH-632 | active |
+| `evals/final-runtime-contour-enforcement/fixtures.json` | eval fixtures | AH-632 | active |
+| `reports/receipts/P0-final-runtime-contour-enforcement-receipt-20260601.md` | operational receipt | AH-632 | operational-receipt |
 | `governance/agenthub-x-capability-matrix.md` | governance policy | AH-590 | active |
 | `governance/adr/ADR-agenthub-x-controlled-capability-matrix-20260528.md` | architecture decision record | AH-590 | active |
 | `governance/adr/ADR-codex-spark-model-router-enforcement-20260528.md` | architecture decision record | AH-590 | active |
