@@ -1,0 +1,200 @@
+{
+  "cases": [
+    {
+      "id": "same_artifact_id_two_active_files",
+      "input": {
+        "records": [
+          { "path": "governance/a.md", "artifact_id": "duplicate-id", "lifecycle": "active_policy", "content": "# A" },
+          { "path": "governance/b.md", "artifact_id": "duplicate-id", "lifecycle": "active_policy", "content": "# B" }
+        ]
+      },
+      "expected": "FAIL"
+    },
+    {
+      "id": "same_normalized_path_family_active_twice",
+      "input": {
+        "records": [
+          { "path": "governance/foo-control-20260607.md", "artifact_id": "foo-a", "lifecycle": "active_policy", "content": "# Foo Control" },
+          { "path": "governance/foo-control-20260608.md", "artifact_id": "foo-b", "lifecycle": "active_policy", "content": "# Foo Control Updated" }
+        ]
+      },
+      "expected": "FAIL"
+    },
+    {
+      "id": "duplicate_index_and_register_paths",
+      "input": {
+        "index_paths": ["reports/a.md", "reports/a.md"],
+        "register_paths": ["reports/b.md", "reports/b.md"],
+        "records": []
+      },
+      "expected": "FAIL"
+    },
+    {
+      "id": "consumed_prompt_replayed_as_active",
+      "input": {
+        "records": [
+          {
+            "path": "prompts/old-fix.txt",
+            "artifact_id": "old-fix",
+            "lifecycle": "consumed_prompt",
+            "default_load": true,
+            "safe_to_replay": false,
+            "content": "# Old Fix"
+          }
+        ]
+      },
+      "expected": "FAIL"
+    },
+    {
+      "id": "audit_only_report_used_as_instruction",
+      "input": {
+        "records": [
+          {
+            "path": "reports/audits/incident.md",
+            "artifact_id": "incident-audit",
+            "lifecycle": "audit_only",
+            "used_as_instruction": true,
+            "content": "# Incident Audit"
+          }
+        ]
+      },
+      "expected": "FAIL"
+    },
+    {
+      "id": "superseded_replayed_as_default_load",
+      "input": {
+        "records": [
+          {
+            "path": "reports/audits/old.md",
+            "artifact_id": "old-audit",
+            "lifecycle": "superseded",
+            "default_load": true,
+            "safe_to_replay": false,
+            "content": "# Old Audit"
+          }
+        ]
+      },
+      "expected": "FAIL"
+    },
+    {
+      "id": "quarantine_replayed_as_instruction",
+      "input": {
+        "records": [
+          {
+            "path": "prompts/bad.txt",
+            "artifact_id": "bad-prompt",
+            "lifecycle": "quarantine",
+            "default_load": false,
+            "used_as_instruction": true,
+            "content": "# Bad Prompt"
+          }
+        ]
+      },
+      "expected": "FAIL"
+    },
+    {
+      "id": "quarantined_replayed_as_safe_to_replay",
+      "input": {
+        "records": [
+          {
+            "path": "prompts/bad-old.txt",
+            "artifact_id": "bad-old-prompt",
+            "lifecycle": "quarantined",
+            "default_load": false,
+            "safe_to_replay": true,
+            "content": "# Bad Old Prompt"
+          }
+        ]
+      },
+      "expected": "FAIL"
+    },
+    {
+      "id": "same_source_task_scope_active_twice",
+      "input": {
+        "records": [
+          {
+            "path": "governance/task-a.md",
+            "artifact_id": "task-a",
+            "lifecycle": "active_control",
+            "source_task": "AH-1",
+            "scope_signature": "same-scope",
+            "content": "# Task A"
+          },
+          {
+            "path": "governance/task-b.md",
+            "artifact_id": "task-b",
+            "lifecycle": "active_control",
+            "source_task": "AH-1",
+            "scope_signature": "same-scope",
+            "content": "# Task B"
+          }
+        ]
+      },
+      "expected": "FAIL"
+    },
+    {
+      "id": "superseded_artifact_preserved_not_loaded",
+      "input": {
+        "records": [
+          {
+            "path": "reports/audits/old.md",
+            "artifact_id": "old-audit",
+            "lifecycle": "superseded",
+            "default_load": false,
+            "safe_to_replay": false,
+            "content": "# Old Audit"
+          }
+        ]
+      },
+      "expected": "PASS"
+    },
+    {
+      "id": "quarantine_artifact_preserved_not_loaded",
+      "input": {
+        "records": [
+          {
+            "path": "prompts/quarantined.txt",
+            "artifact_id": "quarantined-prompt",
+            "lifecycle": "quarantine",
+            "default_load": false,
+            "safe_to_replay": false,
+            "content": "# Quarantined Prompt"
+          }
+        ]
+      },
+      "expected": "PASS"
+    },
+    {
+      "id": "historical_receipt_duplicate_label_warn_only",
+      "input": {
+        "records": [
+          {
+            "path": "reports/receipts/a.md",
+            "artifact_id": "receipt-a",
+            "lifecycle": "historical_receipt",
+            "title": "Same Receipt Label",
+            "content": "# Same Receipt Label"
+          },
+          {
+            "path": "reports/receipts/b.md",
+            "artifact_id": "receipt-b",
+            "lifecycle": "historical_receipt",
+            "title": "Same Receipt Label",
+            "content": "# Same Receipt Label"
+          }
+        ]
+      },
+      "expected": "WARN"
+    },
+    {
+      "id": "clean_active_artifacts_pass",
+      "input": {
+        "records": [
+          { "path": "governance/alpha.md", "artifact_id": "alpha", "lifecycle": "active_policy", "content": "# Alpha Policy" },
+          { "path": "validators/beta.rb", "artifact_id": "beta", "lifecycle": "active_control", "content": "# Beta Validator" }
+        ]
+      },
+      "expected": "PASS"
+    }
+  ]
+}
