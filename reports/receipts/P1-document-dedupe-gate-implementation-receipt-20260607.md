@@ -17,6 +17,7 @@ RUN_ID: `RUN-P1-DOCUMENT-DEDUPE-GATE-20260607`
 scope_signature: `DOCUMENT_DEDUPE_GATE_CONTROL_SPINE_20260607`
 branch: `agenthub/RUN-P1-DOCUMENT-DEDUPE-GATE-20260607`
 repository: `arwoxbx24/agenthub-control-spine`
+PR: `#144`
 
 ## MCP / Task Evidence
 
@@ -43,6 +44,7 @@ repository: `arwoxbx24/agenthub-control-spine`
 
 - `INDEX.md`
 - `ARTIFACT_REGISTER.md`
+- `PR_QUEUE_REGISTER.md`
 
 ## Existing Register Cleanup
 
@@ -62,7 +64,7 @@ artifacts were not deleted, rewritten, or quarantined.
 - No runtime/server mutation.
 - No Docker, DB, proxy, firewall, DNS, SSL, secret, product, or client surface.
 - No secrets, tokens, env dumps, raw transcript links, or private keys added.
-- `PR_QUEUE_REGISTER.md` unchanged because no PR was created in this turn.
+- `PR_QUEUE_REGISTER.md` updated for PR `#144`.
 
 ## Final State
 
