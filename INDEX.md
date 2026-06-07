@@ -329,9 +329,6 @@ status: draft
 | `validators/t0_escape_boundary_gates_validator.rb` | validator | AH-618 | active |
 | `evals/t0-escape-boundary-gates/fixtures.json` | eval fixtures | AH-618 | active |
 | `reports/receipts/P0-t0-escape-boundary-gates-implementation-receipt-20260530.md` | implementation receipt | AH-618 | operational-receipt |
-| `governance/model-portfolio-utilization-policy.md` | governance policy | AH-615 | active |
-| `validators/model_portfolio_router_validator.rb` | validator | AH-615 | active |
-| `evals/model-portfolio-routing/fixtures.json` | eval fixtures | AH-615 | active |
 | `reports/receipts/P0-model-portfolio-spark-canary-20260530.md` | model route canary receipt | AH-615 | operational-receipt |
 | `reports/receipts/P0-model-portfolio-fallback-canary-20260530.md` | model route canary receipt | AH-615 | operational-receipt |
 | `reports/receipts/P0-model-portfolio-continuous-loop-implementation-receipt-20260530.md` | implementation receipt | AH-615 | operational-receipt |
@@ -397,3 +394,11 @@ status: draft
 | `reports/receipts/P0-model-route-terminal-finalizer-receipt-20260529.md` | operational receipt | AH-590 | operational-receipt |
 | `reports/receipts/P0-agenthub-global-model-router-nochat-t0-hardlock-receipt-20260606.md` | operational receipt | AGENTHUB_CORE_REPAIR_20260606 | operational-receipt |
 | `reports/receipts/P0-agenthub-runtime-hardlock-system-architecture-receipt-20260606.md` | operational receipt | AH-675 | operational-receipt |
+| `reports/audits/AGENTHUB-ORCHESTRATOR-FULL-SYSTEM-AUDIT-20260607.md` | audit report | AGENTHUB_ORCHESTRATOR_FULL_AUDIT_FIRST_CONTRACT_20260607 | audit-only |
+| `reports/validations/AGENTHUB-ORCHESTRATOR-FULL-SYSTEM-AUDIT-VALIDATION-20260607.md` | validation report | AGENTHUB_ORCHESTRATOR_FULL_AUDIT_FIRST_CONTRACT_20260607 | audit-only |
+| `reports/receipts/AGENTHUB-ORCHESTRATOR-FULL-SYSTEM-AUDIT-RECEIPT-20260607.md` | operational receipt | AGENTHUB_ORCHESTRATOR_FULL_AUDIT_FIRST_CONTRACT_20260607 | operational-receipt |
+| `governance/document-dedupe-gate-policy.md` | governance policy | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | active |
+| `validators/document_dedupe_gate_validator.rb` | validator | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | active |
+| `evals/document-dedupe-gate/fixtures.json` | eval fixtures | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | active |
+| `reports/validations/P1-document-dedupe-gate-validation-20260607.md` | validation report | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | audit-only |
+| `reports/receipts/P1-document-dedupe-gate-implementation-receipt-20260607.md` | operational receipt | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | operational-receipt |
