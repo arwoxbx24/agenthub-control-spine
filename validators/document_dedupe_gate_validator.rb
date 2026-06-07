@@ -14,6 +14,10 @@ SOFT_LIFECYCLES = %w[
   quarantine quarantined deleted_policy_violation
 ].freeze
 
+REPLAY_BLOCK_LIFECYCLES = %w[
+  consumed_prompt audit_only superseded quarantine quarantined
+].freeze
+
 def blank?(value)
   value.nil? || (value.respond_to?(:empty?) && value.empty?)
 end
@@ -91,15 +95,16 @@ def evaluate_records(records, path_rows: [], register_rows: [])
     lifecycle = record["lifecycle"].to_s
     default_load = record["default_load"] == true || record["default_load"].to_s == "true"
     safe_to_replay = record["safe_to_replay"] == true || record["safe_to_replay"].to_s == "true"
-    used_as_instruction = record["used_as_instruction"] == true
+    used_as_instruction = record["used_as_instruction"] == true || record["used_as_instruction"].to_s == "true"
 
-    if lifecycle == "consumed_prompt" && (default_load || safe_to_replay || used_as_instruction)
-      findings << { "severity" => "FAIL", "code" => "CONSUMED_PROMPT_REPLAYED_AS_ACTIVE", "paths" => [record["path"]] }
-    end
+    next unless REPLAY_BLOCK_LIFECYCLES.include?(lifecycle)
+    next unless default_load || safe_to_replay || used_as_instruction
 
-    if lifecycle == "audit_only" && (default_load || used_as_instruction)
-      findings << { "severity" => "FAIL", "code" => "AUDIT_ONLY_USED_AS_INSTRUCTION", "paths" => [record["path"]] }
-    end
+    findings << {
+      "severity" => "FAIL",
+      "code" => "#{lifecycle.upcase}_REPLAYED_AS_ACTIVE",
+      "paths" => [record["path"]]
+    }
   end
 
   findings
