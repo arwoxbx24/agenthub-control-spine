@@ -28,6 +28,10 @@ PR: `#144`
   `PHYSICAL_TASK_WRITE_MISSING`.
 - AgentHub MCP task-service `report_blocker`: blocked with
   `PHYSICAL_TASK_WRITE_MISSING`.
+- YouTrack physical task created and read back after task-first repair:
+  `AH-685`, Stage `Develop`, Priority `Critical`, Type `Incident`, comment
+  count `1`, PR/receipt/validation/validator evidence present in description
+  and comment.
 - AgentHub MCP revision guard: PASS, rollback branch
   `backup/agenthub-RUN-P1-DOCUMENT-DEDUPE-GATE-20260607`, work branch
   `agenthub/RUN-P1-DOCUMENT-DEDUPE-GATE-20260607`, direct main write blocked.
@@ -69,6 +73,5 @@ artifacts were not deleted, rewritten, or quarantined.
 ## Final State
 
 `DOCUMENT_DEDUPE_GATE_MISSING` is closed for repository governance/control-spine
-evidence. Physical tracker write/readback is not proven by this local turn, but
-the MCP task-service contract route was attempted and recorded. Residual
-terminal blocker for tracker Done: `EVIDENCE_MISSING_FOR_DONE`.
+evidence. Physical tracker task/readback exists as `AH-685`; PR `#144` is linked
+through task description/comment and `PR_QUEUE_REGISTER.md`.
