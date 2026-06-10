@@ -2,7 +2,7 @@
 artifact_id: agenthub-global-correction-contour-receipt-20260610
 artifact_type: operational_receipt
 owner_role: T0 Control Plane / Registrar / Verifier
-source_task: AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610
+source_task: AH-730
 run_id: RUN-AGENTHUB-GLOBAL-CORRECTION-CONTOUR-20260610
 created_at: 2026-06-10
 lifecycle_status: operational_receipt
@@ -34,6 +34,10 @@ RUN_ID:
 
 `RUN-AGENTHUB-GLOBAL-CORRECTION-CONTOUR-20260610`
 
+Physical task:
+
+`AH-730`
+
 ## Created Artifacts
 
 - `prompts/architecture/AGENTHUB-GLOBAL-CORRECTION-CONTOUR-CONTRACT-20260610.txt`
@@ -48,8 +52,9 @@ RUN_ID:
 
 - PR: `#148`
 - Branch: `agenthub-global-correction-contour-20260610`
-- Latest known head before this receipt update: `0fec6cb4214b5dca5bdef5644e1f92d898b9c0ba`
-- PR status at creation: open, not merged.
+- Prior PR head readback: `5229d48adf95410148ed88ff7c7f8959c79709de`
+- PR status at readback: open, mergeable, not merged.
+- Required scan recorded in PR body before this update: `secret-scan/gitleaks` success on workflow run `27266862112`.
 
 ## Safety Confirmation
 
@@ -76,11 +81,19 @@ Active blocker:
 
 ## Task State
 
-No YouTrack connector was exposed in this ChatGPT run.
+YouTrack connector became available in the continuation run.
 
-Therefore physical YouTrack task creation/readback is not proven.
+Physical task created and read back:
 
-Active blocker:
+- Task id: `AH-730`
+- Summary: `AgentHub global correction contour contracts and register coverage`
+- Stage: `Develop`
+- Priority: `Critical`
+- Type: `Incident`
+- Assignee: `admin`
+- Created/read back at: 2026-06-10 12:39 local YouTrack time
+
+Closed blocker:
 
 `YOUTRACK_TASK_WRITE_READBACK_UNAVAILABLE`
 
@@ -91,7 +104,9 @@ Index/register/PR queue rows were prepared as patch artifacts:
 - `reports/patches/AGENTHUB-GLOBAL-CORRECTION-REGISTER-PATCH-20260610.diff`
 - `reports/patches/AGENTHUB-GLOBAL-CORRECTION-PR-QUEUE-PATCH-20260610.diff`
 
-They were not applied directly to the large register files in this ChatGPT run to avoid unsafe full-file replacement through connector payloads.
+They are still not applied to the live `INDEX.md`, `ARTIFACT_REGISTER.md`, and `PR_QUEUE_REGISTER.md` files in this PR.
+
+Reason: the available GitHub connector write API for existing files performs full-file replacement. The large register file payloads are not safely available as complete untruncated content in this run, so applying the rows through a partial or reconstructed full-file replacement would risk register data loss.
 
 Active blocker:
 
@@ -106,11 +121,11 @@ Active blocker:
 - Apply or otherwise safely install `INDEX.md` rows.
 - Apply or otherwise safely install `ARTIFACT_REGISTER.md` rows.
 - Apply or otherwise safely install `PR_QUEUE_REGISTER.md` row for PR `#148`.
-- Record required status checks.
-- Bind physical YouTrack task and read it back.
+- Re-run/read required status checks after this receipt update.
+- Acquire exact attached architect prompt source or keep the blocker.
 
 ## Done Gate
 
 Not Done.
 
-Done requires physical task readback, register coverage, PR queue coverage, status checks, final verifier readback, and no active blocker.
+Done requires attached prompt readback or accepted blocker disposition, register coverage, PR queue coverage, required checks after latest commit, final verifier readback, and no active blocker.
