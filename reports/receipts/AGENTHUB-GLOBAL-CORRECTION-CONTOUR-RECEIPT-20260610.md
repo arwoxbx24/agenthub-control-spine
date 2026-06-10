@@ -26,6 +26,10 @@ Branch:
 
 `agenthub-global-correction-contour-20260610`
 
+Pull request:
+
+`#148`
+
 RUN_ID:
 
 `RUN-AGENTHUB-GLOBAL-CORRECTION-CONTOUR-20260610`
@@ -37,6 +41,15 @@ RUN_ID:
 - `prompts/implementation/AGENTHUB-GLOBAL-CORRECTION-WORKER-DISPATCH-20260610.txt`
 - `reports/validations/AGENTHUB-GLOBAL-CORRECTION-CONTOUR-VALIDATION-20260610.md`
 - `reports/receipts/AGENTHUB-GLOBAL-CORRECTION-CONTOUR-RECEIPT-20260610.md`
+- `reports/patches/AGENTHUB-GLOBAL-CORRECTION-REGISTER-PATCH-20260610.diff`
+- `reports/patches/AGENTHUB-GLOBAL-CORRECTION-PR-QUEUE-PATCH-20260610.diff`
+
+## PR Evidence
+
+- PR: `#148`
+- Branch: `agenthub-global-correction-contour-20260610`
+- Latest known head before this receipt update: `0fec6cb4214b5dca5bdef5644e1f92d898b9c0ba`
+- PR status at creation: open, not merged.
 
 ## Safety Confirmation
 
@@ -71,17 +84,30 @@ Active blocker:
 
 `YOUTRACK_TASK_WRITE_READBACK_UNAVAILABLE`
 
+## Register State
+
+Index/register/PR queue rows were prepared as patch artifacts:
+
+- `reports/patches/AGENTHUB-GLOBAL-CORRECTION-REGISTER-PATCH-20260610.diff`
+- `reports/patches/AGENTHUB-GLOBAL-CORRECTION-PR-QUEUE-PATCH-20260610.diff`
+
+They were not applied directly to the large register files in this ChatGPT run to avoid unsafe full-file replacement through connector payloads.
+
+Active blocker:
+
+`REGISTER_PATCH_NOT_APPLIED`
+
 ## Current State
 
 `BLOCKED_WITH_ARTIFACTS`
 
 ## Pending Registrar Work
 
-- Update `INDEX.md`.
-- Update `ARTIFACT_REGISTER.md`.
-- Open PR.
-- Update `PR_QUEUE_REGISTER.md` after PR number exists.
+- Apply or otherwise safely install `INDEX.md` rows.
+- Apply or otherwise safely install `ARTIFACT_REGISTER.md` rows.
+- Apply or otherwise safely install `PR_QUEUE_REGISTER.md` row for PR `#148`.
 - Record required status checks.
+- Bind physical YouTrack task and read it back.
 
 ## Done Gate
 
