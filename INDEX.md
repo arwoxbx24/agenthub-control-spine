@@ -402,3 +402,8 @@ status: draft
 | `evals/document-dedupe-gate/fixtures.json` | eval fixtures | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | active |
 | `reports/validations/P1-document-dedupe-gate-validation-20260607.md` | validation report | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | audit-only |
 | `reports/receipts/P1-document-dedupe-gate-implementation-receipt-20260607.md` | operational receipt | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | operational-receipt |
+
+| `prompts/architecture/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-REPO-HYGIENE-20260610.txt` | post-PR149 scope-lane self-healing control prompt | AH-738 / AH-731 follow-up | active-control-candidate |
+| `reports/validations/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-VALIDATION-20260610.md` | validation report | AH-738 / AH-731 follow-up | operational-receipt |
+| `reports/receipts/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-RECEIPT-20260610.md` | operational receipt | AH-738 / AH-731 follow-up | operational-receipt |
+| `reports/patches/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-REGISTER-PATCH-20260610.diff` | register/index/PR queue patch proposal | AH-738 / AH-731 follow-up | patch-proposal |
