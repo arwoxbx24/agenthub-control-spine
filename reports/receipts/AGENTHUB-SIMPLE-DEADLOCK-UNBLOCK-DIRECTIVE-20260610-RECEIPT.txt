@@ -1,0 +1,32 @@
+AGENTHUB SIMPLE DEADLOCK UNBLOCK RECEIPT
+Date: 2026-06-10
+Task: AH-728
+RUN_ID: RUN-AGENTHUB-DEADLOCK-BREAKGLASS-20260610T0851Z
+Directive path: prompts/incident/AGENTHUB-SIMPLE-DEADLOCK-UNBLOCK-DIRECTIVE-20260610.txt
+Directive commit: 0b1d3c50ae0573a97be43dc47f980a1ebbcc082c
+
+CHECKS
+Task exists: PASS
+Task readback: PASS
+RUN_ID exists: PASS
+Directive repo file published: PASS
+Normal sandbox worker route: PASS from previous receipt @agenthub-runs/agenthub-deadlock-breakglass-20260610T0851Z/dispatch-output-27f5199f7d7d.json
+Command-worker read-only diagnostic: BLOCKED
+
+ROOT BLOCKER
+CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED
+
+EVIDENCE
+Command-worker dispatch attempt used adapter=command with read-only command only.
+AgentHub MCP rejected it with: contract-only runtime blocked non-sandbox adapter dispatch: adapter=command.
+No runtime mutation was performed by T0.
+No Break-Glass Worker action was executed.
+No secrets, databases, Docker prune/reset, proxy/firewall/DNS/SSL, or client/product files were touched.
+
+NEXT EXACT RECOVERY ACTION
+Enable one Break-Glass Worker route for RUN_ID RUN-AGENTHUB-DEADLOCK-BREAKGLASS-20260610T0851Z to repair or enable command-worker dispatch only, then validate read-only diagnostics and close the route.
+
+FINAL OWNER OUTPUT
+Fact: AgentHub not unblocked.
+Action: AH-728 + this receipt path.
+Left: CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED.
