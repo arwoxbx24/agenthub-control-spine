@@ -14,24 +14,29 @@ safe_to_replay: false
 
 ## Fact
 
-Closed prompt-architecture contour was added to PR `#148` on branch `agenthub-global-correction-contour-20260610`.
+Closed prompt-architecture contour exists in PR `#148` on branch `agenthub-global-correction-contour-20260610`, and the owner-selected `PR-only` source policy closes the external attached-prompt blocker for this contour.
 
 ## Action Evidence
 
-Created artifacts:
+Created and updated artifacts:
 
 - `prompts/architecture/AGENTHUB-CLOSED-PROMPT-ARCHITECTURE-CONTOUR-20260610.txt`
 - `reports/validations/AGENTHUB-CLOSED-PROMPT-ARCHITECTURE-CONTOUR-VALIDATION-20260610.md`
 - `reports/receipts/AGENTHUB-CLOSED-PROMPT-ARCHITECTURE-CONTOUR-RECEIPT-20260610.md`
+- `reports/patches/AGENTHUB-GLOBAL-CORRECTION-REGISTER-PATCH-20260610.diff`
+- `reports/patches/AGENTHUB-GLOBAL-CORRECTION-PR-QUEUE-PATCH-20260610.diff`
 
 Working source:
 
 - PR: `#148`
 - Branch: `agenthub-global-correction-contour-20260610`
+- Source decision: `PR_ONLY_SOURCE_DECISION`
 
 ## Boundaries Preserved
 
-No Linux shell, runtime, task manager, Docker, database, proxy, firewall, ports, secrets, service restart, broad cleanup, or personal repository action was used for this closed-contour implementation.
+No runtime, task manager, Docker, database, proxy, firewall, ports, secrets, service restart, broad cleanup, or personal repository action was used for this closed-contour implementation.
+
+A local shell fallback check was attempted only to evaluate GitHub CLI availability after the connector exposed no safe append operation; it was blocked by pre-dispatch policy and did not mutate repository, runtime, or services.
 
 ## Source Discipline
 
@@ -39,15 +44,18 @@ Old chat messages, repeated owner pressure, stale chat statuses, and previous su
 
 ## State
 
-`PROMPT_ARCHITECTURE_CONTOUR_CLOSED_WITH_BLOCKERS`
+`PROMPT_ARCHITECTURE_CONTOUR_PARTIAL_REGISTER_APPLY_BLOCKED`
+
+## Closed Blockers
+
+- `ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE` closed by owner-selected `PR-only` policy.
 
 ## Active Blockers
 
-- `ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE`
-- `REGISTER_PATCH_NOT_APPLIED`
+- `REGISTER_DIRECT_APPLY_ROUTE_MISSING`
 
 ## Final Owner Output
 
-Fact: closed prompt-architecture contour artifact added to PR #148.
-Action: branch `agenthub-global-correction-contour-20260610`, closed-contour artifacts created.
-Left: `ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE`, `REGISTER_PATCH_NOT_APPLIED`.
+Fact: PR-only prompt-architecture contour is closed for source scope; register direct apply is not complete.
+Action: PR #148 branch `agenthub-global-correction-contour-20260610`, validation/receipt updated.
+Left: `REGISTER_DIRECT_APPLY_ROUTE_MISSING`.
