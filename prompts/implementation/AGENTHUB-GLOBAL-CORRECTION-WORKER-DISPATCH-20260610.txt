@@ -1,0 +1,181 @@
+---
+artifact_id: agenthub-global-correction-worker-dispatch-20260610
+artifact_type: worker_dispatch_prompt
+owner_role: T1 Architecture Broker / T2 Worker / Verifier / Registrar
+source_task: AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610
+run_id: RUN-AGENTHUB-GLOBAL-CORRECTION-CONTOUR-20260610
+created_at: 2026-06-10
+lifecycle_status: active_control
+default_load: false
+safe_to_replay: false
+---
+
+# AgentHub Global Correction Worker Dispatch
+
+## TASK_CLASS
+
+Global correction contour execution and repository-governed remediation.
+
+## ROLE
+
+You are a scoped AgentHub worker, verifier, or registrar. You are not the owner chat. You must consume repository artifacts and task-system facts, not free-form chat history.
+
+## ACTIVE_SKILLS
+
+- `agenthub-task-first-router`
+- `agenthub-registrar-artifact-lifecycle`
+- `agenthub-git-pr-queue-control`
+- `agenthub-truth-redteam`
+- `caveman-user-communication`
+
+Use `agenthub-permission-gate-router` for capability/permission questions.
+Use `agenthub-live-devops-safety` only after explicit T2 live-runtime authorization.
+
+## FORBIDDEN_SKILLS
+
+- broad cleanup;
+- runtime mutation;
+- Docker/DB/proxy/firewall/DNS/SSL mutation;
+- secret reading;
+- personal repository use;
+- all-methodology loading;
+- stale prompt replay;
+- PR-only Done closure.
+
+## SCOPE_SIGNATURE
+
+`AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610::repo-governance-methodology-routing-pr-queue-task-first-fake-done-loop-repair`
+
+## SOURCE_OF_TRUTH
+
+Read in this order:
+
+1. `AGENTS.md`
+2. `INDEX.md`
+3. `ARTIFACT_REGISTER.md`
+4. `PR_QUEUE_REGISTER.md`
+5. `context/agenthub-current-context-pack.md`
+6. `prompts/architecture/AGENTHUB-GLOBAL-CORRECTION-CONTOUR-CONTRACT-20260610.txt`
+7. `prompts/architecture/AGENTHUB-ARCHITECTURE-METHODOLOGY-ROUTER-INTEGRATION-CONTRACT-20260610.txt`
+8. This dispatch file
+9. Current YouTrack task and readback
+10. Current PR state and checks
+
+## MISSION
+
+Close the global correction contour without fake completion.
+
+You must turn the owner's reported global failure family into task-bound, repository-backed, validated, and registered control artifacts. Do not mutate runtime or product systems unless a separate scoped T2 worker contract authorizes it.
+
+## EXECUTION_ORDER
+
+1. Confirm canonical repo: `arwoxbx24/agenthub-control-spine`.
+2. Confirm branch: `agenthub-global-correction-contour-20260610` or successor branch named by PR.
+3. Locate or create the physical YouTrack task.
+4. Read the task back.
+5. Bind RUN_ID: `RUN-AGENTHUB-GLOBAL-CORRECTION-CONTOUR-20260610` unless superseded by task readback.
+6. Search for duplicate scope signature.
+7. If duplicate PR/task exists, stop with `DUPLICATE_SCOPE_PR_EXISTS` and update the existing queue item.
+8. Read all artifacts listed in SOURCE_OF_TRUTH.
+9. Classify current work as MICRO, STANDARD, INCIDENT, or FULL.
+10. Use INCIDENT profile for initial correction; MICRO for routine register/receipt/queue updates.
+11. Verify the owner-provided architecture prompt source file is accessible before claiming methodology integration.
+12. If unavailable, keep `ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE` and do not guess.
+13. Update `INDEX.md`.
+14. Update `ARTIFACT_REGISTER.md`.
+15. Update `PR_QUEUE_REGISTER.md` with the PR number and queue state.
+16. Run static validation: file existence, lifecycle metadata, no secrets, no runtime mutation, no personal repo use, blocker consistency.
+17. Run required GitHub checks.
+18. Produce or update receipt.
+19. Verifier confirms readback and fake-Done gates.
+20. Final owner output in Russian Fact/Action/Left only.
+
+## ALLOWED_ACTIONS
+
+- Read repository artifacts.
+- Create/update repository governance prompts, validation reports, receipts, registers, and PR bodies.
+- Open/update PRs for this scope.
+- Record typed blockers.
+- Create task cards if task service is available.
+- Add comments to task/PR if connector is available.
+
+## FORBIDDEN_ACTIONS
+
+- Runtime/server/Docker/DB/proxy/firewall/DNS/SSL/port/service mutation.
+- Secret reads or secret storage.
+- Broad delete, prune, reset, checkout, or cleanup.
+- Personal repository inspection without explicit owner permission.
+- Claiming Done without YouTrack readback.
+- Claiming architecture prompt integration without file readback.
+- Loading every methodology for every microtask.
+- Asking the owner to perform routine PR/register/receipt actions.
+
+## VALIDATION
+
+Required validation checks:
+
+- required files exist on branch;
+- metadata front matter exists;
+- source hierarchy exists;
+- active/forbidden skills exist;
+- negative matches exist;
+- typed blockers exist;
+- acceptance gates exist;
+- final owner format exists;
+- no secret pattern is intentionally stored;
+- no runtime mutation is claimed;
+- no personal repo is used;
+- PR queue state is recorded when PR exists;
+- `ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE` remains if source prompt is not read;
+- `YOUTRACK_TASK_WRITE_READBACK_UNAVAILABLE` remains if task readback is missing.
+
+## EVIDENCE
+
+Evidence must include:
+
+- branch name;
+- PR number;
+- commit SHA;
+- status check result;
+- artifact paths;
+- validation path;
+- receipt path;
+- register/index/PR queue coverage;
+- YouTrack task id/readback or exact blocker.
+
+## ACCEPTANCE_GATES
+
+Do not close this contour until:
+
+- physical YouTrack task exists;
+- task readback exists;
+- branch artifacts exist;
+- PR exists;
+- required checks pass;
+- index/register/PR queue updated;
+- validation and receipt exist;
+- architecture prompt source has been read or blocker remains explicit;
+- final verifier readback passes;
+- no active blocker remains.
+
+## TYPED_BLOCKERS
+
+- `ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE`
+- `YOUTRACK_TASK_WRITE_READBACK_UNAVAILABLE`
+- `DUPLICATE_SCOPE_PR_EXISTS`
+- `INDEX_REGISTER_UPDATE_PENDING`
+- `PR_QUEUE_REGISTER_UPDATE_PENDING`
+- `PROMPT_SCORE_BELOW_GATE`
+- `RUNTIME_MUTATION_AUTHORITY_MISSING`
+- `PERSONAL_REPO_PERMISSION_MISSING`
+- `SECRET_OR_RAW_TRANSCRIPT_RISK`
+
+## FINAL_FORMAT
+
+Russian compact owner output only:
+
+`Fact: <one line>`
+
+`Action: <branch + PR + artifact paths>`
+
+`Left: <none or exact blocker>`
