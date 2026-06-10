@@ -1,0 +1,227 @@
+---
+artifact_id: agenthub-architecture-methodology-router-integration-contract-20260610
+artifact_type: architecture_methodology_integration_contract
+owner_role: T1 Architecture Broker / Registrar / Verifier
+source_task: AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610
+run_id: RUN-AGENTHUB-GLOBAL-CORRECTION-CONTOUR-20260610
+created_at: 2026-06-10
+lifecycle_status: active_control
+default_load: false
+safe_to_replay: false
+---
+
+# AgentHub Architecture Methodology Router Integration Contract
+
+## Task Class
+
+Methodology-router integration contract for an owner-provided architecture prompt intended to improve agent decomposition, engineering quality, and end-to-end delivery across prompts, microservices, frontend, backend, DevOps, validation, and evidence.
+
+## Mission
+
+Integrate the owner's architecture prompt safely as a routed methodology control, not as an unrestricted global always-loaded prompt.
+
+The goal is to make agents work with stronger decomposition, domain-specific thinking, and validation discipline while preserving AgentHub task-first routing, role boundaries, proof gates, artifact lifecycle, and runtime safety.
+
+## Current Input State
+
+The exact attached prompt files named by the owner were not accessible in the workspace during this run after refresh:
+
+- `Вставленный текст.txt`
+- `Вставленный текст (2).txt`
+
+Therefore this contract defines the safe integration path and blocker state, but it does not claim to have read or installed the unavailable attached prompt content.
+
+Current blocker:
+
+`ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE`
+
+## Architecture Position
+
+Agree:
+
+- AgentHub needs an architecture prompt layer that forces decomposition, framework choice, role clarity, evidence, and validation.
+- The prompt should help agents work at multiple levels: system, service, API, data, frontend, backend, DevOps, task graph, QA, security, observability, and owner outcome.
+- The architecture prompt must produce worker-ready contracts instead of generic advice.
+
+Disagree:
+
+- Do not make the architecture prompt always loaded for every task.
+- Do not let it override `AGENTS.md`, task-first policy, YouTrack, PR queue, or runtime safety.
+- Do not let a broad architecture prompt authorize live changes, Docker changes, DB changes, proxy changes, firewall changes, or secret access.
+- Do not use it to bypass model routing, proof gates, or task readback.
+
+Correct implementation:
+
+Use the architecture prompt as a methodology-router source with compact profiles and explicit task-class matching.
+
+## Source Hierarchy
+
+1. OpenAI system/developer instructions.
+2. ChatGPT AgentHub Project Instructions.
+3. `AGENTS.md`.
+4. Current active AgentHub governance artifacts.
+5. Existing methodology router artifacts.
+6. This integration contract.
+7. Owner-provided architecture prompt only after file readback, hash, prompt score, and red-team pass.
+
+## Required Integration Workflow
+
+1. Acquire the exact owner-provided architecture prompt file.
+2. Confirm the file is not a Git LFS pointer.
+3. Read the file contents.
+4. Create a sanitized source artifact or mirror metadata artifact.
+5. Compute and record a content hash.
+6. Score prompt quality against the 85/100 gate.
+7. Red-team for wrong task, role drift, fake Done, scope creep, user-action leak, token bloat, stale source, PR tail, secret leak, replay risk, and runtime bypass.
+8. Classify the prompt into methodology capabilities.
+9. Add it as routed source material, not default load.
+10. Add or update worker templates that reference the routed profile instead of pasting the entire methodology into every task.
+11. Add validation report and receipt.
+12. Update `INDEX.md`, `ARTIFACT_REGISTER.md`, and `PR_QUEUE_REGISTER.md` when PR exists.
+
+## Router Profiles
+
+### MICRO
+
+Use for:
+
+- register update;
+- receipt update;
+- PR body correction;
+- short validation;
+- task readback;
+- blocker classification.
+
+### STANDARD
+
+Use for:
+
+- ordinary implementation plan;
+- scoped worker contract;
+- frontend/backend/API/service decomposition;
+- integration task breakdown;
+- test plan.
+
+### INCIDENT
+
+Use for:
+
+- broken agent loop;
+- fake Done;
+- role drift;
+- runtime safety incident;
+- PR queue deadlock;
+- task-service failure;
+- owner-reported system breakage.
+
+### FULL
+
+Use only for:
+
+- first architecture pass for a major contour;
+- release-blocking system redesign;
+- cross-domain migration planning;
+- formal red-team audit.
+
+## Domain Decomposition Requirements
+
+When the architecture prompt is routed, it must force domain decomposition into only the necessary layers:
+
+- owner outcome;
+- task graph;
+- source-of-truth inventory;
+- role and permission model;
+- repository artifacts;
+- frontend surface;
+- backend surface;
+- microservice/API surface;
+- data/schema surface;
+- DevOps/runtime surface;
+- security/secrets surface;
+- validation and evidence;
+- rollback/checkpoint;
+- final owner output.
+
+Do not require all layers when the task only touches one layer.
+
+## Worker Contract Requirements
+
+Every worker contract derived from the architecture prompt must include:
+
+- TASK_CLASS;
+- ROLE;
+- ACTIVE_SKILLS;
+- FORBIDDEN_SKILLS;
+- SCOPE_SIGNATURE;
+- SOURCE_OF_TRUTH;
+- ALLOWED_ACTIONS;
+- FORBIDDEN_ACTIONS;
+- EXECUTION_ORDER;
+- VALIDATION;
+- EVIDENCE;
+- ACCEPTANCE_GATES;
+- TYPED_BLOCKERS;
+- FINAL_FORMAT;
+- SELECTED_METHODOLOGY_PROFILE;
+- NEGATIVE_MATCHES;
+- COMPACT_ARCHITECT_BRAIN_PROFILE.
+
+## Prompt Quality Gate
+
+Minimum score: 85/100.
+
+Scoring dimensions:
+
+- task clarity;
+- role isolation;
+- source hierarchy;
+- scope control;
+- decomposition quality;
+- implementation usefulness;
+- validation specificity;
+- evidence specificity;
+- blocker taxonomy;
+- token economy;
+- replay safety;
+- secret safety;
+- runtime safety;
+- final-output discipline.
+
+Below 85: repair before execution.
+
+Below 70: quarantine.
+
+## Negative Matches
+
+- A large architecture prompt is not a license to do all work at once.
+- A methodology catalog is not proof.
+- A framework list is not implementation.
+- A worker prompt is not validation.
+- A validation report is not runtime proof.
+- A PR is not YouTrack Done.
+- A routed method is not safe if it bypasses scope, role, or permissions.
+
+## Acceptance Gates
+
+The architecture prompt is considered integrated only when:
+
+- exact source file was read;
+- sanitized artifact or mirror metadata exists;
+- content hash recorded;
+- prompt quality score is at least 85;
+- red-team report exists;
+- router profile mapping exists;
+- worker template or dispatch contract references the profile;
+- validation report exists;
+- receipt exists;
+- index/register/PR queue coverage exists;
+- task readback exists;
+- no active blocker remains.
+
+## Current State
+
+`BLOCKED_PENDING_SOURCE_PROMPT_READBACK`
+
+## Active Blocker
+
+`ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE`
