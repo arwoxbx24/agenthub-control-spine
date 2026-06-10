@@ -2,7 +2,7 @@
 artifact_id: agenthub-global-correction-contour-validation-20260610
 artifact_type: validation_report
 owner_role: Verifier / Registrar
-source_task: AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610
+source_task: AH-730
 run_id: RUN-AGENTHUB-GLOBAL-CORRECTION-CONTOUR-20260610
 created_at: 2026-06-10
 lifecycle_status: audit_only
@@ -20,10 +20,9 @@ Static validation for the global correction contour branch and artifacts.
 
 - Current owner request dated 2026-06-10.
 - `AGENTS.md` readback from canonical repo.
-- `INDEX.md` partial readback and local full baseline readback.
-- `ARTIFACT_REGISTER.md` partial readback and local full baseline readback.
-- `PR_QUEUE_REGISTER.md` readback.
-- `context/agenthub-current-context-pack.md` readback.
+- `INDEX.md`, `ARTIFACT_REGISTER.md`, and `PR_QUEUE_REGISTER.md` readbacks from PR branch.
+- PR #148 metadata, file list, comments, and patch readback.
+- YouTrack task `AH-730` creation and readback.
 
 ## Attachment Readback
 
@@ -48,6 +47,9 @@ No content from those missing files is guessed or claimed as read.
 | Personal repo avoided | PASS | No `arwoxb24/*` repository used as work target. |
 | Runtime mutation avoided | PASS | No server, Docker, DB, proxy, firewall, DNS, SSL, port, product, or secret surface touched. |
 | Branch isolated | PASS | `agenthub-global-correction-contour-20260610` |
+| PR exists | PASS | PR `#148`, open and mergeable at readback. |
+| Physical YouTrack task exists | PASS | `AH-730` created. |
+| YouTrack task readback | PASS | `AH-730`, Stage `Develop`, Priority `Critical`, Type `Incident`, Assignee `admin`. |
 | Global correction contract created | PASS | `prompts/architecture/AGENTHUB-GLOBAL-CORRECTION-CONTOUR-CONTRACT-20260610.txt` |
 | Methodology integration contract created | PASS | `prompts/architecture/AGENTHUB-ARCHITECTURE-METHODOLOGY-ROUTER-INTEGRATION-CONTRACT-20260610.txt` |
 | Worker dispatch prompt created | PASS | `prompts/implementation/AGENTHUB-GLOBAL-CORRECTION-WORKER-DISPATCH-20260610.txt` |
@@ -58,30 +60,17 @@ No content from those missing files is guessed or claimed as read.
 | Typed blockers present | PASS | Present in contract artifacts. |
 | Final owner format present | PASS | Russian Fact/Action/Left required. |
 | Architecture prompt source read | FAIL | Exact attached files unavailable. |
-| YouTrack task readback | FAIL | No YouTrack connector exposed in this run. |
+| Register rows applied to live register files | FAIL | Rows exist only in patch artifacts; real `INDEX.md`, `ARTIFACT_REGISTER.md`, and `PR_QUEUE_REGISTER.md` still need safe update. |
 
 ## Prompt Quality Self-Score
 
 Global correction contour contract: 89/100.
 
-Rationale:
-
-- Clear task class, mission, scope, source hierarchy, active/forbidden skills, negative matches, execution order, validation, evidence, acceptance gates, blockers, and final format.
-- Main residual risk is missing attached prompt source and missing YouTrack task readback.
-
 Methodology integration contract: 88/100.
-
-Rationale:
-
-- Provides safe router integration path and rejects always-loaded methodology bloat.
-- Cannot score the unavailable owner prompt content itself.
 
 Worker dispatch prompt: 90/100.
 
-Rationale:
-
-- Worker-ready, explicit sequence, scope, blockers, evidence, and final format.
-- Requires task-system continuation before Done.
+Main residual risks are missing attached prompt source and unapplied register rows.
 
 ## Red-Team Findings
 
@@ -93,9 +82,9 @@ Rationale:
 | Methodology token bloat | Controlled | MICRO/STANDARD/INCIDENT/FULL profile routing. |
 | Stale prompt replay | Controlled | `default_load=false`, `safe_to_replay=false`, register lifecycle required. |
 | Secret leak | Controlled | No secret values requested or stored. |
-| User-action leak | Partially controlled | Routine actions are routed to agents; owner-only gates remain blockers. |
 | Missing architecture source | Open | `ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE`. |
-| Missing YouTrack task readback | Open | `YOUTRACK_TASK_WRITE_READBACK_UNAVAILABLE`. |
+| Missing YouTrack task readback | Closed | `AH-730` created/read back. |
+| Unapplied register rows | Open | `REGISTER_PATCH_NOT_APPLIED`. |
 
 ## Current Validation State
 
@@ -104,12 +93,15 @@ Rationale:
 ## Active Blockers
 
 - `ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE`
+- `REGISTER_PATCH_NOT_APPLIED`
+
+## Closed Blockers
+
 - `YOUTRACK_TASK_WRITE_READBACK_UNAVAILABLE`
 
 ## Required Before Done
 
-- Exact attached architecture prompt source becomes accessible and is read back.
-- Physical YouTrack task exists and is read back.
-- `INDEX.md`, `ARTIFACT_REGISTER.md`, and `PR_QUEUE_REGISTER.md` are updated.
-- PR status checks pass.
-- Receipt is updated with final PR number, commit SHA, and status check result.
+- Exact attached architecture prompt source becomes accessible and is read back, or the contour remains blocked on `ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE`.
+- `INDEX.md`, `ARTIFACT_REGISTER.md`, and `PR_QUEUE_REGISTER.md` are safely updated from the prepared patch artifacts.
+- Required PR checks pass after the latest commit.
+- Receipt is updated with final PR head SHA and status check result.
