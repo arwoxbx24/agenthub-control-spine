@@ -1,0 +1,28 @@
+diff --git a/INDEX.md b/INDEX.md
+--- a/INDEX.md
++++ b/INDEX.md
+@@
+ | Artifact | Type | Source task | Status |
+ |---|---|---|---|
++| `prompts/architecture/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-REPO-HYGIENE-20260610.txt` | post-PR149 scope-lane self-healing control prompt | AH-738 / AH-731 follow-up | active-control-candidate |
++| `reports/validations/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-VALIDATION-20260610.md` | validation report | AH-738 / AH-731 follow-up | operational-receipt |
++| `reports/receipts/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-RECEIPT-20260610.md` | operational receipt | AH-738 / AH-731 follow-up | operational-receipt |
++| `reports/patches/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-REGISTER-PATCH-20260610.diff` | register/index/PR queue patch proposal | AH-738 / AH-731 follow-up | patch-proposal |
+
+diff --git a/ARTIFACT_REGISTER.md b/ARTIFACT_REGISTER.md
+--- a/ARTIFACT_REGISTER.md
++++ b/ARTIFACT_REGISTER.md
+@@
+ | Artifact | Lifecycle | Default load | Safe to replay | Source task | Notes |
+ |---|---|---:|---:|---|---|
++| `prompts/architecture/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-REPO-HYGIENE-20260610.txt` | `active_control` | false | false | AH-738 / AH-731 follow-up | Post-PR149 scope-lane contract: obsolete blocker suppression, routine self-healing, repo lifecycle inventory lanes, and fresh-branch deferral. |
++| `reports/validations/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-VALIDATION-20260610.md` | `operational_receipt` | false | false | AH-738 / AH-731 follow-up | Validation and red-team result for the post-PR149 scope-lane contract. |
++| `reports/receipts/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-RECEIPT-20260610.md` | `operational_receipt` | false | false | AH-738 / AH-731 follow-up | Receipt for installing the post-PR149 scope-lane self-healing control candidate. |
++| `reports/patches/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-REGISTER-PATCH-20260610.diff` | `operational_receipt` | false | false | AH-738 / AH-731 follow-up | Patch proposal for index/register/PR queue coverage. |
+
+diff --git a/PR_QUEUE_REGISTER.md b/PR_QUEUE_REGISTER.md
+--- a/PR_QUEUE_REGISTER.md
++++ b/PR_QUEUE_REGISTER.md
+@@
+ ## Queue Snapshot
++| `post-PR149` | `AH-738 / AH-731 follow-up` | `RUN-AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-20260610` | `agenthub/post-pr149-scope-lane-self-healing-20260610` | T1 Architecture Broker / T0 Registrar | `ACTIVE_CONTROL_CANDIDATE` | Installs post-PR149 scope-lane self-healing and repository hygiene contract. PR #149 obsolete blockers are superseded by merge readback. | `prompts/architecture/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-REPO-HYGIENE-20260610.txt`; receipt and validation artifacts. | `REPO_LIFECYCLE_INVENTORY_REQUIRED` for future full cleanup only |
