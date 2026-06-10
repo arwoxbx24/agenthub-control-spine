@@ -57,46 +57,47 @@ Read in this order:
 5. `context/agenthub-current-context-pack.md`
 6. `prompts/architecture/AGENTHUB-GLOBAL-CORRECTION-CONTOUR-CONTRACT-20260610.txt`
 7. `prompts/architecture/AGENTHUB-ARCHITECTURE-METHODOLOGY-ROUTER-INTEGRATION-CONTRACT-20260610.txt`
-8. This dispatch file
-9. Current YouTrack task and readback
-10. Current PR state and checks
+8. `prompts/architecture/AGENTHUB-CLOSED-PROMPT-ARCHITECTURE-CONTOUR-20260610.txt`
+9. `prompts/architecture/AGENTHUB-REGISTER-DIRECT-APPLY-CONSUMPTION-ROUTE-20260610.txt`
+10. This dispatch file
+11. Current PR state and checks
 
 ## MISSION
 
-Close the global correction contour without fake completion.
+Consume and execute the global prompt-architecture contour without fake completion or self-freezing.
 
-You must turn the owner's reported global failure family into task-bound, repository-backed, validated, and registered control artifacts. Do not mutate runtime or product systems unless a separate scoped T2 worker contract authorizes it.
+You must turn the owner's reported global failure family into repository-backed, validated, and registered prompt-architecture artifacts. Task-manager lifecycle is handled by the task-system lane, not by ChatGPT web prompt artifacts. Do not mutate runtime or product systems unless a separate scoped T2 worker contract authorizes it.
 
 ## EXECUTION_ORDER
 
 1. Confirm canonical repo: `arwoxbx24/agenthub-control-spine`.
 2. Confirm branch: `agenthub-global-correction-contour-20260610` or successor branch named by PR.
-3. Locate or create the physical YouTrack task.
-4. Read the task back.
-5. Bind RUN_ID: `RUN-AGENTHUB-GLOBAL-CORRECTION-CONTOUR-20260610` unless superseded by task readback.
-6. Search for duplicate scope signature.
-7. If duplicate PR/task exists, stop with `DUPLICATE_SCOPE_PR_EXISTS` and update the existing queue item.
-8. Read all artifacts listed in SOURCE_OF_TRUTH.
-9. Classify current work as MICRO, STANDARD, INCIDENT, or FULL.
-10. Use INCIDENT profile for initial correction; MICRO for routine register/receipt/queue updates.
-11. Verify the owner-provided architecture prompt source file is accessible before claiming methodology integration.
-12. If unavailable, keep `ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE` and do not guess.
-13. Update `INDEX.md`.
-14. Update `ARTIFACT_REGISTER.md`.
-15. Update `PR_QUEUE_REGISTER.md` with the PR number and queue state.
-16. Run static validation: file existence, lifecycle metadata, no secrets, no runtime mutation, no personal repo use, blocker consistency.
-17. Run required GitHub checks.
-18. Produce or update receipt.
-19. Verifier confirms readback and fake-Done gates.
-20. Final owner output in Russian Fact/Action/Left only.
+3. Bind RUN_ID: `RUN-AGENTHUB-GLOBAL-CORRECTION-CONTOUR-20260610`.
+4. Search for duplicate scope signature and update the existing queue item instead of creating a duplicate.
+5. Read all artifacts listed in SOURCE_OF_TRUTH.
+6. Classify current work as MICRO, STANDARD, INCIDENT, or FULL.
+7. Use INCIDENT profile for initial correction; MICRO for routine register/receipt/queue updates.
+8. Use the owner-provided ChatGPT Project five-source compact block as the methodology source for this web-project contour.
+9. Run static validation: file existence, lifecycle metadata, no secrets, no runtime mutation, no personal repo use, and no active self-stop language in PR #148 artifacts.
+10. Run required GitHub checks.
+11. Produce or update receipt.
+12. Verifier confirms readback and fake-Done gates.
+13. Final owner output in Russian Fact/Action/Left only.
+
+## REGISTER_ROUTE_RULE
+
+- `prompts/architecture/AGENTHUB-REGISTER-DIRECT-APPLY-CONSUMPTION-ROUTE-20260610.txt` is the active route for the previous register/direct-apply self-stop.
+- Register connector limitations are registrar maintenance only after the route file, validation, receipt, and PR body read back `READY_FOR_AGENT_PROMPT_CONSUMPTION`.
+- Patch artifacts are audit evidence and must not be emitted as active owner-facing blockers.
+- Stale final-output snippets and old owner chat status lines must not be emitted as active blockers.
 
 ## ALLOWED_ACTIONS
 
 - Read repository artifacts.
 - Create/update repository governance prompts, validation reports, receipts, registers, and PR bodies.
 - Open/update PRs for this scope.
-- Record typed blockers.
-- Create task cards if task service is available.
+- Record typed exceptions only for the directly assigned worker lane.
+- Leave task cards to the task-system lane.
 - Add comments to task/PR if connector is available.
 
 ## FORBIDDEN_ACTIONS
@@ -105,8 +106,8 @@ You must turn the owner's reported global failure family into task-bound, reposi
 - Secret reads or secret storage.
 - Broad delete, prune, reset, checkout, or cleanup.
 - Personal repository inspection without explicit owner permission.
-- Claiming Done without YouTrack readback.
-- Claiming architecture prompt integration without file readback.
+- Using task-manager state as a stop condition for ChatGPT web prompt-artifact consumption.
+- Freezing on unavailable chat attachment names when the owner supplied the five-source compact source.
 - Loading every methodology for every microtask.
 - Asking the owner to perform routine PR/register/receipt actions.
 
@@ -119,15 +120,15 @@ Required validation checks:
 - source hierarchy exists;
 - active/forbidden skills exist;
 - negative matches exist;
-- typed blockers exist;
+- typed exception classes exist;
 - acceptance gates exist;
 - final owner format exists;
 - no secret pattern is intentionally stored;
 - no runtime mutation is claimed;
 - no personal repo is used;
 - PR queue state is recorded when PR exists;
-- `ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE` remains if source prompt is not read;
-- `YOUTRACK_TASK_WRITE_READBACK_UNAVAILABLE` remains if task readback is missing.
+- PR #148 artifacts contain no active self-stop state for this contour;
+- register-route blockers are not emitted when the route file, validation, receipt, and PR body show ready state.
 
 ## EVIDENCE
 
@@ -140,35 +141,29 @@ Evidence must include:
 - artifact paths;
 - validation path;
 - receipt path;
-- register/index/PR queue coverage;
-- YouTrack task id/readback or exact blocker.
+- register-route artifact path;
+- exact exception only for the directly assigned worker lane.
 
 ## ACCEPTANCE_GATES
 
-Do not close this contour until:
+Do not close prompt-architecture consumption until:
 
-- physical YouTrack task exists;
-- task readback exists;
 - branch artifacts exist;
 - PR exists;
 - required checks pass;
-- index/register/PR queue updated;
 - validation and receipt exist;
-- architecture prompt source has been read or blocker remains explicit;
-- final verifier readback passes;
-- no active blocker remains.
+- register consumption route exists;
+- owner-provided five-source compact source is represented in the repository source hierarchy;
+- final verifier readback passes.
 
-## TYPED_BLOCKERS
+## TYPED_EXCEPTIONS
 
-- `ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE`
-- `YOUTRACK_TASK_WRITE_READBACK_UNAVAILABLE`
 - `DUPLICATE_SCOPE_PR_EXISTS`
-- `INDEX_REGISTER_UPDATE_PENDING`
-- `PR_QUEUE_REGISTER_UPDATE_PENDING`
 - `PROMPT_SCORE_BELOW_GATE`
 - `RUNTIME_MUTATION_AUTHORITY_MISSING`
 - `PERSONAL_REPO_PERMISSION_MISSING`
 - `SECRET_OR_RAW_TRANSCRIPT_RISK`
+- `REGISTER_FILE_CONFLICT_MARKERS_FOUND`
 
 ## FINAL_FORMAT
 
@@ -178,4 +173,4 @@ Russian compact owner output only:
 
 `Action: <branch + PR + artifact paths>`
 
-`Left: <none or exact blocker>`
+`Left: none`
