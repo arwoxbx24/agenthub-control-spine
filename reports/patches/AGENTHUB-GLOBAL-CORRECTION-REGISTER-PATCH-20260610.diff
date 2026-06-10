@@ -1,0 +1,26 @@
+diff --git a/ARTIFACT_REGISTER.md b/ARTIFACT_REGISTER.md
+index 78d66e9..df4f9af 100644
+--- a/ARTIFACT_REGISTER.md
++++ b/ARTIFACT_REGISTER.md
+@@ -430,3 +430,8 @@ Compatibility states from older records remain readable: `active_policy`,
+ | `evals/document-dedupe-gate/fixtures.json` | `active_control` | false | false | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | Positive and negative fixtures for the document dedupe gate. |
+ | `reports/validations/P1-document-dedupe-gate-validation-20260607.md` | `audit_only` | false | false | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | Validation report for document dedupe gate syntax, fixtures, live register/index scan, and no-secret/no-runtime checks. |
+ | `reports/receipts/P1-document-dedupe-gate-implementation-receipt-20260607.md` | `operational_receipt` | false | false | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | Implementation receipt closing `DOCUMENT_DEDUPE_GATE_MISSING` for repository governance/control-spine evidence. |
++| `prompts/architecture/AGENTHUB-GLOBAL-CORRECTION-CONTOUR-CONTRACT-20260610.txt` | `active_control` | false | false | AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610 | Global correction contour contract for repo-first AgentHub failures, methodology routing, task-first proof, PR queue hygiene, fake-Done prevention, and safe autonomy boundaries. |
++| `prompts/architecture/AGENTHUB-ARCHITECTURE-METHODOLOGY-ROUTER-INTEGRATION-CONTRACT-20260610.txt` | `active_control` | false | false | AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610 | Safe integration contract for the owner architecture methodology prompt; source prompt integration remains blocked until exact attached file readback exists. |
++| `prompts/implementation/AGENTHUB-GLOBAL-CORRECTION-WORKER-DISPATCH-20260610.txt` | `active_control` | false | false | AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610 | Worker dispatch prompt for AgentHub/GPT/Linux/Codex agents to execute the global correction contour without runtime mutation or fake Done. |
++| `reports/validations/AGENTHUB-GLOBAL-CORRECTION-CONTOUR-VALIDATION-20260610.md` | `audit_only` | false | false | AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610 | Static validation and red-team report for the global correction contour; records missing attached prompt and missing YouTrack readback blockers. |
++| `reports/receipts/AGENTHUB-GLOBAL-CORRECTION-CONTOUR-RECEIPT-20260610.md` | `operational_receipt` | false | false | AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610 | Operational receipt for repository-only global correction artifacts on branch `agenthub-global-correction-contour-20260610`; not Done while blockers remain. |
+diff --git a/INDEX.md b/INDEX.md
+index 303d430..f6c2bb9 100644
+--- a/INDEX.md
++++ b/INDEX.md
+@@ -402,3 +402,8 @@ status: draft
+ | `evals/document-dedupe-gate/fixtures.json` | eval fixtures | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | active |
+ | `reports/validations/P1-document-dedupe-gate-validation-20260607.md` | validation report | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | audit-only |
+ | `reports/receipts/P1-document-dedupe-gate-implementation-receipt-20260607.md` | operational receipt | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | operational-receipt |
++| `prompts/architecture/AGENTHUB-GLOBAL-CORRECTION-CONTOUR-CONTRACT-20260610.txt` | architecture correction contract | AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610 | active-control |
++| `prompts/architecture/AGENTHUB-ARCHITECTURE-METHODOLOGY-ROUTER-INTEGRATION-CONTRACT-20260610.txt` | architecture methodology integration contract | AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610 | active-control |
++| `prompts/implementation/AGENTHUB-GLOBAL-CORRECTION-WORKER-DISPATCH-20260610.txt` | worker dispatch prompt | AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610 | active-control |
++| `reports/validations/AGENTHUB-GLOBAL-CORRECTION-CONTOUR-VALIDATION-20260610.md` | validation report | AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610 | audit-only |
++| `reports/receipts/AGENTHUB-GLOBAL-CORRECTION-CONTOUR-RECEIPT-20260610.md` | operational receipt | AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610 | operational-receipt |
