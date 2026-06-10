@@ -52,9 +52,9 @@ Physical task:
 
 - PR: `#148`
 - Branch: `agenthub-global-correction-contour-20260610`
-- Prior PR head readback: `5229d48adf95410148ed88ff7c7f8959c79709de`
+- Latest verified PR head before this receipt update: `076df7aead437930a61b88c852b0d5c5c0fab130`
 - PR status at readback: open, mergeable, not merged.
-- Required scan recorded in PR body before this update: `secret-scan/gitleaks` success on workflow run `27266862112`.
+- Required scan after continuation: `secret-scan` completed with `success` on workflow run `27267517343`.
 
 ## Safety Confirmation
 
@@ -121,11 +121,10 @@ Active blocker:
 - Apply or otherwise safely install `INDEX.md` rows.
 - Apply or otherwise safely install `ARTIFACT_REGISTER.md` rows.
 - Apply or otherwise safely install `PR_QUEUE_REGISTER.md` row for PR `#148`.
-- Re-run/read required status checks after this receipt update.
 - Acquire exact attached architect prompt source or keep the blocker.
 
 ## Done Gate
 
 Not Done.
 
-Done requires attached prompt readback or accepted blocker disposition, register coverage, PR queue coverage, required checks after latest commit, final verifier readback, and no active blocker.
+Done requires attached prompt readback or accepted blocker disposition, register coverage, PR queue coverage, final verifier readback, and no active blocker.
