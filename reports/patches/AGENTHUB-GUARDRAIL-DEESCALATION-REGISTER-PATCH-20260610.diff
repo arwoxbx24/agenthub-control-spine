@@ -1,0 +1,30 @@
+diff --git a/INDEX.md b/INDEX.md
+--- a/INDEX.md
++++ b/INDEX.md
+@@
+ | Artifact | Type | Source task | Status |
+ |---|---|---|---|
++| `prompts/architecture/AGENTHUB-GUARDRAIL-DEESCALATION-LOOP-KILL-CONTROL-20260610.txt` | guardrail de-escalation loop-kill control prompt | OWNER_REPORTED_AGENTHUB_GUARDRAIL_DEADLOCK_TOKEN_BURN_20260610 | active-control |
++| `reports/validations/AGENTHUB-GUARDRAIL-DEESCALATION-LOOP-KILL-VALIDATION-20260610.md` | validation report | OWNER_REPORTED_AGENTHUB_GUARDRAIL_DEADLOCK_TOKEN_BURN_20260610 | operational-receipt |
++| `reports/patches/AGENTHUB-GUARDRAIL-DEESCALATION-REGISTER-PATCH-20260610.diff` | register/index/PR queue patch proposal | OWNER_REPORTED_AGENTHUB_GUARDRAIL_DEADLOCK_TOKEN_BURN_20260610 | patch-proposal |
+ 
+ diff --git a/ARTIFACT_REGISTER.md b/ARTIFACT_REGISTER.md
+--- a/ARTIFACT_REGISTER.md
++++ b/ARTIFACT_REGISTER.md
+@@
+ | Artifact | Lifecycle | Default load | Safe to replay | Source task | Notes |
+ |---|---|---:|---:|---|---|
++| `prompts/architecture/AGENTHUB-GUARDRAIL-DEESCALATION-LOOP-KILL-CONTROL-20260610.txt` | `active_control` | false | false | OWNER_REPORTED_AGENTHUB_GUARDRAIL_DEADLOCK_TOKEN_BURN_20260610 | Four-class guardrail de-escalation and no-third-retry loop-kill control; binds global simplification to PR `#148`. |
++| `reports/validations/AGENTHUB-GUARDRAIL-DEESCALATION-LOOP-KILL-VALIDATION-20260610.md` | `operational_receipt` | false | false | OWNER_REPORTED_AGENTHUB_GUARDRAIL_DEADLOCK_TOKEN_BURN_20260610 | Validation and red-team evidence for guardrail minimization, demotions, and loop-kill fixtures. |
++| `reports/patches/AGENTHUB-GUARDRAIL-DEESCALATION-REGISTER-PATCH-20260610.diff` | `operational_receipt` | false | false | OWNER_REPORTED_AGENTHUB_GUARDRAIL_DEADLOCK_TOKEN_BURN_20260610 | Same-contour patch proposal for index/register/PR queue coverage; evidence only until Registrar applies it. |
+ 
+ diff --git a/PR_QUEUE_REGISTER.md b/PR_QUEUE_REGISTER.md
+--- a/PR_QUEUE_REGISTER.md
++++ b/PR_QUEUE_REGISTER.md
+@@
+ ## Open PRs After Registrar Cleanup
+ 
+ | PR | Decision | Blocker |
+ |---|---|---|
++| `#148` | `ACTIVE_GLOBAL_GUARDRAIL_SIMPLIFICATION_CONTOUR`. Owns global correction, prompt architecture, guardrail de-escalation, loop-kill, fake-Done prevention, and register/index/PR queue remediation for the owner-reported 2026-06-10 guardrail deadlock/token-burn incident. Must not create duplicate PR for same global simplification scope. | none for repository prompt-architecture scope; runtime/product/destructive actions remain Class A hard stops. |
++| `#149` | `ACTIVE_BRANCH_HYGIENE_ONLY`. Owns AH-731 branch-hygiene/delete-ref route and stale branch cleanup evidence only. Must not be used for global guardrail simplification unless a Registrar decision explicitly expands scope. | `BRANCH_DELETE_EXECUTOR_BLOCKED` / delete-ref route repair remains local to branch hygiene. |

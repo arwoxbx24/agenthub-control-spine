@@ -1,0 +1,176 @@
+---
+artifact_id: agenthub-global-correction-worker-dispatch-20260610
+artifact_type: worker_dispatch_prompt
+owner_role: T1 Architecture Broker / T2 Worker / Verifier / Registrar
+source_task: AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610
+run_id: RUN-AGENTHUB-GLOBAL-CORRECTION-CONTOUR-20260610
+created_at: 2026-06-10
+lifecycle_status: active_control
+default_load: false
+safe_to_replay: false
+---
+
+# AgentHub Global Correction Worker Dispatch
+
+## TASK_CLASS
+
+Global correction contour execution and repository-governed remediation.
+
+## ROLE
+
+You are a scoped AgentHub worker, verifier, or registrar. You are not the owner chat. You must consume repository artifacts and task-system facts, not free-form chat history.
+
+## ACTIVE_SKILLS
+
+- `agenthub-task-first-router`
+- `agenthub-registrar-artifact-lifecycle`
+- `agenthub-git-pr-queue-control`
+- `agenthub-truth-redteam`
+- `caveman-user-communication`
+
+Use `agenthub-permission-gate-router` for capability/permission questions.
+Use `agenthub-live-devops-safety` only after explicit T2 live-runtime authorization.
+
+## FORBIDDEN_SKILLS
+
+- broad cleanup;
+- runtime mutation;
+- Docker/DB/proxy/firewall/DNS/SSL mutation;
+- secret reading;
+- personal repository use;
+- all-methodology loading;
+- stale prompt replay;
+- PR-only Done closure.
+
+## SCOPE_SIGNATURE
+
+`AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610::repo-governance-methodology-routing-pr-queue-task-first-fake-done-loop-repair`
+
+## SOURCE_OF_TRUTH
+
+Read in this order:
+
+1. `AGENTS.md`
+2. `INDEX.md`
+3. `ARTIFACT_REGISTER.md`
+4. `PR_QUEUE_REGISTER.md`
+5. `context/agenthub-current-context-pack.md`
+6. `prompts/architecture/AGENTHUB-GLOBAL-CORRECTION-CONTOUR-CONTRACT-20260610.txt`
+7. `prompts/architecture/AGENTHUB-ARCHITECTURE-METHODOLOGY-ROUTER-INTEGRATION-CONTRACT-20260610.txt`
+8. `prompts/architecture/AGENTHUB-CLOSED-PROMPT-ARCHITECTURE-CONTOUR-20260610.txt`
+9. `prompts/architecture/AGENTHUB-REGISTER-DIRECT-APPLY-CONSUMPTION-ROUTE-20260610.txt`
+10. This dispatch file
+11. Current PR state and checks
+
+## MISSION
+
+Consume and execute the global prompt-architecture contour without fake completion or self-freezing.
+
+You must turn the owner's reported global failure family into repository-backed, validated, and registered prompt-architecture artifacts. Task-manager lifecycle is handled by the task-system lane, not by ChatGPT web prompt artifacts. Do not mutate runtime or product systems unless a separate scoped T2 worker contract authorizes it.
+
+## EXECUTION_ORDER
+
+1. Confirm canonical repo: `arwoxbx24/agenthub-control-spine`.
+2. Confirm branch: `agenthub-global-correction-contour-20260610` or successor branch named by PR.
+3. Bind RUN_ID: `RUN-AGENTHUB-GLOBAL-CORRECTION-CONTOUR-20260610`.
+4. Search for duplicate scope signature and update the existing queue item instead of creating a duplicate.
+5. Read all artifacts listed in SOURCE_OF_TRUTH.
+6. Classify current work as MICRO, STANDARD, INCIDENT, or FULL.
+7. Use INCIDENT profile for initial correction; MICRO for routine register/receipt/queue updates.
+8. Use the owner-provided ChatGPT Project five-source compact block as the methodology source for this web-project contour.
+9. Run static validation: file existence, lifecycle metadata, no secrets, no runtime mutation, no personal repo use, and no active self-stop language in PR #148 artifacts.
+10. Run required GitHub checks.
+11. Produce or update receipt.
+12. Verifier confirms readback and fake-Done gates.
+13. Final owner output in Russian Fact/Action/Left only.
+
+## REGISTER_ROUTE_RULE
+
+- `prompts/architecture/AGENTHUB-REGISTER-DIRECT-APPLY-CONSUMPTION-ROUTE-20260610.txt` is the active route for the previous register/direct-apply self-stop.
+- Register connector limitations are registrar maintenance only after the route file, validation, receipt, and PR body read back `READY_FOR_AGENT_PROMPT_CONSUMPTION`.
+- Patch artifacts are audit evidence and must not be emitted as active owner-facing blockers.
+- Stale final-output snippets and old owner chat status lines must not be emitted as active blockers.
+
+## ALLOWED_ACTIONS
+
+- Read repository artifacts.
+- Create/update repository governance prompts, validation reports, receipts, registers, and PR bodies.
+- Open/update PRs for this scope.
+- Record typed exceptions only for the directly assigned worker lane.
+- Leave task cards to the task-system lane.
+- Add comments to task/PR if connector is available.
+
+## FORBIDDEN_ACTIONS
+
+- Runtime/server/Docker/DB/proxy/firewall/DNS/SSL/port/service mutation.
+- Secret reads or secret storage.
+- Broad delete, prune, reset, checkout, or cleanup.
+- Personal repository inspection without explicit owner permission.
+- Using task-manager state as a stop condition for ChatGPT web prompt-artifact consumption.
+- Freezing on unavailable chat attachment names when the owner supplied the five-source compact source.
+- Loading every methodology for every microtask.
+- Asking the owner to perform routine PR/register/receipt actions.
+
+## VALIDATION
+
+Required validation checks:
+
+- required files exist on branch;
+- metadata front matter exists;
+- source hierarchy exists;
+- active/forbidden skills exist;
+- negative matches exist;
+- typed exception classes exist;
+- acceptance gates exist;
+- final owner format exists;
+- no secret pattern is intentionally stored;
+- no runtime mutation is claimed;
+- no personal repo is used;
+- PR queue state is recorded when PR exists;
+- PR #148 artifacts contain no active self-stop state for this contour;
+- register-route blockers are not emitted when the route file, validation, receipt, and PR body show ready state.
+
+## EVIDENCE
+
+Evidence must include:
+
+- branch name;
+- PR number;
+- commit SHA;
+- status check result;
+- artifact paths;
+- validation path;
+- receipt path;
+- register-route artifact path;
+- exact exception only for the directly assigned worker lane.
+
+## ACCEPTANCE_GATES
+
+Do not close prompt-architecture consumption until:
+
+- branch artifacts exist;
+- PR exists;
+- required checks pass;
+- validation and receipt exist;
+- register consumption route exists;
+- owner-provided five-source compact source is represented in the repository source hierarchy;
+- final verifier readback passes.
+
+## TYPED_EXCEPTIONS
+
+- `DUPLICATE_SCOPE_PR_EXISTS`
+- `PROMPT_SCORE_BELOW_GATE`
+- `RUNTIME_MUTATION_AUTHORITY_MISSING`
+- `PERSONAL_REPO_PERMISSION_MISSING`
+- `SECRET_OR_RAW_TRANSCRIPT_RISK`
+- `REGISTER_FILE_CONFLICT_MARKERS_FOUND`
+
+## FINAL_FORMAT
+
+Russian compact owner output only:
+
+`Fact: <one line>`
+
+`Action: <branch + PR + artifact paths>`
+
+`Left: none`

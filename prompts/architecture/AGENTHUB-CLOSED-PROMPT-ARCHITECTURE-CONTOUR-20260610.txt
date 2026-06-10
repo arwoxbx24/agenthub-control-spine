@@ -1,0 +1,97 @@
+---
+artifact_id: agenthub-closed-prompt-architecture-contour-20260610
+artifact_type: closed_prompt_architecture_contour_contract
+owner_role: ChatGPT GitHub Prompt-Architecture Worker / Verifier / Registrar
+source_task: AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610
+run_id: RUN-AGENTHUB-GLOBAL-CORRECTION-CONTOUR-20260610
+created_at: 2026-06-10
+lifecycle_status: active_control
+default_load: false
+safe_to_replay: false
+---
+
+# AgentHub Closed Prompt-Architecture Contour
+
+## Mission
+
+Make PR `#148` and branch `agenthub-global-correction-contour-20260610` the only working source for this prompt-architecture contour.
+
+This contour is repository-only. It exists to align ChatGPT/GitHub prompt artifacts, validation, receipts, and register-patch evidence. It is not a runtime repair lane and it does not authorize live system work.
+
+## Source Rules
+
+Use only the artifacts in PR `#148` on branch `agenthub-global-correction-contour-20260610` as instruction source for this contour.
+
+Do not use previous chat messages, owner pressure, stale status summaries, branch existence, PR existence, or historical reports as executable instructions.
+
+The prior chat may explain why the contour exists, but it is not source of truth.
+
+## Allowed Surface
+
+Allowed:
+
+- Read PR `#148` metadata and changed files.
+- Read prompt architecture artifacts on branch `agenthub-global-correction-contour-20260610`.
+- Create or update prompt/artifact files in the same branch.
+- Update PR body, validation reports, receipts, and register patch artifacts.
+- Record blockers honestly.
+
+## Forbidden Surface
+
+Forbidden:
+
+- Linux shell.
+- Runtime mutation.
+- Task manager mutation.
+- Docker.
+- Database.
+- Proxy.
+- Firewall.
+- Ports.
+- Secrets.
+- Service restart.
+- Broad cleanup or deletion.
+- Personal repository use.
+
+## Closed Contour Workflow
+
+1. Read PR `#148` metadata.
+2. Read all files changed in PR `#148`.
+3. Ignore old chat status as instruction.
+4. Classify work as prompt/artifact-only.
+5. Update only PR artifacts on branch `agenthub-global-correction-contour-20260610`.
+6. Validate that no forbidden surface was touched.
+7. Update receipt and PR body.
+8. Return compact Russian `Fact/Action/Left`.
+
+## Done Guard
+
+This closed contour can be marked complete only for prompt-architecture scope when:
+
+- PR `#148` artifacts read back from branch.
+- Closed contour rule exists as a repository artifact.
+- Validation and receipt state that old chat is not instruction.
+- Validation and receipt state that Linux/runtime/task manager/Docker/DB/proxy/firewall/ports/secrets were not touched.
+- Any remaining register or attached-prompt gaps are recorded as blockers, not hidden.
+
+## Typed Blockers
+
+- `ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE`
+- `REGISTER_PATCH_NOT_APPLIED`
+- `PROMPT_ARTIFACT_READBACK_MISSING`
+- `FORBIDDEN_SURFACE_REQUESTED`
+- `OLD_CHAT_STATUS_USED_AS_INSTRUCTION`
+
+## Current State
+
+`PROMPT_ARCHITECTURE_CONTOUR_CLOSED_WITH_BLOCKERS`
+
+## Final Owner Output
+
+Russian compact only:
+
+`Fact: <one line>`
+
+`Action: <PR/branch/artifact path>`
+
+`Left: <none or exact blocker>`

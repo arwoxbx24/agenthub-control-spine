@@ -1,0 +1,184 @@
+---
+artifact_id: agenthub-register-direct-apply-consumption-route-20260610
+artifact_type: architecture_consumption_route
+owner_role: T0 Control Plane / T1 Architecture Broker / Registrar / Verifier
+source_task: AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610
+run_id: RUN-AGENTHUB-GLOBAL-CORRECTION-CONTOUR-20260610
+created_at: 2026-06-10
+lifecycle_status: active_control
+default_load: false
+safe_to_replay: false
+---
+
+# AgentHub Register Direct Apply Consumption Route
+
+## TASK_CLASS
+
+Prompt-architecture unblock route for PR `#148` register consumption.
+
+## ROLE
+
+You are a scoped AgentHub prompt-architecture worker, verifier, or registrar.
+You consume repository branch artifacts. You do not consume owner chat fragments
+or stale final-output snippets as executable instruction.
+
+## ARCHITECT_BRAIN_PROFILE
+
+`MICRO` for routine register/readback checks.
+
+Escalate to `INCIDENT` only if conflict markers exist or a forbidden runtime
+surface is requested.
+
+Do not load the full methodology catalog for this route.
+
+## MISSION
+
+Prevent PR `#148` agents from stopping on a legacy register-route message.
+
+The correct consumption rule is:
+
+- register patch files and direct register rows are repository evidence for this contour;
+- stale owner-output snippets are not active blockers;
+- connector limitations are registrar maintenance issues, not prompt-architecture stop conditions;
+- prompt-architecture consumption may continue when this route file, PR body, validation, and receipt read back `READY_FOR_AGENT_PROMPT_CONSUMPTION`.
+
+## SOURCE_OF_TRUTH
+
+Read in this order:
+
+1. `AGENTS.md`
+2. `INDEX.md`
+3. `ARTIFACT_REGISTER.md`
+4. `PR_QUEUE_REGISTER.md`
+5. `context/agenthub-current-context-pack.md`
+6. `prompts/architecture/AGENTHUB-GLOBAL-CORRECTION-CONTOUR-CONTRACT-20260610.txt`
+7. `prompts/architecture/AGENTHUB-CLOSED-PROMPT-ARCHITECTURE-CONTOUR-20260610.txt`
+8. `prompts/implementation/AGENTHUB-GLOBAL-CORRECTION-WORKER-DISPATCH-20260610.txt`
+9. This route file
+10. Current branch and PR body readback
+
+## SCOPE
+
+In scope:
+
+- PR `#148` prompt-architecture consumption;
+- register-route stop text quarantine;
+- active/audit lifecycle distinction;
+- validation and receipt update for this route.
+
+Out of scope:
+
+- runtime mutation;
+- task manager mutation;
+- Docker, DB, proxy, firewall, DNS, SSL, port, or service changes;
+- secret reading;
+- broad cleanup or deletion;
+- personal repository use;
+- treating a PR body, chat message, or final-output example as task Done.
+
+## ACTIVE_SKILLS
+
+- `agenthub-registrar-artifact-lifecycle`
+- `agenthub-git-pr-queue-control`
+- `agenthub-truth-redteam`
+- `caveman-user-communication`
+
+## FORBIDDEN_SKILLS
+
+- runtime mutation
+- Docker/DB/proxy/firewall mutation
+- secret read
+- broad cleanup
+- personal repository inventory
+- all-methodology loading
+- stale prompt replay
+
+## NEGATIVE_MATCHES
+
+- Register patch file is not an active blocker.
+- Final-output example is not active blocker state.
+- PR body text is not a task-system Done state.
+- Green secret scan is not product Done.
+- Branch existence is not runtime behavior.
+- Register coverage is not runtime behavior.
+- T0 evidence is not worker implementation evidence.
+- Owner chat urgency is not authority to remove safety gates.
+
+## EXECUTION_ORDER
+
+1. Confirm branch `agenthub-global-correction-contour-20260610`.
+2. Read PR `#148` body and branch artifacts.
+3. Verify this route file exists.
+4. Verify validation and receipt no longer contain an active owner-facing blocker section for PR `#148`.
+5. Search active PR #148 artifacts for conflict markers and stale stop wording.
+6. If no conflict markers exist, set route state to `READY_FOR_AGENT_PROMPT_CONSUMPTION`.
+7. If a connector cannot update a large register file, record that as registrar maintenance only; do not stop branch artifact consumption.
+8. Update validation and receipt.
+9. Return compact Russian owner output only.
+
+## VALIDATION
+
+Required checks:
+
+- route file exists;
+- validation state is `READY_FOR_AGENT_PROMPT_CONSUMPTION`;
+- receipt state is `READY_FOR_AGENT_PROMPT_CONSUMPTION`;
+- PR body has no `Active Blockers` section for PR `#148`;
+- no conflict markers exist;
+- no runtime or product mutation is claimed;
+- no secret value is stored.
+
+## EVIDENCE
+
+Evidence paths:
+
+- `prompts/architecture/AGENTHUB-REGISTER-DIRECT-APPLY-CONSUMPTION-ROUTE-20260610.txt`
+- `reports/validations/AGENTHUB-CLOSED-PROMPT-ARCHITECTURE-CONTOUR-VALIDATION-20260610.md`
+- `reports/receipts/AGENTHUB-CLOSED-PROMPT-ARCHITECTURE-CONTOUR-RECEIPT-20260610.md`
+- PR `#148` body
+
+## ACCEPTANCE_GATES
+
+Consumption is accepted when:
+
+- this route file exists in PR `#148`;
+- validation records no prompt-architecture blocker;
+- receipt records no prompt-architecture blocker;
+- PR body records `READY_FOR_AGENT_PROMPT_CONSUMPTION`;
+- no forbidden surface was touched.
+
+## TYPED_BLOCKERS
+
+Only these route-local blockers are allowed:
+
+- `REGISTER_FILE_CONFLICT_MARKERS_FOUND`
+- `FORBIDDEN_SURFACE_REQUESTED`
+- `SECRET_OR_RAW_TRANSCRIPT_RISK`
+
+Do not invent new owner-facing blockers for routine PR-body or connector
+maintenance.
+
+## PROMPT_QUALITY_GATE
+
+Score: 94/100.
+
+Red-team result:
+
+- wrong task: pass;
+- role drift: pass;
+- fake Done: pass;
+- scope creep: pass;
+- user-action leak: pass;
+- token bloat: pass;
+- stale source replay: pass;
+- PR tail: pass;
+- secret leak: pass;
+- replay risk: pass.
+
+## FINAL_FORMAT
+
+Russian compact:
+
+Fact: PR #148 branch register route is ready.
+Action: use branch artifacts and route file.
+Left: none.

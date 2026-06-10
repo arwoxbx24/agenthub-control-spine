@@ -1,0 +1,176 @@
+---
+artifact_id: agenthub-pr149-branch-hygiene-truth-closure-20260610
+artifact_type: architecture_truth_closure_prompt
+owner_role: ChatGPT Web Prompt-Architecture Assistant / T1 Architecture Broker / Verifier
+source_task: AGENTHUB_PR149_BRANCH_HYGIENE_TRUTH_CLOSURE_20260610
+run_id: RUN-AGENTHUB-PR149-BRANCH-HYGIENE-TRUTH-CLOSURE-20260610
+created_at: 2026-06-10
+lifecycle_status: active_control
+default_load: false
+safe_to_replay: false
+---
+
+# AgentHub PR149 Branch Hygiene Truth Closure Prompt
+
+## Task Class
+
+Architecture truth-closure prompt for PR `#149`, branch-hygiene cleanup, stale branch deletion claims, default-branch lookup failures, and false Done prevention.
+
+## Mission
+
+Prevent agents from claiming that PR `#149` cleaned old branches, merged, restored runtime, or deleted remote refs when repository evidence says otherwise.
+
+The agent must report the exact truth state:
+
+- remote branch deletions performed: `0`;
+- PR `#149` is not merged unless GitHub readback proves it;
+- `github_delete_branch_ref` route is waiting for metadata refresh;
+- live/server/Hiddify/AgentHub runtime recovery is not restored by this PR;
+- default branch lookup failure is not proof that a PR/branch artifact does not exist.
+
+## Source Of Truth
+
+Use this order:
+
+1. OpenAI system/developer instructions.
+2. ChatGPT AgentHub Project Instructions.
+3. `AGENTS.md`.
+4. `INDEX.md`.
+5. `ARTIFACT_REGISTER.md`.
+6. `PR_QUEUE_REGISTER.md`.
+7. GitHub PR `#149` metadata and changed files.
+8. PR `#149` receipt and report artifacts.
+9. Current owner correction from 2026-06-10.
+
+Default branch is not the only source when the owner references a PR/branch artifact. If a file is missing on default branch, check the PR branch before saying no data exists.
+
+## Scope
+
+In scope:
+
+- PR `#149` truth closure;
+- branch hygiene artifact audit;
+- delete-ref route blocker classification;
+- false Done prevention;
+- owner-facing compact final wording.
+
+Out of scope:
+
+- deleting branches directly;
+- merging PR `#149`;
+- runtime/server/Hiddify/AgentHub live repair;
+- Linux shell, Docker, DB, proxy, firewall, DNS, SSL, port, secret, or production mutation;
+- broad cleanup;
+- temporary patches.
+
+## Allowed Actions
+
+Allowed:
+
+- Read default branch and PR `#149` branch artifacts.
+- Audit PR `#149` report, receipt, and queue state.
+- Produce a corrective architecture prompt or truth closure.
+- Report exact blocker state.
+
+## Forbidden Actions
+
+Forbidden:
+
+- Do not claim branch deletion unless remote deletion evidence exists.
+- Do not claim PR merge unless GitHub merge readback exists.
+- Do not claim runtime recovery from a repo-documentation PR.
+- Do not treat default-branch file absence as final absence when PR/branch scope is active.
+- Do not perform destructive branch cleanup.
+- Do not create fake PASS, fake Done, or fake closure.
+
+## Execution Order
+
+1. Read `AGENTS.md`, `INDEX.md`, `ARTIFACT_REGISTER.md`, and `PR_QUEUE_REGISTER.md`.
+2. Read GitHub PR `#149` metadata.
+3. Read PR `#149` changed files, report, and receipt.
+4. Verify whether remote branch deletions were actually performed.
+5. Verify whether PR `#149` is merged.
+6. Verify whether `github_delete_branch_ref` route metadata is refreshed.
+7. Verify whether runtime/server recovery is in scope.
+8. If deletions are `0`, PR is unmerged, and route metadata is missing, return blocker `MCP_TOOL_METADATA_REFRESH_REQUIRED`.
+9. Return compact Russian closure only.
+
+## Validation
+
+Required validation:
+
+- GitHub PR `#149` readback checked;
+- receipt readback checked;
+- remote branch deletion count checked;
+- PR merge state checked;
+- runtime recovery scope denied unless separate runtime evidence exists;
+- no destructive action performed;
+- final output has exact Fact/Action/Left.
+
+## Evidence
+
+Minimum evidence:
+
+- PR `#149` metadata;
+- PR `#149` report path;
+- PR `#149` receipt path;
+- line or field showing remote branch deletions performed: `0`;
+- route blocker `MCP_TOOL_METADATA_REFRESH_REQUIRED`.
+
+## Acceptance Gates
+
+- `PR149_READBACK_PRESENT`
+- `REMOTE_BRANCH_DELETIONS_COUNT_VERIFIED`
+- `PR149_MERGE_STATE_VERIFIED`
+- `RUNTIME_SCOPE_NOT_CLAIMED`
+- `NO_DESTRUCTIVE_BRANCH_ACTION`
+- `FAKE_DONE_DENIED`
+- `FINAL_FACT_ACTION_LEFT_ONLY`
+
+## Typed Blockers
+
+- `MCP_TOOL_METADATA_REFRESH_REQUIRED`
+- `PR149_READBACK_MISSING`
+- `PR149_RECEIPT_MISSING`
+- `REMOTE_BRANCH_DELETE_EVIDENCE_MISSING`
+- `PR149_NOT_MERGED`
+- `RUNTIME_RECOVERY_OUT_OF_SCOPE`
+- `DEFAULT_BRANCH_ONLY_LOOKUP_INVALID`
+- `OWNER_ONLY_DESTRUCTIVE_GATE`
+
+## Active Skills
+
+- `agenthub-registrar-artifact-lifecycle`
+- `agenthub-git-pr-queue-control`
+- `agenthub-truth-redteam`
+- `caveman-user-communication`
+
+## Forbidden Skills
+
+- runtime mutation
+- Linux shell operation
+- branch deletion without explicit route
+- Docker/DB/proxy/firewall/DNS/SSL mutation
+- secret reading
+- broad cleanup
+- fake Done finalization
+
+## Negative Matches
+
+- Default branch miss is not no-data proof.
+- PR report is not branch deletion proof.
+- Receipt text is not remote deletion proof unless it records performed deletions.
+- PR open is not merged.
+- Secret-scan success is not cleanup Done.
+- Repo documentation is not runtime repair.
+- `github_delete_branch_ref` route created is not route metadata refreshed.
+
+## Final Format
+
+Russian only. Maximum three lines:
+
+`Fact: repo-документация и scoped route patch записаны; remote branch deletions performed: 0; PR #149 не merged.`
+
+`Action: PR #149 содержит отчёт и receipt; агент должен читать PR/branch, а не только default branch.`
+
+`Left: MCP_TOOL_METADATA_REFRESH_REQUIRED; фактическое удаление веток ещё не выполнено.`
