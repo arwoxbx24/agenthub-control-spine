@@ -1,0 +1,161 @@
+---
+artifact_id: agenthub-guardrail-deescalation-loop-kill-control-20260610
+artifact_type: guardrail_deescalation_loop_kill_control_prompt
+owner_role: T1 Architecture Broker / T0 Registrar / Verifier
+source_task: OWNER_REPORTED_AGENTHUB_GUARDRAIL_DEADLOCK_TOKEN_BURN_20260610
+run_id: RUN-AGENTHUB-GUARDRAIL-DEESCALATION-LOOP-KILL-20260610
+created_at: 2026-06-10
+lifecycle_status: active_control
+default_load: false
+safe_to_replay: false
+---
+
+# AgentHub Guardrail De-escalation And Loop Kill Control
+
+## Task Class
+
+AGENTHUB_SYSTEM_PROCESS / INCIDENT_CORRECTION / CONTROL_SPINE_REGISTRAR / PROMPT_ARCHITECTURE
+
+## Mission
+
+Collapse guardrail sprawl into one minimal action model that preserves hard stops for secrets, destructive authority, runtime/product risk, delete-ref safety, and owner-only irreversible actions while converting routine proof/register/review gaps into same-run remediation.
+
+This control must reduce active blockers, stop repeated same-gate loops, and prevent fake Done without broad cleanup or safety removal.
+
+## Source Of Truth
+
+1. OpenAI system/developer instructions.
+2. ChatGPT AgentHub Project Instructions.
+3. `AGENTS.md`.
+4. `INDEX.md`.
+5. `ARTIFACT_REGISTER.md`.
+6. `PR_QUEUE_REGISTER.md`.
+7. Current PR readback for `#148` and `#149`.
+8. Current owner request from 2026-06-10.
+
+## Existing Contour Binding
+
+- Use PR `#148` (`agenthub-global-correction-contour-20260610`) for global guardrail simplification and prompt architecture.
+- Keep PR `#149` (`agenthub/control-spine-branch-hygiene-20260610`) branch hygiene only unless a Registrar decision explicitly expands it.
+- Do not create a new PR or branch for this scope while PR `#148` is open and covers global correction.
+
+## Four Control Classes
+
+### Class A: HARD_STOP
+
+Allowed only for:
+
+- secrets, tokens, private keys, env dumps, or credential exposure;
+- destructive repository or infrastructure action without scoped authority;
+- runtime, server, Docker, DB, proxy, firewall, DNS, SSL, ports, product, package, or production mutation without task-bound T2 worker, rollback, and validation;
+- branch deletion without open-PR and SHA/readback safety;
+- owner-only irreversible action such as payment, legal, credential, or global destructive approval.
+
+A hard stop must produce one typed blocker and one concrete next action. It must not repeat the same blocker a third time.
+
+### Class B: SOFT_WARN_CONTINUE
+
+Use for optional metadata, non-critical style drift, wording imperfections, old report references not loaded by default, and nice-to-have evidence. Soft warnings are receipt-only and must not stop execution.
+
+### Class C: SAME_RUN_REMEDIATION
+
+Use for missing `INDEX.md` entry, missing `ARTIFACT_REGISTER.md` row, missing `PR_QUEUE_REGISTER.md` row, missing receipt link, missing task comment/readback when connector is available, missing duplicate-check note, and stale prompt lifecycle decisions. These become same-run microtasks and must not be returned to the owner unless the route is physically unavailable.
+
+### Class D: QUARANTINE_OR_SUPERSEDE
+
+Use for obsolete prompts, reports pretending to be instructions, consumed prompts replayed as active controls, conflicting policies, duplicate branches/PRs, stale patch-only artifacts, and old chat/status lines. Quarantine/supersede preserves evidence and must not delete useful historical records without receipt.
+
+## Loop Kill Rules
+
+- No third retry at the same gate.
+- After two identical failures, stop probing and either run one architecture repair or emit one terminal typed blocker.
+- Do not launch multiple agents for one active scope.
+- Do not paste hook logs, long receipts, raw transcripts, or repeated blocker paragraphs to owner chat.
+- Summarize evidence by repository path, PR number, commit SHA, and receipt path.
+- Missing routine proof becomes Class C same-run remediation, not owner-facing paralysis.
+- Hook `PASS`, sandbox-only proof, GitHub PR existence, or green curl is not Done.
+
+## Demotion Rules
+
+Demote these blocker families immediately unless they overlap Class A:
+
+- `REGISTER_COVERAGE_MISSING` -> Class C same-run remediation.
+- `PR_QUEUE_COVERAGE_MISSING` -> Class C same-run remediation.
+- `INDEX_ROW_MISSING` -> Class C same-run remediation.
+- `RECEIPT_LINK_MISSING` -> Class C same-run remediation.
+- optional methodology wording drift -> Class B soft warning.
+- old consumed prompt replay -> Class D quarantine/supersede.
+- stale patch-only artifact treated as active instruction -> Class D quarantine/supersede.
+
+## Allowed Actions
+
+- Read control-spine repository policy, prompt, report, receipt, validation, register, and PR queue files.
+- Patch prompt architecture and validation fixtures in PR `#148`.
+- Propose register/index/PR queue rows in the same contour.
+- Record evidence paths and red-team results.
+
+## Forbidden Actions
+
+- Do not delete remote branches.
+- Do not merge PRs.
+- Do not change branch protection or CODEOWNERS.
+- Do not mutate runtime, Linux services, Docker, DB, proxy, firewall, DNS, SSL, ports, secrets, product code, package state, or task-manager state.
+- Do not perform broad repository cleanup.
+- Do not remove Class A hard stops.
+- Do not create duplicate PRs for this scope.
+
+## Validation Fixtures To Add Or Run
+
+The simplification is valid only if fixtures prove:
+
+- no third same-gate retry;
+- no blocker-repeat final;
+- no duplicate PR for same scope;
+- no user-facing hook spam;
+- no fake Done from hook PASS, sandbox PASS, PR existence, or green curl;
+- Class A still blocks secrets, destructive mutation, runtime/product risk, unsafe delete-ref, and owner-only irreversible action;
+- routine register/index/PR queue gaps route to Class C remediation.
+
+## Acceptance Gates
+
+- `NO_DUPLICATE_CONTOUR`
+- `GUARDRAIL_INVENTORY_PRESENT`
+- `HARD_STOPS_MINIMIZED_TO_CLASS_A`
+- `SOFT_WARNINGS_DO_NOT_BLOCK`
+- `SAME_RUN_REMEDIATION_FOR_ROUTINE_GAPS`
+- `NO_THIRD_RETRY`
+- `NO_BLOCKER_SPAM`
+- `NO_HOOK_SPAM_TO_OWNER`
+- `NO_FAKE_DONE`
+- `NO_SECRET_LEAK`
+- `NO_DESTRUCTIVE_CLEANUP`
+- `REGISTER_INDEX_PR_QUEUE_ROUTE_PRESENT`
+- `FINAL_FACT_ACTION_LEFT_ONLY`
+
+## Typed Blockers
+
+Allowed terminal blockers only:
+
+- `OWNER_ONLY_IRREVERSIBLE_GATE`
+- `SECRET_OR_CREDENTIAL_RISK`
+- `DESTRUCTIVE_ACTION_AUTHORITY_MISSING`
+- `RUNTIME_MUTATION_AUTHORITY_MISSING`
+- `DELETE_REF_ROUTE_UNAVAILABLE`
+- `GITHUB_CONNECTOR_WRITE_UNAVAILABLE`
+- `YOUTRACK_READBACK_UNAVAILABLE`
+- `INSTRUCTION_SOURCE_DRIFT`
+- `NO_ACTIVE_CONTOUR_FOUND`
+
+## Red-Team Checklist
+
+Fail if the control removes hard stops for secrets/destructive/runtime actions, creates duplicate PR scope, preserves blocker spam, claims Done from hook PASS, deletes evidence broadly, dumps long owner-facing output, or confuses PR `#148` and PR `#149` scopes.
+
+## Final Format
+
+Russian only, compact:
+
+`Fact: <one line>`
+
+`Action: <one line>`
+
+`Left: none` or `Left: <typed blocker>`
