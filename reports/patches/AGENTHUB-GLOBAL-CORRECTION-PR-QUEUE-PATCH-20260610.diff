@@ -1,0 +1,12 @@
+diff --git a/PR_QUEUE_REGISTER.md b/PR_QUEUE_REGISTER.md
+index 4dfc9b6..1f72b61 100644
+--- a/PR_QUEUE_REGISTER.md
++++ b/PR_QUEUE_REGISTER.md
+@@ -107,6 +107,7 @@ before closure.
+ 
+ | PR | Decision | Blocker |
+ |---|---|---|
++| `#148` | `BLOCKED_WITH_ARTIFACTS` for global correction contour branch `agenthub-global-correction-contour-20260610`. Adds global correction contract, architecture methodology integration contract, worker dispatch prompt, validation, receipt, and register patch artifact. No runtime, secrets, personal repo, or broad cleanup. | `ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE`; `YOUTRACK_TASK_WRITE_READBACK_UNAVAILABLE`; `REGISTER_PATCH_NOT_APPLIED` |
+ | `#144` | `MERGE_READY` for repository governance scope after physical task-first repair. Adds document dedupe policy, validator, fixtures, validation, receipt, index/register coverage, and non-destructive cleanup of existing model-portfolio register/index duplicate rows. Local validation and gitleaks passed on 2026-06-07. Physical YouTrack readback: `AH-685`, Stage `Develop`, Priority `Critical`, PR/receipt/validation/validator evidence in task description and comment. | none |
+ | `#142` | Merged on 2026-06-06 with merge commit `104d7c2f2d9274ccac0c65c9eaeecc8d76586ff6`; registers runtime-proof evidence for `AH-675` after actual @runtime hook/gate/policy/validator installation and full runtime validation PASS. | none |
+ | `#54` | Merged on 2026-05-26 for `AH-571`; adds Komodo orchestration report, implementation decomposition, receipts, index/register coverage, 2026-05-26 approved corrected contract realignment, and process hardening that pins `AH-578` as the single active live-route unblock gate. | none for repository/process scope; live rollout remains gated by `AH-578` route evidence before `AH-574` baseline. |
