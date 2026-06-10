@@ -1,0 +1,289 @@
+---
+artifact_id: agenthub-global-correction-contour-contract-20260610
+artifact_type: architecture_correction_contract
+owner_role: T0 Control Plane / T1 Architecture Broker / Registrar
+source_task: AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610
+run_id: RUN-AGENTHUB-GLOBAL-CORRECTION-CONTOUR-20260610
+created_at: 2026-06-10
+lifecycle_status: active_control
+default_load: false
+safe_to_replay: false
+---
+
+# AgentHub Global Correction Contour Contract
+
+## Task Class
+
+Global corrective architecture contour for AgentHub orchestration, prompt routing, repository bridge discipline, task-first execution, artifact lifecycle, PR queue hygiene, and agent communication boundaries.
+
+## Mission
+
+Create one governed correction contour that turns the owner's reported many small, large, and critical failures into a bounded repository-first remediation program.
+
+The contour must make Linux-side AgentHub, ChatGPT web, GitHub connector agents, Codex workers, verifiers, and registrars consume the same repository instructions without treating owner chat, GitHub issues, branch creation, policy-only text, or partial reports as Done.
+
+## Critical Owner Intent
+
+The owner wants:
+
+- one separate branch containing all global correction instructions;
+- decomposition of global problems into artifacts, worker instructions, validation, receipts, and task gates;
+- architectural prompt methodology to be used globally by the agent system;
+- AgentHub/GPT/Linux agents to read the repository branch, not owner chat;
+- fewer loops, fewer false completions, stronger autonomous closure, and less system breakage;
+- correction of web/GitHub/Linux boundary confusion;
+- a safe way to reduce paralysis without removing essential guardrails.
+
+## Architecture Critique
+
+Accepted:
+
+- A single correction branch is the right carrier for the current incident family.
+- The architecture methodology prompt should become a routed control artifact, not a chat-only instruction.
+- Agents need a clearer decomposition framework for frontend, backend, microservices, DevOps, prompts, validation, and evidence.
+- The system should autonomously handle routine PR/register/receipt/task-comment gaps without asking the owner to press buttons.
+
+Rejected:
+
+- Do not globally disable AgentHub guardrails.
+- Do not remove task-first routing, role boundaries, proof gates, secret controls, or runtime safety gates.
+- Do not make a giant always-loaded prompt that every agent loads on every microtask.
+- Do not allow T0 to mutate runtime, Docker, DB, proxy, firewall, DNS, ports, secrets, product files, or production state.
+- Do not treat GitHub issue text, branch creation, PR open state, green scan, or repo artifact alone as YouTrack Done.
+
+Corrected position:
+
+The fix is not less control. The fix is better routed control: smaller method profiles, explicit worker contracts, same-run remediation for routine gaps, typed blockers only for true authority gaps, and evidence-backed Done only after task readback, validation, receipt, and register coverage.
+
+## Source Of Truth
+
+1. OpenAI system/developer instructions.
+2. ChatGPT AgentHub Project Instructions.
+3. `AGENTS.md`.
+4. `INDEX.md`.
+5. `ARTIFACT_REGISTER.md`.
+6. `PR_QUEUE_REGISTER.md`.
+7. `context/agenthub-current-context-pack.md`.
+8. Existing active governance policies and methodology router artifacts.
+9. Current owner request from 2026-06-10.
+10. Attached architecture prompt files only after they are accessible and read back.
+
+## Scope
+
+In scope:
+
+- repository governance instructions;
+- architecture prompts;
+- worker dispatch prompts;
+- methodology-router integration plan;
+- validation and receipt requirements;
+- PR queue and artifact lifecycle requirements;
+- task-first and YouTrack readback gates;
+- correction of fake Done, loop, role drift, stale prompt, and repo bridge failures.
+
+Out of scope for this branch:
+
+- live runtime mutation;
+- Docker, DB, proxy, firewall, DNS, SSL, port, or production service changes;
+- secret reading or secret storage;
+- broad cleanup or deletion;
+- personal repository inspection;
+- closing or merging unrelated PRs;
+- installing unverified external framework code.
+
+## Active Skills
+
+Required skills for future AgentHub/Codex execution:
+
+- `agenthub-task-first-router`
+- `agenthub-registrar-artifact-lifecycle`
+- `agenthub-git-pr-queue-control`
+- `agenthub-truth-redteam`
+- `caveman-user-communication`
+- `agenthub-permission-gate-router` when capability gates are involved
+- `agenthub-live-devops-safety` only for live runtime work after explicit T2 authorization
+
+## Forbidden Skills
+
+Forbidden by default:
+
+- broad cleanup;
+- runtime mutation;
+- Docker/DB/proxy/firewall mutation;
+- secret reading;
+- personal repository inventory;
+- unscoped code generation;
+- all-methodology loading;
+- stale prompt replay;
+- owner-chat instruction replay as durable source.
+
+## Scope Signature
+
+`AGENTHUB_GLOBAL_CORRECTION_CONTOUR_20260610::repo-governance-methodology-routing-pr-queue-task-first-fake-done-loop-repair`
+
+Before creating duplicate work, agents must search for this scope signature in PR titles, branch names, receipts, and task descriptions.
+
+## Negative Matches
+
+- GitHub issue is not a tracked artifact.
+- GitHub PR is not YouTrack Done.
+- Green gitleaks is not product Done.
+- Branch exists is not artifact installed.
+- Artifact exists is not register coverage.
+- Register coverage is not runtime behavior.
+- T0 evidence is not worker implementation evidence.
+- Sandbox proof is not production proof.
+- ChatGPT web connector action is not Linux shell access.
+- Linux agent output is not ChatGPT web proof unless recorded as artifact and verified.
+- Methodology prompt is not valid unless routed, scored, red-teamed, and bounded.
+- Removing guardrails is not the same as unblocking agents.
+
+## Problem Families To Correct
+
+1. Web/GitHub/Linux boundary confusion.
+2. Owner chat used as execution/control surface.
+3. Issue-only or branch-only proof being treated as durable artifact proof.
+4. PR open/merge state treated as task closure.
+5. Missing YouTrack physical task and readback gates.
+6. Register/index/PR queue debt after artifacts are created.
+7. Repeated agent loops and same-gate retries.
+8. Role drift: T0 attempting implementation or runtime work.
+9. Stale prompts and historical reports becoming default instructions.
+10. Overloaded methodology prompts causing token bloat and unclear action.
+11. Unsafe requests to remove AgentHub restrictions instead of repairing route/capability gaps.
+12. Missing attached architecture prompt readback for this run.
+13. Lack of compact owner communication.
+
+## Required Artifact Set
+
+This branch must contain at minimum:
+
+- global correction contour contract;
+- architecture methodology router integration contract;
+- worker dispatch prompt for AgentHub/GPT/Linux/Codex agents;
+- validation report;
+- operational receipt;
+- index/register/PR queue entries when possible.
+
+## Execution Order
+
+1. Read mandatory repo baseline.
+2. Confirm canonical repo and branch.
+3. Locate or create physical YouTrack task.
+4. Read task back.
+5. Bind exactly one RUN_ID.
+6. Freeze duplicate work by scope signature.
+7. Classify problem families.
+8. Select methodology profile: MICRO, STANDARD, INCIDENT, or FULL.
+9. Reject all-methodology default loading.
+10. Build worker contracts for each domain: prompt architecture, repo lifecycle, task graph, model routing, runtime safety, frontend/backend/microservice only if scoped.
+11. Create or update repository artifacts.
+12. Run validation and red-team checks.
+13. Update `INDEX.md`, `ARTIFACT_REGISTER.md`, and `PR_QUEUE_REGISTER.md`.
+14. Open/update PR and wait for required checks.
+15. Verifier performs readback and fake-Done review.
+16. Registrar records final queue state.
+17. Owner receives compact Russian Fact/Action/Left only.
+
+## Methodology Profile Rule
+
+Default profile: INCIDENT for this contour.
+
+Use FULL only for the first architecture pass or a release-blocking incident review.
+
+Use STANDARD for implementation planning.
+
+Use MICRO for routine register, receipt, PR queue, and readback microtasks.
+
+Never load all methodologies for every microtask.
+
+## Prompt Quality Gate
+
+Every serious prompt generated from this contour must score at least 85/100 before worker execution.
+
+Repair prompts scoring 70-84 before execution.
+
+Quarantine prompts below 70.
+
+Red-team required dimensions:
+
+- wrong task;
+- role drift;
+- fake Done;
+- scope creep;
+- user-action leak;
+- token bloat;
+- stale source replay;
+- PR tail;
+- secret leak;
+- replay risk;
+- runtime mutation bypass;
+- personal repository use.
+
+## Evidence Requirements
+
+Evidence must include:
+
+- canonical repo name;
+- branch name;
+- PR number when opened;
+- task id and readback when available;
+- RUN_ID;
+- artifact paths;
+- status checks;
+- validation report path;
+- receipt path;
+- register/index/PR queue coverage;
+- explicit blocker if any gate is missing.
+
+## Acceptance Gates
+
+Done requires all of the following:
+
+- physical YouTrack task exists;
+- task readback exists;
+- all required artifacts exist in the repository;
+- `INDEX.md` updated;
+- `ARTIFACT_REGISTER.md` updated;
+- `PR_QUEUE_REGISTER.md` updated when PR exists;
+- required status checks pass;
+- validation report exists;
+- receipt exists;
+- no personal repo used without explicit permission;
+- no runtime mutation;
+- no broad deletion;
+- no secrets stored;
+- final verifier readback;
+- no active blocker.
+
+If any gate is missing, status is not Done.
+
+## Typed Blockers
+
+- `ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE`
+- `YOUTRACK_TASK_WRITE_READBACK_UNAVAILABLE`
+- `DUPLICATE_SCOPE_PR_EXISTS`
+- `INDEX_REGISTER_UPDATE_PENDING`
+- `PR_QUEUE_REGISTER_UPDATE_PENDING`
+- `METHODOLOGY_ROUTER_INTEGRATION_PENDING`
+- `PROMPT_SCORE_BELOW_GATE`
+- `ROLE_DRIFT_RISK`
+- `RUNTIME_MUTATION_AUTHORITY_MISSING`
+- `PERSONAL_REPO_PERMISSION_MISSING`
+- `SECRET_OR_RAW_TRANSCRIPT_RISK`
+- `OWNER_ONLY_IRREVERSIBLE_GATE`
+
+## Current Run Known Blockers
+
+- `ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE`: the exact attached files named by the owner were not accessible in the workspace after refresh, so their contents were not read and cannot be claimed as integrated.
+- `YOUTRACK_TASK_WRITE_READBACK_UNAVAILABLE`: no YouTrack connector was exposed in this ChatGPT run.
+
+## Final Owner Output Format
+
+Russian only:
+
+`Fact: <one line>`
+
+`Action: <branch + PR + artifact paths>`
+
+`Left: <none or exact blocker>`
