@@ -1,0 +1,13 @@
+# AgentHub Route Failure Matrix 2026-06-10
+
+| route | intended use | actual use | allowed role | failure | root cause | repair | safety risk | test required |
+|---|---|---|---|---|---|---|---|---|
+| ChatGPT Web | Architecture, compact owner output | User pressure tried to turn it into execution | T1 architecture only | No mutation authority | Boundary mismatch | Keep no-mutation boundary | High if bypassed | Owner output remains Fact/Action/Left only |
+| GitHub connector file route | Create audit branch artifacts | Works for branch creation and file creation | T0/T1 registrar for report artifacts | No delete-ref exposed | Tool surface intentionally limited | Use only for artifacts; do not fake delete | Medium | File readback after commit |
+| GitHub connector branch route | Create audit branch | Works via `_create_branch` | T0/T1 for audit artifacts | Initial search missed tool | Tool discovery gap | Use tool search before blocker | Low | Branch exists readback |
+| AgentHub MCP delete-ref | Safe stale branch deletion | Tool exists but active behavior stale | T2 worker/Registrar under AH-731 | `OPEN_PR_READBACK_FAILED` / stale metadata | Process did not reload patched route | Add refresh/reload, validate active metadata | High if bypassed | PR #149 branch protected; safe-stale branch passes dry-run |
+| AgentHub MCP command adapter | Scoped command worker | Blocked | T2 worker | `CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED` | Contract-only runtime gate | Keep for live runtime; provide non-live repo-audit lane | Medium | Repo-audit command fixture accepted, live mutation fixture denied |
+| Local shell/git/gh | Fallback read/write | Blocked before command | T2/worker only if routed | `PRE_DISPATCH_TASK_GATE_MISSING_ISSUE_ID` | Hook metadata parser mismatch | Narrow parser or publish exact required env keys | Medium | Task-bound harmless git status passes |
+| YouTrack route | Physical task readback and comments | Not fully exposed here | Registrar/T0/T2 | Potential unavailable readback | Tool availability varies by session | Use YouTrack MCP when exposed; otherwise typed blocker | Medium | AH-731/AH-733 readback recorded |
+| PR queue/register route | Lifecycle truth | Currently stale for PR #149 family | Registrar | Register not yet synced after real deletion because deletion not done | Correctly blocked until real lifecycle change | Update only after deletion or explicit blocker | Low | Register rows match PR state |
+| Prompt intake route | Architecture contracts | Too many one-time prompts replayed | T1 architect | Prompt noise/status loop | Lifecycle not enforced by agents | Mark consumed/superseded, stop prompt chain | Medium | ARTIFACT_REGISTER lifecycle rows updated when changed |
