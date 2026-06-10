@@ -1,0 +1,89 @@
+AGENTHUB SIMPLE DEADLOCK UNBLOCK DIRECTIVE
+Artifact ID: AGENTHUB_SIMPLE_DEADLOCK_UNBLOCK_DIRECTIVE_20260610
+Target path in control-spine repo: prompts/incident/AGENTHUB-SIMPLE-DEADLOCK-UNBLOCK-DIRECTIVE-20260610.txt
+Target reader: AgentHub TeamLead/T0, T1 Architect, Runtime Admin, Break-Glass Worker
+
+READ THIS FIRST.
+
+AgentHub is blocked by too many conflicting guards, hooks, task gates, and runtime blocks.
+Do not add another complex guard.
+Do not create another theory document.
+Do not retry the same blocked command.
+Do not ask the owner to repeat the same problem again.
+
+MISSION
+
+Unblock AgentHub by reducing the system to one minimal recovery route.
+
+KEEP ONLY THESE RULES
+
+1. T0 does not write code and does not change runtime.
+2. Any mutation must be done by a scoped worker.
+3. No secrets.
+4. No broad destructive cleanup.
+5. No fake Done.
+6. If guards block the recovery route itself, enable one Break-Glass Worker for this RUN_ID only.
+7. After the recovery action, close the Break-Glass route.
+
+DO THIS NOW
+
+1. Find or create one P0 YouTrack task: Restore AgentHub from guard deadlock.
+2. Read the task back.
+3. Continue current RUN_ID or create exactly one RUN_ID.
+4. Identify one root blocker only.
+5. If normal worker route is blocked, enable Break-Glass Worker route for this RUN_ID.
+6. Break-Glass Worker may do only one thing: repair or enable the command-worker route.
+7. Validate that normal worker route can run read-only diagnostics.
+8. Write receipt.
+9. Return short Russian output.
+
+BREAK-GLASS WORKER MAY ONLY
+
+- enable command-worker route for this RUN_ID;
+- fix task-id mapping that blocks dispatch;
+- pause one conflicting hook only for this recovery RUN_ID;
+- demote one self-blocking guard from default route;
+- restore normal worker dispatch.
+
+BREAK-GLASS WORKER MUST NOT
+
+- delete all hooks;
+- delete all guards;
+- change databases;
+- expose secrets;
+- prune/reset Docker;
+- change proxy/firewall/DNS/SSL;
+- restart unrelated services;
+- mutate client/product files;
+- claim Done without receipt.
+
+VALIDATION
+
+Done only when:
+
+- task id exists;
+- RUN_ID exists;
+- one blocker is identified;
+- command-worker route works or exact blocker remains;
+- validation exists;
+- receipt exists.
+
+IF BLOCKED, USE ONE BLOCKER ONLY
+
+TASK_ID_MISSING
+RUN_ID_MISSING
+COMMAND_WORKER_ROUTE_MISSING
+BREAK_GLASS_WORKER_ROUTE_MISSING
+HOOK_COLLISION
+SELF_BLOCKING_GUARD_DEADLOCK
+CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED
+PRE_DISPATCH_TASK_GATE_MISSING_ISSUE_ID
+VALIDATION_EVIDENCE_MISSING
+RECEIPT_MISSING
+OWNER_ONLY_IRREVERSIBLE_GATE
+
+FINAL OWNER OUTPUT
+
+Fact: AgentHub unblocked / not unblocked.
+Action: task id + receipt path or next exact recovery action.
+Left: none or one exact blocker.
