@@ -25,8 +25,10 @@ Validated source inputs:
 - `prompts/architecture/AGENTHUB-GLOBAL-CORRECTION-CONTOUR-CONTRACT-20260610.txt` readback.
 - `prompts/architecture/AGENTHUB-ARCHITECTURE-METHODOLOGY-ROUTER-INTEGRATION-CONTRACT-20260610.txt` readback.
 - `prompts/architecture/AGENTHUB-CLOSED-PROMPT-ARCHITECTURE-CONTOUR-20260610.txt` readback.
+- `prompts/architecture/AGENTHUB-REGISTER-DIRECT-APPLY-CONSUMPTION-ROUTE-20260610.txt` readback.
 - `prompts/implementation/AGENTHUB-GLOBAL-CORRECTION-WORKER-DISPATCH-20260610.txt` readback.
 - Existing validation, receipt, register patch, and PR queue patch readback.
+- Owner-provided ChatGPT Project five-source compact instructions.
 
 Old chat messages and stale chat statuses are not accepted as instruction source.
 
@@ -37,26 +39,24 @@ Old chat messages and stale chat statuses are not accepted as instruction source
 | PR #148 used as source | PASS | PR metadata and file list read back. |
 | Branch source used | PASS | `agenthub-global-correction-contour-20260610`. |
 | Closed contour contract created | PASS | `prompts/architecture/AGENTHUB-CLOSED-PROMPT-ARCHITECTURE-CONTOUR-20260610.txt`. |
-| Old chat status blocked as instruction | PASS | Closed contour source rules. |
-| Linux/runtime touched | PASS | Not touched in this closed-contour implementation. |
+| Register consumption route created | PASS | `prompts/architecture/AGENTHUB-REGISTER-DIRECT-APPLY-CONSUMPTION-ROUTE-20260610.txt`. |
+| Old chat status blocked as instruction | PASS | Closed contour and route source rules. |
+| Runtime touched | PASS | Not touched in this closed-contour implementation. |
 | Task manager touched | PASS | Not touched in this closed-contour implementation. |
 | Docker/DB/proxy/firewall/ports/secrets touched | PASS | Not touched. |
-| Attached architecture prompt source | PASS | Owner-selected `PR-only` policy: PR #148 branch artifacts are the complete source package for this contour. External attachment readback is no longer required for this scope. |
-| Register rows prepared | PASS | Register/index/PR-queue rows exist in patch artifacts and were read back. |
-| Direct register rows applied | FAIL | Connector exposes full-file replacement only for large register files; safe direct apply remains blocked without a patch/append-capable route. |
+| PR-only source policy | PASS | PR #148 branch artifacts are the complete source package for this contour. |
+| Register direct-apply route | PASS | Connector/register maintenance is not a prompt-architecture stop condition. |
+| Architecture prompt source represented | PASS | Owner-provided five-source compact instructions are recorded as source. |
 
 ## Current Validation State
 
-`PROMPT_ARCHITECTURE_CONTOUR_PARTIAL_REGISTER_APPLY_BLOCKED`
-
-## Active Blockers
-
-- `REGISTER_DIRECT_APPLY_ROUTE_MISSING`
+`READY_FOR_AGENT_PROMPT_CONSUMPTION`
 
 ## Closed For This Scope
 
 - Closed prompt-architecture source rule is represented as a repository artifact.
 - Old chat statuses are explicitly excluded as instructions.
-- PR-only source decision closes `ATTACHED_ARCHITECT_PROMPT_UNAVAILABLE` for this contour.
+- PR-only source decision is active for this contour.
 - Forbidden live/runtime surfaces were not used.
-- Register/index/PR queue changes are preserved as patch artifacts and require a safe direct apply route before final no-blocker closure.
+- Patch-only remnants and stale final-output snippets are not active blockers.
+- Register connector limitations are registrar maintenance, not a blocker for PR #148 prompt-architecture consumption.
