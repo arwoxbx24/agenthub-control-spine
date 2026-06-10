@@ -1,0 +1,65 @@
+AGENTHUB GUARD DECOMMISSION MINIMAL CORE RECOVERY
+Date: 2026-06-10
+Artifact ID: AGENTHUB-GUARD-DECOMMISSION-MINIMAL-CORE-RECOVERY-20260610
+Lifecycle: active incident recovery report
+Public safety: no secrets, no raw transcripts, no host paths, no credentials, no environment dumps.
+
+1. FACT
+AgentHub runtime deadlock break-glass intake was executed under task-first control.
+Controlling task: AH-728.
+RUN_ID: RUN-AGENTHUB-DEADLOCK-BREAKGLASS-20260610T0851Z.
+Normal MCP sandbox worker route was available.
+Break-glass route was not activated because the normal route worked.
+T0 performed no runtime mutation.
+No forbidden surfaces were touched.
+
+2. ACTION EVIDENCE
+Normal route probe worker: deadlock-normal-route-probe-001.
+Requested model: gpt-5.3-codex-spark.
+Actual model: gpt-5.3-codex-spark.
+Dispatch receipt: mcp-sandbox-dispatch:f6856ad961e2bbb5a8e47a88.
+Route receipt path: @agenthub-runs/agenthub-deadlock-breakglass-20260610T0851Z/dispatch-output-27f5199f7d7d.json.
+Ownership receipt: agent_hub_mcp:RUN-AGENTHUB-DEADLOCK-BREAKGLASS-20260610T0851Z:ownership_bind:PASS.
+Task-service ensure_request_task result: PASS/NOOP, task_tree_score=100, done_allowed=false.
+
+3. INCIDENT CONCLUSION
+The observed failure is not a current route-controller deadlock.
+The current normal AgentHub MCP route can create, dispatch, execute, and merge sandbox worker evidence.
+Therefore broad guard deletion is not authorized.
+The correct control is minimal-core recovery only when a real self-blocking runtime gate prevents normal worker dispatch.
+
+4. MINIMAL CORE RULE
+Do not remove all guards.
+Do not bypass YouTrack/task-first routing.
+Do not allow direct T0 runtime mutation.
+Do not treat sandbox proof as production repair proof.
+Use exactly one task-bound and RUN-bound break-glass worker action only when normal dispatch is blocked.
+After the action, the break-glass route must expire and normal gates must resume.
+
+5. AUTHORIZED FUTURE BREAK-GLASS CONDITIONS
+All conditions must be true:
+- physical task exists;
+- task readback exists;
+- one RUN_ID exists;
+- repeated self-blocking gate prevents authorized worker dispatch;
+- T0 direct mutation remains forbidden;
+- scope manifest names one recovery action;
+- rollback and validation plan exist;
+- verifier confirms no forbidden surface and no secret exposure;
+- registrar records receipt.
+
+6. BLOCKERS CLOSED IN THIS INTAKE
+TASK_ID_MISSING: closed by AH-728 creation/readback.
+RUN_ID_MISSING: closed by RUN-AGENTHUB-DEADLOCK-BREAKGLASS-20260610T0851Z.
+BREAK_GLASS_WORKER_ROUTE_MISSING: not applicable because normal route is available.
+WORKER_AUTHORIZATION_MISSING: corrected by valid ownership binding W-deadlock-01.
+
+7. REMAINING STATE
+No active break-glass action is authorized from this report.
+No code/config/runtime mutation was performed.
+If future live runtime mutation is required, create a separate scoped worker contract and validate it before execution.
+
+8. OWNER FINAL FORMAT
+Fact: normal route works; break-glass was not activated.
+Action: AH-728, receipt @agenthub-runs/agenthub-deadlock-breakglass-20260610T0851Z/dispatch-output-27f5199f7d7d.json.
+Left: none.
