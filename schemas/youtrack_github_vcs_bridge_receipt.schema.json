@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/youtrack_github_vcs_bridge_receipt.schema.json",
+  "title": "YouTrack GitHub VCS Bridge Receipt",
+  "type": "object",
+  "required": [
+    "issue_id",
+    "run_id",
+    "repository",
+    "branch",
+    "official_docs_checked",
+    "integration_state",
+    "mapping_check",
+    "github_metadata_attached",
+    "visibility_result",
+    "secret_redaction_gate",
+    "bridge_gate"
+  ],
+  "properties": {
+    "issue_id": {"type": "string"},
+    "run_id": {"type": "string"},
+    "repository": {"type": "string"},
+    "branch": {"type": "string"},
+    "pr": {"type": ["string", "integer", "null"]},
+    "head_sha": {"type": ["string", "null"]},
+    "merge_sha": {"type": ["string", "null"]},
+    "official_docs_checked": {"type": "array", "minItems": 5, "items": {"type": "string", "format": "uri"}},
+    "integration_state": {"enum": ["configured", "checked_existing", "owner_only_gate", "permission_blocked", "unavailable"]},
+    "mapping_check": {
+      "type": "object",
+      "required": ["project_mapping", "repository_mapping", "webhook_state", "branch_references", "monitored_branches", "processing_scheme", "committers_group", "user_matching"],
+      "additionalProperties": true
+    },
+    "github_metadata_attached": {"type": "boolean"},
+    "visibility_result": {"enum": ["commit_and_pr_visible", "manual_metadata_visible", "owner_only_gate", "not_visible"]},
+    "owner_only_gate": {"type": ["string", "null"], "enum": [null, "OWNER_ONLY_GITHUB_YOUTRACK_TOKEN_GATE", "YOUTRACK_VCS_INTEGRATION_PERMISSION_MISSING", "GITHUB_REPOSITORY_ADMIN_PERMISSION_MISSING", "VCS_WEBHOOK_UNAVAILABLE"]},
+    "secret_redaction_gate": {"const": "PASS"},
+    "bridge_gate": {"enum": ["PASS", "OWNER_ONLY_GATED", "BLOCKED"]}
+  },
+  "additionalProperties": true
+}
