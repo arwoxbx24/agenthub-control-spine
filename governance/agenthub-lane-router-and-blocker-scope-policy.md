@@ -2,76 +2,81 @@
 artifact_id: agenthub-lane-router-and-blocker-scope-policy
 artifact_type: governance-policy
 owner_role: T1 Architecture Broker
-source_task: AH-542
-run_id: RUN-agenthub-p0-paralysis-breaker-repo-first-control-repair-20260525
-created_at: 2026-05-25
+source_task: AH-738 / PR152 follow-up
+run_id: RUN-AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-20260611
+created_at: 2026-06-11
 lifecycle_status: active_policy
 default_load: false
 safe_to_replay: false
+supersedes: AGENTHUB-SCOPED-AUTONOMY-AUTHORITY-SELF-HEALING-ESCALATION-CONTRACT-20260610
 ---
 
 # AgentHub Lane Router And Blocker Scope Policy
 
 ## Purpose
 
-This policy prevents a blocker in one AgentHub lane from becoming a global stop
-when other lanes can still move safely. It also stops repeated same-gate loops,
-task explosion, sandbox-only Done claims, and stale recovery prompt replay.
+This policy converts routine AgentHub deadblocks into same-RUN self-healing.
+It preserves hard stops for secrets, destructive actions, and global
+infrastructure while allowing bounded autonomy inside the active contour.
 
 ## Lanes
 
-| Lane | Name | Owns | Valid blocker examples | Non-blocker examples |
+| Lane | Name | Authorized roles | Allowed core actions | Hard stop examples |
 |---|---|---|---|---|
-| A | Control-spine repo | `AGENTS.md`, `INDEX.md`, registers, runbooks, policies, schemas, prompt quarantine | `CONTROL_SPINE_REPO_ROUTE_MISSING`, `GITHUB_AUTH_MISSING`, `PR_QUEUE_CONFLICT_NEEDS_REBASE` | `LIVE_ADAPTER_ENABLEMENT_REQUIRED` |
-| B | YouTrack task graph | dedupe, parent/child rules, stages, blockers, task readback | `YOUTRACK_MCP_UNAVAILABLE`, `YOUTRACK_AUTH_MISSING`, `ISSUE_SCHEMA_MISSING` | Docker runtime unavailable |
-| C | AgentHub/MCP routing | worker contracts, adapter inventory, ledger correctness, blocker taxonomy | `MCP_TOOL_CONTRACT_MISSING`, `AGENTHUB_LIVE_WORKER_ROUTE_MISSING` | T0 cannot mutate runtime directly |
-| D | Live runtime / Docker / DB / proxy | real service repair and validation | `LIVE_ADAPTER_ENABLEMENT_REQUIRED`, `DEVOPS_WORKER_AUTH_MISSING`, `OWNER_ONLY_DESTRUCTIVE_GATE` | repo/register work available |
-| E | Browser / user outcome QA | browser validation and final user path proof | `BROWSER_WORKER_ROUTE_MISSING`, `TARGET_SERVICE_UNAVAILABLE` | repo or task graph work available |
-| F | User communication | short Russian final output | none | missing evidence in another lane |
+| 0 | owner communication | T0, T1 | short Russian `Fact / Action / Left`, duplicate-progress suppression | none |
+| 1 | control-spine artifacts | T0 Registrar, T1 Architect, scoped repo writer | prompts, governance, validators, schemas, fixtures, receipts, register/index edits | runtime mutation, personal repo use |
+| 2 | repository hygiene | Registrar, git hygiene worker | merged-branch delete, closed-stale branch delete, PR tail cleanup, queue/register updates | protected branch delete, broad cleanup |
+| 3 | task/run self-healing | T0 Router, T1 Architect, task-service repair worker | create/link task, bind RUN_ID, repair route/task receipts, fallback receipt on task-service access failure | endless task creation, fake readback |
+| 4 | read-only live diagnostics | T2 read-only worker, Verifier | service status, container list, redacted logs, HTTP health, process readback | restart, delete, exec mutation, DB read without scope |
+| 5 | reversible runtime repair | T2 repair worker | named restart, narrow config fix, rollback to known-good target, restore from backup | broad prune/reset/delete, DB destructive mutation |
+| 6 | destructive cleanup | T2 destructive worker, Verifier, owner or pre-approved authority | delete only with exact proof, replacement or backup evidence, receipt | production destructive delete without proof |
 
-## Propagation Rule
+## Self-Healing Rule
 
-A blocker stops only the lane where the missing capability is required. It may
-become global only when evidence proves that every remaining lane depends on the
-same missing route. Absence of a live runtime adapter blocks lane D, not lanes
-A, B, C, or F.
+First occurrence of a routine blocker must trigger one same-RUN repair action.
+Only the second failed repair may produce a typed terminal blocker.
+Routine blockers must not become owner-facing stops on first occurrence.
+
+## Conversion Table
+
+| Blocker | Required same-RUN action | Terminal only after |
+|---|---|---|
+| `PRE_DISPATCH_TASK_GATE_MISSING_ISSUE_ID` | locate or create controlling task, bind RUN_ID, retry once | task-service and repo fallback both unavailable |
+| `DISPATCH_TASK_GATE_MISSING` | create route receipt from active task/RUN/branch, retry once | second route repair failure |
+| `T0_DIRECT_AUTHORSHIP_DEFECT` | reclassify Lane 1 artifact work to scoped repo writer or registrar route | no writer route exists |
+| `MODEL_FALLBACK_RECEIPT_MISSING` | auto-write same-RUN fallback receipt and continue | no approved model route exists |
+| `DUPLICATE_PROGRESS_OUTPUT_BLOCKED` | suppress duplicate progress and continue | repeated suppression still emits duplicate spam |
+| `CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED` | elevate to Lane 4 read-only worker or Lane 5 reversible worker | no approved worker route after two distinct repairs |
+| `FRESH_BRANCH_PROTECTED` | classify lifecycle and allow delete only for merged, closed-stale, or audit-only branch with SHA pin and open-PR check | lifecycle proof missing |
+| task-service `missing-access` | write repo fallback receipt and open one route-repair task if possible | both task-service and repo receipt unavailable |
 
 ## Same-Gate Loop Limit
 
-For the same `scope_signature`, if the same gate fails twice with the same
-missing route and no new evidence, a third equivalent attempt is forbidden.
-The next action is `BLOCKER_COLLAPSE_LOOP` plus a repo/task architecture repair.
+For one `scope_signature`, two failed repairs are the maximum. A third equivalent
+attempt is forbidden. The run must emit one typed terminal blocker with the last
+repair receipt reference.
 
-## Evidence Classes
-
-Important claims must be classified as one of:
-
-- `VERIFIED_BY_REPO`
-- `VERIFIED_BY_YOUTRACK`
-- `VERIFIED_BY_AGENTHUB_LEDGER`
-- `VERIFIED_BY_RUNTIME_WORKER`
-- `USER_REPORTED_NOT_VERIFIED`
-- `HYPOTHESIS`
-- `CONTRADICTED`
-
-User anger, prior agent text, sandbox receipts, PR existence, and generic PASS
-logs are incident inputs, not proof of implementation.
-
-## Final State Rule
+## Final States
 
 Allowed final states are:
 
 - `DONE_WITH_EVIDENCE`
 - `READY_BLOCKED_BY_PLATFORM_GATE`
-- `OWNER_ONLY_IRREVERSIBLE_GATE`
-- `FORBIDDEN_SCOPE_BLOCKER`
-- `SAFETY_QUARANTINE`
+- `OWNER_ONLY_DESTRUCTIVE_CONFIRMATION_REQUIRED`
+- `NO_APPROVED_WORKER_ROUTE_AFTER_REPAIR`
+- `TASK_SERVICE_AND_REPO_RECEIPT_BOTH_UNAVAILABLE`
+- `LANE6_PROOF_MISSING`
+- `SECRET_EXPOSURE_RISK`
+- `GLOBAL_INFRASTRUCTURE_AUTHORITY_MISSING`
+- `DUPLICATE_SCOPE_PR_EXISTS`
 
-Generic `blocked` is invalid. Each blocker must include lane, exact missing
-capability, evidence pointer, and next legal route.
+Generic `BLOCKED` is forbidden.
 
-## Safety Rule
+## Safety Boundaries
 
-T0 must not mutate runtime, Docker, DB, proxy, firewall, ports, services,
-secrets, or product code. Runtime lane D requires a scoped authorized worker
-with read-before-write, rollback/checkpoint, and validation.
+- T0 must not become an unbounded runtime mutator.
+- Lane 4 is read-only and is not Lane 5 repair.
+- Lane 5 reversible repair is not Lane 6 destructive cleanup.
+- Docker prune/reset/delete, DB destructive mutation, proxy/firewall/DNS/SSL
+  mutation, and raw secret output remain hard stops unless the exact scoped lane
+  proof exists.
