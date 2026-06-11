@@ -1,0 +1,45 @@
+AgentHub YouTrack + GitHub Board Final Closure Contract
+
+Task: AH-743
+Run: RUN-AGENTHUB-YOUTRACK-GITHUB-BOARD-FINAL-CLOSURE-20260611
+Repository: arwoxbx24/agenthub-control-spine
+
+Mission:
+Install final AgentHub controls so every implementation contour has exactly one controlling YouTrack issue, moves through the board lifecycle, carries GitHub/VCS evidence, and cannot report success until YouTrack stage readback is Done.
+
+Mandatory tools:
+- youtrack-board-lifecycle-mover
+- youtrack-task-card-enricher
+- youtrack-github-vcs-bridge-checker
+- youtrack-no-garbage-task-dedupe
+- agenthub-task-stage-done-gate-validator
+- agenthub-scoped-permission-elevation-manifest
+
+Execution invariant:
+No final owner output is allowed until issue stage readback is Done. GitHub PR state, commit state, sandbox proof, and receipt files are supporting evidence, not task closure.
+
+Required issue movement:
+Backlog -> Develop -> Review -> Test -> Done.
+Read back the issue after every move and record stage, actor, timestamp, method, and result.
+
+Required enrichment:
+Issue id, run id, repo, branch, PR, head SHA, merge SHA when available, receipt path, validation path, duplicate signature, evidence, Done gate, blocker state, and agent instruction:
+Do not create a duplicate task. Move this issue through Backlog -> Develop -> Review -> Test -> Done.
+
+Official documentation basis:
+- https://www.jetbrains.com/help/youtrack/devportal/youtrack-rest-api.html
+- https://www.jetbrains.com/help/youtrack/devportal/resource-api-commands.html
+- https://www.jetbrains.com/help/youtrack/server/integration-with-version-control-systems.html
+- https://www.jetbrains.com/help/youtrack/server/github-integration.html
+- https://www.jetbrains.com/help/youtrack/server/map-issues-to-vcs-change-commit.html
+- https://www.jetbrains.com/help/youtrack/server/apply-commands-in-vcs-commits.html
+
+Final output shape:
+Fact: <issue id> moved to Done; GitHub repo/branch/PR/commit attached; validation receipt recorded.
+Action: <receipt path or exact closed task link>.
+Left: none
+
+Owner-only blocker output shape:
+Fact: task not Done; agent stopped before fake green.
+Action: <exact owner-only permission/token/config action>.
+Left: <one typed blocker>
