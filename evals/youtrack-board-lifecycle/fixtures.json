@@ -1,0 +1,36 @@
+{
+  "positive": [
+    {
+      "name": "full_lifecycle_done",
+      "receipt": {
+        "issue_id": "AH-743",
+        "run_id": "RUN-AGENTHUB-YOUTRACK-GITHUB-BOARD-FINAL-CLOSURE-20260611",
+        "board": {"id": "AH-board", "name": "Agent Hub"},
+        "stage_field_name": "Stage",
+        "stage_mapping": {"Backlog": "Backlog", "Develop": "Develop", "Review": "Review", "Test": "Test", "Done": "Done"},
+        "stage_timeline": [
+          {"stage": "Backlog", "readback_stage": "Backlog", "timestamp": "2026-06-11T09:00:00Z", "actor": "agent", "method": "youtrack_mcp"},
+          {"stage": "Develop", "readback_stage": "Develop", "timestamp": "2026-06-11T09:10:00Z", "actor": "agent", "method": "youtrack_mcp"},
+          {"stage": "Review", "readback_stage": "Review", "timestamp": "2026-06-11T09:20:00Z", "actor": "agent", "method": "youtrack_mcp"},
+          {"stage": "Test", "readback_stage": "Test", "timestamp": "2026-06-11T09:30:00Z", "actor": "agent", "method": "youtrack_mcp"},
+          {"stage": "Done", "readback_stage": "Done", "timestamp": "2026-06-11T09:40:00Z", "actor": "agent", "method": "youtrack_mcp"}
+        ],
+        "final_stage_readback": "Done",
+        "duplicate_check": {"status": "reused_existing", "signature": "agenthub-youtrack-github-board-final-closure-contract-20260611"},
+        "task_card_enrichment": {"run_id": "RUN", "repo": "arwoxbx24/agenthub-control-spine", "branch": "agenthub/example", "pr": "155", "commit_sha": "abc123", "receipt": "reports/receipts/example.md", "validation": "reports/validations/example.md", "done_gate_text": "Done only after YouTrack Done readback."},
+        "github_metadata": {"repository": "arwoxbx24/agenthub-control-spine", "branch": "agenthub/example", "head_sha": "abc123"},
+        "validation_evidence": "validators passed",
+        "receipt_path": "reports/receipts/example.md",
+        "secret_redaction_gate": "PASS",
+        "parent_child_gate": "not_applicable",
+        "done_gate": "PASS",
+        "blocker": null
+      }
+    }
+  ],
+  "negative": [
+    {"name": "final_stage_not_done", "patch": {"final_stage_readback": "Test"}, "expected_error": "final_stage_readback must be Done"},
+    {"name": "github_metadata_missing", "patch": {"github_metadata": {"repository": "arwoxbx24/agenthub-control-spine"}}, "expected_error": "github_metadata missing branch"},
+    {"name": "active_blocker", "patch": {"blocker": "YOUTRACK_STAGE_FIELD_PERMISSION_MISSING"}, "expected_error": "active blocker present"}
+  ]
+}
