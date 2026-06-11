@@ -1,0 +1,45 @@
+{
+  "positive": [
+    {
+      "name": "manual_metadata_visible_when_admin_gate_absent",
+      "receipt": {
+        "issue_id": "AH-743",
+        "run_id": "RUN-AGENTHUB-YOUTRACK-GITHUB-BOARD-FINAL-CLOSURE-20260611",
+        "repository": "arwoxbx24/agenthub-control-spine",
+        "branch": "agenthub/youtrack-github-board-final-closure-20260611",
+        "pr": 155,
+        "head_sha": "abc123",
+        "merge_sha": null,
+        "official_docs_checked": [
+          "https://www.jetbrains.com/help/youtrack/devportal/youtrack-rest-api.html",
+          "https://www.jetbrains.com/help/youtrack/devportal/resource-api-commands.html",
+          "https://www.jetbrains.com/help/youtrack/server/integration-with-version-control-systems.html",
+          "https://www.jetbrains.com/help/youtrack/server/github-integration.html",
+          "https://www.jetbrains.com/help/youtrack/server/map-issues-to-vcs-change-commit.html",
+          "https://www.jetbrains.com/help/youtrack/server/apply-commands-in-vcs-commits.html"
+        ],
+        "integration_state": "checked_existing",
+        "mapping_check": {
+          "project_mapping": "checked_or_manual",
+          "repository_mapping": "checked_or_manual",
+          "webhook_state": "not_admin_readable_manual_metadata_attached",
+          "branch_references": "issue_id_in_branch_required",
+          "monitored_branches": "task_branch_recorded",
+          "processing_scheme": "official_first",
+          "committers_group": "not_required_for_manual_metadata",
+          "user_matching": "not_required_for_manual_metadata"
+        },
+        "github_metadata_attached": true,
+        "visibility_result": "manual_metadata_visible",
+        "owner_only_gate": null,
+        "secret_redaction_gate": "PASS",
+        "bridge_gate": "PASS"
+      }
+    }
+  ],
+  "negative": [
+    {"name": "no_official_docs", "patch": {"official_docs_checked": []}, "expected_error": "official_docs_checked must include at least five JetBrains YouTrack URLs"},
+    {"name": "pass_with_owner_gate", "patch": {"bridge_gate": "PASS", "owner_only_gate": "OWNER_ONLY_GITHUB_YOUTRACK_TOKEN_GATE"}, "expected_error": "owner_only_gate must be empty for PASS"},
+    {"name": "metadata_not_attached", "patch": {"github_metadata_attached": false}, "expected_error": "github_metadata_attached must be true"}
+  ]
+}
