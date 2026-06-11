@@ -1,0 +1,94 @@
+---
+artifact_id: agenthub-post-pr149-scope-lane-self-healing-and-repo-hygiene-contract-20260610
+artifact_type: architecture_control_prompt
+owner_role: T1 Architecture Broker / T0 Registrar / AgentHub Orchestrator
+source_task: AH-738 / AH-731 follow-up
+run_id: RUN-AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-20260610
+created_at: 2026-06-10
+lifecycle_status: active_control_candidate
+default_load: false
+safe_to_replay: false
+---
+
+# AgentHub Post-PR149 Scope-Lane Self-Healing And Repository Hygiene Contract
+
+## Mission
+
+After PR #149 merged, stop carrying obsolete blockers and stop token-burning deadblock loops. Convert routine routing failures into same-run self-healing work instead of repeated owner-facing `BLOCK` output, while preserving hard stops for secrets, destructive/global actions, and unscoped live runtime mutation.
+
+## Source Of Truth
+
+1. OpenAI system/developer instructions.
+2. ChatGPT AgentHub Project Instructions.
+3. `AGENTS.md`.
+4. `INDEX.md`.
+5. `ARTIFACT_REGISTER.md`.
+6. `PR_QUEUE_REGISTER.md`.
+7. Current PR #149 readback.
+8. PR #149 receipt: `reports/receipts/RUN-CONTROL-SPINE-BRANCH-HYGIENE-20260610-receipt.md`.
+9. Current owner request.
+10. Exact repository file readback before lifecycle decisions.
+
+## Verified Baseline
+
+- Repository: `arwoxbx24/agenthub-control-spine`.
+- PR #149 is merged with merge SHA `923b3123e46124a6a39a74938eb33b0744bcbe69`.
+- PR #149 branch-hygiene receipt exists at `reports/receipts/RUN-CONTROL-SPINE-BRANCH-HYGIENE-20260610-receipt.md`.
+- The obsolete blocker `GITHUB_CONNECTOR_WRITE_UNAVAILABLE` must not be repeated after merge readback.
+- Branch cleanup after PR #149 leaves only `main`, `repo-bridge-contract-20260607`, and `agenthub/ah-728-minimal-core-recovery-20260610` by current readback.
+- `apps/agenthub-chatgpt-control-app/` remains AH-507 prototype/audit-only unless current register says otherwise.
+
+## Scope Lanes
+
+### Lane 0 - Hard Safety
+
+Stop only for secret/token/private key exposure, broad destructive delete/reset/prune, production/runtime mutation without scoped T2 authority, branch protection/CODEOWNERS weakening without explicit security authority, personal repo use without explicit current-task permission, and owner-only legal/payment/identity gates.
+
+### Lane 1 - Routine Self-Healing
+
+Do not stop or spam owner chat for missing task id, dispatch gate, physical task write, full task-card fields, broken share link, duplicate progress hook warnings, route receipt gaps, stale blocker text after merge/readback, or safe payload wording filter hits. Bind to named issues such as `AH-738`, `AH-724`, or `AH-731`; generate one full safe payload; rewrite filtered wording neutrally; continue same run. Never repeat the same blocker more than once.
+
+### Lane 2 - Repository Lifecycle Inventory
+
+Read-only until classification is complete. Inventory `apps/`, `prompts/`, `reports/`, `reports/receipts/`, `reports/audits/`, `reports/apps/`, `governance/`, `runbooks/`, `schemas/`, `validators/`, `evals/`, `.github/`, `context/`, and root docs. Classify each artifact as exactly one of: `keep_active_policy`, `keep_active_control`, `keep_current_context`, `keep_schema_validator_eval`, `keep_operational_receipt`, `audit_only_no_default_load`, `consumed_prompt`, `supersede_with_replacement`, `quarantine_conflict`, `archive_prototype`, or `delete_with_receipt_candidate`. Do not delete before inventory, register decision, and receipt.
+
+### Lane 3 - Fresh Branch Guard
+
+Fresh branches must not block stale branch cleanup. Record protected fresh branches as `defer_until_age_threshold_or_open_pr_readback`. Do not report fresh branch deferral as PR #149 cleanup failure.
+
+## Required Behavior
+
+1. Stop owner-facing progress spam.
+2. Verify PR #149 merged/readback before reusing any old blocker.
+3. Select exactly one lane before acting.
+4. Turn routine blockers into same-run repair tasks.
+5. Inventory repository artifacts before archive/quarantine/delete proposals.
+6. Preserve hard safety stops.
+7. Write receipt and register/index/PR queue patch when scope requires.
+8. Final owner output is Russian `Fact / Action / Left` only.
+
+## Validation Gates
+
+- `PR149_OBSOLETE_BLOCKERS_CLEARED`
+- `SOFT_BLOCKER_SELF_HEALING_ENABLED`
+- `NO_DUPLICATE_PROGRESS_SPAM`
+- `TASK_PAYLOAD_FULL_CARD_ONCE`
+- `FORBIDDEN_WORD_PAYLOAD_REWRITE_OK`
+- `LANE_CLASSIFICATION_PRESENT`
+- `REPO_INVENTORY_PRESENT`
+- `APP_AH507_CLASSIFIED_AUDIT_ONLY_OR_REPLACED_BY_REGISTER`
+- `NO_BROAD_DELETE`
+- `NO_FRESH_BRANCH_DELETE`
+- `NO_SECRET_OUTPUT`
+- `REGISTER_AND_INDEX_PATCH_PRESENT_WHEN_SCOPE_REQUIRES`
+- `FINAL_FACT_ACTION_LEFT_ONLY`
+
+## Typed Blockers
+
+Use one terminal blocker only: `OWNER_ONLY_IRREVERSIBLE_GATE`, `SECRET_OR_RAW_LINK_RISK`, `FORBIDDEN_SCOPE_BLOCKER`, `REPO_LIFECYCLE_INVENTORY_REQUIRED`, `TASK_SERVICE_WRITE_UNAVAILABLE_AFTER_SELF_HEAL`, `REGISTER_ROUTE_UNAVAILABLE_AFTER_SELF_HEAL`, `DELETE_RECEIPT_MISSING`, `FRESH_BRANCH_DEFERRED_NOT_FAILURE`, or `PERSONAL_REPO_PERMISSION_MISSING`.
+
+Do not use obsolete final blockers after self-heal/readback: `GITHUB_CONNECTOR_WRITE_UNAVAILABLE` after PR #149 merge, `BRANCH_DELETE_EXECUTOR_BLOCKED` after delete receipt, `DISPATCH_TASK_GATE_MISSING` before full task-card self-healing, or `DUPLICATE_PROGRESS_OUTPUT_BLOCKED` as terminal owner blocker.
+
+## Red-Team Result
+
+PASS with residual: this contract is repository/control-spine governance only. It does not authorize runtime/product Done, branch protection bypass, secret exposure, or broad deletion.

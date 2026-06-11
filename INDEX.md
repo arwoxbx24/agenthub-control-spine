@@ -364,7 +364,7 @@ status: draft
 | `prompts/templates/methodology-router-worker-template.md` | worker prompt template | AH-595 | active |
 | `reports/audits/P0-project-methodology-mirror-gap-audit-20260528.md` | audit report | AH-595 | audit-only |
 | `reports/receipts/P0-project-methodology-mirror-implementation-receipt-20260528.md` | operational receipt | AH-595 | operational-receipt |
-| `reports/validations/P0-project-methodology-mirror-enforcement-validation-20260528.md` | validation report | AH-595 | audit-only |
+| `reports/validations/P0-project-methodology-mirror-enforcement-validation-20260528.md` | audit-only | AH-595 | audit-only |
 | `reports/incidents/P0-komodo-kutt-agenthub-final-closure-report-20260528.md` | incident report | AH-574 | audit-only |
 | `reports/receipts/P0-komodo-kutt-agenthub-final-closure-receipt-20260528.md` | operational receipt | AH-574 | operational-receipt |
 | `reports/audits/P0-agenthub-prompt-implementation-ledger-readback-20260528.md` | prompt implementation readback | AH-574 | audit-only |
@@ -402,3 +402,10 @@ status: draft
 | `evals/document-dedupe-gate/fixtures.json` | eval fixtures | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | active |
 | `reports/validations/P1-document-dedupe-gate-validation-20260607.md` | validation report | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | audit-only |
 | `reports/receipts/P1-document-dedupe-gate-implementation-receipt-20260607.md` | operational receipt | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | operational-receipt |
+
+| `prompts/architecture/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-REPO-HYGIENE-20260610.txt` | post-PR149 scope-lane self-healing control prompt | AH-738 / AH-731 follow-up | active-control-candidate |
+| `reports/validations/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-VALIDATION-20260610.md` | validation report | AH-738 / AH-731 follow-up | operational-receipt |
+| `reports/receipts/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-RECEIPT-20260610.md` | operational receipt | AH-738 / AH-731 follow-up | operational-receipt |
+| `reports/patches/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-REGISTER-PATCH-20260610.diff` | register/index/PR queue patch proposal | AH-738 / AH-731 follow-up | patch-proposal |
+| `prompts/architecture/AGENTHUB-REPOSITORY-BRIDGE-DEEP-EXECUTION-CONTRACT-20260607.txt` | architecture execution contract | GitHub issue repository bridge / PR #147 carried by PR #152 | active |
+| `reports/receipts/AGENTHUB-REPOSITORY-BRIDGE-DEEP-EXECUTION-CONTRACT-RECEIPT-20260607.md` | operational receipt | GitHub issue repository bridge / PR #147 carried by PR #152 | active |
