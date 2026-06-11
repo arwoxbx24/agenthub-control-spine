@@ -114,3 +114,10 @@ before closure.
 | `#54` | Merged on 2026-05-26 for `AH-571`; adds Komodo orchestration report, implementation decomposition, receipts, index/register coverage, 2026-05-26 approved corrected contract realignment, and process hardening that pins `AH-578` as the single active live-route unblock gate. | none for repository/process scope; live rollout remains gated by `AH-578` route evidence before `AH-574` baseline. |
 | `#53` | Closed on 2026-05-26 before review because the first branch inherited unrelated evidence history; superseded by clean PR `#54`. | none after close |
 | `#48` | Merged on 2026-05-25; installs AH-554 access-rights/live-worker enablement controls. | Runtime repair remains local to AH-554: `AGENTHUB_LIVE_WORKER_AUTH_MISSING`. |
+
+## PR #153 Final Closure State
+
+| PR | Task id | RUN_ID | Branch | Owner role | Queue class | Registrar action | Evidence link | Blocker |
+|---|---|---|---|---|---|---|---|---|
+| `#153` | `AH-738` | `RUN-AH738-PR153-FINAL-CLOSURE-20260611` | `agenthub/ah738-smart-self-healing-authority-elevation-20260611` | T1 Architecture Broker / T0 Registrar / T2 Scoped Worker / Verifier | `MERGE_READY_AFTER_VALIDATION` | Reopened and finalized after residual closure: index/register/PR queue coverage added, validators executed, validation report and receipt updated. | PR `#153`; validation report; receipt; touched validators; fixture `evals/agenthub-self-healing/fixtures/scoped_autonomy_contract_20260611.json`. | none after validation PASS |
+
