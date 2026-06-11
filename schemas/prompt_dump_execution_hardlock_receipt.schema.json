@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/prompt_dump_execution_hardlock_receipt.schema.json",
+  "title": "Prompt Dump Execution Hardlock Receipt",
+  "type": "object",
+  "required": [
+    "task_id",
+    "run_id",
+    "duplicate_check",
+    "prompt_dump_detected",
+    "prompt_executed_as_contract",
+    "implementation_evidence",
+    "validation_evidence",
+    "receipt_path",
+    "final_output_shape",
+    "youtrack_stage_readback",
+    "done_gate",
+    "secret_redaction_gate"
+  ],
+  "properties": {
+    "task_id": {"type": "string", "pattern": "^[A-Z][A-Z0-9]+-[0-9]+$"},
+    "run_id": {"type": "string", "minLength": 1},
+    "duplicate_check": {"enum": ["PASS", "reused_existing", "created_unique"]},
+    "prompt_dump_detected": {"type": "boolean"},
+    "prompt_executed_as_contract": {"const": true},
+    "implementation_evidence": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "validation_evidence": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "receipt_path": {"type": "string", "minLength": 1},
+    "final_output_shape": {"enum": ["compact_terminal_only", "blocked_typed_terminal_only"]},
+    "youtrack_stage_readback": {"enum": ["Done", "blocked"]},
+    "done_gate": {"enum": ["PASS", "BLOCKED"]},
+    "secret_redaction_gate": {"const": "PASS"},
+    "blocker": {"type": ["string", "null"]}
+  },
+  "additionalProperties": true
+}
