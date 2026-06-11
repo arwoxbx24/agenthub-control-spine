@@ -9,6 +9,7 @@
     "run_id",
     "task_id",
     "scope_signature",
+    "lane",
     "actor_role",
     "operation",
     "target_surface",
@@ -27,14 +28,17 @@
     "run_id": { "type": "string", "minLength": 8 },
     "task_id": { "type": "string", "minLength": 1 },
     "scope_signature": { "type": "string", "minLength": 1 },
+    "lane": { "type": "integer", "minimum": 0, "maximum": 6 },
     "actor_role": {
+      "type": "string",
       "enum": [
-        "T0_CONTROL",
+        "T0_REGISTRAR",
+        "T0_ROUTER",
         "T1_ARCHITECT",
-        "T2_CODEX_WORKER",
-        "T2_DEVOPS_WORKER",
-        "T2_REGISTRAR",
-        "T2_SECRET_HANDLE_REGISTRAR",
+        "T2_REPO_WRITER",
+        "T2_READONLY_DIAGNOSTIC_WORKER",
+        "T2_REVERSIBLE_REPAIR_WORKER",
+        "T2_DESTRUCTIVE_CLEANUP_WORKER",
         "VERIFIER",
         "REGISTRAR"
       ]
@@ -51,30 +55,32 @@
         "required_model_class": { "type": "string", "minLength": 1 },
         "selected_model": { "type": "string", "minLength": 1 },
         "route_reason": { "type": "string", "minLength": 1 },
-        "codex_available": { "type": "boolean" },
         "same_run_fallback": { "type": "boolean" },
-        "fallback_receipt": { "type": "string", "minLength": 1 }
+        "fallback_receipt": { "type": "string" }
       }
     },
     "secrets_policy": { "enum": ["metadata_only", "no_secret_access", "owner_only_secret_required"] },
-    "rollback_requirement": { "enum": ["none", "git_branch", "runtime_rollback_plan", "owner_gate_required"] },
+    "rollback_requirement": { "enum": ["none", "git_branch", "runtime_rollback_plan", "lane6_proof_required"] },
     "evidence_target": { "type": "string", "minLength": 1 },
     "validation_plan": { "type": "array", "minItems": 1, "items": { "type": "string" } },
     "owner_only_check": { "enum": ["not_required", "required", "blocked_owner_only"] },
     "decision": {
+      "type": "string",
       "enum": [
-        "ALLOW_CONTROL_ROUTE",
-        "ALLOW_POLICY_ARCHITECTURE",
-        "ALLOW_CODEX_AUTHORIZED_WORKER",
-        "ALLOW_REGISTRAR_PATCH",
-        "ALLOW_SECRET_HANDLE_METADATA",
-        "ALLOW_READONLY_VERIFY",
+        "ALLOW_LANE1_CONTROL_SPINE_WRITE",
+        "ALLOW_LANE2_REPOSITORY_HYGIENE",
+        "ALLOW_LANE3_TASK_RUN_SELF_HEALING",
+        "ALLOW_LANE4_READONLY_DIAGNOSTIC",
+        "ALLOW_LANE5_REVERSIBLE_RUNTIME_REPAIR",
+        "ALLOW_LANE6_DESTRUCTIVE_CLEANUP",
+        "ROUTE_TO_SCOPED_REPO_WRITER",
+        "ROUTE_TO_READONLY_DIAGNOSTIC_WORKER",
+        "ROUTE_TO_REVERSIBLE_REPAIR_WORKER",
+        "AUTO_WRITE_MODEL_FALLBACK_RECEIPT",
         "BLOCKED_T0_DIRECT_RUNTIME_ACTION",
-        "BLOCKED_T0_DIRECT_AUTHORSHIP",
-        "POLICY_DEFECT_CAPABILITY_FIELDS_MISSING",
-        "MODEL_ROUTE_DEFECT",
-        "MODEL_FALLBACK_DEFECT",
-        "OWNER_ONLY_GATE"
+        "OWNER_ONLY_DESTRUCTIVE_CONFIRMATION_REQUIRED",
+        "LANE6_PROOF_MISSING",
+        "SECRET_EXPOSURE_RISK"
       ]
     }
   }

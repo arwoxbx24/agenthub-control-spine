@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/agenthub_lane6_destruction_proof.schema.json",
+  "title": "AgentHub Lane 6 Destruction Proof",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "task_id",
+    "target_id",
+    "target_class",
+    "environment_class",
+    "reason",
+    "dependency_check",
+    "validation_after_delete",
+    "receipt_path"
+  ],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "target_id": { "type": "string", "minLength": 1 },
+    "target_class": { "type": "string", "enum": ["branch", "artifact", "container", "image", "volume", "service", "app", "db", "config"] },
+    "environment_class": { "type": "string", "enum": ["production", "staging", "test", "scratch", "unknown"] },
+    "reason": { "type": "string", "minLength": 1 },
+    "dependency_check": { "type": "string", "minLength": 1 },
+    "owner_confirmation": { "type": "boolean", "default": false },
+    "replacement_proof": { "type": "string" },
+    "backup_or_snapshot_proof": { "type": "string" },
+    "rollback_or_irreversible_note": { "type": "string" },
+    "validation_after_delete": { "type": "string", "minLength": 1 },
+    "receipt_path": { "type": "string", "minLength": 1 }
+  },
+  "anyOf": [
+    { "required": ["owner_confirmation"] },
+    { "required": ["replacement_proof"] },
+    { "required": ["backup_or_snapshot_proof"] }
+  ]
+}

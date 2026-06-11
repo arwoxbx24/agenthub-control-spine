@@ -409,3 +409,21 @@ status: draft
 | `reports/patches/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-REGISTER-PATCH-20260610.diff` | register/index/PR queue patch proposal | AH-738 / AH-731 follow-up | patch-proposal |
 | `prompts/architecture/AGENTHUB-REPOSITORY-BRIDGE-DEEP-EXECUTION-CONTRACT-20260607.txt` | architecture execution contract | GitHub issue repository bridge / PR #147 carried by PR #152 | active |
 | `reports/receipts/AGENTHUB-REPOSITORY-BRIDGE-DEEP-EXECUTION-CONTRACT-RECEIPT-20260607.md` | operational receipt | GitHub issue repository bridge / PR #147 carried by PR #152 | active |
+
+## PR #153 Smart Self-Healing Authority Elevation Coverage
+
+| Artifact | Type | Source task | Status |
+|---|---|---|---|
+| `governance/agenthub-lane-router-and-blocker-scope-policy.md` | governance policy | AH-738 / PR153 | active |
+| `governance/agenthub-scoped-autonomy-lane6-destructive-proof-profile.md` | governance policy | AH-738 / PR153 | active |
+| `schemas/agenthub-blocker-taxonomy.schema.json` | schema | AH-738 / PR153 | active |
+| `schemas/agenthub_action_authorization_receipt.schema.json` | schema | AH-738 / PR153 | active |
+| `schemas/agenthub_lane6_destruction_proof.schema.json` | schema | AH-738 / PR153 | active |
+| `validators/agenthub_action_policy_validator.rb` | validator | AH-738 / PR153 | active |
+| `validators/agenthub_self_healing_validator.rb` | validator | AH-738 / PR153 | active |
+| `validators/t0_escape_boundary_gates_validator.rb` | validator | AH-738 / PR153 | active |
+| `evals/agenthub-self-healing/fixtures/scoped_autonomy_contract_20260611.json` | eval fixture | AH-738 / PR153 | active |
+| `prompts/architecture/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-20260611.txt` | architecture control prompt | AH-738 / PR153 | active-control-candidate |
+| `reports/validations/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-VALIDATION-20260611.md` | validation report | AH-738 / PR153 | operational-receipt |
+| `reports/receipts/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-RECEIPT-20260611.md` | operational receipt | AH-738 / PR153 | operational-receipt |
+

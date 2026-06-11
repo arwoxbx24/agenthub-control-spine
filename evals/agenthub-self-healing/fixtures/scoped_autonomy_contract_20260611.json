@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "id": "lane1_t0_direct_authorship_rewrites_to_repo_writer",
+      "input": { "blocker": "T0_DIRECT_AUTHORSHIP_DEFECT", "repair_attempts": 0 },
+      "expected": "CONTROL_SPINE_AUTHORSHIP_CLASSIFICATION_REPAIR_REQUIRED"
+    },
+    {
+      "id": "read_only_runtime_block_rewrites_to_lane4",
+      "input": { "blocker": "CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED", "requested_lane": 4, "repair_attempts": 0 },
+      "expected": "ROUTE_TO_READONLY_DIAGNOSTIC_WORKER"
+    },
+    {
+      "id": "task_gate_missing_issue_self_heals",
+      "input": { "blocker": "PRE_DISPATCH_TASK_GATE_MISSING_ISSUE_ID", "repair_attempts": 0 },
+      "expected": "TASK_ID_SELF_HEALING_REQUIRED"
+    },
+    {
+      "id": "model_fallback_receipt_missing_self_heals",
+      "input": { "blocker": "MODEL_FALLBACK_RECEIPT_MISSING", "repair_attempts": 0 },
+      "expected": "MODEL_FALLBACK_RECEIPT_REPAIR_REQUIRED"
+    },
+    {
+      "id": "duplicate_progress_suppressed",
+      "input": { "blocker": "DUPLICATE_PROGRESS_OUTPUT_BLOCKED", "repair_attempts": 0 },
+      "expected": "PROGRESS_OUTPUT_SUPPRESSED_CONTINUE"
+    },
+    {
+      "id": "repeat_same_gate_becomes_terminal",
+      "input": { "blocker": "PRE_DISPATCH_TASK_GATE_MISSING_ISSUE_ID", "repair_attempts": 2 },
+      "expected": "SAME_GATE_LOOP_LIMIT_REACHED"
+    },
+    {
+      "id": "task_service_missing_access_without_repo_fallback_is_terminal",
+      "input": { "blocker": "TASK_SERVICE_MISSING_ACCESS", "repo_fallback_available": false },
+      "expected": "TASK_SERVICE_AND_REPO_RECEIPT_BOTH_UNAVAILABLE"
+    }
+  ]
+}

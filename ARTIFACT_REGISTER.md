@@ -437,3 +437,21 @@ Compatibility states from older records remain readable: `active_policy`,
 | `reports/patches/AGENTHUB-POST-PR149-SCOPE-LANE-SELF-HEALING-REGISTER-PATCH-20260610.diff` | `operational_receipt` | false | false | AH-738 / AH-731 follow-up | Patch proposal for index/register/PR queue coverage. |
 | `prompts/architecture/AGENTHUB-REPOSITORY-BRIDGE-DEEP-EXECUTION-CONTRACT-20260607.txt` | `active_control` | false | false | GitHub issue repository bridge / PR #147 carried by PR #152 | Canonical repository-bridge contract preserved after PR consolidation. |
 | `reports/receipts/AGENTHUB-REPOSITORY-BRIDGE-DEEP-EXECUTION-CONTRACT-RECEIPT-20260607.md` | `operational_receipt` | false | false | GitHub issue repository bridge / PR #147 carried by PR #152 | Historical receipt retained while PR `#147` is administratively superseded by PR `#152`. |
+
+## PR #153 Smart Self-Healing Authority Elevation Coverage
+
+| Artifact | Lifecycle | Default load | Safe to replay | Source task | Notes |
+|---|---|---:|---:|---|---|
+| `governance/agenthub-lane-router-and-blocker-scope-policy.md` | `active_policy` | false | false | AH-738 / PR153 | Lane 0-6 routine blocker self-healing policy. |
+| `governance/agenthub-scoped-autonomy-lane6-destructive-proof-profile.md` | `active_policy` | false | false | AH-738 / PR153 | Lane 6 destructive proof profile. |
+| `schemas/agenthub-blocker-taxonomy.schema.json` | `active_control` | false | false | AH-738 / PR153 | Blocker taxonomy schema. |
+| `schemas/agenthub_action_authorization_receipt.schema.json` | `active_control` | false | false | AH-738 / PR153 | Lane-aware action authorization receipt schema. |
+| `schemas/agenthub_lane6_destruction_proof.schema.json` | `active_control` | false | false | AH-738 / PR153 | Lane 6 destructive proof schema. |
+| `validators/agenthub_action_policy_validator.rb` | `active_control` | false | false | AH-738 / PR153 | Lane-aware authorization validator. |
+| `validators/agenthub_self_healing_validator.rb` | `active_control` | false | false | AH-738 / PR153 | Routine blocker self-healing validator. |
+| `validators/t0_escape_boundary_gates_validator.rb` | `active_control` | false | false | AH-738 / PR153 | T0 boundary validator. |
+| `evals/agenthub-self-healing/fixtures/scoped_autonomy_contract_20260611.json` | `active_control` | false | false | AH-738 / PR153 | PR #153 regression fixture. |
+| `prompts/architecture/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-20260611.txt` | `active_control` | false | false | AH-738 / PR153 | Architecture control prompt; not default-loaded. |
+| `reports/validations/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-VALIDATION-20260611.md` | `operational_receipt` | false | false | AH-738 / PR153 | Final validation report. |
+| `reports/receipts/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-RECEIPT-20260611.md` | `operational_receipt` | false | false | AH-738 / PR153 | Final PR #153 closure receipt. |
+
