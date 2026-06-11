@@ -3,7 +3,7 @@ artifact_id: agenthub-blocker-inversion-scoped-self-healing-receipt-20260611
 artifact_type: implementation_receipt
 source_task: AH-745
 run_id: RUN-AGENTHUB-BLOCKER-INVERSION-SCOPED-SELF-HEALING-20260611
-status: pending_final_youtrack_done_readback
+status: done_with_youtrack_readback
 ---
 
 # AgentHub Blocker Inversion Scoped Self-Healing Receipt
@@ -14,6 +14,14 @@ status: pending_final_youtrack_done_readback
 - RUN_ID: RUN-AGENTHUB-BLOCKER-INVERSION-SCOPED-SELF-HEALING-20260611
 - Repository: arwoxbx24/agenthub-control-spine
 - Branch: agenthub/blocker-inversion-scoped-self-healing-20260611
+- PR: #157
+
+## Final YouTrack Readback
+
+- Stage: Done
+- AH Done Gate: PASS
+- Resolved at: 2026-06-11 17:29:34
+- Active blocker: none
 
 ## Installed Package
 
@@ -45,6 +53,12 @@ Routine blockers map to same-contour repair: missing task id, stale run state, m
 
 Allowed terminal blockers are restricted to owner-only irreversible, secret/account/legal/payment/global destructive authority, confirmed external outage, security quarantine, or instruction source drift.
 
+## Official Fact Check
+
+- OpenAI Codex docs: sandbox and approval settings are configurable; full bypass is high-risk and ordinary controlled mode should use bounded sandbox/approval.
+- MCP docs: tools are discoverable/callable and sensitive operations require authorization.
+- YouTrack docs: REST and Commands APIs support authenticated issue changes and commands.
+
 ## Gates
 
 - ONE_CONTOUR_ONLY: PASS
@@ -58,7 +72,8 @@ Allowed terminal blockers are restricted to owner-only irreversible, secret/acco
 - CODEX_MODEL_TRUTH_GATE_INSTALLED: PASS
 - LANE6_DESTRUCTIVE_PROOF_INSTALLED: PASS
 - RECEIPT_PRESENT: PASS
-- TASK_STAGE_DONE_READBACK: pending
+- TASK_STAGE_DONE_READBACK: PASS
+- FINAL_CAVEMAN_ONLY: PASS
 
 ## Forbidden Scope
 
