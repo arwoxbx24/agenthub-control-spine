@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/youtrack_task_lifecycle_receipt.schema.json",
+  "title": "YouTrack Task Lifecycle Receipt",
+  "type": "object",
+  "required": [
+    "issue_id",
+    "run_id",
+    "board",
+    "stage_field_name",
+    "stage_mapping",
+    "stage_timeline",
+    "final_stage_readback",
+    "duplicate_check",
+    "task_card_enrichment",
+    "github_metadata",
+    "validation_evidence",
+    "receipt_path",
+    "secret_redaction_gate",
+    "parent_child_gate",
+    "done_gate"
+  ],
+  "properties": {
+    "issue_id": {"type": "string", "pattern": "^[A-Z][A-Z0-9]+-[0-9]+$"},
+    "run_id": {"type": "string", "minLength": 1},
+    "board": {"type": "object", "required": ["id", "name"], "properties": {"id": {"type": "string"}, "name": {"type": "string"}}},
+    "stage_field_name": {"type": "string", "minLength": 1},
+    "stage_mapping": {"type": "object", "required": ["Backlog", "Develop", "Review", "Test", "Done"], "additionalProperties": {"type": "string"}},
+    "stage_timeline": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["stage", "readback_stage", "timestamp", "actor", "method"],
+        "properties": {
+          "stage": {"enum": ["Backlog", "Develop", "Review", "Test", "Done"]},
+          "readback_stage": {"type": "string"},
+          "timestamp": {"type": "string"},
+          "actor": {"type": "string"},
+          "method": {"enum": ["youtrack_rest", "youtrack_commands_api", "youtrack_mcp", "manual_readback"]}
+        }
+      }
+    },
+    "final_stage_readback": {"const": "Done"},
+    "duplicate_check": {"type": "object", "required": ["status", "signature"], "properties": {"status": {"enum": ["reused_existing", "created_unique", "no_duplicate"]}, "signature": {"type": "string"}}},
+    "task_card_enrichment": {"type": "object", "required": ["run_id", "repo", "branch", "pr", "commit_sha", "receipt", "validation", "done_gate_text"], "additionalProperties": true},
+    "github_metadata": {"type": "object", "required": ["repository", "branch", "head_sha"], "additionalProperties": true},
+    "validation_evidence": {"type": "string", "minLength": 1},
+    "receipt_path": {"type": "string", "minLength": 1},
+    "secret_redaction_gate": {"const": "PASS"},
+    "parent_child_gate": {"enum": ["PASS", "not_applicable"]},
+    "done_gate": {"const": "PASS"},
+    "blocker": {"type": ["string", "null"]}
+  },
+  "additionalProperties": true
+}
