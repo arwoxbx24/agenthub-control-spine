@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/youtrack_task_lifecycle_receipt.schema.json",
+  "title": "YouTrack Task Lifecycle Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["issue_id", "run_id", "duplicate_check", "previous_stage", "final_stage", "implementation_evidence", "validation_evidence", "receipt_path", "blocker"],
+  "properties": {
+    "issue_id": { "type": "string", "pattern": "^[A-Z]+-[0-9]+$" },
+    "run_id": { "type": "string", "minLength": 1 },
+    "duplicate_check": { "type": "string", "minLength": 1 },
+    "previous_stage": { "type": "string" },
+    "final_stage": { "type": "string", "enum": ["Backlog", "Develop", "Review", "Test", "Done"] },
+    "implementation_evidence": { "type": "string", "minLength": 1 },
+    "validation_evidence": { "type": "string", "minLength": 1 },
+    "receipt_path": { "type": "string", "minLength": 1 },
+    "board_readback": { "type": "string" },
+    "blocker": { "type": "string" }
+  }
+}
