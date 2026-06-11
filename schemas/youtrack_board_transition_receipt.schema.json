@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/youtrack_board_transition_receipt.schema.json",
+  "title": "YouTrack Board Transition Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["issue_id", "board", "from_stage", "to_stage", "transition_method", "readback_stage", "status"],
+  "properties": {
+    "issue_id": { "type": "string", "pattern": "^[A-Z]+-[0-9]+$" },
+    "board": { "type": "string", "minLength": 1 },
+    "from_stage": { "type": "string" },
+    "to_stage": { "type": "string", "enum": ["Backlog", "Develop", "Review", "Test", "Done"] },
+    "transition_method": { "type": "string", "enum": ["custom_field_update", "youtrack_command", "workflow_transition"] },
+    "readback_stage": { "type": "string" },
+    "status": { "type": "string", "enum": ["PASS", "FAIL", "BLOCKED"] },
+    "blocker": { "type": "string" }
+  }
+}
