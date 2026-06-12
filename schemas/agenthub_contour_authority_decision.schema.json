@@ -1,0 +1,20 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://agenthub.local/schemas/agenthub_contour_authority_decision.schema.json",
+  "title":"AgentHub Contour Authority Decision",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["task_id","run_id","contour_id","lane","blocker","classification","allowed_operations","forbidden_operations","owner_only_required","next_action"],
+  "properties":{
+    "task_id":{"type":"string","minLength":1},
+    "run_id":{"type":"string","minLength":1},
+    "contour_id":{"type":"string","minLength":1},
+    "lane":{"type":"integer","minimum":0,"maximum":7},
+    "blocker":{"type":"string","minLength":1},
+    "classification":{"type":"string","enum":["routine_packfix","owner_only","forbidden","done"]},
+    "allowed_operations":{"type":"array","items":{"type":"string"}},
+    "forbidden_operations":{"type":"array","items":{"type":"string"}},
+    "owner_only_required":{"type":"boolean"},
+    "next_action":{"type":"string","minLength":1}
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://agenthub.local/schemas/agenthub_contour_packfix.schema.json",
+  "title":"AgentHub Contour PackFix",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["packfix_id","task_id","run_id","source_blocker","repair_lane","attempt","result","evidence_label","receipt_path"],
+  "properties":{
+    "packfix_id":{"type":"string","minLength":1},
+    "task_id":{"type":"string","minLength":1},
+    "run_id":{"type":"string","minLength":1},
+    "source_blocker":{"type":"string","minLength":1},
+    "repair_lane":{"type":"integer","minimum":0,"maximum":7},
+    "attempt":{"type":"integer","minimum":1,"maximum":2},
+    "result":{"type":"string","enum":["PASS","FAIL","OWNER_ONLY","FORBIDDEN"]},
+    "evidence_label":{"type":"string","minLength":1},
+    "receipt_path":{"type":"string","minLength":1}
+  }
+}
