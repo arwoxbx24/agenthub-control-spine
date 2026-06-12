@@ -1,0 +1,51 @@
+{
+  "schema": "agenthub_universal_infrastructure_scope_broker_fixtures.v1",
+  "source_task": "AH-772",
+  "positive_cases": [
+    {
+      "name": "generic_docker_compose_contour",
+      "descriptor": {
+        "service_id": "svc-compose-api",
+        "project_root": "@workspace/projects/example-api",
+        "component_type": "docker_compose",
+        "task_id": "AH-772",
+        "run_id": "RUN-AGENTHUB-UNIVERSAL-INFRASTRUCTURE-SCOPE-BROKER-20260612",
+        "allowed_operations": ["read_metadata", "sandbox_rehearsal"],
+        "forbidden_operations": ["volume_delete", "db_mutation"],
+        "required_evidence": ["docs_packet", "healthcheck", "youtrack_readback"]
+      }
+    },
+    {
+      "name": "routine_blocker_packfix",
+      "packfix": {
+        "trigger_blocker": "VALIDATOR_EXECUTION_NOT_RUN",
+        "lane": 2,
+        "routine_or_owner_only": "routine",
+        "attempt_number": 1,
+        "result": "PASS"
+      }
+    }
+  ],
+  "negative_cases": [
+    {
+      "name": "service_specific_policy_leak",
+      "expected_failure": "SERVICE_SPECIFIC_POLICY_LEAK",
+      "text": "Global policy hardcodes one named service as the model for all infrastructure."
+    },
+    {
+      "name": "http_200_as_ui_done",
+      "expected_failure": "HTTP_200_ONLY_EVIDENCE",
+      "evidence": ["HTTP_ONLY"]
+    },
+    {
+      "name": "third_same_retry",
+      "expected_failure": "ARCHITECTURE_REPAIR_REQUIRED",
+      "attempt_number": 3
+    },
+    {
+      "name": "raw_secret_output",
+      "expected_failure": "NO_RAW_SECRET_OUTPUT_FAIL",
+      "text": "SECRET_VALUE_SHOULD_NOT_APPEAR"
+    }
+  ]
+}
