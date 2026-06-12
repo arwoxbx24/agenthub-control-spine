@@ -1,0 +1,11 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://agenthub.local/schemas/agenthub_token_efficiency_receipt.schema.json",
+  "title":"AgentHub Token Efficiency Receipt",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["run_id","task_id","baseline","after","target_reduction_percent","result"],
+  "properties":{
+    "run_id":{"type":"string","minLength":1},"task_id":{"type":"string","minLength":1},"baseline":{"type":"object"},"after":{"type":"object"},"target_reduction_percent":{"type":"number","minimum":0},"result":{"type":"string","enum":["PASS","PARTIAL","FAIL"]},"notes":{"type":"string"}
+  }
+}
