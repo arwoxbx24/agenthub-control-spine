@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <title>AH-771 Owner Auth Handle Guide</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 860px; margin: 32px auto; line-height: 1.45; color: #111; }
+    code { background: #f3f3f3; padding: 2px 5px; border-radius: 4px; }
+    section { border-top: 1px solid #ddd; padding-top: 16px; margin-top: 16px; }
+  </style>
+</head>
+<body>
+  <h1>AH-771: Komodo Auth Handle Owner Guide</h1>
+  <p><strong>Why owner-only:</strong> internal lookup found historical Komodo recovery-user evidence, but no reusable current API handle was preserved. Existing reset scripts are too broad for schedule-only repair. No raw secret should be sent in chat.</p>
+
+  <section>
+    <h2>Official docs</h2>
+    <ul>
+      <li><a href="https://komo.do/docs/intro">Komodo intro: Core API/UI, Periphery, REST/WebSocket API</a></li>
+      <li><a href="https://komo.do/docs/configuration/permissioning">Komodo permissioning</a></li>
+      <li><a href="https://komo.do/docs/setup/connect-servers">Komodo server onboarding and key model</a></li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Scope needed</h2>
+    <p>Create or restore a scoped Komodo API/admin handle that can read Procedures, Actions, Stacks, Servers, and disable only the exact automation target:</p>
+    <p><code>AgentHub Auto Start Managed Stacks</code></p>
+    <p>No DB write, no Docker prune, no stack delete, no broad restart is requested by this guide.</p>
+  </section>
+
+  <section>
+    <h2>What not to share</h2>
+    <ul>
+      <li>Do not paste passwords, tokens, API keys, JWTs, env files, screenshots with secrets, or private keys into chat.</li>
+      <li>Do not commit secrets to GitHub.</li>
+      <li>Do not put raw values into YouTrack comments.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Storage target</h2>
+    <p>Store the handle only in the approved AgentHub secret-handle registry under a Komodo-scoped handle name. The agent must receive only handle metadata/readback, never the raw value.</p>
+  </section>
+
+  <section>
+    <h2>After owner finishes</h2>
+    <p>The agent will verify handle existence, run a redacted auth probe against Komodo Core API, read the exact procedure/schedule state, disable only the exact target if Lane 6 authority is present, and record before/after receipt.</p>
+  </section>
+</body>
+</html>
