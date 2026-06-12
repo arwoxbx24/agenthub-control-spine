@@ -1,0 +1,19 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://agenthub.local/schemas/agenthub_owner_auth_miniguide.schema.json",
+  "title":"AgentHub Owner Auth Mini Guide",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["task_id","service","why_owner_only","official_docs_url","scope_needed","what_not_to_share","storage_target","after_owner_evidence"],
+  "properties":{
+    "task_id":{"type":"string","minLength":1},
+    "service":{"type":"string","minLength":1},
+    "why_owner_only":{"type":"string","minLength":1},
+    "official_docs_url":{"type":"string","format":"uri"},
+    "ui_or_api_path":{"type":"string"},
+    "scope_needed":{"type":"string","minLength":1},
+    "what_not_to_share":{"type":"string","minLength":1},
+    "storage_target":{"type":"string","minLength":1},
+    "after_owner_evidence":{"type":"string","minLength":1}
+  }
+}

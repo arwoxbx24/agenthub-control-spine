@@ -1,0 +1,18 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://agenthub.local/schemas/agenthub_auth_handle_probe.schema.json",
+  "title":"AgentHub Auth Handle Probe",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["task_id","run_id","service","route","probe_attempted","redacted_proof","auth_result","raw_secret_exposed"],
+  "properties":{
+    "task_id":{"type":"string","minLength":1},
+    "run_id":{"type":"string","minLength":1},
+    "service":{"type":"string","minLength":1},
+    "route":{"type":"string","minLength":1},
+    "probe_attempted":{"type":"boolean"},
+    "redacted_proof":{"type":"string","minLength":1},
+    "auth_result":{"type":"string","enum":["PASS","FAIL","NO_HANDLE","OWNER_ONLY"]},
+    "raw_secret_exposed":{"type":"boolean"}
+  }
+}
