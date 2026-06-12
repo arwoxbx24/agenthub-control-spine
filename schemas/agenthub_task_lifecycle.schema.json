@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/agenthub_task_lifecycle.schema.json",
+  "title": "AgentHub Task Lifecycle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "run_id", "stage", "duplicate_check", "owner", "done_gate"],
+  "properties": {
+    "task_id": {"type":"string", "minLength":1},
+    "run_id": {"type":"string", "minLength":1},
+    "stage": {"type":"string", "enum":["Backlog","Develop","Preview","Test","Done"]},
+    "duplicate_check": {"type":"string", "enum":["PASS","FAIL"]},
+    "owner": {"type":"string", "minLength":1},
+    "children_open": {"type":"integer", "minimum":0},
+    "done_gate": {"type":"string", "minLength":1}
+  }
+}
