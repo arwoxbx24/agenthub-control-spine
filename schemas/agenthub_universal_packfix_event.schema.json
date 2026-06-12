@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agenthub_universal_packfix_event.schema.json",
+  "title": "AgentHub Universal PackFix Event",
+  "type": "object",
+  "required": ["packfix_id", "source_task", "run_id", "trigger_blocker", "lane", "attempt_number", "result", "next_state"],
+  "properties": {
+    "packfix_id": {"type": "string"},
+    "source_task": {"type": "string"},
+    "run_id": {"type": "string"},
+    "trigger_blocker": {"type": "string"},
+    "normalized_blocker": {"type": "string"},
+    "lane": {"type": "integer", "minimum": 0, "maximum": 7},
+    "routine_or_owner_only": {"type": "string", "enum": ["routine", "owner_only", "forbidden"]},
+    "repair_action": {"type": "string"},
+    "worker": {"type": "string"},
+    "attempt_number": {"type": "integer", "minimum": 1, "maximum": 2},
+    "result": {"type": "string", "enum": ["PASS", "FAIL", "OWNER_ONLY", "FORBIDDEN"]},
+    "evidence": {"type": "array", "items": {"type": "string"}},
+    "next_state": {"type": "string"}
+  },
+  "additionalProperties": false
+}
