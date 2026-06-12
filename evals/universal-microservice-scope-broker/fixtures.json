@@ -1,0 +1,108 @@
+{
+  "schema": "agenthub.universal_microservice_scope_broker.fixtures.v1",
+  "source_task": "AH-748",
+  "run_id": "RUN-AGENTHUB-UNIVERSAL-MICROSERVICE-SCOPE-BROKER-20260612",
+  "descriptors": [
+    {
+      "name": "generic_web_ui_descriptor",
+      "service_id": "svc-webui-example",
+      "service_name": "example-web-ui",
+      "service_kind": "web_ui",
+      "owner_task_id": "AH-748",
+      "run_id": "RUN-AGENTHUB-UNIVERSAL-MICROSERVICE-SCOPE-BROKER-20260612",
+      "environment": "production",
+      "entrypoints": {"public_url": "https://example.invalid", "local_url": null, "ports": [], "compose_service": null, "container_id": null, "systemd_unit": null, "process_pattern": null},
+      "dependencies": {"upstream": [], "downstream": [], "database": [], "cache": [], "proxy": ["edge-route"], "DNS": ["example.invalid"], "TLS": ["example.invalid"], "storage": [], "queue": []},
+      "safe_read_surfaces": ["public_route", "browser_probe", "redacted_logs"],
+      "repair_surfaces": ["scoped_route_mapping"],
+      "destructive_surfaces": ["database", "volumes", "global_firewall"],
+      "requires_lane6_for_destructive": true,
+      "rollback_method": "restore previous scoped route mapping",
+      "validation_profile": "web_ui_public_browser",
+      "user_outcome_gate": "screenshot_dom_console_network_public_route",
+      "evidence_paths": ["reports/receipts/AGENTHUB-UNIVERSAL-MICROSERVICE-SCOPE-BROKER-RECEIPT-20260612.md"],
+      "current_status": "degraded"
+    },
+    {
+      "name": "unknown_service_descriptor",
+      "service_id": "svc-unknown-example",
+      "service_name": "unknown-service",
+      "service_kind": "unknown",
+      "owner_task_id": "AH-748",
+      "run_id": "RUN-AGENTHUB-UNIVERSAL-MICROSERVICE-SCOPE-BROKER-20260612",
+      "environment": "unknown",
+      "entrypoints": {},
+      "dependencies": {},
+      "safe_read_surfaces": ["inventory", "status_readback"],
+      "repair_surfaces": [],
+      "destructive_surfaces": [],
+      "requires_lane6_for_destructive": true,
+      "rollback_method": null,
+      "validation_profile": "read_only_discovery_first",
+      "user_outcome_gate": "classification_required_before_done",
+      "evidence_paths": [],
+      "current_status": "unknown"
+    }
+  ],
+  "done_cases": [
+    {
+      "name": "reject_http_only_done",
+      "user_facing": true,
+      "evidence": ["http_200", "html_shell"],
+      "youtrack_stage": "Done",
+      "open_packfix_count": 0,
+      "final_state": "BLOCKED"
+    },
+    {
+      "name": "accept_web_ui_done_with_user_outcome",
+      "user_facing": true,
+      "evidence": ["implementation_evidence", "validation_matrix", "user_outcome_proof", "receipt", "youtrack_readback"],
+      "youtrack_stage": "Done",
+      "open_packfix_count": 0,
+      "final_state": "DONE"
+    },
+    {
+      "name": "reject_open_packfix",
+      "user_facing": false,
+      "evidence": ["implementation_evidence", "validation_matrix", "receipt", "youtrack_readback"],
+      "youtrack_stage": "Done",
+      "open_packfix_count": 1,
+      "final_state": "BLOCKED"
+    }
+  ],
+  "permission_lane_receipts": [
+    {
+      "task_id": "AH-748",
+      "run_id": "RUN-AGENTHUB-UNIVERSAL-MICROSERVICE-SCOPE-BROKER-20260612",
+      "service_id": "svc-webui-example",
+      "lane": 1,
+      "worker_role": "T2 read worker",
+      "allowed_surfaces": ["inventory", "public_route", "browser_probe"],
+      "forbidden_surfaces": ["secrets", "database_mutation", "volume_delete", "global_firewall"],
+      "operation": "read-only discovery",
+      "rollback_required": false,
+      "rollback_ref": null,
+      "secret_redaction": "PASS",
+      "expires_or_single_use": "single-use",
+      "decision": "ALLOW"
+    }
+  ],
+  "packfix_events": [
+    {
+      "packfix_id": "PF-AH748-001",
+      "source_task_id": "AH-748",
+      "run_id": "RUN-AGENTHUB-UNIVERSAL-MICROSERVICE-SCOPE-BROKER-20260612",
+      "blocker_code": "BROWSER_SCREENSHOT_ROUTE_MISSING",
+      "root_cause_hypothesis": "browser evidence route missing for web UI closure",
+      "affected_surface": "validation",
+      "owner_role": "Verifier",
+      "allowed_lane": 1,
+      "repair_action": "dispatch browser QA worker or record owner-only gate",
+      "validation_action": "require screenshot DOM console network receipt",
+      "rollback_action": "not applicable for read-only validation",
+      "receipt_path": "reports/receipts/AGENTHUB-UNIVERSAL-MICROSERVICE-SCOPE-BROKER-RECEIPT-20260612.md",
+      "close_condition": "browser evidence attached or typed owner-only blocker recorded",
+      "status": "REPAIRED"
+    }
+  ]
+}

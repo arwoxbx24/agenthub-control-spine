@@ -1,0 +1,31 @@
+diff --git a/INDEX.md b/INDEX.md
+--- a/INDEX.md
++++ b/INDEX.md
+@@
++## AH-748 Live Worker Authority Broker PackFix Autorepair Coverage
++
++| Artifact | Type | Source task | Status |
++|---|---|---|---|
++| `governance/agenthub-live-worker-authority-broker-packfix-autorepair-policy.md` | governance policy | AH-748 / PR-159 follow-up | active |
++| `schemas/agenthub_authority_broker_grant.schema.json` | schema | AH-748 / PR-159 follow-up | active |
++| `validators/live_worker_authority_broker_validator.rb` | validator | AH-748 / PR-159 follow-up | active |
++| `evals/live-worker-authority-broker/fixtures.json` | eval fixtures | AH-748 / PR-159 follow-up | active |
++| `reports/validations/AGENTHUB-LIVE-WORKER-AUTHORITY-BROKER-PACKFIX-AUTOREPAIR-VALIDATION-20260612.md` | validation report | AH-748 / PR-159 follow-up | operational-receipt |
++| `reports/receipts/AGENTHUB-LIVE-WORKER-AUTHORITY-BROKER-PACKFIX-AUTOREPAIR-RECEIPT-20260612.md` | operational receipt | AH-748 / PR-159 follow-up | operational-receipt |
++
++diff --git a/ARTIFACT_REGISTER.md b/ARTIFACT_REGISTER.md
++--- a/ARTIFACT_REGISTER.md
+++++ b/ARTIFACT_REGISTER.md
++@@
+++| `governance/agenthub-live-worker-authority-broker-packfix-autorepair-policy.md` | `active_control` | false | false | AH-748 / PR-159 follow-up | Authority Broker policy converting routine blockers into PackFix scoped grants. |
+++| `schemas/agenthub_authority_broker_grant.schema.json` | `active_control` | false | false | AH-748 / PR-159 follow-up | Authority Broker scoped grant schema. |
+++| `validators/live_worker_authority_broker_validator.rb` | `active_control` | false | false | AH-748 / PR-159 follow-up | Routine blocker inversion and Lane 6 validator. |
+++| `evals/live-worker-authority-broker/fixtures.json` | `active_control` | false | false | AH-748 / PR-159 follow-up | Authority Broker regression fixtures. |
+++| `reports/validations/AGENTHUB-LIVE-WORKER-AUTHORITY-BROKER-PACKFIX-AUTOREPAIR-VALIDATION-20260612.md` | `operational_receipt` | false | false | AH-748 / PR-159 follow-up | Authority Broker validation report. |
+++| `reports/receipts/AGENTHUB-LIVE-WORKER-AUTHORITY-BROKER-PACKFIX-AUTOREPAIR-RECEIPT-20260612.md` | `operational_receipt` | false | false | AH-748 / PR-159 follow-up | Authority Broker installation receipt. |
++
++diff --git a/PR_QUEUE_REGISTER.md b/PR_QUEUE_REGISTER.md
++--- a/PR_QUEUE_REGISTER.md
+++++ b/PR_QUEUE_REGISTER.md
++@@
+++| `#159` | `AH-748` | `RUN-AGENTHUB-LIVE-WORKER-AUTHORITY-BROKER-PACKFIX-AUTOREPAIR-20260612` | `agenthub/universal-microservice-scope-broker-20260612` | T1 Architecture Broker / T0 Registrar / T2 Worker Authority Broker / Verifier | `ACTIVE_CONTROL_CANDIDATE` | Adds Authority Broker + PackFix autorepair policy-as-code on top of universal microservice scope broker. | PR #159; authority broker receipt and validation report. | none for repository package; Lane 6 remains owner-only. |

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/agenthub_permission_lane_receipt.schema.json",
+  "title": "AgentHub Permission Lane Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "run_id", "service_id", "lane", "worker_role", "allowed_surfaces", "forbidden_surfaces", "operation", "rollback_required", "rollback_ref", "secret_redaction", "expires_or_single_use", "decision"],
+  "properties": {
+    "task_id": {"type": "string"},
+    "run_id": {"type": "string"},
+    "service_id": {"type": "string"},
+    "lane": {"type": "integer", "minimum": 0, "maximum": 6},
+    "worker_role": {"type": "string"},
+    "allowed_surfaces": {"type": "array", "items": {"type": "string"}},
+    "forbidden_surfaces": {"type": "array", "items": {"type": "string"}},
+    "operation": {"type": "string"},
+    "rollback_required": {"type": "boolean"},
+    "rollback_ref": {"type": ["string", "null"]},
+    "secret_redaction": {"enum": ["PASS", "FAIL", "NOT_APPLICABLE"]},
+    "expires_or_single_use": {"type": "string"},
+    "decision": {"enum": ["ALLOW", "DENY", "OWNER_ONLY", "PACKFIX_REQUIRED"]}
+  }
+}

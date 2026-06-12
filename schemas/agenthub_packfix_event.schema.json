@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/agenthub_packfix_event.schema.json",
+  "title": "AgentHub PackFix Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["packfix_id", "source_task_id", "run_id", "blocker_code", "root_cause_hypothesis", "affected_surface", "owner_role", "allowed_lane", "repair_action", "validation_action", "rollback_action", "receipt_path", "close_condition", "status"],
+  "properties": {
+    "packfix_id": {"type": "string"},
+    "source_task_id": {"type": "string"},
+    "run_id": {"type": "string"},
+    "blocker_code": {"type": "string"},
+    "root_cause_hypothesis": {"type": "string"},
+    "affected_surface": {"type": "string"},
+    "owner_role": {"type": "string"},
+    "allowed_lane": {"type": "integer", "minimum": 0, "maximum": 6},
+    "repair_action": {"type": "string"},
+    "validation_action": {"type": "string"},
+    "rollback_action": {"type": "string"},
+    "receipt_path": {"type": "string"},
+    "close_condition": {"type": "string"},
+    "status": {"enum": ["OPEN", "REPAIRED", "BLOCKED_OWNER_ONLY", "BLOCKED_FORBIDDEN"]}
+  }
+}

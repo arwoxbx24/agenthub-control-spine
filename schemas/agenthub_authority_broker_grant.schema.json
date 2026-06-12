@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/agenthub_authority_broker_grant.schema.json",
+  "title": "AgentHub Authority Broker Grant",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "run_id", "packfix_id", "blocker_signature", "routine_blocker", "lane", "worker_role", "allowed_surfaces", "forbidden_surfaces", "grant_scope", "checkpoint_required", "rollback_required", "validation_required", "receipt_path", "expires_or_single_use", "decision"],
+  "properties": {
+    "task_id": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "packfix_id": {"type": "string", "minLength": 1},
+    "blocker_signature": {"type": "string", "minLength": 1},
+    "routine_blocker": {"type": "boolean"},
+    "lane": {"type": "integer", "minimum": 0, "maximum": 6},
+    "worker_role": {"type": "string", "minLength": 1},
+    "allowed_surfaces": {"type": "array", "items": {"type": "string"}},
+    "forbidden_surfaces": {"type": "array", "items": {"type": "string"}},
+    "grant_scope": {"type": "string", "minLength": 1},
+    "checkpoint_required": {"type": "boolean"},
+    "rollback_required": {"type": "boolean"},
+    "validation_required": {"type": "boolean"},
+    "receipt_path": {"type": "string", "minLength": 1},
+    "expires_or_single_use": {"type": "string", "minLength": 1},
+    "decision": {"enum": ["ALLOW_SCOPED", "OWNER_ONLY", "DENY_FORBIDDEN"]}
+  }
+}
