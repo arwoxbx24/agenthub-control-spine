@@ -1,0 +1,137 @@
+{
+  "schema": "agenthub.komodo_browser_outcome_truth.fixtures.v1",
+  "source_task": "AH-747",
+  "run_id": "RUN-AGENTHUB-KOMODO-BROWSER-OUTCOME-TRUTH-20260612",
+  "cases": [
+    {
+      "name": "blocked_current_ah747_public_route_failure",
+      "task_class": "ui_service",
+      "evidence": ["http_200", "html_shell", "container_healthy", "browser_render_from_loopback_invalidated"],
+      "latest_user_complaint_after_green": true,
+      "final_state": "BLOCKED",
+      "blocker": "PUBLIC_ROUTE_FAILURE"
+    },
+    {
+      "name": "done_requires_user_outcome",
+      "task_class": "ui_service",
+      "evidence": ["public_browser_screenshot", "dom_markers", "console_network_clean", "komodo_outcome"],
+      "latest_user_complaint_after_green": false,
+      "final_state": "DONE",
+      "blocker": null
+    }
+  ],
+  "browser_receipts": [
+    {
+      "name": "current_ah747_not_claiming_site_works",
+      "claim": "site_not_proven",
+      "requires_screenshot": false,
+      "screenshot_path": null,
+      "screenshot_sha256": null,
+      "screenshot_readable": false,
+      "dom_visible_markers_present": false,
+      "console_fatal_errors": 0,
+      "critical_network_failures": 0
+    },
+    {
+      "name": "valid_browser_outcome",
+      "claim": "site_works",
+      "requires_screenshot": true,
+      "screenshot_path": "reports/browser/komodo-public-20260612.png",
+      "screenshot_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "screenshot_readable": true,
+      "dom_visible_markers_present": true,
+      "console_fatal_errors": 0,
+      "critical_network_failures": 0
+    }
+  ],
+  "komodo_receipts": [
+    {
+      "name": "current_ah747_komodo_not_proven",
+      "claim": "komodo_not_proven",
+      "public_route_status": "FAIL",
+      "browser_render_status": "NOT_PROVEN",
+      "login_or_dashboard_status": "NOT_PROVEN",
+      "api_status": "NOT_PROVEN",
+      "periphery_visible": false,
+      "server_list_visible_or_empty_state": false,
+      "stack_container_list_visible_or_empty_state": false,
+      "komodo_user_outcome_status": "NOT_PROVEN"
+    },
+    {
+      "name": "valid_komodo_outcome",
+      "claim": "komodo_works",
+      "public_route_status": "PASS",
+      "browser_render_status": "BROWSER_RENDERED",
+      "login_or_dashboard_status": "PASS",
+      "api_status": "PASS",
+      "periphery_visible": true,
+      "server_list_visible_or_empty_state": true,
+      "stack_container_list_visible_or_empty_state": true,
+      "komodo_user_outcome_status": "PASS"
+    }
+  ],
+  "route_receipts": [
+    {
+      "name": "github_control_spine_route_proven",
+      "claim": "agenthub_worker_executed",
+      "route_truth_status": "PROVEN",
+      "route_type": "github_control_spine_api",
+      "mcp_tool_call_id_or_agenthub_dispatch_id": "github_create_file_branch_agenthub_komodo_browser_outcome_truth_hardlock_20260612"
+    }
+  ],
+  "model_receipts": [
+    {
+      "name": "model_not_claimed_for_control_spine_install",
+      "claim": "model_not_claimed",
+      "requested_model": null,
+      "resolved_model": null,
+      "actual_model": null,
+      "actual_model_proof_ref": null,
+      "env_only_model_claim": false,
+      "model_truth_status": "NOT_CLAIMED"
+    }
+  ],
+  "youtrack_receipts": [
+    {
+      "name": "current_ah747_non_done_blocked",
+      "stage": "Test",
+      "done_gate": "BLOCKED",
+      "evidence_quality_label": "HTML_SHELL_ONLY",
+      "user_outcome_status": "NOT_PROVEN",
+      "blocker": "PUBLIC_ROUTE_FAILURE"
+    },
+    {
+      "name": "valid_done_user_outcome",
+      "stage": "Done",
+      "done_gate": "PASS",
+      "evidence_quality_label": "KOMODO_USER_OUTCOME_VALIDATED",
+      "user_outcome_status": "PASS",
+      "blocker": null
+    }
+  ],
+  "final_outputs": [
+    {
+      "name": "final_blocked_compact",
+      "text": "Fact: HTTP 200 rejected; Komodo user outcome not proven.\nAction: evidence/validator route installed or blocked before fake green.\nLeft: PUBLIC_ROUTE_FAILURE"
+    }
+  ],
+  "contours": [
+    {
+      "name": "existing_ah747_reused",
+      "duplicate_signature": "AH-747|komodo|browser-outcome|execution-truth|20260612",
+      "created_new_task_or_pr": false
+    },
+    {
+      "name": "same_signature_update_only",
+      "duplicate_signature": "AH-747|komodo|browser-outcome|execution-truth|20260612",
+      "created_new_task_or_pr": false
+    }
+  ],
+  "negative_canaries": [
+    "http_200_only_done_must_fail",
+    "env_only_codex_claim_must_fail",
+    "prompt_dump_final_must_fail",
+    "youtrack_done_without_user_outcome_must_fail",
+    "latest_user_complaint_done_must_fail"
+  ]
+}
