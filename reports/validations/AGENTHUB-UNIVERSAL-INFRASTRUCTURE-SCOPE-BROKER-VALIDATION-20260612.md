@@ -4,7 +4,7 @@ artifact_type: validation_report
 source_task: AH-772
 run_id: RUN-AGENTHUB-UNIVERSAL-INFRASTRUCTURE-SCOPE-BROKER-20260612
 created_at: 2026-06-12
-lifecycle_status: validation_ready
+lifecycle_status: validation_pass
 ---
 
 # AH-772 Validation
@@ -20,6 +20,7 @@ lifecycle_status: validation_ready
 | VALIDATOR_PRESENT | PASS | `validators/agenthub_universal_infrastructure_scope_broker_validator.rb` |
 | FIXTURES_PRESENT | PASS | `evals/agenthub-universal-infrastructure-scope-broker/fixtures.json` |
 | RUNBOOK_PRESENT | PASS | `runbooks/agenthub-universal-infrastructure-scope-broker.md` |
+| MCP_SMOKE_PASS | PASS | AgentHub smoke status SUCCESS, done_allowed=true, blocking_residuals=[], sha256 `485e52fcd1e7bc46332f11ceed82abfb38832008e57cb7d96a12e702145f39e9`. |
 | NO_RAW_SECRET_OUTPUT | PASS | Artifacts define handles/metadata only and contain no raw secret values. |
 | NO_LIVE_MUTATION | PASS | Repository control package only; no live Docker/DB/proxy/Nginx/firewall mutation. |
 | HTTP_200_NOT_DONE | PASS | Negative fixture covers HTTP-only weak evidence. |
