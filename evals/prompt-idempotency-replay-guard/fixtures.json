@@ -1,0 +1,52 @@
+{
+  "schema": "agenthub_prompt_idempotency_replay_guard_fixtures.v1",
+  "source_task": "AH-773",
+  "valid_frontmatter": {
+    "artifact_id": "agenthub-prompt-idempotency-replay-guard-final-20260612",
+    "artifact_type": "architecture_control_prompt",
+    "prompt_uid": "AGENTHUB-PROMPT-IDEMPOTENCY-REPLAY-GUARD-FINAL-20260612",
+    "prompt_family": "agenthub_prompt_replay_prevention",
+    "idempotency_key_template": "{prompt_uid}:{source_task}:{scope_signature}:{repo}:{target_branch}:{artifact_paths_hash}",
+    "source_task": "AH-773",
+    "run_id": "RUN-AGENTHUB-PROMPT-IDEMPOTENCY-REPLAY-GUARD-20260612",
+    "scope_signature": "prompt-replay-prevention",
+    "owner_role": "T1 Architecture Broker / Registrar / Verifier",
+    "lifecycle_status": "active_control",
+    "default_load": false,
+    "safe_to_replay": false,
+    "created_at": "2026-06-12"
+  },
+  "records": [
+    {
+      "name": "new_execution_allowed",
+      "replay_decision": "NEW_EXECUTION_ALLOWED",
+      "mutation_decision": "MUTATE",
+      "matched_prior_receipt": "none"
+    },
+    {
+      "name": "already_executed_no_replay",
+      "replay_decision": "PROMPT_ALREADY_EXECUTED_NO_REPLAY",
+      "mutation_decision": "NOOP",
+      "matched_prior_receipt": "reports/receipts/example.md"
+    },
+    {
+      "name": "partial_resume",
+      "replay_decision": "SAME_PROMPT_RESUME_FROM_RESIDUAL_PACKFIX",
+      "mutation_decision": "RESUME",
+      "matched_prior_receipt": "reports/receipts/example-partial.md"
+    },
+    {
+      "name": "superseded_denied",
+      "replay_decision": "STALE_PROMPT_REPLAY_DENIED_SUPERSEDED",
+      "mutation_decision": "DENY",
+      "matched_prior_receipt": "ARTIFACT_REGISTER.md"
+    }
+  ],
+  "negative_cases": [
+    "missing_prompt_uid",
+    "missing_idempotency_key_template",
+    "duplicate_replay_mutates",
+    "old_prompt_overwrites_newer_control",
+    "prompt_text_only_final"
+  ]
+}
