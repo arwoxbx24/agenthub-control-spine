@@ -5,7 +5,8 @@ owner_role: T1 Architecture Broker / T2 Runtime Worker / Registrar / Verifier
 source_task: AH-748
 run_id: RUN-AGENTHUB-UNIVERSAL-MICROSERVICE-SCOPE-BROKER-20260612
 created_at: 2026-06-12
-lifecycle_status: active_control_installed
+updated_at: 2026-06-12
+lifecycle_status: active_control_installed_with_validation_route_blocker
 default_load: false
 safe_to_replay: false
 ---
@@ -18,6 +19,7 @@ safe_to_replay: false
 - RUN_ID: RUN-AGENTHUB-UNIVERSAL-MICROSERVICE-SCOPE-BROKER-20260612.
 - Repository: arwoxbx24/agenthub-control-spine.
 - Branch: agenthub/universal-microservice-scope-broker-20260612.
+- PR: #159.
 - Scope: global control-spine governance package.
 
 ## Installed Artifacts
@@ -32,6 +34,7 @@ safe_to_replay: false
 - `runbooks/universal-microservice-self-healing-runbook.md`
 - `prompts/implementation/agenthub-universal-microservice-worker-dispatch.txt`
 - `reports/receipts/AGENTHUB-UNIVERSAL-MICROSERVICE-SCOPE-BROKER-RECEIPT-20260612.md`
+- `reports/patches/AGENTHUB-UNIVERSAL-MICROSERVICE-SCOPE-BROKER-REGISTER-PATCH-20260612.diff`
 
 ## Control Summary
 
@@ -76,9 +79,20 @@ Weak evidence rejected:
 - Permission lane receipt schema installed: yes.
 - PackFix event schema installed: yes.
 - Runtime Done truth validator installed: yes.
+- Register/index/PR queue patch artifact: yes.
 - Secrets recorded: none.
 - Live runtime touched: no.
 
+## Validation Route Status
+
+AgentHub command-worker validation dispatch was attempted and blocked by `CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED`. The same RUN then rejected sandbox dispatch because state had moved from `PLANNED` to `BLOCKED`. AgentHub merge readback returned:
+
+- `status=BLOCKED`
+- `done_allowed=false`
+- `blocking_residuals=[CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED]`
+
 ## Residual
 
-None for repository control package. Concrete service repair still requires a task-bound descriptor, lane receipt, scoped worker route, rollback where needed, validation, and YouTrack readback.
+`LIVE_WORKER_AUTHORITY_MISSING_AFTER_PACKFIX` for machine-executed validator proof inside the AgentHub RUN.
+
+Repository artifacts are installed in PR #159, but AH-748 must not be marked Done until the AgentHub validation route is repaired or a registrar applies the patch and records validation evidence.
