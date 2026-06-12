@@ -1,0 +1,60 @@
+{
+  "schema": "agenthub.live_worker_authority_broker.fixtures.v1",
+  "source_task": "AH-748",
+  "run_id": "RUN-AGENTHUB-LIVE-WORKER-AUTHORITY-BROKER-PACKFIX-AUTOREPAIR-20260612",
+  "cases": [
+    {
+      "name": "invert_live_worker_authority_missing",
+      "blocker_signature": "LIVE_WORKER_AUTHORITY_MISSING_AFTER_PACKFIX",
+      "routine_blocker": true,
+      "same_signature_count": 2,
+      "packfix_created": true,
+      "authority_broker_invoked": true,
+      "lane": 3,
+      "decision": "ALLOW_SCOPED",
+      "final_blocker_allowed": false
+    },
+    {
+      "name": "invert_contract_only_dispatch_blocked",
+      "blocker_signature": "CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED",
+      "routine_blocker": true,
+      "same_signature_count": 2,
+      "packfix_created": true,
+      "authority_broker_invoked": true,
+      "lane": 0,
+      "decision": "ALLOW_SCOPED",
+      "final_blocker_allowed": false
+    },
+    {
+      "name": "owner_only_destructive_gate_remains_terminal",
+      "blocker_signature": "EXPLICIT_DESTRUCTIVE_OWNER_CONFIRMATION_REQUIRED",
+      "routine_blocker": false,
+      "same_signature_count": 1,
+      "packfix_created": true,
+      "authority_broker_invoked": true,
+      "lane": 6,
+      "decision": "OWNER_ONLY",
+      "final_blocker_allowed": true
+    }
+  ],
+  "grants": [
+    {
+      "task_id": "AH-748",
+      "run_id": "RUN-AGENTHUB-LIVE-WORKER-AUTHORITY-BROKER-PACKFIX-AUTOREPAIR-20260612",
+      "packfix_id": "PF-AH748-AUTHORITY-BROKER-001",
+      "blocker_signature": "CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED",
+      "routine_blocker": true,
+      "lane": 0,
+      "worker_role": "Registrar / Verifier",
+      "allowed_surfaces": ["control-spine artifacts", "schemas", "validators", "fixtures", "receipts"],
+      "forbidden_surfaces": ["VPN", "DB", "Docker", "proxy", "firewall", "DNS", "SSL", "secrets", "live runtime"],
+      "grant_scope": "PR #159 policy-as-code follow-up only",
+      "checkpoint_required": false,
+      "rollback_required": false,
+      "validation_required": true,
+      "receipt_path": "reports/receipts/AGENTHUB-LIVE-WORKER-AUTHORITY-BROKER-PACKFIX-AUTOREPAIR-RECEIPT-20260612.md",
+      "expires_or_single_use": "single-use",
+      "decision": "ALLOW_SCOPED"
+    }
+  ]
+}
