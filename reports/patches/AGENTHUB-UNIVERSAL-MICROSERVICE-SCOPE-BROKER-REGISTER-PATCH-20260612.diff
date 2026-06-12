@@ -1,0 +1,39 @@
+diff --git a/INDEX.md b/INDEX.md
+--- a/INDEX.md
++++ b/INDEX.md
+@@
++## AH-748 Universal Microservice Scope Broker Coverage
++
++| Artifact | Type | Source task | Status |
++|---|---|---|---|
++| `governance/agenthub-universal-microservice-scope-broker-policy.md` | governance policy | AH-748 | active |
++| `schemas/agenthub_microservice_descriptor.schema.json` | schema | AH-748 | active |
++| `schemas/agenthub_permission_lane_receipt.schema.json` | schema | AH-748 | active |
++| `schemas/agenthub_packfix_event.schema.json` | schema | AH-748 | active |
++| `validators/universal_microservice_scope_broker_validator.rb` | validator | AH-748 | active |
++| `validators/runtime_done_truth_validator.rb` | validator | AH-748 | active |
++| `evals/universal-microservice-scope-broker/fixtures.json` | eval fixtures | AH-748 | active |
++| `runbooks/universal-microservice-self-healing-runbook.md` | runbook | AH-748 | active |
++| `prompts/implementation/agenthub-universal-microservice-worker-dispatch.txt` | worker dispatch template | AH-748 | active-control |
++| `reports/receipts/AGENTHUB-UNIVERSAL-MICROSERVICE-SCOPE-BROKER-RECEIPT-20260612.md` | operational receipt | AH-748 | operational-receipt |
++
+diff --git a/ARTIFACT_REGISTER.md b/ARTIFACT_REGISTER.md
+--- a/ARTIFACT_REGISTER.md
++++ b/ARTIFACT_REGISTER.md
+@@
++| `governance/agenthub-universal-microservice-scope-broker-policy.md` | `active_control` | false | false | AH-748 | Universal descriptor/lane/PackFix/Done-truth microservice control. |
++| `schemas/agenthub_microservice_descriptor.schema.json` | `active_control` | false | false | AH-748 | Dynamic service descriptor schema. |
++| `schemas/agenthub_permission_lane_receipt.schema.json` | `active_control` | false | false | AH-748 | Permission lane receipt schema. |
++| `schemas/agenthub_packfix_event.schema.json` | `active_control` | false | false | AH-748 | Same-RUN PackFix event schema. |
++| `validators/universal_microservice_scope_broker_validator.rb` | `active_control` | false | false | AH-748 | Descriptor and lane safety validator. |
++| `validators/runtime_done_truth_validator.rb` | `active_control` | false | false | AH-748 | Runtime Done truth validator rejecting weak evidence. |
++| `evals/universal-microservice-scope-broker/fixtures.json` | `active_control` | false | false | AH-748 | Scope broker and Done truth fixtures. |
++| `runbooks/universal-microservice-self-healing-runbook.md` | `active_control` | false | false | AH-748 | Universal service self-healing runbook. |
++| `prompts/implementation/agenthub-universal-microservice-worker-dispatch.txt` | `active_control` | false | false | AH-748 | Bounded T2 worker dispatch template. |
++| `reports/receipts/AGENTHUB-UNIVERSAL-MICROSERVICE-SCOPE-BROKER-RECEIPT-20260612.md` | `operational_receipt` | false | false | AH-748 | Installation receipt. |
+
+diff --git a/PR_QUEUE_REGISTER.md b/PR_QUEUE_REGISTER.md
+--- a/PR_QUEUE_REGISTER.md
++++ b/PR_QUEUE_REGISTER.md
+@@
++| `#TBD` | `AH-748` | `RUN-AGENTHUB-UNIVERSAL-MICROSERVICE-SCOPE-BROKER-20260612` | `agenthub/universal-microservice-scope-broker-20260612` | T1 Architecture Broker / T2 Runtime Worker / Registrar / Verifier | `ACTIVE_CONTROL_CANDIDATE` | Installs universal microservice descriptor, permission lane, PackFix, validation matrix, and runtime Done truth controls. | AH-748 receipt and artifacts. | none for repository package; runtime actions remain task-bound per descriptor/lane. |
