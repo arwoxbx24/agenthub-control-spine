@@ -4,7 +4,7 @@ artifact_type: validation_report
 source_task: AH-773
 run_id: RUN-AGENTHUB-PROMPT-IDEMPOTENCY-REPLAY-GUARD-20260612
 created_at: 2026-06-12
-lifecycle_status: validation_ready
+lifecycle_status: validation_pass
 ---
 
 # AH-773 Prompt Replay Guard Validation
@@ -19,6 +19,7 @@ lifecycle_status: validation_ready
 | VALIDATOR_PRESENT | PASS | `validators/prompt_idempotency_replay_guard_validator.rb` |
 | FIXTURES_PRESENT | PASS | `evals/prompt-idempotency-replay-guard/fixtures.json` |
 | RUNBOOK_PRESENT | PASS | `runbooks/prompt-idempotency-replay-guard.md` |
+| MCP_SMOKE_PASS | PASS | AgentHub smoke status SUCCESS, done_allowed=true, blocking_residuals=[], sha256 `a3bcdc9a7418b164dd5f6736239125bf64031460fed1e1d00216316ae6d67f64`. |
 | NO_DUPLICATE_REPLAY_MUTATION | PASS | Fixtures require already-executed prompt to NOOP. |
 | RESIDUAL_RESUME | PASS | Fixtures require partial replay to RESUME existing PackFix. |
 | SUPERSEDED_DENIAL | PASS | Fixtures require superseded replay to DENY. |
