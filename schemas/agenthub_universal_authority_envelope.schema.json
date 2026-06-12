@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agenthub_universal_authority_envelope.schema.json",
+  "title": "AgentHub Universal Authority Envelope",
+  "type": "object",
+  "required": ["authority_id", "task_id", "run_id", "contour_id", "lane", "role", "worker_type", "project_root", "allowed_actions", "forbidden_actions", "evidence_required", "expiry"],
+  "properties": {
+    "authority_id": {"type": "string", "minLength": 1},
+    "task_id": {"type": "string"},
+    "run_id": {"type": "string"},
+    "contour_id": {"type": "string"},
+    "lane": {"type": "integer", "minimum": 0, "maximum": 7},
+    "role": {"type": "string"},
+    "worker_type": {"type": "string"},
+    "project_root": {"type": "string"},
+    "service_descriptor": {"type": "string"},
+    "allowed_actions": {"type": "array", "items": {"type": "string"}},
+    "forbidden_actions": {"type": "array", "items": {"type": "string"}},
+    "official_docs_refs": {"type": "array", "items": {"type": "string"}},
+    "secret_handle_refs": {"type": "array", "items": {"type": "string"}},
+    "rollback_required": {"type": "boolean"},
+    "sandbox_required": {"type": "boolean"},
+    "approval_required": {"type": "boolean"},
+    "evidence_required": {"type": "array", "items": {"type": "string"}},
+    "expiry": {"type": "string"},
+    "escalation_policy": {"type": "string"}
+  },
+  "additionalProperties": false
+}

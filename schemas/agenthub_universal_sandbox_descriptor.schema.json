@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agenthub_universal_sandbox_descriptor.schema.json",
+  "title": "AgentHub Universal Sandbox Descriptor",
+  "type": "object",
+  "required": ["sandbox_id", "source_project_root", "isolated_project_name", "secret_strategy", "data_strategy", "network_strategy", "health_checks", "rollback_checks", "promotion_criteria"],
+  "properties": {
+    "sandbox_id": {"type": "string"},
+    "source_project_root": {"type": "string"},
+    "isolated_project_name": {"type": "string"},
+    "copied_configs": {"type": "array", "items": {"type": "string"}},
+    "secret_strategy": {"type": "string", "enum": ["handle_stub", "synthetic", "redacted", "injected_runtime_handle"]},
+    "data_strategy": {"type": "string", "enum": ["synthetic", "dump_copy", "no_data", "read_only_live"]},
+    "network_strategy": {"type": "string"},
+    "health_checks": {"type": "array", "items": {"type": "string"}},
+    "browser_checks": {"type": "array", "items": {"type": "string"}},
+    "rollback_checks": {"type": "array", "items": {"type": "string"}},
+    "promotion_criteria": {"type": "array", "items": {"type": "string"}}
+  },
+  "additionalProperties": false
+}
