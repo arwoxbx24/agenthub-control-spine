@@ -1,0 +1,22 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://agenthub.local/schemas/agenthub_packfix_event.schema.json",
+  "title":"AgentHub PackFix Event",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["packfix_id","source_task","run_id","trigger_blocker","normalized_blocker","lane","routine_or_owner_only","repair_action","attempt_number","result","evidence","next_state"],
+  "properties":{
+    "packfix_id":{"type":"string","minLength":1},
+    "source_task":{"type":"string","minLength":1},
+    "run_id":{"type":"string","minLength":1},
+    "trigger_blocker":{"type":"string","minLength":1},
+    "normalized_blocker":{"type":"string","minLength":1},
+    "lane":{"type":"integer","minimum":0,"maximum":7},
+    "routine_or_owner_only":{"type":"string","enum":["routine","owner_only"]},
+    "repair_action":{"type":"string","minLength":1},
+    "attempt_number":{"type":"integer","minimum":1,"maximum":2},
+    "result":{"type":"string","enum":["PASS","FAIL","BLOCKED"]},
+    "evidence":{"type":"string","minLength":1},
+    "next_state":{"type":"string","minLength":1}
+  }
+}
