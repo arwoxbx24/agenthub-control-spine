@@ -1,0 +1,23 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://agenthub.local/schemas/agenthub_authority_envelope.schema.json",
+  "title":"AgentHub Authority Envelope",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["authority_id","task_id","run_id","lane","role","scope_signature","allowed_surfaces","forbidden_surfaces","allowed_operations","forbidden_operations","validation","receipt_path"],
+  "properties":{
+    "authority_id":{"type":"string","minLength":1},
+    "task_id":{"type":"string","minLength":1},
+    "run_id":{"type":"string","minLength":1},
+    "lane":{"type":"integer","minimum":0,"maximum":7},
+    "role":{"type":"string","minLength":1},
+    "scope_signature":{"type":"string","minLength":1},
+    "allowed_surfaces":{"type":"array","items":{"type":"string"},"minItems":1},
+    "forbidden_surfaces":{"type":"array","items":{"type":"string"}},
+    "allowed_operations":{"type":"array","items":{"type":"string"},"minItems":1},
+    "forbidden_operations":{"type":"array","items":{"type":"string"}},
+    "validation":{"type":"string","minLength":1},
+    "receipt_path":{"type":"string","minLength":1},
+    "owner_only_required":{"type":"boolean"}
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://agenthub.local/schemas/agenthub_sandbox_descriptor.schema.json",
+  "title":"AgentHub Sandbox Descriptor",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["sandbox_id","source_task","run_id","project_root","component","stack_type","secret_handling","commands_allowed","commands_forbidden","success_metrics","rollback_plan","promotion_gate"],
+  "properties":{
+    "sandbox_id":{"type":"string","minLength":1},"source_task":{"type":"string","minLength":1},"run_id":{"type":"string","minLength":1},"project_root":{"type":"string","minLength":1},"component":{"type":"string","minLength":1},"stack_type":{"type":"string","minLength":1},"input_snapshot":{"type":"string"},"config_source":{"type":"string"},"secret_handling":{"type":"string","minLength":1},"data_strategy":{"type":"string"},"network_strategy":{"type":"string"},"commands_allowed":{"type":"array","items":{"type":"string"}},"commands_forbidden":{"type":"array","items":{"type":"string"}},"success_metrics":{"type":"array","items":{"type":"string"},"minItems":1},"failure_metrics":{"type":"array","items":{"type":"string"}},"rollback_plan":{"type":"string","minLength":1},"promotion_gate":{"type":"string","minLength":1}
+  }
+}

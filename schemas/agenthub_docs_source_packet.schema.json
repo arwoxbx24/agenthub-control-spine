@@ -1,0 +1,19 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://agenthub.local/schemas/agenthub_docs_source_packet.schema.json",
+  "title":"AgentHub Docs Source Packet",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["product","official_docs_url","retrieval_timestamp","applicable_sections","claims_supported","stale_risk","confidence"],
+  "properties":{
+    "product":{"type":"string","minLength":1},
+    "official_docs_url":{"type":"string","format":"uri"},
+    "docs_version":{"type":"string"},
+    "retrieval_timestamp":{"type":"string","minLength":1},
+    "applicable_sections":{"type":"array","items":{"type":"string"},"minItems":1},
+    "claims_supported":{"type":"array","items":{"type":"string"},"minItems":1},
+    "stale_risk":{"type":"string","enum":["low","medium","high"]},
+    "confidence":{"type":"string","enum":["low","medium","high"]},
+    "fallback_if_unavailable":{"type":"string"}
+  }
+}

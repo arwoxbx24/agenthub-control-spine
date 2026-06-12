@@ -1,0 +1,11 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://agenthub.local/schemas/agenthub_github_youtrack_binding_receipt.schema.json",
+  "title":"AgentHub GitHub YouTrack Binding Receipt",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["task_id","repository","branch","commit_sha","pr","issue_id_in_branch","issue_id_in_commit_or_pr","binding_result"],
+  "properties":{
+    "task_id":{"type":"string","minLength":1},"repository":{"type":"string","minLength":1},"branch":{"type":"string","minLength":1},"commit_sha":{"type":"string","minLength":1},"pr":{"type":"string","minLength":1},"issue_id_in_branch":{"type":"boolean"},"issue_id_in_commit_or_pr":{"type":"boolean"},"youtrack_activity_stream_verified":{"type":"boolean"},"integration_blocker":{"type":"string"},"binding_result":{"type":"string","enum":["PASS","OWNER_ONLY_BLOCKER","FAIL"]}
+  }
+}

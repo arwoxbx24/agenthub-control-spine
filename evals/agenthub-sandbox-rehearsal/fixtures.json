@@ -1,0 +1,1 @@
+{"cases":[{"id":"risky_without_sandbox","input":{"risky":true,"sandbox_descriptor":"MISSING","promote_live":false},"expected":"SANDBOX_REHEARSAL_REQUIRED"},{"id":"sandbox_pass","input":{"risky":true,"sandbox_descriptor":"PASS","promote_live":true,"sandbox_result":"PASS"},"expected":"PASS"}]}
