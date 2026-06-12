@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/agenthub_microservice_descriptor.schema.json",
+  "title": "AgentHub Microservice Descriptor",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["service_id", "service_name", "service_kind", "owner_task_id", "run_id", "environment", "entrypoints", "dependencies", "safe_read_surfaces", "repair_surfaces", "destructive_surfaces", "rollback_method", "validation_profile", "user_outcome_gate", "evidence_paths", "current_status"],
+  "properties": {
+    "service_id": {"type": "string", "minLength": 1},
+    "service_name": {"type": "string", "minLength": 1},
+    "service_kind": {"enum": ["web_ui", "api", "worker", "scheduler", "database", "cache", "proxy", "vpn", "auth", "storage", "message_bus", "observability", "unknown"]},
+    "owner_task_id": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "environment": {"enum": ["local", "staging", "production", "unknown"]},
+    "entrypoints": {"type": "object"},
+    "dependencies": {"type": "object"},
+    "safe_read_surfaces": {"type": "array", "items": {"type": "string"}},
+    "repair_surfaces": {"type": "array", "items": {"type": "string"}},
+    "destructive_surfaces": {"type": "array", "items": {"type": "string"}},
+    "rollback_method": {"type": ["string", "null"]},
+    "validation_profile": {"type": "string", "minLength": 1},
+    "user_outcome_gate": {"type": "string", "minLength": 1},
+    "evidence_paths": {"type": "array", "items": {"type": "string"}},
+    "current_status": {"enum": ["unknown", "healthy", "degraded", "failed", "blocked", "done"]}
+  }
+}
