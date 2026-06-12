@@ -1,0 +1,11 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://agenthub.local/schemas/agenthub_microservice_descriptor.schema.json",
+  "title":"AgentHub Microservice Descriptor",
+  "type":"object",
+  "additionalProperties":false,
+  "required":["service_id","service_name","project_root","repository","runtime_type","validation_profile","rollback_strategy","owner","last_verified_at"],
+  "properties":{
+    "service_id":{"type":"string","minLength":1},"service_name":{"type":"string","minLength":1},"project_root":{"type":"string","minLength":1},"repository":{"type":"string"},"runtime_type":{"type":"string","minLength":1},"ports":{"type":"array","items":{"type":"string"}},"public_routes":{"type":"array","items":{"type":"string"}},"health_endpoints":{"type":"array","items":{"type":"string"}},"dependencies":{"type":"array","items":{"type":"string"}},"upstream_services":{"type":"array","items":{"type":"string"}},"downstream_services":{"type":"array","items":{"type":"string"}},"data_owner":{"type":"string"},"secret_handles":{"type":"array","items":{"type":"string"}},"deployment_method":{"type":"string"},"sandbox_strategy":{"type":"string"},"validation_profile":{"type":"string","minLength":1},"rollback_strategy":{"type":"string","minLength":1},"owner":{"type":"string","minLength":1},"last_verified_at":{"type":"string","minLength":1},"known_blockers":{"type":"array","items":{"type":"string"}}
+  }
+}
