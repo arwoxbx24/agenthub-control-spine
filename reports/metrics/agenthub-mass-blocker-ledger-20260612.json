@@ -1,0 +1,59 @@
+{
+  "schema": "agenthub.mass_blocker_ledger.v1",
+  "source_task": "AH-770",
+  "run_id": "RUN-AGENTHUB-MASS-BLOCKER-REPORTING-SYSTEM-20260612",
+  "created_at": "2026-06-12",
+  "blockers": [
+    {
+      "blocker_id": "PRE_DISPATCH_TASK_GATE_MISSING_ISSUE_ID",
+      "blocker_class": "task_gate_defect",
+      "surface": "local_shell_pretool",
+      "symptom": "local file reads and commands are blocked before dispatch",
+      "root_cause": "task id binding is not reliably propagated into local shell guard",
+      "routine_or_owner_only": "routine",
+      "lane": 3,
+      "repair_action": "install task/run propagation proof and readback fixture",
+      "status": "open_platform_defect"
+    },
+    {
+      "blocker_id": "CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED",
+      "blocker_class": "worker_route_defect",
+      "surface": "agenthub_command_worker",
+      "symptom": "non-sandbox command-worker dispatch is blocked",
+      "root_cause": "contract-only runtime denies adapter=command without authorized route",
+      "routine_or_owner_only": "routine",
+      "lane": 3,
+      "repair_action": "add authorized validation command-worker route or sandbox-compatible validation path",
+      "status": "open_platform_defect"
+    },
+    {
+      "blocker_id": "REGISTER_APPEND_ROUTE_PENDING",
+      "blocker_class": "registrar_tooling_defect",
+      "surface": "github_registers",
+      "symptom": "large registers cannot be safely appended through current connector route",
+      "root_cause": "available connector supports create/update full file but not deterministic append",
+      "routine_or_owner_only": "routine",
+      "lane": 2,
+      "repair_action": "install safe append route for INDEX, ARTIFACT_REGISTER, PR_QUEUE_REGISTER",
+      "status": "open"
+    },
+    {
+      "blocker_id": "DONE_GATE_DEFECT",
+      "blocker_class": "closure_parser_defect",
+      "surface": "youtrack_done_gate",
+      "symptom": "completed tasks can remain Review/Test until exact markers are atomically updated",
+      "root_cause": "Done gate parser requires description and custom fields to align in one update",
+      "routine_or_owner_only": "routine",
+      "lane": 3,
+      "repair_action": "standardize atomic done update payload",
+      "status": "repaired_for_observed_tasks"
+    }
+  ],
+  "dashboard_views": [
+    "active_platform_blockers",
+    "routine_packfix_queue",
+    "owner_only_blockers",
+    "false_recurrence_watchlist",
+    "token_burn_signals"
+  ]
+}
