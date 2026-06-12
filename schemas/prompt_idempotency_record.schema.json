@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "prompt_idempotency_record.schema.json",
+  "title": "AgentHub Prompt Idempotency Record",
+  "type": "object",
+  "required": ["prompt_uid", "idempotency_key", "source_task", "run_id", "scope_signature", "replay_decision", "mutation_decision", "checked_surfaces"],
+  "properties": {
+    "prompt_uid": {"type": "string", "minLength": 1},
+    "idempotency_key": {"type": "string", "minLength": 1},
+    "source_task": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "scope_signature": {"type": "string", "minLength": 1},
+    "repo": {"type": "string"},
+    "target_branch": {"type": "string"},
+    "artifact_paths_hash": {"type": "string"},
+    "matched_prior_receipt": {"type": "string"},
+    "replay_decision": {"type": "string", "enum": ["NEW_EXECUTION_ALLOWED", "PROMPT_ALREADY_EXECUTED_NO_REPLAY", "SAME_PROMPT_RESUME_FROM_RESIDUAL_PACKFIX", "STALE_PROMPT_REPLAY_DENIED_SUPERSEDED", "UNSAFE_PROMPT_REPLAY_DENIED"]},
+    "mutation_decision": {"type": "string", "enum": ["MUTATE", "NOOP", "RESUME", "DENY"]},
+    "checked_surfaces": {"type": "array", "items": {"type": "string"}},
+    "youtrack_readback": {"type": "string"},
+    "receipt_path": {"type": "string"}
+  },
+  "additionalProperties": false
+}
