@@ -1,0 +1,42 @@
+{
+  "schema": "agenthub_claim_ledger_fixtures.v1",
+  "source_task": "AH-788",
+  "cases": [
+    {
+      "name": "client_claim_all_green_passes",
+      "expect": "PASS",
+      "ledger": {
+        "task_id": "AH-100",
+        "run_id": "example",
+        "client_facing_allowed": true,
+        "claims": [
+          {"claim": "User can complete checkout in browser", "audience": "client", "evidence": "browser trace path", "verdict": "GREEN"}
+        ]
+      }
+    },
+    {
+      "name": "unknown_client_claim_blocked",
+      "expect": "UNSUPPORTED_CLIENT_CLAIM_BLOCKER",
+      "ledger": {
+        "task_id": "AH-101",
+        "run_id": "example",
+        "client_facing_allowed": true,
+        "claims": [
+          {"claim": "Everything fully delivered", "audience": "client", "evidence": "", "verdict": "UNKNOWN"}
+        ]
+      }
+    },
+    {
+      "name": "green_without_evidence_blocked",
+      "expect": "UNSUPPORTED_CLIENT_CLAIM_BLOCKER",
+      "ledger": {
+        "task_id": "AH-102",
+        "run_id": "example",
+        "client_facing_allowed": true,
+        "claims": [
+          {"claim": "Public app works", "audience": "client", "evidence": "", "verdict": "GREEN"}
+        ]
+      }
+    }
+  ]
+}

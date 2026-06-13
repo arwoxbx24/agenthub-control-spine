@@ -1,0 +1,43 @@
+{
+  "schema": "agenthub_user_outcome_validation_fixtures.v1",
+  "source_task": "AH-788",
+  "cases": [
+    {
+      "name": "governance_task_without_browser_scope_passes_with_matrix",
+      "expect": "PASS",
+      "matrix": {
+        "task_id": "AH-788",
+        "run_id": "permanent-user-outcome-validation-governance-20260613",
+        "scope_signature": "user-outcome-governance",
+        "user_visible_scope": false,
+        "browser_user_story_required": false,
+        "rows": [
+          {"name": "task_binding", "in_scope": true, "reason": "YouTrack governed task", "evidence_status": "PASS", "evidence": "AH-788"},
+          {"name": "browser_user_story", "in_scope": false, "reason": "governance-only repo control", "evidence_status": "NOT_APPLICABLE"}
+        ],
+        "done_tuple": {"implementation_evidence": "policy/schema/validator paths", "validation_evidence": "fixtures/readback", "receipt": "reports/receipts/AH-788.md", "blocker": "none"}
+      }
+    },
+    {
+      "name": "local_only_user_facing_done_blocked",
+      "expect": "LOCAL_ONLY_PROOF_BLOCKER",
+      "matrix": {
+        "task_id": "AH-999",
+        "run_id": "example",
+        "scope_signature": "public-ui",
+        "user_visible_scope": true,
+        "browser_user_story_required": true,
+        "rows": [
+          {"name": "runtime_service_validation", "in_scope": true, "reason": "service visible", "evidence_status": "PASS", "evidence": "curl 200 only"},
+          {"name": "browser_user_story", "in_scope": true, "reason": "public UI", "evidence_status": "DEFECT", "evidence": "missing"}
+        ],
+        "done_tuple": {"implementation_evidence": "PR", "validation_evidence": "curl 200 only", "receipt": "receipt.md", "blocker": "none"}
+      }
+    },
+    {
+      "name": "done_with_pending_text_blocked",
+      "expect": "STAGE_DONE_WITH_PENDING_TEXT_BLOCKER",
+      "done_text": "Implementation evidence: x\nValidation evidence: y\nReceipt: z\nBlocker: none\nRemaining browser validation later"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "claim_ledger.schema.json",
+  "title": "AgentHub Claim Ledger",
+  "type": "object",
+  "required": ["task_id", "run_id", "claims", "client_facing_allowed"],
+  "properties": {
+    "task_id": {"type": "string"},
+    "run_id": {"type": "string"},
+    "client_facing_allowed": {"type": "boolean"},
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["claim", "audience", "evidence", "verdict"],
+        "properties": {
+          "claim": {"type": "string", "minLength": 1},
+          "audience": {"type": "string", "enum": ["owner", "client", "internal"]},
+          "evidence": {"type": "string"},
+          "verdict": {"type": "string", "enum": ["GREEN", "PARTIAL", "UNKNOWN", "RED", "EXCLUDED"]}
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
