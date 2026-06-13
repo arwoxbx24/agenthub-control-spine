@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "linux_visible_evidence_ledger.schema.json",
+  "title": "Linux Visible Evidence Ledger",
+  "type": "object",
+  "required": ["task_id", "run_id", "scope_signature", "claims", "final_text_source"],
+  "properties": {
+    "task_id": {"type": "string", "pattern": "^[A-Z]+-[0-9]+$"},
+    "run_id": {"type": "string", "minLength": 1},
+    "scope_signature": {"type": "string", "minLength": 1},
+    "final_text_source": {"type": "string", "const": "claim_ledger"},
+    "user_visible_scope": {"type": "boolean"},
+    "claims": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "final_claim_evidence_tuple.schema.json"}
+    }
+  },
+  "additionalProperties": false
+}

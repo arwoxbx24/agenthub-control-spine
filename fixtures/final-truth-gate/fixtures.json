@@ -1,0 +1,50 @@
+{
+  "cases": [
+    {
+      "name": "governance_only_repo_task_no_browser_scope",
+      "expect": "PASS",
+      "stage_done": true,
+      "final_text": "Governance policy installed from main readback.",
+      "done_tuple": {"implementation_evidence": "governance/linux-final-truth-gate-policy.md", "validation_evidence": "reports/validations/AH-790-linux-final-truth-gate-validation-20260613.md", "receipt": "reports/receipts/AH-790-linux-final-truth-gate-receipt-20260613.md", "blocker": "none"},
+      "ledger": {"user_visible_scope": false, "claims": [{"claim_id": "c1", "audience": "owner", "task_id": "AH-790", "run_id": "linux-final-truth-gate-20260613", "scope_signature": "permanent-linux-final-truth-gate-no-fake-done-for-agenthub-codex-linux-agent", "required_evidence_class": "main_readback", "actual_evidence_path": "governance/linux-final-truth-gate-policy.md", "evidence_readback_status": "PASS", "verdict": "GREEN", "allowed_in_final": true, "reason": "main file readback"}]}
+    },
+    {
+      "name": "user_visible_task_valid_browser_worker_receipt",
+      "expect": "PASS",
+      "final_text": "Browser path verified by worker receipt.",
+      "ledger": {"user_visible_scope": true, "claims": [{"claim_id": "c2", "audience": "owner", "task_id": "AH-790", "run_id": "linux-final-truth-gate-20260613", "scope_signature": "browser-scope", "required_evidence_class": "browser_worker_receipt", "actual_evidence_path": "reports/browser/user-story-receipt.json", "evidence_readback_status": "PASS", "verdict": "GREEN", "allowed_in_final": true, "reason": "approved browser worker receipt"}]}
+    },
+    {
+      "name": "browser_claim_blocked_when_only_local_curl_exists",
+      "expect": "LOCAL_ONLY_PROOF_BLOCKER",
+      "final_text": "User-visible feature done.",
+      "ledger": {"user_visible_scope": true, "claims": [{"claim_id": "c3", "audience": "owner", "task_id": "AH-790", "run_id": "linux-final-truth-gate-20260613", "scope_signature": "browser-scope", "required_evidence_class": "service_api_artifact", "actual_evidence_path": "local curl http_code 200", "evidence_readback_status": "PASS", "verdict": "GREEN", "allowed_in_final": true, "reason": "local status only"}]}
+    },
+    {
+      "name": "chat_only_proof_blocked",
+      "expect": "CHATGPT_OR_OWNER_CHAT_EVIDENCE_BLOCKER",
+      "final_text": "Done from chat.",
+      "ledger": {"user_visible_scope": false, "claims": [{"claim_id": "c4", "audience": "owner", "task_id": "AH-790", "run_id": "linux-final-truth-gate-20260613", "scope_signature": "chat-proof", "required_evidence_class": "main_readback", "actual_evidence_path": "ChatGPT owner chat text says works", "evidence_readback_status": "PASS", "verdict": "GREEN", "allowed_in_final": true, "reason": "bad proof"}]}
+    },
+    {
+      "name": "pr_only_proof_blocked",
+      "expect": "PR_ONLY_PROOF_BLOCKER",
+      "final_text": "Installed because PR exists.",
+      "ledger": {"user_visible_scope": false, "claims": [{"claim_id": "c5", "audience": "owner", "task_id": "AH-790", "run_id": "linux-final-truth-gate-20260613", "scope_signature": "pr-only", "required_evidence_class": "main_readback", "actual_evidence_path": "GitHub PR only", "evidence_readback_status": "PASS", "verdict": "GREEN", "allowed_in_final": true, "reason": "bad proof"}]}
+    },
+    {
+      "name": "unknown_client_claim_excluded",
+      "expect": "PASS",
+      "final_text": "Only evidenced repo control included.",
+      "ledger": {"user_visible_scope": false, "claims": [{"claim_id": "c6", "audience": "owner", "task_id": "AH-790", "run_id": "linux-final-truth-gate-20260613", "scope_signature": "client-claim", "required_evidence_class": "main_readback", "actual_evidence_path": "governance/linux-final-truth-gate-policy.md", "evidence_readback_status": "PASS", "verdict": "GREEN", "allowed_in_final": true, "reason": "evidenced"}, {"claim_id": "c7", "audience": "client", "task_id": "AH-790", "run_id": "linux-final-truth-gate-20260613", "scope_signature": "client-claim", "required_evidence_class": "browser_worker_receipt", "actual_evidence_path": "", "evidence_readback_status": "FAIL", "verdict": "UNKNOWN", "allowed_in_final": false, "reason": "no browser receipt"}]}
+    },
+    {
+      "name": "done_marker_with_pending_text_blocked",
+      "expect": "STAGE_DONE_WITH_PENDING_TEXT_BLOCKER",
+      "final_text": "Done, validation missing later.",
+      "ledger": {"user_visible_scope": false, "claims": [{"claim_id": "c8", "audience": "owner", "task_id": "AH-790", "run_id": "linux-final-truth-gate-20260613", "scope_signature": "pending", "required_evidence_class": "main_readback", "actual_evidence_path": "governance/linux-final-truth-gate-policy.md", "evidence_readback_status": "PASS", "verdict": "GREEN", "allowed_in_final": true, "reason": "evidenced"}]}
+    },
+    {"name": "same_gate_blind_retry_blocked", "expect": "BLIND_RETRY_AFTER_GATE_FAIL_BLOCKER", "same_gate_retry": "blind", "final_text": "Retry same gate.", "ledger": {"user_visible_scope": false, "claims": [{"claim_id": "c9", "audience": "machine", "task_id": "AH-790", "run_id": "linux-final-truth-gate-20260613", "scope_signature": "retry", "required_evidence_class": "validator_artifact", "actual_evidence_path": "validator output", "evidence_readback_status": "PASS", "verdict": "GREEN", "allowed_in_final": true, "reason": "retry state"}]}},
+    {"name": "same_gate_targeted_retry_after_source_read_allowed_once", "expect": "PASS", "same_gate_retry": "targeted_after_source_read", "final_text": "Targeted retry after source read.", "ledger": {"user_visible_scope": false, "claims": [{"claim_id": "c10", "audience": "machine", "task_id": "AH-790", "run_id": "linux-final-truth-gate-20260613", "scope_signature": "retry", "required_evidence_class": "validator_artifact", "actual_evidence_path": "validator source readback", "evidence_readback_status": "PASS", "verdict": "GREEN", "allowed_in_final": true, "reason": "source read before retry"}]}}
+  ]
+}
