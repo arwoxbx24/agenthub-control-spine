@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "final_claim_evidence_tuple.schema.json",
+  "title": "Final Claim Evidence Tuple",
+  "type": "object",
+  "required": ["claim_id", "audience", "task_id", "run_id", "scope_signature", "required_evidence_class", "actual_evidence_path", "evidence_readback_status", "verdict", "allowed_in_final", "reason"],
+  "properties": {
+    "claim_id": {"type": "string", "minLength": 1},
+    "audience": {"type": "string", "enum": ["owner", "client", "internal", "machine"]},
+    "task_id": {"type": "string", "pattern": "^[A-Z]+-[0-9]+$"},
+    "run_id": {"type": "string", "minLength": 1},
+    "scope_signature": {"type": "string", "minLength": 1},
+    "required_evidence_class": {"type": "string", "enum": ["main_readback", "validator_artifact", "youtrack_readback", "agenthub_mcp_receipt", "browser_worker_receipt", "service_api_artifact", "security_redaction_proof", "not_applicable"]},
+    "actual_evidence_path": {"type": "string"},
+    "evidence_readback_status": {"type": "string", "enum": ["PASS", "FAIL", "NOT_APPLICABLE"]},
+    "verdict": {"type": "string", "enum": ["GREEN", "PARTIAL", "UNKNOWN", "RED", "EXCLUDED"]},
+    "allowed_in_final": {"type": "boolean"},
+    "reason": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}
