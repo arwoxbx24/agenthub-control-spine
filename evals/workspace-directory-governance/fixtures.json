@@ -1,0 +1,20 @@
+{
+  "schema": "workspace_directory_governance_fixtures.v1",
+  "source_task": "AH-787",
+  "run_id": "workspace-codex-directory-governance-implementation-20260613",
+  "cases": [
+    {"name":"allowed_control_spine_policy_write","target_path":"@workspace/projects/agenthub-control-spine/governance/workspace-codex-directory-governance-policy.md","role":"T2_WORKER","task_id":"AH-787","run_id":"workspace-codex-directory-governance-implementation-20260613","lifecycle":"active_policy","default_load":false,"safe_to_replay":false,"expected":"ALLOW"},
+    {"name":"deny_unmanaged_tmp_report","target_path":"/tmp/final-report.md","role":"T2_WORKER","task_id":"AH-787","run_id":"workspace-codex-directory-governance-implementation-20260613","lifecycle":"audit_only","default_load":false,"safe_to_replay":false,"expected":"DENY_UNREGISTERED_TEMP_PATH"},
+    {"name":"deny_t0_mutation","target_path":"@workspace/projects/agenthub-control-spine/governance/x.md","role":"T0","task_id":"AH-787","run_id":"workspace-codex-directory-governance-implementation-20260613","lifecycle":"active_policy","default_load":false,"safe_to_replay":false,"expected":"DENY_T0_MUTATION"},
+    {"name":"deny_missing_task","target_path":"@workspace/projects/agenthub-control-spine/reports/a.md","role":"T2_WORKER","task_id":"","run_id":"workspace-codex-directory-governance-implementation-20260613","lifecycle":"audit_only","default_load":false,"safe_to_replay":false,"expected":"DENY_TASK_ID_MISSING"},
+    {"name":"deny_missing_run","target_path":"@agenthub-runs/no-run/output.txt","role":"runtime","task_id":"AH-787","run_id":"","lifecycle":"operational_receipt","default_load":false,"safe_to_replay":false,"expected":"DENY_RUN_ID_MISSING"},
+    {"name":"deny_lifecycle_missing","target_path":"@workspace/projects/agenthub-control-spine/reports/a.md","role":"T2_WORKER","task_id":"AH-787","run_id":"workspace-codex-directory-governance-implementation-20260613","lifecycle":"","default_load":false,"safe_to_replay":false,"expected":"DENY_LIFECYCLE_MISSING"},
+    {"name":"deny_report_default_load_true","target_path":"@workspace/projects/agenthub-control-spine/reports/audit.md","role":"T2_WORKER","task_id":"AH-787","run_id":"workspace-codex-directory-governance-implementation-20260613","lifecycle":"audit_only","default_load":true,"safe_to_replay":false,"expected":"DENY_AUDIT_DEFAULT_LOAD"},
+    {"name":"deny_fake_done_missing_receipt","done_markers":{"Implementation evidence":"governance/x.md","Validation evidence":"validator pass","Receipt":"","Blocker":"none"},"expected":"DENY_DONE_RECEIPT_MISSING"},
+    {"name":"deny_residual_done_text","done_markers":{"Implementation evidence":"governance/x.md","Validation evidence":"validator pass","Receipt":"reports/receipts/x.md","Blocker":"none","text":"remaining validation later"},"expected":"DENY_DONE_RESIDUAL_TEXT"},
+    {"name":"allow_done_tuple","done_markers":{"Implementation evidence":"governance/x.md","Validation evidence":"validator pass","Receipt":"reports/receipts/x.md","Blocker":"none"},"expected":"ALLOW_DONE"},
+    {"name":"deny_fake_client_claim","claim_ledger":[{"claim":"all features delivered","verdict":"partial"}],"expected":"DENY_CLIENT_CLAIM_PARTIAL"},
+    {"name":"packfix_missing_register","blocker":"missing register row","expected":"PACKFIX_REQUIRED"},
+    {"name":"deny_blind_retry","gate_failures":["same_error","same_error"],"evidence_changed":false,"expected":"DENY_BLIND_RETRY"}
+  ]
+}
