@@ -2,10 +2,18 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Task Card",
   "type": "object",
-  "required": ["task_id", "run_id", "type", "priority", "stage", "duplicate_signature", "done_gate"],
+  "required": ["task_id", "run_id", "type", "priority", "stage", "duplicate_signature", "done_gate", "created_at", "custom_created_date"],
   "properties": {
     "task_id": { "type": "string" },
     "run_id": { "type": "string" },
+    "created_at": {
+      "type": "string",
+      "description": "System YouTrack createdAt readback in yyyy-MM-dd HH:mm:ss format."
+    },
+    "custom_created_date": {
+      "type": "string",
+      "description": "YouTrack custom field 'Дата создания'; must equal created_at for AgentHub-created tasks."
+    },
     "type": { "enum": ["Incident", "Bug", "Task", "Research"] },
     "priority": { "enum": ["Show-stopper", "Critical", "Major", "Normal"] },
     "stage": { "enum": ["Backlog", "Develop", "Review", "Test", "Done", "Idea"] },
@@ -14,4 +22,3 @@
     "done_gate": { "type": "string" }
   }
 }
-
