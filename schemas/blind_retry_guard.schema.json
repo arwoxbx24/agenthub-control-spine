@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "blind_retry_guard.schema.json",
+  "title": "AgentHub Blind Retry Guard",
+  "type": "object",
+  "required": ["task_id", "run_id", "attempts", "decision"],
+  "properties": {
+    "task_id": {"type": "string"},
+    "run_id": {"type": "string"},
+    "attempts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["gate", "error_signature", "read_guard_source_before_retry", "changed_evidence"],
+        "properties": {
+          "gate": {"type": "string"},
+          "error_signature": {"type": "string"},
+          "read_guard_source_before_retry": {"type": "boolean"},
+          "changed_evidence": {"type": "boolean"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "decision": {"type": "string", "enum": ["ALLOW_TARGETED_RETRY", "BLOCK_BLIND_RETRY", "CREATE_PACKFIX", "ARCHITECTURE_DEFECT"]}
+  },
+  "additionalProperties": false
+}
