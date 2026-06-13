@@ -1,0 +1,17 @@
+{
+  "schema": "workspace_codex_directory_map.v1",
+  "artifact_id": "workspace-codex-directory-map-20260613",
+  "source_task": "AH-787",
+  "source_audit": "AH-786",
+  "run_id": "workspace-codex-directory-governance-implementation-20260613",
+  "lifecycle": "active_control",
+  "default_load": false,
+  "safe_to_replay": false,
+  "directories": [
+    {"path":"@workspace/projects/agenthub-control-spine","purpose":"canonical governance repository","owner_role":"REGISTRAR","write_roles":["T2_WORKER","REGISTRAR"],"read_roles":["T0","T1_ARCHITECT","VERIFIER"],"lifecycle":"ACTIVE_SOURCE_CONTROL","allowed_file_patterns":["governance/**","schemas/**","validators/**","evals/**","runbooks/**","prompts/**","reports/**","registries/**","INDEX.md","ARTIFACT_REGISTER.md","PR_QUEUE_REGISTER.md"],"forbidden_file_patterns":["**/.env*","**/secrets/**","**/tmp/**","**/scratch/**"],"evidence_requirement":"branch, receipt, validation, register row","cleanup_policy":"branch review then merge/close","confidence":"high"},
+    {"path":"@workspace/projects/*","purpose":"client/product project roots","owner_role":"PROJECT_OWNER","write_roles":["scoped_project_worker"],"read_roles":["scoped_project_worker","VERIFIER"],"lifecycle":"CLIENT_PRODUCT_REPO","allowed_file_patterns":["project-owned files only"],"forbidden_file_patterns":["agenthub proof folders","random audit reports","runtime receipts"],"evidence_requirement":"project task and scope manifest","cleanup_policy":"project-specific","confidence":"medium"},
+    {"path":"@runtime","purpose":"AgentHub/Codex runtime implementation","owner_role":"RUNTIME_REGISTRAR","write_roles":["scoped_runtime_worker"],"read_roles":["T0","T1_ARCHITECT","VERIFIER"],"lifecycle":"CODEX_STABLE_CONFIG","allowed_file_patterns":["scripts/**","templates/**","schemas/**","validators/**","hooks/**","policies/**"],"forbidden_file_patterns":["sessions/**","logs/**","raw secrets"],"evidence_requirement":"runtime task, rollback, validation","cleanup_policy":"runtime release policy","confidence":"high"},
+    {"path":"@agenthub-runs/<RUN_ID>","purpose":"AgentHub operational evidence","owner_role":"AGENTHUB_RUNTIME","write_roles":["runtime"],"read_roles":["VERIFIER","REGISTRAR"],"lifecycle":"AGENTHUB_RUN_OUTPUT","allowed_file_patterns":["receipts","worker outputs","redacted evidence"],"forbidden_file_patterns":["final docs as source of truth","secrets","env dumps"],"evidence_requirement":"task id and RUN_ID","cleanup_policy":"retention/quarantine ledger","confidence":"high"},
+    {"path":"@artifacts","purpose":"registered reviewable artifacts","owner_role":"ARTIFACT_REGISTRAR","write_roles":["artifact_service"],"read_roles":["owner","VERIFIER"],"lifecycle":"AUDIT_REPORT_OR_RECEIPT","allowed_file_patterns":["registered artifacts"],"forbidden_file_patterns":["unregistered scratch"],"evidence_requirement":"artifact receipt and verification","cleanup_policy":"artifact lifecycle policy","confidence":"medium"}
+  ]
+}
