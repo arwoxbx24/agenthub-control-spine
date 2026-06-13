@@ -1,0 +1,29 @@
+{
+  "schema": "agenthub_anti_blind_retry_fixtures.v1",
+  "source_task": "AH-788",
+  "cases": [
+    {
+      "name": "same_gate_retry_without_source_read_blocked",
+      "expect": "BLIND_RETRY_AFTER_GATE_FAIL_BLOCKER",
+      "attempts": [
+        {"gate": "done_parser", "error_signature": "missing exact marker", "read_guard_source_before_retry": false, "changed_evidence": false},
+        {"gate": "done_parser", "error_signature": "missing exact marker", "read_guard_source_before_retry": false, "changed_evidence": false}
+      ]
+    },
+    {
+      "name": "gate_failure_then_source_read_allows_one_retry",
+      "expect": "ALLOW_TARGETED_RETRY",
+      "attempts": [
+        {"gate": "done_parser", "error_signature": "marker case mismatch", "read_guard_source_before_retry": false, "changed_evidence": false},
+        {"gate": "done_parser", "error_signature": "marker case mismatch", "read_guard_source_before_retry": true, "changed_evidence": true}
+      ]
+    },
+    {
+      "name": "routine_browser_route_gap_becomes_packfix",
+      "expect": "CREATE_PACKFIX",
+      "attempts": [
+        {"gate": "browser_user_story", "error_signature": "browser route missing", "read_guard_source_before_retry": true, "changed_evidence": false}
+      ]
+    }
+  ]
+}
