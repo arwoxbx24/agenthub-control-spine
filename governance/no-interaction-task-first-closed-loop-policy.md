@@ -100,6 +100,24 @@ Routine classes must not produce user chat. `EMERGENCY_STOP` and
 credential or authority input may surface only when no safe autonomous route
 exists.
 
+## Anti-Stop Continuation Guard
+
+Source task: AH-783.
+
+During `ACTIVE_RUN`, `INTERNAL_BLOCKER_REMEDIATION`, `VALIDATION`, and
+`FINAL_AGGREGATION`, routine gaps must be solved inside the same contour instead
+of being emitted as user-facing stop messages. This includes missing PR queue
+state, missing register row, missing task evidence, missing readback artifact,
+missing parser marker, duplicate task tail, and missing validation route.
+
+If the same routine gate fails twice, create or reuse a same-RUN remediation
+item and continue through a different safe route. Do not ask the owner for
+routine proof while repository, YouTrack, MCP, validator, or browser-worker
+routes remain available.
+
+This guard does not authorize forbidden runtime, Docker, DB, proxy, firewall,
+PM2, DNS, SSL, product-code, secret, or broad cleanup operations.
+
 ## Worker Aggregation
 
 Spawned/subagent workers return evidence to the aggregator, not to user chat.
