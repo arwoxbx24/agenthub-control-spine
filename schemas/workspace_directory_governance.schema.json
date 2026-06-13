@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workspace_directory_governance.schema.json",
+  "title": "Workspace Codex Directory Governance Map",
+  "type": "object",
+  "required": ["schema", "artifact_id", "source_task", "run_id", "lifecycle", "default_load", "safe_to_replay", "directories"],
+  "properties": {
+    "schema": {"const": "workspace_codex_directory_map.v1"},
+    "artifact_id": {"type": "string", "minLength": 1},
+    "source_task": {"type": "string", "pattern": "^AH-[0-9]+$"},
+    "source_audit": {"type": "string"},
+    "run_id": {"type": "string", "minLength": 1},
+    "lifecycle": {"type": "string", "minLength": 1},
+    "default_load": {"type": "boolean"},
+    "safe_to_replay": {"type": "boolean"},
+    "directories": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["path", "purpose", "owner_role", "write_roles", "read_roles", "lifecycle", "allowed_file_patterns", "forbidden_file_patterns", "evidence_requirement", "cleanup_policy", "confidence"], "properties": {"path": {"type": "string"}, "purpose": {"type": "string"}, "owner_role": {"type": "string"}, "write_roles": {"type": "array", "items": {"type": "string"}}, "read_roles": {"type": "array", "items": {"type": "string"}}, "lifecycle": {"type": "string"}, "allowed_file_patterns": {"type": "array", "items": {"type": "string"}}, "forbidden_file_patterns": {"type": "array", "items": {"type": "string"}}, "evidence_requirement": {"type": "string"}, "cleanup_policy": {"type": "string"}, "confidence": {"type": "string", "enum": ["low", "medium", "high"]}}, "additionalProperties": true}}
+  },
+  "additionalProperties": true
+}

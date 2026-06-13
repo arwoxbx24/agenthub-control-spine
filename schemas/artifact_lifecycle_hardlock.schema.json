@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "artifact_lifecycle_hardlock.schema.json",
+  "title": "AgentHub Artifact Lifecycle Hardlock",
+  "type": "object",
+  "required": ["artifact_id", "type", "owner_role", "source_task", "lifecycle", "default_load", "safe_to_replay", "evidence_pointer"],
+  "properties": {
+    "artifact_id": {"type": "string", "minLength": 1},
+    "type": {"type": "string", "minLength": 1},
+    "owner_role": {"type": "string", "minLength": 1},
+    "source_task": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string"},
+    "lifecycle": {"type": "string", "enum": ["active_policy", "active_schema", "active_control", "active_template", "current_context", "audit_only", "operational_receipt", "consumed_prompt", "superseded", "quarantine", "transient"]},
+    "default_load": {"type": "boolean"},
+    "safe_to_replay": {"type": "boolean"},
+    "evidence_pointer": {"type": "string", "minLength": 1}
+  },
+  "allOf": [
+    {"if": {"properties": {"lifecycle": {"enum": ["audit_only", "operational_receipt", "consumed_prompt", "transient"]}}}, "then": {"properties": {"default_load": {"const": false}, "safe_to_replay": {"const": false}}}}
+  ],
+  "additionalProperties": true
+}
