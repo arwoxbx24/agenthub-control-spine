@@ -1,0 +1,50 @@
+{
+  "schema": "agenthub_task_created_date_hardlock_fixtures.v1",
+  "source_task": "AH-789",
+  "cases": [
+    {
+      "name": "post_create_missing_custom_date_requires_backfill",
+      "expect": "BACKFILL_REQUIRED",
+      "record": {
+        "task_id": "AH-789",
+        "run_id": "task-created-date-hardlock-20260613",
+        "created_at": "2026-06-13 22:25:50",
+        "custom_created_date": "",
+        "source": "post_create_readback"
+      }
+    },
+    {
+      "name": "date_after_backfill_passes",
+      "expect": "PASS",
+      "record": {
+        "task_id": "AH-789",
+        "run_id": "task-created-date-hardlock-20260613",
+        "created_at": "2026-06-13 22:25:50",
+        "custom_created_date": "2026-06-13 22:25:50",
+        "source": "backfill_from_createdAt"
+      }
+    },
+    {
+      "name": "missing_both_dates_blocks",
+      "expect": "BLOCKED_TASK_DATE_MISSING",
+      "record": {
+        "task_id": "AH-000",
+        "run_id": "example",
+        "created_at": "",
+        "custom_created_date": "",
+        "source": "post_create_readback"
+      }
+    },
+    {
+      "name": "mismatched_backfill_blocks",
+      "expect": "BLOCKED_DATE_MISMATCH",
+      "record": {
+        "task_id": "AH-001",
+        "run_id": "example",
+        "created_at": "2026-06-13 10:00:00",
+        "custom_created_date": "2026-06-13 11:00:00",
+        "source": "backfill_from_createdAt"
+      }
+    }
+  ]
+}
