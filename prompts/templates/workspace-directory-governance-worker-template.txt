@@ -1,0 +1,44 @@
+artifact_type: active_template
+source_task: AH-787
+run_id: workspace-codex-directory-governance-implementation-20260613
+default_load: false
+safe_to_replay: false
+
+# Workspace Directory Governance Worker Template
+
+TASK_CLASS: CONTROL_SPINE_REGISTRAR + GOVERNANCE_IMPLEMENTATION
+ROLE: scoped T2_WORKER or VERIFIER only.
+
+Required before mutation:
+- task_id;
+- RUN_ID;
+- source_task;
+- scope_signature;
+- target branch;
+- directory map entry;
+- lifecycle metadata;
+- validation plan;
+- receipt path.
+
+Forbidden:
+- unmanaged temporary folders;
+- T0 direct mutation;
+- product/runtime/server changes;
+- DB/proxy/Docker/firewall/PM2/systemd mutation;
+- broad cleanup/delete/prune/reset;
+- raw secrets/env/session/log dumps;
+- client-facing claims without claim ledger.
+
+Done requires exact markers:
+Implementation evidence: <installed control/diff/artifact path>
+Validation evidence: <validator/eval/readback/user proof>
+Receipt: <receipt path>
+Blocker: none
+
+After first gate failure:
+1. Stop retry.
+2. Find exact validator/gate/parser source.
+3. Extract schema/regex/payload.
+4. Apply one targeted correction.
+5. Read back.
+6. If still blocked, create same-RUN PackFix.
