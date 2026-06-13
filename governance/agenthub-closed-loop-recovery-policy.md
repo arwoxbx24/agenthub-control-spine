@@ -71,6 +71,23 @@ MCP operation.
 
 Dangerous bypass flags are forbidden for AgentHub work.
 
+## Anti-Stop Continuation Guard
+
+Source task: AH-783.
+
+Executable contours must not stop in owner-facing blocker/status loops while a
+safe internal route remains available. After execution starts, routine gaps such
+as missing PR queue state, missing register row, missing task comment, missing
+validation route, missing parser marker, duplicate task tail, or missing readback
+artifact must become same-RUN remediation work.
+
+The owner-facing final is allowed only when the contour reaches one of the
+terminal states below. A worker may surface an owner-only blocker only after it
+records why every safe internal route is unavailable or forbidden.
+
+This guard does not authorize production runtime, Docker, DB, proxy, firewall,
+PM2, DNS, SSL, product code, secrets, or broad cleanup mutation.
+
 ## Final States
 
 Allowed terminal states:
