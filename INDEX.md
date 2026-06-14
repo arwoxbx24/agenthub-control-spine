@@ -427,3 +427,21 @@ status: draft
 | `reports/validations/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-VALIDATION-20260611.md` | validation report | AH-738 / PR153 | operational-receipt |
 | `reports/receipts/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-RECEIPT-20260611.md` | operational receipt | AH-738 / PR153 | operational-receipt |
 
+## AH-794 Test-First Production Deploy Lock Coverage
+
+| Artifact | Type | Source task | Status |
+|---|---|---|---|
+| `governance/test-first-prod-deploy-lock-policy.md` | governance policy | AH-794 | active-control-candidate |
+| `schemas/environment_route_proof.schema.json` | schema | AH-794 | active-control-candidate |
+| `schemas/workflow_impact_audit.schema.json` | schema | AH-794 | active-control-candidate |
+| `schemas/release_approval_gate.schema.json` | schema | AH-794 | active-control-candidate |
+| `schemas/test_acceptance_proof.schema.json` | schema | AH-794 | active-control-candidate |
+| `validators/test_first_prod_deploy_lock_validator.rb` | validator | AH-794 | active-control-candidate |
+| `fixtures/test-first-prod-deploy-lock/fixtures.json` | eval fixtures | AH-794 | active-control-candidate |
+| `runbooks/test-first-release-gate-runbook.md` | runbook | AH-794 | active-control-candidate |
+| `prompts/templates/test-first-release-worker-template.md` | worker template | AH-794 | active-control-candidate |
+| `prompts/templates/owner-test-confirmation-request-template.md` | owner template | AH-794 | active-control-candidate |
+| `registries/test-first-prod-deploy-lock-coverage-20260614.md` | coverage register | AH-794 | active-control-candidate |
+| `reports/incidents/AH-794-prod-crossing-incident-analysis-20260614.md` | incident analysis | AH-794 | audit-only |
+| `reports/validations/AH-794-test-first-prod-lock-validation-20260614.md` | validation report | AH-794 | operational-receipt |
+| `reports/receipts/AH-794-test-first-prod-lock-receipt-20260614.md` | implementation receipt | AH-794 | operational-receipt |

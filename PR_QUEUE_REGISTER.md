@@ -121,3 +121,8 @@ before closure.
 |---|---|---|---|---|---|---|---|---|
 | `#153` | `AH-738` | `RUN-AH738-PR153-FINAL-CLOSURE-20260611` | `agenthub/ah738-smart-self-healing-authority-elevation-20260611` | T1 Architecture Broker / T0 Registrar / T2 Scoped Worker / Verifier | `MERGE_READY_AFTER_VALIDATION` | Reopened and finalized after residual closure: index/register/PR queue coverage added, validators executed, validation report and receipt updated. | PR `#153`; validation report; receipt; touched validators; fixture `evals/agenthub-self-healing/fixtures/scoped_autonomy_contract_20260611.json`. | none after validation PASS |
 
+## AH-794 Test-First Production Deploy Lock
+
+| PR | Task id | RUN_ID | Branch | Owner role | Queue class | Registrar action | Evidence link | Blocker |
+|---|---|---|---|---|---|---|---|---|
+| `#171` | `AH-794` | `AH-PROD-LOCK-TEST-FIRST-GOVERNANCE-20260614` | `agenthub/AH-794-test-first-prod-lock-20260614` | T1 Architect / T2 Worker / Verifier / Registrar | `MERGE_READY_AFTER_VALIDATION` | Installs test-first production deployment lock governance after AH-793 production crossing. Requires validator workflow and gitleaks PASS before merge. | Policy, schemas, validator, fixtures, runbook/templates, incident analysis, validation report, receipt, coverage register. | none after CI validation PASS |

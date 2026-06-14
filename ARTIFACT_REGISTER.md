@@ -455,3 +455,21 @@ Compatibility states from older records remain readable: `active_policy`,
 | `reports/validations/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-VALIDATION-20260611.md` | `operational_receipt` | false | false | AH-738 / PR153 | Final validation report. |
 | `reports/receipts/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-RECEIPT-20260611.md` | `operational_receipt` | false | false | AH-738 / PR153 | Final PR #153 closure receipt. |
 
+## AH-794 Test-First Production Deploy Lock Coverage
+
+| Artifact | Lifecycle | Default load | Safe to replay | Source task | Notes |
+|---|---|---:|---:|---|---|
+| `governance/test-first-prod-deploy-lock-policy.md` | `active_policy` | false | false | AH-794 | Test-first production deployment lock policy; main/master and unknown routes are production-risk. |
+| `schemas/environment_route_proof.schema.json` | `active_control` | false | false | AH-794 | Schema for mandatory test-only route proof. |
+| `schemas/workflow_impact_audit.schema.json` | `active_control` | false | false | AH-794 | Schema for workflow YAML/default-branch/environment/secrets impact audit. |
+| `schemas/release_approval_gate.schema.json` | `active_control` | false | false | AH-794 | Schema requiring test proof plus exact owner phrase before production release. |
+| `schemas/test_acceptance_proof.schema.json` | `active_control` | false | false | AH-794 | Schema for browser/user/owner test acceptance evidence. |
+| `validators/test_first_prod_deploy_lock_validator.rb` | `active_control` | false | false | AH-794 | Deterministic validator for production lock fixtures. |
+| `fixtures/test-first-prod-deploy-lock/fixtures.json` | `active_control` | false | false | AH-794 | Required 12-case fixture pack. |
+| `runbooks/test-first-release-gate-runbook.md` | `active_control` | false | false | AH-794 | Test-first release gate runbook. |
+| `prompts/templates/test-first-release-worker-template.md` | `active_control` | false | false | AH-794 | Worker template with pre-action route proof and workflow impact audit. |
+| `prompts/templates/owner-test-confirmation-request-template.md` | `active_control` | false | false | AH-794 | Owner test confirmation request template; not production approval. |
+| `registries/test-first-prod-deploy-lock-coverage-20260614.md` | `current_baseline` | false | false | AH-794 | Coverage register for AH-794 package. |
+| `reports/incidents/AH-794-prod-crossing-incident-analysis-20260614.md` | `audit_only` | false | false | AH-794 | Evidence-backed incident analysis for AH-793 production crossing. |
+| `reports/validations/AH-794-test-first-prod-lock-validation-20260614.md` | `operational_receipt` | false | false | AH-794 | Validation report for fixture coverage and CI validator route. |
+| `reports/receipts/AH-794-test-first-prod-lock-receipt-20260614.md` | `operational_receipt` | false | false | AH-794 | Implementation receipt; proof only, not a prompt. |
