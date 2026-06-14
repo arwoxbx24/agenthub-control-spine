@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/environment_route_proof.schema.json",
+  "title": "Environment route proof",
+  "type": "object",
+  "required": ["target_repository", "target_branch", "target_environment", "trigger_event", "secrets_environment_used", "deployment_target", "public_url_affected", "branch_filters", "production_workflow_can_trigger", "production_secrets_can_access", "conclusion"],
+  "properties": {
+    "target_repository": {"type": "string", "minLength": 1},
+    "target_branch": {"type": "string", "minLength": 1},
+    "target_environment": {"enum": ["LOCAL_ONLY", "TEST", "STAGING", "PRODUCTION", "UNKNOWN_PROD_RISK"]},
+    "workflow_id": {"type": ["string", "null"]},
+    "workflow_name": {"type": ["string", "null"]},
+    "workflow_path": {"type": ["string", "null"]},
+    "trigger_event": {"type": "string", "minLength": 1},
+    "secrets_environment_used": {"type": "array", "items": {"type": "string"}},
+    "deployment_target": {"type": "string"},
+    "public_url_affected": {"type": ["string", "null"]},
+    "branch_filters": {"type": "array", "items": {"type": "string"}},
+    "production_workflow_can_trigger": {"type": "boolean"},
+    "production_secrets_can_access": {"type": "boolean"},
+    "conclusion": {"enum": ["TEST_ONLY_PASS", "PROD_RISK_BLOCKED", "UNKNOWN_IS_PROD_RISK"]}
+  },
+  "additionalProperties": false
+}
