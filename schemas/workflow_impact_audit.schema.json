@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/workflow_impact_audit.schema.json",
+  "title": "Workflow impact audit",
+  "type": "object",
+  "required": ["repository", "default_branch", "current_branch", "workflow_path", "yaml_read", "triggers", "branch_filters", "environment_declarations", "secrets_references", "can_trigger_production", "conclusion"],
+  "properties": {
+    "repository": {"type": "string"},
+    "default_branch": {"type": "string"},
+    "current_branch": {"type": "string"},
+    "workflow_path": {"type": "string"},
+    "yaml_read": {"const": true},
+    "triggers": {"type": "array", "items": {"type": "string"}},
+    "branch_filters": {"type": "array", "items": {"type": "string"}},
+    "environment_declarations": {"type": "array", "items": {"type": "string"}},
+    "secrets_references": {"type": "array", "items": {"type": "string"}},
+    "run_history_checked": {"type": "boolean"},
+    "can_trigger_production": {"type": "boolean"},
+    "conclusion": {"enum": ["TEST_ONLY_PASS", "PROD_RISK_BLOCKED", "UNKNOWN_IS_PROD_RISK"]}
+  },
+  "additionalProperties": false
+}
