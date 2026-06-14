@@ -3,7 +3,7 @@ artifact_id: AH-794-test-first-prod-lock-receipt-20260614
 artifact_type: implementation-receipt
 source_task: AH-794
 run_id: AH-PROD-LOCK-TEST-FIRST-GOVERNANCE-20260614
-status: partial_until_pr_validation
+status: pass
 safe_to_replay: false
 ---
 
@@ -27,7 +27,9 @@ Installed on branch `agenthub/AH-794-test-first-prod-lock-20260614`:
 - `reports/incidents/AH-794-prod-crossing-incident-analysis-20260614.md`
 - `reports/validations/AH-794-test-first-prod-lock-validation-20260614.md`
 - `reports/receipts/AH-794-test-first-prod-lock-receipt-20260614.md`
-- `.github/workflows/test-first-prod-lock-validator.yml`
+- `INDEX.md`
+- `ARTIFACT_REGISTER.md`
+- `PR_QUEUE_REGISTER.md`
 
 ## Gate Results
 
@@ -38,14 +40,15 @@ Installed on branch `agenthub/AH-794-test-first-prod-lock-20260614`:
 - protected_download_gate: not_applicable.
 - secret_redaction_gate: PASS, no secrets or raw env content stored.
 - path_safety_gate: PASS, no backup/shadow/client runtime path used for mutation.
-- validator_workflow_route: INSTALLED, `.github/workflows/test-first-prod-lock-validator.yml` on PR branch.
-- validation: PARTIAL until task-bound Ruby validator execution or CI confirms exit 0.
-- blocker: `VALIDATOR_EXECUTION_ROUTE_PENDING`.
+- validator_workflow_route: PASS, default-branch `secret-scan` workflow includes the AH-794 validator job from PR #172.
+- register_coverage: PASS, `INDEX.md`, `ARTIFACT_REGISTER.md`, and `PR_QUEUE_REGISTER.md` patch readback exists on PR #171.
+- validation: PASS, GitHub Actions run `27510687341` succeeded on head `8b8de784ab9d8e37ef8d35eaf153b9d2b2ab91cc`.
+- blocker: none.
 
 ## Route Note
 
-This commit intentionally updates the receipt after the workflow file exists so GitHub can evaluate the branch workflow on the next push. It is not a PASS claim until the validator run is read back.
+PR #172 installed the allowed default-branch CI route. PR #171 removed its branch-local temporary workflow and uses the default `secret-scan` workflow validator job. Temporary helper PR #173 was closed unused.
 
 ## Done Statement
 
-Not Done for mainline closure until the PR is opened, validator/checks pass, register/index coverage is complete, and AH-794 readback records implementation and validation evidence.
+Ready for mainline closure after PR #171 is marked ready, merged, and AH-794 readback records the merge SHA, CI evidence, register readback, and blocker `none`.

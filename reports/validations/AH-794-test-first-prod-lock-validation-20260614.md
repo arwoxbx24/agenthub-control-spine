@@ -3,7 +3,7 @@ artifact_id: AH-794-test-first-prod-lock-validation-20260614
 artifact_type: validation-report
 source_task: AH-794
 run_id: AH-PROD-LOCK-TEST-FIRST-GOVERNANCE-20260614
-status: validation_report
+status: pass
 safe_to_replay: false
 ---
 
@@ -43,7 +43,13 @@ Expected output: `PASS test_first_prod_deploy_lock_validator cases=12`.
 - Branch: `agenthub/AH-794-test-first-prod-lock-20260614`.
 - Physical YouTrack task: AH-794.
 - AgentHub RUN_ID: `AH-PROD-LOCK-TEST-FIRST-GOVERNANCE-20260614`.
+- PR #171 head with register coverage: `8b8de784ab9d8e37ef8d35eaf153b9d2b2ab91cc`.
+- GitHub Actions run `27510687341`: `secret-scan`, conclusion `success`.
+- Job `81310068397` / `gitleaks`: success.
+- Job `81310068427` / `AH-794 test-first production lock validator`: success.
+- Step `Run AH-794 deterministic validator`: success.
+- PR file patch readback: `INDEX.md`, `ARTIFACT_REGISTER.md`, and `PR_QUEUE_REGISTER.md` contain AH-794 coverage sections.
 
 ## Residual
 
-Local shell execution was blocked by the runtime pre-dispatch guard before Ruby could run in this session. The validator and fixtures are deterministic and committed for CI/reviewer execution. This report must not be used to claim merged/main Done until PR checks or an allowed task-bound validator route confirms exit 0.
+None for repository governance validation. Local shell remained restricted, but the allowed GitHub Actions CI route confirmed the deterministic validator and gitleaks success on the PR head with register coverage. No StroyRemont production/client runtime mutation was performed.
