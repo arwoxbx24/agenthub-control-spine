@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/owner_distress_incident_signal.schema.json",
+  "title": "Owner Distress Incident Signal",
+  "type": "object",
+  "required": ["message", "detected", "incident_profile", "task_binding_required", "read_only_triage_required"],
+  "properties": {
+    "message": { "type": "string", "minLength": 1 },
+    "detected": { "type": "boolean" },
+    "signals": { "type": "array", "items": { "type": "string" } },
+    "incident_profile": { "const": "INCIDENT" },
+    "task_binding_required": { "const": true },
+    "read_only_triage_required": { "const": true },
+    "owner_message_contract": { "enum": ["Fact/Action/Left"] }
+  },
+  "additionalProperties": true
+}
