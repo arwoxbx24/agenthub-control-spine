@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/recovery_action_authorization.schema.json",
+  "title": "Recovery Action Authorization",
+  "type": "object",
+  "required": ["task_id", "run_id", "action_class", "environment_target_proof", "authorized_worker_route", "rollback_checkpoint_plan", "impact_analysis", "owner_phrase"],
+  "properties": {
+    "task_id": { "type": "string", "pattern": "^[A-Z]+-[0-9]+$" },
+    "run_id": { "type": "string", "minLength": 8 },
+    "action_class": { "enum": ["READ_ONLY_TRIAGE", "TEST_VALIDATION", "PROD_MUTATION", "ROLLBACK", "OWNER_ONLY_IRREVERSIBLE_GATE"] },
+    "environment_target_proof": { "$ref": "environment_target_proof.schema.json" },
+    "authorized_worker_route": { "type": "boolean" },
+    "rollback_checkpoint_plan": { "type": "string" },
+    "impact_analysis": { "type": "string" },
+    "owner_phrase": { "type": "string" },
+    "forbidden_surface": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}
