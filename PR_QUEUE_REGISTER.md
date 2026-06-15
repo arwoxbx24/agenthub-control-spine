@@ -139,4 +139,4 @@ before closure.
 
 | PR | Task id | RUN_ID | Branch | Owner role | Queue class | Registrar action | Evidence link | Blocker |
 |---|---|---|---|---|---|---|---|---|
-| `#TBD` | `AH-803` | `owner-guards-consolidation-20260615` | `agenthub/owner-guards-consolidation-20260615` | T1 Architect / Registrar / Verifier | `READY_FOR_PR` | Ports stale PR #171 owner-input package to fresh main branch and adds owner-output solution-only hardlock package; AH-793 and AH-794 contours were verified as already implemented/read back. | validation reports and receipts for AH-803 owner guards. | none |
+| `#180` | `AH-803` | `owner-guards-consolidation-20260615` | `agenthub/owner-guards-consolidation-20260615` | T1 Architect / Registrar / Verifier | `READY_FOR_PR` | Ports stale PR #171 owner-input package to fresh main branch and adds owner-output solution-only hardlock package; AH-793 and AH-794 contours were verified as already implemented/read back. | validation reports and receipts for AH-803 owner guards. | none |
