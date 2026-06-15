@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/client_visible_result_gate.schema.json",
+  "title": "Client visible result gate",
+  "type": "object",
+  "required": ["code_ready", "ci_green", "browser_proof", "visible_result", "cleanup_done", "done_allowed"],
+  "properties": {
+    "code_ready": {"type": "boolean"},
+    "ci_green": {"type": "boolean"},
+    "browser_proof": {"type": "boolean"},
+    "visible_result": {"enum": ["BANNER_ADDED_VISIBLE", "AH793_ERROR_VISIBLE", "NO_VISIBLE_RESULT"]},
+    "cleanup_done": {"type": "boolean"},
+    "done_allowed": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/browser_user_outcome_proof.schema.json",
+  "title": "Browser user outcome proof",
+  "type": "object",
+  "required": ["target_url", "page_reachable", "form_visible", "visible_result", "cleanup_evidence", "production_touched", "proof_type"],
+  "properties": {
+    "target_url": {"const": "https://stroy-test.b244.ru/a/?p=banners"},
+    "page_reachable": {"type": "boolean"},
+    "form_visible": {"type": "boolean"},
+    "visible_result": {"enum": ["BANNER_ADDED_VISIBLE", "AH793_ERROR_VISIBLE", "NO_VISIBLE_RESULT"]},
+    "ah793_error_code": {"type": ["string", "null"], "pattern": "^(AH793-[A-Z0-9-]+)?$"},
+    "cleanup_evidence": {"type": "boolean"},
+    "production_touched": {"const": false},
+    "proof_type": {"enum": ["browser_trace", "screenshot_plus_state", "recorded_session"]}
+  },
+  "additionalProperties": false
+}
