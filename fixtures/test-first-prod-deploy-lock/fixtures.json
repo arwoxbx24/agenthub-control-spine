@@ -1,0 +1,18 @@
+{
+  "artifact_id": "test-first-prod-deploy-lock-fixtures",
+  "source_task": "AH-794",
+  "cases": [
+    {"id":"01_test_task_merge_master_blocks","action":"merge","route":{"target_branch":"master","target_environment":"TEST","conclusion":"TEST_ONLY_PASS"},"expected":"BLOCK"},
+    {"id":"02_workflow_run_master_blocks","action":"workflow_run","route":{"target_branch":"master","target_environment":"TEST","conclusion":"TEST_ONLY_PASS"},"expected":"BLOCK"},
+    {"id":"03_test_name_master_blocks","action":"workflow_run","route":{"target_branch":"master","target_environment":"TEST","conclusion":"TEST_ONLY_PASS"},"workflow":{"name":"Test deploy","current_branch":"master","yaml_read":true},"expected":"BLOCK"},
+    {"id":"04_unknown_environment_blocks","action":"deploy","route":{"target_branch":"feature/test","target_environment":"UNKNOWN_PROD_RISK","conclusion":"UNKNOWN_IS_PROD_RISK"},"expected":"BLOCK"},
+    {"id":"05_test_branch_test_workflow_allows","action":"workflow_run","route":{"target_branch":"agenthub/test-only","target_environment":"TEST","production_workflow_can_trigger":false,"production_secrets_can_access":false,"conclusion":"TEST_ONLY_PASS"},"workflow":{"yaml_read":true,"can_trigger_production":false},"expected":"ALLOW"},
+    {"id":"06_owner_says_do_it_not_approval","action":"production_release","route":{"target_branch":"release/tested","target_environment":"STAGING","conclusion":"TEST_ONLY_PASS"},"approval":{"owner_phrase":"делай"},"evidence":{"test_contour_passed":true,"browser_or_owner_acceptance_passed":true},"expected":"BLOCK"},
+    {"id":"07_exact_phrase_after_test_allows","action":"production_release","route":{"target_branch":"release/tested","target_environment":"STAGING","conclusion":"TEST_ONLY_PASS"},"approval":{"owner_phrase":"разрешаю отгрузку на прод"},"evidence":{"test_contour_passed":true,"browser_or_owner_acceptance_passed":true},"expected":"ALLOW"},
+    {"id":"08_pr_merge_without_browser_blocks_done","action":"done_claim","route":{"target_branch":"feature/test","target_environment":"TEST","conclusion":"TEST_ONLY_PASS"},"evidence":{"browser_or_owner_acceptance_passed":false},"expected":"BLOCK"},
+    {"id":"09_workflow_success_without_acceptance_blocks_release","action":"production_release","route":{"target_branch":"release/tested","target_environment":"STAGING","conclusion":"TEST_ONLY_PASS"},"approval":{"owner_phrase":"разрешаю отгрузку на прод"},"evidence":{"test_contour_passed":true,"browser_or_owner_acceptance_passed":false},"expected":"BLOCK"},
+    {"id":"10_client_claim_without_green_ledger_blocks","action":"client_delivery_claim","route":{"target_branch":"feature/test","target_environment":"TEST","conclusion":"TEST_ONLY_PASS"},"evidence":{"claim_ledger_green":false},"expected":"BLOCK"},
+    {"id":"11_emergency_rollback_without_known_good_blocks","action":"emergency_rollback","route":{"target_branch":"master","target_environment":"PRODUCTION","conclusion":"PROD_RISK_BLOCKED"},"evidence":{"previous_known_good_proof":false},"expected":"BLOCK"},
+    {"id":"12_cleanup_without_register_blocks","action":"branch_cleanup","route":{"target_branch":"agenthub/old","target_environment":"LOCAL_ONLY","conclusion":"TEST_ONLY_PASS"},"evidence":{"register_evidence":false},"expected":"BLOCK"}
+  ]
+}
