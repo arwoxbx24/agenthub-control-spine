@@ -454,3 +454,23 @@ status: draft
 | `prompts/architecture/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-20260611.txt` | architecture control prompt | AH-738 / PR153 | active-control-candidate |
 | `reports/validations/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-VALIDATION-20260611.md` | validation report | AH-738 / PR153 | operational-receipt |
 | `reports/receipts/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-RECEIPT-20260611.md` | operational receipt | AH-738 / PR153 | operational-receipt |
+
+## AH-794 Test-First Production Deployment Lock
+
+| Artifact | Type | Source task | Status |
+|---|---|---|---|
+| `governance/test-first-prod-deploy-lock-policy.md` | governance policy | AH-794 | active |
+| `schemas/environment_route_proof.schema.json` | schema | AH-794 | active |
+| `schemas/workflow_impact_audit.schema.json` | schema | AH-794 | active |
+| `schemas/release_approval_gate.schema.json` | schema | AH-794 | active |
+| `schemas/test_acceptance_proof.schema.json` | schema | AH-794 | active |
+| `validators/test_first_prod_deploy_lock_validator.rb` | validator | AH-794 | active |
+| `fixtures/test-first-prod-deploy-lock/fixtures.json` | fixtures | AH-794 | active |
+| `runbooks/test-first-release-gate-runbook.md` | runbook | AH-794 | active |
+| `prompts/templates/test-first-release-worker-template.md` | worker template | AH-794 | active |
+| `prompts/templates/owner-test-confirmation-request-template.md` | owner confirmation template | AH-794 | active |
+| `registries/test-first-prod-deploy-lock-coverage-20260614.md` | coverage register | AH-794 | active |
+| `reports/incidents/AH-794-prod-crossing-incident-analysis-20260614.md` | incident analysis | AH-794 | audit-only |
+| `reports/validations/AH-794-test-first-prod-lock-validation-20260614.md` | validation report | AH-794 | validation-report |
+| `reports/receipts/AH-794-test-first-prod-lock-receipt-20260614.md` | operational receipt | AH-794 | operational-receipt |
+| `reports/receipts/AH-794-pr171-autonomous-supersede-closure-20260615.md` | supersede receipt | AH-794 | operational-receipt |

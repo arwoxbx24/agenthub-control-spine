@@ -482,3 +482,23 @@ Compatibility states from older records remain readable: `active_policy`,
 | `prompts/architecture/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-20260611.txt` | `active_control` | false | false | AH-738 / PR153 | Architecture control prompt; not default-loaded. |
 | `reports/validations/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-VALIDATION-20260611.md` | `operational_receipt` | false | false | AH-738 / PR153 | Final validation report. |
 | `reports/receipts/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-RECEIPT-20260611.md` | `operational_receipt` | false | false | AH-738 / PR153 | Final PR #153 closure receipt. |
+
+## AH-794 Test-First Production Deployment Lock
+
+| Artifact | Lifecycle | Default load | Safe to replay | Source task | Notes |
+|---|---|---:|---:|---|---|
+| `governance/test-first-prod-deploy-lock-policy.md` | `active_policy` | false | false | AH-794 | Permanent test-first production deployment lock policy; master/main and unknown routes are production-risk by default. |
+| `schemas/environment_route_proof.schema.json` | `active_schema` | false | false | AH-794 | Environment route proof schema for test-only route decisions. |
+| `schemas/workflow_impact_audit.schema.json` | `active_schema` | false | false | AH-794 | Workflow impact audit schema for PR, merge, workflow, and deployment-risk actions. |
+| `schemas/release_approval_gate.schema.json` | `active_schema` | false | false | AH-794 | Release approval gate schema requiring test proof and exact owner production approval phrase. |
+| `schemas/test_acceptance_proof.schema.json` | `active_schema` | false | false | AH-794 | Test/browser/user acceptance proof schema. |
+| `validators/test_first_prod_deploy_lock_validator.rb` | `active_control` | false | false | AH-794 | Deterministic validator for test-first production lock fixtures. |
+| `fixtures/test-first-prod-deploy-lock/fixtures.json` | `active_control` | false | false | AH-794 | Negative and positive fixtures for production-risk blocks and approved release gate. |
+| `runbooks/test-first-release-gate-runbook.md` | `active_runbook` | false | false | AH-794 | Runbook for test-only route proof, workflow impact audit, owner confirmation, release, and readback. |
+| `prompts/templates/test-first-release-worker-template.md` | `active_template` | false | false | AH-794 | Worker template for test-first release gate enforcement. |
+| `prompts/templates/owner-test-confirmation-request-template.md` | `active_template` | false | false | AH-794 | Owner test confirmation request template; test-only and exact proof bounded. |
+| `registries/test-first-prod-deploy-lock-coverage-20260614.md` | `current_baseline` | false | false | AH-794 | Coverage register for AH-794 production lock controls. |
+| `reports/incidents/AH-794-prod-crossing-incident-analysis-20260614.md` | `audit_only` | false | false | AH-794 | Incident analysis evidence only; not a standing instruction. |
+| `reports/validations/AH-794-test-first-prod-lock-validation-20260614.md` | `validation_report` | false | false | AH-794 | Validation report for AH-794 test-first production lock validator. |
+| `reports/receipts/AH-794-test-first-prod-lock-receipt-20260614.md` | `operational_receipt` | false | false | AH-794 | Implementation receipt for AH-794 governance package. |
+| `reports/receipts/AH-794-pr171-autonomous-supersede-closure-20260615.md` | `operational_receipt` | false | false | AH-794 | Supersede closure receipt for stale PR #171 and merged PR #177. |

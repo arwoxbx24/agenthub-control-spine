@@ -1,0 +1,74 @@
+# AH-794 top-level register coverage patch proposal
+
+Task: AH-794
+RUN_ID: ah794-control-spine-register-closure-20260615
+Scope: control-spine registers only
+Safety: no StroyRemont/product/runtime/workflow/DB/Docker/Nginx/proxy/firewall/PM2/DNS/SSL/secret mutation
+
+This patch proposal records the exact rows required to close the residual REGISTER_COVERAGE_PATCH_ROUTE_MISSING tail for AH-794 after PR #177 and PR #178 merged. It is not a substitute for top-level register mutation; registrar must apply these rows to INDEX.md, ARTIFACT_REGISTER.md, and PR_QUEUE_REGISTER.md before AH-794 Done.
+
+## INDEX.md rows
+
+```markdown
+## AH-794 Test-First Production Deployment Lock
+
+| Artifact | Type | Source task | Status |
+|---|---|---|---|
+| `governance/test-first-prod-deploy-lock-policy.md` | governance policy | AH-794 | active |
+| `schemas/environment_route_proof.schema.json` | schema | AH-794 | active |
+| `schemas/workflow_impact_audit.schema.json` | schema | AH-794 | active |
+| `schemas/release_approval_gate.schema.json` | schema | AH-794 | active |
+| `schemas/test_acceptance_proof.schema.json` | schema | AH-794 | active |
+| `validators/test_first_prod_deploy_lock_validator.rb` | validator | AH-794 | active |
+| `fixtures/test-first-prod-deploy-lock/fixtures.json` | fixtures | AH-794 | active |
+| `runbooks/test-first-release-gate-runbook.md` | runbook | AH-794 | active |
+| `prompts/templates/test-first-release-worker-template.md` | worker template | AH-794 | active |
+| `prompts/templates/owner-test-confirmation-request-template.md` | owner confirmation template | AH-794 | active |
+| `registries/test-first-prod-deploy-lock-coverage-20260614.md` | coverage register | AH-794 | active |
+| `reports/incidents/AH-794-prod-crossing-incident-analysis-20260614.md` | incident analysis | AH-794 | audit-only |
+| `reports/validations/AH-794-test-first-prod-lock-validation-20260614.md` | validation report | AH-794 | validation-report |
+| `reports/receipts/AH-794-test-first-prod-lock-receipt-20260614.md` | operational receipt | AH-794 | operational-receipt |
+| `reports/receipts/AH-794-pr171-autonomous-supersede-closure-20260615.md` | supersede receipt | AH-794 | operational-receipt |
+```
+
+## ARTIFACT_REGISTER.md rows
+
+```markdown
+## AH-794 Test-First Production Deployment Lock
+
+| Artifact | Lifecycle | Default load | Safe to replay | Source task | Notes |
+|---|---|---:|---:|---|---|
+| `governance/test-first-prod-deploy-lock-policy.md` | `active_policy` | false | false | AH-794 | Permanent test-first production deployment lock policy; master/main and unknown routes are production-risk by default. |
+| `schemas/environment_route_proof.schema.json` | `active_schema` | false | false | AH-794 | Environment route proof schema for test-only route decisions. |
+| `schemas/workflow_impact_audit.schema.json` | `active_schema` | false | false | AH-794 | Workflow impact audit schema for PR, merge, workflow, and deployment-risk actions. |
+| `schemas/release_approval_gate.schema.json` | `active_schema` | false | false | AH-794 | Release approval gate schema requiring test proof and exact owner production approval phrase. |
+| `schemas/test_acceptance_proof.schema.json` | `active_schema` | false | false | AH-794 | Test/browser/user acceptance proof schema. |
+| `validators/test_first_prod_deploy_lock_validator.rb` | `active_control` | false | false | AH-794 | Deterministic validator for test-first production lock fixtures. |
+| `fixtures/test-first-prod-deploy-lock/fixtures.json` | `active_control` | false | false | AH-794 | Negative and positive fixtures for production-risk blocks and approved release gate. |
+| `runbooks/test-first-release-gate-runbook.md` | `active_runbook` | false | false | AH-794 | Runbook for test-only route proof, workflow impact audit, owner confirmation, release, and readback. |
+| `prompts/templates/test-first-release-worker-template.md` | `active_template` | false | false | AH-794 | Worker template for test-first release gate enforcement. |
+| `prompts/templates/owner-test-confirmation-request-template.md` | `active_template` | false | false | AH-794 | Owner test confirmation request template; test-only and exact proof bounded. |
+| `registries/test-first-prod-deploy-lock-coverage-20260614.md` | `current_baseline` | false | false | AH-794 | Coverage register for AH-794 production lock controls. |
+| `reports/incidents/AH-794-prod-crossing-incident-analysis-20260614.md` | `audit_only` | false | false | AH-794 | Incident analysis evidence only; not a standing instruction. |
+| `reports/validations/AH-794-test-first-prod-lock-validation-20260614.md` | `validation_report` | false | false | AH-794 | Validation report for AH-794 test-first production lock validator. |
+| `reports/receipts/AH-794-test-first-prod-lock-receipt-20260614.md` | `operational_receipt` | false | false | AH-794 | Implementation receipt for AH-794 governance package. |
+| `reports/receipts/AH-794-pr171-autonomous-supersede-closure-20260615.md` | `operational_receipt` | false | false | AH-794 | Supersede closure receipt for stale PR #171 and merged PR #177. |
+```
+
+## PR_QUEUE_REGISTER.md rows
+
+```markdown
+## AH-794 Test-First Production Lock Closure State
+
+| PR | Task id | RUN_ID | Branch | Owner role | Queue class | Registrar action | Evidence link | Blocker |
+|---|---|---|---|---|---|---|---|---|
+| `#171` | `AH-794` | `AH-PROD-LOCK-TEST-FIRST-GOVERNANCE-20260614` | `agenthub/AH-794-test-first-prod-lock-20260614` | T1 Architect / Registrar / Verifier | `SUPERSEDED_CLOSED_PRESERVE` | Closed as superseded after PR `#177` merged from a fresh main branch. Preserve as incident/deadlock evidence only. | PR `#171`; superseding PR `#177`; receipt `reports/receipts/AH-794-pr171-autonomous-supersede-closure-20260615.md`. | none after supersede |
+| `#177` | `AH-794` | `pr171-autonomous-supersede-closure-20260615` | `agenthub/AH-794-test-first-prod-lock-supersede-20260615` | T1 Architect / Registrar / Verifier | `MERGED_MAIN_READBACK_PASS` | Merged normally on 2026-06-15 with merge commit `1d76d3503af3125361c98fafa23fe3278cfeea39`; installed AH-794 test-first production lock governance package and validator evidence without branch-protection bypass or product/runtime touch. | PR `#177`; merge commit `1d76d3503af3125361c98fafa23fe3278cfeea39`; validator job `81390181587`; gitleaks job `81390181665`; receipt `reports/receipts/AH-794-pr171-autonomous-supersede-closure-20260615.md`. | none |
+```
+
+## Current route state
+
+- MCP task readback: AH-794 is open in Stage Review as of 2026-06-15.
+- Local shell route: task/readback gate can be satisfied, but board visibility gate still returns `AGILE_BOARD_VISIBILITY_FILTER_DEFECT`.
+- GitHub connector route: can create branch and files; full replacement of large top-level registers is unsafe without complete untruncated file payload.
+- Next safe action: apply the above rows through an approved register append/update route, then rerun validation/readback and only then move AH-794 to Done.
