@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "prod_release_authorization.schema.json",
+  "title": "Production Release Authorization",
+  "type": "object",
+  "required": ["task_id", "run_id", "owner_phrase", "action_scope", "test_evidence", "rollback_plan", "authorization_status"],
+  "properties": {
+    "task_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "owner_phrase": { "const": "разрешаю отгрузку на прод" },
+    "action_scope": { "type": "string", "minLength": 1 },
+    "test_evidence": { "enum": ["PASS"] },
+    "rollback_plan": { "enum": ["PASS"] },
+    "authorization_status": { "enum": ["AUTHORIZED", "BLOCKED"] }
+  },
+  "additionalProperties": false
+}
+

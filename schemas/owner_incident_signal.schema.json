@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "owner_incident_signal.schema.json",
+  "title": "Owner Incident Signal",
+  "type": "object",
+  "required": ["message", "incident_signal", "incident_profile", "safe_recovery_started"],
+  "properties": {
+    "message": { "type": "string", "minLength": 1 },
+    "incident_signal": { "type": "boolean" },
+    "incident_profile": { "enum": ["INCIDENT", "NOT_INCIDENT"] },
+    "safe_recovery_started": { "type": "boolean" },
+    "read_only_triage_started": { "type": "boolean" }
+  },
+  "additionalProperties": false
+}
+

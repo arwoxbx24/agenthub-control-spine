@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "four_prompt_architecture_install_receipt.schema.json",
+  "title": "Four Prompt Architecture Install Receipt",
+  "type": "object",
+  "required": ["task_id", "run_id", "source_prompts_consumed", "installed_controls", "validation_status", "register_coverage", "task_readback", "terminal_status"],
+  "properties": {
+    "task_id": { "type": "string", "pattern": "^[A-Z][A-Z0-9]+-[0-9]+$" },
+    "run_id": { "type": "string", "minLength": 1 },
+    "source_prompts_consumed": { "type": "integer", "const": 4 },
+    "installed_controls": { "type": "array", "minItems": 8, "items": { "type": "string" } },
+    "validation_status": { "enum": ["PASS", "BLOCKED"] },
+    "register_coverage": { "enum": ["PASS", "BLOCKED"] },
+    "task_readback": { "enum": ["PASS", "BLOCKED"] },
+    "terminal_status": { "enum": ["DONE_WITH_EVIDENCE", "BLOCKED_TYPED"] }
+  },
+  "additionalProperties": false
+}
+

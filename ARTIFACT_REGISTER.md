@@ -438,6 +438,24 @@ Compatibility states from older records remain readable: `active_policy`,
 | `prompts/architecture/AGENTHUB-REPOSITORY-BRIDGE-DEEP-EXECUTION-CONTRACT-20260607.txt` | `active_control` | false | false | GitHub issue repository bridge / PR #147 carried by PR #152 | Canonical repository-bridge contract preserved after PR consolidation. |
 | `reports/receipts/AGENTHUB-REPOSITORY-BRIDGE-DEEP-EXECUTION-CONTRACT-RECEIPT-20260607.md` | `operational_receipt` | false | false | GitHub issue repository bridge / PR #147 carried by PR #152 | Historical receipt retained while PR `#147` is administratively superseded by PR `#152`. |
 
+## AH-796 Four Prompt Architecture Hardlock
+
+| Artifact | Lifecycle | Default load | Safe to replay | Source task | Notes |
+|---|---|---:|---:|---|---|
+| `governance/agenthub-four-prompt-architecture-hardlock-policy.md` | `active_policy` | false | false | AH-796 | Durable four prompt plus fifth-front architecture hardlock policy. |
+| `governance/four-prompts-system-hardlock-policy.md` | `active_policy` | false | false | AH-796 | Supporting system hardlock policy for the four prompt source set. |
+| `schemas/environment_route_proof.schema.json` | `active_schema` | false | false | AH-796 | Environment and AgentHub route proof schema. |
+| `schemas/workflow_impact_audit.schema.json` | `active_schema` | false | false | AH-796 | Workflow impact audit schema. |
+| `schemas/owner_incident_recovery_lane.schema.json` | `active_schema` | false | false | AH-796 | Owner incident recovery lane schema. |
+| `schemas/four_prompt_architecture_install_receipt.schema.json` | `active_schema` | false | false | AH-796 | Four prompt architecture install receipt schema. |
+| `validators/four_prompt_architecture_hardlock_validator.rb` | `active_control` | false | false | AH-796 | Validator rejecting local-only closure, direct bypass, owner handoff, fake Done, and repeated blocked retries. |
+| `fixtures/four-prompt-architecture-hardlock/fixtures.json` | `active_control` | false | false | AH-796 | Positive and negative fixtures for the four prompt architecture hardlock. |
+| `runbooks/four-prompt-architecture-hardlock-runbook.md` | `active_runbook` | false | false | AH-796 | Closed-contour execution runbook. |
+| `prompts/templates/four-prompt-architecture-hardlock-worker-template.txt` | `active_template` | false | false | AH-796 | Worker template for four prompt architecture hardlock. |
+| `reports/validations/AH-796-four-prompt-plus-fifth-front-full-report-20260615.md` | `validation_report` | false | false | AH-796 | Full report after four prompts and fifth-front implementation prompt. |
+| `reports/validations/AH-796-four-prompt-architecture-hardlock-validation-20260615.md` | `validation_report` | false | false | AH-796 | Validation report for four prompt architecture hardlock. |
+| `reports/receipts/AH-796-four-prompt-architecture-hardlock-receipt-20260615.md` | `operational_receipt` | false | false | AH-796 | Repository package receipt; PR/task Done readback remains blocked. |
+
 ## PR #153 Smart Self-Healing Authority Elevation Coverage
 
 | Artifact | Lifecycle | Default load | Safe to replay | Source task | Notes |
@@ -454,4 +472,3 @@ Compatibility states from older records remain readable: `active_policy`,
 | `prompts/architecture/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-20260611.txt` | `active_control` | false | false | AH-738 / PR153 | Architecture control prompt; not default-loaded. |
 | `reports/validations/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-VALIDATION-20260611.md` | `operational_receipt` | false | false | AH-738 / PR153 | Final validation report. |
 | `reports/receipts/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-RECEIPT-20260611.md` | `operational_receipt` | false | false | AH-738 / PR153 | Final PR #153 closure receipt. |
-

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "safe_rollback_lane.schema.json",
+  "title": "Safe Rollback Lane",
+  "type": "object",
+  "required": ["task_id", "run_id", "last_known_good", "pre_registered_lane", "reversible", "checkpoint", "rollback_status"],
+  "properties": {
+    "task_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "last_known_good": { "type": "string", "minLength": 1 },
+    "pre_registered_lane": { "type": "boolean" },
+    "reversible": { "type": "boolean" },
+    "checkpoint": { "type": "string", "minLength": 1 },
+    "forbidden_surface": { "type": "boolean" },
+    "rollback_status": { "enum": ["AUTHORIZED", "BLOCKED"] }
+  },
+  "additionalProperties": false
+}
+
