@@ -1,0 +1,14 @@
+{
+  "artifact_id": "protected-link-agenthub-route-fixtures",
+  "source_task": "AH-800/AH-802",
+  "cases": [
+    {"id":"01_local_read_allows","intent":"read","intake_status":"PASS","allowed_tool":"agent_link_read","owner_handoff":false,"public_bypass":false,"expected":"ALLOW"},
+    {"id":"02_verify_allows","intent":"verify","intake_status":"PASS","allowed_tool":"agent_link_verify","owner_handoff":false,"public_bypass":false,"expected":"ALLOW"},
+    {"id":"03_unresolved_download_lane_allows","intent":"download","intake_status":"PASS","allowed_tool":"agent-download","owner_handoff":false,"public_bypass":false,"expected":"ALLOW"},
+    {"id":"04_owner_text_handoff_blocks","intent":"read","intake_status":"FAIL","allowed_tool":"none","owner_handoff":true,"public_bypass":false,"expected":"BLOCK"},
+    {"id":"05_public_browser_bypass_blocks","intent":"read","intake_status":"FAIL","allowed_tool":"web.open","owner_handoff":false,"public_bypass":true,"expected":"BLOCK"},
+    {"id":"06_curl_bypass_blocks","intent":"download","intake_status":"FAIL","allowed_tool":"curl","owner_handoff":false,"public_bypass":true,"expected":"BLOCK"},
+    {"id":"07_done_without_agenthub_readback_blocks","intent":"read","intake_status":"PASS","allowed_tool":"browser_visible_only","owner_handoff":false,"public_bypass":false,"agenthub_readback":false,"expected":"BLOCK"},
+    {"id":"08_route_fail_packfix_allows_continuation","intent":"read","intake_status":"FAIL","allowed_tool":"packfix","owner_handoff":false,"public_bypass":false,"packfix_created":true,"expected":"ALLOW"}
+  ]
+}
