@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/action_bound_owner_message.schema.json",
+  "title": "Action-Bound Owner Message",
+  "type": "object",
+  "required": ["message", "kind"],
+  "additionalProperties": false,
+  "properties": {
+    "message": {"type": "string", "minLength": 1, "maxLength": 220},
+    "kind": {"type": "string", "enum": ["FACT", "ACTION", "OWNER_ONLY_GATE", "SUCCESS"]},
+    "has_internal_logs": {"type": "boolean"},
+    "has_owner_shell_handoff": {"type": "boolean"},
+    "hides_material_gate": {"type": "boolean"},
+    "claims_done_without_evidence": {"type": "boolean"}
+  }
+}
