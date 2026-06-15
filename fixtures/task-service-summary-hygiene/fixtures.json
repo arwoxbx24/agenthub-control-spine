@@ -1,0 +1,39 @@
+{
+  "cases": [
+    {
+      "id": "reject_default_placeholder",
+      "input": {"task_id":"AH-800","summary":"Task-service backlog request","stage":"Backlog","task_class":"Task","implementation_evidence":false,"validation_evidence":false,"receipt":false,"blocker":"none"},
+      "expected": "SUMMARY_PLACEHOLDER_REJECTED"
+    },
+    {
+      "id": "reject_empty_summary",
+      "input": {"task_id":"AH-901","summary":"   ","stage":"Backlog","task_class":"Task","implementation_evidence":false,"validation_evidence":false,"receipt":false,"blocker":"none"},
+      "expected": "SUMMARY_PLACEHOLDER_REJECTED"
+    },
+    {
+      "id": "allow_meaningful_backlog",
+      "input": {"task_id":"AH-793","summary":"AH-793 browser proof PackFix: test banner upload evidence","stage":"Develop","task_class":"Bug","implementation_evidence":true,"validation_evidence":true,"receipt":true,"blocker":"none"},
+      "expected": "TASK_SUMMARY_ALLOWED"
+    },
+    {
+      "id": "allow_stale_cleanup_done",
+      "input": {"task_id":"AH-802","summary":"Stale: protected-link PackFix closed after AH-803 guard readback","stage":"Done","task_class":"Task","implementation_evidence":true,"validation_evidence":true,"receipt":true,"blocker":"none"},
+      "expected": "TASK_SUMMARY_ALLOWED"
+    },
+    {
+      "id": "reject_done_without_evidence",
+      "input": {"task_id":"AH-792","summary":"Stale: closed empty backlog tail","stage":"Done","task_class":"Task","implementation_evidence":true,"validation_evidence":false,"receipt":true,"blocker":"none"},
+      "expected": "DONE_EVIDENCE_MISSING"
+    },
+    {
+      "id": "reject_duplicate_without_parent_or_signature",
+      "input": {"task_id":"AH-801","summary":"Duplicate browser proof microtask","stage":"Backlog","task_class":"Task","implementation_evidence":false,"validation_evidence":false,"receipt":false,"blocker":"none"},
+      "expected": "DUPLICATE_LINKAGE_MISSING"
+    },
+    {
+      "id": "allow_duplicate_with_parent",
+      "input": {"task_id":"AH-801","summary":"AH-793 duplicate browser proof microtask tracked on parent","stage":"Done","task_class":"Task","parent_task_id":"AH-793","implementation_evidence":true,"validation_evidence":true,"receipt":true,"blocker":"none"},
+      "expected": "TASK_SUMMARY_ALLOWED"
+    }
+  ]
+}
