@@ -502,3 +502,27 @@ Compatibility states from older records remain readable: `active_policy`,
 | `reports/validations/AH-794-test-first-prod-lock-validation-20260614.md` | `validation_report` | false | false | AH-794 | Validation report for AH-794 test-first production lock validator. |
 | `reports/receipts/AH-794-test-first-prod-lock-receipt-20260614.md` | `operational_receipt` | false | false | AH-794 | Implementation receipt for AH-794 governance package. |
 | `reports/receipts/AH-794-pr171-autonomous-supersede-closure-20260615.md` | `operational_receipt` | false | false | AH-794 | Supersede closure receipt for stale PR #171 and merged PR #177. |
+
+## AH-803 Owner Input And Output Guards
+
+| Artifact | Lifecycle | Default load | Safe to replay | Source task | Notes |
+|---|---|---:|---:|---|---|
+| `governance/owner-input-validation-and-priority-guard-policy.md` | `active_policy` | false | false | AH-803 | Owner input validation and priority guard policy. |
+| `schemas/owner_message_classification.schema.json` | `active_schema` | false | false | AH-803 | Owner message classification schema. |
+| `schemas/owner_instruction_priority_decision.schema.json` | `active_schema` | false | false | AH-803 | Instruction priority decision schema. |
+| `schemas/action_bound_owner_message.schema.json` | `active_schema` | false | false | AH-803 | Compact owner message schema. |
+| `validators/owner_input_validation_priority_guard_validator.rb` | `active_control` | false | false | AH-803 | Validator for owner-input priority guard fixtures. |
+| `fixtures/owner-input-validation-priority-guard/fixtures.json` | `active_control` | false | false | AH-803 | Owner-input validation fixtures. |
+| `runbooks/owner-input-validation-priority-guard-runbook.md` | `active_runbook` | false | false | AH-803 | Owner-input validation runbook. |
+| `prompts/templates/owner-input-validation-priority-guard-worker-template.txt` | `active_template` | false | false | AH-803 | Worker template. |
+| `reports/validations/AH-803-owner-input-validation-priority-guard-validation-20260615.md` | `validation_report` | false | false | AH-803 | Validation report. |
+| `reports/receipts/AH-803-owner-input-validation-priority-guard-receipt-20260615.md` | `operational_receipt` | false | false | AH-803 | Operational receipt. |
+| `registries/owner-input-validation-priority-guard-coverage-20260615.md` | `current_baseline` | false | false | AH-803 | Coverage register. |
+| `governance/owner-output-solution-only-hardlock-policy.md` | `active_policy` | false | false | AH-803 | Owner-output solution-only hardlock policy. |
+| `schemas/owner_output_message.schema.json` | `active_schema` | false | false | AH-803 | Owner-output message schema. |
+| `validators/owner_output_solution_only_hardlock_validator.rb` | `active_control` | false | false | AH-803 | Validator for owner-output fixtures. |
+| `fixtures/owner-output-solution-only-hardlock/fixtures.json` | `active_control` | false | false | AH-803 | Owner-output fixtures. |
+| `runbooks/owner-output-solution-only-hardlock-runbook.md` | `active_runbook` | false | false | AH-803 | Owner-output runbook. |
+| `prompts/templates/owner-output-solution-only-worker-template.txt` | `active_template` | false | false | AH-803 | Worker template. |
+| `reports/validations/AH-803-owner-output-solution-only-hardlock-validation-20260615.md` | `validation_report` | false | false | AH-803 | Validation report. |
+| `reports/receipts/AH-803-owner-output-solution-only-hardlock-receipt-20260615.md` | `operational_receipt` | false | false | AH-803 | Operational receipt. |

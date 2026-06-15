@@ -474,3 +474,27 @@ status: draft
 | `reports/validations/AH-794-test-first-prod-lock-validation-20260614.md` | validation report | AH-794 | validation-report |
 | `reports/receipts/AH-794-test-first-prod-lock-receipt-20260614.md` | operational receipt | AH-794 | operational-receipt |
 | `reports/receipts/AH-794-pr171-autonomous-supersede-closure-20260615.md` | supersede receipt | AH-794 | operational-receipt |
+
+## AH-803 Owner Input And Output Guards
+
+| Artifact | Type | Source task | Status |
+|---|---|---|---|
+| `governance/owner-input-validation-and-priority-guard-policy.md` | governance policy | AH-803 | active |
+| `schemas/owner_message_classification.schema.json` | schema | AH-803 | active |
+| `schemas/owner_instruction_priority_decision.schema.json` | schema | AH-803 | active |
+| `schemas/action_bound_owner_message.schema.json` | schema | AH-803 | active |
+| `validators/owner_input_validation_priority_guard_validator.rb` | validator | AH-803 | active |
+| `fixtures/owner-input-validation-priority-guard/fixtures.json` | fixtures | AH-803 | active |
+| `runbooks/owner-input-validation-priority-guard-runbook.md` | runbook | AH-803 | active |
+| `prompts/templates/owner-input-validation-priority-guard-worker-template.txt` | worker template | AH-803 | active |
+| `reports/validations/AH-803-owner-input-validation-priority-guard-validation-20260615.md` | validation report | AH-803 | validation-report |
+| `reports/receipts/AH-803-owner-input-validation-priority-guard-receipt-20260615.md` | operational receipt | AH-803 | operational-receipt |
+| `registries/owner-input-validation-priority-guard-coverage-20260615.md` | coverage register | AH-803 | active |
+| `governance/owner-output-solution-only-hardlock-policy.md` | governance policy | AH-803 | active |
+| `schemas/owner_output_message.schema.json` | schema | AH-803 | active |
+| `validators/owner_output_solution_only_hardlock_validator.rb` | validator | AH-803 | active |
+| `fixtures/owner-output-solution-only-hardlock/fixtures.json` | fixtures | AH-803 | active |
+| `runbooks/owner-output-solution-only-hardlock-runbook.md` | runbook | AH-803 | active |
+| `prompts/templates/owner-output-solution-only-worker-template.txt` | worker template | AH-803 | active |
+| `reports/validations/AH-803-owner-output-solution-only-hardlock-validation-20260615.md` | validation report | AH-803 | validation-report |
+| `reports/receipts/AH-803-owner-output-solution-only-hardlock-receipt-20260615.md` | operational receipt | AH-803 | operational-receipt |

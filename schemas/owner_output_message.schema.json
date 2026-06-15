@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Owner Output Message",
+  "type": "object",
+  "required": ["class", "message"],
+  "properties": {
+    "class": {"type": "string", "enum": ["SUCCESS", "ACTION", "OWNER_ONLY_GATE"]},
+    "message": {"type": "string", "minLength": 1},
+    "implementation_evidence": {"type": "boolean"},
+    "validation_evidence": {"type": "boolean"},
+    "receipt": {"type": "boolean"},
+    "readback": {"type": "boolean"},
+    "owner_only_gate_proven": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}

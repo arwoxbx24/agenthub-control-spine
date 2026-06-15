@@ -1,0 +1,12 @@
+{
+  "artifact_id": "owner-output-solution-only-hardlock-fixtures",
+  "source_task": "AH-803",
+  "cases": [
+    {"id":"01_success_with_evidence","class":"SUCCESS","message":"Готово: guard установлен, main/readback подтверждён.","implementation_evidence":true,"validation_evidence":true,"receipt":true,"readback":true,"no_active_blocker":true,"expected":"ALLOW"},
+    {"id":"02_action_bound_message","class":"ACTION","message":"Действие: применяю PackFix в текущем RUN_ID.","autonomous_action":true,"expected":"ALLOW"},
+    {"id":"03_true_owner_only_gate","class":"OWNER_ONLY_GATE","message":"Нужен владелец: подтвердить 2FA для аккаунта.","owner_only_gate_proven":true,"expected":"ALLOW"},
+    {"id":"04_routine_blocker_final_rejected","class":"OWNER_ONLY_GATE","message":"Нужен владелец: включить worker.","routine_blocker_final":true,"owner_only_gate_proven":false,"expected":"BLOCK"},
+    {"id":"05_status_only_rejected","class":"ACTION","message":"Статус: проверяю.","status_only":true,"expected":"BLOCK"},
+    {"id":"06_fake_done_rejected","class":"SUCCESS","message":"Готово: всё закрыто.","fake_done":true,"implementation_evidence":false,"validation_evidence":false,"receipt":false,"readback":false,"no_active_blocker":false,"expected":"BLOCK"}
+  ]
+}

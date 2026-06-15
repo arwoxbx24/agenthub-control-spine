@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/owner_instruction_priority_decision.schema.json",
+  "title": "Owner Instruction Priority Decision",
+  "type": "object",
+  "required": ["classification", "higher_priority_conflict", "decision", "scoped_action"],
+  "additionalProperties": false,
+  "properties": {
+    "classification": {"type": "string"},
+    "higher_priority_conflict": {"type": "boolean"},
+    "decision": {"type": "string", "enum": ["ALLOW", "NARROW", "REJECT_UNSAFE_PART", "OWNER_ONLY_GATE", "PACKFIX", "BLOCK_FAKE_DONE"]},
+    "scoped_action": {"type": "string"},
+    "permission_lane": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "task_id": {"type": "string"},
+        "run_id": {"type": "string"},
+        "repo": {"type": "string"},
+        "path": {"type": "string"},
+        "tool": {"type": "string"},
+        "operation": {"type": "string"},
+        "expiry": {"type": "string"},
+        "rollback": {"type": "string"},
+        "evidence": {"type": "string"}
+      }
+    }
+  }
+}
