@@ -1,0 +1,54 @@
+{
+  "artifact_id": "architect-brain-methodology-fixtures",
+  "source_task": "AH-794",
+  "cases": [
+    {
+      "id": "01_full_evidence_cycle_allows",
+      "task_class": "CONTROL_SPINE_REGISTRAR",
+      "phases": ["capture", "classify", "analyze", "triage", "design", "plan", "validate", "close"],
+      "guards": {"react_loop": true, "ooda": true, "reflexion_on_failure": true, "hallu_guard": true, "mutation_guard": true, "loop_watchdog": true, "system_policy_override_attempt": false},
+      "evidence": {"implementation_evidence": true, "validation_evidence": true, "receipt": true, "readback": true, "owner_only_gate": false},
+      "expected": "ALLOW"
+    },
+    {
+      "id": "02_missing_phase_blocks",
+      "task_class": "CONTROL_SPINE_REGISTRAR",
+      "phases": ["capture", "classify", "analyze", "plan", "validate", "close"],
+      "guards": {"react_loop": true, "ooda": true, "reflexion_on_failure": true, "hallu_guard": true, "mutation_guard": true, "loop_watchdog": true, "system_policy_override_attempt": false},
+      "evidence": {"implementation_evidence": true, "validation_evidence": true, "receipt": true, "readback": true},
+      "expected": "BLOCK"
+    },
+    {
+      "id": "03_missing_hallu_guard_blocks",
+      "task_class": "GIT_REPOSITORY",
+      "phases": ["capture", "classify", "analyze", "triage", "design", "plan", "validate", "close"],
+      "guards": {"react_loop": true, "ooda": true, "reflexion_on_failure": true, "hallu_guard": false, "mutation_guard": true, "loop_watchdog": true, "system_policy_override_attempt": false},
+      "evidence": {"implementation_evidence": true, "validation_evidence": true, "receipt": true, "readback": true},
+      "expected": "BLOCK"
+    },
+    {
+      "id": "04_missing_mutation_guard_blocks",
+      "task_class": "GIT_REPOSITORY",
+      "phases": ["capture", "classify", "analyze", "triage", "design", "plan", "validate", "close"],
+      "guards": {"react_loop": true, "ooda": true, "reflexion_on_failure": true, "hallu_guard": true, "mutation_guard": false, "loop_watchdog": true, "system_policy_override_attempt": false},
+      "evidence": {"implementation_evidence": true, "validation_evidence": true, "receipt": true, "readback": true},
+      "expected": "BLOCK"
+    },
+    {
+      "id": "05_system_policy_override_blocks",
+      "task_class": "PRODUCTION_DEPLOY",
+      "phases": ["capture", "classify", "analyze", "triage", "design", "plan", "validate", "close"],
+      "guards": {"react_loop": true, "ooda": true, "reflexion_on_failure": true, "hallu_guard": true, "mutation_guard": true, "loop_watchdog": true, "system_policy_override_attempt": true},
+      "evidence": {"implementation_evidence": true, "validation_evidence": true, "receipt": true, "readback": true},
+      "expected": "BLOCK"
+    },
+    {
+      "id": "06_done_without_evidence_blocks",
+      "task_class": "CONTROL_SPINE_REGISTRAR",
+      "phases": ["capture", "classify", "analyze", "triage", "design", "plan", "validate", "close"],
+      "guards": {"react_loop": true, "ooda": true, "reflexion_on_failure": true, "hallu_guard": true, "mutation_guard": true, "loop_watchdog": true, "system_policy_override_attempt": false},
+      "evidence": {"implementation_evidence": true, "validation_evidence": false, "receipt": true, "readback": false},
+      "expected": "BLOCK"
+    }
+  ]
+}
