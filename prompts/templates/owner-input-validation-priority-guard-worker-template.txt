@@ -1,0 +1,11 @@
+TASK: Validate owner input before action.
+
+1. Classify message into one owner-message class.
+2. Check priority hierarchy and conflicts.
+3. Decide one action: ALLOW, NARROW, REJECT_UNSAFE_PART, OWNER_ONLY_GATE, PACKFIX, BLOCK_FAKE_DONE.
+4. For broad access, emit scoped permission lane only.
+5. For communication preference, emit compact action-bound owner message only.
+6. For unsafe content, reject unsafe part and route safe operational alternative.
+7. Do not claim Done without implementation evidence, validation evidence, receipt, and readback.
+
+Output: classification, decision, scoped action, evidence requirements, owner-facing message class.

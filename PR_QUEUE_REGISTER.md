@@ -134,3 +134,9 @@ before closure.
 |---|---|---|---|---|---|---|---|---|
 | `#171` | `AH-794` | `AH-PROD-LOCK-TEST-FIRST-GOVERNANCE-20260614` | `agenthub/AH-794-test-first-prod-lock-20260614` | T1 Architect / Registrar / Verifier | `SUPERSEDED_CLOSED_PRESERVE` | Closed as superseded after PR `#177` merged from a fresh main branch. Preserve as incident/deadlock evidence only. | PR `#171`; superseding PR `#177`; receipt `reports/receipts/AH-794-pr171-autonomous-supersede-closure-20260615.md`. | none after supersede |
 | `#177` | `AH-794` | `pr171-autonomous-supersede-closure-20260615` | `agenthub/AH-794-test-first-prod-lock-supersede-20260615` | T1 Architect / Registrar / Verifier | `MERGED_MAIN_READBACK_PASS` | Merged normally on 2026-06-15 with merge commit `1d76d3503af3125361c98fafa23fe3278cfeea39`; installed AH-794 test-first production lock governance package and validator evidence without branch-protection bypass or product/runtime touch. | PR `#177`; merge commit `1d76d3503af3125361c98fafa23fe3278cfeea39`; validator job `81390181587`; gitleaks job `81390181665`; receipt `reports/receipts/AH-794-pr171-autonomous-supersede-closure-20260615.md`. | none |
+
+## AH-803 Owner Guard Closure State
+
+| PR | Task id | RUN_ID | Branch | Owner role | Queue class | Registrar action | Evidence link | Blocker |
+|---|---|---|---|---|---|---|---|---|
+| `#TBD` | `AH-803` | `owner-guards-consolidation-20260615` | `agenthub/owner-guards-consolidation-20260615` | T1 Architect / Registrar / Verifier | `READY_FOR_PR` | Ports stale PR #171 owner-input package to fresh main branch and adds owner-output solution-only hardlock package; AH-793 and AH-794 contours were verified as already implemented/read back. | validation reports and receipts for AH-803 owner guards. | none |
