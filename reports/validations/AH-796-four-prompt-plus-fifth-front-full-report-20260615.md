@@ -113,12 +113,13 @@ or GitHub check bypass is part of this package.
 
 Repository package state: installed on isolated branch and validator-backed.
 
+GitHub PR state: draft PR `#175` opened from
+`agenthub/four-prompt-architecture-hardlock-report-20260615` into `main`.
+
 External closure state: not fully Done until PR/main readback and YouTrack Done
 readback exist.
 
 Typed blockers currently recorded:
 
-- `GITHUB_BRANCH_PROTECTION_PLATFORM_GATE`
 - `YOUTRACK_READBACK_UNAVAILABLE`
 - `MCP_RECEIPT_REQUIRED_FOR_IMPLEMENTATION_DONE`
-

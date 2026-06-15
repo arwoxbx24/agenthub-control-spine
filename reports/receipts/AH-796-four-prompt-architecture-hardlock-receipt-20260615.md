@@ -36,6 +36,7 @@ Route evidence:
 - Revision guard: PASS.
 - Worker dispatch: `four-prompt-architecture-worker`, model
   `gpt-5.3-codex-spark`.
+- GitHub PR: draft `#175`.
 - AgentHub merge: BLOCKED by `IMPLEMENTATION_ACCEPTANCE_MISSING`,
   `SANDBOX_ONLY_EVIDENCE_CANNOT_CLOSE_IMPLEMENTATION_TASK`, and
   `MCP_RECEIPT_REQUIRED_FOR_IMPLEMENTATION_DONE`.
