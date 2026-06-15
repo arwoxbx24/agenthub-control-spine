@@ -121,3 +121,9 @@ before closure.
 |---|---|---|---|---|---|---|---|---|
 | `#153` | `AH-738` | `RUN-AH738-PR153-FINAL-CLOSURE-20260611` | `agenthub/ah738-smart-self-healing-authority-elevation-20260611` | T1 Architecture Broker / T0 Registrar / T2 Scoped Worker / Verifier | `MERGE_READY_AFTER_VALIDATION` | Reopened and finalized after residual closure: index/register/PR queue coverage added, validators executed, validation report and receipt updated. | PR `#153`; validation report; receipt; touched validators; fixture `evals/agenthub-self-healing/fixtures/scoped_autonomy_contract_20260611.json`. | none after validation PASS |
 
+## Four Prompt Architecture Hardlock Queue State
+
+| PR | Task id | RUN_ID | Branch | Owner role | Queue class | Registrar action | Evidence link | Blocker |
+|---|---|---|---|---|---|---|---|---|
+| `#175` | `AH-796` | `four-prompt-architecture-hardlock-20260615` | `agenthub/four-prompt-architecture-hardlock-report-20260615` | T1 Architect / Registrar / Verifier | `DRAFT_PR_VALIDATED` | Installed four prompt plus fifth-front architecture hardlock package on isolated branch. | PR `#175`; `reports/validations/AH-796-four-prompt-plus-fifth-front-full-report-20260615.md`; `reports/receipts/AH-796-four-prompt-architecture-hardlock-receipt-20260615.md` | Draft PR open; `YOUTRACK_READBACK_UNAVAILABLE` remains until task Done readback exists. |
+| `#175` | `AH-796` | `omega-fallback-permission-lane-hardlock-20260615` | `agenthub/four-prompt-architecture-hardlock-report-20260615` | T1 Architect / Registrar / Verifier | `DRAFT_PR_OMEGA_VALIDATED` | Installed Omega connector fallback and permission-lane hardlock package on the existing PR branch. | PR `#175`; `reports/validations/AH-796-omega-fallback-permission-lane-validation-20260615.md`; `reports/receipts/AH-796-omega-fallback-permission-lane-receipt-20260615.md` | Draft PR open; `YOUTRACK_READBACK_UNAVAILABLE` remains until task Done readback exists. |

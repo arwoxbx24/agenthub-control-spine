@@ -410,6 +410,34 @@ status: draft
 | `prompts/architecture/AGENTHUB-REPOSITORY-BRIDGE-DEEP-EXECUTION-CONTRACT-20260607.txt` | architecture execution contract | GitHub issue repository bridge / PR #147 carried by PR #152 | active |
 | `reports/receipts/AGENTHUB-REPOSITORY-BRIDGE-DEEP-EXECUTION-CONTRACT-RECEIPT-20260607.md` | operational receipt | GitHub issue repository bridge / PR #147 carried by PR #152 | active |
 
+## AH-796 Four Prompt Architecture Hardlock
+
+| Artifact | Type | Source task | Status |
+|---|---|---|---|
+| `governance/agenthub-four-prompt-architecture-hardlock-policy.md` | governance policy | AH-796 | active |
+| `governance/four-prompts-system-hardlock-policy.md` | governance policy | AH-796 | active |
+| `schemas/environment_route_proof.schema.json` | schema | AH-796 | active |
+| `schemas/workflow_impact_audit.schema.json` | schema | AH-796 | active |
+| `schemas/owner_incident_recovery_lane.schema.json` | schema | AH-796 | active |
+| `schemas/four_prompt_architecture_install_receipt.schema.json` | schema | AH-796 | active |
+| `validators/four_prompt_architecture_hardlock_validator.rb` | validator | AH-796 | active |
+| `fixtures/four-prompt-architecture-hardlock/fixtures.json` | fixtures | AH-796 | active |
+| `runbooks/four-prompt-architecture-hardlock-runbook.md` | runbook | AH-796 | active |
+| `prompts/templates/four-prompt-architecture-hardlock-worker-template.txt` | worker template | AH-796 | active |
+| `reports/validations/AH-796-four-prompt-plus-fifth-front-full-report-20260615.md` | full report | AH-796 | validation-report |
+| `reports/validations/AH-796-four-prompt-architecture-hardlock-validation-20260615.md` | validation report | AH-796 | validation-report |
+| `reports/receipts/AH-796-four-prompt-architecture-hardlock-receipt-20260615.md` | operational receipt | AH-796 | pr-task-blocked |
+| `governance/agenthub-omega-fallback-permission-lane-hardlock-policy.md` | governance policy | AH-796 | active |
+| `schemas/agenthub_permission_lane_runtime_grant.schema.json` | schema | AH-796 | active |
+| `schemas/github_connector_fallback_route.schema.json` | schema | AH-796 | active |
+| `schemas/blocked_command_loop_guard.schema.json` | schema | AH-796 | active |
+| `validators/omega_fallback_permission_lane_validator.rb` | validator | AH-796 | active |
+| `fixtures/omega-fallback-permission-lane/fixtures.json` | fixtures | AH-796 | active |
+| `runbooks/omega-fallback-permission-lane-runbook.md` | runbook | AH-796 | active |
+| `prompts/templates/omega-fallback-permission-lane-worker-template.txt` | worker template | AH-796 | active |
+| `reports/validations/AH-796-omega-fallback-permission-lane-validation-20260615.md` | validation report | AH-796 | validation-report |
+| `reports/receipts/AH-796-omega-fallback-permission-lane-receipt-20260615.md` | operational receipt | AH-796 | pr-task-blocked |
+
 ## PR #153 Smart Self-Healing Authority Elevation Coverage
 
 | Artifact | Type | Source task | Status |
@@ -426,4 +454,3 @@ status: draft
 | `prompts/architecture/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-20260611.txt` | architecture control prompt | AH-738 / PR153 | active-control-candidate |
 | `reports/validations/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-VALIDATION-20260611.md` | validation report | AH-738 / PR153 | operational-receipt |
 | `reports/receipts/AGENTHUB-SMART-SELF-HEALING-AUTHORITY-ELEVATION-RECEIPT-20260611.md` | operational receipt | AH-738 / PR153 | operational-receipt |
-

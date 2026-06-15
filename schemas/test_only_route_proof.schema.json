@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "test_only_route_proof.schema.json",
+  "title": "Test Only Route Proof",
+  "type": "object",
+  "required": ["test_target", "route_updates_only_test", "workflow_production_excluded", "branch_fetchable", "no_main_master_required", "proof_status"],
+  "properties": {
+    "test_target": { "type": "string", "minLength": 1 },
+    "route_updates_only_test": { "type": "boolean" },
+    "workflow_production_excluded": { "type": "boolean" },
+    "branch_fetchable": { "type": "boolean" },
+    "no_main_master_required": { "type": "boolean" },
+    "proof_status": { "enum": ["PASS", "BLOCKED", "MISSING"] }
+  },
+  "additionalProperties": false
+}
+

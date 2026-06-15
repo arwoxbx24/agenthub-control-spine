@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agenthub_permission_lane_runtime_grant.schema.json",
+  "title": "AgentHub Permission Lane Runtime Grant",
+  "type": "object",
+  "required": ["task_id", "run_id", "lane", "repository", "allowed_paths", "action", "expiry", "proof", "rollback", "decision"],
+  "properties": {
+    "task_id": { "type": "string", "pattern": "^[A-Z][A-Z0-9]+-[0-9]+$" },
+    "run_id": { "type": "string", "minLength": 1 },
+    "lane": {
+      "enum": [
+        "L0_READ_ONLY_AUDIT",
+        "L1_CONTROL_SPINE_READ",
+        "L2_CONTROL_SPINE_WRITE",
+        "L3_PR_QUEUE_REGISTER_UPDATE",
+        "L4_CI_STATUS_READ",
+        "L5_GITHUB_CONNECTOR_FALLBACK_TO_GH",
+        "L6_BRANCH_PROTECTION_READ",
+        "L7_ADMIN_MERGE_REQUIRES_EXPLICIT_EVIDENCE",
+        "L8_PRODUCT_RUNTIME_FORBIDDEN_BY_DEFAULT"
+      ]
+    },
+    "repository": { "type": "string", "minLength": 1 },
+    "allowed_paths": { "type": "array", "items": { "type": "string" } },
+    "action": { "type": "string", "minLength": 1 },
+    "expiry": { "type": "string", "minLength": 1 },
+    "proof": { "type": "string", "minLength": 1 },
+    "rollback": { "type": "string", "minLength": 1 },
+    "decision": { "enum": ["ALLOW", "DENY", "BLOCKED"] }
+  },
+  "additionalProperties": false
+}
+

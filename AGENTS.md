@@ -159,3 +159,19 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
 
 - Technical files are English by default.
 - User-facing output remains short Russian unless explicitly requested otherwise.
+
+## Four Prompt Architecture Hardlock
+
+- Source policy: `governance/agenthub-four-prompt-architecture-hardlock-policy.md`.
+- Validator: `validators/four_prompt_architecture_hardlock_validator.rb`.
+- Fixtures: `fixtures/four-prompt-architecture-hardlock/fixtures.json`.
+- Full report: `reports/validations/AH-796-four-prompt-plus-fifth-front-full-report-20260615.md`.
+- This package installs the four owner-provided architect prompts plus the fifth
+  implementation-front prompt as one durable AgentHub/Codex governance package.
+  Local priority indexes, chat reports, PR existence, and blocked command output
+  are rejected as implementation evidence. Full Done still requires PR/main
+  readback and YouTrack Done readback.
+- Omega source policy:
+  `governance/agenthub-omega-fallback-permission-lane-hardlock-policy.md`.
+- Omega validator: `validators/omega_fallback_permission_lane_validator.rb`.
+- Omega fixtures: `fixtures/omega-fallback-permission-lane/fixtures.json`.

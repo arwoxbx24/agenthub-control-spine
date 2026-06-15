@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "incident_recovery_receipt.schema.json",
+  "title": "Incident Recovery Receipt",
+  "type": "object",
+  "required": ["task_id", "run_id", "incident_signal", "state_capture", "environment_classification", "change_ledger", "recovery_action", "validation_evidence", "receipt_status"],
+  "properties": {
+    "task_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "incident_signal": { "enum": ["PASS"] },
+    "state_capture": { "enum": ["PASS"] },
+    "environment_classification": { "enum": ["PASS"] },
+    "change_ledger": { "enum": ["PASS"] },
+    "recovery_action": { "type": "string", "minLength": 1 },
+    "validation_evidence": { "enum": ["PASS"] },
+    "receipt_status": { "enum": ["DONE_WITH_EVIDENCE", "BLOCKED_TYPED"] }
+  },
+  "additionalProperties": false
+}
+

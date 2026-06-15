@@ -1,0 +1,215 @@
+{
+  "cases": [
+    {
+      "id": "negative_missing_task_binding",
+      "input": {
+        "gate": "environment",
+        "run_id": "RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH",
+        "scope_signature": "four-prompts-system-hardlock"
+      },
+      "expected": "TASK_BINDING_MISSING"
+    },
+    {
+      "id": "negative_test_task_uses_master",
+      "input": {
+        "gate": "environment",
+        "task_id": "AH-FOUR-PROMPTS",
+        "run_id": "RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH",
+        "scope_signature": "four-prompts-system-hardlock",
+        "product_repository": true,
+        "branch": "master",
+        "operation": "test_task",
+        "environment_classification": "PROD_RISK_UNKNOWN"
+      },
+      "expected": "TEST_ONLY_ROUTE_PROOF_MISSING"
+    },
+    {
+      "id": "negative_workflow_named_test_without_audit",
+      "input": {
+        "gate": "workflow",
+        "task_id": "AH-FOUR-PROMPTS",
+        "run_id": "RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH",
+        "scope_signature": "four-prompts-system-hardlock",
+        "workflow_action": true,
+        "workflow_name": "test deploy"
+      },
+      "expected": "WORKFLOW_IMPACT_AUDIT_MISSING"
+    },
+    {
+      "id": "negative_prod_workflow_without_phrase",
+      "input": {
+        "gate": "workflow",
+        "task_id": "AH-FOUR-PROMPTS",
+        "run_id": "RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH",
+        "scope_signature": "four-prompts-system-hardlock",
+        "workflow_action": true,
+        "workflow_impact_audit": "PASS",
+        "workflow_touches_production": true
+      },
+      "expected": "PROD_RELEASE_AUTHORIZATION_MISSING"
+    },
+    {
+      "id": "negative_archived_remote_workaround",
+      "input": {
+        "gate": "environment",
+        "task_id": "AH-FOUR-PROMPTS",
+        "run_id": "RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH",
+        "scope_signature": "four-prompts-system-hardlock",
+        "remote_state": "archived",
+        "workaround_remote": true,
+        "environment_classification": "ARCHIVED_REMOTE"
+      },
+      "expected": "TEST_ONLY_ROUTE_PROOF_MISSING"
+    },
+    {
+      "id": "negative_owner_site_broken_chat_stop",
+      "input": {
+        "gate": "owner_incident",
+        "task_id": "AH-FOUR-PROMPTS",
+        "run_id": "RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH",
+        "scope_signature": "four-prompts-system-hardlock",
+        "owner_message": "сайт сломан",
+        "incident_profile": "CHAT",
+        "agent_reply": "I stop"
+      },
+      "expected": "OWNER_INCIDENT_SIGNAL_NOT_ROUTED"
+    },
+    {
+      "id": "negative_rollback_without_last_known_good",
+      "input": {
+        "gate": "rollback",
+        "task_id": "AH-FOUR-PROMPTS",
+        "run_id": "RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH",
+        "scope_signature": "four-prompts-system-hardlock",
+        "pre_registered_lane": true,
+        "reversible": true,
+        "checkpoint": true
+      },
+      "expected": "LAST_KNOWN_GOOD_REVISION_MISSING"
+    },
+    {
+      "id": "negative_feature_fix_in_recovery_lane",
+      "input": {
+        "gate": "rollback",
+        "task_id": "AH-FOUR-PROMPTS",
+        "run_id": "RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH",
+        "scope_signature": "four-prompts-system-hardlock",
+        "last_known_good": "deploy-123",
+        "pre_registered_lane": true,
+        "reversible": true,
+        "checkpoint": true,
+        "feature_fix_on_production": true
+      },
+      "expected": "PRODUCTION_FIX_OUTSIDE_ROLLBACK_LANE_BLOCKED"
+    },
+    {
+      "id": "negative_done_from_github_success_only",
+      "input": {
+        "terminal_request": "Done",
+        "task_id": "AH-FOUR-PROMPTS",
+        "run_id": "RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH",
+        "scope_signature": "four-prompts-system-hardlock",
+        "implementation_evidence": true,
+        "only_github_workflow_success": true
+      },
+      "expected": "VALIDATION_EVIDENCE_MISSING"
+    },
+    {
+      "id": "negative_pr171_without_gitleaks",
+      "input": {
+        "gate": "pr171",
+        "task_id": "AH-794",
+        "run_id": "RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH",
+        "scope_signature": "pr171-terminal-closure",
+        "task_readback": true,
+        "register_coverage": true
+      },
+      "expected": "PR171_GITLEAKS_MERGE_GATE_BLOCKED"
+    },
+    {
+      "id": "positive_test_only_route",
+      "input": {
+        "gate": "environment",
+        "task_id": "AH-FOUR-PROMPTS",
+        "run_id": "RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH",
+        "scope_signature": "four-prompts-system-hardlock",
+        "test_only_route_proof": "PASS",
+        "operation": "test_task",
+        "environment_classification": "TEST_SERVER"
+      },
+      "expected": "ENVIRONMENT_CLASSIFICATION_PASS"
+    },
+    {
+      "id": "positive_prod_release_after_phrase",
+      "input": {
+        "gate": "prod_release",
+        "task_id": "AH-FOUR-PROMPTS",
+        "run_id": "RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH",
+        "scope_signature": "four-prompts-system-hardlock",
+        "test_only_route_proof": "PASS",
+        "owner_phrase": "разрешаю отгрузку на прод"
+      },
+      "expected": "PROD_RELEASE_AUTHORIZED"
+    },
+    {
+      "id": "positive_owner_incident_safe_recovery",
+      "input": {
+        "gate": "owner_incident",
+        "task_id": "AH-FOUR-PROMPTS",
+        "run_id": "RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH",
+        "scope_signature": "four-prompts-system-hardlock",
+        "owner_message": "караул сайт сломан",
+        "incident_profile": "INCIDENT",
+        "read_only_triage_started": true,
+        "state_capture": "PASS"
+      },
+      "expected": "SAFE_RECOVERY_LANE_STARTED"
+    },
+    {
+      "id": "positive_safe_rollback_authorized",
+      "input": {
+        "gate": "rollback",
+        "task_id": "AH-FOUR-PROMPTS",
+        "run_id": "RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH",
+        "scope_signature": "four-prompts-system-hardlock",
+        "last_known_good": "deploy-123",
+        "pre_registered_lane": true,
+        "reversible": true,
+        "checkpoint": true
+      },
+      "expected": "SAFE_ROLLBACK_AUTHORIZED"
+    },
+    {
+      "id": "positive_pr171_terminal_closure",
+      "input": {
+        "gate": "pr171",
+        "task_id": "AH-794",
+        "run_id": "RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH",
+        "scope_signature": "pr171-terminal-closure",
+        "gitleaks": true,
+        "task_readback": true,
+        "register_coverage": true,
+        "open_tails": []
+      },
+      "expected": "PR171_TERMINAL_CLOSURE_ALLOWED"
+    },
+    {
+      "id": "positive_done_with_evidence",
+      "input": {
+        "terminal_request": "Done",
+        "task_id": "AH-FOUR-PROMPTS",
+        "run_id": "RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH",
+        "scope_signature": "four-prompts-system-hardlock",
+        "implementation_evidence": true,
+        "validation_evidence": true,
+        "receipt": true,
+        "task_readback": true,
+        "register_coverage": true,
+        "blocker": "NONE",
+        "open_tails": []
+      },
+      "expected": "DONE_WITH_EVIDENCE"
+    }
+  ]
+}
+

@@ -1,0 +1,44 @@
+TASK_CLASS: CONTROL_SPINE_REGISTRAR
+ROLE: T1_ARCHITECT / REGISTRAR / VERIFIER
+ACTIVE_SKILLS:
+- agenthub-task-first-router
+- agenthub-prompt-architect
+- agenthub-registrar-artifact-lifecycle
+- agenthub-git-pr-queue-control
+- agenthub-security-redaction
+- agenthub-truth-redteam
+- agenthub-role-boundary-t0
+- agenthub-task-service-youtrack-control
+- caveman-user-communication
+FORBIDDEN_SKILLS:
+- product-runtime-mutation
+- stroyremont-runtime-worker
+- docker-worker
+- db-worker
+- proxy-worker
+- firewall-worker
+- direct-shell-bypass
+- broad-permission-expansion
+- branch-protection-bypass
+- product-workflow-dispatch
+- local-prompt-folder-only-closure
+- blind-merge-retry-worker
+- status-spam-to-owner
+SCOPE_SIGNATURE: omega fallback permission lane hardlock for PR #175 and four prompt architecture package
+NEGATIVE_MATCHES:
+- Not a product repair.
+- Not a production/test deployment.
+- Not a broad permission grant.
+- Not branch-protection bypass.
+- Not local-only prompt folder closure.
+
+Required lane declaration before write:
+- lane:
+- task_id:
+- run_id:
+- repository:
+- allowed_paths:
+- action:
+- evidence_required:
+- terminal_blocker:
+
