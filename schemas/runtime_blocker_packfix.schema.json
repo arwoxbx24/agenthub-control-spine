@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/runtime_blocker_packfix.schema.json",
+  "title": "Runtime blocker PackFix",
+  "type": "object",
+  "required": ["blocker", "packfix", "same_run", "owner_facing", "next_lane"],
+  "properties": {
+    "blocker": {"enum": ["CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED", "T0_DIRECT_RUNTIME_MUTATION_DEFECT", "BROWSER_WORKER_MISSING", "COMMAND_WORKER_MISSING"]},
+    "packfix": {"enum": ["CONTRACT_ONLY_TO_SCOPED_TEST_WORKER_ROUTE", "T0_TO_T2_SCOPED_TEST_WORKER_ROUTE", "BROWSER_ONLY_OUTCOME_ROUTE"]},
+    "same_run": {"const": true},
+    "owner_facing": {"const": false},
+    "next_lane": {"enum": ["L7_AGENTHUB_BROWSER_WORKER", "L6_AGENTHUB_COMMAND_WORKER"]}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,20 @@
+{
+  "artifact_id": "scoped-test-runtime-browser-packfix-fixtures",
+  "source_task": "AH-793",
+  "cases": [
+    {"id":"01_owner_blocker_chat_rejected","owner_message":true,"blocker":"CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED","expected":"BLOCK"},
+    {"id":"02_direct_shell_rejected","direct_shell":true,"expected":"BLOCK"},
+    {"id":"03_broad_permission_rejected","wildcard_permission":true,"expected":"BLOCK"},
+    {"id":"04_production_url_rejected","target_url":"https://stroyremont.example/a/?p=banners","expected":"BLOCK"},
+    {"id":"05_product_master_rejected","branch":"master","expected":"BLOCK"},
+    {"id":"06_ci_green_not_done","ci_green":true,"browser_proof":false,"expected":"BLOCK"},
+    {"id":"07_internal_done_not_browser_proof","agenthub_done":true,"browser_proof":false,"expected":"BLOCK"},
+    {"id":"08_missing_cleanup_rejected","target_url":"https://stroy-test.b244.ru/a/?p=banners","browser_proof":true,"cleanup_done":false,"expected":"BLOCK"},
+    {"id":"09_code_ready_not_installed_rejected","code_ready":true,"test_rollout":false,"expected":"BLOCK"},
+    {"id":"10_nothing_visible_rejected","visible_result":"NO_VISIBLE_RESULT","expected":"BLOCK"},
+    {"id":"11_same_run_packfix_allowed","packfix":"CONTRACT_ONLY_TO_SCOPED_TEST_WORKER_ROUTE","same_run":true,"owner_facing":false,"expected":"ALLOW"},
+    {"id":"12_scoped_test_lane_allowed","lane":"L7_AGENTHUB_BROWSER_WORKER","target_url":"https://stroy-test.b244.ru/a/?p=banners","wildcard_permission":false,"expected":"ALLOW"},
+    {"id":"13_browser_result_allowed","target_url":"https://stroy-test.b244.ru/a/?p=banners","browser_proof":true,"visible_result":"BANNER_ADDED_VISIBLE","cleanup_done":true,"production_touched":false,"expected":"ALLOW"},
+    {"id":"14_ah793_error_intermediate_allowed","target_url":"https://stroy-test.b244.ru/a/?p=banners","browser_proof":true,"visible_result":"AH793_ERROR_VISIBLE","ah793_error_code":"AH793-UPLOAD-SAVE","cleanup_done":true,"production_touched":false,"expected":"ALLOW"}
+  ]
+}

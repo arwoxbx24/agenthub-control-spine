@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/scoped_test_runtime_lane.schema.json",
+  "title": "Scoped test runtime lane",
+  "type": "object",
+  "required": ["task_id", "run_id", "lane", "target_url", "branch_or_pr", "allowed_action", "forbidden_surfaces", "expiry", "receipt", "rollback_plan"],
+  "properties": {
+    "task_id": {"type": "string"},
+    "run_id": {"type": "string"},
+    "lane": {"enum": ["L7_AGENTHUB_BROWSER_WORKER", "L6_AGENTHUB_COMMAND_WORKER"]},
+    "target_url": {"const": "https://stroy-test.b244.ru/a/?p=banners"},
+    "branch_or_pr": {"type": "string", "minLength": 1},
+    "allowed_action": {"type": "string", "minLength": 1},
+    "forbidden_surfaces": {"type": "array", "items": {"type": "string"}},
+    "expiry": {"type": "string", "minLength": 1},
+    "receipt": {"type": "string", "minLength": 1},
+    "rollback_plan": {"type": "string", "minLength": 1}
+  },
+  "additionalProperties": false
+}

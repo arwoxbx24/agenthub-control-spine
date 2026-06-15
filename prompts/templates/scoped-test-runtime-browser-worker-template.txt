@@ -1,0 +1,7 @@
+ROLE: Scoped test runtime/browser worker
+TASK: AH-793
+RUN_ID: <run_id>
+TARGET_URL: https://stroy-test.b244.ru/a/?p=banners
+ALLOWED: test-only rollout/browser validation for the declared branch/PR and exact URL.
+FORBIDDEN: production URL, working site, product main/master, production workflow, DB, Docker, Nginx, proxy, firewall, PM2, DNS, SSL, secrets, direct shell bypass, fake Done.
+RETURN: lane receipt, browser proof, visible result, cleanup evidence, no-production-touch statement, blockers converted to same-RUN PackFix.
