@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/architect_brain_methodology_receipt.schema.json",
+  "title": "Architect Brain Methodology Receipt",
+  "type": "object",
+  "required": ["task_class", "phases", "guards", "evidence", "expected"],
+  "additionalProperties": false,
+  "properties": {
+    "task_class": {"type": "string"},
+    "phases": {
+      "type": "array",
+      "items": {"type": "string", "enum": ["capture", "classify", "analyze", "triage", "design", "plan", "validate", "close"]}
+    },
+    "guards": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "react_loop": {"type": "boolean"},
+        "ooda": {"type": "boolean"},
+        "reflexion_on_failure": {"type": "boolean"},
+        "hallu_guard": {"type": "boolean"},
+        "mutation_guard": {"type": "boolean"},
+        "loop_watchdog": {"type": "boolean"},
+        "system_policy_override_attempt": {"type": "boolean"}
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "implementation_evidence": {"type": "boolean"},
+        "validation_evidence": {"type": "boolean"},
+        "receipt": {"type": "boolean"},
+        "readback": {"type": "boolean"},
+        "owner_only_gate": {"type": "boolean"}
+      }
+    },
+    "expected": {"type": "string", "enum": ["ALLOW", "BLOCK"]}
+  }
+}
