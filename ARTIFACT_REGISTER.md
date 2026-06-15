@@ -464,7 +464,7 @@ Compatibility states from older records remain readable: `active_policy`,
 | `runbooks/omega-fallback-permission-lane-runbook.md` | `active_runbook` | false | false | AH-796 | Omega connector fallback and permission lane runbook. |
 | `prompts/templates/omega-fallback-permission-lane-worker-template.txt` | `active_template` | false | false | AH-796 | Omega worker template requiring lane declaration. |
 | `reports/validations/AH-796-omega-fallback-permission-lane-validation-20260615.md` | `validation_report` | false | false | AH-796 | Omega validation report. |
-| `reports/receipts/AH-796-omega-fallback-permission-lane-receipt-20260615.md` | `operational_receipt` | false | false | AH-796 | Omega package receipt; PR/task readback remains blocked. |
+| `reports/receipts/AH-796-omega-fallback-permission-lane-receipt-20260615.md` | `operational_receipt` | false | false | AH-796 | Omega package receipt; PR #175 merged and main readback passed. |
 
 ## PR #153 Smart Self-Healing Authority Elevation Coverage
 

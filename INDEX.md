@@ -436,7 +436,7 @@ status: draft
 | `runbooks/omega-fallback-permission-lane-runbook.md` | runbook | AH-796 | active |
 | `prompts/templates/omega-fallback-permission-lane-worker-template.txt` | worker template | AH-796 | active |
 | `reports/validations/AH-796-omega-fallback-permission-lane-validation-20260615.md` | validation report | AH-796 | validation-report |
-| `reports/receipts/AH-796-omega-fallback-permission-lane-receipt-20260615.md` | operational receipt | AH-796 | pr-task-blocked |
+| `reports/receipts/AH-796-omega-fallback-permission-lane-receipt-20260615.md` | operational receipt | AH-796 | merged-main-readback-pass |
 
 ## PR #153 Smart Self-Healing Authority Elevation Coverage
 

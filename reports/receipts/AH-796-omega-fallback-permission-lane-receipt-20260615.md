@@ -5,7 +5,7 @@ owner_role: Registrar / Verifier
 source_task: AH-796
 run_id: omega-fallback-permission-lane-hardlock-20260615
 created_at: 2026-06-15
-lifecycle_status: pr-175-updated-task-readback-blocked
+lifecycle_status: merged-main-readback-pass
 default_load: false
 safe_to_replay: false
 ---
@@ -40,10 +40,12 @@ Route evidence:
 Current terminal state:
 
 - Omega package installed on PR `#175` branch.
-- Full Done remains blocked until PR/main readback and YouTrack Done readback.
+- PR `#175` merged to main as commit
+  `d2a7856cc2cf56b33a5952724c649b59ab1cf552`.
+- Main readback verified the Omega policy, schemas, validator, fixtures, runbook,
+  worker template, validation report, receipt, and register coverage.
+- Product/runtime/prod/test surfaces were not touched.
 
 Typed blockers:
 
-- `BRANCH_PROTECTION_PLATFORM_GATE`
-- `YOUTRACK_READBACK_UNAVAILABLE`
-
+- none
