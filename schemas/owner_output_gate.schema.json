@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/owner_output_gate.schema.json",
+  "title": "Owner Output Gate",
+  "type": "object",
+  "required": ["message", "classification", "expected"],
+  "additionalProperties": false,
+  "properties": {
+    "message": {"type": "string", "minLength": 1},
+    "classification": {
+      "type": "string",
+      "enum": ["SUCCESS", "ACTION", "OWNER_ONLY_GATE", "INVALID_OWNER_OUTPUT"]
+    },
+    "expected": {"type": "string", "enum": ["ALLOW", "BLOCK"]},
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "implementation_evidence": {"type": "boolean"},
+        "validation_evidence": {"type": "boolean"},
+        "receipt": {"type": "boolean"},
+        "readback": {"type": "boolean"},
+        "active_blocker": {"type": "boolean"},
+        "same_scope_tail": {"type": "boolean"},
+        "owner_only_irreversible_gate": {"type": "boolean"},
+        "autonomous_action_available": {"type": "boolean"}
+      }
+    }
+  }
+}
