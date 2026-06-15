@@ -455,6 +455,16 @@ Compatibility states from older records remain readable: `active_policy`,
 | `reports/validations/AH-796-four-prompt-plus-fifth-front-full-report-20260615.md` | `validation_report` | false | false | AH-796 | Full report after four prompts and fifth-front implementation prompt. |
 | `reports/validations/AH-796-four-prompt-architecture-hardlock-validation-20260615.md` | `validation_report` | false | false | AH-796 | Validation report for four prompt architecture hardlock. |
 | `reports/receipts/AH-796-four-prompt-architecture-hardlock-receipt-20260615.md` | `operational_receipt` | false | false | AH-796 | Repository package receipt; PR/task Done readback remains blocked. |
+| `governance/agenthub-omega-fallback-permission-lane-hardlock-policy.md` | `active_policy` | false | false | AH-796 | Omega connector fallback and permission-lane hardlock policy. |
+| `schemas/agenthub_permission_lane_runtime_grant.schema.json` | `active_schema` | false | false | AH-796 | Runtime permission lane grant schema. |
+| `schemas/github_connector_fallback_route.schema.json` | `active_schema` | false | false | AH-796 | GitHub connector to scoped gh fallback route schema. |
+| `schemas/blocked_command_loop_guard.schema.json` | `active_schema` | false | false | AH-796 | Blocked-command loop guard schema. |
+| `validators/omega_fallback_permission_lane_validator.rb` | `active_control` | false | false | AH-796 | Validator for connector fallback, permission lanes, blocked loops, owner handoff, fake Done, and product touch. |
+| `fixtures/omega-fallback-permission-lane/fixtures.json` | `active_control` | false | false | AH-796 | Omega fallback permission lane fixtures. |
+| `runbooks/omega-fallback-permission-lane-runbook.md` | `active_runbook` | false | false | AH-796 | Omega connector fallback and permission lane runbook. |
+| `prompts/templates/omega-fallback-permission-lane-worker-template.txt` | `active_template` | false | false | AH-796 | Omega worker template requiring lane declaration. |
+| `reports/validations/AH-796-omega-fallback-permission-lane-validation-20260615.md` | `validation_report` | false | false | AH-796 | Omega validation report. |
+| `reports/receipts/AH-796-omega-fallback-permission-lane-receipt-20260615.md` | `operational_receipt` | false | false | AH-796 | Omega package receipt; PR/task readback remains blocked. |
 
 ## PR #153 Smart Self-Healing Authority Elevation Coverage
 

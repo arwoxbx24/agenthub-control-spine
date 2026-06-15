@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "blocked_command_loop_guard.schema.json",
+  "title": "Blocked Command Loop Guard",
+  "type": "object",
+  "required": ["task_id", "run_id", "command_signature", "blocker", "repeat_count", "owner_handoff", "decision"],
+  "properties": {
+    "task_id": { "type": "string", "pattern": "^[A-Z][A-Z0-9]+-[0-9]+$" },
+    "run_id": { "type": "string", "minLength": 1 },
+    "command_signature": { "type": "string", "minLength": 1 },
+    "blocker": { "type": "string", "minLength": 1 },
+    "repeat_count": { "type": "integer", "minimum": 0 },
+    "obfuscation_detected": { "type": "boolean" },
+    "task_bound": { "type": "boolean" },
+    "owner_handoff": { "type": "boolean" },
+    "decision": { "enum": ["ALLOW", "BLOCK_LOOP", "PACKFIX_REQUIRED", "BLOCK_OWNER_HANDOFF"] }
+  },
+  "additionalProperties": false
+}
+

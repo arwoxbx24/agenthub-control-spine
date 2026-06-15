@@ -171,3 +171,7 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
   Local priority indexes, chat reports, PR existence, and blocked command output
   are rejected as implementation evidence. Full Done still requires PR/main
   readback and YouTrack Done readback.
+- Omega source policy:
+  `governance/agenthub-omega-fallback-permission-lane-hardlock-policy.md`.
+- Omega validator: `validators/omega_fallback_permission_lane_validator.rb`.
+- Omega fixtures: `fixtures/omega-fallback-permission-lane/fixtures.json`.

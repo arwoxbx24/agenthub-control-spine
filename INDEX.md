@@ -427,6 +427,16 @@ status: draft
 | `reports/validations/AH-796-four-prompt-plus-fifth-front-full-report-20260615.md` | full report | AH-796 | validation-report |
 | `reports/validations/AH-796-four-prompt-architecture-hardlock-validation-20260615.md` | validation report | AH-796 | validation-report |
 | `reports/receipts/AH-796-four-prompt-architecture-hardlock-receipt-20260615.md` | operational receipt | AH-796 | pr-task-blocked |
+| `governance/agenthub-omega-fallback-permission-lane-hardlock-policy.md` | governance policy | AH-796 | active |
+| `schemas/agenthub_permission_lane_runtime_grant.schema.json` | schema | AH-796 | active |
+| `schemas/github_connector_fallback_route.schema.json` | schema | AH-796 | active |
+| `schemas/blocked_command_loop_guard.schema.json` | schema | AH-796 | active |
+| `validators/omega_fallback_permission_lane_validator.rb` | validator | AH-796 | active |
+| `fixtures/omega-fallback-permission-lane/fixtures.json` | fixtures | AH-796 | active |
+| `runbooks/omega-fallback-permission-lane-runbook.md` | runbook | AH-796 | active |
+| `prompts/templates/omega-fallback-permission-lane-worker-template.txt` | worker template | AH-796 | active |
+| `reports/validations/AH-796-omega-fallback-permission-lane-validation-20260615.md` | validation report | AH-796 | validation-report |
+| `reports/receipts/AH-796-omega-fallback-permission-lane-receipt-20260615.md` | operational receipt | AH-796 | pr-task-blocked |
 
 ## PR #153 Smart Self-Healing Authority Elevation Coverage
 

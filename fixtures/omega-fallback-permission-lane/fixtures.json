@@ -1,0 +1,136 @@
+{
+  "cases": [
+    {
+      "id": "connector_unavailable_safe_gh_read_pass",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "omega-fallback-permission-lane-hardlock-20260615",
+        "connector_failed": true,
+        "gh_fallback_checked": true,
+        "gh_fallback": true,
+        "repository": "arwoxbx24/agenthub-control-spine",
+        "allowed_paths": ["reports/validations"]
+      },
+      "expected": "GH_FALLBACK_ALLOWED"
+    },
+    {
+      "id": "connector_unavailable_safe_gh_register_write_pass",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "omega-fallback-permission-lane-hardlock-20260615",
+        "connector_failed": true,
+        "gh_fallback_checked": true,
+        "gh_fallback": true,
+        "repository": "arwoxbx24/agenthub-control-spine",
+        "allowed_paths": ["INDEX.md", "ARTIFACT_REGISTER.md", "PR_QUEUE_REGISTER.md"]
+      },
+      "expected": "GH_FALLBACK_ALLOWED"
+    },
+    {
+      "id": "gh_fallback_to_stroyremont_blocked",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "omega-fallback-permission-lane-hardlock-20260615",
+        "connector_failed": true,
+        "gh_fallback_checked": true,
+        "gh_fallback": true,
+        "repository": "arwoxbx24/stroyremont",
+        "allowed_paths": ["README.md"]
+      },
+      "expected": "GH_FALLBACK_SCOPE_UNSAFE"
+    },
+    {
+      "id": "direct_shell_obfuscation_blocked",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "omega-fallback-permission-lane-hardlock-20260615",
+        "command_obfuscation": true
+      },
+      "expected": "CONTROL_SPINE_WRITE_ROUTE_MISSING"
+    },
+    {
+      "id": "repeated_blocked_command_blocked",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "omega-fallback-permission-lane-hardlock-20260615",
+        "blocked_command_retries": 2
+      },
+      "expected": "CONTROL_SPINE_WRITE_ROUTE_MISSING"
+    },
+    {
+      "id": "local_priority_index_done_blocked",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "omega-fallback-permission-lane-hardlock-20260615",
+        "local_prompt_index_done": true
+      },
+      "expected": "CONTROL_SPINE_WRITE_ROUTE_MISSING"
+    },
+    {
+      "id": "pr_only_done_blocked",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "omega-fallback-permission-lane-hardlock-20260615",
+        "terminal_request": "Done",
+        "validation": true,
+        "register_coverage": true,
+        "main_readback": true
+      },
+      "expected": "YOUTRACK_READBACK_UNAVAILABLE"
+    },
+    {
+      "id": "main_readback_task_done_pass",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "omega-fallback-permission-lane-hardlock-20260615",
+        "terminal_request": "Done",
+        "validation": true,
+        "register_coverage": true,
+        "main_readback": true,
+        "task_readback": true
+      },
+      "expected": "DONE_WITH_EVIDENCE"
+    },
+    {
+      "id": "branch_protection_check_missing_typed_blocker",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "omega-fallback-permission-lane-hardlock-20260615",
+        "terminal_request": "Done",
+        "validation": true,
+        "register_coverage": true,
+        "task_readback": true
+      },
+      "expected": "BRANCH_PROTECTION_PLATFORM_GATE"
+    },
+    {
+      "id": "owner_shell_handoff_blocked",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "omega-fallback-permission-lane-hardlock-20260615",
+        "owner_shell_handoff": true
+      },
+      "expected": "CONTROL_SPINE_WRITE_ROUTE_MISSING"
+    },
+    {
+      "id": "same_run_packfix_pass",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "omega-fallback-permission-lane-hardlock-20260615",
+        "same_run_packfix": true,
+        "routine_blocker": true
+      },
+      "expected": "SAME_RUN_PACKFIX_PASS"
+    },
+    {
+      "id": "unlimited_permission_grant_blocked",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "omega-fallback-permission-lane-hardlock-20260615",
+        "unlimited_permission_grant": true
+      },
+      "expected": "GH_FALLBACK_SCOPE_UNSAFE"
+    }
+  ]
+}
+
