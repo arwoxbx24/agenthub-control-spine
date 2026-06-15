@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/release_approval_gate.schema.json",
+  "title": "Release approval gate",
+  "type": "object",
+  "required": ["release_id", "test_contour_passed", "browser_or_owner_acceptance_passed", "release_candidate_receipt", "owner_phrase", "conclusion"],
+  "properties": {
+    "release_id": {"type": "string"},
+    "test_contour_passed": {"type": "boolean"},
+    "browser_or_owner_acceptance_passed": {"type": "boolean"},
+    "release_candidate_receipt": {"type": "string"},
+    "owner_phrase": {"type": "string"},
+    "conclusion": {"enum": ["ALLOW_PRODUCTION_RELEASE", "BLOCK_PRODUCTION_RELEASE"]}
+  },
+  "additionalProperties": false
+}
