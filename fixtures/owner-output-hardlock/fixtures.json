@@ -1,0 +1,84 @@
+{
+  "artifact_id": "owner-output-solution-only-hardlock-fixtures",
+  "source_task": "AH-794",
+  "cases": [
+    {
+      "id": "01_success_with_evidence_allows",
+      "message": "Готово: owner-output hardlock установлен, validator PASS и PR readback есть.",
+      "classification": "SUCCESS",
+      "evidence": {"implementation_evidence": true, "validation_evidence": true, "receipt": true, "readback": true, "active_blocker": false, "same_scope_tail": false},
+      "expected": "ALLOW"
+    },
+    {
+      "id": "02_action_exact_allows",
+      "message": "Действие: запускаю owner-output hardlock validator через CI route.",
+      "classification": "ACTION",
+      "evidence": {"autonomous_action_available": true},
+      "expected": "ALLOW"
+    },
+    {
+      "id": "03_owner_only_gate_allows",
+      "message": "Нужен владелец: выполнить защищенный admin merge PR #171 после проверки branch protection.",
+      "classification": "OWNER_ONLY_GATE",
+      "evidence": {"owner_only_irreversible_gate": true},
+      "expected": "ALLOW"
+    },
+    {
+      "id": "04_status_blocked_blocks",
+      "message": "Статус: blocked",
+      "classification": "INVALID_OWNER_OUTPUT",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "05_leftovers_blocks",
+      "message": "Осталось запустить validator и закрыть задачу.",
+      "classification": "INVALID_OWNER_OUTPUT",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "06_pr_ready_but_blocks",
+      "message": "PR готов, но GitHub не дает merge.",
+      "classification": "INVALID_OWNER_OUTPUT",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "07_factcheck_only_blocks",
+      "message": "factcheck: PR открыт, CI зеленый, merge нет.",
+      "classification": "INVALID_OWNER_OUTPUT",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "08_shell_handoff_blocks",
+      "message": "Вставь команду в терминал и нажми Enter.",
+      "classification": "INVALID_OWNER_OUTPUT",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "09_cannot_blocks",
+      "message": "Не могу закрыть без worker.",
+      "classification": "INVALID_OWNER_OUTPUT",
+      "expected": "BLOCK"
+    },
+    {
+      "id": "10_success_without_done_evidence_blocks",
+      "message": "Готово: PR закрыт.",
+      "classification": "SUCCESS",
+      "evidence": {"implementation_evidence": true, "validation_evidence": false, "receipt": true, "readback": false, "active_blocker": false, "same_scope_tail": false},
+      "expected": "BLOCK"
+    },
+    {
+      "id": "11_owner_gate_without_irreversible_proof_blocks",
+      "message": "Нужен владелец: включить worker.",
+      "classification": "OWNER_ONLY_GATE",
+      "evidence": {"owner_only_irreversible_gate": false},
+      "expected": "BLOCK"
+    },
+    {
+      "id": "12_action_without_action_blocks",
+      "message": "Действие: думаю над следующим шагом.",
+      "classification": "ACTION",
+      "evidence": {"autonomous_action_available": false},
+      "expected": "BLOCK"
+    }
+  ]
+}
