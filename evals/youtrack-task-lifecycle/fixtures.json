@@ -1,0 +1,36 @@
+{
+  "task_lifecycle_cases": [
+    {
+      "id": "done_requires_done_stage",
+      "input": { "issue_id": "AH-743", "run_id": "RUN-AGENTHUB-YOUTRACK-BOARD-LIFECYCLE-SCOPED-AUTONOMY-20260611", "duplicate_check": "PASS", "implementation_evidence": "policy", "validation_evidence": "validator", "receipt_path": "reports/receipts/AGENTHUB-YOUTRACK-BOARD-LIFECYCLE-SCOPED-AUTONOMY-RECEIPT-20260611.md", "blocker": "none", "final_stage": "Develop", "claim_success": true },
+      "expected": "ISSUE_STAGE_NOT_DONE"
+    },
+    {
+      "id": "done_with_readback_passes",
+      "input": { "issue_id": "AH-743", "run_id": "RUN-AGENTHUB-YOUTRACK-BOARD-LIFECYCLE-SCOPED-AUTONOMY-20260611", "duplicate_check": "PASS", "implementation_evidence": "policy", "validation_evidence": "validator", "receipt_path": "reports/receipts/AGENTHUB-YOUTRACK-BOARD-LIFECYCLE-SCOPED-AUTONOMY-RECEIPT-20260611.md", "blocker": "none", "final_stage": "Done", "board_readback": "Done", "claim_success": true },
+      "expected": "PASS"
+    },
+    {
+      "id": "board_readback_mismatch_fails",
+      "input": { "issue_id": "AH-743", "run_id": "RUN-AGENTHUB-YOUTRACK-BOARD-LIFECYCLE-SCOPED-AUTONOMY-20260611", "duplicate_check": "PASS", "implementation_evidence": "policy", "validation_evidence": "validator", "receipt_path": "receipt", "blocker": "none", "final_stage": "Done", "board_readback": "Test", "claim_success": true },
+      "expected": "BOARD_READBACK_MISMATCH"
+    }
+  ],
+  "permission_lane_cases": [
+    {
+      "id": "lane1_youtrack_worker_passes",
+      "input": { "run_id": "RUN-AGENTHUB-YOUTRACK-BOARD-LIFECYCLE-SCOPED-AUTONOMY-20260611", "task_id": "AH-743", "lane": 1, "role": "T2_YouTrack_Worker", "allowed_surfaces": ["issues"], "forbidden_surfaces": ["secrets"], "evidence": "stage receipt", "expiry": "same-run", "receipt_path": "receipt", "secret_redaction": "PASS" },
+      "expected": "PASS"
+    },
+    {
+      "id": "lane6_requires_proof",
+      "input": { "run_id": "RUN", "task_id": "AH-743", "lane": 6, "role": "T2_Destructive_Worker", "allowed_surfaces": ["exact-target"], "forbidden_surfaces": ["wildcard"], "evidence": "none", "expiry": "same-run", "receipt_path": "receipt", "secret_redaction": "PASS" },
+      "expected": "OWNER_ONLY_DESTRUCTIVE_CONFIRMATION_REQUIRED"
+    },
+    {
+      "id": "runtime_lane_requires_worker_route",
+      "input": { "run_id": "RUN", "task_id": "AH-743", "lane": 3, "role": "T2_Runtime_Diagnostic_Worker", "allowed_surfaces": ["status"], "forbidden_surfaces": ["mutation"], "evidence": "none", "expiry": "same-run", "receipt_path": "receipt", "secret_redaction": "PASS" },
+      "expected": "NO_APPROVED_RUNTIME_WORKER_ROUTE"
+    }
+  ]
+}
