@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/agenthub_worker_route_receipt.schema.json",
+  "title": "AgentHub Worker Route Receipt",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "task_id",
+    "run_id",
+    "worker_id",
+    "role",
+    "route_type",
+    "mcp_tool_call_id_or_agenthub_dispatch_id",
+    "allowed_surfaces",
+    "forbidden_surfaces",
+    "route_truth_status",
+    "blocker"
+  ],
+  "properties": {
+    "task_id": {"type": "string", "minLength": 1},
+    "run_id": {"type": "string", "minLength": 1},
+    "worker_id": {"type": ["string", "null"]},
+    "role": {"type": "string"},
+    "route_type": {"enum": ["agenthub_mcp_dispatch", "agenthub_mcp_execute", "github_control_spine_api", "shell_only", "not_proven"]},
+    "mcp_tool_call_id_or_agenthub_dispatch_id": {"type": ["string", "null"]},
+    "allowed_surfaces": {"type": "array", "items": {"type": "string"}},
+    "forbidden_surfaces": {"type": "array", "items": {"type": "string"}},
+    "route_truth_status": {"enum": ["PROVEN", "NOT_PROVEN", "BLOCKED"]},
+    "blocker": {"type": ["string", "null"]}
+  }
+}

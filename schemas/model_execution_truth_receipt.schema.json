@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/model_execution_truth_receipt.schema.json",
+  "title": "Model Execution Truth Receipt",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "requested_model",
+    "resolved_model",
+    "actual_model",
+    "actual_model_proof_type",
+    "actual_model_proof_ref",
+    "usage_window_start",
+    "usage_window_end",
+    "usage_delta_observed",
+    "env_only_model_claim",
+    "model_truth_status",
+    "fallback_used",
+    "fallback_model",
+    "fallback_reason",
+    "blocker"
+  ],
+  "properties": {
+    "requested_model": {"type": ["string", "null"]},
+    "resolved_model": {"type": ["string", "null"]},
+    "actual_model": {"type": ["string", "null"]},
+    "actual_model_proof_type": {"enum": ["codex_compliance_api", "codex_usage_page_delta", "codex_client_session_metadata", "api_response_metadata", "approved_local_codex_session_receipt", "not_available"]},
+    "actual_model_proof_ref": {"type": ["string", "null"]},
+    "usage_window_start": {"type": ["string", "null"]},
+    "usage_window_end": {"type": ["string", "null"]},
+    "usage_delta_observed": {"type": "boolean"},
+    "env_only_model_claim": {"type": "boolean"},
+    "model_truth_status": {"enum": ["PROVEN", "NOT_PROVEN", "BLOCKED_AUDIT_ACCESS", "FALLBACK_PROVEN", "NOT_CLAIMED"]},
+    "fallback_used": {"type": "boolean"},
+    "fallback_model": {"type": ["string", "null"]},
+    "fallback_reason": {"type": ["string", "null"]},
+    "blocker": {"type": ["string", "null"]}
+  }
+}

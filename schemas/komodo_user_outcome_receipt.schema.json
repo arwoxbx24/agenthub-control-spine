@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/komodo_user_outcome_receipt.schema.json",
+  "title": "Komodo User Outcome Receipt",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "core_status",
+    "mongo_status",
+    "periphery_status",
+    "public_route_status",
+    "browser_render_status",
+    "login_or_dashboard_status",
+    "api_status",
+    "periphery_visible",
+    "server_list_visible_or_empty_state",
+    "stack_container_list_visible_or_empty_state",
+    "komodo_user_outcome_status",
+    "repair_applied",
+    "rollback_ref",
+    "blocker"
+  ],
+  "properties": {
+    "core_status": {"type": "string"},
+    "mongo_status": {"type": "string"},
+    "periphery_status": {"type": "string"},
+    "public_route_status": {"enum": ["PASS", "FAIL", "NOT_PROVEN", "BLOCKED"]},
+    "browser_render_status": {"enum": ["BROWSER_RENDERED", "FAIL", "NOT_PROVEN", "BLOCKED"]},
+    "login_or_dashboard_status": {"enum": ["PASS", "LOGIN_SCREEN_ONLY", "FAIL", "NOT_PROVEN", "BLOCKED"]},
+    "api_status": {"enum": ["PASS", "FAIL", "NOT_REQUIRED", "NOT_PROVEN", "BLOCKED"]},
+    "periphery_visible": {"type": "boolean"},
+    "server_list_visible_or_empty_state": {"type": "boolean"},
+    "stack_container_list_visible_or_empty_state": {"type": "boolean"},
+    "komodo_user_outcome_status": {"enum": ["PASS", "NOT_PROVEN", "FAIL", "BLOCKED"]},
+    "repair_applied": {"type": "boolean"},
+    "rollback_ref": {"type": ["string", "null"]},
+    "blocker": {"type": ["string", "null"]}
+  }
+}
