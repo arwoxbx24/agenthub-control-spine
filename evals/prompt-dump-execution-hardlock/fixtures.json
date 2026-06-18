@@ -1,0 +1,40 @@
+{
+  "positive": [
+    {
+      "name": "executed_contract_done",
+      "receipt": {
+        "task_id": "AH-744",
+        "run_id": "RUN-AGENTHUB-PROMPT-DUMP-EXECUTION-HARDLOCK-20260611",
+        "duplicate_check": "created_unique",
+        "prompt_dump_detected": false,
+        "prompt_executed_as_contract": true,
+        "implementation_evidence": ["governance/prompt-dump-execution-hardlock-policy.md"],
+        "validation_evidence": ["validators/prompt_dump_execution_hardlock_validator.rb"],
+        "receipt_path": "reports/receipts/AGENTHUB-PROMPT-DUMP-EXECUTION-HARDLOCK-RECEIPT-20260611.md",
+        "final_output_shape": "compact_terminal_only",
+        "youtrack_stage_readback": "Done",
+        "done_gate": "PASS",
+        "secret_redaction_gate": "PASS",
+        "blocker": null,
+        "final_output_text": "Fact: выполнено; task moved Done; evidence/receipt/readback есть."
+      }
+    }
+  ],
+  "negative": [
+    {
+      "name": "raw_prompt_dump_final",
+      "patch": {"final_output_text": "## Mission\n## Execution Order\nBelow are corrected blocks"},
+      "expected_error": "prompt dump marker present"
+    },
+    {
+      "name": "pass_without_done_readback",
+      "patch": {"youtrack_stage_readback": "blocked"},
+      "expected_error": "youtrack_stage_readback must be Done for PASS"
+    },
+    {
+      "name": "not_executed_as_contract",
+      "patch": {"prompt_executed_as_contract": false},
+      "expected_error": "prompt_executed_as_contract must be true"
+    }
+  ]
+}
