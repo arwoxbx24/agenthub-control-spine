@@ -1,0 +1,41 @@
+{
+  "suite": "agenthub-paralysis-breaker-scoped-autonomy",
+  "description": "Prevents repeated blocker spam and forces one repair task.",
+  "cases": [
+    {
+      "id": "PARALYSIS_REPEAT_GATE_FIRST",
+      "payload": {
+        "role": "T1_ARCHITECT",
+        "action": "ROUTE_TASK",
+        "lane": 3,
+        "gate": "PHYSICAL_TASK_WRITE_MISSING",
+        "artifact_path": "context/agenthub-current-context-pack.md",
+        "same_gate_failures": 1
+      },
+      "expect": { "allowed": true, "retry_limit_reached": false }
+    },
+    {
+      "id": "PARALYSIS_REPEAT_GATE_SECOND",
+      "payload": {
+        "role": "T1_ARCHITECT",
+        "action": "ROUTE_TASK",
+        "lane": 3,
+        "gate": "PHYSICAL_TASK_WRITE_MISSING",
+        "artifact_path": "context/agenthub-current-context-pack.md",
+        "same_gate_failures": 2
+      },
+      "expect": { "allowed": false, "blocker": "TASK_CARD_PAYLOAD_REPAIR_REQUIRED" }
+    },
+    {
+      "id": "PARALYSIS_PROGRESS_SUPPRESSED",
+      "payload": {
+        "role": "T2_RUNTIME_REPAIR",
+        "action": "progress_status",
+        "lane": 0,
+        "gate": "DUPLICATE_PROGRESS_OUTPUT_BLOCKED",
+        "same_gate_failures": 1
+      },
+      "expect": { "allowed": true, "repair": { "action": "PROGRESS_OUTPUT_SUPPRESSED_CONTINUE" } }
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/agenthub_model_route_decision.schema.json",
+  "title": "AgentHub Model Route Decision",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "task_id",
+    "task_class",
+    "route_lane",
+    "spark_catalog_visible",
+    "first_attempt_model",
+    "requested_model",
+    "resolved_model",
+    "fallback_used",
+    "fallback_model",
+    "fallback_reason",
+    "model_escalation_receipt"
+  ],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "task_class": { "type": "string", "minLength": 1 },
+    "route_lane": { "type": "string", "enum": ["M0", "M1", "M2", "M3"] },
+    "is_routine_workload": { "type": "boolean" },
+    "route_workload_context": { "type": "string" },
+    "m0_workload_total": { "type": "number", "minimum": 0 },
+    "m0_routine_workload": { "type": "number", "minimum": 0 },
+    "m0_count_total": { "type": "number", "minimum": 0 },
+    "m0_count_routine": { "type": "number", "minimum": 0 },
+    "spark_catalog_visible": { "type": "boolean" },
+    "first_attempt_model": { "type": "string" },
+    "requested_model": { "type": "string" },
+    "resolved_model": { "type": "string" },
+    "fallback_used": { "type": "boolean" },
+    "fallback_model": { "type": "string" },
+    "fallback_reason": { "type": "string" },
+    "model_escalation_receipt": { "type": "string" }
+  }
+}

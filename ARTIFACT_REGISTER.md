@@ -430,3 +430,122 @@ Compatibility states from older records remain readable: `active_policy`,
 | `evals/document-dedupe-gate/fixtures.json` | `active_control` | false | false | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | Positive and negative fixtures for the document dedupe gate. |
 | `reports/validations/P1-document-dedupe-gate-validation-20260607.md` | `audit_only` | false | false | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | Validation report for document dedupe gate syntax, fixtures, live register/index scan, and no-secret/no-runtime checks. |
 | `reports/receipts/P1-document-dedupe-gate-implementation-receipt-20260607.md` | `operational_receipt` | false | false | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | Implementation receipt closing `DOCUMENT_DEDUPE_GATE_MISSING` for repository governance/control-spine evidence. |
+| `governance/agenthub-flexible-authority-broker-policy.md` | `active_policy` | false | false | AH-601/AH-748 | Flexible authority decisions for generic blockers and owner/destructive scope gating. |
+| `governance/agenthub-codex-spark-model-routing-policy.md` | `active_policy` | false | false | AH-601 | Spark-first model routing and code/config proof gate policy. |
+| `governance/agenthub-packfix-self-healing-loop-policy.md` | `active_policy` | false | false | AH-748 | PackFix and route-repair self-healing policy for repeated blockers and missing proof. |
+| `governance/agenthub-model-truth-proof-policy.md` | `active_policy` | false | false | AH-601/AH-748 | Model truth proof acceptance and anti-ENV-only policy controls. |
+| `schemas/agenthub_authority_envelope.schema.json` | `active_schema` | false | false | AH-601/AH-748 | Schema for authority envelope output contracts and allowed decisions. |
+| `schemas/agenthub_packfix_event.schema.json` | `active_schema` | false | false | AH-601/AH-748 | Schema for PackFix route-repair events and ownership flags. |
+| `schemas/agenthub_model_execution_truth.schema.json` | `active_schema` | false | false | AH-601/AH-748 | Schema for model execution truth receipts and proof metadata. |
+| `schemas/agenthub_model_budget_policy.schema.json` | `active_schema` | false | false | AH-601/AH-748 | Schema for workload-budget/PackFix threshold policy records. |
+| `validators/agenthub_authority_broker_validator.rb` | `active_control` | false | false | AH-601/AH-748 | Validator for deterministic authority broker decisions and allowed blockers. |
+| `validators/agenthub_packfix_self_healing_validator.rb` | `active_control` | false | false | AH-601/AH-748 | Validator for PackFix self-healing outputs and route-repair escalation. |
+| `validators/agenthub_model_router_truth_validator.rb` | `active_control` | false | false | AH-601/AH-748 | Validator for route truth, accepted proof types, and code/config requirements. |
+| `validators/agenthub_youtack_done_model_truth_validator.rb` | `active_control` | false | false | AH-601/AH-748 | Validator for YouTrack Done truth/proof blocker enforcement. |
+| `evals/flexible-authority-broker/fixtures.json` | `active_control` | false | false | AH-601/AH-748 | Fixtures for authority broker, PackFix, model truth, and Done truth cases. |
+| `reports/receipts/AGENTHUB-FLEXIBLE-AUTHORITY-BROKER-RECEIPT-20260612.md` | `operational_receipt` | false | false | AH-601/AH-748 | Operational receipt for authority broker and PackFix deterministic package. |
+| `reports/receipts/AGENTHUB-CODEX-SPARK-MODEL-TRUTH-RECEIPT-20260612.md` | `operational_receipt` | false | false | AH-601/AH-748 | Operational receipt for Spark truth routing and YouTrack Done proof gate package. |
+| `governance/agenthub-docs-first-validator-route-packfix-policy.md` | `active_policy` | false | false | AH-763 | Docs-first validator route and PackFix hardlock policy with official source packet and Done gate constraints. |
+| `governance/agenthub-permission-broker-lane-authority-policy.md` | `active_policy` | false | false | AH-763 | Lane authority policy for validator execution, PackFix conversion, and no generic BLOCK decisions. |
+| `schemas/agenthub_docs_packet.schema.json` | `active_schema` | false | false | AH-763 | Schema for official documentation packets and fact coverage maps. |
+| `schemas/agenthub_packfix_event.schema.json` | `active_schema` | false | false | AH-763 | Schema for same-RUN PackFix events and route-repair decisions. |
+| `schemas/agenthub_validator_execution_authority_envelope.schema.json` | `active_schema` | false | false | AH-763 | Schema for task-bound validator execution authority envelopes. |
+| `schemas/agenthub_model_truth_receipt.schema.json` | `active_schema` | false | false | AH-763 | Schema for model truth receipts, proof types, and no-claim closures. |
+| `validators/agenthub_docs_first_gate_validator.rb` | `active_control` | false | false | AH-763 | Validator for official docs packet coverage and env-only behavior-claim rejection. |
+| `validators/agenthub_packfix_self_healing_validator.rb` | `active_control` | false | false | AH-763 | Validator for routine blocker to PackFix and route-repair escalation. |
+| `validators/agenthub_validator_execution_route_validator.rb` | `active_control` | false | false | AH-763 | Validator for task-bound validator execution route envelopes and no third same-gate retry. |
+| `validators/agenthub_model_truth_validator.rb` | `active_control` | false | false | AH-763 | Validator rejecting env-only model proof and accepting explicit no-model-claim receipts. |
+| `evals/docs-first-validator-route-packfix/fixtures.json` | `active_control` | false | false | AH-763 | Fixtures for docs-first, PackFix, validator-route, model-truth, and Done-gate negative cases. |
+| `runbooks/agenthub-docs-first-packfix-self-healing-runbook.md` | `active_runbook` | false | false | AH-763 | Runbook for docs packet, PackFix conversion, validator authority, and Done gate flow. |
+| `reports/validations/AGENTHUB-DOCS-FIRST-VALIDATOR-ROUTE-PACKFIX-VALIDATION-20260612.md` | `validation_report` | false | false | AH-763 | Validation plan and current residual showing validator execution route readback is blocked before Done. |
+| `reports/receipts/AGENTHUB-DOCS-FIRST-VALIDATOR-ROUTE-PACKFIX-RECEIPT-20260612.md` | `operational_receipt` | false | false | AH-763 | Receipt for installed docs-first/PackFix controls; terminal state is Test pending validator route repair. |
+| `governance/agenthub-authority-lifecycle-expansion-policy.md` | `active_policy` | false | false | AH-765 | Authority lifecycle expansion policy covering tools, skills, worker fronts, lanes, methodologies, PackFix, and Done gates. |
+| `schemas/authority_envelope.schema.json` | `active_schema` | false | false | AH-765 | Schema for signed scoped authority envelopes. |
+| `schemas/packfix_event.schema.json` | `active_schema` | false | false | AH-765 | Schema for same-RUN PackFix events and safe repair route metadata. |
+| `schemas/validator_execution_receipt.schema.json` | `active_schema` | false | false | AH-765 | Schema for task-bound validator execution receipts. |
+| `schemas/model_truth_receipt.schema.json` | `active_schema` | false | false | AH-765 | Schema rejecting env-only model proof and recording no-claim/proven states. |
+| `schemas/docs_source_packet.schema.json` | `active_schema` | false | false | AH-765 | Schema for official docs source packets and verified facts. |
+| `schemas/microservice_descriptor.schema.json` | `active_schema` | false | false | AH-765 | Schema for service ownership, runtime, dependency, and probe descriptors. |
+| `schemas/browser_outcome_receipt.schema.json` | `active_schema` | false | false | AH-765 | Schema for browser screenshot, DOM, console, network, and HTTP-200-only rejection. |
+| `schemas/youtrack_stage_movement_receipt.schema.json` | `active_schema` | false | false | AH-765 | Schema for evidence-backed YouTrack stage movement readbacks. |
+| `schemas/final_done_gate.schema.json` | `active_schema` | false | false | AH-765 | Schema for final Done gate evidence and active blocker state. |
+| `validators/authority_lifecycle_expansion_validator.rb` | `active_control` | false | false | AH-765 | Validator for authority envelope, PackFix repeat breaker, and fake-Done negative cases. |
+| `evals/authority-lifecycle-expansion/fixtures.json` | `active_control` | false | false | AH-765 | Fixtures for missing authority, env-only proof, HTTP 200 fake Done, validator-not-run, prompt dump, and third retry failures. |
+| `runbooks/agenthub-authority-lifecycle-expansion-runbook.md` | `active_runbook` | false | false | AH-765 | Runbook for lifecycle routing, fronts, PackFix, validation, and Done arbitration. |
+| `reports/receipts/AGENTHUB-AUTHORITY-LIFECYCLE-EXPANSION-RECEIPT-20260612.md` | `operational_receipt` | false | false | AH-765 | Receipt for installed authority lifecycle expansion package; terminal state is Test pending validator route. |
+| `governance/agenthub-final-contour-authority-policy.md` | `active_policy` | false | false | AH-765 | Final contour authority policy converting routine missing-route blockers into same-RUN PackFix authority installation. |
+| `governance/agenthub-runtime-tool-installation-policy.md` | `active_policy` | false | false | AH-765 | Runtime tool installation policy defining required scoped AgentHub tool routes, manifests, canaries, and Done gates. |
+| `schemas/runtime_tool_route_manifest.schema.json` | `active_schema` | false | false | AH-765 | Schema for runtime tool route manifests, canary proof, validation proof, redaction, and evidence sinks. |
+| `validators/agenthub_authority_envelope_validator.rb` | `active_control` | false | false | AH-765 | Validator for lane-scoped authority envelopes and generic BLOCK rejection. |
+| `validators/agenthub_packfix_loop_validator.rb` | `active_control` | false | false | AH-765 | Validator for PackFix first/second/third retry behavior and owner-only terminal gates. |
+| `validators/agenthub_runtime_tool_route_validator.rb` | `active_control` | false | false | AH-765 | Validator for runtime tool route manifests, canaries, validation, and redaction gates. |
+| `evals/authority-broker/fixtures.json` | `active_control` | false | false | AH-765 | Authority broker positive and negative fixtures. |
+| `evals/packfix-loop/fixtures.json` | `active_control` | false | false | AH-765 | PackFix loop fixtures for runtime missing route, contract dispatch block, third retry, and owner-only gate. |
+| `evals/runtime-tool-installation/fixtures.json` | `active_control` | false | false | AH-765 | Runtime route manifest fixtures for canary pass and missing route failures. |
+| `runbooks/agenthub-runtime-tool-installation-runbook.md` | `active_runbook` | false | false | AH-765 | Runbook for installing/registering missing runtime tool routes and re-running Done gates. |
+| `reports/receipts/RUN-AGENTHUB-AUTHORITY-LIFECYCLE-EXPANSION-20260612-final-authority-runtime-tool-installation-receipt.md` | `final_receipt` | false | false | AH-765 | Final receipt: scoped authority/runtime route installed, AgentHub merge SUCCESS, YouTrack Done readback. |
+| `governance/agenthub-same-run-packfix-no-intermediate-closure-policy.md` | `active_policy` | false | false | AH-777 | Global Same-RUN PackFix hardlock: routine blocker finals become PackFix, owner chat waits for terminal proof. |
+| `schemas/agenthub_same_run_packfix_no_intermediate_closure.schema.json` | `active_schema` | false | false | AH-777 | Schema for Same-RUN PackFix no-intermediate-closure fixtures and terminal state proof. |
+| `validators/agenthub_same_run_packfix_no_intermediate_closure_validator.rb` | `active_control` | false | false | AH-777 | Validator rejecting routine blocker final output, fake Done, unresolved replay residuals, and owner-only claims without probes. |
+| `evals/same-run-packfix-no-intermediate-closure/fixtures.json` | `active_control` | false | false | AH-777 | Positive and negative fixtures for Done proof, PackFix conversion, replay residuals, owner-only, forbidden-scope, and fake Done. |
+| `runbooks/agenthub-same-run-packfix-no-intermediate-closure-runbook.md` | `active_runbook` | false | false | AH-777 | Runbook for same-RUN PackFix execution, task graph closure, stage readback, and final owner output. |
+| `reports/validations/AGENTHUB-SAME-RUN-PACKFIX-NO-INTERMEDIATE-CLOSURE-VALIDATION-20260612.md` | `validation_report` | false | false | AH-777 | Validation report for Same-RUN PackFix no-intermediate-closure hardlock canary. |
+| `reports/receipts/AGENTHUB-SAME-RUN-PACKFIX-NO-INTERMEDIATE-CLOSURE-RECEIPT-20260612.md` | `operational_receipt` | false | false | AH-777 | Receipt for installed Same-RUN PackFix no-intermediate-closure hardlock package. |
+
+- artifact_id: agenthub-scoped-autonomy-authority-self-healing-escalation-contract-20260610
+  owner_role: T0/T1
+  source_task: AH-738/AH-731
+  run_id: RUN-AGENTHUB-SCOPED-AUTONOMY-AUTHORITY-SELF-HEALING-20260610
+  pr: 152
+  status: active_control_proposed
+  scope: control-spine / runtime policy recovery
+| `governance/agent-cycle-done-evidence-hardlock-policy.md` | `active_policy` | false | false | AH-785 | Permanent Agent Cycle and Done Evidence Tuple hardlock policy. |
+| `schemas/done_evidence_tuple.schema.json` | `active_control` | false | false | AH-785 | Done Evidence Tuple schema. |
+| `validators/done_evidence_hardlock_validator.rb` | `active_control` | false | false | AH-785 | Deterministic validator for fake Done, weak evidence, owner-stop, and stale replay cases. |
+| `evals/done-evidence-hardlock/fixtures.json` | `active_control` | false | false | AH-785 | Regression fixtures for Done Evidence hardlock. |
+| `youtrack-workflows/agenthub-done-evidence-state-machine.js` | `active_control` | false | false | AH-785 | YouTrack workflow/state-machine guard source for Done/Closed transitions. |
+| `prompts/templates/agent-cycle-done-evidence-hardlock-template.txt` | `active_control` | false | false | AH-785 | Serious prompt template requiring Agent Cycle and Done Evidence Tuple. |
+| `reports/validations/AH-785-permanent-done-gate-hardlock-validation-20260613.md` | `operational_receipt` | false | false | AH-785 | Validation report for Done Evidence hardlock package. |
+| `reports/receipts/AH-785-permanent-done-gate-hardlock-receipt-20260613.md` | `operational_receipt` | false | false | AH-785 | Receipt for permanent Done Evidence hardlock package. |
+| `governance/four-prompts-system-hardlock-policy.md` | `active_policy` | false | false | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | Ordered governance contour for the four prompt-architect inputs. |
+| `schemas/environment_classification.schema.json` | `active_schema` | false | false | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | Environment classification schema. |
+| `schemas/workflow_impact_audit.schema.json` | `active_schema` | false | false | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | Workflow impact audit schema. |
+| `schemas/test_only_route_proof.schema.json` | `active_schema` | false | false | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | Test-only route proof schema. |
+| `schemas/prod_release_authorization.schema.json` | `active_schema` | false | false | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | Production release authorization schema. |
+| `schemas/owner_incident_signal.schema.json` | `active_schema` | false | false | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | Owner incident signal schema. |
+| `schemas/safe_rollback_lane.schema.json` | `active_schema` | false | false | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | Safe rollback lane schema. |
+| `schemas/incident_recovery_receipt.schema.json` | `active_schema` | false | false | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | Incident recovery receipt schema. |
+| `validators/four_prompts_system_hardlock_validator.rb` | `active_control` | false | false | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | Validator for test/prod, owner incident, rollback, PR171/gitleaks, and Done gates. |
+| `evals/four-prompts-system-hardlock/fixtures.json` | `active_control` | false | false | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | Positive and negative fixtures for the four prompt hardlock. |
+| `runbooks/four-prompts-system-hardlock-runbook.md` | `active_runbook` | false | false | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | Runbook for executing the four prompt hardlock contour. |
+| `prompts/templates/four-prompts-system-hardlock-worker-template.md` | `active_template` | false | false | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | Worker prompt template for four prompt hardlock implementation. |
+| `reports/incidents/AH-FOUR-PROMPTS-test-prod-boundary-and-emergency-recovery-rca-20260615.md` | `analysis_complete` | false | false | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | RCA for test/prod boundary and emergency recovery failure class. |
+| `reports/validations/AH-FOUR-PROMPTS-system-hardlock-validation-20260615.md` | `validation_report` | false | false | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | Validation report for the four prompt hardlock package. |
+| `reports/validations/AH-FOUR-PROMPTS-claim-ledger-20260615.md` | `claim_ledger` | false | false | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | Truth-redteam claim ledger for the four prompt hardlock package. |
+| `reports/receipts/AH-FOUR-PROMPTS-system-hardlock-receipt-20260615.md` | `operational_receipt` | false | false | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | Receipt for repository-local package; task readback remains blocked. |
+| `governance/agenthub-four-prompt-architecture-hardlock-policy.md` | `active_policy` | false | false | AH-796 | Durable four prompt architecture hardlock policy. |
+| `schemas/environment_route_proof.schema.json` | `active_schema` | false | false | AH-796 | Environment and AgentHub route proof schema. |
+| `schemas/workflow_impact_audit.schema.json` | `active_schema` | false | false | AH-796 | Workflow impact audit schema reused by four prompt package. |
+| `schemas/owner_incident_recovery_lane.schema.json` | `active_schema` | false | false | AH-796 | Owner incident recovery lane schema. |
+| `schemas/four_prompt_architecture_install_receipt.schema.json` | `active_schema` | false | false | AH-796 | Four prompt architecture install receipt schema. |
+| `validators/four_prompt_architecture_hardlock_validator.rb` | `active_control` | false | false | AH-796 | Validator rejecting local-only closure, direct bypass, owner handoff, fake Done, and repeated blocked retries. |
+| `fixtures/four-prompt-architecture-hardlock/fixtures.json` | `active_control` | false | false | AH-796 | Positive and negative fixtures for the four prompt architecture hardlock. |
+| `runbooks/four-prompt-architecture-hardlock-runbook.md` | `active_runbook` | false | false | AH-796 | Closed-contour execution runbook. |
+| `prompts/templates/four-prompt-architecture-hardlock-worker-template.txt` | `active_template` | false | false | AH-796 | Worker template for four prompt architecture hardlock. |
+| `reports/validations/AH-796-four-prompt-architecture-hardlock-validation-20260615.md` | `validation_report` | false | false | AH-796 | Validation report for four prompt architecture hardlock. |
+| `reports/receipts/AH-796-four-prompt-architecture-hardlock-receipt-20260615.md` | `operational_receipt` | false | false | AH-796 | Repository package receipt; PR/task Done readback remains blocked. |
+| `governance/test-first-prod-deploy-lock-policy.md` | `active_policy` | false | false | AH-794 | Test-first production deployment lock policy. |
+| `schemas/environment_route_proof.schema.json` | `active_schema` | false | false | AH-794 | Environment and AgentHub route proof schema. |
+| `schemas/workflow_impact_audit.schema.json` | `active_schema` | false | false | AH-794 | Workflow impact audit schema for test-first production deployment lock. |
+| `schemas/release_approval_gate.schema.json` | `active_schema` | false | false | AH-794 | Test-first production release approval gate schema. |
+| `schemas/test_acceptance_proof.schema.json` | `active_schema` | false | false | AH-794 | Test acceptance proof schema for production lock package. |
+| `validators/test_first_prod_deploy_lock_validator.rb` | `active_control` | false | false | AH-794 | Validator for test-first production deployment lock with production gate/readback constraints. |
+| `fixtures/test-first-prod-deploy-lock/fixtures.json` | `active_control` | false | false | AH-794 | Test fixture set for production deploy-lock proof scenarios. |
+| `runbooks/test-first-release-gate-runbook.md` | `active_runbook` | false | false | AH-794 | Production release gate runbook for test-first deployment lock controls. |
+| `prompts/templates/test-first-release-worker-template.md` | `active_template` | false | false | AH-794 | Worker template for test-first release gate execution and evidence capture. |
+| `prompts/templates/owner-test-confirmation-request-template.md` | `active_template` | false | false | AH-794 | Owner confirmation request template for test-first production gate operations. |
+| `registries/test-first-prod-deploy-lock-coverage-20260614.md` | `active_control` | false | false | AH-794 | Registry row for full AH-794 deploy-lock package coverage. |
+| `reports/incidents/AH-794-prod-crossing-incident-analysis-20260614.md` | `audit_only` | false | false | AH-794 | Incident analysis for production crossing and release-lock residuals in test-first scope. |
+| `reports/validations/AH-794-test-first-prod-lock-validation-20260614.md` | `validation_report` | false | false | AH-794 | Validation report for AH-794 test-first production deploy-lock package. |
+| `reports/receipts/AH-794-test-first-prod-lock-receipt-20260614.md` | `operational_receipt` | false | false | AH-794 | Operational receipt for AH-794 test-first production lock package. |
+| `reports/receipts/AH-794-pr171-autonomous-supersede-closure-20260615.md` | `operational_receipt` | false | false | AH-794 | Operational receipt for PR #171 supersede/closure path under AH-794 package. |

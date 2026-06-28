@@ -1,0 +1,33 @@
+{
+  "authority_cases": [
+    {
+      "id": "valid_lane_2_validator",
+      "input": {
+        "authority_envelope": {
+          "task_id": "AH-765",
+          "run_id": "RUN-AGENTHUB-AUTHORITY-LIFECYCLE-EXPANSION-20260612",
+          "lane": 2,
+          "decision": "ALLOW_WITH_SCOPED_WORKER"
+        }
+      },
+      "expected": "AUTHORITY_ENVELOPE_PASS"
+    },
+    {
+      "id": "missing_envelope",
+      "input": {},
+      "expected": "AUTHORITY_ENVELOPE_MISSING"
+    },
+    {
+      "id": "generic_block_rejected",
+      "input": {
+        "authority_envelope": {
+          "task_id": "AH-765",
+          "run_id": "RUN-AGENTHUB-AUTHORITY-LIFECYCLE-EXPANSION-20260612",
+          "lane": 2,
+          "decision": "BLOCK"
+        }
+      },
+      "expected": "GENERIC_BLOCK_FORBIDDEN"
+    }
+  ]
+}

@@ -1,0 +1,2 @@
+probe from t2
+ok

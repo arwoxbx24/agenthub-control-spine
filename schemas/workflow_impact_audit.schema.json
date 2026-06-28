@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workflow_impact_audit.schema.json",
+  "title": "Workflow Impact Audit",
+  "type": "object",
+  "required": ["workflow_file", "triggers_checked", "environment_checked", "production_effect", "audit_status"],
+  "properties": {
+    "workflow_file": { "type": "string", "minLength": 1 },
+    "triggers_checked": { "type": "boolean" },
+    "environment_checked": { "type": "boolean" },
+    "secrets_checked": { "type": "boolean" },
+    "branch_conditions_checked": { "type": "boolean" },
+    "reusable_workflows_checked": { "type": "boolean" },
+    "production_effect": { "enum": ["EXCLUDED", "POSSIBLE", "UNKNOWN"] },
+    "audit_status": { "enum": ["PASS", "BLOCKED", "MISSING"] }
+  },
+  "additionalProperties": false
+}
+

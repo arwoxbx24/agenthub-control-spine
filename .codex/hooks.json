@@ -1,0 +1,28 @@
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/sh -lc 'printf \"%s\\n\" \"AGENTHUB EFFICIENCY HOOKS READY\" \"ponytail=full/version:4.6.0/source:codex-plugin\" \"caveman=full/version:0.1.0/source:codex-plugin\" \"scope=repo/task/run\" \"routing=task_first/agenthub\" \"noise_guard=on\" \"token_guard=on\" \"safety_guard=on\"'",
+            "timeout": 5,
+            "statusMessage": "AgentHub efficiency hooks"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/bin/sh -lc 'printf \"%s\\n\" \"[AH-HOOKS] ponytail=full caveman=full safety=on task_first=on\"'",
+            "timeout": 5,
+            "statusMessage": "AgentHub token/noise guard"
+          }
+        ]
+      }
+    ]
+  }
+}

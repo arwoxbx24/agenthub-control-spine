@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/model_execution_truth_receipt.schema.json",
+  "title": "AgentHub Model Execution Truth Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "task_id",
+    "task_class",
+    "route_lane",
+    "final_state",
+    "requested_model",
+    "resolved_model",
+    "actual_model",
+    "actual_model_proof_type",
+    "actual_model_proof_ref",
+    "usage_window_start",
+    "usage_window_end",
+    "usage_delta_observed",
+    "compliance_api_event_ref",
+    "codex_client_version",
+    "codex_invocation_command_redacted",
+    "codex_output_artifact_sha256",
+    "fallback_used",
+    "fallback_model",
+    "fallback_reason",
+    "env_only_model_claim",
+    "model_truth_status"
+  ],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "task_class": { "type": "string", "minLength": 1 },
+    "route_lane": { "type": "string", "enum": ["M0", "M1", "M2", "M3"] },
+    "final_state": { "type": "string", "enum": ["INTERMEDIATE", "PASS", "DONE", "BLOCKED", "BLOCKED_AUDIT_ACCESS"] },
+    "requested_model": { "type": "string" },
+    "resolved_model": { "type": "string" },
+    "actual_model": { "type": "string" },
+    "actual_model_proof_type": {
+      "type": "string",
+      "enum": [
+        "codex_compliance_api",
+        "codex_usage_page_delta",
+        "codex_client_session_metadata",
+        "api_response_metadata",
+        "owner_analytics_readback",
+        "not_available"
+      ]
+    },
+    "actual_model_proof_ref": { "type": "string" },
+    "usage_window_start": { "type": "string" },
+    "usage_window_end": { "type": "string" },
+    "usage_delta_observed": { "type": ["boolean", "string"] },
+    "compliance_api_event_ref": { "type": "string" },
+    "codex_client_version": { "type": "string" },
+    "codex_invocation_command_redacted": { "type": "string" },
+    "codex_output_artifact_sha256": { "type": "string" },
+    "fallback_used": { "type": "boolean" },
+    "fallback_model": { "type": "string" },
+    "fallback_reason": { "type": "string" },
+    "env_only_model_claim": { "type": "boolean" },
+    "model_truth_status": {
+      "type": "string",
+      "enum": ["PROVEN", "NOT_PROVEN", "BLOCKED_AUDIT_ACCESS", "FALLBACK_PROVEN"]
+    }
+  }
+}

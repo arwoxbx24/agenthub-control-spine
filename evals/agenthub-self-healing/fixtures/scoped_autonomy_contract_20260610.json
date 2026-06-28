@@ -1,0 +1,120 @@
+{
+  "suite": "agenthub-scoped-autonomy-self-healing-20260610",
+  "description": "Lane-based self-healing and destructive-gate control fixtures",
+  "cases": [
+    {
+      "id": "SCOPED_AUTH_CONTROL_SPINE_PROMPT_ALLOW",
+      "payload": {
+        "role": "T0_CONTROL",
+        "action": "WRITE_REPORT",
+        "lane": 1,
+        "scope": "control_spine",
+        "artifact_path": "governance/policies/agenthub-self-healing-core-policy.md",
+        "same_gate_failures": 0
+      },
+      "expect": { "allowed": true, "gate": "CONTROL_SPINE_AUTHORSHIP_ALLOWED" }
+    },
+    {
+      "id": "SCOPED_TASK_ID_REPAIRED",
+      "payload": {
+        "role": "T1_ARCHITECT",
+        "action": "ROUTE_TASK",
+        "lane": 3,
+        "scope": "control_hub",
+        "gate": "PRE_DISPATCH_TASK_GATE_MISSING_ISSUE_ID",
+        "artifact_path": "artifacts/agenthub_task_routes.json",
+        "same_gate_failures": 0
+      },
+      "expect": { "allowed": true, "repair": { "action": "TASK_ID_SELF_HEALING_REQUIRED" } }
+    },
+    {
+      "id": "SCOPED_MODEL_FALLBACK_RECEIPT_AUTO_WRITE",
+      "payload": {
+        "role": "T2_CODEX_IMPLEMENTER",
+        "action": "UPDATE_VALIDATION",
+        "lane": 5,
+        "scope": "control_hub",
+        "gate": "MODEL_FALLBACK_RECEIPT_MISSING",
+        "artifact_path": "validators/agenthub_action_policy_validator.rb",
+        "same_gate_failures": 0
+      },
+      "expect": { "allowed": true, "repair": { "action": "MODEL_FALLBACK_RECEIPT_REPAIR_REQUIRED" } }
+    },
+    {
+      "id": "SCOPED_DUP_PROGRESS_SUPPRESS",
+      "payload": {
+        "role": "T1_ARCHITECT",
+        "action": "status_report",
+        "lane": 0,
+        "scope": "chat",
+        "gate": "DUPLICATE_PROGRESS_OUTPUT_BLOCKED",
+        "same_gate_failures": 0
+      },
+      "expect": { "allowed": true, "gate": "PROGRESS_OUTPUT_SUPPRESSED_CONTINUE" }
+    },
+    {
+      "id": "SCOPED_READONLY_RUNTIME_ALLOWED",
+      "payload": {
+        "role": "T2_CODEX_IMPLEMENTER",
+        "action": "service_status",
+        "lane": 4,
+        "scope": "runtime",
+        "artifact_path": "service:agenthub-control-spine"
+      },
+      "expect": { "allowed": true, "gate": "PASS" }
+    },
+    {
+      "id": "SCOPED_DB_DELETE_BLOCKED_WITHOUT_PROOF",
+      "payload": {
+        "role": "T2_RUNTIME_REPAIR",
+        "action": "delete_database",
+        "lane": 5,
+        "scope": "runtime",
+        "artifact_path": "runtime/db/test_db.sqlite",
+        "evidence": { "lane6": { "owner_approved": false, "replacement_proven": false, "backup_verified": false } }
+      },
+      "expect": { "allowed": false, "blocker": "NO_SCOPED_T2_ROUTE_FOR_RUNTIME_REPAIR" }
+    },
+    {
+      "id": "SCOPED_TEST_DB_DELETE_ALLOWED_WITH_PROOF",
+      "payload": {
+        "role": "T2_RUNTIME_REPAIR",
+        "action": "delete_database",
+        "lane": 6,
+        "scope": "runtime",
+        "artifact_path": "runtime/db/test_db.sqlite",
+        "evidence": {
+          "lane6": {
+            "environment_class": "test",
+            "owner_approved": true,
+            "replacement_proven": true,
+            "backup_verified": true,
+            "test_approved": true,
+            "deletion_receipt": "artifacts/destruction-proof/test-db-delete.json"
+          }
+        }
+      },
+      "expect": { "allowed": true, "gate": "PASS" }
+    },
+    {
+      "id": "SCOPED_CONTAINER_DELETE_PROD_BLOCKED",
+      "payload": {
+        "role": "T2_RUNTIME_REPAIR",
+        "action": "delete_container",
+        "lane": 6,
+        "scope": "runtime",
+        "artifact_path": "containers/agenthub-prod",
+        "evidence": {
+          "lane6": {
+            "environment_class": "production",
+            "owner_approved": false,
+            "replacement_proven": false,
+            "backup_verified": false,
+            "deletion_receipt": "artifacts/destruction-proof/container-delete.json"
+          }
+        }
+      },
+      "expect": { "allowed": false, "blocker": "BACKUP_OR_REPLACEMENT_PROOF_REQUIRED" }
+    }
+  ]
+}

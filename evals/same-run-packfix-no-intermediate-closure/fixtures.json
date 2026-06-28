@@ -1,0 +1,71 @@
+{
+  "cases": [
+    {
+      "id": "complete_done_with_evidence",
+      "input": {
+        "terminal_state": "DONE_WITH_EVIDENCE",
+        "implementation_evidence": true,
+        "validation_evidence": true,
+        "receipt": true,
+        "task_graph_done": true,
+        "done_gate": true,
+        "final_output": "Fact: contour closed; task graph Done readback PASS.\nAction: none.\nLeft: none."
+      },
+      "expected": "DONE_WITH_EVIDENCE"
+    },
+    {
+      "id": "routine_blocker_final_is_packfix",
+      "input": {
+        "terminal_state": "ROUTINE_BLOCKER",
+        "routine_blocker": "CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED",
+        "packfix_created": false,
+        "final_output": "Left: CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED"
+      },
+      "expected": "PACKFIX_REQUIRED"
+    },
+    {
+      "id": "duplicate_replay_with_residual_resumes",
+      "input": {
+        "terminal_state": "ROUTINE_BLOCKER",
+        "routine_blocker": "SAME_PROMPT_RESUME_FROM_RESIDUAL_PACKFIX",
+        "duplicate_replay": true,
+        "residual_open": true,
+        "packfix_created": true,
+        "packfix_closed": false,
+        "final_output": ""
+      },
+      "expected": "PACKFIX_RESUME_REQUIRED"
+    },
+    {
+      "id": "owner_only_after_probes",
+      "input": {
+        "terminal_state": "OWNER_ONLY_IRREVERSIBLE_GATE",
+        "owner_only_probe_complete": true,
+        "final_output": "Fact: owner-only gate after registry/docs/auth probes.\nAction: use guide @artifacts/guide.html.\nLeft: OWNER_ONLY_IDENTITY."
+      },
+      "expected": "OWNER_ONLY_IRREVERSIBLE_GATE"
+    },
+    {
+      "id": "forbidden_scope_terminal",
+      "input": {
+        "terminal_state": "DENY_FORBIDDEN_SCOPE",
+        "forbidden_scope": true,
+        "final_output": "Fact: forbidden outside contour.\nAction: create explicit approval contour.\nLeft: DENY_FORBIDDEN_SCOPE."
+      },
+      "expected": "DENY_FORBIDDEN_SCOPE"
+    },
+    {
+      "id": "fake_done_missing_receipt",
+      "input": {
+        "terminal_state": "DONE_WITH_EVIDENCE",
+        "implementation_evidence": true,
+        "validation_evidence": true,
+        "receipt": false,
+        "task_graph_done": true,
+        "done_gate": true,
+        "final_output": "Fact: contour closed; task graph Done readback PASS.\nAction: none.\nLeft: none."
+      },
+      "expected": "DONE_DENIED"
+    }
+  ]
+}

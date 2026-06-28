@@ -1,0 +1,41 @@
+{
+  "suite": "agenthub-t0-escape-boundary-scoped-autonomy",
+  "description": "Boundary gates for scoped lanes and self-healing",
+  "cases": [
+    {
+      "id": "BOUNDARY_CONTROL_SPINE_WALL",
+      "payload": {
+        "role": "T0_CONTROL",
+        "action": "WRITE_REPORT",
+        "lane": 1,
+        "scope": "control_spine",
+        "artifact_path": "governance/agenthub-scoped-autonomy-authority-self-healing-escalation-contract-20260610.md",
+        "gate": ""
+      },
+      "expect": { "allowed": true }
+    },
+    {
+      "id": "BOUNDARY_RUNTIME_READ_ONLY_ONLY",
+      "payload": {
+        "role": "T1_ARCHITECT",
+        "action": "service_restart",
+        "lane": 4,
+        "scope": "runtime",
+        "artifact_path": "runtime/service/agenthub-control-spine"
+      },
+      "expect": { "allowed": false, "blocker": "READ_ONLY_DIAGNOSTIC_NOT_BLOCKED_BY_RUNTIME_MUTATION_RULE" }
+    },
+    {
+      "id": "BOUNDARY_LANE5_SCOPED_REPAIR_REQUIRED",
+      "payload": {
+        "role": "T1_ARCHITECT",
+        "action": "repair_runtime",
+        "lane": 5,
+        "scope": "diagnostic",
+        "artifact_path": "runtime/service/agenthub-control-spine",
+        "evidence": {}
+      },
+      "expect": { "allowed": false, "blocker": "NO_SCOPED_T2_ROUTE_FOR_RUNTIME_REPAIR" }
+    }
+  ]
+}

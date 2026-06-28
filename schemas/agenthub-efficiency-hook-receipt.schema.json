@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "agenthub-efficiency-hook-receipt.schema.json",
+  "title": "AgentHub Efficiency Hook Receipt",
+  "type": "object",
+  "required": [
+    "artifact_id",
+    "source_task",
+    "run_id",
+    "lifecycle",
+    "default_load",
+    "safe_to_replay",
+    "ponytail",
+    "caveman",
+    "routing",
+    "guards",
+    "evidence",
+    "blockers"
+  ],
+  "properties": {
+    "artifact_id": { "const": "AGENTHUB-PONYTAIL-CAVEMAN-HOOK-CONTROL" },
+    "source_task": { "type": "string", "pattern": "^AH-[0-9]+$" },
+    "run_id": { "type": "string", "minLength": 1 },
+    "lifecycle": { "const": "operational_receipt" },
+    "default_load": { "const": false },
+    "safe_to_replay": { "const": false },
+    "ponytail": {
+      "type": "object",
+      "required": ["mode", "version", "source", "status"],
+      "properties": {
+        "mode": { "enum": ["lite", "full", "ultra", "off"] },
+        "version": { "type": "string" },
+        "source": { "type": "string" },
+        "status": { "enum": ["active", "fallback_governed", "blocked", "unconfirmed"] }
+      },
+      "additionalProperties": false
+    },
+    "caveman": {
+      "type": "object",
+      "required": ["mode", "version", "source", "status"],
+      "properties": {
+        "mode": { "enum": ["lite", "full", "ultra", "wenyan-lite", "wenyan-full", "wenyan-ultra", "off"] },
+        "version": { "type": "string" },
+        "source": { "type": "string" },
+        "status": { "enum": ["active", "fallback_governed", "blocked", "unconfirmed"] }
+      },
+      "additionalProperties": false
+    },
+    "routing": {
+      "type": "object",
+      "required": ["task_class", "role", "task_first", "agenthub_run"],
+      "properties": {
+        "task_class": { "type": "string" },
+        "role": { "type": "string" },
+        "task_first": { "type": "boolean" },
+        "agenthub_run": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "guards": {
+      "type": "object",
+      "required": ["noise_guard", "token_guard", "safety_guard", "secret_redaction_gate"],
+      "properties": {
+        "noise_guard": { "type": "boolean" },
+        "token_guard": { "type": "boolean" },
+        "safety_guard": { "type": "boolean" },
+        "secret_redaction_gate": { "enum": ["PASS", "FAIL", "NOT_RUN"] }
+      },
+      "additionalProperties": false
+    },
+    "evidence": { "type": "array", "items": { "type": "string" } },
+    "blockers": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/environment_target_proof.schema.json",
+  "title": "Environment Target Proof",
+  "type": "object",
+  "required": ["classification", "proof_sources", "product_repository", "production_side_effect_excluded"],
+  "properties": {
+    "classification": {
+      "enum": ["LOCAL_ONLY", "TEST_CONFIRMED", "PRODUCTION", "PROD_RISK", "UNKNOWN_ENVIRONMENT"]
+    },
+    "proof_sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "product_repository": { "type": "boolean" },
+    "branch": { "type": "string" },
+    "workflow_name": { "type": "string" },
+    "workflow_dispatch_or_watch": { "type": "boolean" },
+    "production_side_effect_excluded": { "type": "boolean" },
+    "remote_ambiguity": { "type": "boolean" }
+  },
+  "additionalProperties": true
+}

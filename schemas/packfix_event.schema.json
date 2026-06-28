@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/packfix_event.schema.json",
+  "title": "PackFix Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["packfix_id", "task_id", "run_id", "original_blocker", "lane", "missing_authority", "safe_repair_route", "retry_limit", "validation_needed", "owner_only"],
+  "properties": {
+    "packfix_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "original_blocker": { "type": "string", "minLength": 1 },
+    "lane": { "type": "integer", "minimum": 0, "maximum": 7 },
+    "missing_authority": { "type": "string", "minLength": 1 },
+    "proposed_authority_envelope": { "type": "string" },
+    "safe_repair_route": { "type": "string", "minLength": 1 },
+    "retry_limit": { "type": "integer", "minimum": 0, "maximum": 2 },
+    "validation_needed": { "type": "array", "items": { "type": "string" } },
+    "owner_only": { "type": "boolean" }
+  }
+}

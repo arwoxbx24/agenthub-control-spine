@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/agenthub_model_truth_receipt.schema.json",
+  "title": "AgentHub Model Truth Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "task_id",
+    "validator_name",
+    "route_lane",
+    "task_class",
+    "final_state",
+    "requested_model",
+    "resolved_model",
+    "actual_model",
+    "actual_model_proof_type",
+    "actual_model_proof_ref",
+    "usage_audit_access",
+    "env_only_model_claim",
+    "requested_model_as_proof",
+    "resolved_model_as_proof",
+    "model_truth_status",
+    "model_trust_context"
+  ],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "validator_name": { "type": "string", "minLength": 1 },
+    "route_lane": { "type": "string", "minLength": 1 },
+    "task_class": { "type": "string", "minLength": 1 },
+    "final_state": { "type": "string", "enum": ["INTERMEDIATE", "PASS", "DONE", "BLOCKED", "BLOCKED_AUDIT_ACCESS"] },
+    "requested_model": { "type": "string" },
+    "resolved_model": { "type": "string" },
+    "actual_model": { "type": "string" },
+    "actual_model_proof_type": {
+      "type": "string",
+      "enum": [
+        "codex_compliance_api_event",
+        "codex_usage_delta",
+        "codex_cli_json_event_with_model",
+        "codex_remote_app_server_trace",
+        "api_response_metadata",
+        "fallback_model_receipt",
+        "not_available"
+      ]
+    },
+    "actual_model_proof_ref": { "type": "string" },
+    "usage_audit_access": { "type": "boolean" },
+    "env_only_model_claim": { "type": "boolean" },
+    "requested_model_as_proof": { "type": "boolean" },
+    "resolved_model_as_proof": { "type": "boolean" },
+    "model_truth_status": { "type": "string", "enum": ["PROVEN", "NOT_PROVEN", "BLOCKED_AUDIT_ACCESS", "FALLBACK_PROVEN"] },
+    "model_trust_context": { "type": "string", "minLength": 1 },
+    "proof_bundle_ref": { "type": "string" },
+    "fallback_used": { "type": "boolean" },
+    "fallback_reason": { "type": "string" },
+    "fallback_model": { "type": "string" },
+    "youtrack_done_permission": { "type": "boolean" }
+  }
+}

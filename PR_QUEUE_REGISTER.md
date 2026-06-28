@@ -28,6 +28,8 @@ instructions.
 
 | PR | Task id | RUN_ID | Branch | Owner role | Queue class | Registrar action | Evidence link | Blocker |
 |---|---|---|---|---|---|---|---|---|
+| `#177` | `AH-794` | `UNKNOWN_NOT_EXPOSED` | `UNKNOWN_NOT_EXPOSED` | T1 Architect / T2 Control-Spine Worker / Registrar / Verifier | `MERGED` | Merged on 2026-06-15 with merge commit `1d76d3503af3125361c98fafa23fe3278cfeea39`. Main-readback pass records test-first production deploy lock package for production release gating, owner confirmation, fixtures, runbook, schemas, and validator coverage. | PR `#177`; `governance/test-first-prod-deploy-lock-policy.md`; `schemas/environment_route_proof.schema.json`; `schemas/workflow_impact_audit.schema.json`; `schemas/release_approval_gate.schema.json`; `schemas/test_acceptance_proof.schema.json`; `validators/test_first_prod_deploy_lock_validator.rb`; `fixtures/test-first-prod-deploy-lock/fixtures.json`; `runbooks/test-first-release-gate-runbook.md`; `prompts/templates/test-first-release-worker-template.md`; `prompts/templates/owner-test-confirmation-request-template.md`; `registries/test-first-prod-deploy-lock-coverage-20260614.md`; `reports/validations/AH-794-test-first-prod-lock-validation-20260614.md`; `reports/incidents/AH-794-prod-crossing-incident-analysis-20260614.md`; `reports/receipts/AH-794-test-first-prod-lock-receipt-20260614.md`. | none |
+| `#171` | `AH-794` | `UNKNOWN_NOT_EXPOSED` | `UNKNOWN_NOT_EXPOSED` | T1 Architect / Registrar / Verifier | `SUPERSEDED_CLOSED` | PR `#171` was superseded/closed by PR `#177`; autonomous closure captured under `AH-794-pr171-autonomous-supersede-closure-20260615.md`. Scope preserved in receipts and main branch index/register lines only. | PR `#171`; `reports/receipts/AH-794-pr171-autonomous-supersede-closure-20260615.md`; superseding PR `#177`. | none |
 | `#140` | `AH-632` | `RUN-P0-FINAL-CONTOUR-RUNTIME-ENFORCEMENT-20260601` | `agenthub/RUN-P0-FINAL-CONTOUR-RUNTIME-ENFORCEMENT-20260601` | T1 Architect / Registrar / Verifier | `MERGED` | Merged on 2026-06-01 with merge commit `51a7a537d0749bff4dbdb22a2e172ca46d792279`. Installs final runtime contour enforcement and supersedes previous task-service residual blockers after current YouTrack physical write/readback proof. | PR `#140`; `governance/final-runtime-contour-enforcement-policy.md`; `validators/final_runtime_contour_enforcement_validator.rb`; `evals/final-runtime-contour-enforcement/fixtures.json`; `reports/receipts/P0-final-runtime-contour-enforcement-receipt-20260601.md`; YouTrack `AH-632`. | none |
 | `#138` | `AH-SILENT-TO-DONE-V2-20260601` | `RUN-SILENT-TO-DONE-V2-20260601` | `agenthub/RUN-SILENT-TO-DONE-V2-20260601` | T1 Architect / Registrar / Verifier | `MERGED_SUPERSEDED_BY_AH-632` | Merged on 2026-06-01 with merge commit `694a1c93e974e30339f7db79708976ca87ce22fb`. Installs Silent-to-Done v2 policy, contour message buffer schema, validator, fixtures, and receipt over the existing hardlock baseline. Its task-service residual is superseded by AH-632 current physical YouTrack write/readback proof. | PR `#138`; `governance/silent-to-done-contour-v2-policy.md`; `validators/silent_to_done_contour_v2_validator.rb`; `evals/silent-to-done-contour-v2/fixtures.json`; `reports/receipts/P0-silent-to-done-contour-v2-receipt-20260601.md`; superseding task `AH-632`. | none |
 | `#134` | `AH-CONTOUR-TASK-GRAPH-20260601` | `RUN-AGENTHUB-CONTOUR-TASK-GRAPH-20260601-001` | `agenthub/RUN-AGENTHUB-CONTOUR-TASK-GRAPH-20260601` | T1 Architect / Registrar / Verifier | `MERGED_SUPERSEDED_BY_AH-632` | Merged on 2026-06-01 with merge commit `464d69ef3be37f40c75d7bb918fefcede533bb29`. Installs Contour Ledger + YouTrack Task Graph Gate controls. Its physical-write residual is superseded by AH-632 current physical YouTrack write/readback proof. | PR `#134`; `governance/contour-task-graph-gate-policy.md`; `validators/contour_task_graph_validator.rb`; `evals/contour-task-graph/fixtures.json`; `reports/receipts/P0-contour-task-graph-gate-implementation-receipt-20260601.md`; superseding task `AH-632`. | none |
@@ -112,3 +114,65 @@ before closure.
 | `#54` | Merged on 2026-05-26 for `AH-571`; adds Komodo orchestration report, implementation decomposition, receipts, index/register coverage, 2026-05-26 approved corrected contract realignment, and process hardening that pins `AH-578` as the single active live-route unblock gate. | none for repository/process scope; live rollout remains gated by `AH-578` route evidence before `AH-574` baseline. |
 | `#53` | Closed on 2026-05-26 before review because the first branch inherited unrelated evidence history; superseded by clean PR `#54`. | none after close |
 | `#48` | Merged on 2026-05-25; installs AH-554 access-rights/live-worker enablement controls. | Runtime repair remains local to AH-554: `AGENTHUB_LIVE_WORKER_AUTH_MISSING`. |
+
+### Current PackFix Continuation
+
+- PR `none`
+  - package: Same-RUN PackFix no-intermediate-closure global hardlock, 2026-06-12
+  - task: `AH-777`
+  - RUN: `RUN-AGENTHUB-GLOBAL-SAME-RUN-PACKFIX-CLOSURE-20260612`
+  - PR state: no new PR opened in this run; package is local control-spine governance/control package with register coverage.
+  - installed: policy, schema, validator, fixtures, runbook, validation report, receipt.
+  - blocker: none after validator and YouTrack Done readback.
+
+- PR `none`
+  - package: authority lifecycle expansion + Five Whys + PackFix tool/front contract, 2026-06-12
+  - task: `AH-765`
+  - RUN: `RUN-AGENTHUB-AUTHORITY-LIFECYCLE-EXPANSION-20260612`
+  - PR state: no new PR opened in this run; local control-spine working-tree package installed and registered.
+  - final contour: scoped authority/runtime tool installation package added; AgentHub merge readback `SUCCESS`, `done_allowed=true`, `validation=true`, `receipt=true`; YouTrack `AH-765` readback Stage `Done`.
+  - blocker: none.
+
+- PR `none`
+  - package: docs-first validator route + PackFix self-healing hardlock, 2026-06-12
+  - task: `AH-763`
+  - RUN: `RUN-AGENTHUB-DOCS-FIRST-VALIDATOR-ROUTE-PACKFIX-20260612`
+  - PR state: no new PR opened in this run; local control-spine working-tree package is installed but not Done.
+  - blocker: `YOUTRACK_READBACK_PERMISSION_MISSING`; validator execution cannot be accepted as task-bound Done proof until the validator route can read back `AH-763` and execute the Ruby validators with exit 0.
+
+- PR `#159`
+  - package: flexible authority broker + PackFix + Codex Spark model truth, 2026-06-12
+  - tasks: `AH-748` / `AH-601`
+  - RUN: `RUN-AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-20260612`
+  - PR state: no new PR opened in this run; package is local control-spine working-tree PackFix continuation; existing `AH-748` PR `#159` remains prior merged authority-broker baseline; this package awaits validator execution route before Done/PR closure.
+  - blocker: `validators_execution` remains PackFix `VALIDATOR_EXECUTION_NOT_RUN` because local validator commands return `PRE_DISPATCH_TASK_GATE_MISSING_ISSUE_ID` before Ruby runs.
+
+- PR #152
+  - scope: scoped autonomy authority self-healing escalation
+  - lanes covered: 0,1,3,4,5,6
+  - files: governance/agenthub-scoped-autonomy-authority-self-healing-escalation-contract-20260610.md, validators/*, schemas/*, evals/*
+  - acceptance: routine blockers converted to repair events with one-retry limit
+
+- PR `none`
+  - package: Permanent Agent Cycle + Done Evidence hardlock, 2026-06-13
+  - task: `AH-785`
+  - RUN: `permanent-done-gate-hardlock-20260613`
+  - PR state: no PR opened by PackFix; local control-spine package installed and registered.
+  - installed: policy, schema, validator, fixtures, YouTrack workflow guard source, prompt template, validation report, receipt.
+  - blocker: live YouTrack workflow deployment is separate task-bound deployment; repository governance package can be validated locally.
+
+- PR `none`
+  - package: Four prompt architect system hardlock, 2026-06-15
+  - task: `TASK_SERVICE_PHYSICAL_WRITE_STILL_FAILS`
+  - RUN: `RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH`
+  - PR state: no PR opened in this local repository package; AgentHub route and revision guard were attempted before governance edits.
+  - installed: policy, seven schemas, validator, fixtures, runbook, worker template, RCA, validation report, truth ledger, receipt, register coverage.
+  - blocker: task-service physical write timed out before YouTrack readback; full Done/PR closure remains blocked until task-service and PR lifecycle evidence exist.
+
+- PR `none`
+  - package: Four prompt architecture hardlock, 2026-06-15
+  - task: `AH-796`
+  - RUN: `four-prompt-architecture-hardlock-20260615`
+  - PR state: no PR opened from this local repository package; branch protection and GitHub lifecycle remain a platform gate until the authorized GitHub route accepts the package.
+  - installed: governance policy, 4 required schemas, validator, fixtures, runbook, worker template, validation report, receipt, register coverage.
+  - blocker: `GITHUB_BRANCH_PROTECTION_PLATFORM_GATE`; `YOUTRACK_READBACK_UNAVAILABLE` for final Done transition.

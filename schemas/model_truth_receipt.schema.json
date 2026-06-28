@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/model_truth_receipt.schema.json",
+  "title": "Model Truth Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "run_id", "model_execution_claimed", "requested_model", "actual_model", "proof_type", "proof_ref", "env_only_model_claim", "status"],
+  "properties": {
+    "task_id": { "type": "string" },
+    "run_id": { "type": "string" },
+    "model_execution_claimed": { "type": "boolean" },
+    "requested_model": { "type": "string" },
+    "actual_model": { "type": "string" },
+    "proof_type": { "type": "string", "enum": ["codex_compliance_api_event", "codex_usage_delta", "codex_client_session_metadata", "codex_cli_json_event_with_model", "api_response_metadata", "fallback_model_receipt", "not_available"] },
+    "proof_ref": { "type": "string" },
+    "env_only_model_claim": { "type": "boolean" },
+    "status": { "type": "string", "enum": ["PROVEN", "FALLBACK_PROVEN", "NOT_PROVEN", "BLOCKED_AUDIT_ACCESS", "NO_MODEL_CLAIM"] }
+  }
+}

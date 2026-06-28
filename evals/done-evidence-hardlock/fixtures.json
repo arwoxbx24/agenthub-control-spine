@@ -1,0 +1,16 @@
+{
+  "cases": [
+    {"id":"01-t0-direct-edit","input":{"actor":"T0","mutation_requested":true},"expected":"BLOCKED_T0_DIRECT_AUTHORSHIP"},
+    {"id":"02-done-no-implementation","input":{"terminal_request":"Done","validation_evidence":"test","receipt_path":"receipt"},"expected":"BLOCKED_DONE_EVIDENCE_MISSING"},
+    {"id":"03-done-only-pr","input":{"terminal_request":"Done","implementation_evidence":"PR #1","validation_evidence":"PR green","receipt_path":"receipt","only_github_pr":true},"expected":"BLOCKED_GITHUB_PR_IS_NOT_DONE"},
+    {"id":"04-done-only-curl","input":{"terminal_request":"Done","implementation_evidence":"patch","validation_evidence":"curl 200","receipt_path":"receipt","only_curl_or_status":true},"expected":"BLOCKED_WEAK_PRODUCT_PROOF"},
+    {"id":"05-routine-owner-stop","input":{"blocker_type":"ROUTINE_REMEDIABLE_BLOCKER","owner_chat_stop":true},"expected":"PACKFIX_CREATED_NOT_OWNER_STOP"},
+    {"id":"06-parent-child-open","input":{"terminal_request":"Done","implementation_evidence":"patch","validation_evidence":"test","receipt_path":"receipt","children":[{"stage":"Review"}]},"expected":"BLOCKED_PARENT_CHILD_DONE_GATE"},
+    {"id":"07-owner-closed-unauthorized","input":{"terminal_request":"Owner-Closed","owner_exact_close_command":false},"expected":"BLOCKED_OWNER_CLOSED_UNAUTHORIZED"},
+    {"id":"08-report-only-final","input":{"terminal_request":"Done","implementation_evidence":"report","validation_evidence":"report","receipt_path":"receipt","report_only":true},"expected":"BLOCKED_REPORT_AS_DONE"},
+    {"id":"09-fake-receipt","input":{"terminal_request":"Done","implementation_evidence":"patch","validation_evidence":"fake-validation","receipt_path":"synthetic-receipt"},"expected":"SAFETY_QUARANTINE"},
+    {"id":"10-stale-audit-active","input":{"artifact_lifecycle":"audit_only","loaded_as_active_policy":true},"expected":"BLOCKED_STALE_ARTIFACT_REPLAY"},
+    {"id":"11-mid-cycle-progress-report","input":{"cycle_terminal":false,"user_progress_report":true},"expected":"MID_CYCLE_PROGRESS_REPORT_BLOCKED"},
+    {"id":"12-valid-done","input":{"terminal_request":"Done","TASK_CLASS":"CONTROL_SPINE_GOVERNANCE","ROLE":"T2_WORKER","ACTIVE_SKILLS":["truth-redteam"],"FORBIDDEN_SKILLS":["fake evidence"],"SCOPE_SIGNATURE":"permanent_architecture_done_gate_hardlock_no_fake_done_no_temporary_patch_no_routine_owner_stop","NEGATIVE_MATCHES":["PR is not Done"],"task_id":"AH-785","implementation_evidence":"governance/agent-cycle-done-evidence-hardlock-policy.md","validation_evidence":"ruby validator PASS","receipt_path":"reports/receipts/AH-785-permanent-done-gate-hardlock-receipt-20260613.md","task_readback_ok":true,"register_coverage_ok":true,"blocker_status":"NONE","redteam_done_gate":"PASS","children":[]},"expected":"DONE_WITH_EVIDENCE"}
+  ]
+}

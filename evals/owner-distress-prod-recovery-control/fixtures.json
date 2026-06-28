@@ -1,0 +1,154 @@
+{
+  "cases": [
+    {
+      "id": "bad-direct-gh-workflow-run-outside-agenthub",
+      "input": {
+        "gate": "github_workflow",
+        "workflow_action": "run",
+        "authorized_agenthub_route": false
+      },
+      "expected": "DIRECT_GH_WORKFLOW_OUTSIDE_AGENTHUB_BLOCKED"
+    },
+    {
+      "id": "bad-product-main-touched-in-test-task",
+      "input": {
+        "product_repository": true,
+        "branch": "main",
+        "operation_requested": true
+      },
+      "expected": "PROD_RISK_ENVIRONMENT_PROOF_REQUIRED"
+    },
+    {
+      "id": "bad-test-workflow-name-without-proof",
+      "input": {
+        "product_repository": true,
+        "workflow_action": "watch",
+        "workflow_name": "test deploy",
+        "environment_proof": "MISSING",
+        "operation_requested": true
+      },
+      "expected": "PROD_RISK_ENVIRONMENT_PROOF_REQUIRED"
+    },
+    {
+      "id": "bad-owner-panic-stop-only",
+      "input": {
+        "owner_message": "site broken, client screaming",
+        "incident_profile": "INCIDENT",
+        "agent_reply": "I stop and do nothing",
+        "read_only_triage_started": false
+      },
+      "expected": "NO_APOLOGY_RESULT_LOOP_BLOCKED"
+    },
+    {
+      "id": "bad-owner-panic-apology-loop",
+      "input": {
+        "owner_message": "you destroyed the site, panic",
+        "incident_profile": "INCIDENT",
+        "agent_reply": "sorry, I apologize, I will explain again",
+        "read_only_triage_started": false
+      },
+      "expected": "NO_APOLOGY_RESULT_LOOP_BLOCKED"
+    },
+    {
+      "id": "bad-rollback-without-readonly-capture",
+      "input": {
+        "owner_message": "production broken",
+        "incident_profile": "INCIDENT",
+        "rollback_requested": true,
+        "read_only_state_capture": "MISSING"
+      },
+      "expected": "READ_ONLY_STATE_CAPTURE_REQUIRED"
+    },
+    {
+      "id": "bad-done-with-open-tails",
+      "input": {
+        "terminal_request": "Done",
+        "open_tails": ["open"],
+        "pr_queue_updated": false,
+        "artifact_register_updated": true,
+        "index_updated": true
+      },
+      "expected": "ANTI_CHAOS_TAIL_CLOSURE_REQUIRED"
+    },
+    {
+      "id": "bad-client-claim-without-green-ledger",
+      "input": {
+        "terminal_request": "Done",
+        "open_tails": [],
+        "pr_queue_updated": true,
+        "artifact_register_updated": true,
+        "index_updated": true,
+        "client_claim": true,
+        "claim_ledger": "PARTIAL"
+      },
+      "expected": "CLIENT_CLAIM_LEDGER_REQUIRED"
+    },
+    {
+      "id": "positive-owner-panic-readonly-triage-started",
+      "input": {
+        "owner_message": "караул сайт сломан",
+        "incident_profile": "INCIDENT",
+        "read_only_triage_started": true,
+        "task_bound": true,
+        "run_bound": true
+      },
+      "expected": "READ_ONLY_TRIAGE_STARTED"
+    },
+    {
+      "id": "positive-unknown-production-risk-blocked",
+      "input": {
+        "product_repository": true,
+        "remote_ambiguity": true,
+        "operation_requested": true
+      },
+      "expected": "PROD_RISK_ENVIRONMENT_PROOF_REQUIRED"
+    },
+    {
+      "id": "positive-exact-owner-prod-phrase-authorized",
+      "input": {
+        "operation": "rollback",
+        "owner_phrase": "разрешаю точечный rollback stroyremont-web",
+        "task_id": "AH-796",
+        "run_id": "RUN-owner-distress-prod-recovery-control-20260614",
+        "rollback_checkpoint_plan": "checkpoint before rollback",
+        "impact_analysis": "single target only",
+        "environment_target_proof": "PASS",
+        "authorized_worker_route": true
+      },
+      "expected": "RECOVERY_ACTION_AUTHORIZED"
+    },
+    {
+      "id": "positive-test-only-proof-validation-allowed",
+      "input": {
+        "operation": "test_validation",
+        "environment_proof": "PASS",
+        "test_only": true,
+        "production_side_effect_excluded": true
+      },
+      "expected": "TEST_VALIDATION_ALLOWED"
+    },
+    {
+      "id": "positive-owner-only-irreversible-gate",
+      "input": {
+        "operation": "irreversible_recovery",
+        "forbidden_surface": true,
+        "owner_only_gate_message": "OWNER_ONLY_IRREVERSIBLE_GATE: разрешаю точечный rollback <target>"
+      },
+      "expected": "OWNER_ONLY_IRREVERSIBLE_GATE"
+    },
+    {
+      "id": "positive-done-with-evidence",
+      "input": {
+        "terminal_request": "Done",
+        "open_tails": [],
+        "pr_queue_updated": true,
+        "artifact_register_updated": true,
+        "index_updated": true,
+        "implementation_evidence": "PASS",
+        "validation_evidence": "PASS",
+        "receipt": "PASS"
+      },
+      "expected": "DONE_WITH_EVIDENCE"
+    }
+  ]
+}

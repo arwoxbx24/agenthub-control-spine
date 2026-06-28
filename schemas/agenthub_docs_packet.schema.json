@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/agenthub_docs_packet.schema.json",
+  "title": "AgentHub Docs Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source_task",
+    "packet_id",
+    "task_id",
+    "run_id",
+    "scope_signature",
+    "task_scope",
+    "created_at",
+    "packet_owner",
+    "official_sources",
+    "coverage_map",
+    "status"
+  ],
+  "properties": {
+    "source_task": { "type": "string", "minLength": 1 },
+    "packet_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "scope_signature": { "type": "string", "minLength": 1 },
+    "task_scope": { "type": "string", "minLength": 1 },
+    "created_at": { "type": "string", "minLength": 1 },
+    "packet_owner": { "type": "string", "minLength": 1 },
+    "task_class": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["draft", "active", "blocked", "superseded", "invalid"]
+    },
+    "official_sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reference", "label", "verified"],
+        "properties": {
+          "reference": { "type": "string", "minLength": 1 },
+          "label": { "type": "string", "minLength": 1 },
+          "verified": { "type": "boolean" },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "coverage_map": {
+      "type": "object",
+      "additionalProperties": { "type": "boolean" },
+      "minProperties": 7,
+      "required": [
+        "openai_cli_reference",
+        "openai_config_basic",
+        "openai_approvals_security",
+        "mcp_authorization",
+        "mcp_tools_spec",
+        "youtrack_rest_api",
+        "youtrack_commands"
+      ]
+    },
+    "facts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["claim", "source", "status"],
+        "properties": {
+          "claim": { "type": "string", "minLength": 1 },
+          "source": { "type": "string", "minLength": 1 },
+          "status": {
+            "type": "string",
+            "enum": ["VERIFIED", "UNVERIFIED", "REJECTED"]
+          },
+          "evidence_ref": { "type": "string" }
+        }
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

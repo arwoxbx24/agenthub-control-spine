@@ -1,0 +1,38 @@
+{
+  "route_cases": [
+    {
+      "id": "validator_route_pass",
+      "input": {
+        "route_manifest": {
+          "route_id": "agent_hub_validator_execute",
+          "task_id": "AH-765",
+          "run_id": "RUN-AGENTHUB-AUTHORITY-LIFECYCLE-EXPANSION-20260612",
+          "lane": 2,
+          "allowed_operations": ["ruby validator read-only execution"],
+          "forbidden_operations": ["db", "docker", "proxy", "secret"],
+          "canary": { "status": "PASS", "proof_ref": "agent_hub_mcp_receipt:RUN-AGENTHUB-AUTHORITY-LIFECYCLE-EXPANSION-20260612" },
+          "validation": { "status": "PASS", "proof_ref": "agent_hub_merge:SUCCESS" },
+          "evidence_sink": "@artifacts/AH-765-final-evidence.json",
+          "redaction_gate": "PASS"
+        }
+      },
+      "expected": "RUNTIME_TOOL_ROUTE_PASS"
+    },
+    {
+      "id": "missing_canary_fails",
+      "input": {
+        "route_manifest": {
+          "redaction_gate": "PASS",
+          "canary": { "status": "BLOCKED", "proof_ref": "" },
+          "validation": { "status": "PASS", "proof_ref": "x" }
+        }
+      },
+      "expected": "ROUTE_CANARY_MISSING"
+    },
+    {
+      "id": "missing_manifest_fails",
+      "input": {},
+      "expected": "ROUTE_MANIFEST_MISSING"
+    }
+  ]
+}

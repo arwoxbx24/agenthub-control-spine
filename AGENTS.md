@@ -155,6 +155,47 @@ Forbidden default owner for AgentHub control-spine work: `arwoxb24`.
 - Stable baselines such as AH-432, AH-441, AH-448, and AH-473/AH-476 remain preserved unless a new controlling task explicitly supersedes them.
 - See `governance/AGENTHUB-GITHUB-CONTROL-SPINE-BRIDGE-ARTIFACT.txt` for GitHub usage boundaries.
 
+## Agent Cycle + Done Evidence Hardlock
+
+- Source policy: `governance/agent-cycle-done-evidence-hardlock-policy.md`.
+- Tuple standard: `schemas/done_evidence_tuple.schema.json`.
+- Validator standard: `validators/done_evidence_hardlock_validator.rb`.
+- Evaluation pack: `evals/done-evidence-hardlock/fixtures.json`.
+- Report-only and terminal gating for this package are handled in
+  `reports/receipts/AH-785-permanent-done-gate-hardlock-receipt-20260613.md`
+  and `reports/validations/AH-785-permanent-done-gate-hardlock-validation-20260613.md`.
+- No T0 direct mutation for permanent done evidence. `OWNERSHIP` routes and hardlock
+  checks must be enforced through task-bound, run-bound validator execution and
+  final YouTrack state-gate proof.
+
+## Four Prompts System Hardlock
+
+- Source policy: `governance/four-prompts-system-hardlock-policy.md`.
+- Validator: `validators/four_prompts_system_hardlock_validator.rb`.
+- Evaluation pack: `evals/four-prompts-system-hardlock/fixtures.json`.
+- Runbook: `runbooks/four-prompts-system-hardlock-runbook.md`.
+- Worker template: `prompts/templates/four-prompts-system-hardlock-worker-template.md`.
+- The four prompt-architect inputs are not quick indexes or direct runtime
+  instructions. They are an ordered governance contour: test-first/prod incident
+  hardlock, deploy-lock supplement, owner-distress supplement, and PR171/gitleaks
+  point-fix closure.
+- Product `main`/`master`, workflow side effects, owner distress, rollback, and
+  terminal Done are blocked until the deterministic gates in the policy pass.
+- Repository-local package installation is not full Done while task-service
+  readback, PR lifecycle, or merge/readback evidence is blocked.
+
+## Four Prompt Architecture Hardlock
+
+- Source policy: `governance/agenthub-four-prompt-architecture-hardlock-policy.md`.
+- Validator: `validators/four_prompt_architecture_hardlock_validator.rb`.
+- Fixtures: `fixtures/four-prompt-architecture-hardlock/fixtures.json`.
+- Runbook: `runbooks/four-prompt-architecture-hardlock-runbook.md`.
+- Worker template: `prompts/templates/four-prompt-architecture-hardlock-worker-template.txt`.
+- This package is the durable installation target for the four owner-provided
+  prompt architect files. Local priority indexes, chat reports, PR existence,
+  and blocked runtime command output are rejected as implementation evidence.
+  Full Done still requires PR/main readback and YouTrack Done readback.
+
 ## Language
 
 - Technical files are English by default.

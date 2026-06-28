@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/docs_source_packet.schema.json",
+  "title": "Docs Source Packet",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["packet_id", "task_id", "run_id", "official_sources", "facts", "verified"],
+  "properties": {
+    "packet_id": { "type": "string" },
+    "task_id": { "type": "string" },
+    "run_id": { "type": "string" },
+    "official_sources": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "facts": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "verified": { "type": "boolean" }
+  }
+}

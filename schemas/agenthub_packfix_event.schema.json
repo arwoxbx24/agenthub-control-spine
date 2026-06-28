@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/agenthub_packfix_event.schema.json",
+  "title": "AgentHub PackFix Event",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "task_id",
+    "case_id",
+    "case_type",
+    "scope_signature",
+    "routine_blocker",
+    "same_blocker_count",
+    "blocker_type",
+    "packfix_output",
+    "route_repair_reason"
+  ],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "case_id": { "type": "string", "minLength": 1 },
+    "case_type": { "type": "string", "minLength": 1 },
+    "scope_signature": { "type": "string", "minLength": 1 },
+    "validator_name": { "type": "string", "minLength": 1 },
+    "routine_blocker": { "type": "boolean" },
+    "same_blocker_count": { "type": "integer", "minimum": 0 },
+    "blocker_type": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "PRE_DISPATCH_TASK_GATE_MISSING_ISSUE_ID",
+        "VALIDATOR_EXECUTION_NOT_RUN",
+        "CODEX_USAGE_AUDIT_ACCESS_MISSING",
+        "CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED",
+        "YOUTRACK_READBACK_PERMISSION_MISSING",
+        "T0_DIRECT_AUTHORSHIP_DEFECT",
+        "GITHUB_CONNECTOR_WRITE_UNAVAILABLE",
+        "OWNER_ONLY_BLOCKER"
+      ]
+    },
+    "usage_audit_missing": { "type": "boolean" },
+    "owner_only": { "type": "boolean" },
+    "owner_approval": { "type": "boolean" },
+    "packfix_output": {
+      "type": "string",
+      "enum": ["PACKFIX_REQUIRED", "ROUTE_REPAIR_REQUIRED", "OWNER_APPROVAL_REQUIRED", "PACKFIX_PASSED"]
+    },
+    "route_repair_reason": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "REPEATED_BLOCKER_ROUTE_REPAIR",
+        "OWNER_APPROVAL_REQUIRED",
+        "BLOCKER_NOT_RECOGNIZED"
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "packfix_timestamp": { "type": "string", "minLength": 1 }
+  }
+}

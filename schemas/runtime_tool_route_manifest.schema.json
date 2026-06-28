@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/runtime_tool_route_manifest.schema.json",
+  "title": "AgentHub Runtime Tool Route Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "route_id",
+    "task_id",
+    "run_id",
+    "lane",
+    "allowed_operations",
+    "forbidden_operations",
+    "canary",
+    "validation",
+    "evidence_sink",
+    "redaction_gate"
+  ],
+  "properties": {
+    "route_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "lane": { "type": "integer", "minimum": 0, "maximum": 7 },
+    "allowed_operations": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "forbidden_operations": { "type": "array", "items": { "type": "string" } },
+    "canary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "proof_ref"],
+      "properties": {
+        "status": { "type": "string", "enum": ["PASS", "BLOCKED", "NOT_REQUIRED"] },
+        "proof_ref": { "type": "string" }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "proof_ref"],
+      "properties": {
+        "status": { "type": "string", "enum": ["PASS", "BLOCKED", "NOT_REQUIRED"] },
+        "proof_ref": { "type": "string" }
+      }
+    },
+    "rollback": { "type": "string" },
+    "evidence_sink": { "type": "string", "minLength": 1 },
+    "redaction_gate": { "type": "string", "enum": ["PASS", "FAIL"] }
+  }
+}

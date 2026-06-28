@@ -1,0 +1,318 @@
+{
+  "schema": "agenthub.flexible-authority-broker.fixtures.v1",
+  "run_id": "RUN-AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-20260612",
+  "source_tasks": ["AH-601", "AH-748"],
+  "authority_broker_cases": [
+    {
+      "id": "AB_ROUTER_001",
+      "input": {
+        "run_id": "RUN-AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-20260612",
+        "task_id": "AH-601",
+        "scope_signature": "agenthub-flexible-authority",
+        "gate_name": "code_route",
+        "destructive_action": false,
+        "routine_blocker": true,
+        "live_worker_missing": false,
+        "owner_only": false,
+        "owner_approval": false,
+        "forbidden_scope": false,
+        "same_blocker_count": 1,
+        "usage_audit_missing": false,
+        "decision": "PACKFIX_REQUIRED"
+      },
+      "expected": "PACKFIX_REQUIRED"
+    },
+    {
+      "id": "AB_ROUTER_002",
+      "input": {
+        "run_id": "RUN-AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-20260612",
+        "task_id": "AH-601",
+        "scope_signature": "agenthub-flexible-authority",
+        "gate_name": "runtime_read",
+        "destructive_action": false,
+        "routine_blocker": false,
+        "live_worker_missing": true,
+        "owner_only": false,
+        "owner_approval": false,
+        "forbidden_scope": false,
+        "same_blocker_count": 1,
+        "usage_audit_missing": false,
+        "decision": "PACKFIX_REQUIRED"
+      },
+      "expected": "PACKFIX_REQUIRED"
+    },
+    {
+      "id": "AB_ROUTER_003",
+      "input": {
+        "run_id": "RUN-AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-20260612",
+        "task_id": "AH-748",
+        "scope_signature": "agenthub-db-destroy",
+        "gate_name": "destructive-db-delete",
+        "destructive_action": true,
+        "routine_blocker": false,
+        "live_worker_missing": false,
+        "owner_only": true,
+        "owner_approval": false,
+        "forbidden_scope": false,
+        "same_blocker_count": 1,
+        "usage_audit_missing": false,
+        "decision": "OWNER_ONLY_IRREVERSIBLE_GATE"
+      },
+      "expected": "OWNER_ONLY_IRREVERSIBLE_GATE"
+    },
+    {
+      "id": "AB_ROUTER_004",
+      "input": {
+        "run_id": "RUN-AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-20260612",
+        "task_id": "AH-748",
+        "scope_signature": "agenthub-db-destroy",
+        "gate_name": "destructive-db-delete",
+        "destructive_action": true,
+        "routine_blocker": false,
+        "live_worker_missing": false,
+        "owner_only": true,
+        "owner_approval": true,
+        "forbidden_scope": false,
+        "same_blocker_count": 1,
+        "usage_audit_missing": false,
+        "decision": "ALLOW_WITH_SCOPED_WORKER"
+      },
+      "expected": "ALLOW_WITH_SCOPED_WORKER"
+    }
+  ],
+  "packfix_cases": [
+    {
+      "id": "PF_ROUTER_001",
+      "input": {
+        "run_id": "RUN-AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-20260612",
+        "task_id": "AH-601",
+        "case_id": "PF_ROUTER_001",
+        "case_type": "routine",
+        "scope_signature": "agenthub-flexible-authority",
+        "routine_blocker": true,
+        "same_blocker_count": 1,
+        "usage_audit_missing": false,
+        "owner_only": false,
+        "owner_approval": false,
+        "packfix_output": "PACKFIX_REQUIRED"
+      },
+      "expected": "PACKFIX_REQUIRED"
+    },
+    {
+      "id": "PF_ROUTER_002",
+      "input": {
+        "run_id": "RUN-AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-20260612",
+        "task_id": "AH-601",
+        "case_id": "PF_ROUTER_002",
+        "case_type": "repeated-blocker",
+        "scope_signature": "agenthub-flexible-authority",
+        "routine_blocker": true,
+        "same_blocker_count": 2,
+        "usage_audit_missing": false,
+        "owner_only": false,
+        "owner_approval": false,
+        "packfix_output": "ROUTE_REPAIR_REQUIRED"
+      },
+      "expected": "ROUTE_REPAIR_REQUIRED"
+    },
+    {
+      "id": "PF_ROUTER_003",
+      "input": {
+        "run_id": "RUN-AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-20260612",
+        "task_id": "AH-601",
+        "case_id": "PF_ROUTER_003",
+        "case_type": "audit",
+        "scope_signature": "agenthub-flexible-authority",
+        "routine_blocker": false,
+        "same_blocker_count": 1,
+        "usage_audit_missing": true,
+        "owner_only": false,
+        "owner_approval": false,
+        "packfix_output": "PACKFIX_REQUIRED"
+      },
+      "expected": "PACKFIX_REQUIRED"
+    }
+  ],
+  "model_router_truth_cases": [
+    {
+      "id": "RT_001",
+      "input": {
+        "run_id": "RUN-AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-20260612",
+        "task_id": "AH-601",
+        "task_class": "code",
+        "route_lane": "M2",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_model": "gpt-5.3-codex-spark",
+        "first_attempt_model": "gpt-5.3-codex-spark",
+        "actual_model_proof_type": "codex_client_session_metadata",
+        "actual_model_proof_ref": "run://proof/rt-001",
+        "env_only_model_claim": true,
+        "model_truth_status": "NOT_PROVEN",
+        "usage_audit_access": true,
+        "final_state": "DONE",
+        "spark_catalog_visible": true,
+        "model_escalation_receipt": "",
+        "fallback_used": false,
+        "fallback_model": "",
+        "fallback_reason": "",
+        "model_truth_required": true
+      },
+      "expected": "ENV_ONLY_MODEL_CLAIM_FAILS"
+    },
+    {
+      "id": "RT_002",
+      "input": {
+        "run_id": "RUN-AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-20260612",
+        "task_id": "AH-601",
+        "task_class": "code",
+        "route_lane": "M2",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_model": "gpt-5.3-codex-spark",
+        "first_attempt_model": "gpt-5.3-codex-spark",
+        "actual_model_proof_type": "codex_client_session_metadata",
+        "actual_model_proof_ref": "run://proof/rt-002",
+        "env_only_model_claim": false,
+        "model_truth_status": "PROVEN",
+        "usage_audit_access": true,
+        "final_state": "PASS",
+        "spark_catalog_visible": true,
+        "model_escalation_receipt": "",
+        "fallback_used": false,
+        "fallback_model": "",
+        "fallback_reason": "",
+        "model_truth_required": true
+      },
+      "expected": "MODEL_ROUTER_TRUTH_PASS"
+    },
+    {
+      "id": "RT_003",
+      "input": {
+        "run_id": "RUN-AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-20260612",
+        "task_id": "AH-748",
+        "task_class": "code",
+        "route_lane": "M2",
+        "requested_model": "gpt-5.5",
+        "resolved_model": "gpt-5.5",
+        "actual_model": "gpt-5.5",
+        "first_attempt_model": "gpt-5.5",
+        "actual_model_proof_type": "codex_usage_delta",
+        "actual_model_proof_ref": "run://proof/rt-003",
+        "env_only_model_claim": false,
+        "model_truth_status": "PROVEN",
+        "usage_audit_access": true,
+        "final_state": "PASS",
+        "spark_catalog_visible": true,
+        "model_escalation_receipt": "",
+        "fallback_used": false,
+        "fallback_model": "",
+        "fallback_reason": "",
+        "model_truth_required": true
+      },
+      "expected": "MODEL_ESCALATION_RECEIPT_REQUIRED"
+    },
+    {
+      "id": "RT_004",
+      "input": {
+        "run_id": "RUN-AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-20260612",
+        "task_id": "AH-748",
+        "task_class": "code",
+        "route_lane": "M2",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_model": "gpt-5.3-codex-spark",
+        "first_attempt_model": "gpt-5.3-codex-spark",
+        "actual_model_proof_type": "codex_cli_json_event_with_model",
+        "actual_model_proof_ref": "run://proof/rt-004",
+        "env_only_model_claim": false,
+        "model_truth_status": "PROVEN",
+        "usage_audit_access": true,
+        "final_state": "PASS",
+        "spark_catalog_visible": true,
+        "model_escalation_receipt": "run://esc/rt-004",
+        "fallback_used": false,
+        "fallback_model": "",
+        "fallback_reason": "",
+        "model_truth_required": true
+      },
+      "expected": "MODEL_ROUTER_TRUTH_PASS"
+    },
+    {
+      "id": "RT_005",
+      "input": {
+        "run_id": "RUN-AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-20260612",
+        "task_id": "AH-601",
+        "task_class": "code",
+        "route_lane": "M2",
+        "requested_model": "gpt-5.3-codex-spark",
+        "resolved_model": "gpt-5.3-codex-spark",
+        "actual_model": "gpt-5.3-codex-spark",
+        "first_attempt_model": "gpt-5.3-codex-spark",
+        "actual_model_proof_type": "codex_usage_delta",
+        "actual_model_proof_ref": "run://proof/rt-005",
+        "env_only_model_claim": false,
+        "model_truth_status": "PROVEN",
+        "usage_audit_access": false,
+        "final_state": "DONE",
+        "spark_catalog_visible": true,
+        "model_escalation_receipt": "run://esc/rt-005",
+        "fallback_used": false,
+        "fallback_model": "",
+        "fallback_reason": "",
+        "model_truth_required": true
+      },
+      "expected": "MODEL_TRUTH_MISSING_PACKFIX"
+    }
+  ],
+  "youtack_done_model_truth_cases": [
+    {
+      "id": "YT_001",
+      "input": {
+        "run_id": "RUN-AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-20260612",
+        "task_id": "AH-601",
+        "done_intent": true,
+        "final_state": "DONE",
+        "prompt_dump_only": true,
+        "model_truth_required": true,
+        "model_proof_available": false,
+        "owner_only": false,
+        "owner_approval": false,
+        "usage_audit_access": true
+      },
+      "expected": "YOUTRACK_DONE_PROMPT_DUMP_BLOCKED"
+    },
+    {
+      "id": "YT_002",
+      "input": {
+        "run_id": "RUN-AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-20260612",
+        "task_id": "AH-748",
+        "done_intent": true,
+        "final_state": "DONE",
+        "prompt_dump_only": false,
+        "model_truth_required": true,
+        "model_proof_available": false,
+        "owner_only": false,
+        "owner_approval": false,
+        "usage_audit_access": true
+      },
+      "expected": "YOUTRACK_DONE_MODEL_PROOF_MISSING"
+    },
+    {
+      "id": "YT_003",
+      "input": {
+        "run_id": "RUN-AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-20260612",
+        "task_id": "AH-748",
+        "done_intent": true,
+        "final_state": "DONE",
+        "prompt_dump_only": false,
+        "model_truth_required": true,
+        "model_proof_available": true,
+        "owner_only": false,
+        "owner_approval": false,
+        "usage_audit_access": true
+      },
+      "expected": "YOUTRACK_DONE_PASSED"
+    }
+  ]
+}

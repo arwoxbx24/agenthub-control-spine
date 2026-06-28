@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/agenthub_authority_envelope.schema.json",
+  "title": "AgentHub Authority Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "task_id",
+    "scope_signature",
+    "gate_name",
+    "routine_blocker",
+    "live_worker_missing",
+    "owner_only",
+    "forbidden_scope",
+    "destructive_action",
+    "same_blocker_count",
+    "decision"
+  ],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "scope_signature": { "type": "string", "minLength": 1 },
+    "gate_name": { "type": "string", "minLength": 1 },
+    "routine_blocker": { "type": "boolean" },
+    "live_worker_missing": { "type": "boolean" },
+    "owner_only": { "type": "boolean" },
+    "owner_approval": { "type": "boolean" },
+    "forbidden_scope": { "type": "boolean" },
+    "destructive_action": { "type": "boolean" },
+    "same_blocker_count": { "type": "integer", "minimum": 0 },
+    "decision": {
+      "type": "string",
+      "enum": [
+        "ALLOW",
+        "ALLOW_WITH_SCOPED_WORKER",
+        "ALLOW_WITH_AUTO_REVIEW",
+        "PACKFIX_REQUIRED",
+        "OWNER_ONLY_IRREVERSIBLE_GATE",
+        "DENY_FORBIDDEN_SCOPE"
+      ]
+    }
+  }
+}

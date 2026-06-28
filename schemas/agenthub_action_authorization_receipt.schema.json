@@ -1,81 +1,40 @@
 {
-  "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://github.com/arwoxbx24/agenthub-control-spine/schemas/agenthub_action_authorization_receipt.schema.json",
-  "title": "AgentHub Action Authorization Receipt",
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "agenthub_action_authorization_receipt",
   "type": "object",
-  "additionalProperties": false,
-  "required": [
-    "receipt_id",
-    "run_id",
-    "task_id",
-    "scope_signature",
-    "actor_role",
-    "operation",
-    "target_surface",
-    "allowed_surfaces",
-    "forbidden_surfaces",
-    "model_route",
-    "secrets_policy",
-    "rollback_requirement",
-    "evidence_target",
-    "validation_plan",
-    "owner_only_check",
-    "decision"
-  ],
+  "additionalProperties": true,
   "properties": {
-    "receipt_id": { "type": "string", "minLength": 8 },
-    "run_id": { "type": "string", "minLength": 8 },
-    "task_id": { "type": "string", "minLength": 1 },
-    "scope_signature": { "type": "string", "minLength": 1 },
-    "actor_role": {
-      "enum": [
-        "T0_CONTROL",
-        "T1_ARCHITECT",
-        "T2_CODEX_WORKER",
-        "T2_DEVOPS_WORKER",
-        "T2_REGISTRAR",
-        "T2_SECRET_HANDLE_REGISTRAR",
-        "VERIFIER",
-        "REGISTRAR"
-      ]
+    "allowed": { "type": "boolean" },
+    "allow": { "type": "boolean" },
+    "lane": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 6
     },
-    "operation": { "type": "string", "minLength": 1 },
-    "target_surface": { "type": "string", "minLength": 1 },
-    "allowed_surfaces": { "type": "array", "minItems": 1, "items": { "type": "string" } },
-    "forbidden_surfaces": { "type": "array", "minItems": 1, "items": { "type": "string" } },
-    "model_route": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["required_model_class", "selected_model", "route_reason"],
+    "lane_name": { "type": "string" },
+    "gate": { "type": "string" },
+    "blocker": { "type": ["string", "null"] },
+    "detail": { "type": "string" },
+    "repair": {
+      "type": ["object", "null"],
+      "additionalProperties": true,
       "properties": {
-        "required_model_class": { "type": "string", "minLength": 1 },
-        "selected_model": { "type": "string", "minLength": 1 },
-        "route_reason": { "type": "string", "minLength": 1 },
-        "codex_available": { "type": "boolean" },
-        "same_run_fallback": { "type": "boolean" },
-        "fallback_receipt": { "type": "string", "minLength": 1 }
+        "action": { "type": "string" },
+        "one_retry": { "type": "boolean" },
+        "retry_count": { "type": "integer" },
+        "repair_action": { "type": "string" }
       }
     },
-    "secrets_policy": { "enum": ["metadata_only", "no_secret_access", "owner_only_secret_required"] },
-    "rollback_requirement": { "enum": ["none", "git_branch", "runtime_rollback_plan", "owner_gate_required"] },
-    "evidence_target": { "type": "string", "minLength": 1 },
-    "validation_plan": { "type": "array", "minItems": 1, "items": { "type": "string" } },
-    "owner_only_check": { "enum": ["not_required", "required", "blocked_owner_only"] },
-    "decision": {
-      "enum": [
-        "ALLOW_CONTROL_ROUTE",
-        "ALLOW_POLICY_ARCHITECTURE",
-        "ALLOW_CODEX_AUTHORIZED_WORKER",
-        "ALLOW_REGISTRAR_PATCH",
-        "ALLOW_SECRET_HANDLE_METADATA",
-        "ALLOW_READONLY_VERIFY",
-        "BLOCKED_T0_DIRECT_RUNTIME_ACTION",
-        "BLOCKED_T0_DIRECT_AUTHORSHIP",
-        "POLICY_DEFECT_CAPABILITY_FIELDS_MISSING",
-        "MODEL_ROUTE_DEFECT",
-        "MODEL_FALLBACK_DEFECT",
-        "OWNER_ONLY_GATE"
-      ]
-    }
-  }
+    "retry_limit_reached": { "type": "boolean" },
+    "required_validation": { "type": "string" },
+    "control_spine_authority": { "type": "boolean" },
+    "schema": { "type": "string" },
+    "evidence": { "type": "object", "additionalProperties": true },
+    "role": { "type": "string" },
+    "scope": { "type": ["string", "null"] },
+    "task_id": { "type": ["string", "null"] },
+    "run_id": { "type": ["string", "null"] },
+    "lane6_destruction_proof": { "$ref": "./agenthub_lane6_destruction_proof.schema.json" }
+  },
+  "required": ["allowed", "allow", "lane", "gate", "blocker"]
 }

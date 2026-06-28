@@ -75,3 +75,9 @@ capability, evidence pointer, and next legal route.
 T0 must not mutate runtime, Docker, DB, proxy, firewall, ports, services,
 secrets, or product code. Runtime lane D requires a scoped authorized worker
 with read-before-write, rollback/checkpoint, and validation.
+
+- Add lane-aware self-healing overrides in `validators/agenthub_action_policy_validator.rb`:
+  - lane 1 control-spine artifacts: permit T0/T1 prompt/report/receipt/register writes with scoped path allowlist.
+  - lanes 3/4/5/6 add retry-limited repair contract and destructive guard.
+  - one-retry limit per gate via `same_gate_failures`.
+  - routine gates convert to repair events (`TASK_ID_SELF_HEALING_REQUIRED`, `RUN_STATE_SELF_HEALING_REQUIRED`, etc.) and do not become terminal blockers.

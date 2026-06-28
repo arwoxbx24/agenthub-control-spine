@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/done_evidence_tuple.schema.json",
+  "title": "Done Evidence Tuple",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id",
+    "run_id",
+    "source_task",
+    "implementation_evidence",
+    "validation_evidence",
+    "receipt_path",
+    "task_readback",
+    "register_coverage",
+    "blocker_status",
+    "redteam_done_gate",
+    "child_tasks_done",
+    "task_readback_ok",
+    "register_coverage_ok"
+  ],
+  "properties": {
+    "task_id": { "type": "string", "pattern": "^[A-Z][A-Z0-9]+-[0-9]+$" },
+    "run_id": { "type": "string", "minLength": 1 },
+    "source_task": { "type": "string", "minLength": 1 },
+    "implementation_evidence": { "type": "string", "minLength": 1 },
+    "validation_evidence": { "type": "string", "minLength": 1 },
+    "receipt_path": { "type": "string", "minLength": 1 },
+    "task_readback": { "type": "string", "minLength": 1 },
+    "register_coverage": { "type": "string", "minLength": 1 },
+    "blocker_status": { "const": "NONE" },
+    "redteam_done_gate": { "const": "PASS" },
+    "child_tasks_done": { "type": "boolean", "const": true },
+    "task_readback_ok": { "type": "boolean", "const": true },
+    "register_coverage_ok": { "type": "boolean", "const": true },
+    "owner_exact_close_command": { "type": "boolean" },
+    "proof_strength": { "type": "string", "enum": ["user_outcome", "governance_mechanism", "runtime_validated"] }
+  }
+}

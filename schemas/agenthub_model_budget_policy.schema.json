@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/agenthub_model_budget_policy.schema.json",
+  "title": "AgentHub Model Budget Policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "run_id",
+    "task_id",
+    "route_lane",
+    "routine_workload_total",
+    "routine_workload_bypass_count",
+    "packfix_threshold_pct",
+    "packfix_required_when_threshold_exceeded"
+  ],
+  "properties": {
+    "run_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "route_lane": { "type": "string", "enum": ["M0", "M1", "M2", "M3"] },
+    "routine_workload_total": { "type": "integer", "minimum": 0 },
+    "routine_workload_bypass_count": { "type": "integer", "minimum": 0 },
+    "packfix_threshold_pct": { "type": "number", "minimum": 0 },
+    "packfix_required_when_threshold_exceeded": { "type": "boolean" },
+    "owner_escalation_required": { "type": "boolean" },
+    "owner_approval": { "type": "boolean" }
+  }
+}

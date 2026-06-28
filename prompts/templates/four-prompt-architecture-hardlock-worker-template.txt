@@ -1,0 +1,38 @@
+TASK_CLASS: CONTROL_SPINE_REGISTRAR
+ROLE: T1_ARCHITECT / REGISTRAR / VERIFIER
+ACTIVE_SKILLS:
+- agenthub-task-first-router
+- agenthub-prompt-architect
+- agenthub-registrar-artifact-lifecycle
+- agenthub-git-pr-queue-control
+- agenthub-security-redaction
+- agenthub-truth-redteam
+- caveman-user-communication
+FORBIDDEN_SKILLS:
+- product-runtime-mutation
+- stroyremont-runtime-worker
+- docker-worker
+- db-worker
+- proxy-worker
+- firewall-worker
+- direct-shell-bypass
+- local-prompt-folder-only-closure
+- broad-permission-expansion
+- blind-merge-retry-worker
+SCOPE_SIGNATURE: install four architect prompts as one durable AgentHub/Codex governance package
+NEGATIVE_MATCHES:
+- Not a product repair.
+- Not production deployment.
+- Not test-site deployment.
+- Not local-only prompt index closure.
+- PR is not Done.
+- Chat report is not evidence.
+
+Required output:
+- installed controls;
+- validator and fixture result;
+- register coverage;
+- PR queue state;
+- receipt;
+- task readback or typed blocker.
+

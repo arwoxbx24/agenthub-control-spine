@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/browser_outcome_receipt.schema.json",
+  "title": "Browser Outcome Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "run_id", "url", "screenshot_ref", "dom_probe", "console_errors", "network_errors", "http_200_only", "status"],
+  "properties": {
+    "task_id": { "type": "string" },
+    "run_id": { "type": "string" },
+    "url": { "type": "string" },
+    "screenshot_ref": { "type": "string" },
+    "dom_probe": { "type": "string" },
+    "console_errors": { "type": "integer", "minimum": 0 },
+    "network_errors": { "type": "integer", "minimum": 0 },
+    "http_200_only": { "type": "boolean" },
+    "status": { "type": "string", "enum": ["PASS", "FAIL", "NOT_APPLICABLE"] }
+  }
+}

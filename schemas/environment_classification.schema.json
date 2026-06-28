@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "environment_classification.schema.json",
+  "title": "Environment Classification",
+  "type": "object",
+  "required": ["task_id", "run_id", "target", "classification", "proof_status"],
+  "properties": {
+    "task_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "target": { "type": "string", "minLength": 1 },
+    "classification": {
+      "enum": [
+        "LOCAL_ONLY",
+        "TEST_SERVER",
+        "STAGING",
+        "PRODUCTION",
+        "PROD_RISK_UNKNOWN",
+        "ARCHIVED_REMOTE",
+        "READ_ONLY_REMOTE",
+        "WORKFLOW_SIDE_EFFECT_UNKNOWN"
+      ]
+    },
+    "proof_status": { "enum": ["PASS", "BLOCKED", "MISSING"] },
+    "evidence": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": false
+}
+

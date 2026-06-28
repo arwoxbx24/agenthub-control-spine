@@ -45,6 +45,8 @@ status: draft
 | `governance/global-agent-control-enforcement-policy.md` | governance policy | AH-590 | active |
 | `governance/secrets-registry-policy.md` | governance policy | AH-590 | active |
 | `governance/model-token-routing-policy.md` | governance policy | AH-590 | active |
+| `governance/agenthub-model-priority-routing-policy.md` | governance policy | AH-601 | active |
+| `governance/agenthub-codex-spark-usage-truth-policy.md` | governance policy | AH-601 | active |
 | `reports/receipts/P0-codex-spark-code-authoring-model-enforcement-receipt-20260529.md` | operational receipt | AH-590/AH-601 | active |
 | `reports/receipts/P0-runtime-spark-route-restore-implementation-receipt-20260529.md` | implementation receipt | AH-590/AH-601 | active |
 | `reports/validations/P0-runtime-spark-route-restore-validation-20260529.md` | validation report | AH-590/AH-601 | active |
@@ -137,6 +139,7 @@ status: draft
 | `runbooks/teamlead-t0-role-drift-emergency-stop.md` | runbook | AH-510 | active |
 | `runbooks/prompt-intake-flow.md` | runbook | AH-494 | active |
 | `runbooks/codex-cli-usage.md` | runbook | AH-494 | active |
+| `runbooks/codex-spark-proof-probe.md` | runbook | AH-601 | active |
 | `runbooks/control-spine-pr-queue-and-artifact-lifecycle.md` | runbook | AH-523 | active |
 | `runbooks/agent-shortlink-intake-and-report-placement.md` | runbook | AH-529 | active |
 | `runbooks/agenthub-pattern-adaptation-control-loop.md` | runbook | AH-531/AH-532 | active |
@@ -256,11 +259,14 @@ status: draft
 | `evals/agenthub-x-capability-matrix/` | eval fixtures | AH-590 | active |
 | `evals/agenthub-x-capability-positive-tests/` | eval fixtures | AH-590 | active |
 | `evals/model-token-routing/` | eval fixtures | AH-590 | active |
+| `evals/model-routing/` | eval fixtures | AH-601 | active |
 | `evals/repo-first-reporting/` | eval fixtures | AH-590 | active |
 | `evals/agenthub-self-healing/fixtures/fixtures.json` | eval fixtures | AH-590 | active |
 | `validators/agenthub_action_policy_validator.rb` | validator | AH-590 | active |
 | `validators/t0_direct_action_hard_stop.rb` | validator | AH-590 | active |
 | `validators/model_token_router_validator.rb` | validator | AH-590 | active |
+| `validators/agenthub_model_router_validator.rb` | validator | AH-601 | active |
+| `validators/model_execution_truth_validator.rb` | validator | AH-601 | active |
 | `validators/repo_first_receipt_gate.rb` | validator | AH-590 | active |
 | `validators/agenthub_self_healing_validator.rb` | validator | AH-590 | active |
 | `reports/receipts/RUN-agenthub-p0-paralysis-breaker-repo-first-control-repair-20260525-receipt.md` | control-spine receipt | AH-542 | operational-receipt |
@@ -382,8 +388,12 @@ status: draft
 | `reports/receipts/P0-codex-spark-json-usage-execution-receipt-20260529.md` | operational receipt | AH-601 | operational-receipt |
 | `reports/audits/P0-codex-spark-circuit-breaker-full-closure-audit-20260529.md` | audit report | AH-601 | audit-only |
 | `reports/receipts/P0-codex-spark-circuit-breaker-full-closure-receipt-20260529.md` | operational receipt | AH-601 | operational-receipt |
+| `reports/validations/AGENTHUB-CODEX-SPARK-MODEL-ROUTING-VALIDATION-20260612.md` | validation report | AH-601 | audit-only |
+| `reports/receipts/AGENTHUB-CODEX-SPARK-MODEL-ROUTING-TRUTH-RECEIPT-20260612.md` | operational receipt | AH-601 | operational-receipt |
 | `governance/model-portfolio-utilization-policy.md` | governance policy | AH-590 | active |
 | `schemas/model_route_invocation_receipt.schema.json` | schema | AH-590 | active |
+| `schemas/agenthub_model_route_decision.schema.json` | schema | AH-601 | active |
+| `schemas/model_execution_truth_receipt.schema.json` | schema | AH-601 | active |
 | `validators/model_portfolio_router_validator.rb` | validator | AH-590 | active |
 | `evals/model-portfolio-routing/fixtures.json` | eval fixtures | AH-590 | active |
 | `reports/audits/P0-global-model-portfolio-route-evaluation-20260529.md` | audit report | AH-590 | audit-only |
@@ -402,3 +412,105 @@ status: draft
 | `evals/document-dedupe-gate/fixtures.json` | eval fixtures | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | active |
 | `reports/validations/P1-document-dedupe-gate-validation-20260607.md` | validation report | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | audit-only |
 | `reports/receipts/P1-document-dedupe-gate-implementation-receipt-20260607.md` | operational receipt | AGENTHUB_DOCUMENT_DEDUPE_GATE_REPAIR_PROMPT_20260607 | operational-receipt |
+| `governance/agenthub-flexible-authority-broker-policy.md` | governance policy | AH-601/AH-748 | active |
+| `governance/agenthub-codex-spark-model-routing-policy.md` | governance policy | AH-601 | active |
+| `governance/agenthub-packfix-self-healing-loop-policy.md` | governance policy | AH-748 | active |
+| `governance/agenthub-model-truth-proof-policy.md` | governance policy | AH-601/AH-748 | active |
+| `schemas/agenthub_authority_envelope.schema.json` | schema | AH-601/AH-748 | active |
+| `schemas/agenthub_packfix_event.schema.json` | schema | AH-601/AH-748 | active |
+| `schemas/agenthub_model_execution_truth.schema.json` | schema | AH-601/AH-748 | active |
+| `schemas/agenthub_model_budget_policy.schema.json` | schema | AH-601/AH-748 | active |
+| `validators/agenthub_authority_broker_validator.rb` | validator | AH-601/AH-748 | active |
+| `validators/agenthub_packfix_self_healing_validator.rb` | validator | AH-601/AH-748 | active |
+| `validators/agenthub_model_router_truth_validator.rb` | validator | AH-601/AH-748 | active |
+| `validators/agenthub_youtack_done_model_truth_validator.rb` | validator | AH-601/AH-748 | active |
+| `evals/flexible-authority-broker/fixtures.json` | eval fixtures | AH-601/AH-748 | active |
+| `reports/receipts/AGENTHUB-FLEXIBLE-AUTHORITY-BROKER-RECEIPT-20260612.md` | operational receipt | AH-601/AH-748 | operational-receipt |
+| `reports/receipts/AGENTHUB-CODEX-SPARK-MODEL-TRUTH-RECEIPT-20260612.md` | operational receipt | AH-601/AH-748 | operational-receipt |
+| `governance/agenthub-docs-first-validator-route-packfix-policy.md` | governance policy | AH-763 | active |
+| `governance/agenthub-permission-broker-lane-authority-policy.md` | governance policy | AH-763 | active |
+| `schemas/agenthub_docs_packet.schema.json` | schema | AH-763 | active |
+| `schemas/agenthub_packfix_event.schema.json` | schema | AH-763 | active |
+| `schemas/agenthub_validator_execution_authority_envelope.schema.json` | schema | AH-763 | active |
+| `schemas/agenthub_model_truth_receipt.schema.json` | schema | AH-763 | active |
+| `validators/agenthub_docs_first_gate_validator.rb` | validator | AH-763 | active |
+| `validators/agenthub_packfix_self_healing_validator.rb` | validator | AH-763 | active |
+| `validators/agenthub_validator_execution_route_validator.rb` | validator | AH-763 | active |
+| `validators/agenthub_model_truth_validator.rb` | validator | AH-763 | active |
+| `evals/docs-first-validator-route-packfix/fixtures.json` | eval fixtures | AH-763 | active |
+| `runbooks/agenthub-docs-first-packfix-self-healing-runbook.md` | runbook | AH-763 | active |
+| `reports/validations/AGENTHUB-DOCS-FIRST-VALIDATOR-ROUTE-PACKFIX-VALIDATION-20260612.md` | validation report | AH-763 | blocked-validator-route |
+| `reports/receipts/AGENTHUB-DOCS-FIRST-VALIDATOR-ROUTE-PACKFIX-RECEIPT-20260612.md` | operational receipt | AH-763 | test-pending-validator-route |
+| `governance/agenthub-authority-lifecycle-expansion-policy.md` | governance policy | AH-765 | active-control-candidate |
+| `schemas/authority_envelope.schema.json` | schema | AH-765 | active-control-candidate |
+| `schemas/packfix_event.schema.json` | schema | AH-765 | active-control-candidate |
+| `schemas/validator_execution_receipt.schema.json` | schema | AH-765 | active-control-candidate |
+| `schemas/model_truth_receipt.schema.json` | schema | AH-765 | active-control-candidate |
+| `schemas/docs_source_packet.schema.json` | schema | AH-765 | active-control-candidate |
+| `schemas/microservice_descriptor.schema.json` | schema | AH-765 | active-control-candidate |
+| `schemas/browser_outcome_receipt.schema.json` | schema | AH-765 | active-control-candidate |
+| `schemas/youtrack_stage_movement_receipt.schema.json` | schema | AH-765 | active-control-candidate |
+| `schemas/final_done_gate.schema.json` | schema | AH-765 | active-control-candidate |
+| `validators/authority_lifecycle_expansion_validator.rb` | validator | AH-765 | active-control-candidate |
+| `evals/authority-lifecycle-expansion/fixtures.json` | eval fixtures | AH-765 | active-control-candidate |
+| `runbooks/agenthub-authority-lifecycle-expansion-runbook.md` | runbook | AH-765 | active-control-candidate |
+| `reports/receipts/AGENTHUB-AUTHORITY-LIFECYCLE-EXPANSION-RECEIPT-20260612.md` | operational receipt | AH-765 | test-pending-validator-route |
+| `governance/agenthub-final-contour-authority-policy.md` | governance policy | AH-765 | active |
+| `governance/agenthub-runtime-tool-installation-policy.md` | governance policy | AH-765 | active |
+| `schemas/runtime_tool_route_manifest.schema.json` | schema | AH-765 | active |
+| `validators/agenthub_authority_envelope_validator.rb` | validator | AH-765 | active |
+| `validators/agenthub_packfix_loop_validator.rb` | validator | AH-765 | active |
+| `validators/agenthub_runtime_tool_route_validator.rb` | validator | AH-765 | active |
+| `evals/authority-broker/fixtures.json` | eval fixtures | AH-765 | active |
+| `evals/packfix-loop/fixtures.json` | eval fixtures | AH-765 | active |
+| `evals/runtime-tool-installation/fixtures.json` | eval fixtures | AH-765 | active |
+| `runbooks/agenthub-runtime-tool-installation-runbook.md` | runbook | AH-765 | active |
+| `reports/receipts/RUN-AGENTHUB-AUTHORITY-LIFECYCLE-EXPANSION-20260612-final-authority-runtime-tool-installation-receipt.md` | final receipt | AH-765 | done-with-evidence |
+| `governance/agenthub-same-run-packfix-no-intermediate-closure-policy.md` | governance policy | AH-777 | active |
+| `schemas/agenthub_same_run_packfix_no_intermediate_closure.schema.json` | schema | AH-777 | active |
+| `validators/agenthub_same_run_packfix_no_intermediate_closure_validator.rb` | validator | AH-777 | active |
+| `evals/same-run-packfix-no-intermediate-closure/fixtures.json` | eval fixtures | AH-777 | active |
+| `runbooks/agenthub-same-run-packfix-no-intermediate-closure-runbook.md` | runbook | AH-777 | active |
+| `reports/validations/AGENTHUB-SAME-RUN-PACKFIX-NO-INTERMEDIATE-CLOSURE-VALIDATION-20260612.md` | validation report | AH-777 | pass |
+| `reports/receipts/AGENTHUB-SAME-RUN-PACKFIX-NO-INTERMEDIATE-CLOSURE-RECEIPT-20260612.md` | operational receipt | AH-777 | done-with-evidence |
+
+- 2026-06-10: Added scoped autonomy self-healing authority contract
+  - artifact: governance/agenthub-scoped-autonomy-authority-self-healing-escalation-contract-20260610.md
+  - active PR: #152
+  - source: RUN-AGENTHUB-SCOPED-AUTONOMY-AUTHORITY-SELF-HEALING-20260610
+  - scope lanes: 0..6
+| `governance/agent-cycle-done-evidence-hardlock-policy.md` | governance policy | AH-785 | active |
+| `schemas/done_evidence_tuple.schema.json` | schema | AH-785 | active |
+| `validators/done_evidence_hardlock_validator.rb` | validator | AH-785 | active |
+| `evals/done-evidence-hardlock/fixtures.json` | eval fixtures | AH-785 | active |
+| `youtrack-workflows/agenthub-done-evidence-state-machine.js` | YouTrack workflow guard source | AH-785 | active |
+| `prompts/templates/agent-cycle-done-evidence-hardlock-template.txt` | prompt template | AH-785 | active |
+| `reports/validations/AH-785-permanent-done-gate-hardlock-validation-20260613.md` | validation report | AH-785 | operational-receipt |
+| `reports/receipts/AH-785-permanent-done-gate-hardlock-receipt-20260613.md` | operational receipt | AH-785 | operational-receipt |
+| `governance/four-prompts-system-hardlock-policy.md` | governance policy | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | active |
+| `schemas/environment_classification.schema.json` | schema | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | active |
+| `schemas/workflow_impact_audit.schema.json` | schema | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | active |
+| `schemas/test_only_route_proof.schema.json` | schema | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | active |
+| `schemas/prod_release_authorization.schema.json` | schema | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | active |
+| `schemas/owner_incident_signal.schema.json` | schema | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | active |
+| `schemas/safe_rollback_lane.schema.json` | schema | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | active |
+| `schemas/incident_recovery_receipt.schema.json` | schema | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | active |
+| `validators/four_prompts_system_hardlock_validator.rb` | validator | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | active |
+| `evals/four-prompts-system-hardlock/fixtures.json` | eval fixtures | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | active |
+| `runbooks/four-prompts-system-hardlock-runbook.md` | runbook | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | active |
+| `prompts/templates/four-prompts-system-hardlock-worker-template.md` | prompt template | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | active |
+| `reports/incidents/AH-FOUR-PROMPTS-test-prod-boundary-and-emergency-recovery-rca-20260615.md` | incident analysis | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | analysis-complete |
+| `reports/validations/AH-FOUR-PROMPTS-system-hardlock-validation-20260615.md` | validation report | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | validation-report |
+| `reports/validations/AH-FOUR-PROMPTS-claim-ledger-20260615.md` | truth-redteam ledger | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | claim-ledger |
+| `reports/receipts/AH-FOUR-PROMPTS-system-hardlock-receipt-20260615.md` | operational receipt | RUN-20260615-FOUR-PROMPTS-SYSTEM-ARCH | task-readback-blocked |
+| `governance/agenthub-four-prompt-architecture-hardlock-policy.md` | governance policy | AH-796 | active |
+| `schemas/environment_route_proof.schema.json` | schema | AH-796 | active |
+| `schemas/workflow_impact_audit.schema.json` | schema | AH-796 | active |
+| `schemas/owner_incident_recovery_lane.schema.json` | schema | AH-796 | active |
+| `schemas/four_prompt_architecture_install_receipt.schema.json` | schema | AH-796 | active |
+| `validators/four_prompt_architecture_hardlock_validator.rb` | validator | AH-796 | active |
+| `fixtures/four-prompt-architecture-hardlock/fixtures.json` | fixtures | AH-796 | active |
+| `runbooks/four-prompt-architecture-hardlock-runbook.md` | runbook | AH-796 | active |
+| `prompts/templates/four-prompt-architecture-hardlock-worker-template.txt` | worker template | AH-796 | active |
+| `reports/validations/AH-796-four-prompt-architecture-hardlock-validation-20260615.md` | validation report | AH-796 | validation-report |
+| `reports/receipts/AH-796-four-prompt-architecture-hardlock-receipt-20260615.md` | operational receipt | AH-796 | pr-task-blocked |

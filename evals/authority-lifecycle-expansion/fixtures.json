@@ -1,0 +1,94 @@
+{
+  "artifact_id": "agenthub-authority-lifecycle-expansion-fixtures-20260612",
+  "task_id": "AH-765",
+  "run_id": "RUN-AGENTHUB-AUTHORITY-LIFECYCLE-EXPANSION-20260612",
+  "cases": [
+    {
+      "id": "authority_envelope_pass",
+      "gate": "authority_envelope",
+      "input": {
+        "authority_envelope": {
+          "authority_envelope_id": "AUTH-AH-765-L3",
+          "task_id": "AH-765",
+          "run_id": "RUN-AGENTHUB-AUTHORITY-LIFECYCLE-EXPANSION-20260612",
+          "lane": 3,
+          "operation": "run validators",
+          "decision": "ALLOW_WITH_SCOPED_WORKER"
+        }
+      },
+      "expected": "AUTHORITY_ENVELOPE_PASS"
+    },
+    {
+      "id": "missing_authority_fails",
+      "gate": "authority_envelope",
+      "input": {},
+      "expected": "MISSING_AUTHORITY_ENVELOPE"
+    },
+    {
+      "id": "generic_block_forbidden",
+      "gate": "authority_envelope",
+      "input": { "authority_envelope": { "lane": 3, "decision": "BLOCK" } },
+      "expected": "GENERIC_BLOCK_FORBIDDEN"
+    },
+    {
+      "id": "first_routine_blocker_packfix",
+      "gate": "packfix",
+      "input": { "same_blocker_count": 1, "blocker": "VALIDATOR_EXECUTION_NOT_RUN" },
+      "expected": "PACKFIX_REQUIRED"
+    },
+    {
+      "id": "second_same_blocker_route_repair",
+      "gate": "packfix",
+      "input": { "same_blocker_count": 2, "blocker": "CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED" },
+      "expected": "ROUTE_REPAIR_REQUIRED"
+    },
+    {
+      "id": "third_same_blocker_forbidden",
+      "gate": "packfix",
+      "input": { "same_blocker_count": 3, "blocker": "CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED" },
+      "expected": "THIRD_IDENTICAL_RETRY_FORBIDDEN"
+    },
+    {
+      "id": "owner_only_gate_final",
+      "gate": "packfix",
+      "input": { "owner_only": true, "same_blocker_count": 1 },
+      "expected": "OWNER_ONLY_GATE"
+    },
+    {
+      "id": "http_200_fake_done",
+      "gate": "done",
+      "input": { "http_200_only": true, "validator_executed": true },
+      "expected": "HTTP_200_FAKE_DONE"
+    },
+    {
+      "id": "env_only_codex_proof",
+      "gate": "done",
+      "input": { "env_only_model_claim": true, "validator_executed": true },
+      "expected": "ENV_ONLY_MODEL_PROOF_REJECTED"
+    },
+    {
+      "id": "validator_not_run",
+      "gate": "done",
+      "input": { "validator_executed": false },
+      "expected": "VALIDATOR_NOT_RUN"
+    },
+    {
+      "id": "done_before_evidence",
+      "gate": "done",
+      "input": { "task_stage": "Done", "active_blockers": ["VALIDATOR_EXECUTION_NOT_RUN"], "validator_executed": true },
+      "expected": "DONE_WITH_ACTIVE_BLOCKERS_FORBIDDEN"
+    },
+    {
+      "id": "prompt_dump_forbidden",
+      "gate": "done",
+      "input": { "prompt_dump": true, "validator_executed": true },
+      "expected": "PROMPT_DUMP_FORBIDDEN"
+    },
+    {
+      "id": "positive_done_gate",
+      "gate": "done",
+      "input": { "validator_executed": true, "active_blockers": [], "task_stage": "Test" },
+      "expected": "DONE_GATE_PASS"
+    }
+  ]
+}

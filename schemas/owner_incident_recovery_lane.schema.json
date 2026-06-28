@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "owner_incident_recovery_lane.schema.json",
+  "title": "Owner Incident Recovery Lane",
+  "type": "object",
+  "required": ["task_id", "run_id", "incident_signal", "safe_recovery_started", "owner_handoff_required", "lane_status"],
+  "properties": {
+    "task_id": { "type": "string", "pattern": "^[A-Z][A-Z0-9]+-[0-9]+$" },
+    "run_id": { "type": "string", "minLength": 1 },
+    "incident_signal": { "type": "boolean" },
+    "safe_recovery_started": { "type": "boolean" },
+    "owner_handoff_required": { "type": "boolean" },
+    "read_only_capture": { "type": "boolean" },
+    "last_known_change_ledger": { "type": "boolean" },
+    "lane_status": { "enum": ["PASS", "BLOCKED", "OWNER_ONLY_PLATFORM_GATE"] }
+  },
+  "additionalProperties": false
+}
+

@@ -1,0 +1,41 @@
+## VALIDATION
+Syntax OK
+{
+  "status": "PASS",
+  "cases": 12,
+  "validator": "done_evidence_hardlock_validator.rb"
+}
+## FILES
+PRESENT:governance/agent-cycle-done-evidence-hardlock-policy.md
+PRESENT:schemas/done_evidence_tuple.schema.json
+PRESENT:validators/done_evidence_hardlock_validator.rb
+PRESENT:evals/done-evidence-hardlock/fixtures.json
+PRESENT:youtrack-workflows/agenthub-done-evidence-state-machine.js
+PRESENT:prompts/templates/agent-cycle-done-evidence-hardlock-template.txt
+PRESENT:reports/receipts/AH-785-permanent-done-gate-hardlock-receipt-20260613.md
+PRESENT:reports/validations/AH-785-permanent-done-gate-hardlock-validation-20260613.md
+## REGISTER_READBACK
+AGENTS.md:160:- Source policy: `governance/agent-cycle-done-evidence-hardlock-policy.md`.
+AGENTS.md:162:- Validator standard: `validators/done_evidence_hardlock_validator.rb`.
+AGENTS.md:163:- Evaluation pack: `evals/done-evidence-hardlock/fixtures.json`.
+AGENTS.md:165:  `reports/receipts/AH-785-permanent-done-gate-hardlock-receipt-20260613.md`
+AGENTS.md:166:  and `reports/validations/AH-785-permanent-done-gate-hardlock-validation-20260613.md`.
+AGENTS.md:178:- Permanent control: `governance/agent-cycle-done-evidence-hardlock-policy.md`.
+AGENTS.md:179:- Done requires `schemas/done_evidence_tuple.schema.json` and validator coverage from `validators/done_evidence_hardlock_validator.rb`.
+INDEX.md:482:| `governance/agent-cycle-done-evidence-hardlock-policy.md` | governance policy | AH-785 | active |
+INDEX.md:483:| `schemas/done_evidence_tuple.schema.json` | schema | AH-785 | active |
+INDEX.md:484:| `validators/done_evidence_hardlock_validator.rb` | validator | AH-785 | active |
+INDEX.md:485:| `evals/done-evidence-hardlock/fixtures.json` | eval fixtures | AH-785 | active |
+INDEX.md:486:| `youtrack-workflows/agenthub-done-evidence-state-machine.js` | YouTrack workflow guard source | AH-785 | active |
+INDEX.md:487:| `prompts/templates/agent-cycle-done-evidence-hardlock-template.txt` | prompt template | AH-785 | active |
+INDEX.md:488:| `reports/validations/AH-785-permanent-done-gate-hardlock-validation-20260613.md` | validation report | AH-785 | operational-receipt |
+INDEX.md:489:| `reports/receipts/AH-785-permanent-done-gate-hardlock-receipt-20260613.md` | operational receipt | AH-785 | operational-receipt |
+ARTIFACT_REGISTER.md:502:| `governance/agent-cycle-done-evidence-hardlock-policy.md` | `active_policy` | false | false | AH-785 | Permanent Agent Cycle and Done Evidence Tuple hardlock policy. |
+ARTIFACT_REGISTER.md:503:| `schemas/done_evidence_tuple.schema.json` | `active_control` | false | false | AH-785 | Done Evidence Tuple schema. |
+ARTIFACT_REGISTER.md:504:| `validators/done_evidence_hardlock_validator.rb` | `active_control` | false | false | AH-785 | Deterministic validator for fake Done, weak evidence, owner-stop, and stale replay cases. |
+ARTIFACT_REGISTER.md:505:| `evals/done-evidence-hardlock/fixtures.json` | `active_control` | false | false | AH-785 | Regression fixtures for Done Evidence hardlock. |
+ARTIFACT_REGISTER.md:506:| `youtrack-workflows/agenthub-done-evidence-state-machine.js` | `active_control` | false | false | AH-785 | YouTrack workflow/state-machine guard source for Done/Closed transitions. |
+ARTIFACT_REGISTER.md:507:| `prompts/templates/agent-cycle-done-evidence-hardlock-template.txt` | `active_control` | false | false | AH-785 | Serious prompt template requiring Agent Cycle and Done Evidence Tuple. |
+ARTIFACT_REGISTER.md:508:| `reports/validations/AH-785-permanent-done-gate-hardlock-validation-20260613.md` | `operational_receipt` | false | false | AH-785 | Validation report for Done Evidence hardlock package. |
+ARTIFACT_REGISTER.md:509:| `reports/receipts/AH-785-permanent-done-gate-hardlock-receipt-20260613.md` | `operational_receipt` | false | false | AH-785 | Receipt for permanent Done Evidence hardlock package. |
+PR_QUEUE_REGISTER.md:156:  - task: `AH-785`

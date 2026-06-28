@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/final_done_gate.schema.json",
+  "title": "Final Done Gate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "run_id", "docs_packet", "authority_envelope", "validator_receipts", "register_coverage", "model_truth", "browser_outcome", "active_blockers", "done_allowed"],
+  "properties": {
+    "task_id": { "type": "string" },
+    "run_id": { "type": "string" },
+    "docs_packet": { "type": "boolean" },
+    "authority_envelope": { "type": "boolean" },
+    "validator_receipts": { "type": "array", "items": { "type": "string" } },
+    "register_coverage": { "type": "boolean" },
+    "model_truth": { "type": "string" },
+    "browser_outcome": { "type": "string" },
+    "active_blockers": { "type": "array", "items": { "type": "string" } },
+    "done_allowed": { "type": "boolean" }
+  }
+}

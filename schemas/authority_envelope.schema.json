@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/authority_envelope.schema.json",
+  "title": "Authority Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["authority_envelope_id", "task_id", "run_id", "lane", "operation", "allowed_surfaces", "forbidden_surfaces", "decision", "validation"],
+  "properties": {
+    "authority_envelope_id": { "type": "string", "minLength": 1 },
+    "task_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "lane": { "type": "integer", "minimum": 0, "maximum": 7 },
+    "operation": { "type": "string", "minLength": 1 },
+    "allowed_surfaces": { "type": "array", "items": { "type": "string" } },
+    "forbidden_surfaces": { "type": "array", "items": { "type": "string" } },
+    "rollback": { "type": "string" },
+    "validation": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "decision": { "type": "string", "enum": ["ALLOW", "ALLOW_WITH_SCOPED_WORKER", "ALLOW_WITH_AUTO_REVIEW", "PACKFIX_REQUIRED", "ROUTE_REPAIR_REQUIRED", "OWNER_ONLY_IRREVERSIBLE_GATE", "DENY_FORBIDDEN_SCOPE"] }
+  }
+}

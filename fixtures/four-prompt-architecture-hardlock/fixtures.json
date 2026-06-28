@@ -1,0 +1,146 @@
+{
+  "cases": [
+    {
+      "id": "reject_product_master_without_phrase",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "four-prompt-architecture-hardlock-20260615",
+        "agenthub_route": true,
+        "gate": "environment",
+        "product_repo": true,
+        "branch": "master",
+        "environment_route_proof": "PASS"
+      },
+      "expected": "PROD_RELEASE_AUTHORIZATION_MISSING"
+    },
+    {
+      "id": "reject_workflow_without_impact_audit",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "four-prompt-architecture-hardlock-20260615",
+        "agenthub_route": true,
+        "gate": "workflow",
+        "workflow_action": true
+      },
+      "expected": "VALIDATOR_FIXTURE_GATE"
+    },
+    {
+      "id": "reject_local_prompt_index",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "four-prompt-architecture-hardlock-20260615",
+        "agenthub_route": true,
+        "local_prompt_index_used_as_implementation": true
+      },
+      "expected": "INSTALLED_CONTROL_GATE"
+    },
+    {
+      "id": "reject_repeated_blocked_command",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "four-prompt-architecture-hardlock-20260615",
+        "agenthub_route": true,
+        "blocked_command_retries": 2
+      },
+      "expected": "CONTROL_SPINE_WRITE_ROUTE_MISSING"
+    },
+    {
+      "id": "reject_owner_handoff_for_routine_step",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "four-prompt-architecture-hardlock-20260615",
+        "agenthub_route": true,
+        "gate": "owner_incident",
+        "incident_signal": true,
+        "owner_handoff_for_routine_step": true
+      },
+      "expected": "CONTROL_SPINE_WRITE_ROUTE_MISSING"
+    },
+    {
+      "id": "reject_fake_done_without_receipt_readback",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "four-prompt-architecture-hardlock-20260615",
+        "agenthub_route": true,
+        "terminal_request": "Done",
+        "validation": true,
+        "register_coverage": true
+      },
+      "expected": "YOUTRACK_READBACK_UNAVAILABLE"
+    },
+    {
+      "id": "reject_direct_shell_bypass",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "four-prompt-architecture-hardlock-20260615",
+        "direct_shell_bypass": true
+      },
+      "expected": "AGENTHUB_ROUTE_MISSING"
+    },
+    {
+      "id": "reject_pr171_repeated_merge_loop",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "four-prompt-architecture-hardlock-20260615",
+        "agenthub_route": true,
+        "gate": "pr171",
+        "same_merge_error_count": 2,
+        "gitleaks": "PASS"
+      },
+      "expected": "GITHUB_BRANCH_PROTECTION_PLATFORM_GATE"
+    },
+    {
+      "id": "positive_prod_release_authorized",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "four-prompt-architecture-hardlock-20260615",
+        "agenthub_route": true,
+        "gate": "environment",
+        "product_repo": true,
+        "branch": "main",
+        "owner_phrase": "разрешаю отгрузку на прод",
+        "environment_route_proof": "PASS"
+      },
+      "expected": "FOUR_PROMPT_ARCHITECTURE_HARDLOCK_PASS"
+    },
+    {
+      "id": "positive_workflow_audited",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "four-prompt-architecture-hardlock-20260615",
+        "agenthub_route": true,
+        "gate": "workflow",
+        "workflow_action": true,
+        "workflow_impact_audit": "PASS"
+      },
+      "expected": "FOUR_PROMPT_ARCHITECTURE_HARDLOCK_PASS"
+    },
+    {
+      "id": "positive_owner_incident_recovery_started",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "four-prompt-architecture-hardlock-20260615",
+        "agenthub_route": true,
+        "gate": "owner_incident",
+        "incident_signal": true,
+        "safe_recovery_started": true
+      },
+      "expected": "FOUR_PROMPT_ARCHITECTURE_HARDLOCK_PASS"
+    },
+    {
+      "id": "positive_done_with_evidence",
+      "input": {
+        "task_id": "AH-796",
+        "run_id": "four-prompt-architecture-hardlock-20260615",
+        "agenthub_route": true,
+        "terminal_request": "Done",
+        "validation": true,
+        "register_coverage": true,
+        "task_readback": true,
+        "main_readback": true
+      },
+      "expected": "DONE_WITH_EVIDENCE"
+    }
+  ]
+}
+

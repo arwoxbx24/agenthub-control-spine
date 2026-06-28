@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/validator_execution_receipt.schema.json",
+  "title": "Validator Execution Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "run_id", "lane", "validator", "command", "exit_code", "stdout_summary", "artifact_hash", "redaction_gate"],
+  "properties": {
+    "task_id": { "type": "string", "minLength": 1 },
+    "run_id": { "type": "string", "minLength": 1 },
+    "lane": { "const": 3 },
+    "validator": { "type": "string", "minLength": 1 },
+    "command": { "type": "string", "minLength": 1 },
+    "exit_code": { "type": "integer" },
+    "stdout_summary": { "type": "string" },
+    "artifact_hash": { "type": "string", "minLength": 1 },
+    "redaction_gate": { "type": "string", "enum": ["PASS", "FAIL"] }
+  }
+}

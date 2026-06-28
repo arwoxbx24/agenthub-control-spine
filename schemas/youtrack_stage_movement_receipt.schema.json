@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://agenthub.local/schemas/youtrack_stage_movement_receipt.schema.json",
+  "title": "YouTrack Stage Movement Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["task_id", "run_id", "from_stage", "to_stage", "evidence_refs", "readback_stage", "done_gate"],
+  "properties": {
+    "task_id": { "type": "string" },
+    "run_id": { "type": "string" },
+    "from_stage": { "type": "string" },
+    "to_stage": { "type": "string" },
+    "evidence_refs": { "type": "array", "items": { "type": "string" } },
+    "readback_stage": { "type": "string" },
+    "done_gate": { "type": "string", "enum": ["PASS", "BLOCKED"] }
+  }
+}

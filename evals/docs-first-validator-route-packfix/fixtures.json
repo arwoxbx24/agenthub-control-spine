@@ -1,0 +1,276 @@
+{
+  "artifact_id": "agenthub-docs-first-validator-route-packfix-fixtures-20260612",
+  "task_id": "AH-763",
+  "run_id": "RUN-AGENTHUB-DOCS-FIRST-VALIDATOR-ROUTE-PACKFIX-20260612",
+  "docs_packet": {
+    "packet_id": "DOCS-PACKET-AH-763-20260612",
+    "task_id": "AH-763",
+    "run_id": "RUN-AGENTHUB-DOCS-FIRST-VALIDATOR-ROUTE-PACKFIX-20260612",
+    "scope_signature": "AGENTHUB_DOCS_FIRST_VALIDATOR_ROUTE_PACKFIX_REPAIR_20260612",
+    "packet_owner": "T1 Architecture Broker",
+    "task_scope": "docs-first validator route and same-RUN PackFix controls",
+    "status": "active",
+    "official_sources": [
+      {
+        "reference": "https://developers.openai.com/codex/cli/reference",
+        "verified": true,
+        "fact": "Codex CLI supports model override and debug model catalog readback."
+      },
+      {
+        "reference": "https://developers.openai.com/codex/config-basic",
+        "verified": true,
+        "fact": "Codex config can set default model, approval policies, sandbox settings, and MCP servers."
+      },
+      {
+        "reference": "https://developers.openai.com/codex/agent-approvals-security",
+        "verified": true,
+        "fact": "Dangerous bypass has no sandbox and no approvals and is not recommended as a default route."
+      },
+      {
+        "reference": "https://modelcontextprotocol.io/docs/tutorials/security/authorization",
+        "verified": true,
+        "fact": "MCP authorization is strongly recommended for sensitive, administrative, audited, user-specific, or enterprise operations."
+      },
+      {
+        "reference": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools",
+        "verified": true,
+        "fact": "MCP tools are discovered through tools/list and invoked as explicit tool calls with stable names and schemas."
+      },
+      {
+        "reference": "https://www.jetbrains.com/help/youtrack/devportal/youtrack-rest-api.html",
+        "verified": true,
+        "fact": "YouTrack REST API returns and consumes JSON and requires authorization headers."
+      },
+      {
+        "reference": "https://www.jetbrains.com/help/youtrack/devportal/resource-api-commands.html",
+        "verified": true,
+        "fact": "YouTrack Commands API applies commands to issues with query and issue id/readable id payloads."
+      }
+    ],
+    "coverage_map": {
+      "openai_cli_reference": true,
+      "openai_config_basic": true,
+      "openai_approvals_security": true,
+      "mcp_authorization": true,
+      "mcp_tools_spec": true,
+      "youtrack_rest_api": true,
+      "youtrack_commands": true
+    }
+  },
+  "docs_packet_cases": [
+    {
+      "id": "docs_packet_complete_pass",
+      "input": {
+        "task_id": "AH-763",
+        "gate": "docs_packet",
+        "docs_packet": {
+          "packet_id": "DOCS-PACKET-AH-763-20260612",
+          "task_id": "AH-763",
+          "run_id": "RUN-AGENTHUB-DOCS-FIRST-VALIDATOR-ROUTE-PACKFIX-20260612",
+          "scope_signature": "AGENTHUB_DOCS_FIRST_VALIDATOR_ROUTE_PACKFIX_REPAIR_20260612",
+          "packet_owner": "T1 Architecture Broker",
+          "task_scope": "docs-first validator route and same-RUN PackFix controls",
+          "status": "active",
+          "official_sources": [
+            { "reference": "https://developers.openai.com/codex/cli/reference", "verified": true },
+            { "reference": "https://developers.openai.com/codex/config-basic", "verified": true },
+            { "reference": "https://developers.openai.com/codex/agent-approvals-security", "verified": true },
+            { "reference": "https://modelcontextprotocol.io/docs/tutorials/security/authorization", "verified": true },
+            { "reference": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools", "verified": true },
+            { "reference": "https://www.jetbrains.com/help/youtrack/devportal/youtrack-rest-api.html", "verified": true },
+            { "reference": "https://www.jetbrains.com/help/youtrack/devportal/resource-api-commands.html", "verified": true }
+          ],
+          "coverage_map": {
+            "openai_cli_reference": true,
+            "openai_config_basic": true,
+            "openai_approvals_security": true,
+            "mcp_authorization": true,
+            "mcp_tools_spec": true,
+            "youtrack_rest_api": true,
+            "youtrack_commands": true
+          }
+        }
+      },
+      "expected": "DOCS_FIRST_GATE_PASS"
+    },
+    {
+      "id": "env_only_behavior_claim_fails",
+      "input": {
+        "task_id": "AH-763",
+        "gate": "behavior_claim",
+        "behavior_claim": true,
+        "claim_proof_source": "env_only",
+        "docs_packet": {
+          "packet_id": "DOCS-PACKET-AH-763-20260612",
+          "task_id": "AH-763",
+          "run_id": "RUN-AGENTHUB-DOCS-FIRST-VALIDATOR-ROUTE-PACKFIX-20260612",
+          "scope_signature": "AGENTHUB_DOCS_FIRST_VALIDATOR_ROUTE_PACKFIX_REPAIR_20260612",
+          "packet_owner": "T1 Architecture Broker",
+          "task_scope": "docs-first validator route and same-RUN PackFix controls",
+          "status": "active",
+          "official_sources": [
+            { "reference": "https://developers.openai.com/codex/cli/reference", "verified": true },
+            { "reference": "https://developers.openai.com/codex/config-basic", "verified": true },
+            { "reference": "https://developers.openai.com/codex/agent-approvals-security", "verified": true },
+            { "reference": "https://modelcontextprotocol.io/docs/tutorials/security/authorization", "verified": true },
+            { "reference": "https://modelcontextprotocol.io/specification/2025-11-25/server/tools", "verified": true },
+            { "reference": "https://www.jetbrains.com/help/youtrack/devportal/youtrack-rest-api.html", "verified": true },
+            { "reference": "https://www.jetbrains.com/help/youtrack/devportal/resource-api-commands.html", "verified": true }
+          ],
+          "coverage_map": {
+            "openai_cli_reference": true,
+            "openai_config_basic": true,
+            "openai_approvals_security": true,
+            "mcp_authorization": true,
+            "mcp_tools_spec": true,
+            "youtrack_rest_api": true,
+            "youtrack_commands": true
+          }
+        }
+      },
+      "expected": "DOCS_CLAIM_NON_PROVED"
+    }
+  ],
+  "packfix_cases": [
+    {
+      "id": "routine_validator_not_run_to_packfix",
+      "input": {
+        "run_id": "RUN-AGENTHUB-DOCS-FIRST-VALIDATOR-ROUTE-PACKFIX-20260612",
+        "task_id": "AH-763",
+        "case_id": "routine-validator-not-run",
+        "case_type": "routine_blocker",
+        "scope_signature": "AGENTHUB_DOCS_FIRST_VALIDATOR_ROUTE_PACKFIX_REPAIR_20260612",
+        "routine_blocker": true,
+        "same_blocker_count": 1,
+        "blocker_type": "VALIDATOR_EXECUTION_NOT_RUN",
+        "packfix_output": "PACKFIX_REQUIRED",
+        "route_repair_reason": "NONE"
+      },
+      "expected": "PACKFIX_REQUIRED"
+    },
+    {
+      "id": "second_same_gate_to_route_repair",
+      "input": {
+        "routine_blocker": true,
+        "same_blocker_count": 2,
+        "blocker_type": "PRE_DISPATCH_TASK_GATE_MISSING_ISSUE_ID"
+      },
+      "expected": "ROUTE_REPAIR_REQUIRED"
+    }
+  ],
+  "validator_route_cases": [
+    {
+      "id": "task_bound_validator_route_pass",
+      "input": {
+        "run_id": "RUN-AGENTHUB-DOCS-FIRST-VALIDATOR-ROUTE-PACKFIX-20260612",
+        "task_id": "AH-763",
+        "final_state": "TEST",
+        "blocker_type": "NONE",
+        "authority_envelope": {
+          "run_id": "RUN-AGENTHUB-DOCS-FIRST-VALIDATOR-ROUTE-PACKFIX-20260612",
+          "task_id": "AH-763",
+          "lane": 3,
+          "validator_name": "agenthub_docs_first_gate_validator",
+          "validator_path": "validators/agenthub_docs_first_gate_validator.rb",
+          "execution_route": "agenthub_validator_worker",
+          "allowed_commands": ["ruby -c validators/agenthub_docs_first_gate_validator.rb"],
+          "redaction_gate": "PASS",
+          "readback_ref": "AH-763",
+          "decision": "ALLOW_WITH_SCOPED_WORKER"
+        }
+      },
+      "expected": "VALIDATOR_ROUTE_PASS"
+    },
+    {
+      "id": "t0_direct_done_rejected",
+      "input": {
+        "run_id": "RUN-AGENTHUB-DOCS-FIRST-VALIDATOR-ROUTE-PACKFIX-20260612",
+        "task_id": "AH-763",
+        "final_state": "DONE",
+        "validator_executed": true,
+        "validator_exit_code": 0,
+        "blocker_type": "NONE",
+        "authority_envelope": {
+          "run_id": "RUN-AGENTHUB-DOCS-FIRST-VALIDATOR-ROUTE-PACKFIX-20260612",
+          "task_id": "AH-763",
+          "lane": 3,
+          "validator_name": "agenthub_docs_first_gate_validator",
+          "validator_path": "validators/agenthub_docs_first_gate_validator.rb",
+          "execution_route": "t0_direct_shell",
+          "allowed_commands": ["ruby validators/agenthub_docs_first_gate_validator.rb"],
+          "redaction_gate": "PASS",
+          "readback_ref": "AH-763",
+          "decision": "ALLOW"
+        }
+      },
+      "expected": "T0_SHELL_PROOF_REJECTED"
+    },
+    {
+      "id": "third_same_gate_forbidden",
+      "input": {
+        "run_id": "RUN-AGENTHUB-DOCS-FIRST-VALIDATOR-ROUTE-PACKFIX-20260612",
+        "task_id": "AH-763",
+        "final_state": "TEST",
+        "blocker_type": "VALIDATOR_EXECUTION_NOT_RUN",
+        "same_blocker_count": 3,
+        "authority_envelope": {
+          "run_id": "RUN-AGENTHUB-DOCS-FIRST-VALIDATOR-ROUTE-PACKFIX-20260612",
+          "task_id": "AH-763",
+          "lane": 3,
+          "validator_name": "agenthub_docs_first_gate_validator",
+          "validator_path": "validators/agenthub_docs_first_gate_validator.rb",
+          "execution_route": "agenthub_validator_worker",
+          "allowed_commands": ["ruby validators/agenthub_docs_first_gate_validator.rb"],
+          "redaction_gate": "PASS",
+          "readback_ref": "AH-763",
+          "decision": "ROUTE_REPAIR_REQUIRED"
+        }
+      },
+      "expected": "THIRD_SAME_GATE_RETRY_FORBIDDEN"
+    }
+  ],
+  "model_truth_cases": [
+    {
+      "id": "no_model_claim_pass",
+      "input": {
+        "final_state": "TEST",
+        "model_execution_claimed": false,
+        "model_truth_receipt": {
+          "model_truth_status": "NO_MODEL_CLAIM",
+          "actual_model_proof_type": "not_available",
+          "actual_model_proof_ref": "",
+          "env_only_model_claim": false
+        }
+      },
+      "expected": "NO_MODEL_CLAIM_PASS"
+    },
+    {
+      "id": "env_only_proven_rejected",
+      "input": {
+        "final_state": "DONE",
+        "model_execution_claimed": true,
+        "model_truth_receipt": {
+          "model_truth_status": "PROVEN",
+          "actual_model_proof_type": "not_available",
+          "actual_model_proof_ref": "env:AGENTHUB_RESOLVED_MODEL",
+          "env_only_model_claim": true
+        }
+      },
+      "expected": "ENV_ONLY_MODEL_PROOF_REJECTED"
+    },
+    {
+      "id": "client_metadata_proven_pass",
+      "input": {
+        "final_state": "DONE",
+        "model_execution_claimed": true,
+        "model_truth_receipt": {
+          "model_truth_status": "PROVEN",
+          "actual_model_proof_type": "codex_client_session_metadata",
+          "actual_model_proof_ref": "reports/receipts/example-session.json",
+          "env_only_model_claim": false
+        }
+      },
+      "expected": "MODEL_PROVEN_PASS"
+    }
+  ]
+}

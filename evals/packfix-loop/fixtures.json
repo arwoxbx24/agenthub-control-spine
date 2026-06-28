@@ -1,0 +1,36 @@
+{
+  "packfix_cases": [
+    {
+      "id": "first_runtime_tool_missing",
+      "input": {
+        "blocker": "RUNTIME_TOOL_INSTALLATION_REQUIRED",
+        "same_blocker_count": 1
+      },
+      "expected": "PACKFIX_REQUIRED"
+    },
+    {
+      "id": "second_contract_dispatch_block",
+      "input": {
+        "blocker": "CONTRACT_ONLY_RUNTIME_LIVE_DISPATCH_BLOCKED",
+        "same_blocker_count": 2
+      },
+      "expected": "ROUTE_REPAIR_REQUIRED"
+    },
+    {
+      "id": "third_retry_forbidden",
+      "input": {
+        "blocker": "VALIDATOR_EXECUTION_NOT_RUN",
+        "same_blocker_count": 3
+      },
+      "expected": "THIRD_RETRY_FORBIDDEN"
+    },
+    {
+      "id": "owner_secret_terminal",
+      "input": {
+        "owner_only": true,
+        "same_blocker_count": 1
+      },
+      "expected": "OWNER_ONLY_TERMINAL"
+    }
+  ]
+}
